@@ -1,0 +1,92 @@
+{
+  "task_id": "fab5bb75-6f82-4f76-b57a-847123d4346e",
+  "plot_id": 19,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 15, 2024 at 11:00 AM, Tim Brooks were involved. Technical set-up for community event sound system with Tim. Follow-up video call scheduled for system test.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_19",
+    "phone_call",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to know how long your last call was.",
+  "reference_time": "2024-12-15T17:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed their call to Michael Thompson lasted 15 minutes. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_19_fab5bb75-6f82-4f76-b57a-847123d4346e_single_turn_1",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_phonecall_logs",
+    "get_all_phone_calls"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Thompson",
+      "full_name": "Michael Thompson",
+      "phone_number": "+1 530-555-0130",
+      "alias": "Community Leader",
+      "email": "michael.thompson@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1985-06-30T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "outgoing",
+      "caller_address": "+1 530-555-0123",
+      "receiver_address": "+1 530-555-0130",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-12-15T13:05:00-08:00",
+      "duration_in_hms": "00:15:00"
+    }
+  ],
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "referential_complexity": "moderate",
+  "query": "How long was the call I made 4 and a half hours ago?",
+  "reasoning": "The user wants to know how long was the call they made 4 and a half hours ago. To figure out when the call was I need to know the time now. \n\nHmm, the time now is 17:35 so 4 and a half hours ago was 13:05. This means I am looking for a call at that time. I will check Phone for one. \n\nLooks like the call at 13:05 lasted for 15 minutes. I will tell the user this. ",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent uses phone log retrieval to look up recent calls\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    # Either search specific timeframe or list all calls\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the 13:05 outgoing call with 15-minute duration was retrieved\n                # (This validates that the agent actually found the correct call record it later reports on.)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"call_type\": {\n                                                \"value\": \"outgoing\",\n                                                \"partial\": False,\n                                            },\n                                            \"caller_address\": {\n                                                \"value\": \"+1 530-555-0123\",\n                                                \"partial\": False,\n                                            },\n                                            \"receiver_address\": {\n                                                \"value\": \"+1 530-555-0130\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-15T13:05:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"duration_in_hms\": {\n                                                \"value\": \"00:15:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – User is informed that the call lasted 15 minutes\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Accept phrasing variations, but must clearly communicate \"15 minutes\"\n                                    \"content\": [(\"15 minutes\", \"15-minute\", \"15 min\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieve phone logs → confirm correct call record\n                (1, 2),  # Correct call identified → inform user of 15-minute duration\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_phone_calls\",\n    \"search_phonecall_logs\",\n]",
+  "is_read_time": "2024-12-15T17:35:00-08:00",
+  "user_goal_prompt": "You are User A, Emily Rose. You need to know how long your last call was.  ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_phonecall_logs\", \"get_all_phone_calls\"]"
+}

@@ -1,0 +1,97 @@
+{
+  "task_id": "3e708373-a65d-47e0-8d8a-a83b791fc2cd",
+  "plot_id": 19,
+  "plot_summary": "Theo Appleseed is the protagonist. On Sunday Morning, July 28, 2024 at 10 am, Cookie were involved. Solo time for reading and relaxation Theo texts Cookie afterwards to share about this book he was reading",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_19",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need more time to relax before your cooking class.",
+  "reference_time": "2024-07-28T11:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. New event More Extended Solo Time is scheduled for July 28, 2024, 11:30-12:30.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_19_3e708373-a65d-47e0-8d8a-a83b791fc2cd_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cooking Class",
+      "start_datetime_iso": "2024-07-28T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-28T16:00:00-07:00",
+      "attendees_names": [
+        "Cookie Watson",
+        "Local Culinary School",
+        "Theo Appleseed"
+      ],
+      "location": "Local Culinary School, Orchard County, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "Local Culinary School",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-21T12:00:00-07:00",
+      "notes": "Attending a cooking class to learn new recipes and enhance cooking skills."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Add an event called More Extended Solo Time it must be an hour long and end thirty minutes before my class with cookie.",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking me to create an event.\nThey have supplied me with the title and end time. I should consult the calendar and confirm the time requested. The user has referred to a class with Cookie, the only potential match for this that I can see is the event Cooking Class scheduled for 28 July 2024, 13:00-16:00. The user has requested the the new event have a duration of one hour and end thirty minutes before Cooking Class. \nI will schedule a new event More Extended Solo Time for July 28, 2024, 11:30-12:30.",
+  "milestones": "[\n                # Milestone 0 – agent looks up existing calendar events (e.g., to locate the “Cooking Class”)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – new “More Extended Solo Time” event has been created for 11:30–12:30 on 2024-07-28\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"More Extended Solo Time\",\n                                    \"start_datetime_iso\": \"2024-07-28T11:30:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-28T12:30:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-28T11:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_exact_match_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup precedes creation of the new event\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You need more time to relax before your cooking class. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-28T11:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

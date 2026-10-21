@@ -1,0 +1,82 @@
+{
+  "task_id": "518d814d-1764-46a2-8751-8e36ea0c982b",
+  "plot_id": 9,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 10am, Bronson Chuck were involved. Bronson informs John of an unexpected work visit by their Japanese colleagues next week.  1. Bronson messages John mentioning about a urgent visit by Palantir's section in Japan to address the situation in Peru, and asking John to keep his whole week clear. 2. Bronson adds the visit as 5 separate events from Monday to Friday next week, each lasting a workday and inviting John and several colleagues. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_9",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want check the time of your upcoming event 'Visit from Palantir Japan - Day 1' as you want to be prepared for it.",
+  "reference_time": "2024-07-27T18:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The time of the event 'Visit from Palantir Japan - Day 1' on Monday, July 29th 2024 from 09:00 to 17:00 is shared with the user. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_9_518d814d-1764-46a2-8751-8e36ea0c982b_single_turn_2",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Visit from Palantir Japan - Day 1",
+      "start_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T17:00:00-07:00",
+      "attendees_names": [
+        "Bronson Chunk",
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Palantir HQ, San José, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Bronson Chunk",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T09:05:00-07:00",
+      "notes": "Day 1 of meetings with Palantir Japan to discuss the Peru situation. Please be prepared with all relevant data and reports."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time is the longer of my two events two days from now?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know the time of an event. I need to determine which event on their calendar they're talking about. The event is one of two events happening two days from now. Two days from today, July 27th, is July 29th. The two events happening on July 29th are \"Visit from Palantir Japan - Day 1\" from 09:00-17:00 and \"Daily Stand-up: Security Updates\" from 09:00-9:30. So I need to find the longer event between these two, and that's the event the user wants more information about. The former is 8 hours long because 17 minus 9 is 8. The latter is .5 hours long because 9:30 minus 9:00 is 30 minutes, or a half hour. So when the user says \"the longer of my two events\" they are referring to the event named \"Visit from Palantir Japan - Day 1\". So they want to know what time that event is happening. I'll tell them it starts at 9:00 and ends at 17:00 on July 29th.",
+  "milestones": "[\n                # Milestone 0 – Agent’s reply to the user includes the event **start time**\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Accept any reasonable phrasing of 09:00 / 9 am\n                                    \"content\": [\n                                        (\n                                            \"09:00\",\n                                            \"9:00\",\n                                            \"9 am\",\n                                            \"9am\",\n                                            \"09:00 am\",\n                                            \"09:00am\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Agent’s reply to the user includes the event **end time**\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Accept any reasonable phrasing of 17:00 / 5 pm\n                                    \"content\": [\n                                        (\n                                            \"17:00\",\n                                            \"5:00\",\n                                            \"5 pm\",\n                                            \"5pm\",\n                                            \"17:00 pm\",\n                                            \"17:00pm\",\n                                            \"5 p.m.\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want check the time of your upcoming event 'Visit from Palantir Japan - Day 1' as you want to be prepared for it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-27T18:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

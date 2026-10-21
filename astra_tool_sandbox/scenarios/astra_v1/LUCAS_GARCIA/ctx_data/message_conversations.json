@@ -1,0 +1,606 @@
+{
+    "3": [
+        {
+            "conversation_name": "Theo Appleseed",
+            "participants": [
+                "lucas.garcia@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey Lucas! Great session today. I was thinking about our goals moving into the new year. What do you think of setting specific targets for the next 3 months?",
+                    "creation_time": "2024-12-02T19:05:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hey Theo, I'm totally on board with that. Given our recent improvements, setting new benchmarks seems perfect. Maybe focus more on strength and conditioning while also trimming down a bit?",
+                    "creation_time": "2024-12-02T19:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Exactly what I was thinking. Also, could we nail down a more consistent schedule? It would really help me stay committed.",
+                    "creation_time": "2024-12-02T19:15:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Sure thing! How about we aim for evening sessions on Mondays, Wednesdays, and Fridays around 6 pm? We can tweak as needed based on our progress.",
+                    "creation_time": "2024-12-02T19:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Perfect. I'll lock those times in my calendar. Thanks, Lucas! Looking forward to smashing those goals together!",
+                    "creation_time": "2024-12-02T19:25:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "6": [
+        {
+            "conversation_name": "Carol Reyes",
+            "participants": [
+                "lucas.garcia@example.com",
+                "carol.reyes@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hey Carol! Just wanted to drop a quick thank you for organizing the beer tasting today. I had a blast and the selection was top-notch!",
+                    "creation_time": "2024-12-04T21:30:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "carol.reyes@example.com",
+                    "sender_name": "Carol Reyes",
+                    "content": "Hi Lucas! I'm so glad you enjoyed it. The brewery was really excited to host us. Do you have a favorite from the selection?",
+                    "creation_time": "2024-12-04T21:35:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "The session IPA was definitely a standout for me. Great flavor and perfect for a casual evening. Did you have a preferred brew?",
+                    "creation_time": "2024-12-04T21:38:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "carol.reyes@example.com",
+                    "sender_name": "Carol Reyes",
+                    "content": "I'm torn between the stout and the lager, but I think the stout wins by a slight margin. We should do this again sometime soon!",
+                    "creation_time": "2024-12-04T21:42:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Absolutely! Let's plan something for next month. Thanks again, Carol. Have a great night!",
+                    "creation_time": "2024-12-04T21:45:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "7": [
+        {
+            "conversation_name": "Sophie Bennett",
+            "participants": [
+                "lucas.garcia@example.com",
+                "sophie.bennett@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hey Sophie! I'm looking forward to our personalized fitness session tomorrow at 9 am. Remember to bring your friends along.",
+                    "creation_time": "2024-12-04T15:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "sophie.bennett@example.com",
+                    "sender_name": "Sophie Bennett",
+                    "content": "Hi Lucas! We're all set for tomorrow. There will be three of us joining. Looking forward to it!",
+                    "creation_time": "2024-12-04T15:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Great! I'll have the session notes ready for you after our workout. It'll cover everything we go through so you can refer back to it.",
+                    "creation_time": "2024-12-04T15:30:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "sophie.bennett@example.com",
+                    "sender_name": "Sophie Bennett",
+                    "content": "That's perfect, Lucas. Some of my friends were curious about what the session will include?",
+                    "creation_time": "2024-12-04T15:40:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "We'll focus on full-body strength and flexibility. We'll start with a warm-up, followed by circuit training, and end with a cool-down session.",
+                    "creation_time": "2024-12-04T15:45:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "sophie.bennett@example.com",
+                    "sender_name": "Sophie Bennett",
+                    "content": "Sounds amazing! I'll pass this on to the others. Thanks, Lucas!",
+                    "creation_time": "2024-12-04T15:50:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Looking forward to meeting everyone. See you all tomorrow at Orchard County Fitness Center!",
+                    "creation_time": "2024-12-04T16:00:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "11": [
+        {
+            "conversation_name": "Olivia Clark",
+            "participants": [
+                "lucas.garcia@example.com",
+                "olivia.clark@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hi Olivia, thanks for attending the motivational talk this morning. I hope you found it inspiring. I'd love to hear your thoughts or if there're any areas we could improve next time.",
+                    "creation_time": "2024-12-07T11:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "olivia.clark@example.com",
+                    "sender_name": "Olivia Clark",
+                    "content": "Hi Lucas! It was fantastic, truly motivating. I particularly appreciated the segment on maintaining mental resilience. It was just what I needed to hear.",
+                    "creation_time": "2024-12-07T11:15:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "I'm glad that part resonated with you. It's all about keeping a positive mindset along with the physical aspect. If you have any other feedback or suggestions for future talks, feel free to share.",
+                    "creation_time": "2024-12-07T11:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "olivia.clark@example.com",
+                    "sender_name": "Olivia Clark",
+                    "content": "Honestly, I think you've covered everything very well. Maybe a hands-on workshop next time? Something interactive might engage people even more.",
+                    "creation_time": "2024-12-07T11:30:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "That's a great idea! I’ll definitely consider incorporating interactive elements. Your input is super valuable, Olivia. Thanks again for coming and sharing your thoughts.",
+                    "creation_time": "2024-12-07T11:35:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "olivia.clark@example.com",
+                    "sender_name": "Olivia Clark",
+                    "content": "Happy to help, Lucas! Looking forward to more sessions like this. Have a great weekend!",
+                    "creation_time": "2024-12-07T11:40:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "You too, Olivia! Enjoy your weekend!",
+                    "creation_time": "2024-12-07T11:45:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "12": [
+        {
+            "conversation_name": "Triathlon Strategy Session",
+            "participants": [
+                "lucas.garcia@example.com",
+                "brian.carter@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hi Brian, thanks for the insightful triathlon strategy meeting today. I've compiled the notes and want to make sure they're aligned with what we discussed.",
+                    "creation_time": "2024-12-07T16:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "brian.carter@example.com",
+                    "sender_name": "Triathlon Coach",
+                    "content": "Hey Lucas! No problem, it was great to have the team together. Please send over the notes; I'll review and give you my feedback.",
+                    "creation_time": "2024-12-07T16:25:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "I've just sent the notes. They should cover all the training plans, the target milestones, and the timeline for the next quarter. Let me know if I've missed anything.",
+                    "creation_time": "2024-12-07T16:30:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "brian.carter@example.com",
+                    "sender_name": "Triathlon Coach",
+                    "content": "Received it, thanks. Everything looks good so far, but I'll go through in detail later tonight. Expect feedback by tomorrow.",
+                    "creation_time": "2024-12-07T16:35:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Perfect, Brian. Appreciate your support. I'll keep an eye out for your feedback. Have a good rest of the day!",
+                    "creation_time": "2024-12-07T16:40:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "brian.carter@example.com",
+                    "sender_name": "Triathlon Coach",
+                    "content": "You too, Lucas! Let's keep this momentum going.",
+                    "creation_time": "2024-12-07T16:45:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "13": [
+        {
+            "conversation_name": "Online Fitness Class Feedback",
+            "participants": [
+                "lucas.garcia@example.com",
+                "megan.johnson@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hi Megan, thanks for joining the online fitness class today! I just uploaded the session video on YouTube. Please check it out and let me know your thoughts.",
+                    "creation_time": "2024-12-08T11:45:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "megan.johnson@example.com",
+                    "sender_name": "Megan Johnson",
+                    "content": "Hi Lucas! I enjoyed the class, and I'm looking forward to watching the recording for some more practice. Can you share the link?",
+                    "creation_time": "2024-12-08T12:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Sure thing! Here's the link: https://www.youtube.com/watch?v=FITNESSSESSION123. Feel free to share it with your friends too. I'm eager to hear your feedback.",
+                    "creation_time": "2024-12-08T12:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "megan.johnson@example.com",
+                    "sender_name": "Megan Johnson",
+                    "content": "Awesome, thanks! I'll watch it tonight and give you my thoughts. The new exercises you introduced were challenging but fun.",
+                    "creation_time": "2024-12-08T12:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Glad to hear that! Remember, consistency is key. Let's aim to incorporate them into the next few sessions for better results.",
+                    "creation_time": "2024-12-08T12:30:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "megan.johnson@example.com",
+                    "sender_name": "Megan Johnson",
+                    "content": "Will do, Lucas. Thanks for all the energy and dedication you bring to each class. Talk to you soon!",
+                    "creation_time": "2024-12-08T12:40:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "14": [
+        {
+            "conversation_name": "YouTube Channel Engagement",
+            "participants": [
+                "lucas.garcia@example.com",
+                "alex.martin@example.com",
+                "megan.johnson@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "alex.martin@example.com",
+                    "sender_name": "Alex Martin",
+                    "content": "Hey Lucas, just watched the latest video. The new workout routine is killer! Any tips for improving my form on those lunges?",
+                    "creation_time": "2024-12-08T16:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Thanks for tuning in, Alex! For lunges, focus on keeping your upper body straight, with your shoulders back and relaxed. Make sure your knees don't extend past your toes.",
+                    "creation_time": "2024-12-08T16:05:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "megan.johnson@example.com",
+                    "sender_name": "Megan Johnson",
+                    "content": "Lucas, loved the new exercises. What do you suggest for adding more intensity to the cooldown stretches?",
+                    "creation_time": "2024-12-08T16:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Great question, Megan! You can increase the duration of each stretch and add gentle pulses during the hold to boost intensity. Consistency here will also improve flexibility over time.",
+                    "creation_time": "2024-12-08T16:15:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Thanks, Lucas, for the awesome session! How do you recommend tracking progress throughout the program?",
+                    "creation_time": "2024-12-08T16:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Happy to help, Theo! I suggest keeping a workout journal. Record your reps, weights, and how you feel after each session. Reflecting on past entries will show you how far you've come!",
+                    "creation_time": "2024-12-08T16:25:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "17": [
+        {
+            "conversation_name": "Jessica Lin - Joint Workout Session",
+            "participants": [
+                "lucas.garcia@example.com",
+                "jessica.lin@example.com",
+                "alex.martin@example.com",
+                "olivia.clark@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hey Jessica, excited for our joint workout session at 9 am today! Let's make sure we cover the basics and then focus on high-intensity circuits.",
+                    "creation_time": "2024-12-10T08:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "jessica.lin@example.com",
+                    "sender_name": "Jessica Lin",
+                    "content": "Hi Lucas! Yes, I'm ready. I think starting with a brief introduction for new members would be great. After that, the circuits can help them get a feel for different exercises.",
+                    "creation_time": "2024-12-10T08:05:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Perfect, Jessica. I'll kick things off with the intro, and you can guide them through the warm-up. Let's aim to keep each circuit around 10 minutes.",
+                    "creation_time": "2024-12-10T08:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "jessica.lin@example.com",
+                    "sender_name": "Jessica Lin",
+                    "content": "Sounds like a plan! I'll make sure they're engaged and offer modifications if needed. Let's inspire them to keep coming back!",
+                    "creation_time": "2024-12-10T08:15:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Absolutely! Let's make it a session to remember. Thanks for collaborating, Jessica. See you shortly!",
+                    "creation_time": "2024-12-10T08:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hi Everyone, thank you all for joining our session today. We loved your energy! Here's a recap of today's workout along with some tips: https://workout-recap-link.com. Feel free to reach out with any questions!",
+                    "creation_time": "2024-12-10T11:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "jessica.lin@example.com",
+                    "sender_name": "Jessica Lin",
+                    "content": "Great session today, everyone! Remember to stay hydrated and stretch out those muscles. Looking forward to seeing you all next time!",
+                    "creation_time": "2024-12-10T11:05:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "18": [
+        {
+            "conversation_name": "Carol Reyes",
+            "participants": [
+                "lucas.garcia@example.com",
+                "carol.reyes@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hey Carol, I just got back from our beer tasting afternoon. Wanted to say thanks for organizing such an amazing adventure! I've found a couple of new favorites.",
+                    "creation_time": "2024-12-10T15:30:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "carol.reyes@example.com",
+                    "sender_name": "Carol Reyes",
+                    "content": "Hi Lucas! It was so much fun. Glad you enjoyed it. Which ones stood out to you the most?",
+                    "creation_time": "2024-12-10T15:32:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "The honey amber ale and the raspberry wheat were top-notch for sure. How about you?",
+                    "creation_time": "2024-12-10T15:35:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "carol.reyes@example.com",
+                    "sender_name": "Carol Reyes",
+                    "content": "I loved the coffee stout and that unique citrus gose. By the way, I've got some photos from today. Sending them over now.",
+                    "creation_time": "2024-12-10T15:37:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "carol.reyes@example.com",
+                    "sender_name": "Carol Reyes",
+                    "content": "Here they are! Attachments are included with our detailed beer ratings too. 📸🍻",
+                    "creation_time": "2024-12-10T15:40:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Awesome! Thanks for sharing. I’ll review these and we can plan another trip soon. I’ll bring some of these notes next time for a more informed tasting session. Cheers!",
+                    "creation_time": "2024-12-10T15:45:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "20":[
+        {
+            "conversation_name": "Pre-Holiday Fitness Celebration",
+            "participants": [
+                "lucas.garcia@example.com",
+                "jessica.lin@example.com",
+                "olivia.clark@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Hey Jessica and Olivia! Thanks for joining the pre-holiday fitness celebration today. The energy was incredible!",
+                    "creation_time": "2024-12-11T19:05:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "jessica.lin@example.com",
+                    "sender_name": "Jessica Lin",
+                    "content": "Thank you, Lucas! It was a blast. The workout mix and the music made it so fun. Plus, it was great meeting new gym members.",
+                    "creation_time": "2024-12-11T19:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "olivia.clark@example.com",
+                    "sender_name": "Olivia Clark",
+                    "content": "Absolutely! I loved the friendly competition aspect too. Can't wait to see the pictures you mentioned.",
+                    "creation_time": "2024-12-11T19:15:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "I'm glad you both enjoyed it! I'll be posting the highlights and pictures on social media soon. I'll share the link once it's up!",
+                    "creation_time": "2024-12-11T19:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "jessica.lin@example.com",
+                    "sender_name": "Jessica Lin",
+                    "content": "Looking forward to sharing them. It's always nice to capture these moments. Thanks for putting this together, Lucas!",
+                    "creation_time": "2024-12-11T19:25:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "olivia.clark@example.com",
+                    "sender_name": "Olivia Clark",
+                    "content": "Definitely keeping us motivated and connected, even as the holidays approach. Thanks again!",
+                    "creation_time": "2024-12-11T19:30:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Coach Lucas",
+                    "content": "Thanks, you two! Keep an eye out for the post. Let’s stay active and enjoy the holiday spirit!",
+                    "creation_time": "2024-12-11T19:35:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "21": [
+        {
+            "conversation_name": "High School Football Team Reunion",
+            "participants": [
+                "lucas.garcia@example.com",
+                "emmanuel.gonzales@example.com",
+                "mike.jordan@example.com",
+                "steve.rivers@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Lucas Garcia",
+                    "content": "Hey team! How about a reunion brunch this Thursday at 10 am? I miss those good old days and think it'll be great to catch up. We can meet at The Orchard Cafe.",
+                    "creation_time": "2024-12-09T09:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "emmanuel.gonzales@example.com",
+                    "sender_name": "Emmanuel Gonzales",
+                    "content": "Lucas, that sounds awesome! Count me in. I've been meaning to catch up with you all for ages. Maybe I can find some old game pics to bring along!",
+                    "creation_time": "2024-12-09T09:05:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "mike.jordan@example.com",
+                    "sender_name": "Mike Jordan",
+                    "content": "I'm in too! I still have some hilarious stories from our bus rides. Plus, I think I have a few photos from our last win.",
+                    "creation_time": "2024-12-09T09:10:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "steve.rivers@example.com",
+                    "sender_name": "Steve Rivers",
+                    "content": "Can't wait to see everyone! This will be a fantastic trip down memory lane. I'll bring my old jersey for nostalgia.",
+                    "creation_time": "2024-12-09T09:15:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Lucas Garcia",
+                    "content": "Great! Let's bring any memorabilia or photos we can find. I'll make the reservation at The Orchard Cafe. Bring your appetites and plenty of stories!",
+                    "creation_time": "2024-12-09T09:20:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "emmanuel.gonzales@example.com",
+                    "sender_name": "Emmanuel Gonzales",
+                    "content": "Perfect! I've got my old team jacket somewhere. This will be so much fun, reliving those moments with everyone. See you all there!",
+                    "creation_time": "2024-12-09T09:25:00",
+                    "status": "read"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,96 @@
+{
+  "task_id": "dad4ea64-353e-4918-b8b8-d31aa4052643",
+  "plot_id": 5,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 7:00 PM, Jessica Lane were involved. Planning session with Jessica over dinner regarding the holiday volunteering schedule. Email sent to volunteers with the finalized schedule of activities.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_5",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to be sure you past on the schedule to the volunteers",
+  "reference_time": "2024-12-05T08:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that the email to volunteers@orchardcommunity.org was sent at 20:30 on 4 December 2024. "
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_5_dad4ea64-353e-4918-b8b8-d31aa4052643_single_turn_1",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Finalized Holiday Volunteering Schedule",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "volunteers@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "jessica.lane@orchardmail.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-04T20:30:00-08:00",
+      "body": "Hello Team,\n\nI hope this message finds you well. Following our productive planning session this evening with Jessica, we have finalized the volunteering schedule for the upcoming holiday events. Please find attached the detailed schedule of activities.\n\nWe appreciate your commitment and look forward to another successful season of community engagement. Should you have any questions or require further clarification, do not hesitate to reach out.\n\nThank you all for your dedication and hard work!\n\nBest regards,\nEmily Rose\nEvent Coordinator\nOrchard County Community Center",
+      "attachments": [
+        "Holiday_Volunteering_Schedule.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lane",
+      "full_name": "Jessica Lane",
+      "phone_number": "+1 530-555-0127",
+      "alias": "Bestie",
+      "email": "jessica.lane@orchardmail.com",
+      "relationship": "Best Friend",
+      "address": "200 Friendship Blvd, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Volunteer Coordinator",
+      "is_self": false,
+      "birthday": "1994-04-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Was there an email sent to volunteers@orchardcommunity.org last night?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok the user wants to know was there an email sent to volunteers@orchardcommunity.org last night. First I will locate the most recent email sent to the volunteers@orchardcommunity.org email. There is a message to volunteers@orchardcommunity.org sent last night at 20:30 this must be what they are talking about. I will now inform the user that the email to volunteers@orchardcommunity.org was sent at 20:30 on 4 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – Agent uses an email-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned email data include the outgoing message to volunteers@orchardcommunity.org\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # email was addressed to the volunteers list\n                                            \"recipients_addresses\": {\n                                                \"value\": \"volunteers@orchardcommunity.org\",\n                                                \"partial\": True,\n                                            },\n                                            # sent at the expected date-time\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-04T20:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"status\": {\n                                                \"value\": \"sent\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs the user of the successful send, including recipient and time/date\n                Milestone(\n                    snapshot_constraints=[\n                        # Must mention the mailing list\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"volunteers@orchardcommunity.org\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Must reference the send time or date\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"20:30\",\n                                            \"8:30\",\n                                            \"8:30 PM\",\n                                            \"8:30 pm\",\n                                            \"December 4\",\n                                            \"4 December\",\n                                            \"Dec 4\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to be sure you past on the schedule to the volunteers ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "is_read_time": "2024-12-05T08:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

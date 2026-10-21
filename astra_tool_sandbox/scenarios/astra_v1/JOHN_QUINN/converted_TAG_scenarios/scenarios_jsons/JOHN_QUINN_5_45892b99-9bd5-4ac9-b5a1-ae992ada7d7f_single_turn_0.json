@@ -1,0 +1,96 @@
+{
+  "task_id": "45892b99-9bd5-4ac9-b5a1-ae992ada7d7f",
+  "plot_id": 5,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 6:30 pm, Ursula Quinn were involved. John complains to his mom about the political messages his father forwards him  1. John messages his mom to complain about his father's forwarded emails from the Pirate Party. 2. She reassures him and mentions a family counsellor that she saw for her marriage. 3. Finally, she emails him a newsletter from the family counsellor. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_5",
+    "contact",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You know that your mother has sent you an email but you are not really sure what it is.   You want to check the subject, but are too busy to read the full thing.",
+  "reference_time": "2024-07-22T21:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Subject of email 'Family Counsellor Newsletter' received from 'ursula.quinn@modernart.org' on July 22, 2024 at 18:40 is presented to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_5_45892b99-9bd5-4ac9-b5a1-ae992ada7d7f_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Family Counsellor Newsletter",
+      "sender_address": "ursula.quinn@modernart.org",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T18:40:00-07:00",
+      "body": "Hi John, Here's the newsletter from the family counsellor I mentioned. I hope you find it helpful. Love, Mom",
+      "attachments": [
+        "Family_Counselling_Newsletter_July_2024.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Tell me the subject of the email sent to me by Ursula Quinn today.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking about an email.\nFirst, I should confirm the named person is present in the user's contacts list. I can see that Ursula Quinn is indeed in the user's contacts.\nNext, I will find the email being referred to in the user's inbox. I see one email received from Ursula Quinn on July 22, 2024 at 18:40. The subject line of this email is Family Counsellor Newsletter.\nI should inform the user.",
+  "milestones": "[\n                # Milestone 0 – The agent looks through the user’s e-mail to locate the relevant message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The agent tells the user the subject “Family Counsellor Newsletter”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Family Counsellor Newsletter\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You know that your mother has sent you an email but you are not really sure what it is.  You want to check the subject, but are too busy to read the full thing. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-07-22T21:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

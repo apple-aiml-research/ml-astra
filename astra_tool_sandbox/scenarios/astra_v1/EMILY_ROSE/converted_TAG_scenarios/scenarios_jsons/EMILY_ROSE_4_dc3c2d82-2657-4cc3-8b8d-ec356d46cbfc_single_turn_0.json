@@ -1,0 +1,110 @@
+{
+  "task_id": "dc3c2d82-2657-4cc3-8b8d-ec356d46cbfc",
+  "plot_id": 4,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 3:00 PM, Ben Rose, Lucas Jones were involved. Coordinating with Ben and Lucas to organize tools and equipment for the gardening project at the local park. Send out an calendar invte for them to meet and purchase the equipments. Messages exchanged with Ben and Lucas confirming the details of the project. Calendar invte sent.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_4",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to check that the calendar invite you sent has been received.",
+  "reference_time": "2024-12-04T15:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to the Gardening Project Coordination group saying \"did everyone get the invite?”",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_4_dc3c2d82-2657-4cc3-8b8d-ec356d46cbfc_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Gardening Project Coordination",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0125",
+        "+1 530-555-0141"
+      ],
+      "sender_address": "+1 530-555-0123",
+      "content": "Great! I'll send out the calendar invite now. Thanks, everyone.",
+      "creation_datetime_iso": "2024-12-04T15:15:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Gardening Project Coordination Meeting",
+      "start_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T16:00:00-08:00",
+      "attendees_names": [
+        "Ben Rose",
+        "Emily Rose",
+        "Lucas Jones"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-04T15:18:00-08:00",
+      "notes": "Meeting with Ben and Lucas to organize tools and equipment for the gardening project at the local park."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ben",
+      "last_name": "Rose",
+      "full_name": "Ben Rose",
+      "phone_number": "+1 530-555-0125",
+      "alias": "Green Thumb Dad",
+      "email": "ben.rose@gardensplus.com",
+      "relationship": "Father",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Gardens Plus",
+      "job_title": "Landscape Designer",
+      "is_self": false,
+      "birthday": "1965-03-12T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Message the Gardening Project group and say did everyone get the invite?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to reply to their Gardening Project chat with the text \"did everyone get the invite\". First I'll find the group chat by looking through messages for a chat with this name, and with this I can compose the reply and confirm that the user is happy to send it.",
+  "milestones": "[\n                # Milestone 0 – Confirm a new group-chat message was sent asking about the invite\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # All three existing participants should still be in the thread\n                                    \"conversation_name\": \"Gardening Project Coordination\",\n                                    # Core wording; we allow punctuation / additional words\n                                    \"content\": \"did everyone get the invite\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-04T15:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",      # used to post the new group message\n    \"search_messages\",   # optional look-up of the Gardening Project chat\n    \"get_all_messages\",  # fallback enumeration of chats\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to check that the calendar invite you sent has been received. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-04T15:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

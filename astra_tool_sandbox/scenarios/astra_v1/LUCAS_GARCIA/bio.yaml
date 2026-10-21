@@ -1,0 +1,47 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+name: Lucas Garcia
+age: 33
+birthday: "1991-09-15"
+locale: en_US
+language_knowledge: |
+  - English: Native
+  - Spanish: C1
+location: |
+  129 Fitness Blvd, Orchard County, CA, USA
+timezone: |
+  US/Pacific
+occupation: |
+  Gym Coach and Personal Trainer
+background: |
+  Lucas Garcia was born in Orchard County, California. From a young age, Lucas was passionate about sports and
+  physical fitness, which led him to pursue a career as a gym coach and personal trainer.
+  He completed his certification in personal training and has been working at the local gym for several years.
+  Lucas is known for his motivational skills and his ability to inspire his students to achieve their fitness goals.
+  He maintains a close relationship with his students, often messaging them to provide encouragement and dietary tips.
+  He recently started working on an online fitness class to gain more followers and started running a Youtube channel for his fitness class.
+hobbies_and_interests: |
+  surfing:
+    Lucas loves to hit the waves whenever he gets the chance. Surfing not only challenges him physically but also
+    provides a mental escape from his daily routine.
+  beer_tasting:
+    A connoisseur of craft beers, Lucas enjoys exploring different breweries and tasting new and unique beers.
+    He often organizes outings with friends to local breweries.
+  triathlon_competing:
+    Lucas competes in triathlons, pushing his limits in swimming, cycling, and running. He is the leader of a training
+    group that meets weekly to train together, fostering a sense of community and shared goals.
+social_interactions: |
+    Lucas has built a strong network within his local gym, where he met Theo Appleseed and other people.
+    They quickly became workout partners, motivating each other to stay fit. Lucas's social life revolves around his training group and his gym students, with whom he maintains regular contact to motivate and advise them on fitness and health. His approachable nature makes him a beloved figure in his community.
+strong_ties: |
+  - "family"
+  - "high school football team friends"
+  - "gym students and friends"
+  - "triathlon trianing group"
+  - "surfing buddy"
+weak_ties: |
+  - "online class students and YouTube followers"
+  - "beer tasting friends"
+  - "local gym members"
+...

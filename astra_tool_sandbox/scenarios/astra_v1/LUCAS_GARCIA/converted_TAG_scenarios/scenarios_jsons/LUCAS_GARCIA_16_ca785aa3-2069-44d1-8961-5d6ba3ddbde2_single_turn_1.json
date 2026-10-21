@@ -1,0 +1,97 @@
+{
+  "task_id": "ca785aa3-2069-44d1-8961-5d6ba3ddbde2",
+  "plot_id": 16,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 3 pm, Juan Garcia were involved. Lucas visits his father's coffee shop to discuss expanding healthy snack options. Emails exchanged with Juan offering suggestions and recipes.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_16",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know the name of the document you emailed your dad.",
+  "reference_time": "2024-12-09T22:35:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The name of the document 'Healthy_Snack_Recipes_Dec2024.pdf', sent in the email with the subject 'Healthy Snack Options for the Coffee Shop' on 9 December 2024 at 16:00 to 'Juan Garcia' is read out to the user."
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_16_ca785aa3-2069-44d1-8961-5d6ba3ddbde2_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Healthy Snack Options for the Coffee Shop",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "juan.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T16:00:00-08:00",
+      "body": "Hi Dad,\n\nIt was great chatting today at the coffee shop! As promised, I've attached some healthy snack options that I think could be a big hit with your customers. These recipes focus on nutrition without sacrificing flavor.\n\nCheck them out when you have a moment and let me know what you think. I'm excited to help bring a healthier twist to the shop's offerings!\n\nBest,\nLucas",
+      "attachments": [
+        "Healthy_Snack_Recipes_Dec2024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Garcia",
+      "full_name": "Juan Garcia",
+      "phone_number": "+1 12345-6789-1000-4321",
+      "alias": "Dad",
+      "email": "juan.garcia@example.com",
+      "relationship": "Father",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Garcia's Coffee Shop",
+      "job_title": "Coffee Shop Owner",
+      "is_self": false,
+      "birthday": "1963-11-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "moderate",
+  "informational_complexity": "high",
+  "referential_complexity": "moderate",
+  "reasoning": "Okay so, the user is requesting the name of a document they emailed to their 'dad'. Searching their contacts I see no contact named 'dad' but I can see a contact with an alias as 'dad', which is 'Juan Garcia'. Now that I have identified the contact that the email was sent to, I can check the user's Mail.\n\nIn the user's Mail, I see an email exchange from today, 9 December 2024 between the two of them. There is an email matching with the subject 'Healthy Snack Options for the Coffee Shop' sent at 16:00 to 'Juan Garcia' with the document attached named 'Healthy_Snack_Recipes_Dec2024.pdf'. Now that I have found the requested information, I can read it out to the user.",
+  "query": "Tell me the name of the document I emailed to my dad.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the contact that matches “dad”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify Juan Garcia (Dad) was found from the contact search in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Juan Garcia\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"juan.garcia@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent searches emails to locate the one sent to Dad\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Confirm the correct outgoing email with the expected attachment was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Healthy Snack Options for the Coffee Shop\",\n                                                \"partial\": False,\n                                            },\n                                            \"attachments\": {\n                                                \"value\": \"Healthy_Snack_Recipes_Dec2024.pdf\",\n                                                \"partial\": True,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": \"juan.garcia@example.com\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=2,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 – The agent tells the user the document name\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Healthy_Snack_Recipes_Dec2024\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search → verify correct contact\n                (2, 3),  # Email search → verify correct email\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_contacts\",\n    \"search_contacts\",\n    \"get_all_emails\",\n    \"search_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know the name of the document you emailed your dad. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-09T22:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

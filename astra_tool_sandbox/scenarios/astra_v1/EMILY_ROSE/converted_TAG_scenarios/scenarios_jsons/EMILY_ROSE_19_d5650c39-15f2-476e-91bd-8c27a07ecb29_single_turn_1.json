@@ -1,0 +1,86 @@
+{
+  "task_id": "d5650c39-15f2-476e-91bd-8c27a07ecb29",
+  "plot_id": 19,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 15, 2024 at 11:00 AM, Tim Brooks were involved. Technical set-up for community event sound system with Tim. Follow-up video call scheduled for system test.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_19",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You completed most of the set up for the event, but you're going to need to come by once more to fix the last bits of wiring and other set-up.    You need to schedule one more setup event in your calendar, and it seems like this Tuesday morning at 09:00 is the best fit.",
+  "reference_time": "2024-12-15T16:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "2. The system will add the event \"Follow-up for the Technical Setup for Community Event \" for 17th December 2024 at 09:00. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_19_d5650c39-15f2-476e-91bd-8c27a07ecb29_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Technical Setup for Community Event",
+      "start_datetime_iso": "2024-12-15T11:00:00-08:00",
+      "end_datetime_iso": "2024-12-15T13:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Tim Brooks"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:45:00-07:00",
+      "notes": "Setting up the sound system with Tim Brooks for the upcoming community event."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Give me a follow-up in my calendar for the technical setup and put it on Tuesday December 17th 2024 at 09:00",
+  "reasoning": "The user wants me to make a follow-up event for the \"technical setup\" for Tuesday December 17th 2024 at 09:00.  Since I'm not fully sure what event the user is referring to, I'll just check the calendar for events that have \"technical setup\" in their name, and then I'll also check if the user has anything scheduled for that time frame.\n\n\nThe closest matching event in the user's calendar for this query is \"Technical Setup for Community Event\" which took place on December 15th 2024 at 11:00. The user has nothing in their calendar for Tuesday December 17th 2024 at 09:00, so I'll create the event \"Follow-up for the Technical Setup for Community Event\" for then.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – verify a new calendar event was created for the requested\n                # follow-up on Tuesday, December 17 2024 at 09:00.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Technical Setup\",  # we check for key phrase only\n                                    \"start_datetime_iso\": \"2024-12-17T09:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-15T16:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # event title just needs to mention the technical setup follow-up\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",   # to add the follow-up event\n    \"get_all_calendars\",       # optional, to inspect existing events\n    \"search_calendar_events\",  # optional, to locate related events\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You completed most of the set up for the event, but you're going to need to come by once more to fix the last bits of wiring and other set-up.   You need to schedule one more setup event in your calendar, and it seems like this Tuesday morning at 09:00 is the best fit. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-12-15T16:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

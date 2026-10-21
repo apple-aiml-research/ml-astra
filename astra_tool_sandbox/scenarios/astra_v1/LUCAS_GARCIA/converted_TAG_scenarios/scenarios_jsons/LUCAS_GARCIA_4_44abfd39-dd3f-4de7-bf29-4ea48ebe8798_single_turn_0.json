@@ -1,0 +1,115 @@
+{
+  "task_id": "44abfd39-dd3f-4de7-bf29-4ea48ebe8798",
+  "plot_id": 4,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 3, 2024 at 7 am, Nathan Lewis, Jason Baker were involved. Lucas leads a triathlon training session for his group. Lucas takes notes on Jason’s performance, saving them digitally for future reference and email the summary of the note to each of them.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_4",
+    "email",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a follow-up email to Jason Baker since the pdf you've sent earlier is broken and you'd like to resend one to him later.",
+  "reference_time": "2024-12-03T09:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply email is sent to Jason Baker saying \"Hey my apologies, the previous pdf file is broken. I will resend you one later today.\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_4_44abfd39-dd3f-4de7-bf29-4ea48ebe8798_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "modify_draft_email",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Triathlon Training Session Summary - December 3, 2024",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "jason.baker@example.com"
+      ],
+      "cc_addresses": [
+        "nathan.lewis@example.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-03T08:30:00-08:00",
+      "body": "Hi Jason,\n\nI hope you're doing well after our triathlon training session this morning. I wanted to share the notes I took based on your performance:\n\n- Your swimming technique has shown improvement, especially in maintaining a consistent breathing rhythm, which will enhance your endurance.\n- The cycling session went well, but focusing on your speed during hill climbs could be beneficial.\n- Your running pace remains solid, and incorporating more interval training can further boost your stamina.\n\nIf you have any questions or require more details on the feedback, feel free to reach out.\n\nBest,\nLucas",
+      "attachments": [
+        "Triathlon_Session_Notes_12032024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Nathan",
+      "last_name": "Lewis",
+      "full_name": "Nathan Lewis",
+      "phone_number": "+1 12345-6789-1000-2468",
+      "alias": "Triathlon Buddy",
+      "email": "nathan.lewis@example.com",
+      "relationship": "Triathlon training group member",
+      "address": "90 Training Ave, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1989-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jason",
+      "last_name": "Baker",
+      "full_name": "Jason Baker",
+      "phone_number": "+1 12345-6789-1000-8520",
+      "alias": "Triathlon Competitor",
+      "email": "jason.baker@example.com",
+      "relationship": "Triathlon competitor",
+      "address": "67 Race Rd, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1988-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to dictate a reply email to Jason Baker saying \"Hey my apologies, the previous pdf file is broken. I will resend you one later today.\".",
+  "reasoning": "The user wants to dictate a reply to the contact called Jason Baker.\n\nI should locate the email history with this contact by searching their name in the user's Inbox and then start a draft reply.\n\nAs the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the email if the user confirms that the email was transcribed correctly.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – Agent looks up existing emails (to later reply)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A reply email has been sent to Jason Baker\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"jason.baker@example.com\"]\n                                    ],\n                                    \"body\": \"the previous pdf file is broken\",\n                                    \"creation_datetime_iso\": \"2024-12-03T09:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial DB state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search precedes sending the reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"send_email\",\n    \"get_all_contacts\",\n    \"search_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to dictate a follow-up email to Jason Baker since the pdf you've sent earlier is broken and you'd like to resend one to him later. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"modify_draft_email\", \"send_email\"]",
+  "is_read_time": "2024-12-03T09:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

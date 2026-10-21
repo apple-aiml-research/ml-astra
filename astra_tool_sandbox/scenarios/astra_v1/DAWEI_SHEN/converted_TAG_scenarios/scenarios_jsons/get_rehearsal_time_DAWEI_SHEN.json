@@ -1,0 +1,899 @@
+{
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "cell": "+1 555-123-4567-8901",
+      "email": "dawei.shen@orchardtech.com",
+      "alias": "Dawei",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "relationship": "Self",
+      "birthday": "1994-05-14",
+      "phone_number": "+1 555-123-4567-8901",
+      "full_name": "Dawei Shen"
+    },
+    {
+      "first_name": "Hua",
+      "last_name": "Shen",
+      "cell": "+86 123-456-7890-1234",
+      "email": "hua.shen@shenelectronics.cn",
+      "alias": "Dad",
+      "address": "88 Innovation Blvd, Shanghai, China",
+      "company": "Shen Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "relationship": "Father",
+      "birthday": "1965-03-22",
+      "phone_number": "+86 123-456-7890-1234",
+      "full_name": "Hua Shen"
+    },
+    {
+      "first_name": "Yuting",
+      "last_name": "Tao",
+      "cell": "+86 234-567-8901-2345",
+      "email": "yuting.tao@retired.cn",
+      "alias": "Mom",
+      "address": "88 Innovation Blvd, Shanghai, China",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "relationship": "Mother",
+      "birthday": "1967-07-08",
+      "phone_number": "+86 234-567-8901-2345",
+      "full_name": "Yuting Tao"
+    },
+    {
+      "first_name": "Dalin",
+      "last_name": "Shen",
+      "cell": "+1 555-678-9012-3457",
+      "email": "dalin.shen@student.philacollege.edu",
+      "alias": "Dalin",
+      "address": "101 College Way, Philadelphia, PA 19104, USA",
+      "company": "Philadelphia College",
+      "job_title": "Student",
+      "is_self": false,
+      "relationship": "Brother",
+      "birthday": "1998-09-15",
+      "phone_number": "+1 555-678-9012-3457",
+      "full_name": "Dalin Shen"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "cell": "+1 555-789-0123-4568",
+      "email": "theo.appleseed@orchardtech.com",
+      "alias": "Theo",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Scientist",
+      "is_self": false,
+      "relationship": "Coworker",
+      "birthday": "1985-12-20",
+      "phone_number": "+1 555-789-0123-4568",
+      "full_name": "Theo Appleseed"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "cell": "+1 555-890-1234-5679",
+      "email": "kevin.chen@orchardtech.com",
+      "alias": "Kevin",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "relationship": "Coworker",
+      "birthday": "1980-04-05",
+      "phone_number": "+1 555-890-1234-5679",
+      "full_name": "Kevin Chen"
+    },
+    {
+      "first_name": "Stefan",
+      "last_name": "Mustermann",
+      "cell": "+1 555-901-2345-6789",
+      "email": "stefan.mustermann@orchardtech.com",
+      "alias": "Stefan",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "relationship": "Coworker",
+      "birthday": "1987-11-30",
+      "phone_number": "+1 555-901-2345-6789",
+      "full_name": "Stefan Mustermann"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "cell": "+1 555-012-3456-7890",
+      "email": "michelle.barnes@orchardtech.com",
+      "alias": "Michelle",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "relationship": "Coworker",
+      "birthday": "1990-06-25",
+      "phone_number": "+1 555-012-3456-7890",
+      "full_name": "Michelle Barnes"
+    },
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "cell": "+1 555-123-4567-8902",
+      "email": "jess.zimmer@fintechstartup.com",
+      "alias": "Jess",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "relationship": "Girlfriend",
+      "birthday": "1994-02-14",
+      "phone_number": "+1 555-123-4567-8902",
+      "full_name": "Jess Zimmer"
+    },
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "cell": "+1 555-234-5678-9012",
+      "email": "charles.wilde@orchardtheater.com",
+      "alias": "Charles",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "relationship": "Theater Friend",
+      "birthday": "1988-08-08",
+      "phone_number": "+1 555-234-5678-9012",
+      "full_name": "Charles Wilde"
+    },
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "cell": "+1 555-345-6789-0123",
+      "email": "vickie.lee@orchardtheater.com",
+      "alias": "Vickie",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "relationship": "Theater Friend",
+      "birthday": "1989-03-15",
+      "phone_number": "+1 555-345-6789-0123",
+      "full_name": "Vickie Lee"
+    },
+    {
+      "first_name": "Francis",
+      "last_name": "Wagner",
+      "cell": "+1 555-456-7890-1234",
+      "email": "francis.wagner@orchardtheater.com",
+      "alias": "Francis",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Theater Manager",
+      "is_self": false,
+      "relationship": "Theater Manager",
+      "birthday": "1975-01-20",
+      "phone_number": "+1 555-456-7890-1234",
+      "full_name": "Francis Wagner"
+    },
+    {
+      "first_name": "Mia",
+      "last_name": "Tang",
+      "cell": "+1 555-567-8901-2345",
+      "email": "mia.tang@accountingpros.com",
+      "alias": "Mia",
+      "address": "321 Finance Ave, Orchard County, CA 94022, USA",
+      "company": "Accounting Pros",
+      "job_title": "Accountant",
+      "is_self": false,
+      "relationship": "Accountant",
+      "birthday": "1986-10-10",
+      "phone_number": "+1 555-567-8901-2345",
+      "full_name": "Mia Tang"
+    },
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "cell": "+1 555-678-9012-3456",
+      "email": "paul.harper@neighborhood.com",
+      "alias": "Paul",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "relationship": "Neighbor",
+      "birthday": "1970-05-05",
+      "phone_number": "+1 555-678-9012-3456",
+      "full_name": "Paul Harper"
+    },
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "cell": "+1 555-789-0123-4567",
+      "email": "jeff.bing@bingelectronics.com",
+      "alias": "Jeff",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "relationship": "Family Friend",
+      "birthday": "1969-11-11",
+      "phone_number": "+1 555-789-0123-4567",
+      "full_name": "Jeff Bing"
+    },
+    {
+      "first_name": "Vick",
+      "last_name": "Li",
+      "cell": "+1 555-890-1234-5678",
+      "email": "vick.li@techpals.com",
+      "alias": "Vick",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Tech Pals",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "relationship": "College Friend",
+      "birthday": "1994-07-22",
+      "phone_number": "+1 555-890-1234-5678",
+      "full_name": "Vick Li"
+    },
+    {
+      "first_name": "Lukas",
+      "last_name": "Hürholz",
+      "cell": "+44 123-456-7890-1234",
+      "email": "lukas.hurholz@londonbanking.co.uk",
+      "alias": "Lukas",
+      "address": "456 Finance St, London, UK",
+      "company": "London Banking",
+      "job_title": "Banker",
+      "is_self": false,
+      "relationship": "High School Friend",
+      "birthday": "1994-12-31",
+      "phone_number": "+44 123-456-7890-1234",
+      "full_name": "Lukas Hürholz"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "title": "Cycling Trip with Vick",
+      "description": "Starting the day with a cycling trip at a local café in Napa Valley.",
+      "location": "Local Café, Napa Valley, CA",
+      "start_time": "2024-12-01T07:00:00",
+      "end_time": "2024-12-01T10:00:00",
+      "invitees": [
+        "Dawei Shen",
+        "Vick Li"
+      ],
+      "reminder": "60 minutes",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-11-30T12:00:00"
+    },
+    {
+      "calendar_name": "work",
+      "title": "Discussion on Virtual Assistant Algorithm Updates",
+      "description": "Meeting to discuss further updates on the virtual assistant algorithm based on the recent feedback.",
+      "location": "Conference Room B, Orchard Tech, Orchard County, CA",
+      "start_time": "2024-12-04T10:00:00",
+      "end_time": "2024-12-04T11:00:00",
+      "invitees": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "reminder": "30 minutes",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-02T09:35:00"
+    },
+    {
+      "calendar_name": "personal",
+      "title": "Pay Property Tax",
+      "description": "Reminder to pay the property tax to avoid late fees.",
+      "location": "Orchard County, CA",
+      "start_time": "2024-12-06T08:00:00",
+      "end_time": "2024-12-06T08:30:00",
+      "invitees": [
+        "Dawei Shen"
+      ],
+      "reminder": "1 day",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-02T20:10:00"
+    },
+    {
+      "calendar_name": "personal",
+      "title": "Cat Sitting for Paul",
+      "description": "Watch Paul's cat over the weekend while he is out of town.",
+      "location": "Paul Harper's House, 125 Neighbor St, Orchard County, CA 94022, USA",
+      "start_time": "2024-12-06T00:00:00",
+      "end_time": "2024-12-08T23:59:59",
+      "invitees": [
+        "Dawei Shen"
+      ],
+      "reminder": "1 day",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-03T07:05:00"
+    },
+    {
+      "calendar_name": "work",
+      "title": "Strategy Meeting Preparation",
+      "description": "Virtual meeting to discuss updates and prepare for Friday's strategy meeting.",
+      "location": "Virtual - Orchard Tech",
+      "start_time": "2024-12-04T15:00:00",
+      "end_time": "2024-12-04T16:00:00",
+      "invitees": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Stefan Mustermann"
+      ],
+      "reminder": "15 minutes",
+      "organizer": "Dawei Shen",
+      "meeting_url": "https://orchardtech.zoom.us/j/1234567890",
+      "creation_time": "2024-12-03T12:00:00"
+    },
+    {
+      "calendar_name": "work",
+      "title": "Tech Panel Hosted by Jeff Bing",
+      "description": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics.",
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "start_time": "2024-12-10T09:00:00",
+      "end_time": "2024-12-10T11:00:00",
+      "invitees": [
+        "Dawei Shen"
+      ],
+      "reminder": "1 day",
+      "organizer": "Jeff Bing",
+      "meeting_url": "",
+      "creation_time": "2024-12-06T10:05:00"
+    },
+    {
+      "calendar_name": "personal",
+      "title": "Brunch with Jess",
+      "description": "Brunch at Bluebird Café with Jess. Address: 202 Main St, Orchard County.",
+      "location": "Bluebird Café, 202 Main St, Orchard County, CA",
+      "start_time": "2024-12-07T11:00:00",
+      "end_time": "2024-12-07T13:00:00",
+      "invitees": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "reminder": "30 minutes",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-07T10:10:00"
+    },
+    {
+      "calendar_name": "personal",
+      "title": "Dinner with Lukas and Vick",
+      "description": "Dinner plans with Lukas and Vick at a local restaurant.",
+      "location": "Local Restaurant, Orchard County, CA",
+      "start_time": "2024-12-14T19:00:00",
+      "end_time": "2024-12-14T21:00:00",
+      "invitees": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "reminder": "1 day",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-08T09:25:00"
+    },
+    {
+      "calendar_name": "personal",
+      "title": "Theater Rehearsal",
+      "description": "Revised time for tonight's rehearsal with Charles and Vickie due to last-minute changes.",
+      "location": "Orchard Theater, 789 Culture St, Orchard County, CA 94022, USA",
+      "start_time": "2024-12-08T19:00:00",
+      "end_time": "2024-12-08T22:00:00",
+      "invitees": [
+        "Dawei Shen",
+        "Charles Wilde",
+        "Vickie Lee"
+      ],
+      "reminder": "30 minutes",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-08T17:55:00"
+    },
+    {
+      "calendar_name": "work",
+      "title": "Dataset Review with Michelle",
+      "description": "Review the updated dataset and discuss key questions as outlined in Michelle's email.",
+      "location": "Conference Room A, Orchard Tech, Orchard County, CA",
+      "start_time": "2024-12-10T14:00:00",
+      "end_time": "2024-12-10T15:30:00",
+      "invitees": [
+        "Dawei Shen",
+        "Michelle Barnes"
+      ],
+      "reminder": "30 minutes",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-09T08:15:00"
+    },
+    {
+      "calendar_name": "work",
+      "title": "Team Review Meeting",
+      "description": "Review meeting to consolidate comments on the recent research updates.",
+      "location": "Conference Room C, Orchard Tech, Orchard County, CA",
+      "start_time": "2024-12-13T09:00:00",
+      "end_time": "2024-12-13T10:30:00",
+      "invitees": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Stefan Mustermann"
+      ],
+      "reminder": "15 minutes",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-12T09:30:00"
+    },
+    {
+      "calendar_name": "work",
+      "title": "Team Review Meeting",
+      "description": "Monthly team review to discuss project progress and assign new action items.",
+      "location": "Conference Room B, Orchard Tech HQ",
+      "start_time": "2024-12-13T10:00:00",
+      "end_time": "2024-12-13T11:00:00",
+      "invitees": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Kevin Chen"
+      ],
+      "reminder": "30 minutes",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-01T12:00:00"
+    },
+    {
+      "calendar_name": "personal",
+      "title": "Dinner with Lukas and Vick",
+      "description": "Dinner plans with Lukas and Vick at a local restaurant.",
+      "location": "Local Restaurant, Orchard County, CA",
+      "start_time": "2024-12-14T19:00:00",
+      "end_time": "2024-12-14T21:00:00",
+      "invitees": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "reminder": "1 day",
+      "organizer": "Dawei Shen",
+      "meeting_url": "",
+      "creation_time": "2024-12-08T09:25:00"
+    }
+  ],
+  "messages": [
+    {
+      "conversation_name": "Vick Li",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hey Vick, just checking in for our cycling trip at Napa Valley. I'm on my way to the café now. See you there!",
+          "creation_time": "2024-12-01T06:00:00",
+          "status": ""
+        },
+        {
+          "sender": "vick.li@techpals.com",
+          "sender_name": "Vick Li",
+          "content": "Morning Dawei! Thanks for the heads up. I'll be there on time. Looking forward to it!",
+          "creation_time": "2024-12-01T06:05:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Mia Tang",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "mia.tang@accountingpros.com"
+      ],
+      "messages": [
+        {
+          "sender": "mia.tang@accountingpros.com",
+          "sender_name": "Mia Tang",
+          "content": "Hi Dawei, just a friendly reminder that your property tax is due next week. Please make sure to process the payment to avoid any late fees.",
+          "creation_time": "2024-12-02T20:00:00",
+          "status": ""
+        },
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Thanks for the reminder, Mia! I'll set a reminder to take care of it first thing Friday morning.",
+          "creation_time": "2024-12-02T20:05:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "messages": [
+        {
+          "sender": "jess.zimmer@fintechstartup.com",
+          "sender_name": "Jess Zimmer",
+          "content": "Hey Dawei, just checking in about our plans for the theater night. Have you confirmed the itinerary?",
+          "creation_time": "2024-12-05T17:00:00",
+          "status": ""
+        },
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hi Jess! Yes, all set for the theater night. We should be good to go!",
+          "creation_time": "2024-12-05T17:02:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hey Jess, are we still on for brunch today? What's the plan?",
+          "creation_time": "2024-12-07T10:00:00",
+          "status": ""
+        },
+        {
+          "sender": "jess.zimmer@fintechstartup.com",
+          "sender_name": "Jess Zimmer",
+          "content": "Yes, definitely! Let's meet at the Bluebird Café. It's at 202 Main St, Orchard County. See you at 11?",
+          "creation_time": "2024-12-07T10:05:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Lukas Hürholz",
+      "participants": [
+        "+1 555-123-4567-8901",
+        "+44 123-456-7890-1234"
+      ],
+      "messages": [
+        {
+          "sender": "+44 123-456-7890-1234",
+          "sender_name": "Lukas Hürholz",
+          "content": "Hey Dawei, I'll be in California next weekend for work. Would love to catch up over dinner if you're free!",
+          "creation_time": "2024-12-08T09:00:00",
+          "status": ""
+        },
+        {
+          "sender": "+1 555-123-4567-8901",
+          "sender_name": "Dawei Shen",
+          "content": "Awesome, Lukas! How about dinner next Saturday? Vick will join us too.",
+          "creation_time": "2024-12-08T09:15:00",
+          "status": ""
+        },
+        {
+          "sender": "+44 123-456-7890-1234",
+          "sender_name": "Lukas Hürholz",
+          "content": "Perfect! See you both next Saturday.",
+          "creation_time": "2024-12-08T09:20:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Vick Li",
+      "participants": [
+        "+1 555-123-4567-8901",
+        "+1 555-890-1234-5678"
+      ],
+      "messages": [
+        {
+          "sender": "+1 555-123-4567-8901",
+          "sender_name": "Dawei Shen",
+          "content": "Lukas will be in town next weekend. Thinking of setting up dinner plans. Are you in?",
+          "creation_time": "2024-12-08T09:05:00",
+          "status": ""
+        },
+        {
+          "sender": "+1 555-890-1234-5678",
+          "sender_name": "Vick Li",
+          "content": "Sounds great! Count me in. Let me know the details.",
+          "creation_time": "2024-12-08T09:10:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Paul Harper",
+      "participants": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "messages": [
+        {
+          "sender": "+1 555-678-9012-3456",
+          "sender_name": "Paul Harper",
+          "content": "Hey Dawei, thanks a ton for watching the cat over the weekend. Really appreciate it!",
+          "creation_time": "2024-12-09T19:00:00",
+          "status": ""
+        },
+        {
+          "sender": "+1 555-123-4567-8901",
+          "sender_name": "Dawei Shen",
+          "content": "No worries, Paul! It was my pleasure. Check out this funny photo of your cat napping by the window.",
+          "creation_time": "2024-12-09T19:02:00",
+          "status": ""
+        },
+        {
+          "sender": "+1 555-678-9012-3456",
+          "sender_name": "Paul Harper",
+          "content": "😂 That's hilarious! Looks like he found his new favorite spot. Thanks for the photo!",
+          "creation_time": "2024-12-09T19:05:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Dalin Shen",
+      "participants": [
+        "dalin.shen@student.philacollege.edu",
+        "dawei.shen@orchardtech.com"
+      ],
+      "messages": [
+        {
+          "sender": "dalin.shen@student.philacollege.edu",
+          "sender_name": "Dalin Shen",
+          "content": "Hey Dawei, just finished the latest chapter of 'The Innovators'. Really intrigued by how collaboration shaped technology. What's your take on it?",
+          "creation_time": "2024-12-10T19:00:00",
+          "status": ""
+        },
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Absolutely, Dalin! The synergy between great minds truly drives innovation. I loved the anecdotes about Jobs and Wozniak. It shows how crucial diverse perspectives are.",
+          "creation_time": "2024-12-10T19:05:00",
+          "status": ""
+        },
+        {
+          "sender": "dalin.shen@student.philacollege.edu",
+          "sender_name": "Dalin Shen",
+          "content": "Exactly! It makes me think about our own discussions and how we bounce ideas back and forth. We should consider writing a review or a blog post about this.",
+          "creation_time": "2024-12-10T19:10:00",
+          "status": ""
+        },
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "That’s a great idea! I think we could offer a unique perspective on the collaborative nature of innovation. I’ll start drafting something this weekend.",
+          "creation_time": "2024-12-10T19:15:00",
+          "status": ""
+        },
+        {
+          "sender": "dalin.shen@student.philacollege.edu",
+          "sender_name": "Dalin Shen",
+          "content": "Awesome! Send it over once you have a draft, and I'll add my thoughts. Looking forward to this!",
+          "creation_time": "2024-12-10T19:20:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Lukas Hürholz",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "lukas.hurholz@londonbanking.co.uk"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hey Lukas, looking forward to catching up over dinner when you're in town. Let's meet at the local restaurant on December 14th at 7 pm. I'll send you the address soon!",
+          "creation_time": "2024-12-08T09:25:00",
+          "status": ""
+        },
+        {
+          "sender": "lukas.hurholz@londonbanking.co.uk",
+          "sender_name": "Lukas Hürholz",
+          "content": "Thanks Dawei! Really excited to see you and Vick. It's been too long!",
+          "creation_time": "2024-12-08T09:35:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Vick Li",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hi Vick, just confirming our dinner plans with Lukas on the 14th of December at 7 pm. I'll share the restaurant details shortly.",
+          "creation_time": "2024-12-08T09:26:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Dinner at a local restaurant",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com",
+        "lukas.hurholz@londonbanking.co.uk"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Here's the address for our dinner on December 14th: Local Restaurant, Orchard County, CA. See you both at 7 pm!",
+          "creation_time": "2024-12-08T09:30:00",
+          "status": ""
+        },
+        {
+          "sender": "lukas.hurholz@londonbanking.co.uk",
+          "sender_name": "Lukas Hürholz",
+          "content": "Had a fantastic evening, guys! Here's a selfie to remember our night. Cheers!",
+          "creation_time": "2024-12-14T21:30:00",
+          "status": ""
+        }
+      ]
+    }
+  ],
+  "whatsapp_messages": [
+    {
+      "sender": "+1 555-123-4567-8901",
+      "sender_name": "Dawei Shen",
+      "recipient": "+1 555-234-5678-9012",
+      "recipient_name": "Charles Wilde",
+      "group_name": "",
+      "message": "Hey Charles, just confirming we're still on for tonight's rehearsal at 8?",
+      "creation_time": "2024-12-01T19:50:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-234-5678-9012",
+      "sender_name": "Charles Wilde",
+      "recipient": "+1 555-123-4567-8901",
+      "recipient_name": "Dawei Shen",
+      "group_name": "",
+      "message": "Yes, all set for 8 PM. See you there!",
+      "creation_time": "2024-12-01T19:52:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-123-4567-8901",
+      "sender_name": "Dawei Shen",
+      "recipient": "+1 555-345-6789-0123",
+      "recipient_name": "Vickie Lee",
+      "group_name": "",
+      "message": "Hi Vickie, are we good for the rehearsal at 8 tonight?",
+      "creation_time": "2024-12-01T19:53:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-345-6789-0123",
+      "sender_name": "Vickie Lee",
+      "recipient": "+1 555-123-4567-8901",
+      "recipient_name": "Dawei Shen",
+      "group_name": "",
+      "message": "Hey Dawei, I might be around 20 mins late, sorry! Caught up with something.",
+      "creation_time": "2024-12-01T19:55:00",
+      "status": ""
+    },
+    {
+      "sender": "jess.zimmer@fintechstartup.com",
+      "sender_name": "Jess Zimmer",
+      "recipient": "dawei.shen@orchardtech.com",
+      "recipient_name": "Dawei Shen",
+      "group_name": "",
+      "message": "Here are the tickets for our theater night! 🎭",
+      "creation_time": "2024-12-05T17:05:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-234-5678-9012",
+      "sender_name": "Charles Wilde",
+      "recipient": "dawei.shen@orchardtech.com",
+      "recipient_name": "Dawei Shen",
+      "group_name": "Theater Group",
+      "message": "Hey Dawei, heads up, we need to adjust tonight's rehearsal schedule. Can we start at 7 PM instead?",
+      "creation_time": "2024-12-08T17:50:00",
+      "status": ""
+    },
+    {
+      "sender": "dawei.shen@orchardtech.com",
+      "sender_name": "Dawei Shen",
+      "recipient": "+1 555-234-5678-9012",
+      "recipient_name": "Charles Wilde",
+      "group_name": "Theater Group",
+      "message": "Got it, Charles. Updating our calendar now.",
+      "creation_time": "2024-12-08T17:51:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-345-6789-0123",
+      "sender_name": "Vickie Lee",
+      "recipient": "dawei.shen@orchardtech.com",
+      "recipient_name": "Dawei Shen",
+      "group_name": "Theater Group",
+      "message": "I'm in for 7 PM. See you both then!",
+      "creation_time": "2024-12-08T17:52:00",
+      "status": ""
+    },
+    {
+      "sender": "dawei.shen@orchardtech.com",
+      "sender_name": "Dawei Shen",
+      "recipient": "+1 555-345-6789-0123",
+      "recipient_name": "Vickie Lee",
+      "group_name": "Theater Group",
+      "message": "Thanks, Vickie! Looking forward to it.",
+      "creation_time": "2024-12-08T17:53:00",
+      "status": ""
+    },
+    {
+      "sender": "dawei.shen@orchardtech.com",
+      "sender_name": "Dawei Shen",
+      "recipient": "+1 555-234-5678-9012",
+      "recipient_name": "Charles Wilde",
+      "group_name": "Theater Group",
+      "message": "👍",
+      "creation_time": "2024-12-08T17:54:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-123-4567-8902",
+      "sender_name": "Jess Zimmer",
+      "recipient": "+1 555-123-4567-8901",
+      "recipient_name": "Dawei Shen",
+      "group_name": "",
+      "message": "Hey Dawei, check out this play I found! Looks fascinating and right up our alley. How about we plan to see it next weekend? Here’s the link: [Play Link]",
+      "creation_time": "2024-12-11T20:00:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-234-5678-9012",
+      "sender_name": "Charles Wilde",
+      "recipient": "+1 555-123-4567-8901",
+      "recipient_name": "Dawei Shen",
+      "group_name": "",
+      "message": "Hey Dawei, I found a great supplier for the stage props we need. Here's the link: [PropsSupplier.com]",
+      "creation_time": "2024-12-12T19:00:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-123-4567-8901",
+      "sender_name": "Dawei Shen",
+      "recipient": "+1 555-234-5678-9012",
+      "recipient_name": "Charles Wilde",
+      "group_name": "",
+      "message": "Thanks Charles! Checking it out now.",
+      "creation_time": "2024-12-12T19:02:00",
+      "status": ""
+    },
+    {
+      "sender": "+1 555-123-4567-8901",
+      "sender_name": "Dawei Shen",
+      "recipient": "+1 555-234-5678-9012",
+      "recipient_name": "Charles Wilde",
+      "group_name": "",
+      "message": "Looks good, I'll place the order.",
+      "creation_time": "2024-12-12T19:05:00",
+      "status": ""
+    }
+  ]
+}

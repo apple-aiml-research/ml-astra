@@ -1,0 +1,170 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+- id: 1
+  date: "Sunday, December 1, 2024"
+  time: "6 am"
+  people: "self, Vick Li"
+  event: "Dawei checks his calendar for the cycling trip with Vick, starting at a local café in Napa Valley at 7 am. He texts Vick that he's on his way."
+  outcome: "Vick texts back and confirms he will be there on time."
+  output_entities: ['calendar_events', 'message_conversations']
+
+- id: 2
+  date: "Sunday, December 1, 2024"
+  time: "8 pm"
+  people: "self, Charles Wilde, Vickie Lee, Francis Wagner"
+  event: "Dawei messages Charles and Vickie on WhatsApp to confirm theater rehearsal, and Francis shares a Google Doc with schedule updates."
+  outcome: "Vickie says she will be 20 minutes late and apologizes. Francis emails the doc to the group."
+  output_entities: ['whatsapp_messages', 'emails']
+
+- id: 3
+  date: "Monday, December 2, 2024"
+  time: "9 am"
+  people: "self, Michelle Barnes, Theo Appleseed"
+  event: "Michelle emails Dawei a revised draft for the virtual assistant algorithm. Theo comments on the email thread to suggest an additional improvement."
+  outcome: "Dawei replies with his approval and schedules a meeting for Wednesday to discuss further updates."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 4
+  date: "Monday, December 2, 2024"
+  time: "8 pm"
+  people: "self, Mia Tang"
+  event: "Mia texts Dawei to remind him that the property tax is due in a week."
+  outcome: "Dawei adds a reminder on his calendar to pay property tax on Friday morning."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 5
+  date: "Tuesday, December 3, 2024"
+  time: "7 am"
+  people: "self, Paul Harper"
+  event: "Paul calls Dawei to check if he can watch his cat for the weekend, as Paul is heading out of town. Dawei agrees and notes the dates."
+  outcome: "Dawei adds the task to his calendar and sets a reminder to pick up Paul's house key on Thursday."
+  output_entities: ['call_logs', 'calendar_events']
+
+- id: 6
+  date: "Tuesday, December 3, 2024"
+  time: "8 pm"
+  people: "self, Hua Shen, Yuting Tao"
+  event: "Dawei receives a video call from his parents in Shanghai to catch up on the week. They talk about their holiday plans."
+  outcome: "Dawei promises to email them flight details for his trip to Shanghai later in the month."
+  output_entities: ['call_logs', 'emails']
+
+- id: 7
+  date: "Wednesday, December 4, 2024"
+  time: "3 pm"
+  people: "self, Kevin Chen, Stefan Mustermann"
+  event: "Dawei hosts a virtual meeting to discuss updates for Friday's strategy meeting with Kevin and Stefan."
+  outcome: "Kevin sends a follow-up email summarizing the meeting action items."
+  output_entities: ['calendar_events', 'emails']
+
+- id: 8
+  date: "Thursday, December 5, 2024"
+  time: "5 pm"
+  people: "self, Jess Zimmer"
+  event: "Jess messages Dawei to ask about their upcoming holiday plans. Dawei replies, confirming their itinerary for the upcoming theater night."
+  outcome: "Jess shares a photo of the tickets on WhatsApp."
+  output_entities: ['message_conversations', 'whatsapp_messages']
+
+- id: 9
+  date: "Friday, December 6, 2024"
+  time: "10 am"
+  people: "self, Jeff Bing"
+  event: "Jeff calls Dawei to invite him to a tech panel he's hosting in Orchard County next Tuesday. Dawei agrees to attend and blocks the time in his calendar."
+  outcome: "Dawei receives an email with panel details."
+  output_entities: ['call_logs', 'calendar_events', 'emails']
+
+- id: 10
+  date: "Saturday, December 7, 2024"
+  time: "10 am"
+  people: "self, Jess Zimmer"
+  event: "Dawei messages Jess to confirm their weekend brunch plans at her favorite café. Jess replies with the café address."
+  outcome: "Dawei updates the calendar with brunch details and saves Jess's message with the café address for navigation later."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 11
+  date: "Sunday, December 8, 2024"
+  time: "9 am"
+  people: "self, Vick Li, Lukas Hürholz"
+  event: "Lukas texts Dawei to inform him he’ll be in California next weekend for work and wants to catch up. Dawei discusses plans with Vick during their Sunday cycling trip."
+  outcome: "Dawei texts Lukas confirming dinner plans for next Saturday and blocks it on his calendar."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 12
+  date: "Sunday, December 8, 2024"
+  time: "6 pm"
+  people: "self, Charles Wilde, Vickie Lee"
+  event: "Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability."
+  outcome: "Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat."
+  output_entities: ['whatsapp_messages', 'calendar_events']
+
+- id: 13
+  date: "Monday, December 9, 2024"
+  time: "8 am"
+  people: "self, Michelle Barnes"
+  event: "Michelle emails Dawei with a key dataset update for their machine-learning model. She includes a few key questions for discussion during their team sync."
+  outcome: "Dawei drafts a response and schedules time on Tuesday afternoon to review the dataset with her."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 14
+  date: "Monday, December 9, 2024"
+  time: "7 pm"
+  people: "self, Paul Harper"
+  event: "Paul texts Dawei, thanking him for watching his cat over the weekend. Dawei replies, sharing a funny photo of the cat napping by the window."
+  outcome: "Paul reacts to the photo with a laughing emoji."
+  output_entities: ['message_conversations']
+
+- id: 15
+  date: "Tuesday, December 10, 2024"
+  time: "10 am"
+  people: "self, Jeff Bing"
+  event: "Dawei attends the tech panel hosted by Jeff. Afterward, Jeff emails Dawei a thank-you note and a link to the recorded session."
+  outcome: "Dawei responds with appreciation and forwards the session link to his team."
+  output_entities: ['emails']
+
+- id: 16
+  date: "Tuesday, December 10, 2024"
+  time: "7 pm"
+  people: "self, Dalin Shen"
+  event: "Dalin messages Dawei to share his thoughts about a book they’re both reading. Dawei responds with his own insights, leading to a lively exchange."
+  outcome: "Dalin suggests they co-write a review for a blog, and Dawei agrees to draft the first version over the weekend."
+  output_entities: ['message_conversations']
+
+- id: 17
+  date: "Wednesday, December 11, 2024"
+  time: "8 pm"
+  people: "self, Jess Zimmer"
+  event: "Dawei receives a WhatsApp message from Jess, sharing a link to a new play they might enjoy. She asks if they can plan to see it."
+  outcome: "Dawei books tickets online and sends Jess the confirmation."
+  output_entities: ['whatsapp_messages', 'emails']
+
+- id: 18
+  date: "Thursday, December 12, 2024"
+  time: "9 am"
+  people: "self, Kevin Chen, Stefan Mustermann"
+  event: "Dawei receives an email from Kevin summarizing their research progress. Stefan replies-all with an updated graph and invites feedback."
+  outcome: "Dawei schedules a team review on Friday to consolidate comments."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 19
+  date: "Thursday, December 12, 2024"
+  time: "7 pm"
+  people: "self, Charles Wilde"
+  event: "Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier."
+  outcome: "Dawei orders the necessary props and emails the receipt to Francis."
+  output_entities: ['whatsapp_messages', 'emails']
+
+- id: 20
+  date: "Friday, December 13, 2024"
+  time: "10 am"
+  people: "self, Michelle Barnes, Kevin Chen"
+  event: "During the team review, Dawei assigns action items to Michelle and Kevin via follow-up emails."
+  outcome: "Michelle acknowledges receipt of the email, and Kevin schedules time to review his action item."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 21
+  date: "Saturday, December 14, 2024"
+  time: "7 pm"
+  people: "self, Lukas Hürholz, Vick Li"
+  event: "Dawei, Lukas, and Vick meet for dinner at a local restaurant in Orchard County. Dawei shares the address in their group text."
+  outcome: "Lukas sends a group selfie afterward, thanking Dawei for the evening."
+  output_entities: ['message_conversations', 'calendar_events']

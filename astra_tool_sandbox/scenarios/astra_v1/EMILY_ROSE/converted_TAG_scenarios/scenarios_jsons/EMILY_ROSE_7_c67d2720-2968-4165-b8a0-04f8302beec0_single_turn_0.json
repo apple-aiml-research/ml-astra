@@ -1,0 +1,98 @@
+{
+  "task_id": "c67d2720-2968-4165-b8a0-04f8302beec0",
+  "plot_id": 7,
+  "plot_summary": "Emily Rose is the protagonist. On Thursday, December 5, 2024 at 4:00 PM, Oliver Green were involved. Meeting Oliver at his cafe to discuss providing refreshments for the upcoming community gathering. Send out calendar invite for the upcoming gathering event. Confirmed order via message; digital receipt saved. Send out calendar invite for the upcoming gathering event.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_7",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're running late to your meeting with Oliver and you don't even really know where the cafe is.",
+  "reference_time": "2024-12-05T16:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Location of Meeting with Oliver Green for Community Gathering Refreshments scheduled for December 05, 2024, 16:00-17:00 is confirmed as Daily Brew Cafe, Orchard County",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_7_c67d2720-2968-4165-b8a0-04f8302beec0_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Meeting with Oliver Green for Community Gathering Refreshments",
+      "start_datetime_iso": "2024-12-05T16:00:00-08:00",
+      "end_datetime_iso": "2024-12-05T17:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Oliver Green"
+      ],
+      "location": "Daily Brew Cafe, Orchard County",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-05T15:00:00-08:00",
+      "notes": "Discuss and finalize the refreshment order for the upcoming community gathering at Oliver's cafe."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Oliver",
+      "last_name": "Green",
+      "full_name": "Oliver Green",
+      "phone_number": "+1 530-555-0128",
+      "alias": "Cafe King",
+      "email": "oliver.green@dailybrewcafe.com",
+      "relationship": "Friend",
+      "address": "101 Main St, Orchard County, CA 95662, USA",
+      "company": "Daily Brew Cafe",
+      "job_title": "Owner",
+      "is_self": false,
+      "birthday": "1990-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Where am I meeting Oliver Green for Community Gathering Refreshments",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking about the location of an event.\nI should search their calendar.\nI can see one event which matches the user's query,  Meeting with Oliver Green for Community Gathering Refreshments scheduled for December 05, 2024, 16:00-17:00.\nThe location for this event is currently set as Daily Brew Cafe, Orchard County.\nI should inform the user.\n",
+  "milestones": "[\n                # Milestone 0 – Agent queries the calendar for the meeting\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Calendar search returns the correct event with the correct location\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Meeting with Oliver Green for Community Gathering Refreshments\",\n                                                \"partial\": False,\n                                            },\n                                            \"location\": {\n                                                \"value\": \"Daily Brew Cafe\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent informs the user of the correct meeting location\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Daily Brew Cafe\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar query → confirm event details\n                (1, 2),  # Event confirmed → relay information to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You're running late to your meeting with Oliver and you don't even really know where the cafe is. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-05T16:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,93 @@
+{
+  "task_id": "689b1b14-8d00-4f5d-a91e-c12b7ca73b0e",
+  "plot_id": 4,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 4 pm, Robin Selmour were involved. Robin expresses interest in the recent crisis in Peru.  1. Robin messages John asking if he knows about the recent crisis in Peru. 2. John replies to Robin playing coy, since he's cautious of revealing secret information he knows. 3. Robin insists nonetheless. 4. John does not budge, divulging nothing. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_4",
+    "contact",
+    "messaging",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to check if Robin has responded to your message so you can thank them for their interest.",
+  "reference_time": "2024-07-22T18:00:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. User is informed with Yes confirmed of the message reply from Robin Selmoure received on July 22, 2024 at 16:08."
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_4_689b1b14-8d00-4f5d-a91e-c12b7ca73b0e_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Robin Selmoure",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com"
+      ],
+      "sender_address": "robin.selmoure@palantir.com",
+      "content": "Understood, John. If you ever feel like sharing, you know where to find me!",
+      "creation_datetime_iso": "2024-07-22T16:08:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Has the software engineer replied to my last message? Yes or no.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know if they have received a response.\nFirst, I should determine which contact they are referring to. The user has indicated a software engineer, I should search for a contact with this job title.\n The user has several coworkers in their contacts, but Robin Selmoure and the users have exchanged messages when the request is made, that is, July 22. Therefore, this must be the software engineer the user is referring to .\nI will now search the user's conversation with Robin Selmoure and determine if they have replied to the user's message. I can see one new message from Robin Selmoure received on July 22, 2024 at 16:08.\nI should inform the user with Yes.",
+  "milestones": "[\n                # Milestone 0 – Agent used a messages-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned message list contains Robin’s reply at the expected time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"robin.selmoure@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-22T16:08:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs the user that Robin replied\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": [RoleType.AGENT],\n                                    \"recipient\": [RoleType.USER],\n                                    \"content\": \"yes\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You need to check if Robin has responded to your message so you can thank them for their interest. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-22T18:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

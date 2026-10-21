@@ -1,0 +1,95 @@
+{
+  "task_id": "e218a6e4-2ed6-4d55-9fbb-b8d58d49854a",
+  "plot_id": 20,
+  "plot_summary": "Theo Appleseed is the protagonist. On Sunday Afternoon, July 28, 2024 at 1 pm, Cookie were involved. Attends a cooking class to learn a new recipe ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_20",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "The cooking class was life changing, you want to be reminded to cook the recipe.",
+  "reference_time": "2024-07-28T16:30:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A new event is added to 16:00 2024-07-29 called \"cook new recipe\"."
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_20_e218a6e4-2ed6-4d55-9fbb-b8d58d49854a_single_turn_0",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cooking Class",
+      "start_datetime_iso": "2024-07-28T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-28T16:00:00-07:00",
+      "attendees_names": [
+        "Cookie Watson",
+        "Local Culinary School",
+        "Theo Appleseed"
+      ],
+      "location": "Local Culinary School, Orchard County, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "Local Culinary School",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-21T12:00:00-07:00",
+      "notes": "Attending a cooking class to learn new recipes and enhance cooking skills."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "query": "That new recipe was amazing! Hey can you pencil in for me to cook it tomorrow at 4 in the afternoon?",
+  "reasoning": "The user wants to schedule time to make their new recipe tomorrow at 4 in the afternoon. I'll go ahead and create an event titled Cook New Recipe at 16:00 on 2024-07-29 and let the user know.",
+  "milestones": "[\n                # Milestone 0 – verify a new calendar event at 4 pm on 2024-07-29 was created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"cook\",  # match substring\n                                    \"start_datetime_iso\": \"2024-07-29T16:00:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-28T16:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,  # relaxed match for title\n                                # start_datetime_iso uses default exact match,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. The cooking class was life changing, you want to be reminded to cook the recipe. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-07-28T16:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

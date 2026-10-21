@@ -1,0 +1,94 @@
+{
+  "task_id": "947c0b33-c8b9-4dc5-a2fc-b06d466b75b1",
+  "plot_id": 11,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 18pm, Ursula Quinn were involved. John's mom's earphones broke, and John orders her a replacement pair  1. John receives a call from his mom, who complains about the fact that her headphones broke down. 2. John orders a new pair of headphones at Target, receiving an email confirmation of his purchase with an order number, as well as a DHL tracking number (both numbers are realistic and non-consecutive). 3. John forwards the purchase confirmation email to his mom. 4. John adds a calendar event where he invites his mom, as a reminder of the approximate day and the 5 hour time window when the headphones will be delivered on Friday. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_11",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to double check when your mom's headphones are due to arrive, since she is not great with technology and you want to make sure to remind her.",
+  "reference_time": "2024-07-25T10:00:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that the event \"Headphone Delivery for Mom\" takes place at 13:00-18:00 on 26th July 2024. "
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_11_947c0b33-c8b9-4dc5-a2fc-b06d466b75b1_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "family",
+      "calendar_event_name": "Headphone Delivery for Mom",
+      "start_datetime_iso": "2024-07-26T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-26T18:00:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Ursula Quinn"
+      ],
+      "location": "125 Maple St, San José, CA 95126",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T18:15:00-07:00",
+      "notes": "Delivery of new headphones for Mom between 1pm and 6pm."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When is \"Headphone Delivery for Mom?\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Okay, so the user wants to know when \"Headphone Delivery for Mom\" is. I will start with looking for the event in the user's calendar... I found \"Headphone Delivery for Mom.\" - the name is an exact match with the string value provided by the user, so this must be the event they are referring to. I will now inform the user that \"Headphone Delivery for Mom\" takes place at 13:00-18:00 on July 26, 2024. ",
+  "milestones": "[\n                # Milestone 0 — The agent looks up calendar data\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 — Confirm that the desired calendar event was found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Headphone Delivery for Mom\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-26T13:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-07-26T18:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 — The agent informs the user of the correct date and time window\n                Milestone(\n                    snapshot_constraints=[\n                        # Date mention\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"July 26\",\n                                            \"26 July\",\n                                            \"the 26th\",\n                                            \"7/26\",\n                                            \"7-26\",\n                                            \"tomorrow\",\n                                            \"Jul 26\",\n                                            \"2024-07-26\",\n                                            \"2024-07-26T13:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                        # Start-time mention (1 pm / 13:00)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"13:00\",\n                                            \"1pm\",\n                                            \"1 pm\",\n                                            \"1:00 pm\",\n                                            \"1:00 pm\",\n                                            \"1:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to double check when your mom's headphones are due to arrive, since she is not great with technology and you want to make sure to remind her. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-25T10:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

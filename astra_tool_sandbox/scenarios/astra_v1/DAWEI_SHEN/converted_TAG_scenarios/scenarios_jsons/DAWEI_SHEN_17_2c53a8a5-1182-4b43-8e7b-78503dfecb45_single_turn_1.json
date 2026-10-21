@@ -1,0 +1,150 @@
+{
+  "task_id": "2c53a8a5-1182-4b43-8e7b-78503dfecb45",
+  "plot_id": 17,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 11, 2024 at 8 pm, self, Jess Zimmer were involved. Dawei receives a WhatsApp message from Jess, sharing a link to a new play they might enjoy. She asks if they can plan to see it. Dawei books tickets online and sends Jess the confirmation.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_17",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "calendar",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to update the time with your dinner with Lukas and Vick to start half an hour later as you want to schedule in a meditative walk in beforehand after the long week.        You also need to text into the group to let them know of the change.      If there's a duplication in the calendar, remove one.",
+  "reference_time": "2024-12-12T14:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The event 'Dinner with Lukas and Vick' scheduled for 14th December at 19:00 is updated to begin at 19:30. Lukas Hürholz and Vick Li are notified as invitees of the event.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The duplicated event 'Dinner with Lukas and Vick' scheduled for 14th December at 19:00 is deleted.",
+      "statefullness": "Stateful"
+    },
+    {
+      "statefullness": "Stateful",
+      "input_text": "An event named 'Meditative Walk' is added to the calendar for the 14th December at 18:00."
+    },
+    {
+      "statefullness": "Stateful",
+      "input_text": "A text message is composed and sent to 'Dinner at a local restaurant' saying 'Hi guys, sorry I've had to update our start time as I have some things I need to get done beforehand'."
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_17_2c53a8a5-1182-4b43-8e7b-78503dfecb45_single_turn_1",
+  "messages": [
+    {
+      "conversation_name": "Dinner at a local restaurant",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com",
+        "lukas.hurholz@londonbanking.co.uk"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "Here's the address for our dinner on December 14th: Local Restaurant, Orchard County, CA. See you both at 7 pm!",
+      "creation_datetime_iso": "2024-12-08T09:30:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    },
+    {
+      "location": "Local Restaurant, Orchard County, CA",
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant.",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "meeting_url": null,
+      "reminder_time_ahead": "1 day",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "organizer_name": "Dawei Shen"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Vick",
+      "last_name": "Li",
+      "full_name": "Vick Li",
+      "phone_number": "+1 555-890-1234-5678",
+      "alias": "Vick",
+      "email": "vick.li@techpals.com",
+      "relationship": "College Friend",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Tech Pals",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1994-07-22T00:00:00-07:00"
+    },
+    {
+      "first_name": "Lukas",
+      "last_name": "Hürholz",
+      "full_name": "Lukas Hürholz",
+      "phone_number": "+44 123-456-7890-1234",
+      "alias": "Lukas",
+      "email": "lukas.hurholz@londonbanking.co.uk",
+      "relationship": "High School Friend",
+      "address": "456 Finance St, London, UK",
+      "company": "London Banking",
+      "job_title": "Banker",
+      "is_self": false,
+      "birthday": "1994-12-31T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "functional_complexity": "high",
+  "query": "Change the dinner time this weekend to start at 19:30 and then put an 1 hour long meditative walk in beforehand at 18:00. I also need to text into the local restaurant chat, 'Hi guys, sorry I've had to update our start time as I have some things I need to get done beforehand'.",
+  "reasoning": "Right, the user firstly wants to update their event, 'Dinner with Lukas and Vick', scheduled for 14th December at 19:00, to begin at 19:30. But I found duplicated calendar event, I shall let the user know and delete one of them and update the remaining one.\n\nNext, they want to add a new event named 'Meditative Walk' before their dinner event at 18:00, lasting one hour (ending at 19:00).\n\nLastly, the user needs to send a message into the 'Dinner at a local restaurant' group chat saying: \"Hi guys, sorry I've had to update our start time as I have some things I need to get done beforehand.\"",
+  "informational_complexity": "moderate",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T14:35:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Calendar lookup tool used\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The specific dinner event was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Calendar removal tool used\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"remove_calendar_event\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 – Duplicated event removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dinner with Lukas and Vick\",\n                                    \"start_datetime_iso\": \"2024-12-14T19:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.MESSAGING],\n                ),\n                # Milestone 4 – Dinner event time was updated to 19:30\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dinner with Lukas and Vick\",\n                                    \"start_datetime_iso\": \"2024-12-14T19:30:00-08:00\",\n                                    # allow any end time – only start must change\n                                    \"attendees_names\": [\n                                        [\"Dawei Shen\", \"Lukas Hürholz\", \"Vick Li\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-12T14:35:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                            require_added=True,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.MESSAGING],\n                ),\n                # Milestone 5 – An event created at 18:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Meditative Walk\",\n                                    \"start_datetime_iso\": \"2024-12-14T18:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-14T19:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-12T14:35:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                            require_added=True,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.MESSAGING],\n                ),\n                # Milestone 6 – Group message sent announcing the change\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Dinner at a local restaurant\",\n                                    \"content\": \"Hi guys, sorry I've had to update our start time as I have some things I need to get done beforehand\",\n                                    \"creation_datetime_iso\": \"2024-12-12T14:35:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # tool usage → dinner event find\n                (2, 3),  # Need a remove calendar call\n            ]",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event",
+    "remove_calendar_event",
+    "create_calendar_event",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You need to update the time with your dinner with Lukas and Vick to start half an hour later as you want to schedule in a meditative walk in beforehand after the long week.       You also need to text into the group to let them know of the change.     If there's a duplication in the calendar, remove one. ",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\", \"remove_calendar_event\", \"create_calendar_event\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T14:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

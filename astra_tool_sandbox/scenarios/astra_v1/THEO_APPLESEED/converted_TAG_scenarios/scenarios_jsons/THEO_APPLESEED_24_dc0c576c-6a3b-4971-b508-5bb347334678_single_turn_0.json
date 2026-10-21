@@ -1,0 +1,150 @@
+{
+  "task_id": "dc0c576c-6a3b-4971-b508-5bb347334678",
+  "plot_id": 24,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo signed up to Salsa classes every Wednesday evening for last 1h from 19:30 to 20:30 for 12 weeks\n generate calendar_events for Theo's Salsa classes",
+  "tags": [
+    "astra_core",
+    "THEO_APPLESEED",
+    "plot_24",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to cancel your salsa dance class this week as you will be in Chicago until the end of this week so can't make it.",
+  "reference_time": "2024-07-30T17:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Salsa Dance Class\" at 19:30-20:30 on 31 July is deleted.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. No other calendar event is deleted.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_24_dc0c576c-6a3b-4971-b508-5bb347334678_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "remove_calendar_event",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-07-31T19:30:00-07:00",
+      "end_datetime_iso": "2024-07-31T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-07T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-07T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-14T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-14T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-21T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-21T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-28T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-28T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Cancel my salsa class since I will be away in Chicago until the end of this week. ",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user mentions their salsa classes, I find such event is an recurring one from 7/31. User further mentioned that they will be in Chicago by the end of this week, I need to check first when he will be away. The user has a train trip to Chicago today, so the user will be out-of-town from 7/30 to 8/4. I assume they want to cancle the 7/31 one as the use is out of town. \n\nThen I will cancel the first salsa class only in users calendar on 07-31-2024 starting at 19:30. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to locate the salsa class in the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The salsa class on 31 July 2024 is removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Salsa Dance Class\",\n                                    \"start_datetime_iso\": \"2024-07-31T19:30:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-31T20:30:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar lookup precedes deletion\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to cancel your salsa dance class this week as you will be in Chicago until the end of this week so can't make it. ",
+  "minefields": "[\n                # Only the requested class is cancelled; no other lesson shall be removed\n                Minefield(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": [\"Salsa Dance Class\"] * 11\n                                    + [\"Cooking Class\"],\n                                    \"start_datetime_iso\": [\n                                        \"2024-08-07T19:30:00-07:00\",\n                                        \"2024-08-14T19:30:00-07:00\",\n                                        \"2024-08-21T19:30:00-07:00\",\n                                        \"2024-08-28T19:30:00-07:00\",\n                                        \"2024-09-04T19:30:00-07:00\",\n                                        \"2024-09-11T19:30:00-07:00\",\n                                        \"2024-09-18T19:30:00-07:00\",\n                                        \"2024-09-25T19:30:00-07:00\",\n                                        \"2024-10-02T19:30:00-07:00\",\n                                        \"2024-10-09T19:30:00-07:00\",\n                                        \"2024-10-16T19:30:00-07:00\",\n                                        \"2024-07-28T13:00:00-07:00\",\n                                    ],\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"remove_calendar_event\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-30T17:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

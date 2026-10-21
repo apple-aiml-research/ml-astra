@@ -1,0 +1,79 @@
+{
+  "task_id": "7b6dc8bf-7bb0-4be2-9710-b9ed6337f617",
+  "plot_id": 16,
+  "plot_summary": "Emily Rose is the protagonist. On Thursday, December 12, 2024 at 5:00 PM, Mia Campbell were involved. Discussion with Mia about collaboration ideas between school and community. Presentation document sent to school board for approval.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_16",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to schedule time to compile the feedback from the school board meeting.",
+  "reference_time": "2024-12-16T07:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event called Compile Feedback from 17:00-18:00 on 16 December 2024 is created",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_16_7b6dc8bf-7bb0-4be2-9710-b9ed6337f617_single_turn_0",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Collaboration Ideas for School and Community Engagement",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "mia.campbell@students.orchardschools.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T17:05:00-08:00",
+      "body": "Hi Mia,\n\nThank you for the insightful discussion today. I've attached the presentation document we discussed, outlining our proposed collaboration ideas between the school and our community center. Please review it at your convenience and share your thoughts. I hope we can present this to the school board for approval soon.\n\nBest regards,\nEmily Rose\nEvent Coordinator\nOrchard County Community Center",
+      "attachments": [
+        "School_Community_Collaboration_Proposal.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make a new event for tonight called Compile Feedback from 17:00-18:00",
+  "reasoning": "The user wants to create an event. I will use the details the user has provided to create this event. \nThe user wants to call it Compile Feedback so I shall make that the name of the event. The user has specified the duration will be one hour from 17:00-18:00 so I shall set the event for that time.      \nI will let the user know the event has been created. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – Verify that a new calendar event “Compile Feedback” for\n                # 17:00-18:00 on 2024-12-16 was added to the CALENDAR database.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Compile Feedback\",\n                                    \"start_datetime_iso\": \"2024-12-16T17:00\",\n                                    \"end_datetime_iso\": \"2024-12-16T18:00\",\n                                    \"creation_datetime_iso\": \"2024-12-16T07:20:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You need to schedule time to compile the feedback from the school board meeting. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-12-16T07:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

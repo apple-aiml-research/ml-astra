@@ -1,0 +1,103 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+# 0
+- name: "Emily Rose"
+  relationship: "Self"
+# 1
+- name: "Sarah Rose"
+  relationship: "Sister"
+  bio: "Sarah is Emily's younger sister. She frequently attends Emily's community events and supports her initiatives wholeheartedly."
+# 2
+- name: "Ben Rose"
+  relationship: "Father"
+  bio: "Ben is Emily's father. He shares Emily's love for gardening and often helps her with landscaping community gardens and event spaces."
+# 3
+- name: "Linda Rose"
+  relationship: "Mother"
+  bio: "Linda is Emily's mother, known for her culinary skills. She often volunteers to provide homemade treats for Emily’s community events."
+# 4
+- name: "Jessica Lane"
+  relationship: "Best Friend"
+  bio: "Jessica is Emily's lifelong best friend who often volunteers at the community events and supports Emily's initiatives."
+# 5
+- name: "Oliver Green"
+  relationship: "Friend"
+  bio: "Oliver is a close friend of Emily's who runs a local café. He frequently supplies refreshments for Emily's events and attends them regularly."
+# 6
+- name: "Nathan Blake"
+  relationship: "Friend"
+  bio: "Nathan is Emily's longtime friend from college. He visits Orchard County often to assist with large events and enjoys contributing to Emily’s community efforts."
+# 7
+- name: "Michael Thompson"
+  relationship: "Orchard County Community Center Manager"
+  bio: "As the manager at the community center, Michael works closely with Emily to coordinate and host local events."
+# 8
+- name: "Jenna Miles"
+  relationship: "Colleague"
+  bio: "Jenna is Emily's co-worker at the Community Center. She assists Emily in organizing events and is known for her creative decoration ideas."
+# 9
+- name: "Matt Duncan"
+  relationship: "Event Volunteer"
+  bio: "Matt is a high school student who volunteers at Emily's events. Enthusiastic and dependable, he aspires to work in a community-centered career."
+# 10
+- name: "Chloe Waters"
+  relationship: "Community Member"
+  bio: "Chloe is a frequent attendee of Emily's events. She always promotes Emily’s initiatives and encourages other community members to get involved."
+# 11
+- name: "Sophia Taylor"
+  relationship: "Community Member"
+  bio: "Sophia is a local business owner who often participates in Emily's events. She values the positive impact Emily brings to the community."
+# 12
+- name: "Mia Campbell"
+  relationship: "Acquaintance"
+  bio: "Mia is a teacher at the local school who collaborates with Emily to engage schoolchildren in community projects and events."
+# 13
+- name: "Sarah Green"
+  relationship: "Community Member"
+  bio: "Sarah is an enthusiastic participant in Emily's community activities and often provides feedback and suggestions for new events."
+# 14
+- name: "Oscar Martinez"
+  relationship: "Neighbor and Fellow Pet Owner"
+  bio: "Oscar lives in the same neighborhood and often joins Emily for pet walks in the local park."
+# 15
+- name: "Lucas Jones"
+  relationship: "Neighbor"
+  bio: "Lucas lives a few doors down from Emily and appreciates her dedication to the neighborhood. He lends a hand during community clean-ups."
+# 16
+- name: "Theo Appleseed"
+  relationship: "Neighbor and Friend"
+  bio: "Theo is a well-known figure in Orchard County. He is actively involved in community projects and often collaborates with Emily on various events and initiatives to improve the neighborhood."
+# 17
+- name: "Linda Kim"
+  relationship: "School Representative"
+  bio: "Linda is a representative from the local school who collaborates with Emily to organize educational and enrichment activities for students."
+# 18
+- name: "Tim Brooks"
+  relationship: "Friend and Volunteer"
+  bio: "Tim is a close friend and frequent volunteer at Emily's events, known for his skills in setting up technical equipment like sound systems."
+# 19
+- name: "Sophia Nguyen"
+  relationship: "Local Catering Vendor"
+  bio: "Sophia runs a local catering business frequently hired by Emily for community events. They have a professional and friendly relationship."
+# 20
+- name: "Daniel Kim"
+  relationship: "Local Cafe Owner"
+  bio: "Daniel owns the popular local cafe in Orchard County. He often collaborates with Emily for community events, providing a venue for meetings and gatherings."
+# 21
+- name: "Elaine Perkins"
+  relationship: "Catering Vendor"
+  bio: "Elaine runs the local catering company that frequently provides services for Emily's events, known for her delicious and creative dishes."
+# 22
+- name: "William Carter"
+  relationship: "Local Grocery Owner"
+  bio: "William owns a small grocery store and often sponsors Emily's events with product donations and discounts."
+# 23
+- name: "James Baldwin"
+  relationship: "Event Photographer"
+  bio: "James captures photographs at Emily's events, helping to create visual memories and promote future activities."
+# 24
+- name: "Henry Chester"
+  relationship: "Local Gardening Supply shop Owner"
+  bio: "Henry runs a local gardening supply shop and helps Emily by providing quality plants and materials for community event decorations."
+...

@@ -1,0 +1,77 @@
+{
+  "task_id": "3fd3c3c2-3f29-4a5a-a1fc-81f29d829f80",
+  "plot_id": 9,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 10am, Bronson Chuck were involved. Bronson informs John of an unexpected work visit by their Japanese colleagues next week.  1. Bronson messages John mentioning about a urgent visit by Palantir's section in Japan to address the situation in Peru, and asking John to keep his whole week clear. 2. Bronson adds the visit as 5 separate events from Monday to Friday next week, each lasting a workday and inviting John and several colleagues. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_9",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply to Bronson Chunk saying that you will be 45 minutes late to the meeting.",
+  "reference_time": "2024-07-23T11:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply message is sent to Bronson Chunk saying \"Hi Bronson I will be 45 minutes late to the meeting sorry about that.\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_9_3fd3c3c2-3f29-4a5a-a1fc-81f29d829f80_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Bronson Chunk",
+      "participants_addresses": [
+        "bronson.chunk@palantir.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "bronson.chunk@palantir.com",
+      "content": "Hi John, we have an urgent visit scheduled next week from our colleagues at Palantir Japan. They need to discuss the situation in Peru. Please keep your entire week clear for meetings and preparations.",
+      "creation_datetime_iso": "2024-07-23T10:27:38-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to the last person who text me and say \"Hi Bronson I will be 45 minutes late to the meeting sorry about that.\".",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to reply to the last person who text them to say \"Hi Bronson I will be 45 minutes late to the meeting sorry about that.\".\n\nFirst I need to find who messaged the user last. I need to check the timestamps of the user's massages to see what the last text was and who it was sent by. \n\nLooks like the last message was received from Bronson Chunk at 10:27 on the 23 July and read \"Hi John, we have an urgent visit scheduled next week from our colleagues at Palantir Japan. They need to discuss the situation in Peru. Please keep your entire week clear for meetings and preparations.\".\n\nI will now send a reply to this message, using the content the user provided. ",
+  "milestones": "[\n                # Milestone 0 – the agent looks up recent messages to determine who texted last\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – a reply message is sent to Bronson containing “45 minutes late”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Ensure Bronson is among the participants\n                                    \"participants_addresses\": [\n                                        [(\"bronson.chunk@palantir.com\", \"408-555-0130\")]\n                                    ],\n                                    # Ensure the key information about being 45 minutes late is in the body\n                                    \"content\": \"45 minutes late\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-23T11:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",  # fallback option\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to dictate a reply to Bronson Chunk saying that you will be 45 minutes late to the meeting. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-23T11:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

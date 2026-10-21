@@ -1,0 +1,112 @@
+{
+  "task_id": "3eafcb54-d4eb-4e02-bd90-e5d58c1d0429",
+  "plot_id": 2,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 2, 2024 at 10:30 AM, Michael Thompson, Jenna Miles were involved. Meeting at the community center to finalize the details for Christmas charity event. Meeting summary sent via email to Michael and Jenna.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_2",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know who you sent your email to about the Christmas charity event.",
+  "reference_time": "2024-12-03T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email sent to Michael Thompson and Jenna Miles on 2 December 2024 at 11:45 with the subject 'Summary of Today's Meeting on Christmas Charity Event' is found.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. User has been told Michael Thompson and Jenna Miles are the recipients."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_2_3eafcb54-d4eb-4e02-bd90-e5d58c1d0429_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Summary of Today's Meeting on Christmas Charity Event",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "michael.thompson@orchardcommunity.org",
+        "jenna.miles@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T11:45:00-08:00",
+      "body": "Hello Michael and Jenna,\n\nThank you both for the productive meeting this morning. We covered all the necessary details to ensure our Christmas charity event is a success. Here’s a brief overview of what we discussed:\n\n1. Finalized the event schedule and assigned responsibilities.\n2. Confirmed the list of invitees and special guests.\n3. Discussed the layout and decorations for the event space.\n4. Reviewed the timeline for volunteer assignments.\n5. Agreed on the marketing and promotion strategies.\n\nPlease find attached the meeting notes and the finalized event plan. Let me know if there are any further adjustments to be made.\n\nBest regards,\nEmily Rose\nEvent Coordinator\nOrchard County Community Center",
+      "attachments": [
+        "Christmas_Charity_Event_Details.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Thompson",
+      "full_name": "Michael Thompson",
+      "phone_number": "+1 530-555-0130",
+      "alias": "Community Leader",
+      "email": "michael.thompson@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1985-06-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jenna",
+      "last_name": "Miles",
+      "full_name": "Jenna Miles",
+      "phone_number": "+1 530-555-0131",
+      "alias": "Decor Diva",
+      "email": "jenna.miles@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Planner",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "moderate",
+  "query": "Who did I send that Christmas charity event email to?",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "reasoning": "Right so, the user wants to know who were the recipients of the 'Christmas charity event email'. Firstly I will check their Mail. I can see one email matching their request, with the subject 'Summary of Today's Meeting on Christmas Charity Event'. The email was sent on 2 December 2024 at 11:45 to Michael Thompson and Jenna Miles. This is the information the user is looking for and then I can then display this to the user.",
+  "milestones": "[\n                # Milestone 0 – Agent uses an email-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – Returned email thread contains the expected Christmas charity email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Summary of Today's Meeting on Christmas Charity Event\",\n                                                \"partial\": False,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": [\n                                                    \"michael.thompson@orchardcommunity.org\",\n                                                    \"jenna.miles@orchardcommunity.org\",\n                                                ],\n                                                \"partial\": True,  # allow list order flexibility\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Agent’s reply to the user includes both recipient names\n                Milestone(\n                    snapshot_constraints=[\n                        # Must mention Michael Thompson\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Michael Thompson\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Must mention Jenna Miles\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Jenna Miles\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool call → verify retrieved email\n                (1, 2),  # Retrieved email → verify user-facing response\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"get_all_contacts\",   # possible lookup for names\n    \"search_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to know who you sent your email to about the Christmas charity event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-03T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,105 @@
+{
+  "task_id": "6ce626e3-768b-4919-9525-d19dc25d32c5",
+  "plot_id": 2,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 1, 2024 at 8 pm, self, Charles Wilde, Vickie Lee, Francis Wagner were involved. Dawei messages Charles and Vickie on WhatsApp to confirm theater rehearsal, and Francis shares a Google Doc with schedule updates. Vickie says she will be 20 minutes late and apologizes. Francis emails the doc to the group.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_2",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_moderate",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to see the message from Vickie Lee and respond to it.",
+  "reference_time": "2024-12-01T20:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The WhatsApp message from Vickie Lee that was received at 19:55 on December 1 2024 is presented to the user.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. A message saying \"That's fine Vickie. Thanks for letting me know\" is drafted and sent to Vickie Lee on WhatsApp.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_2_6ce626e3-768b-4919-9525-d19dc25d32c5_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-01T19:53:00-08:00",
+      "content": "Hi Vickie, are we good for the rehearsal at 8 tonight?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-01T19:55:00-08:00",
+      "content": "Hey Dawei, I might be around 20 mins late, sorry! Caught up with something.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Show me the WhatsApp message from Vickie and respond to it saying That's fine Vickie. Thanks for letting me know.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to see the most recent WhatsApp message from Vickie Lee. I will use the search_whatsapp_messages tool to retrieve the latest message from Vickie (received at 19:55 on December 1 2024) and present it to the user. The user also wants to reply with: \"That's fine Vickie. Thanks for letting me know.\" I will draft this reply, confirm with the user if needed, and then send it to Vickie on WhatsApp.",
+  "reference_time_str": "Today is Sunday, December 1, 2024 or 2024-12-01T20:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Verify the agent used WhatsApp search or retrieval tools\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Verify that the WhatsApp message from Vickie Lee was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Vickie Lee\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-01T19:55:00-08:00\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2: Verify that the message sent to Vickie Lee contains the correct text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Vickie Lee\",\n                                    \"content\": \"That's fine Vickie. Thanks for letting me know\",\n                                    \"creation_datetime_iso\": \"2024-12-01T20:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to see the message from Vickie Lee and respond to it. ",
+  "tool_allow_list_str": "[\"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-01T20:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

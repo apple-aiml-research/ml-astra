@@ -1,0 +1,154 @@
+{
+  "task_id": "71f270d7-a086-44c0-b484-06d626adb838",
+  "plot_id": 1,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 22, 2024 at 10 am, Kevin Chen, Michelle Barnes, Dawei Shen were involved. Theo attends a regular Monday work stand-up meeting A follow-up sync for break-out session with Michelle and Dawei is sent out thourgh email and calendar for July 29, 11 am",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_1",
+    "email",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_yes",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if you included the location for the follow-up sync with Michelle and Dawei event.",
+  "reference_time": "2024-07-28T21:45:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The the email named \"Follow-up Sync Scheduled for July 29\", sent to \"michelle.barnes@example.com\" and \"dawei.shen@example.com\" on July 22nd, 2024 at 11:05 was retrieved.\n",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The user is informed with 'no', that the location of the sync meeting was not directly mentioned in the email.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_1_71f270d7-a086-44c0-b484-06d626adb838_single_turn_0",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Follow-up Sync Scheduled for July 29",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "michelle.barnes@example.com",
+        "dawei.shen@example.com"
+      ],
+      "cc_addresses": [
+        "kevin.chen@example.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T11:05:00-07:00",
+      "body": "Hello Michelle and Dawei,\n\nFollowing our stand-up meeting today, I've scheduled a follow-up sync for us on July 29 at 11 am to discuss our project in more detail. Please find the calendar invite attached.\n\nBest,\nTheo",
+      "attachments": [
+        "Follow-up Sync Calendar Invite.ics"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Follow-up Sync with Michelle and Dawei",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T11:00:00-07:00",
+      "notes": "Break-out session to delve deeper into specific project details."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need to know if I mentioned the location of the follow-up sync in my email explicitly in the text? If so let me know the location, if not just reply with 'no'.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know if they mentioned the \"location of the follow-up sync\" in their email to their \"co-workers\".\n\nOkay, first of all, I need to go to the user's Mail to see if they have sent any emails that correspond to the above description.\n\nGreat, I can see they sent an email on July 22nd, 2024 at 11:05:00 named \"Follow-up Sync Scheduled for July 29\". It was sent to Michelle Barnes and Dawei Shen, who I can also see are the user's co-workers.\n\nIn the email's attachment there's calendar invite which I cannot open. I'll inform user that the location was not present in the email main body.",
+  "insufficient_context": "yes",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent uses email search/get to look for the follow-up sync email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the specific email \"Follow-up Sync Scheduled for July 29\" sent at the given time exists in tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Follow-up Sync Scheduled for July 29\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"theo.appleseed@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": [\n                                                    \"michelle.barnes@example.com\",\n                                                    \"dawei.shen@example.com\",\n                                                ],\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-22T11:05:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs user that the location is NOT explicitly mentioned in the email body text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Need indication that the answer is \"no, location not mentioned explicitly\"\n                                    \"content\": \"no\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search → confirm specific email found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "is_read_time": "2024-07-28T21:45:00-07:00",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know if you included the location for the follow-up sync with Michelle and Dawei event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"search_calendar_events\", \"get_all_calendars\"]"
+}

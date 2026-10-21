@@ -1,0 +1,124 @@
+{
+  "task_id": "ee1ef5dd-8cc6-4eb1-97a4-a63a99a1d4a2",
+  "plot_id": 17,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 11, 2024 at 8 pm, self, Jess Zimmer were involved. Dawei receives a WhatsApp message from Jess, sharing a link to a new play they might enjoy. She asks if they can plan to see it. Dawei books tickets online and sends Jess the confirmation.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_17",
+    "email",
+    "contact",
+    "whatsapp_messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_yes",
+    "messaging",
+    "calendar",
+    "astra_core"
+  ],
+  "user_goal": "You want to know the name of the play you booked tickets for",
+  "reference_time": "2024-12-12T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed with 'No', that the key information is missing, and the name of the play is unknown.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_17_ee1ef5dd-8cc6-4eb1-97a4-a63a99a1d4a2_single_turn_0",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "search_contacts",
+    "get_all_contacts",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "search_messages",
+    "get_all_messages",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "sender_name": "Jess Zimmer",
+      "sender_address": "jess.zimmer@fintechstartup.com",
+      "creation_datetime_iso": "2024-12-05T17:05:00-08:00",
+      "content": "Here are the tickets for our theater night! 🎭",
+      "status": "read"
+    }
+  ],
+  "emails": [
+    {
+      "subject": "Ticket Confirmation for Our Play Date",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-11T20:15:00-08:00",
+      "body": "Hi Jess, I've booked the tickets for us. Here's the confirmation [Ticket Confirmation PDF]. Looking forward to it!",
+      "attachments": [
+        "TicketConfirmation.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What play did I book tickets for last night? Do you know the name? Yes or no.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user want's to know what play he booked tickets for last night so I will look through the user's e-mails to see if there is any booking confirmation which may contain the title of the play. I found an e-mail with the subject \"Ticket Confirmation for Our Play Date\".I will let the user know the key information is missing and reply with 'No'.",
+  "insufficient_context": "yes",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent attempts to look up what play was booked by checking emails/WhatsApp/calendar/messages\n                # Even though success is ultimately to say \"I don't know\", the agent should first reasonably\n                # attempt to retrieve the information from relevant data sources.\n                Milestone(\n                    snapshot_constraints=[\n                        # Check some read-only retrieval tool was used that could plausibly reveal the play name\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    # Any of these would be a reasonable attempt:\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – User is explicitly informed that the play name cannot be determined\n                # i.e., key information is missing / unknown.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Look for language conveying that the name of the play is unknown\n                                    \"content\": \"No\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (\n                    0,\n                    1,\n                ),  # First attempt retrieval, then inform user the play name is unknown\n            ]",
+  "tool_allow_list_runtime": "[\n    # Read-only tools that are reasonable for trying to find the play title\n    \"get_all_emails\",\n    \"search_emails\",\n    \"get_all_whatsapp_messages\",\n    \"search_whatsapp_messages\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"get_all_messages\",\n    \"search_messages\",\n]",
+  "is_read_time": "2024-12-12T10:00:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know the name of the play you booked tickets for ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"search_contacts\", \"get_all_contacts\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"search_messages\", \"get_all_messages\", \"search_calendar_events\", \"get_all_calendars\"]"
+}

@@ -1,0 +1,78 @@
+{
+  "task_id": "00ff9e50-2727-4fe4-bc25-145a83e15cc6",
+  "plot_id": 7,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 9pm, Apricot Sweeney were involved. Apricot and John call and message each other.  1. Apricot calls John and they have a long call. 2. Before going to bed, John and Apricot exchange a few loving messages. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_7",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to plan something sweet for your girlfriend for her birthday so you need to know how long you have to plan.",
+  "reference_time": "2024-07-23T17:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed Apricot Sweeney's birthday is the 25 August 1997.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_7_00ff9e50-2727-4fe4-bc25-145a83e15cc6_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When is my girlfriend's birthday?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when their girlfriend's birthday is. I should first figure out who they mean. \n\nFirst I will check the user's Contacts for one named girlfriend. Hmm, looks like they don't have one but Apricot Sweeney has her relationship to the user set as girlfriend so this must be who the user means. \n\nNext I will check Apricot's contact card for her birthday. Looks like her birthday is set as the 25 August 1997.\n\nI will tell the user this. ",
+  "milestones": "[\n                # Milestone 0 – the agent tries to look up the girlfriend’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – confirm that Apricot Sweeney (with her birthday) was actually returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Apricot Sweeney\",\n                                                \"partial\": False,\n                                            },\n                                            \"birthday\": {\n                                                \"value\": \"1997-08-25\",\n                                                \"partial\": True,  # allow substring match within the ISO string\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – the agent tells the user Apricot’s birthday (date must appear in the reply)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"August 25\",\n                                            \"25 August\",\n                                            \"Aug 25\",\n                                            \"08/25\",\n                                            \"1997-08-25\",\n                                            \"8/25\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # contact lookup → verify correct contact retrieved\n                (1, 2),  # correct contact retrieved → user is informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to plan something sweet for your girlfriend for her birthday so you need to know how long you have to plan. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-23T17:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

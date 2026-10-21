@@ -1,0 +1,93 @@
+{
+  "task_id": "e0e20e56-35f1-4dc6-94f0-4612ff22f7be",
+  "plot_id": 15,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 2:15pm, Apricot Sweeney were involved. John and Apricot discuss seeing a film next Monday night  1. Apricot sends a link to a romantic comedy film ('Two Hearts with one Stone') she wants to see on Monday. 2. John agrees and says he'll buy the tickets. 3. John creates a calendar reminder and adds Apricot to it. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_15",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to see the last message you sent to Apricot, as you can't remember if you said that you will purchase the movie tickets or not.",
+  "reference_time": "2024-07-24T16:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is shown the last message they sent to Apricot Sweeney on July 24th 2024 at 14:16 that says 'That sounds great, Apricot! I'd love to go. I'll buy the tickets.'",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_15_e0e20e56-35f1-4dc6-94f0-4612ff22f7be_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "That sounds great, Apricot! I'd love to go. I'll buy the tickets.",
+      "creation_datetime_iso": "2024-07-24T14:16:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Show me the last message I sent to my girlfriend.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to see the last message they sent to their girlfriend. Let me look in Contacts to see who their girlfriend is. It is Apricot Sweeney. Let me look for their messages. Okay I have found the conversation. I will show the user the last message they sent, which says 'That sounds great, Apricot! I'd love to go. I'll buy the tickets.' and was sent at 14:16 on July 24th 2024.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up who the girlfriend is in the contacts list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verification that Apricot Sweeney (girlfriend) was found in the contact-search result\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Apricot Sweeney\",\n                                                \"partial\": False,\n                                            },\n                                            \"relationship\": {\n                                                \"value\": \"Girlfriend\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent fetches messages to/from Apricot\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Confirmation that the expected last message text was returned by message-search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"content\": {\n                                                \"value\": \"That sounds great, Apricot! I'd love to go. I'll buy the tickets.\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-24T14:16:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=2,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 – Agent’s reply to the user contains the correct last-message text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"That sounds great, Apricot! I'd love to go. I'll buy the tickets.\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # contact search → verify Apricot found\n                (1, 2),  # after girlfriend identified → search messages\n                (2, 3),  # verify correct message found\n                (3, 4),  # agent tells user the message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_contacts\",\n    \"search_contacts\",\n    \"get_all_messages\",\n    \"search_messages\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to see the last message you sent to Apricot, as you can't remember if you said that you will purchase the movie tickets or not. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-24T16:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

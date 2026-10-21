@@ -1,0 +1,157 @@
+{
+  "task_id": "ff7ecdf3-7e80-4b53-88f9-9cbe2cabedd9",
+  "plot_id": 15,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Evening, July 26, 2024 at 7 pm, Cookie Watson, John Quinn, Lucas Garcia were involved. Chat with Cookie to finalize plans for a weekend outing The details of the trip is finalized",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_15",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to message John Quinn saying \"Sorry if Cookie is being a lot right now, sometimes she can be like this when she is stressed out!\".",
+  "reference_time": "2024-07-26T20:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The system will check the user's contacts for a John Quinn.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. A message is sent to John Quinn saying \"Sorry if Cookie is being a lot right now, sometimes she can be like this when she is stressed out!\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_15_ff7ecdf3-7e80-4b53-88f9-9cbe2cabedd9_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "search_messages",
+    "get_all_messages",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Hey Cookie, are we all set for the hike this weekend?",
+      "creation_datetime_iso": "2024-07-26T19:00:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Hi Theo! Yes, I'm checking in with John and Lucas now.",
+      "creation_datetime_iso": "2024-07-26T19:02:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Hiking Trip",
+      "start_datetime_iso": "2024-07-27T06:00:00-07:00",
+      "end_datetime_iso": "2024-07-27T10:00:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Theo Appleseed"
+      ],
+      "location": "Big Rock Mountain Trail, Orchard County, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-25T20:00:00-07:00",
+      "notes": "Hiking trip to the local mountain trails."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "1234-5678-9110",
+      "alias": "Luke",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Gym Buddy",
+      "address": "129 Fitness Blvd, Orchard County, CA",
+      "company": "Local Gym",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you send a message to John saying \"Sorry if Cookie is being a lot right now, sometimes she can be like this when she is stressed out!\"",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message to John, saying \"Sorry if Cookie is being a lot right now, sometimes she can be like this when she is stressed out!\". I need to check the user's personal context to find out who John is. I found the message thread from Cookie Waston mentioning a hiking trip including John. I further checked the user's calendar and found a hiking trip with John Quinn on the next day. I found it is the contact for John Quinn, so with the user's confirmation I can send this text as requested.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up John Quinn in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify that the contact for John Quinn was returned from the previous tool call\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"John Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"john.quinn@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new message has been sent to John Quinn with the correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [(\"1234-5678-9108\", \"john.quinn@palantir.com\")]\n                                    ],\n                                    \"content\": \"Sorry if Cookie is being a lot right now, sometimes she can be like this when she is stressed out!\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-26T20:20:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to message John Quinn saying \"Sorry if Cookie is being a lot right now, sometimes she can be like this when she is stressed out!\". ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"search_messages\", \"get_all_messages\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-07-26T20:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

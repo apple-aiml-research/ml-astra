@@ -1,0 +1,81 @@
+{
+  "task_id": "bd422699-7479-45a5-aad8-c65435ecdb2c",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are currently out driving and notice you have a new email notification.        As you are currently on the clock for work, you want to know who the email is from and if it's important.",
+  "reference_time": "2024-12-13T10:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The assistant reads aloud the email from Michelle Barnes received on December 13 at 10:15 to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_bd422699-7479-45a5-aad8-c65435ecdb2c_single_turn_0",
+  "emails": [
+    {
+      "subject": "Re: Action Items from Team Review",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "kevin.chen@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-13T10:15:00-08:00",
+      "body": "Hello Dawei, I've received the action items and will start working on the data analysis report. I'll reach out if I need any additional data. Thanks, Michelle",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    }
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "calendars": [],
+  "phonecalls": [],
+  "query": "Who's my latest email from?",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "To answer the user, I will look up their most recent email. The newest one in the inbox is from Michelle Barnes, received today (Dec 13) at 10:15. I will then inform the user that their latest email is from Michelle Barnes and read the message aloud so they can determine its importance while driving.",
+  "reference_time_str": "Today is Friday, December 13, 2024 or 2024-12-13T10:20:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up recent email(s)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned result contains the email from Michelle Barnes sent on Dec 13 at 10:15\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"michelle.barnes@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-13T10:15:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # depend on the search in Milestone 0\n                        ),\n                    ],\n                ),\n                # Milestone 2 – The agent informs the user about the email (reads it aloud / summarizes)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Michelle\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You are currently out driving and notice you have a new email notification.       As you are currently on the clock for work, you want to know who the email is from and if it's important. ",
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-13T10:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

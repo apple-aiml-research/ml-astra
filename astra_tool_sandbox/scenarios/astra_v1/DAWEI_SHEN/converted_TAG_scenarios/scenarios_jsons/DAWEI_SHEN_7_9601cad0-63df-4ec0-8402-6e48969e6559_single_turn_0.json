@@ -1,0 +1,109 @@
+{
+  "task_id": "9601cad0-63df-4ec0-8402-6e48969e6559",
+  "plot_id": 7,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 4, 2024 at 3 pm, self, Kevin Chen, Stefan Mustermann were involved. Dawei hosts a virtual meeting to discuss updates for Friday's strategy meeting with Kevin and Stefan. Kevin sends a follow-up email summarizing the meeting action items.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_7",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_moderate",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to summarise Kevin's email to better prepare for the next meeting together.",
+  "reference_time": "2024-12-05T16:55:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email received from Kevin Chen on 4th December at 17:00 is summarised for the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_7_9601cad0-63df-4ec0-8402-6e48969e6559_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Follow-up: Strategy Meeting Preparation",
+      "sender_address": "kevin.chen@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com",
+        "stefan.mustermann@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-04T17:00:00-08:00",
+      "body": "Hi Dawei and Stefan,\n\nThank you for the productive discussion today. As agreed, I will take the lead on the data integration part and ensure everything is aligned for our Friday's strategy meeting. Please find attached the action items list and let me know if there are any further updates.\n\nBest regards,\nKevin",
+      "attachments": [
+        "Strategy_Meeting_Action_Items.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Stefan",
+      "last_name": "Mustermann",
+      "full_name": "Stefan Mustermann",
+      "phone_number": "+1 555-901-2345-6789",
+      "alias": "Stefan",
+      "email": "stefan.mustermann@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "birthday": "1987-11-30T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Summarise the email I got from Kevin.",
+  "reasoning": "Right so, the user wants a summary of an email from Kevin. \n\nBased on the user's contacts, it can only be Kevin Chen (listed as a coworker) so I check and can see that there is one email from Kevin Chen from yesterday Wednesday, 4th December at 17:00. This must be the email the user is referring to so I will summarise it and read the summary to the user.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 –  agent looks up emails to find Kevin's message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 –  correct email from Kevin Chen was surfaced in the tool result\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Follow-up: Strategy Meeting Preparation\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"kevin.chen@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-04T17:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 –  user receives a summary that contains the key points of Kevin's email\n                Milestone(\n                    snapshot_constraints=[\n                        # Mention of Kevin leading data integration\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"data integration\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to summarise Kevin's email to better prepare for the next meeting together. ",
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-05T16:55:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

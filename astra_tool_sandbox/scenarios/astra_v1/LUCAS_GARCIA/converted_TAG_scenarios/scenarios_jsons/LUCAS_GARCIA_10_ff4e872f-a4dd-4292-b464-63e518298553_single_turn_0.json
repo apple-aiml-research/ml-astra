@@ -1,0 +1,98 @@
+{
+  "task_id": "ff4e872f-a4dd-4292-b464-63e518298553",
+  "plot_id": 10,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 6 pm, David Turner were involved. Lucas goes surfing with David at the local beach. Message between Lucas and David and meet up the beach for their surfing session via WhatsApp.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_10",
+    "calendar",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to double check the time you're due to surf with Dave.",
+  "reference_time": "2024-12-06T17:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that the event \"Surfing Session with David\" is due to start at 18:00 on 6 December 2024. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_10_ff4e872f-a4dd-4292-b464-63e518298553_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Surfing Session with David",
+      "start_datetime_iso": "2024-12-06T18:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T19:30:00-08:00",
+      "attendees_names": [
+        "David Turner",
+        "Lucas Garcia"
+      ],
+      "location": "Local Beach, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-05T16:00:00-08:00",
+      "notes": "Lucas and David meet at the local beach for a surfing session."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When am I surfing with Dave again?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to know when they are surfing with Dave. First I'll establish who Dave is. Dave is a shortening of David and there is only one in the user's contacts which is David Turner. Next I will look for events with David that have the key word surfing or similar terms. I have found the event \"Surfing Session with David\" which must be what they are referring to. Next I will look at the start time of this event. I will now inform the user that the event \"Surfing Session with David\" is due to start at 18:00 on 6 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – Agent consults the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The expected surfing event is returned from the calendar query\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Surfing Session with David\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-06T18:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent informs the user of the correct date and time\n                Milestone(\n                    snapshot_constraints=[\n                        # Check date mention\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"December 6\", \"6 December\", \"Dec 6\", \"2024-12-06\", \"today\", \"tonight\", \"this evening\", \"2024-12-06T18:00\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                        # Check time mention\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"18:00\",\n                                            \"6 pm\",\n                                            \"6pm\",\n                                            \"6 p.m\",\n                                            \"6:00 pm\",\n                                            \"6:00 p.m\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar query → confirm event presence\n                (1, 2),  # Event found → inform user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to double check the time you're due to surf with Dave. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-06T17:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,80 @@
+{
+  "task_id": "73c3f7c3-8d79-4887-99b7-51c2f2de7b1a",
+  "plot_id": 1,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 8 am, self were involved. Lucas starts his day by checking his calendar for upcoming fitness classes and appointments. A list of calendar events outlining his day, including training sessions and meetings with clients, is viewed.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_1",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You're not sure how long your first gym session today is, so you want to ask the assistant to check.",
+  "reference_time": "2024-12-02T08:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Duration of Morning Personal Training Session with Nathan scheduled for 09:00-10:00 is confirmed as 1 hour.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_1_73c3f7c3-8d79-4887-99b7-51c2f2de7b1a_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Morning Personal Training Session with Nathan",
+      "start_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T10:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Nathan Lewis"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 30 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T08:00:00-08:00",
+      "notes": "A personal training session with triathlon buddy Nathan to work on strength and endurance."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "How long is my first event today?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking about the duration of an event.\nFirst, I should find the event in the user's calendar. The user has indicated this is their first event scheduled today December 02, 2024. The first event today is Morning Personal Training Session with Nathan scheduled for today at 09:00-10:00. The duration of this event is 1 hour. I should inform the user.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up today’s calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct first-event record was returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Morning Personal Training Session with Nathan\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-02T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-02T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Assistant tells the user the duration is 1 hour\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"1 hour\", \"one hour\", \"60 minutes\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup → verify correct event\n                (1, 2),  # Event verified → respond to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You're not sure how long your first gym session today is, so you want to ask the assistant to check. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-02T08:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

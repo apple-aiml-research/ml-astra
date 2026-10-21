@@ -1,0 +1,90 @@
+{
+  "task_id": "3d7b1b15-1a77-4261-b0df-1f5e61d3431a",
+  "plot_id": 27,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo got messages to confirmation from optician mentioning the appointment on Friday Aug. 2nd at 14:30\n generate message thread that Theo received and confirmation the appointment\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_27",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You completely forgot about the opticians appointment you had coming up.    You need to add that to your calendar before you forget again! You just got a text reminder that it is on Friday August 2nd 2024 at 14:30.",
+  "reference_time": "2024-07-29T10:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The system will create the event \"Opticians Appointment\" for Friday August 2nd at 14:30.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_27_3d7b1b15-1a77-4261-b0df-1f5e61d3431a_single_turn_0",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "optician@example.com",
+      "participants_addresses": [
+        "optician@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "optician@example.com",
+      "content": "Hello Theo, this is a reminder that you have an appointment scheduled with us on Friday, August 2nd at 14:30. Please confirm your availability.",
+      "creation_datetime_iso": "2024-07-29T10:00:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "optician@example.com",
+      "participants_addresses": [
+        "optician@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Thank you for the reminder. I confirm my appointment for August 2nd at 14:30.",
+      "creation_datetime_iso": "2024-07-29T10:05:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Help me schedule in opticians appointment for this Friday please 14:30",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking me to create a new event for them, \"Opticians Appointment\". They told me all of the information I need to make it, but I need to double-check when exactly \"this Friday\" is. Today is Monday 29th July 2024, so that would make Friday the 2nd of August. I also found user data that confirms this data and time.\n\nWith the user's confirmation, I will create the event \"Opticians Appointment\" for Friday August 2nd at 14:30.",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"optician\",  # substring match on event title\n                                    \"start_datetime_iso\": \"2024-08-02T14:30\",  # substring match on start datetime,\n                                    \"creation_datetime_iso\": \"2024-07-29T10:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You completely forgot about the opticians appointment you had coming up.   You need to add that to your calendar before you forget again! You just got a text reminder that it is on Friday August 2nd 2024 at 14:30. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-07-29T10:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,34 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+name: Dawei Shen
+age: 29
+locale: en_US
+language_knowledge: |
+  - German: C2
+  - English: Native
+  - Chinese: Native
+location: |
+  Orchard County, California
+timezone: |
+  US/Pacific
+occupation: |
+  Data Science Manager in the Tech Sector
+background: |
+  Dawei grew up in many parts of the world: Shanghai, Singapore, and Munich - before eventually coming to the US for graduate school.
+  He studied Data Science and Systems Engineering at Cornell.
+  He has been working in the company's data science division since finishing his PhD at 6 years ago.
+  Dawei works in data science organization that is at the center of next-generation virtual assistant development.
+hobbies_and_interests: |
+  reading: Dawei reads extensively across a multitude of topics, from philosophy, history, and politics to natural science.
+  cycling: He enjoys long-distance cycling, which he finds both physically invigorating and a meditative escape.
+  cooking: Dawei experiments with fusing flavors from the cuisines of the places he has lived.
+  travel: Dawei travels extensively around the world with his friends and family.
+  theatre: Dawei loves theater, both as an avid theater-goer for many shows, but also previously co-founded a theater group, and actively acted and directed plays in his spare time.
+social_interactions: |
+  Dawei’s cosmopolitan upbringing makes him adept at connecting with people from diverse cultural backgrounds.
+  He has built a strong network of friends through work, and they often bond over shared interests in technology and innovation.
+  On weekends, he occasionally organizes cycling meetups with coworkers and friends.
+  He also stays in regular contact with his family back in Shanghai and Singapore.
+  When possible, Dawei enjoys reconnecting with his former Cornell classmates, planning reunions in different cities across the US.
+...

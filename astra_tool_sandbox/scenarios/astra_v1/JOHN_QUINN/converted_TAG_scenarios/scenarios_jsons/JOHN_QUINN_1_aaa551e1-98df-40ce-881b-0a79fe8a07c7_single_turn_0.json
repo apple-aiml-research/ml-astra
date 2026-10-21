@@ -1,0 +1,122 @@
+{
+  "task_id": "aaa551e1-98df-40ce-881b-0a79fe8a07c7",
+  "plot_id": 1,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 8 am, Bronson Chunk, Robin Selmoure, Julie Patterson were involved. Bronson sets up urgent meetings and stand-ups due to a security situation in Peru for the next two weeks  1. Bronson sets up an urgent morning meeting at 10am to deal with a new security situation in Peru. 2. John creates daily stand-up calendar events for every single following workday in the next 2 weeks. i.e. this should result in 9 additional calendar events. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_1",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to message Astrid von Neumann saying \"The Peru situation is out of hand, there was a meeting today and Mr.   Chunk knows it was someone on the inside.   Purge all the files, we need to meet and figure out our exit strategy.  \"",
+  "reference_time": "2024-07-22T09:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "An email is sent to Astrid von Neumann",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_1_aaa551e1-98df-40ce-881b-0a79fe8a07c7_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Bronson",
+      "last_name": "Chunk",
+      "full_name": "Bronson Chunk",
+      "phone_number": "408-555-0130",
+      "alias": "Boss",
+      "email": "bronson.chunk@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Project Manager",
+      "is_self": false,
+      "birthday": "1980-09-09T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    },
+    {
+      "first_name": "Astrid",
+      "last_name": "von Neumann",
+      "full_name": "Astrid von Neumann",
+      "phone_number": "+49 12345678901234567",
+      "alias": "Astrid",
+      "email": "astrid.vonneumann@regenerative-viticulture.de",
+      "relationship": "Friend of a Friend",
+      "address": "Weinbergweg 12, 53507 Dernau, Deutschland",
+      "company": "Regenerativer Bauernhof Ahrwein",
+      "job_title": "Viticulturistin",
+      "is_self": false,
+      "birthday": "1999-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send the viticulturist from Regenerativer Bauernhof Ahrwein a message saying \"The Peru situation is out of hand, there was a meeting today and Mr. Chunk knows it was someone on the inside. Purge all the files, we need to meet and figure out our exit strategy.\"",
+  "reasoning": "We know the user wants to send a message to Astrid von Neumann because it says in her contact info that she is a viticulturist and works in Regenerativer Bauernhof Ahrwein",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the viticulturist contact\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm Astrid von Neumann was actually retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Astrid von Neumann\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"astrid.vonneumann@regenerative-viticulture.de\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify an email was sent to Astrid with the critical message content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\n                                            \"astrid.vonneumann@regenerative-viticulture.de\"\n                                        ]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"Purge all the files\",\n                                    \"creation_datetime_iso\": \"2024-07-22T09:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                # Only need to ensure the sensitive instruction text is present\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    # Ignore unrelated changes in other DBs while checking the EMAIL addition\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to message Astrid von Neumann saying \"The Peru situation is out of hand, there was a meeting today and Mr.  Chunk knows it was someone on the inside.  Purge all the files, we need to meet and figure out our exit strategy. \" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_email\"]",
+  "is_read_time": "2024-07-22T09:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,129 @@
+{
+  "task_id": "4661088f-d6c0-4151-a81e-418b4bbbabd6",
+  "plot_id": 15,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Evening, July 26, 2024 at 7 pm, Cookie Watson, John Quinn, Lucas Garcia were involved. Chat with Cookie to finalize plans for a weekend outing The details of the trip is finalized",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_15",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to remind yourself did Cookie say everyone's going to the hike tomorrow?",
+  "reference_time": "2024-07-26T21:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is presented with the message received from Cookie Watson at 19:10:00 on July 26th, 2024 with the content \"Theo's everyone's confirmed. What's the meeting time?\".",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_15_4661088f-d6c0-4151-a81e-418b4bbbabd6_single_turn_0",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Theo, everyone's confirmed. What's the meeting time?",
+      "creation_datetime_iso": "2024-07-26T19:10:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Great! Let's meet at 6 AM at the trailhead.",
+      "creation_datetime_iso": "2024-07-26T19:12:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "1234-5678-9110",
+      "alias": "Luke",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Gym Buddy",
+      "address": "129 Fitness Blvd, Orchard County, CA",
+      "company": "Local Gym",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Did Cookie say everybody's going hiking tomorrow?",
+  "informational_complexity": "high",
+  "referential_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know \"did Cookie say everybody's going hiking tomorrow?\".\n\nOkay, firstly, I'll check the user's Messages to see if they've received any from \"Cookie\" about \"hiking\".\n\nGreat, they have. Now I need to see if there any messages that match the above description.\n\nGreat, they received a message from Cookie at 19:10:00 on July 26th, 2024 with the content \"Theo, everyone's confirmed. What's the meeting time?\".  This has to be what the user is referring to in their request.\n\nI will now present this message to them. ",
+  "milestones": "[\n                # Milestone 0 — The agent invokes a message-retrieval tool to look for Cookie’s message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 — The agent answers the user, quoting or paraphrasing Cookie’s line that “everyone’s confirmed”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"everyone's confirmed\",\n                                            \"everyone confirmed\",\n                                            \"everybody's confirmed\",\n                                            \"everybody confirmed\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to remind yourself did Cookie say everyone's going to the hike tomorrow? ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]",
+  "is_read_time": "2024-07-26T21:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

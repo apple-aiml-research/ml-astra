@@ -1,0 +1,158 @@
+{
+  "task_id": "8412c97e-104b-4f84-8162-35814c4f65ff",
+  "plot_id": 6,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 4, 2024 at 5 pm, Carol Reyes were involved. Lucas attends a beer tasting event with Carol at a new local brewery. Lucas texts Carol to thank her for organizing the event.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_6",
+    "contact",
+    "calendar",
+    "messaging",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to message Carol Reyes saying \"Carol, maybe it's because of the beers or maybe it's because I like you but I think we should explore our relationship\"",
+  "reference_time": "2024-12-04T21:50:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Carol Reyes saying \"Maybe it's because of the beers or maybe it's because I like you but I think we should explore our relationship\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_6_8412c97e-104b-4f84-8162-35814c4f65ff_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Carol Reyes",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "carol.reyes@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Hey Carol! Just wanted to drop a quick thank you for organizing the beer tasting today. I had a blast and the selection was top-notch!",
+      "creation_datetime_iso": "2024-12-04T21:30:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Carol Reyes",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "carol.reyes@example.com"
+      ],
+      "sender_address": "carol.reyes@example.com",
+      "content": "Hi Lucas! I'm so glad you enjoyed it. The brewery was really excited to host us. Do you have a favorite from the selection?",
+      "creation_datetime_iso": "2024-12-04T21:35:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Carol Reyes",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "carol.reyes@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "The session IPA was definitely a standout for me. Great flavor and perfect for a casual evening. Did you have a preferred brew?",
+      "creation_datetime_iso": "2024-12-04T21:38:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Carol Reyes",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "carol.reyes@example.com"
+      ],
+      "sender_address": "carol.reyes@example.com",
+      "content": "I'm torn between the stout and the lager, but I think the stout wins by a slight margin. We should do this again sometime soon!",
+      "creation_datetime_iso": "2024-12-04T21:42:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Carol Reyes",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "carol.reyes@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Absolutely! Let's plan something for next month. Thanks again, Carol. Have a great night!",
+      "creation_datetime_iso": "2024-12-04T21:45:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Beer Tasting Event with Carol",
+      "start_datetime_iso": "2024-12-04T17:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T19:00:00-08:00",
+      "attendees_names": [
+        "Carol Reyes",
+        "Lucas Garcia"
+      ],
+      "location": "New Local Brewery, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T12:00:00-08:00",
+      "notes": "Attending a beer tasting event with Carol at a new local brewery to explore new craft beers."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Carol",
+      "last_name": "Reyes",
+      "full_name": "Carol Reyes",
+      "phone_number": "+1 12345-6789-1000-6543",
+      "alias": "Beer Tasting Friend",
+      "email": "carol.reyes@example.com",
+      "relationship": "Beer tasting friend",
+      "address": "34 Brew St, Orchard County, CA, USA",
+      "company": "Craft Beer Co.",
+      "job_title": "Sales Representative",
+      "is_self": false,
+      "birthday": "1991-04-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Draft a message to the person I went to the beer tasting event with saying \"Maybe it's because of the beers or maybe it's because I like you but I think we should explore our relationship\", read it to me and then send it. ",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "First off, the user wants to draft a message to the person they went to the beer tasting event with saying \"Maybe it's because of the beers or maybe it's because I like you but I think we should explore our relationship\". \n\nI will need to figure out who the user is referring to. I will scrutinize the user context. The user request is being made on December 04, 2024 at 21:50. I see an event scheduled earlier on the same day, that is, December 04, 2024 from 17:00 to 19:00. I explore the event, and I see there is one contact called 'Carol Reyes' part of that event. Therefore, the person the user went to the beer tasting event with must be Carol Reyes. The user says they want to draft a message to them, and by analyzing the user context again I see there is an existing message thread with Carol Reyes. I will use this channel to send the message the user wants me to draft. \n\nNow, I will draft the message saying: \"Maybe it's because of the beers or maybe it's because I like you but I think we should explore our relationship\". The user has asked me to 'read it' to them, so I will read this message to them and see what they think. Once I get confirmation from them, I will send the message to Carol Reyes. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the contact information for the beer-tasting companion\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that Carol Reyes was among the contacts retrieved in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Carol Reyes\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new outgoing message to Carol with the requested text has been sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # At least one of Carol’s identifiers must appear; extras (e.g., Lucas) are allowed\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"carol.reyes@example.com\",\n                                                \"+1 12345-6789-1000-6543\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Maybe it's because of the beers or maybe it's because I like you but I think we should explore our relationship\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-04T21:50:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to pre-task snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to message Carol Reyes saying \"Carol, maybe it's because of the beers or maybe it's because I like you but I think we should explore our relationship\" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-04T21:50:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

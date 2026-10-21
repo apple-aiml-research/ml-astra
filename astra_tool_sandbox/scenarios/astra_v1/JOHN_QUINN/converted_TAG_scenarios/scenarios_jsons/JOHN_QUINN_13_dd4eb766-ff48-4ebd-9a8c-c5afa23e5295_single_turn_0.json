@@ -1,0 +1,132 @@
+{
+  "task_id": "dd4eb766-ff48-4ebd-9a8c-c5afa23e5295",
+  "plot_id": 13,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 11am, Theo Appleseed, Cookie Watson, Akira Muramoto, Robin Selmoure were involved. John invites his friends to go to a whole-day hike the weekend after  1. John sends individual messages to his friends inviting them for a hike the Saturday after next. 2. Each friend replies, with all accepting except for Robin, who refuses with a slightly bizarre excuse. 3. John sends a group message to the 3 friends who accepted, confirming the meeting place for the hike - the 'Batteries to Bluffs Trail'. The three freinds confirming in the message thread. 4. John creates an event for the hike with the relevant friends invited. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_13",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to reply Robin's message and tell her that it's ok and suggest that she can meet up with them after if she likes",
+  "reference_time": "2024-07-24T11:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message that says \"That's ok maybe you can meet up with us after the hike if you like\" is sent to Robin Selmoure",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_13_dd4eb766-ff48-4ebd-9a8c-c5afa23e5295_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Robin Selmoure",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com"
+      ],
+      "sender_address": "robin.selmoure@palantir.com",
+      "content": "Thanks for the invite, John. I'd love to, but I just remembered I have a... um... a pet grooming appointment that day.",
+      "creation_datetime_iso": "2024-07-24T11:08:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "College Friend",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": false,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@mckinley.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": "Management Consultant",
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": " Reply to Robin's last message and say That's ok maybe you can meet up with us after the hike if you like",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to reply to Robin's last message. First I need to look through their conversations to find a Robin. There are two conversations with Robin however since the user mentioned the \"last\", meaning most recent message I will choose the most recent conversation and reply to that message. I will now draft the message with the given text and ask the user if it is ready to be sent",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Robin’s previous message / conversation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new outgoing message to Robin with the requested content is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"john.quinn@palantir.com\",\n                                                \"1234-5678-9108\",\n                                            ),  # John Quinn\n                                            (\n                                                \"robin.selmoure@palantir.com\",\n                                                \"408-555-0132\",\n                                            ),  # Robin Selmoure\n                                        ]\n                                    ],\n                                    \"content\": \"maybe you can meet up with us after the hike\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-24T11:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieval precedes sending the reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to reply Robin's message and tell her that it's ok and suggest that she can meet up with them after if she likes ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-24T11:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

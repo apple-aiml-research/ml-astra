@@ -1,0 +1,77 @@
+{
+  "task_id": "e0eb1d69-3c85-420d-87e1-17d4668c3a00",
+  "plot_id": 4,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 4 pm, Robin Selmour were involved. Robin expresses interest in the recent crisis in Peru.  1. Robin messages John asking if he knows about the recent crisis in Peru. 2. John replies to Robin playing coy, since he's cautious of revealing secret information he knows. 3. Robin insists nonetheless. 4. John does not budge, divulging nothing. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_4",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You think someone has cloned your coworker's contact and is trying to catfish you so you want them to confirm they are who they said they are.",
+  "reference_time": "2024-07-22T16:10:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message saying \"Hey Robin, don't get offended but you seem a little suspicious. Can you tell me how we met so I can confirm it is actually you?\" is sent to Robin Selmoure.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_4_e0eb1d69-3c85-420d-87e1-17d4668c3a00_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Robin Selmoure",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com"
+      ],
+      "sender_address": "robin.selmoure@palantir.com",
+      "content": "Understood, John. If you ever feel like sharing, you know where to find me!",
+      "creation_datetime_iso": "2024-07-22T16:08:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a text to robin.selmoure@palantir.com saying \"Hey Robin, don't get offended but you seem a little suspicious. Can you tell me how we met so I can confirm it is actually you?\".  ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to message robin.selmoure@palantir.com saying \"Hey Robin, don't get offended but you seem a little suspicious. Can you tell me how we met so I can confirm it is actually you?\".  \n\nI will draft a message to this contact, using the message the user has already provided in their request. Next I will present it to the user for their approval before I send it. ",
+  "milestones": "[\n                # Milestone 0 – verify that a new message was sent to Robin with the expected content #Automatic milestone generation is incomplete. Agent should go through process for message to be sent before verifying it has been sent.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # The new conversation / message must include Robin’s address\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"408-555-0132\",\n                                                \"robin.selmoure@palantir.com\",\n                                            )\n                                        ]\n                                    ],\n                                    # The body should contain the user-specified verification text\n                                    \"content\": (\n                                        \"Hey Robin, don't get offended but you seem a little \"\n                                        \"suspicious. Can you tell me how we met so I can confirm \"\n                                        \"it is actually you?\"\n                                    ),\n                                    \"creation_datetime_iso\": \"2024-07-22T16:10:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Robin must be in the participants list, others (e.g., self) allowed\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                # Allow extra wording / line breaks etc. as long as this core text appears\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",      # to create the outgoing message\n    \"search_contacts\",   # optional, to resolve Robin’s address\n    \"get_all_contacts\",  # fallback option for contact lookup\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You think someone has cloned your coworker's contact and is trying to catfish you so you want them to confirm they are who they said they are. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-22T16:10:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

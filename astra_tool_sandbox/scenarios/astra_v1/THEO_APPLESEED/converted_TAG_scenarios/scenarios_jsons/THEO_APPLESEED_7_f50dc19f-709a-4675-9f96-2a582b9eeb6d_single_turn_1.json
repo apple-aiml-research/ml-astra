@@ -1,0 +1,92 @@
+{
+  "task_id": "f50dc19f-709a-4675-9f96-2a582b9eeb6d",
+  "plot_id": 7,
+  "plot_summary": "Theo Appleseed is the protagonist. On Wednesday Morning, July 24, 2024 at 10 am, Michelle Barnes were involved. Brainstorming session for a new project Theo shares some ideas and strategies via email for further research",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_7",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what time you emailed Michelle to invite her to a brainstorming session.",
+  "reference_time": "2024-07-23T17:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed that their email to Michelle Barnes with subject line \"Invitation: Project Brainstorming Session\" was sent at 15:00 on 23rd July 2024.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_7_f50dc19f-709a-4675-9f96-2a582b9eeb6d_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Invitation: Project Brainstorming Session",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "michelle.barnes@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T15:00:00-07:00",
+      "body": "Hi Michelle,\n\nI would like to invite you to a brainstorming session for our new project. Let's meet tomorrow at 10 AM in Conference Room B. Please prepare any initial ideas you might have.\n\nBest,\nTheo",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to know when they email invited their coworker to brainstorm. I found several contacts listed as Coworker: Stefan Mustermann, Michelle Barnes, and Dawei Shen. I'm not sure which contact they're talking about, so I'll check their emails.\n\nI found an email to Michelle Barnes with subject line \"Invitation: Project Brainstorming Session\" which invites her to a brainstorming session for their new project. This must be the email that the user is interested in. I'll inform them that this email was sent at 15:00 today (2024-07-23).",
+  "query": "When did I email invite my coworker to brainstorm?",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – The agent looks through the email database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The email to Michelle with the brainstorming invitation is among the results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=partial(\n                                    result_list_match_existence_extractor,\n                                    match_conditions={\n                                        \"subject\": {\n                                            \"value\": \"Invitation: Project Brainstorming Session\",\n                                            \"partial\": False,\n                                        },\n                                        \"recipients_addresses\": {\n                                            \"value\": [\"michelle.barnes@example.com\"],\n                                            \"partial\": False,\n                                        },\n                                        \"creation_datetime_iso\": {\n                                            \"value\": \"2024-07-23T15:00:00-07:00\",\n                                            \"partial\": False,\n                                        },\n                                    },\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The user is told the correct send time & subject\n                Milestone(\n                    snapshot_constraints=[\n                        # must mention the time (allowing several formats)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"15:00\", \"3:00\", \"3 pm\", \"3pm\", \"3 p.m.\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search → confirm correct email exists\n                (1, 2),  # Confirmed email → inform the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know what time you emailed Michelle to invite her to a brainstorming session. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-07-23T17:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

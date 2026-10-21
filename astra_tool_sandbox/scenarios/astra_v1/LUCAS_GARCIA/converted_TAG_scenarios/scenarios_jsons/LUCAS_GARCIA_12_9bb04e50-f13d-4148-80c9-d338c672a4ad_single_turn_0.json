@@ -1,0 +1,93 @@
+{
+  "task_id": "9bb04e50-f13d-4148-80c9-d338c672a4ad",
+  "plot_id": 12,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 3 pm, Brian Carter were involved. Lucas attends a triathlon strategy meeting with Brian and team. Meeting notes are recorded and shared among team members for future reference. Messages exchanged with Brian post-meeting.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_12",
+    "messaging",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to reply to a recently received message in a thread about triathlon strategy.",
+  "reference_time": "2024-12-07T17:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply is sent to Brian Carter with the text \"Will do!\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_12_9bb04e50-f13d-4148-80c9-d338c672a4ad_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Triathlon Strategy Session",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "brian.carter@example.com"
+      ],
+      "sender_address": "brian.carter@example.com",
+      "content": "You too, Lucas! Let's keep this momentum going.",
+      "creation_datetime_iso": "2024-12-07T16:45:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Brian",
+      "last_name": "Carter",
+      "full_name": "Brian Carter",
+      "phone_number": "+1 12345-6789-1000-7410",
+      "alias": "Triathlon Coach",
+      "email": "brian.carter@example.com",
+      "relationship": "Triathlon coach",
+      "address": "45 Coach St, Orchard County, CA, USA",
+      "company": "Orchard County Triathlon Club",
+      "job_title": "Head Coach",
+      "is_self": false,
+      "birthday": "1980-04-28T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to Brian to say Will do!",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user would like to send a message to a contact named Brian, containing the text \"Will do!\". I'll need to find the named contact via their contact list and or messages, and once I've located the contact in question I can compose the message and seek confirmation to send it.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the existing conversation or messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new message sent to Brian with the required content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 12345-6789-1000-7410\",\n                                                \"brian.carter@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Will do!\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-07T17:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with pre-task snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Information retrieval precedes sending the reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to reply to a recently received message in a thread about triathlon strategy. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-07T17:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

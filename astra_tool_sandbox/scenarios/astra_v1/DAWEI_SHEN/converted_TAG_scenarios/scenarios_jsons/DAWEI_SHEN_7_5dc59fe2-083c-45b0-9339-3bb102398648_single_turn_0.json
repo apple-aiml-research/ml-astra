@@ -1,0 +1,108 @@
+{
+  "task_id": "5dc59fe2-083c-45b0-9339-3bb102398648",
+  "plot_id": 7,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 4, 2024 at 3 pm, self, Kevin Chen, Stefan Mustermann were involved. Dawei hosts a virtual meeting to discuss updates for Friday's strategy meeting with Kevin and Stefan. Kevin sends a follow-up email summarizing the meeting action items.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_7",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to find out whether or not you've created a reminder in Calendar to pay your property tax.",
+  "reference_time": "2024-12-04T17:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Pay Property Tax\" scheduled for 08:00 - 08:30 on Friday, December 6th 2024, is presented to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_7_5dc59fe2-083c-45b0-9339-3bb102398648_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Pay Property Tax",
+      "start_datetime_iso": "2024-12-06T08:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T08:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T20:10:00-08:00",
+      "notes": "Reminder to pay the property tax to avoid late fees."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Stefan",
+      "last_name": "Mustermann",
+      "full_name": "Stefan Mustermann",
+      "phone_number": "+1 555-901-2345-6789",
+      "alias": "Stefan",
+      "email": "stefan.mustermann@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "birthday": "1987-11-30T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you tell me if I have a property fee reminder in my calendar",
+  "functional_complexity": "low",
+  "informational_complexity": "high",
+  "referential_complexity": "high",
+  "reasoning": "The user wants to know if they have a \"property fee reminder\" in their Calendar. \n\nFirstly, I'll check the user's Calendar to see if they have any events that correspond to the above term. \n\nI see one event named \"Pay Property Tax\", scheduled for 08:00 - 08:30 on Friday, December 6th 2024, that I surmise is the event the user is referring to, given that it's about property.\n\nI'll present this reminder to the user and inform them they do have 'Pay Property Tax' scheduled. ",
+  "milestones": "[\n                # Milestone 0 – Agent queries the calendar to look for the reminder\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the returned calendar payload contains the specific reminder\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Pay Property Tax\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-06T08:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs the user that the reminder exists (user-facing response)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"property tax\", \"property fee\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to find out whether or not you've created a reminder in Calendar to pay your property tax. ",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-04T17:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

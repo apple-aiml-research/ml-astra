@@ -1,0 +1,84 @@
+{
+  "task_id": "3e234430-f1e3-431b-9fe5-8897bdbeea54",
+  "plot_id": 12,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 9, 2024 at 9:00 AM, Sophia Nguyen were involved. Discussion about catering requirements for the New Year's event. Order confirmation email with revised menu details.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_12",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're anxious to hear back from the caterer Sophia about your requested menu changes as you want to review it ASAP in time for the new years's event.",
+  "reference_time": "2024-12-09T09:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email \"Re: Finalizing Catering Details for New Year's Event\" received from sophia.ngyuyen@localcatering.com on December 9th 2024, at 09:15, is found. ",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The assistant told the user yes, as they have got an email back about the dietary requirements, which is Finalizing Catering Details.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_12_3e234430-f1e3-431b-9fe5-8897bdbeea54_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Finalizing Catering Details for New Year's Event",
+      "sender_address": "sophia.nguyen@localcatering.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T09:15:00-08:00",
+      "body": "Hello Emily,\n\nThank you for your feedback. We can definitely accommodate the changes you've requested:\n1. We'll increase the vegetarian options by 30%.\n2. Two gluten-free desserts will be added to the menu.\n3. A selection of non-alcoholic sparkling beverages will be available.\n\nI've attached the revised menu for your review. Please confirm if everything looks good, and we can proceed with the final preparations.\n\nBest regards,\nSophia Nguyen",
+      "attachments": [
+        "Revised_Menu_Details.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Did I get an email back yet about the dietary requirements for the party? Yes or No.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know if they got an email back yet about the dietary requirements for the party. I wonder what email that could be if they've received it. I see the user has one new email from sophia.ngyen@localcatering.com, \"Re: Finalizing Catering Details for New Year's Event\", received December 9th at 09:15.  The email mentions vegetarian and gluten-free which are common dietary requirements. The content of the email also seems to correspond with party planning. I assume this is the user is waiting on. I'll show them the details of this email now. ",
+  "milestones": "[\n                # Milestone 0 – The agent tries to retrieve emails\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved emails include the one from Sophia Nguyen with the expected subject\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Re: Finalizing Catering Details for New Year's Event\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"sophia.nguyen@localcatering.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent shows the email (or its key details) to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"yes\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email retrieval → email existence verified\n                (1, 2),  # Email existence verified → email shown to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You're anxious to hear back from the caterer Sophia about your requested menu changes as you want to review it ASAP in time for the new years's event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-09T09:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,67 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+# 0
+- name: "Lucas Garcia"
+  relationship: "Self"
+# 1
+- name: "Theo Appleseed"
+  relationship: "Gym buddy and workout partner"
+  bio: "Theo met Lucas at the local gym. They motivate each other during workouts and share a commitment to fitness and healthy living."
+# 2
+- name: "Maria Garcia"
+  relationship: "Mother"
+  bio: "Maria lives in the family home in Orchard County. She is a school teacher and has always supported Lucas in his fitness endeavors."
+# 3
+- name: "Juan Garcia"
+  relationship: "Father"
+  bio: "Juan runs a small coffee shop in downtown Orchard County. He is proud of Lucas's achievements and occasionally consults Lucas for fitness advice."
+# 4
+- name: "Emmanuel Gonzales"
+  relationship: "High School friend"
+  bio: "Emmanuel was on Lucas's high school football team. They share a long history and meet up occasionally to reminisce about the old days."
+# 5
+- name: "Nathan Lewis"
+  relationship: "Triathlon training group member"
+  bio: "Nathan is part of Lucas's triathlon training group. They train together and push each other for better performances."
+# 6
+- name: "Jessica Lin"
+  relationship: "Coworker at 129 Orchard Fitness Gym"
+  bio: "Jessica is a fitness instructor beside Lucas at the gym. They collaborate on training workshops and classes."
+# 7
+- name: "David Turner"
+  relationship: "Surfing buddy"
+  bio: "David often joins Lucas for surfing sessions at the beach. They share a love for the ocean and adventure."
+# 8
+- name: "Carol Reyes"
+  relationship: "Beer tasting friend"
+  bio: "Carol and Lucas explore local breweries together, bonding over their shared interest in craft beers."
+# 9
+- name: "Megan Johnson"
+  relationship: "Online fitness class student"
+  bio: "Megan participates in Lucas's online classes. She often interacts with him over social media for fitness tips."
+# 10
+- name: "Alex Martin"
+  relationship: "YouTube follower"
+  bio: "Alex is an active follower of Lucas's fitness channel and frequently comments on his videos."
+# 11
+- name: "Olivia Clark"
+  relationship: "Local gym member"
+  bio: "Olivia attends Lucas's gym. She appreciates his motivational sessions and diet tips."
+# 12
+- name: "Jason Baker"
+  relationship: "Triathlon competitor"
+  bio: "Jason competes against Lucas in local triathlons. They have a friendly rivalry that pushes both to excel."
+# 13
+- name: "Sarah Lopez"
+  relationship: "Dietitian consultant"
+  bio: "Sarah offers dietary consultation to Lucas’s gym clients. Lucas collaborates with her for nutritional advice."
+# 14
+- name: "Brian Carter"
+  relationship: "Triathlon coach"
+  bio: "Brian provides coaching and strategic insights to Lucas’s training group for better performance in competitions."
+# 15
+- name: "Sophie Bennett"
+  relationship: "High school friend's sibling"
+  bio: "Sophie, the younger sister of Lucas's friend Emily, often attends his fitness classes with her friends."
+...

@@ -1,0 +1,95 @@
+{
+  "task_id": "3e4b29b8-6f94-4fd9-b77f-4ee7625ac6dd",
+  "plot_id": 4,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 3:00 PM, Ben Rose, Lucas Jones were involved. Coordinating with Ben and Lucas to organize tools and equipment for the gardening project at the local park. Send out an calendar invte for them to meet and purchase the equipments. Messages exchanged with Ben and Lucas confirming the details of the project. Calendar invte sent.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_4",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to check what time you're meeting Ben and Lucas to grab the tools for the gardening project.",
+  "reference_time": "2024-12-06T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that the event Gardening Project Coordination Meeting from 15:00-16:00 on the 6 December 2024 is due to start at 15:00. "
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_4_3e4b29b8-6f94-4fd9-b77f-4ee7625ac6dd_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Gardening Project Coordination Meeting",
+      "start_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T16:00:00-08:00",
+      "attendees_names": [
+        "Ben Rose",
+        "Emily Rose",
+        "Lucas Jones"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-04T15:18:00-08:00",
+      "notes": "Meeting with Ben and Lucas to organize tools and equipment for the gardening project at the local park."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ben",
+      "last_name": "Rose",
+      "full_name": "Ben Rose",
+      "phone_number": "+1 530-555-0125",
+      "alias": "Green Thumb Dad",
+      "email": "ben.rose@gardensplus.com",
+      "relationship": "Father",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Gardens Plus",
+      "job_title": "Landscape Designer",
+      "is_self": false,
+      "birthday": "1965-03-12T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When am I meeting the guys to grab the bits for gardening?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to know when they are meeting the guys to grab the bits for gardening. First I will search for the event the user is referencing. I will search for the keyword gardening and similar words. I have found the event Gardening Project Coordination Meeting tomorrow from 15:00-16:00 on the 6 December 2024 this must be what they mean. I will now find the start time for this event. I will now inform the user that the event \"Gardening Project Coordination Meeting\" is due to start at 15:00 on 6 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – A calendar-lookup tool is invoked so the agent can figure out the\n                # meeting time and date.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The tool invoked in Milestone 0 returns the correct calendar event\n                # (“Gardening Project Coordination Meeting” that starts at 2024-12-06T15:00).\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Gardening Project Coordination Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-06T15:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent’s reply to the user mentions the correct time (3 PM /\n                # 15:00) _and_ the correct date (6 December 2024).\n                Milestone(\n                    snapshot_constraints=[\n                        # Time mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"15:00\",\n                                            \"3:00\",\n                                            \"3 pm\",\n                                            \"3 p.m.\",\n                                            \"3pm\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                        # Date mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"December 6\",\n                                            \"Dec 6\",\n                                            \"Dec. 6\",\n                                            \"6 December\",\n                                            \"6 Dec\",\n                                            \"12/6\",\n                                            \"12/06\",\n                                            \"12-06\",\n                                            \"the 6th\",\n                                            \"today\",\n                                            \"2024-12-06T15:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to check what time you're meeting Ben and Lucas to grab the tools for the gardening project. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-06T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

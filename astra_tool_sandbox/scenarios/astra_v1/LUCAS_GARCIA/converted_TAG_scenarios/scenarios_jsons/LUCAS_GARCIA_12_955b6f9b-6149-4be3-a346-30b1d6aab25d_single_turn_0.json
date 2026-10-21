@@ -1,0 +1,134 @@
+{
+  "task_id": "955b6f9b-6149-4be3-a346-30b1d6aab25d",
+  "plot_id": 12,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 3 pm, Brian Carter were involved. Lucas attends a triathlon strategy meeting with Brian and team. Meeting notes are recorded and shared among team members for future reference. Messages exchanged with Brian post-meeting.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_12",
+    "messaging",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if your triathlon coach has messaged you any feedback.",
+  "reference_time": "2024-12-08T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed with 'No', as there are no new messages or emails have been received from Brian Carter on 8 December 2024.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_12_955b6f9b-6149-4be3-a346-30b1d6aab25d_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Triathlon Strategy Session",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "brian.carter@example.com"
+      ],
+      "sender_address": "brian.carter@example.com",
+      "content": "Received it, thanks. Everything looks good so far, but I'll go through in detail later tonight. Expect feedback by tomorrow.",
+      "creation_datetime_iso": "2024-12-07T16:35:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Triathlon Strategy Session",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "brian.carter@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Perfect, Brian. Appreciate your support. I'll keep an eye out for your feedback. Have a good rest of the day!",
+      "creation_datetime_iso": "2024-12-07T16:40:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Triathlon Strategy Session",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "brian.carter@example.com"
+      ],
+      "sender_address": "brian.carter@example.com",
+      "content": "You too, Lucas! Let's keep this momentum going.",
+      "creation_datetime_iso": "2024-12-07T16:45:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Triathlon Strategy Meeting Notes - December 7, 2024",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "brian.carter@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-07T16:15:00-08:00",
+      "body": "Hi Brian,\n\nThank you for a productive meeting earlier today. I've attached the meeting notes as discussed. These notes include our strategy outlines and key objectives for the upcoming triathlon season. Please review and let me know if there's anything that needs further clarification.\n\nLooking forward to our continued progress!\n\nBest,\nLucas",
+      "attachments": [
+        "Triathlon_Strategy_Notes_12072024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Brian",
+      "last_name": "Carter",
+      "full_name": "Brian Carter",
+      "phone_number": "+1 12345-6789-1000-7410",
+      "alias": "Triathlon Coach",
+      "email": "brian.carter@example.com",
+      "relationship": "Triathlon coach",
+      "address": "45 Coach St, Orchard County, CA, USA",
+      "company": "Orchard County Triathlon Club",
+      "job_title": "Head Coach",
+      "is_self": false,
+      "birthday": "1980-04-28T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "high",
+  "reasoning": "Right so, the user is looking for some 'feedback' from his 'triathlon coach'. Firstly checking the user's contacts, I can see one contact matching under 'Triathlon Coach' named 'Brian Carter'. This is who the user is requesting information from. Next I will check their message thread and emails. I can see that Brian and the user were messaging yesterday, 7 December 2024 and Brian replied to the user saying 'Received it, thanks. Everything looks good so far, but I'll go through in detail later tonight. Expect feedback by tomorrow.'. This seems to be about the 'feedback' the user is asking about. Also, the user sent an email to Brian Carter on 7 December 2024 at 16:15 with the subject 'Triathlon Strategy Meeting Notes - December 7, 2024'. Brian has not sent any new messages or emails to the user. Therefore I can relay that no feedback has been received to the user, and reply with 'No'.",
+  "query": "Did my triathlon coach send me some feedback? Yes or no.",
+  "informational_complexity": "high",
+  "referential_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – The agent looks through messages (SMS/imessage) for feedback from the coach\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – The agent looks through emails for feedback from the coach\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 2 – The agent informs the user that no new feedback has been received\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Any reasonable negative confirmation phrasing is acceptable\n                                    \"content\": [(\"no\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 2),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_emails\",\n    \"get_all_emails\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know if your triathlon coach has messaged you any feedback. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-08T18:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,119 @@
+{
+  "task_id": "469da0d3-94a2-40b4-9d74-942a71c04d5e",
+  "plot_id": 4,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 3:00 PM, Ben Rose, Lucas Jones were involved. Coordinating with Ben and Lucas to organize tools and equipment for the gardening project at the local park. Send out an calendar invte for them to meet and purchase the equipments. Messages exchanged with Ben and Lucas confirming the details of the project. Calendar invte sent.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_4",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to invite Matt Duncan to the gardening project event as well as he is a recent volunteer needing experience.    You just want to check with Ben and Lucas that they are okay with this.",
+  "reference_time": "2024-12-04T15:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to the message thread 'Gardening Project Coordination' with 'Ben Rose' and 'Lucas Jones' saying 'Hi guys, I'd like to invite Matt Duncan, a student volunteer to help us. Is that okay?'.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_4_469da0d3-94a2-40b4-9d74-942a71c04d5e_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Gardening Project Coordination",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0125",
+        "+1 530-555-0141"
+      ],
+      "sender_address": "+1 530-555-0125",
+      "content": "Sure thing, Emily. I'll handle the compost. Looking forward to a productive session!",
+      "creation_datetime_iso": "2024-12-04T15:10:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Gardening Project Coordination",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0125",
+        "+1 530-555-0141"
+      ],
+      "sender_address": "+1 530-555-0141",
+      "content": "Perfect! I'll see you both on Friday with all the arrangements ready.",
+      "creation_datetime_iso": "2024-12-04T15:12:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Gardening Project Coordination",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0125",
+        "+1 530-555-0141"
+      ],
+      "sender_address": "+1 530-555-0123",
+      "content": "Great! I'll send out the calendar invite now. Thanks, everyone.",
+      "creation_datetime_iso": "2024-12-04T15:15:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ben",
+      "last_name": "Rose",
+      "full_name": "Ben Rose",
+      "phone_number": "+1 530-555-0125",
+      "alias": "Green Thumb Dad",
+      "email": "ben.rose@gardensplus.com",
+      "relationship": "Father",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Gardens Plus",
+      "job_title": "Landscape Designer",
+      "is_self": false,
+      "birthday": "1965-03-12T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to those in the message thread about organising tools and equipment, saying 'Hi guys, I'd like to invite Matt Duncan, a student volunteer to help us. Is that okay?'.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user is wanting to send a message to people in a message thread about 'organising tools and equipment'. Firstly, I will check the user's message threads and can see that no clear match is found for the name of that thread, although within the 'Gardening Project Coordination' there is message the user sent on 4 December 2024 at 15:00 which included in the message content said 'what tools and equipment we need?'. This is the message thread the user wants to send the message. They have already provided me with the   message content which says 'Hi guys, I'd like to invite Matt Duncan, a student volunteer to help us. Is that okay?'. I will confirm with the user that no further changes are needed prior to sending it.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up existing message threads\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The gardening coordination thread was found in the previous lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Gardening Project Coordination\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new message with the requested text is sent in that thread\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Gardening Project Coordination\",\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"emily.rose@orchardcommunity.org\",\n                                                \"+1 530-555-0123\",\n                                            ),  # Emily\n                                            (\n                                                \"ben.rose@gardensplus.com\",\n                                                \"+1 530-555-0125\",\n                                            ),  # Ben\n                                            (\"+1 530-555-0141\",),  # Lucas\n                                        ]\n                                    ],\n                                    \"content\": \"invite Matt Duncan\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-04T15:20:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Found thread after searching messages\n                (1, 2),  # Sent message after confirming thread\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to invite Matt Duncan to the gardening project event as well as he is a recent volunteer needing experience.   You just want to check with Ben and Lucas that they are okay with this. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-04T15:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

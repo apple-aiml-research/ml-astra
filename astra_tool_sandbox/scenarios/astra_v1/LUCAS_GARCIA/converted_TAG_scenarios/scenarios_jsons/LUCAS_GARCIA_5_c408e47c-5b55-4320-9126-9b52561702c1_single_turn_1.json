@@ -1,0 +1,100 @@
+{
+  "task_id": "c408e47c-5b55-4320-9126-9b52561702c1",
+  "plot_id": 5,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 3, 2024 at 12 pm, Emmanuel Gonzales were involved. Lucas has lunch with Emmanuel to catch up and reminisce about their high school days. Lucas receives a call from Emmanuel during lunch to confirm the meeting location. Lucas follow up by a calendar invite.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_5",
+    "calendar",
+    "phone_call",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You've forgotten where your lunch with Emmanuel is taking place this afternoon.",
+  "reference_time": "2024-12-03T11:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The location of 'Lunch with Emmanuel' event on December 3rd, 2024, at 12:00-13:30, is read out to the user as Orchard County Cafe",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_5_c408e47c-5b55-4320-9126-9b52561702c1_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "search_phonecall_logs",
+    "get_all_phone_calls"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Lunch with Emmanuel",
+      "start_datetime_iso": "2024-12-03T12:00:00-08:00",
+      "end_datetime_iso": "2024-12-03T13:30:00-08:00",
+      "attendees_names": [
+        "Emmanuel Gonzales",
+        "Lucas Garcia"
+      ],
+      "location": "Orchard County Cafe",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T09:00:00-08:00",
+      "notes": "Catch up and reminisce about high school days with Emmanuel Gonzales."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Emmanuel",
+      "last_name": "Gonzales",
+      "full_name": "Emmanuel Gonzales",
+      "phone_number": "+1 12345-6789-1000-1357",
+      "alias": "High School Friend",
+      "email": "emmanuel.gonzales@example.com",
+      "relationship": "High School friend",
+      "address": "78 Old School Rd, Orchard County, CA, USA",
+      "company": "Orchard County High School",
+      "job_title": "Football Coach",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Where is Lunch with Emmanuel?",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know where lunch with Emmanuel is. I'll search their calendar for that event. I found one matching event 'Lunch with Emmanuel' on December 3rd, at 12:00-13:30. I'll tell them the location of the event is Orchard County Cafe. ",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent uses calendar tools to look up \"Lunch with Emmanuel\"\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the correct \"Lunch with Emmanuel\" event on Dec 3, 2024 at 12:00–13:30 was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Lunch with Emmanuel\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-03T12:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-03T13:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"location\": {\n                                                \"value\": \"Orchard County Cafe\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent tells the user the location is \"Orchard County Cafe\"\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Orchard County Cafe\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup → confirm correct event and location\n                (1, 2),  # Correct event identified → inform user of Orchard County Cafe\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-12-03T11:05:00-08:00",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You've forgotten where your lunch with Emmanuel is taking place this afternoon.\n ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"search_phonecall_logs\", \"get_all_phone_calls\"]"
+}

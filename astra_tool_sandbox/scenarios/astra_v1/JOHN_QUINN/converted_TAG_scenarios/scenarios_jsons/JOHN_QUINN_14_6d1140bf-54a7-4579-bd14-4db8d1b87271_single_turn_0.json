@@ -1,0 +1,105 @@
+{
+  "task_id": "6d1140bf-54a7-4579-bd14-4db8d1b87271",
+  "plot_id": 14,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 1:30pm, Ursula Quinn were involved. John has a discussion with his mom about his dad's birthday and ends up ordering his dad some high end whiskey  1. John messages his mom to ask her what to buy his dad for his upcoming birthday. 2. His mom is not very helpful, saying they have everything they need. 3. John ends up ordering some high-end whiskey online, and receives an email with the purchase confirmation. 4. He sends the purchase confirmation to his mom. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_14",
+    "contact",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to text Ursula Quinn to let her know that the birthday present you got your Dad has arrived.",
+  "reference_time": "2024-07-29T17:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A text message is created to Ursula Quinn saying \"Hey Mom, just got the whiskey I ordered for Dad. Let me know about dinner for his birthday?\" ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_14_6d1140bf-54a7-4579-bd14-4db8d1b87271_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Ursula Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "ursula.quinn@modernart.org"
+      ],
+      "sender_address": "ursula.quinn@modernart.org",
+      "content": "That sounds like a great idea, John! He loves a good whiskey.",
+      "creation_datetime_iso": "2024-07-23T13:36:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Order Confirmation - Premium Whiskey",
+      "sender_address": "orders@whiskeyworld.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T13:45:00-07:00",
+      "body": "Dear John Quinn, Thank you for your purchase from Whiskey World. Your order of Glenlivet Archive 21 Year Old Whiskey has been confirmed. Your order number is #998877. Cheers, Whiskey World Team",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to Ursula Quinn saying \"Hey Mom, just got the whiskey I ordered for Dad. Let me know about dinner for his birthday?\" ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message. The user specifies Ursula Quinn as the contact that the message is means to be sent to. After this, I will ask the user for the body of the message which is provided as \"Hey Mom, just got the whiskey I ordered for Dad. Let me know about dinner for his birthday?\". After this I will send the message.",
+  "milestones": "[\n                # Milestone 0 — Agent looks up Mom/Ursula in the contacts list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 — A new text message to Ursula Quinn was created with the correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Each tuple lists alternative identifiers for the same person (email or phone)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"ursula.quinn@modernart.org\",\n                                                \"408-555-0124\",\n                                            ),\n                                            (\n                                                \"john.quinn@palantir.com\",\n                                                \"1234-5678-9108\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"whiskey\",  # key word to confirm correct body\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-29T17:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup precedes sending the message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",     # to create the outgoing text\n    \"search_contacts\",  # to resolve \"Mom\" / Ursula Quinn\n    \"get_all_contacts\", # fallback contact listing\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to text Ursula Quinn to let her know that the birthday present you got your Dad has arrived. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-29T17:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

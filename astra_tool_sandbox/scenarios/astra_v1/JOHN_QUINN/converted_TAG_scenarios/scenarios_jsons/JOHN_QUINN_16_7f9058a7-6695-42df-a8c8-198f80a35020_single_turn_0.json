@@ -1,0 +1,118 @@
+{
+  "task_id": "7f9058a7-6695-42df-a8c8-198f80a35020",
+  "plot_id": 16,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 5:45pm, Julie Patterson were involved. Julie asks John asking him to water her plant while she's on leave  1. Julie emails John to let him know that she needs to take urgent leave of absence next week and asks if he could water her plants while she's way. 2. John agrees, but asks more information about which plants she means and what is the proper care they need. 3. Julie mentions the 3 different plant she has at work and asks him to water them on Tuesday and Friday. 4. John agrees and adds the relevant calendar reminders on his phone. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_16",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "After scheduling to water Julie's plants in your calendar you realize you have very busy mornings.   So you want to reschedule the watering events to 1 hour later at 10 am.",
+  "reference_time": "2024-07-24T18:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Water Julie's Plants\" on July 30 2024 at 09:00-09:15 is moved to 10:00-10:15",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The event \"Water Julie's Plants\" on August 02 2024 at 09:00-09:15 is moved to 10:00-10:15",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_16_7f9058a7-6695-42df-a8c8-198f80a35020_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Water Julie's Plants",
+      "start_datetime_iso": "2024-07-30T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T09:15:00-07:00",
+      "attendees_names": [
+        "John Quinn"
+      ],
+      "location": "Palantir Office",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T18:20:00-07:00",
+      "notes": "Water the fern and spider plant."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Water Julie's Plants",
+      "start_datetime_iso": "2024-08-02T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-02T09:15:00-07:00",
+      "attendees_names": [
+        "John Quinn"
+      ],
+      "location": "Palantir Office",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T18:20:00-07:00",
+      "notes": "Water the fern, spider plant, and succulent."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need you to change the time of Water Julie's Plants events from 9 to 10",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants me to change the time of their Water Julie's Plants events from 09:00 to 10:00. First I need to look through their calendar and see if any events match this name. I have found two events with this name, one on July 30 2024 at 09:00 and the other on August 02 2024 at the same time. I will change both of their start times to be 10:00 and their end times to 10:15. I will now inform the user that they have been updated.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the relevant calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 - The event is retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Water Julie's Plants\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-30T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent looks up the relevant calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 - The event is retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Water Julie's Plants\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-08-02T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ],\n                ),\n                # Milestone 4 – Both \"Water Julie's Plants\" events now exist at the new 10:00 time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": [\n                                        \"Water Julie's Plants\",\n                                        \"Water Julie's Plants\",\n                                    ],\n                                    \"start_datetime_iso\": [\n                                        \"2024-07-30T10:00:00-07:00\",\n                                        \"2024-08-02T10:00:00-07:00\",\n                                    ],\n                                    \"end_datetime_iso\": [\n                                        \"2024-07-30T10:15:00-07:00\",\n                                        \"2024-08-02T10:15:00-07:00\",\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-07-24T18:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n                # Milestone 5 – Neither \"Water Julie's Plants\" event remains at the old 09:00 time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": [\n                                        \"Water Julie's Plants\",\n                                        \"Water Julie's Plants\",\n                                    ],\n                                    \"start_datetime_iso\": [\n                                        \"2024-07-30T09:00:00-07:00\",\n                                        \"2024-08-02T09:00:00-07:00\",\n                                    ],\n                                    \"end_datetime_iso\": [\n                                        \"2024-07-30T09:15:00-07:00\",\n                                        \"2024-08-02T09:15:00-07:00\",\n                                    ],\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (2, 3),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"modify_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. After scheduling to water Julie's plants in your calendar you realize you have very busy mornings.  So you want to reschedule the watering events to 1 hour later at 10 am. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\"]",
+  "is_read_time": "2024-07-24T18:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,98 @@
+{
+  "task_id": "8ff38971-b901-4e65-b9b7-e279dbcb2f4f",
+  "plot_id": 23,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:50 am, Theo Appleseed, Kevin Chen were involved. Theo email Kevin for his availibility trying to schedule and urgent 1:1. However, it turns out Kevin is only available at 1 to 2pm today.\n generate email threads between Theo and Kevin for Kevin's availibility for today",
+  "tags": [
+    "astra_core",
+    "THEO_APPLESEED",
+    "plot_23",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to add your 1:1 with Kevin to your calendar today and set a reminder 10 minutes before it starts.  You're not sure of the exact time off the top of your head — the assistant will need to find it.",
+  "reference_time": "2024-07-29T10:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A calendar event \"1:1 with Kevin\" is created for July 29, 2024 from 1:00 PM to 2:00 PM with a 10-minute reminder.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_23_8ff38971-b901-4e65-b9b7-e279dbcb2f4f_single_turn_1",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Urgent: Request for 1:1 Meeting Today",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "kevin.chen@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-29T08:10:00-07:00",
+      "body": "Hi Kevin,\n\nThank you for your quick response. 1:00 PM to 2:00 PM works for me. I'll see you then.\n\nBest regards,\nTheo",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "Can you add my 1:1 with Kevin to my calendar today and remind me 10 minutes before?",
+  "reasoning": "The user wants their 1:1 with Kevin on the calendar today with a reminder 10 minutes ahead, but hasn't stated the time. I'll search the user's emails for the meeting details. I find Kevin Chen's email offering 1:00 PM to 2:00 PM, which Theo confirmed, so the 1:1 runs 1:00-2:00 PM. I'll create a calendar event ' 1:1 with Kevin' from 1:00 PM to 2:00 PM today and set the reminder to 10 minutes before.",
+  "milestones": "[\n                # Milestone 0 – Agent invokes an email-retrieval tool to find the meeting time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved emails contain Kevin's 1:00-2:00 PM availability email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"kevin.chen@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-29T08:05:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The 1:1 with Kevin (1:00-2:00 PM) is created with a 10-minute reminder\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"1:1 with Kevin\",\n                                    \"start_datetime_iso\": \"2024-07-29T13:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T14:00:00-07:00\",\n                                    \"reminder_time_ahead\": \"10 minute\",\n                                    \"creation_datetime_iso\": \"2024-07-29T10:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Title need only reference Kevin; reminder value is a substring\n                                # (\"10 minute\") so both \"10 minutes\"/\"10 minute\" satisfy the non-default offset.\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"reminder_time_ahead\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_contacts\",   # agent might look up Kevin’s info to attach him to the event\n    \"get_all_contacts\",  # fallback contact retrieval\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to add your 1:1 with Kevin to your calendar today and set a reminder 10 minutes before it starts. You're not sure of the exact time off the top of your head — the assistant will need to find it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-29T10:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

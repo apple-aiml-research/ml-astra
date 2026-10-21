@@ -1,0 +1,32 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+name: John Quinn
+age: 25
+locale: en_US
+language_knowledge: |
+  - English: C2
+location: |
+  San José, California
+timezone: |
+  US/Pacific
+occupation: |
+  Junior Engineer at Palantir
+background: |
+  John recently graduated with a Computer Science MSc, with a minor in Data Science.
+  His childhood interest in criminology and military history naturally drew him to seek a job at Palantir.
+  He is motivated to use data to "catch the bad guys", and help people live safely and in peace.
+  While highly motivated at his job, he also balances his computer time with a deep love for the outdoors.
+hobbies_and_interests: |
+  outdoors: John enjoys spending most weekends discovering new places for hiking and discovering exciting trail running spots.
+  reading: John loves reading new books, with a focus on non-fiction, where he is particularly keen on new publications on military history.
+  archery: John enjoys archery with his mongolian bow. A bit out of place in his club where modern olympic bows are used, but a lot of fun to shoot.
+social_interactions: |
+  John's work is hectic and sometimes has John working at odd times of the day and even night.
+  When he has a free evening, John visits the archery range, and every weekend he can manage, he
+  goes for a long hiking trip or an intense trail run in the outdoors. The rest of his weekend is
+  occupied with reading while he drinks a high quality tea blend on his couch. He keeps in touch
+  with some of his college friends, but prefers to socialise with them during an activity, avoiding
+  bars and clubs, which don't fit his health-oriented lifestyle. John keeps in touch with his mom,
+  but is estranged from his father, due to a long-running disagreement about politics.
+...

@@ -1,0 +1,81 @@
+{
+  "task_id": "149e4be9-7d55-45b4-bee5-e72f31261c24",
+  "plot_id": 11,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 18pm, Ursula Quinn were involved. John's mom's earphones broke, and John orders her a replacement pair  1. John receives a call from his mom, who complains about the fact that her headphones broke down. 2. John orders a new pair of headphones at Target, receiving an email confirmation of his purchase with an order number, as well as a DHL tracking number (both numbers are realistic and non-consecutive). 3. John forwards the purchase confirmation email to his mom. 4. John adds a calendar event where he invites his mom, as a reminder of the approximate day and the 5 hour time window when the headphones will be delivered on Friday. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_11",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to let your mom know you have collected her headphones.",
+  "reference_time": "2024-07-26T18:10:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Ursula Quinn saying \"Got the headphone will be home soon.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_11_149e4be9-7d55-45b4-bee5-e72f31261c24_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "Text Mom and say \"Got the headphone will be home soon.\".",
+  "reasoning": "The user wants to text their mom to say \"Got the headphone will be home soon.\". First I should figure out who Mom is. I should check the user's Contacts first. \n\nHmm, I don't see a contact named Mom, but Ursula Quinn has Mom as their alias, so this must be who the user means.\n\nNext I will draft a message to Ursula, using the content the user has provided. Lastly I will present the message to the user for their approval before I send it to Ursula.  ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up “Mom” in the Contacts database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Ursula Quinn (Mom) is found in the contact-search results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Ursula Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0124\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,  # parse output of Milestone 0\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new text message is sent to Mom with the required content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require Mom’s phone in the participant list.\n                                    \"participants_addresses\": [\n                                        [(\"ursula.quinn@modernart.org\", \"408-555-0124\")]\n                                    ],\n                                    \"content\": \"Got the headphone\",\n                                    \"creation_datetime_iso\": \"2024-07-26T18:10:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search → confirm Ursula is found\n                (1, 2),  # After confirming contact, message is sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to let your mom know you have collected her headphones. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-26T18:10:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

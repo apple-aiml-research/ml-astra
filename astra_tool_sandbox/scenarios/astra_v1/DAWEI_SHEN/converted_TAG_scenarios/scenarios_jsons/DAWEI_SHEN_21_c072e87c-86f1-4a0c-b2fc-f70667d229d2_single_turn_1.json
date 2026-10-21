@@ -1,0 +1,116 @@
+{
+  "task_id": "c072e87c-86f1-4a0c-b2fc-f70667d229d2",
+  "plot_id": 21,
+  "plot_summary": "Dawei Shen is the protagonist. On Saturday, December 14, 2024 at 7 pm, self, Lukas Hürholz, Vick Li were involved. Dawei, Lukas, and Vick meet for dinner at a local restaurant in Orchard County. Dawei shares the address in their group text. Lukas sends a group selfie afterward, thanking Dawei for the evening.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_21",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to be prepared for the coming work week and want to see if Michelle has emailed with any updates.",
+  "reference_time": "2024-12-15T17:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The assistant replies with \"Yes\".",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_21_c072e87c-86f1-4a0c-b2fc-f70667d229d2_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Revised Draft for Virtual Assistant Algorithm",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "theo.appleseed@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "body": "Hi Dawei, I've attached the revised draft for the virtual assistant algorithm. Please review and let us know your thoughts. Best, Michelle",
+      "attachments": [
+        "Revised_Algorithm_Draft.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Dataset Update for Machine Learning Model",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T08:00:00-08:00",
+      "body": "Hi Dawei,\n\nI hope this email finds you well. I am writing to share the latest updates on the dataset we've been working on for our machine-learning model. Attached you'll find the updated files along with a few key questions that we need to address:\n\n1. How do we intend to handle the increasing volume of unstructured data?\n2. Are there specific algorithms you suggest we explore for better accuracy?\n3. What are your thoughts on the timeline for the next phase of testing?\n\nLooking forward to discussing these during our team sync.\n\nBest regards,\nMichelle",
+      "attachments": [
+        "Updated_Dataset_Questions.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Action Items from Team Review",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "kevin.chen@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-13T10:15:00-08:00",
+      "body": "Hello Dawei, I've received the action items and will start working on the data analysis report. I'll reach out if I need any additional data. Thanks, Michelle",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to see if Michelle has replied my last email. Reply in Yes or No.",
+  "reasoning": "Right, the user wants to know if Michelle has replied to their last email. I will fetch all emails, locate the most recent one from Michelle. I can see that Michelle Barnes replied on 13 December 2024 at 10:15 with subject \"Re: Action Items from Team Review.\" Since this message exists, I will respond to the user contains \"Yes.\"",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reference_time_str": "Today is Sunday, December 15, 2024 or 2024-12-15T17:40:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Agent uses a tool to retrieve emails (get_all or search)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"get_all_emails\", \"search_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Tool result includes Michelle Barnes’ most recent email as of Dec 13\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"michelle.barnes@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Re: Action Items from Team Review\",\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-13T10:15:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,  # Dependent on the tool use\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2: Agent tells user whether Michelle has replied\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Yes\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to be prepared for the coming work week and want to see if Michelle has emailed with any updates. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-15T17:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

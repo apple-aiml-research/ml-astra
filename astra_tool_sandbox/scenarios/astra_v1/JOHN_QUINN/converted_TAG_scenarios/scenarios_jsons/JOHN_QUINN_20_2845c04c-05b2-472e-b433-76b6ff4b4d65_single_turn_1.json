@@ -1,0 +1,127 @@
+{
+  "task_id": "2845c04c-05b2-472e-b433-76b6ff4b4d65",
+  "plot_id": 20,
+  "plot_summary": "John Quinn is the protagonist. On Friday, July 26, 2024 at 11:30am, Ali Amin, Alisa Borhman, Akira Muramoto were involved. John invites his friends to a 'history brunch' on Sunday late morning.  1. John messages his friends in a group chat, suggesting that they could meet up for a 'history brunch' at the local Egg & Bagel cafe to discuss post-Napoleonic history. 2. Ali enthusiastically replies in the group chat with everyone. 3. Alisa also replies agreeing in the group chat with everyone. 4. Alisa sends a separate message only to John asking him to make sure it does not devolve into John and Ali monopolizing the conversation with a focus on military history. 5. Akira does not respond to the group chat but writes to John separately saying he's not really interested, sounding slightly exasperated. 6. John answers separately to each of the 3 message threads (group chat with everyone, Alice, Akira). 7. John makes an invite for the brunch adding the people who accepted ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_20",
+    "contact",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what day your History Brunch is scheduled for.",
+  "reference_time": "2024-07-26T13:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that their event 'History Brunch' at Egg & Bagel cafe, San José, CA will take place at 11:00- 13:00 on July 28th.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_20_2845c04c-05b2-472e-b433-76b6ff4b4d65_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "History Brunch",
+      "start_datetime_iso": "2024-07-28T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-28T13:00:00-07:00",
+      "attendees_names": [
+        "Ali Amin",
+        "Alisa Bohrman",
+        "John Quinn"
+      ],
+      "location": "Egg & Bagel cafe, San José, CA",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-26T12:05:00-07:00",
+      "notes": "Meeting up with Ali and Alisa to discuss post-Napoleonic history over brunch at Egg & Bagel cafe."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ali",
+      "last_name": "Amin",
+      "full_name": "Ali Amin",
+      "phone_number": "408-555-0134",
+      "alias": "Ali",
+      "email": "ali.amin@historybuffs.org",
+      "relationship": "Friend",
+      "address": "160 History Ln, San José, CA 95110",
+      "company": "History Buffs Inc.",
+      "job_title": "Historical Consultant",
+      "is_self": false,
+      "birthday": "1988-10-10T00:00:00-07:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Alisa",
+      "last_name": "Borhman",
+      "full_name": "Alisa Borhman",
+      "phone_number": "408-555-0136",
+      "alias": "Alisa",
+      "email": "alisa.borhman@historicalmuseums.org",
+      "relationship": "School Friend",
+      "address": "170 Past Ave, San José, CA 95132",
+      "company": "San José Historical Museum",
+      "job_title": "Curator",
+      "is_self": false,
+      "birthday": "1998-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "query": "When is my event with Ali and Alisa?",
+  "reasoning": "The user wants to know when their event with Ali and Alisa is. I should first figure out who All and Alisa are. I should check the user's Contacts. \nLooks like there is only one Ali, Ali Amin, and one Alisa, Alisa Bohrman, in the user's Contacts so these must be the people the user meant. \nNext I will check the user's Calendar for an event with these people. Looks like there is only one, the History Brunch, from 11:00-13:00 on the 28 July 2024. I will let the user know. ",
+  "milestones": "[\n                # Milestone 0 – The agent tries to retrieve calendar information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the History Brunch event was actually returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"History Brunch\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-28T11:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # Parse output of the calendar search\n                        )\n                    ],\n                ),\n                # Milestone 2 – The user is informed about the date and the start time of the event\n                Milestone(\n                    snapshot_constraints=[\n                        # Check date mention\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"July 28\",\n                                            \"Jul 28\",\n                                            \"28 July\",\n                                            \"7-28\",\n                                            \"07-28\",\n                                            \"7/28\",\n                                            \"07/28\",\n                                            \"the 28th\",\n                                            \"Sunday\",\n                                            \"day after tomorrow\",\n                                            \"2024-07-28T11:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                        # Check time mention\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"11:00\", \"11 am\", \"11am\", \"11 a.m.\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar tool usage → confirm event retrieved\n                (1, 2),  # Event retrieved → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"get_all_contacts\",   # plausible fallback to resolve attendee names if needed\n    \"search_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know what day your History Brunch is scheduled for. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-26T13:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

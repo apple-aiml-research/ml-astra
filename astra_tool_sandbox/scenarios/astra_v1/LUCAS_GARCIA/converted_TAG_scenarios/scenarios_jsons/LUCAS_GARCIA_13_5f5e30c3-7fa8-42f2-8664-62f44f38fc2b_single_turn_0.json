@@ -1,0 +1,96 @@
+{
+  "task_id": "5f5e30c3-7fa8-42f2-8664-62f44f38fc2b",
+  "plot_id": 13,
+  "plot_summary": "Lucas Garcia is the protagonist. On Sunday, December 8, 2024 at 10 am, Megan Johnson were involved. Lucas hosts an online fitness class for Megan and other participants. YouTube video of the session is uploaded and shared with participants for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_13",
+    "messaging",
+    "whatsapp_messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You can't remember if you included the link in the message to Megan.",
+  "reference_time": "2024-12-08T12:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed they sent the link to Megan Johnson.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_13_5f5e30c3-7fa8-42f2-8664-62f44f38fc2b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Online Fitness Class Feedback",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "megan.johnson@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Sure thing! Here's the link: https://www.youtube.com/watch?v=FITNESSSESSION123. Feel free to share it with your friends too. I'm eager to hear your feedback.",
+      "creation_datetime_iso": "2024-12-08T12:10:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Megan",
+      "last_name": "Johnson",
+      "full_name": "Megan Johnson",
+      "phone_number": "+1 12345-6789-1000-3210",
+      "alias": "Online Class Student",
+      "email": "megan.johnson@example.com",
+      "relationship": "Online fitness class student",
+      "address": "56 Fitness Way, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1995-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Did I send Megan the link to the practice recording?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know if they sent Megan the link to the practice recording? I should first figure out who Megan is. \nFirst I will check the user's Contacts for a Megan. Looks like there is only one, Megan Johnson, so this must be who the user means. Next I will check for any messages to Megan. Hmm, I don't see any texts with Megan in Messages I should check WhatsApp. Hmm, I don't see any there either. \nIn Megan's contact card the alias is set as online class student. I saw a group chat in Messages called Online Fitness Class Feedback. I should check that for any messages to Megan. There is one sent at 12:10 on the 8 December 2024 that says 'Sure thing! Here's the link: https://www.youtube.com/watch?v=FITNESSSESSION123. Feel free to share it with your friends too. I'm eager to hear your feedback.'\nI will let the user know they have sent the link to Megan. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks through existing messages to determine whether a link was sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Agent informs the user that the link was indeed sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"you sent the link\",\n                                            \"you already sent\",\n                                            \"yes, you sent\",\n                                            \"looks like you sent\",\n                                            \"you did send\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n    \"get_all_whatsapp_messages\",\n    \"search_whatsapp_messages\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You can't remember if you included the link in the message to Megan. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\"]",
+  "is_read_time": "2024-12-08T12:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,113 @@
+{
+  "task_id": "026c2fdb-260e-4ae1-81ad-395a7e6b7a09",
+  "plot_id": 4,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Morning, July 23, 2024 at 9 am, Kevin Chen were involved. One-on-one meeting with Kevin to discuss project progress ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_4",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send an email to Kevin Chen following up on your One-on-one meeting earlier in the day.",
+  "reference_time": "2024-07-23T10:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email with the subject 'Thanks' is sent to Kevin Chen, saying \"Thanks for the input today Kevin. I feel we made really productive progress. See you soon.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_4_026c2fdb-260e-4ae1-81ad-395a7e6b7a09_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Agenda for Upcoming One-on-One Meeting",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "kevin.chen@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-16T09:05:00-07:00",
+      "body": "Hi Kevin,\n\nI've scheduled our one-on-one meeting for July 23, 2024, at 9:00 AM to discuss the progress and next steps for our project. Please let me know if you have any specific points you'd like to cover.\n\nBest,\nTheo",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "One-on-one Project Discussion",
+      "start_datetime_iso": "2024-07-23T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-23T10:00:00-07:00",
+      "attendees_names": [
+        "Kevin Chen",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-16T09:00:00-07:00",
+      "notes": "Meeting with Kevin to discuss the progress and updates on the current project tasks and deadlines."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you send an email to my manager with the subject 'Thanks' saying \"Thanks for the input today Kevin. I feel we made really productive progress. See you soon.\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send an email to their manager. Let me figure out who the manager is. In the user's contacts, I see the name 'Kevin Chen' with the relationship 'Manager'. The user wants to include the following in the email: \"Thanks for the input today Kevin. I feel we made really productive progress. See you soon.\". This is what I will include in the e-mail body. ",
+  "milestones": "[\n                # Milestone 0 – Agent uses a contacts-retrieval tool to locate Kevin\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the tool output contained Kevin Chen’s contact details\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Kevin Chen\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"kevin.chen@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – An email thanking Kevin is sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"kevin.chen@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"Thanks for the input today Kevin. I feel we made really productive progress. See you soon.\",\n                                    \"creation_datetime_iso\": \"2024-07-23T10:05:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send an email to Kevin Chen following up on your One-on-one meeting earlier in the day. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-07-23T10:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

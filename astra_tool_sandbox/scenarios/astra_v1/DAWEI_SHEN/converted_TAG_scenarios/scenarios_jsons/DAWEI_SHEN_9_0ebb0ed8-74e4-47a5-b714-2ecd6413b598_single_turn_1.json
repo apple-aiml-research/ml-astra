@@ -1,0 +1,83 @@
+{
+  "task_id": "0ebb0ed8-74e4-47a5-b714-2ecd6413b598",
+  "plot_id": 9,
+  "plot_summary": "Dawei Shen is the protagonist. On Friday, December 6, 2024 at 10 am, self, Jeff Bing were involved. Jeff calls Dawei to invite him to a tech panel he's hosting in Orchard County next Tuesday. Dawei agrees to attend and blocks the time in his calendar. Dawei receives an email with panel details.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_9",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know how many events you have on early in the morning next week.",
+  "reference_time": "2024-12-06T12:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The assistant replies: \"You have two events in the morning next week\"",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_9_0ebb0ed8-74e4-47a5-b714-2ecd6413b598_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Jeff Bing",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room B, Orchard Tech HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-01T12:00:00-08:00",
+      "notes": "Monthly team review to discuss project progress and assign new action items."
+    }
+  ],
+  "contacts": [],
+  "phonecalls": [],
+  "query": "I'd like to know if I have any early morning events next week please, how many",
+  "functional_complexity": "low",
+  "informational_complexity": "moderate",
+  "referential_complexity": "low",
+  "reasoning": "The user wants to know if they have any \"early morning\" events next week and the count.\n\nI will look at their calendar for next week. There are two events, both of which begin in the morning: \"Tech Panel Hosted by Jeff Bing\" at 09:00 on Tuesday, December 10 2024, and \"Team Review Meeting\" at 10:00 on Friday, December 13 2024. Because those are early-morning times, the correct yes/no reply is: \"No, your early mornings are not free next week; you have two events …\". I will answer with that information.",
+  "reference_time_str": "Today is Friday, December 6, 2024 or 2024-12-06T12:05:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Calendar information is retrieved with an appropriate tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The user is informed about the two early-morning events next week\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Tech Panel Hosted by Jeff Bing\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-10T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – Calendar information is retrieved with an appropriate tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 – The user is informed about the two early-morning events next week\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Team Review Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-13T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=2,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 – The user is informed about the two early-morning events next week\n                Milestone(\n                    snapshot_constraints=[\n                        # Message states that there are two events (accepts either “two” or “2”)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"two\", \"2\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (2, 3), (1, 4), (3, 4)]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know how many events you have on early in the morning next week. ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-06T12:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

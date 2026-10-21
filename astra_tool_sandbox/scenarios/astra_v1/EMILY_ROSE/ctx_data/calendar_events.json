@@ -1,0 +1,304 @@
+{
+    "1": [
+        {
+            "calendar_name": "work",
+            "title": "Event Planning Meeting with Jenna",
+            "description": "Discuss details and logistics for the upcoming charity event.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-02T09:00:00",
+            "end_time": "2024-12-02T10:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Jenna Miles"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2023-11-01T08:00:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Event Coordination Meeting with Michael",
+            "description": "Finalize event schedule and assign responsibilities.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-02T10:30:00",
+            "end_time": "2024-12-02T11:30:00",
+            "invitees": [
+                "Emily Rose",
+                "Michael Thompson"
+            ],
+            "reminder": "1 hour",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2023-11-01T08:15:00"
+        }
+    ],
+    "3": [
+        {
+            "calendar_name": "work",
+            "title": "Community Clean-Up",
+            "description": "Organizing and executing the community clean-up event. Volunteers should bring gloves, trash bags, and rakes.",
+            "location": "Orchard Park",
+            "start_time": "2024-12-07T09:00:00",
+            "end_time": "2024-12-07T12:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Theo Appleseed",
+                "Community Volunteers"
+            ],
+            "reminder": "1 day",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-03T14:00:00"
+        }
+    ],
+    "4": [
+        {
+            "calendar_name": "work",
+            "title": "Gardening Project Coordination Meeting",
+            "description": "Meeting with Ben and Lucas to organize tools and equipment for the gardening project at the local park.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-06T15:00:00",
+            "end_time": "2024-12-06T16:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Ben Rose",
+                "Lucas Jones"
+            ],
+            "reminder": "1 hour",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-04T15:18:00"
+        }
+    ],
+    "6": [
+        {
+            "calendar_name": "family",
+            "title": "Family Christmas Eve Gathering",
+            "description": "Join the family for a festive Christmas Eve gathering with dinner and games at our house.",
+            "location": "123 Community Lane, Orchard County, CA 95662, USA",
+            "start_time": "2024-12-24T18:00:00",
+            "end_time": "2024-12-24T22:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Sarah Rose",
+                "Ben Rose",
+                "Linda Rose"
+            ],
+            "reminder": "1 day",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-05T10:00:00"
+        },
+        {
+            "calendar_name": "family",
+            "title": "Winter Wonderland Charity Event",
+            "description": "Participate in the Winter Wonderland charity event to support community engagement.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-15T14:00:00",
+            "end_time": "2024-12-15T18:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Sarah Rose"
+            ],
+            "reminder": "2 days",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-05T10:10:00"
+        },
+        {
+            "calendar_name": "family",
+            "title": "Holiday Food Drive Volunteering",
+            "description": "Volunteer at the local food drive to assist those in need during the holiday season.",
+            "location": "Orchard Community Food Bank",
+            "start_time": "2024-12-20T09:00:00",
+            "end_time": "2024-12-20T12:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Sarah Rose"
+            ],
+            "reminder": "1 day",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-05T10:20:00"
+        }
+    ],
+    "7": [
+        {
+            "calendar_name": "work",
+            "title": "Meeting with Oliver Green for Community Gathering Refreshments",
+            "description": "Discuss and finalize the refreshment order for the upcoming community gathering at Oliver's cafe.",
+            "location": "Daily Brew Cafe, Orchard County",
+            "start_time": "2024-12-05T16:00:00",
+            "end_time": "2024-12-05T17:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Oliver Green"
+            ],
+            "reminder": "1 hour",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-05T15:00:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Community Gathering Event",
+            "description": "Organize and execute the upcoming community gathering with confirmed refreshments provided by Daily Brew Cafe.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-20T14:00:00",
+            "end_time": "2024-12-20T17:00:00",
+            "invitees": [
+                "Community Members",
+                "Event Volunteers"
+            ],
+            "reminder": "2 days",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-05T17:30:00"
+        }
+    ],
+    "9": [
+        {
+            "calendar_name": "work",
+            "title": "Holiday Party Setup with Nathan Blake",
+            "description": "Assist with event setup for the community holiday party. Capture photos for community sharing.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-07T11:00:00",
+            "end_time": "2024-12-07T14:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Nathan Blake"
+            ],
+            "reminder": "1 hour",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-06T10:00:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Community Holiday Party",
+            "description": "Join the community for a festive holiday party. Refreshments and activities will be provided.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-20T17:00:00",
+            "end_time": "2024-12-20T20:00:00",
+            "invitees": [
+                "Community Members",
+                "Event Volunteers",
+                "Nathan Blake"
+            ],
+            "reminder": "2 days",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-07T14:30:00"
+        }
+    ],
+    "13": [
+        {
+            "calendar_name": "work",
+            "title": "Student Engagement Activity Planning",
+            "description": "Team meeting with Jenna and Matt to plan student engagement activities.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-09T16:00:00",
+            "end_time": "2024-12-09T17:30:00",
+            "invitees": [
+                "Emily Rose",
+                "Jenna Miles",
+                "Matt Duncan"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2023-11-01T08:30:00"
+        }
+    ],
+    "15": [
+        {
+            "calendar_name": "work",
+            "title": "Taste Testing Session for Community Event Menu",
+            "description": "Finalizing the community event menu with Elaine Perkins. Menus will be finalized and digital tasting notes saved.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-11T13:00:00",
+            "end_time": "2024-12-11T15:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Elaine Perkins"
+            ],
+            "reminder": "1 hour",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-10T12:00:00"
+        }
+    ],
+    "18": [
+        {
+            "calendar_name": "work",
+            "title": "Meeting with Daniel Kim at Local Cafe",
+            "description": "Discuss and confirm menu and resource support for the upcoming community events.",
+            "location": "Local Cafe, Orchard County",
+            "start_time": "2024-12-14T12:00:00",
+            "end_time": "2024-12-14T13:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Daniel Kim"
+            ],
+            "reminder": "1 hour ahead",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-10T14:00:00"
+        }
+    ],
+    "19": [
+        {
+            "calendar_name": "work",
+            "title": "Technical Setup for Community Event",
+            "description": "Setting up the sound system with Tim Brooks for the upcoming community event.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-15T11:00:00",
+            "end_time": "2024-12-15T13:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Tim Brooks"
+            ],
+            "reminder": "1 hour",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2023-11-01T08:45:00"
+        }
+    ],
+    "20": [
+        {
+            "calendar_name": "work",
+            "title": "Educational Activities Coordination Meeting",
+            "description": "Coordinating with Linda Kim on educational activities schedule at the local school.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-16T09:00:00",
+            "end_time": "2024-12-16T10:00:00",
+            "invitees": [
+                "Emily Rose",
+                "Linda Kim"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2023-11-01T08:00:00"
+        }
+    ],
+    "21": [
+        {
+            "calendar_name": "work",
+            "title": "Photo Review Session with James Baldwin",
+            "description": "Session to review and select photographs from the community holiday event.",
+            "location": "Orchard County Community Center",
+            "start_time": "2024-12-17T14:00:00",
+            "end_time": "2024-12-17T15:30:00",
+            "invitees": [
+                "Emily Rose",
+                "James Baldwin"
+            ],
+            "reminder": "1 hour",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-12-10T10:00:00"
+        }
+    ]
+}

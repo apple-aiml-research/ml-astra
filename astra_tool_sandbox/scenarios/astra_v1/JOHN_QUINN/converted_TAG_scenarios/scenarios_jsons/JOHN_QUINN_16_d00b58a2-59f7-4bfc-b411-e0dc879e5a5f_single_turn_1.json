@@ -1,0 +1,95 @@
+{
+  "task_id": "d00b58a2-59f7-4bfc-b411-e0dc879e5a5f",
+  "plot_id": 16,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 5:45pm, Julie Patterson were involved. Julie asks John asking him to water her plant while she's on leave  1. Julie emails John to let him know that she needs to take urgent leave of absence next week and asks if he could water her plants while she's way. 2. John agrees, but asks more information about which plants she means and what is the proper care they need. 3. Julie mentions the 3 different plant she has at work and asks him to water them on Tuesday and Friday. 4. John agrees and adds the relevant calendar reminders on his phone. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_16",
+    "contact",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what Julie Patterson said in her last email.",
+  "reference_time": "2024-07-24T22:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email sent from julie.patterson@palantir.com on July 24th at 18:15 is read aloud.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_16_d00b58a2-59f7-4bfc-b411-e0dc879e5a5f_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Request for Plant Care During My Leave",
+      "sender_address": "julie.patterson@palantir.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-24T18:15:00-07:00",
+      "body": "Hi John, Thanks so much! There are three plants: a fern, a spider plant, and a succulent. The fern and spider plant need watering on Tuesday and Friday, but the succulent only needs water on Friday. Let me know if you need anything else. Best, Julie",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Read the last email from Julie Patterson.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to hear the last email from Julie Patterson. I will find the last email she sent. I will read it out loud.",
+  "milestones": "[\n                # Milestone 0 – An email-retrieval tool was invoked\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The tool call returned Julie Patterson’s last email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"julie.patterson@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-24T18:15:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent conveyed the email content to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"fern\",\n                                            \"three plants\",\n                                            \"water on Tuesday and Friday\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list_runtime": "[\"get_all_emails\", \"search_emails\"]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know what Julie Patterson said in her last email. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-07-24T22:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

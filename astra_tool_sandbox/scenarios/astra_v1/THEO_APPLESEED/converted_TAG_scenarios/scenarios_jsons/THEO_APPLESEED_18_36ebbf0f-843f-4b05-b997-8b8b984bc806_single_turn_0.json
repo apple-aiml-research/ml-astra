@@ -1,0 +1,93 @@
+{
+  "task_id": "36ebbf0f-843f-4b05-b997-8b8b984bc806",
+  "plot_id": 18,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Evening, July 27, 2024 at 6 pm, Emily Rose, Neighbors were involved. Neighborhood gathering Meeting neighbors and engaging in community activities",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_18",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to dictate a reply to Emily apologising for being late to the neighborhood gathering event.",
+  "reference_time": "2024-07-27T18:10:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A reply message is sent to Emily Rose with the text \"Apologies for being late to the party.\""
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_18_36ebbf0f-843f-4b05-b997-8b8b984bc806_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "send_message",
+    "search_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "emily.rose@example.com",
+      "content": "That sounds wonderful. The more, the merrier!",
+      "creation_datetime_iso": "2024-07-24T11:30:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "1234-5678-9109",
+      "alias": "Em",
+      "email": "emily.rose@example.com",
+      "relationship": "Neighbor",
+      "address": "128 Neighborly St, Orchard County, CA",
+      "company": "Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": false,
+      "birthday": "1985-06-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "query": "I want to dictate a message reply to Emily Rose saying \"Apologies for being late to the party.\"",
+  "reasoning": "The user wants to dictate a reply to the contact called Emily Rose.\n\nI should locate the message history with this contact by searching their name in the user's Messages and then start a draft reply.\n\nAs the user has dictated exactly what they want to say: \"Apologies for being late to the party.\". I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the message if the user confirms that the message was transcribed correctly.",
+  "milestones": "[\n                # Milestone 0 – Agent tries to locate Emily (either through the contact list or existing messages)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new message is sent that apologises for being late\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [(\"emily.rose@example.com\", \"1234-5678-9109\")]\n                                    ],\n                                    \"content\": \"Apologies for being late to the party.\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-27T18:10:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,  # must include Emily\n                                \"content\": column_contains_similarity,  # must contain apology text\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with pre-task state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox traces when checking DB change\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_messages\",\n    \"get_all_messages\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to dictate a reply to Emily apologising for being late to the neighborhood gathering event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"send_message\", \"search_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-07-27T18:10:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,90 @@
+{
+  "task_id": "f0e409ac-adae-4a8f-984c-9204c5986c12",
+  "plot_id": 8,
+  "plot_summary": "Lucas Garcia is the protagonist. On Thursday, December 5, 2024 at 2 pm, Maria Garcia were involved. Lucas has a video call with his mother to catch up and discuss family updates. Video call logs are saved, and Maria sends an email with family pictures.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_8",
+    "contact",
+    "phone_call",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have limited phone minutes, you need to keep track of your calls.",
+  "reference_time": "2024-12-05T17:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Duration of call with Maria Garcia on +1 12345-6789-1000-8765, on December 5 2024 14:00 is confirmed as 20 minutes.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_8_f0e409ac-adae-4a8f-984c-9204c5986c12_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_phone_calls",
+    "search_phonecall_logs"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Garcia",
+      "full_name": "Maria Garcia",
+      "phone_number": "+1 12345-6789-1000-8765",
+      "alias": "Mom",
+      "email": "maria.garcia@example.com",
+      "relationship": "Mother",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County School District",
+      "job_title": "School Teacher",
+      "is_self": false,
+      "birthday": "1965-03-10T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "outgoing",
+      "caller_address": "+1 12345-6789-1000-1234",
+      "receiver_address": "+1 12345-6789-1000-8765",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-12-05T14:00:00-08:00",
+      "duration_in_hms": "00:20:00"
+    }
+  ],
+  "referential_complexity": "moderate",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "query": "How long was the call with my mother today?",
+  "reasoning": "The user is asking about the duration of a call.\nFirst, I should identify the person being referred to by looking through their contacts.\nI can see that Maria Garcia is tagged as mother, Maria Garcia's phone number is saved as  +1 12345-6789-1000-8765. There are no other potential matches.\nNext, I will look through the user's call logs.\nI see only one call made today, December 05 2024.  A call was made to  +1 12345-6789-1000-8765 at 14:00. This matches Maria Garcia's phone number and must be the call being queried.\nI should inform the user that this call had a duration of 20 minutes.",
+  "milestones": "[\n                # Milestone 0 — Agent invokes a contact-lookup tool to identify “mother”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 — The lookup result actually contains Maria Garcia (mother)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Maria Garcia\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 12345-6789-1000-8765\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 — Agent invokes a phone-log lookup tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 — The retrieved call log matches Maria’s number and 20-minute duration\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"receiver_address\": {\n                                                \"value\": \"+1 12345-6789-1000-8765\",\n                                                \"partial\": False,\n                                            },\n                                            \"duration_in_hms\": {\n                                                \"value\": \"00:20:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=2,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 — Agent’s reply to the user contains the correct 20-minute duration\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"20 minutes\",\n                                            \"20 mins\",\n                                            \"20 min\",\n                                            \"00:20:00\",\n                                            \"0:20\",\n                                            \"0h20\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # contact lookup → verify Maria\n                (1, 2),  # after identifying mother, search phone logs\n                (2, 3),  # phone-log lookup → verify correct call\n                (3, 4),  # finally respond to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_phonecall_logs\",\n    \"get_all_phone_calls\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You have limited phone minutes, you need to keep track of your calls. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_phone_calls\", \"search_phonecall_logs\"]",
+  "is_read_time": "2024-12-05T17:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

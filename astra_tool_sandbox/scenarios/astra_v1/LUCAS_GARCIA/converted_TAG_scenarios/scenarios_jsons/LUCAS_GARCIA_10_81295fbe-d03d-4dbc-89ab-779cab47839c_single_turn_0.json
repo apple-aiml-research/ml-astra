@@ -1,0 +1,133 @@
+{
+  "task_id": "81295fbe-d03d-4dbc-89ab-779cab47839c",
+  "plot_id": 10,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 6 pm, David Turner were involved. Lucas goes surfing with David at the local beach. Message between Lucas and David and meet up the beach for their surfing session via WhatsApp.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_10",
+    "whatsapp_messaging",
+    "contact",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send another WhatsApp message to David Turner saying \"surf's up brah, let's curl the biggest wave and rip the fattest cloud and ride the last gnar.  \"",
+  "reference_time": "2024-12-06T17:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A whatsapp message is sent to David Turner saying \"surf's up brah, let's curl the biggest wave and rip the fattest cloud and ride the last gnar.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_10_81295fbe-d03d-4dbc-89ab-779cab47839c_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "David Turner",
+      "sender_address": "+1 12345-6789-1000-9876",
+      "creation_datetime_iso": "2024-12-06T16:45:00-08:00",
+      "content": "Sounds perfect. I'll bring the surfboards. See you there!",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "Coach Lucas",
+      "sender_address": "+1 12345-6789-1000-1234",
+      "creation_datetime_iso": "2024-12-06T16:50:00-08:00",
+      "content": "Awesome, David. Looking forward to it! Let's make the most of the day.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Surfing Session with David",
+      "start_datetime_iso": "2024-12-06T18:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T19:30:00-08:00",
+      "attendees_names": [
+        "David Turner",
+        "Lucas Garcia"
+      ],
+      "location": "Local Beach, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-05T16:00:00-08:00",
+      "notes": "Lucas and David meet at the local beach for a surfing session."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "WhatsApp David again and say 'surf's up brah, let's curl the biggest wave and rip the fattest cloud and ride the last gnar.'",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message via WhatsApp to David. Looking in WhatsApp, I can see that the user has been messaging David Turner so I'll send the message to him.",
+  "milestones": "[\n                # Milestone 0 – a new WhatsApp message was sent to David Turner with the requested text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Ensure David’s address is among the participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"david.turner@example.com\",\n                                                \"+1 12345-6789-1000-9876\",\n                                            )\n                                        ]\n                                    ],\n                                    # Check that the required phrase appears in the content\n                                    \"content\": \"surf's up brah\",\n                                    \"creation_datetime_iso\": \"2024-12-06T17:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_whatsapp_messages\",\n    \"get_all_whatsapp_messages\",\n    \"send_whatsapp_message\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to send another WhatsApp message to David Turner saying \"surf's up brah, let's curl the biggest wave and rip the fattest cloud and ride the last gnar. \" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\"]",
+  "is_read_time": "2024-12-06T17:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

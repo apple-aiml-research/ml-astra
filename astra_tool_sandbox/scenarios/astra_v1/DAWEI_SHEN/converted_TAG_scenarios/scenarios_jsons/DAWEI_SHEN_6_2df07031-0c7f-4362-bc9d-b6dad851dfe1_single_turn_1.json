@@ -1,0 +1,105 @@
+{
+  "task_id": "2df07031-0c7f-4362-bc9d-b6dad851dfe1",
+  "plot_id": 6,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 3, 2024 at 8 pm, self, Hua Shen, Yuting Tao were involved. Dawei receives a video call from his parents in Shanghai to catch up on the week. They talk about their holiday plans. Dawei promises to email them flight details for his trip to Shanghai later in the month.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_6",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "you have promised your parents thats you will send them on your flight details for your trip to Shanghai later in the month and want to set a reminder to do so.",
+  "reference_time": "2024-12-07T13:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event is created called 'flight details for Shanghai' with Yuting Tao and Hua Shen as invitees all day on 14th of December 2024",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_6_2df07031-0c7f-4362-bc9d-b6dad851dfe1_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Visit Details for Shanghai Trip",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "hua.shen@shenelectronics.cn",
+        "yuting.tao@retired.cn"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-03T21:00:00-08:00",
+      "body": "...",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Hua",
+      "last_name": "Shen",
+      "full_name": "Hua Shen",
+      "phone_number": "+86 123-456-7890-1234",
+      "alias": "Dad",
+      "email": "hua.shen@shenelectronics.cn",
+      "relationship": "Father",
+      "address": "88 Innovation Blvd, Shanghai, China",
+      "company": "Shen Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Yuting",
+      "last_name": "Tao",
+      "full_name": "Yuting Tao",
+      "phone_number": "+86 234-567-8901-2345",
+      "alias": "Mom",
+      "email": "yuting.tao@retired.cn",
+      "relationship": "Mother",
+      "address": "88 Innovation Blvd, Shanghai, China",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1967-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "incoming",
+      "caller_address": "+86 123-456-7890-1234",
+      "receiver_address": "+1 555-123-4567-8901",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-12-03T20:00:00-08:00",
+      "duration_in_hms": "00:30:00"
+    }
+  ],
+  "query": "Set up an event with my parents called Flight Details for Shanghai next Saturday, the whole day I mean. ",
+  "reasoning": "The user wants to set up an event with their family called Flight Details for Shanghai next Saturday for the whole day. As I was given the name that is already decided. From conversations on the device I can see that the mentioned flight details were talked about with the users parents Yuting Tao and Hua Shen. As they want the event to involve their family I assume that having their parents as invitees would work. As they want this to serve as a reminder and forwarding the details should be a quick job I will make the event all day so it is clearly visible and permeates the users schedule that day. and the day selected is next Saturday being the 14th of December. I will now create An event called 'flight details for Shanghai' with Yuting Tao and Hua Shen as invitees all day on 14th of December 2024",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reference_time_str": "Today is Saturday, December 7, 2024 or 2024-12-07T13:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – the agent looks up parents in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # M1: find Hua Shen\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Hua Shen\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # parse the results of the search done in milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – the agent looks up parents in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # M3: find Yuting Tao\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Yuting Tao\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,  # parse the results of the search done in milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 4 – calendar event “flight details for Shanghai” is created for 14 Dec 2024 with both parents invited\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"flight details\",\n                                    \"start_datetime_iso\": \"2024-12-14T00:\",  # substring match is fine\n                                    \"end_datetime_iso\": \"2024-12-14T23:\",  # substring match is fine\n                                    \"attendees_names\": [[\"Hua Shen\", \"Yuting Tao\"]],\n                                    \"creation_datetime_iso\": \"2024-12-07T13:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.MESSAGING,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (2, 3)]",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "create_calendar_event"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. you have promised your parents thats you will send them on your flight details for your trip to Shanghai later in the month and want to set a reminder to do so. ",
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-07T13:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

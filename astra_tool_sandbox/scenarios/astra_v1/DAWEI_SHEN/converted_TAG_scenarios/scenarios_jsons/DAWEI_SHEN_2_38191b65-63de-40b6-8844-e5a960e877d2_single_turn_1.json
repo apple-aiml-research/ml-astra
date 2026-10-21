@@ -1,0 +1,161 @@
+{
+  "task_id": "38191b65-63de-40b6-8844-e5a960e877d2",
+  "plot_id": 2,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 1, 2024 at 8 pm, self, Charles Wilde, Vickie Lee, Francis Wagner were involved. Dawei messages Charles and Vickie on WhatsApp to confirm theater rehearsal, and Francis shares a Google Doc with schedule updates. Vickie says she will be 20 minutes late and apologizes. Francis emails the doc to the group.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_2",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "contact",
+    "messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reschedule your virtual assistant discussion on Wednesday to 1:00 - 2:00 later in the day and send a message to Michelle and Theo telling them the discussion has been moved",
+  "reference_time": "2024-12-02T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event named \"Discussion on Virtual Assistant Algorithm Updates\" with Michelle Barnes and Theo Appleseed is moved from 10:00-11:00 on 4 December 2024 to 1:00-2:00 on 4 December 2024",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. A message is sent to Michelle Barnes and Theo Appleseed saying \"Just letting you know I had to reschedule the meeting to 1:00 pm on Wednesday.\"",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_2_38191b65-63de-40b6-8844-e5a960e877d2_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Revised Draft for Virtual Assistant Algorithm",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "theo.appleseed@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "body": "Hi Dawei, I've attached the revised draft for the virtual assistant algorithm. Please review and let us know your thoughts. Best, Michelle",
+      "attachments": [
+        "Revised_Algorithm_Draft.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Revised Draft for Virtual Assistant Algorithm",
+      "sender_address": "theo.appleseed@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com",
+        "michelle.barnes@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T09:15:00-08:00",
+      "body": "Hi all, I suggest adding an additional improvement to the section on user interaction. I've noted this in the draft attached. Cheers, Theo",
+      "attachments": [
+        "Revised_Algorithm_Draft_with_Comments.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Revised Draft for Virtual Assistant Algorithm",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "michelle.barnes@orchardtech.com",
+        "theo.appleseed@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T09:30:00-08:00",
+      "body": "Thanks, Michelle and Theo. I've reviewed the draft and your comments. I approve the changes. Let's schedule a meeting for Wednesday to discuss further. Best, Dawei",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Discussion on Virtual Assistant Algorithm Updates",
+      "start_datetime_iso": "2024-12-04T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T09:35:00-08:00",
+      "notes": "Meeting to discuss further updates on the virtual assistant algorithm based on the recent feedback."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Theo",
+      "email": "theo.appleseed@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Scientist",
+      "is_self": false,
+      "birthday": "1985-12-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants me to move Wednesday's discussion to 1:00 later in the afternoon and message Michelle and Theo about it, so first I must determine which discussion he is referring to. I will look at the user's calendar. There is only one event scheduled for Wednesday prior to 1:00 titled \"Discussion on Virtual Assistant Algorithm Updates,\" so I can assume this is the event the user wishes me to move. I have moved the event to 1:00-2:00 on 4 December.\n\nNow I must message Michelle and Theo about it. I will check the event details to confirm the attendee list. Dawei Shen (the organizer), Michelle Barnes, and Theo Appleseed are listed as attendees. I will draft a group-chat message that includes all three participants saying something like \"Just letting you know I had to reschedule the meeting to 1:00 pm on Wednesday.\" Once the user approves, I will send the message.",
+  "query": "Move Wednesday's discussion to 1 o'clock later in the afternoon and message Michelle and Theo in a group chat about it",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reference_time_str": "Today is Monday, December 2, 2024 or 2024-12-02T10:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Agent uses get_all_calendars or search_calendar_events to find the existing event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_calendars\",\n                                        \"search_calendar_events\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Verify that event with correct name and attendees exists\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Discussion on Virtual Assistant Algorithm Updates\",\n                                                \"partial\": False,\n                                            },\n                                            \"attendees_names\": {\n                                                \"value\": [\n                                                    \"Dawei Shen\",\n                                                    \"Michelle Barnes\",\n                                                    \"Theo Appleseed\",\n                                                ],\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-04T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2: Modify the calendar event to be from 1:00pm to 2:00pm\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Discussion on Virtual Assistant Algorithm Updates\",\n                                    \"start_datetime_iso\": \"2024-12-04T13:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-04T14:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-02T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.MESSAGING],\n                ),\n                # Milestone 3: Send a message to Michelle and Theo\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"michelle.barnes@orchardtech.com\",\n                                                \"+1 555-012-3456-7890\",\n                                            ),\n                                            (\n                                                \"theo.appleseed@orchardtech.com\",\n                                                \"+1 555-789-0123-4568\",\n                                            ),\n                                            (\n                                                \"+1 555-123-4567-8901\",\n                                                \"dawei.shen@orchardtech.com\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": [(\"1:00\", \"13:00\", \"1 pm\", \"1pm\")],\n                                    \"creation_datetime_iso\": \"2024-12-02T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_str_contains_any_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # search for calendar\n                (1, 2),  # modify the calendar\n            ]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "create_calendar_event",
+    "modify_calendar_event",
+    "remove_calendar_event",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to reschedule your virtual assistant discussion on Wednesday to 1:00 - 2:00 later in the day and send a message to Michelle and Theo telling them the discussion has been moved ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"create_calendar_event\", \"modify_calendar_event\", \"remove_calendar_event\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-02T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

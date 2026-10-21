@@ -1,0 +1,108 @@
+{
+  "task_id": "ac7369f1-dd6b-4343-860a-c5c4bbc9e5cf",
+  "plot_id": 9,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 11 am, Sarah Lopez were involved. Lucas consults with Sarah regarding dietary plans for his gym clients. Emails are exchanged with dietary plans and recommendations.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_9",
+    "contact",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You're organizing a reunion brunch for your old high school football team and can't remember if you sent the email about it to your teammate Emmanuel.   You want to make sure you did, so he doesn't miss out on it.",
+  "reference_time": "2024-12-05T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The email sent to Emmanuel Gonzales from the user, on December 4th, 2024, 10:00, is shown to the user. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_9_ac7369f1-dd6b-4343-860a-c5c4bbc9e5cf_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Reunion Brunch Plans - December 12, 2024",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "emmanuel.gonzales@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-04T10:00:00-08:00",
+      "body": "Hi Emmanuel,\n\nI'm organizing a reunion brunch for our high school football team on Thursday, December 12th at 10 am. It will be at The Orchard Cafe in Orchard County. It would be great to catch up and relive some of the old memories with the team.\n\nLooking forward to seeing you there!\n\nBest,\nLucas",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Emmanuel",
+      "last_name": "Gonzales",
+      "full_name": "Emmanuel Gonzales",
+      "phone_number": "+1 12345-6789-1000-1357",
+      "alias": "High School Friend",
+      "email": "emmanuel.gonzales@example.com",
+      "relationship": "High School friend",
+      "address": "78 Old School Rd, Orchard County, CA, USA",
+      "company": "Orchard County High School",
+      "job_title": "Football Coach",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Lopez",
+      "full_name": "Sarah Lopez",
+      "phone_number": "+1 12345-6789-1000-9630",
+      "alias": "Dietitian Consultant",
+      "email": "sarah.lopez@example.com",
+      "relationship": "Dietitian consultant",
+      "address": "12 Nutrition Blvd, Orchard County, CA, USA",
+      "company": "Healthy Choices Nutrition",
+      "job_title": "Dietitian",
+      "is_self": false,
+      "birthday": "1985-11-02T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Need to check if I sent an email to Emmanuel. ",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know if they sent an email to Emmanuel. I wonder who that is. I'll check their contacts to figure it out. I see one contact with that name, Emmanuel Gonzales. It must be him. I'll check the users mail to see if they sent an email to that person. I see the user sent an email to Emmanuel on December 4th at 10:00. I'll show that email to the user now. ",
+  "milestones": "[\n                # Milestone 0 – The agent invokes an email-searching tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The previously sent brunch invitation to Emmanuel is present\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Reunion Brunch Plans - December 12, 2024\",\n                                                \"partial\": False,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": [\n                                                    \"emmanuel.gonzales@example.com\"\n                                                ],\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-04T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent informs the user, referencing the found email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Reunion Brunch Plans\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You're organizing a reunion brunch for your old high school football team and can't remember if you sent the email about it to your teammate Emmanuel.  You want to make sure you did, so he doesn't miss out on it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-05T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

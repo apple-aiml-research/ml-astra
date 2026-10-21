@@ -1,0 +1,222 @@
+{
+    "4": [
+        {
+            "conversation_name": "Gardening Project Coordination",
+            "participants": [
+                "+1 530-555-0123",
+                "+1 530-555-0125",
+                "+1 530-555-0141"
+            ],
+            "messages": [
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Hi Ben and Lucas, just wanted to coordinate with you both about the gardening project this Saturday at the local park. Can we finalize what tools and equipment we need?",
+                    "creation_time": "2024-12-04T15:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "+1 530-555-0125",
+                    "sender_name": "Ben Rose",
+                    "content": "Hi Emily and Lucas! I'll bring the usual gardening tools, but should we consider renting a rototiller for the heavy soil?",
+                    "creation_time": "2024-12-04T15:02:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "+1 530-555-0141",
+                    "sender_name": "Lucas Jones",
+                    "content": "Hey guys! A rototiller sounds like a great idea. I can check out rental options. Do we also need extra gardening gloves or more seeds?",
+                    "creation_time": "2024-12-04T15:05:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Yes, let's get extra gloves and seeds, just in case. Ben, can you handle the compost supply? I'll send a calendar invite for us to meet on Friday to purchase these items.",
+                    "creation_time": "2024-12-04T15:08:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "+1 530-555-0125",
+                    "sender_name": "Ben Rose",
+                    "content": "Sure thing, Emily. I'll handle the compost. Looking forward to a productive session!",
+                    "creation_time": "2024-12-04T15:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "+1 530-555-0141",
+                    "sender_name": "Lucas Jones",
+                    "content": "Perfect! I'll see you both on Friday with all the arrangements ready.",
+                    "creation_time": "2024-12-04T15:12:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Great! I'll send out the calendar invite now. Thanks, everyone.",
+                    "creation_time": "2024-12-04T15:15:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "7": [
+        {
+            "conversation_name": "Oliver Green",
+            "participants": [
+                "+1 530-555-0123",
+                "+1 530-555-0128"
+            ],
+            "messages": [
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Hi Oliver, just following up about the refreshments for the upcoming community gathering. Are we still on for 4 PM at your cafe today?",
+                    "creation_time": "2024-12-05T15:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "+1 530-555-0128",
+                    "sender_name": "Oliver Green",
+                    "content": "Hi Emily, yes, everything is set for our meeting. Looking forward to finalizing the details with you!",
+                    "creation_time": "2024-12-05T15:05:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Great! I’ll be there on time. We’ll also go over the digital receipt and confirm the order.",
+                    "creation_time": "2024-12-05T15:06:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "+1 530-555-0128",
+                    "sender_name": "Oliver Green",
+                    "content": "Sounds good, see you soon!",
+                    "creation_time": "2024-12-05T15:10:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Just left your cafe. Thanks for confirming everything, Oliver. I’ll send over the calendar invite shortly.",
+                    "creation_time": "2024-12-05T16:30:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "+1 530-555-0128",
+                    "sender_name": "Oliver Green",
+                    "content": "Perfect! Thanks again, Emily. Excited for the gathering!",
+                    "creation_time": "2024-12-05T16:35:00",
+                    "status": "delivered"
+                }
+            ]
+        }
+    ],
+    "10": [
+        {
+            "conversation_name": "Holiday Party Prep",
+            "participants": [
+                "emily.rose@orchardcommunity.org",
+                "linda.rose@homemadetreats.com"
+            ],
+            "messages": [
+                {
+                    "sender": "emily.rose@orchardcommunity.org",
+                    "sender_name": "Emily Rose",
+                    "content": "Hi Mom! Just checking in to see if you need any last-minute items for the treats you're preparing for the holiday party tonight.",
+                    "creation_time": "2024-12-07T16:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "linda.rose@homemadetreats.com",
+                    "sender_name": "Linda Rose",
+                    "content": "Hi Emily! Thanks for checking. Could you bring some extra napkins? I think we might run short.",
+                    "creation_time": "2024-12-07T16:05:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "emily.rose@orchardcommunity.org",
+                    "sender_name": "Emily Rose",
+                    "content": "Absolutely, I'll bring a pack with me. Anything else?",
+                    "creation_time": "2024-12-07T16:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "linda.rose@homemadetreats.com",
+                    "sender_name": "Linda Rose",
+                    "content": "That should be all. See you soon at the party!",
+                    "creation_time": "2024-12-07T16:15:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "emily.rose@orchardcommunity.org",
+                    "sender_name": "Emily Rose",
+                    "content": "Great! Can't wait to see everyone and enjoy the evening. See you there!",
+                    "creation_time": "2024-12-07T16:20:00",
+                    "status": "sent"
+                }
+            ]
+        }
+    ],
+    "17": [
+        {
+            "conversation_name": "Oscar Martinez",
+            "participants": [
+                "+1 530-555-0123",
+                "+1 530-555-0140"
+            ],
+            "messages": [
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Hi Oscar! It was great walking with you and the pets today. Got any brainstormed ideas on pet-friendly activities we could organize in the community?",
+                    "creation_time": "2024-12-13T15:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "+1 530-555-0140",
+                    "sender_name": "Oscar Martinez",
+                    "content": "Hey Emily! Yes, I've been thinking about organizing a 'Paws at the Park' event where we could have agility competitions, pet-safe zones, and a corner for adoption. What do you think?",
+                    "creation_time": "2024-12-13T15:15:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Love the idea, Oscar! It could really bring the community together. We could also invite local pet care vendors and have a 'Pet Tips' session.",
+                    "creation_time": "2024-12-13T15:20:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "+1 530-555-0140",
+                    "sender_name": "Oscar Martinez",
+                    "content": "Definitely! I can reach out to some vendors I know. Maybe we could run a mini training session as well?",
+                    "creation_time": "2024-12-13T15:25:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Great plan! Let me know how you go with that. Once we have a draft plan, we could run it by the community board for approval.",
+                    "creation_time": "2024-12-13T15:30:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "+1 530-555-0140",
+                    "sender_name": "Oscar Martinez",
+                    "content": "Sounds good. I'll have some notes typed up this weekend and send them over. Excited to see this come to life!",
+                    "creation_time": "2024-12-13T15:35:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "+1 530-555-0123",
+                    "sender_name": "Emily Rose",
+                    "content": "Awesome! Thanks for your enthusiasm, Oscar. Looking forward to it!",
+                    "creation_time": "2024-12-13T15:40:00",
+                    "status": "read"
+                }
+            ]
+        }
+    ]
+}

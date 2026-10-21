@@ -1,0 +1,472 @@
+{
+    "1": [
+        {
+            "calendar_name": "work",
+            "title": "Monday Stand-up Meeting",
+            "description": "Regular weekly stand-up meeting to discuss ongoing projects and tasks for the week.",
+            "location": "Conference Room A, Innovative Tech Solutions",
+            "start_time": "2024-07-22T10:00:00",
+            "end_time": "2024-07-22T10:30:00",
+            "invitees": [
+                "Kevin Chen", "Michelle Barnes", "Dawei Shen"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-15T10:00:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Follow-up Sync with Michelle and Dawei",
+            "description": "Break-out session to delve deeper into specific project details.",
+            "location": "Conference Room B, Innovative Tech Solutions",
+            "start_time": "2024-07-29T11:00:00",
+            "end_time": "2024-07-29T12:00:00",
+            "invitees": [
+                "Michelle Barnes", "Dawei Shen"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T11:00:00"
+        }
+    ],
+    "2": [
+        {
+            "calendar_name": "personal",
+            "title": "Dinner with Cookie",
+            "description": "Dinner at the newly opened local pub, Pony & Jigger.",
+            "location": "Pony & Jigger, Orchard County, CA",
+            "start_time": "2024-07-24T19:00:00",
+            "end_time": "2024-07-24T21:00:00",
+            "invitees": [
+                "Cookie Watson"
+            ],
+            "reminder": "reminder_time_ahead: 120 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T14:00:00"
+        }
+    ],
+    "4": [
+        {
+            "calendar_name": "work",
+            "title": "One-on-one Project Discussion",
+            "description": "Meeting with Kevin to discuss the progress and updates on the current project tasks and deadlines.",
+            "location": "Conference Room B, Innovative Tech Solutions",
+            "start_time": "2024-07-23T09:00:00",
+            "end_time": "2024-07-23T10:00:00",
+            "invitees": [
+                "Kevin Chen"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-16T09:00:00"
+        }
+    ],
+    "7": [
+        {
+            "calendar_name": "work",
+            "title": "Project Brainstorming Session",
+            "description": "Brainstorming session with Michelle Barnes to discuss and generate ideas for the new project.",
+            "location": "Conference Room B, Innovative Tech Solutions",
+            "start_time": "2024-07-24T10:00:00",
+            "end_time": "2024-07-24T11:30:00",
+            "invitees": [
+                "Michelle Barnes"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T15:00:00"
+        }
+    ],
+    "8": [
+        {
+            "calendar_name": "work",
+            "title": "Data Review Meeting",
+            "description": "Meeting to discuss recent findings and outline action items for data refinement.",
+            "location": "Conference Room B, Innovative Tech Solutions",
+            "start_time": "2024-07-24T15:00:00",
+            "end_time": "2024-07-24T16:00:00",
+            "invitees": [
+                "Dawei Shen"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T12:00:00"
+        }
+    ],
+    "10": [
+        {
+            "calendar_name": "personal",
+            "title": "Gym Session with Lucas",
+            "description": "Weekly gym session focusing on strength training.",
+            "location": "Local Gym, 129 Fitness Blvd, Orchard County, CA",
+            "start_time": "2024-07-25T08:00:00",
+            "end_time": "2024-07-25T09:00:00",
+            "invitees": [
+                "Lucas Garcia"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-24T12:00:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Next Week's Gym Session",
+            "description": "Planning next week's gym session for continued progress.",
+            "location": "Local Gym, 129 Fitness Blvd, Orchard County, CA",
+            "start_time": "2024-08-01T08:00:00",
+            "end_time": "2024-08-01T09:00:00",
+            "invitees": [
+                "Lucas Garcia"
+            ],
+            "reminder": "1 day",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-25T09:30:00"
+        }
+    ],
+    "11": [
+        {
+            "calendar_name": "work",
+            "title": "Team Update Meeting",
+            "description": "Discussion on important updates regarding company goals and strategies.",
+            "location": "Conference Room B, Innovative Tech Solutions",
+            "start_time": "2024-07-25T14:00:00",
+            "end_time": "2024-07-25T15:00:00",
+            "invitees": [
+                "Kevin Chen", "Stefan Mustermann", "Michelle Barnes", "Dawei Shen"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-24T12:00:00"
+        }
+    ],
+    "12": [
+        {
+            "calendar_name": "personal",
+            "title": "Hiking Trip",
+            "description": "Hiking trip to the local mountain trails.",
+            "location": "Big Rock Mountain Trail, Orchard County, CA",
+            "start_time": "2024-07-27T06:00:00",
+            "end_time": "2024-07-27T10:00:00",
+            "invitees": [
+                "John Quinn"
+            ],
+            "reminder": "2 hours",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-25T20:00:00"
+        }
+    ],
+    "13": [
+        {
+            "calendar_name": "work",
+            "title": "Project Review Meeting",
+            "description": "Review the progress of current projects and discuss next steps.",
+            "location": "Conference Room B, Innovative Tech Solutions",
+            "start_time": "2024-07-26T09:00:00",
+            "end_time": "2024-07-26T10:00:00",
+            "invitees": [
+                "Kevin Chen"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-25T12:00:00"
+        }
+    ],
+    "18": [
+        {
+            "calendar_name": "personal",
+            "title": "Neighborhood Gathering",
+            "description": "A friendly neighborhood gathering hosted by Emily Rose to engage with neighbors and participate in community activities.",
+            "location": "128 Neighborly St, Orchard County, CA",
+            "start_time": "2024-07-27T18:00:00",
+            "end_time": "2024-07-27T21:00:00",
+            "invitees": [
+                "Theo Appleseed"
+            ],
+            "reminder": "2 hours",
+            "organizer": "Emily Rose",
+            "meeting_url": "",
+            "creation_time": "2024-07-10T12:00:00"
+        }
+    ],
+    "20": [
+        {
+            "calendar_name": "personal",
+            "title": "Cooking Class",
+            "description": "Attending a cooking class to learn new recipes and enhance cooking skills.",
+            "location": "Local Culinary School, Orchard County, CA",
+            "start_time": "2024-07-28T13:00:00",
+            "end_time": "2024-07-28T16:00:00",
+            "invitees": [
+                "Theo Appleseed", "Cookie Watson"
+            ],
+            "reminder": "2 hours",
+            "organizer": "Local Culinary School",
+            "meeting_url": "",
+            "creation_time": "2024-07-21T12:00:00"
+        }
+    ],
+    "22": [
+        {
+            "calendar_name": "work",
+            "title": "Project Sync Meeting",
+            "description": "Weekly synchronization meeting with the team to discuss project updates and next steps.",
+            "location": "Conference Room B, Innovative Tech Solutions",
+            "start_time": "2024-07-29T08:00:00",
+            "end_time": "2024-07-29T09:00:00",
+            "invitees": ["Kevin Chen", "Stefan Mustermann", "Michelle Barnes", "Dawei Shen"],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Data Analysis Review",
+            "description": "Review of recent data analysis results with Dawei and discuss implications for the project.",
+            "location": "127 Tech Park Blvd, Orchard County, CA",
+            "start_time": "2024-07-29T09:30:00",
+            "end_time": "2024-07-29T10:30:00",
+            "invitees": ["Dawei Shen"],
+            "reminder": "15 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Brainstorming Session",
+            "description": "Brainstorming session with Michelle to explore new approaches to the current research problem.",
+            "location": "126 Tech Park Blvd, Orchard County, CA",
+            "start_time": "2024-07-29T11:00:00",
+            "end_time": "2024-07-29T12:00:00",
+            "invitees": ["Michelle Barnes"],
+            "reminder": "15 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Dentist Appointment",
+            "description": "Routine dental check-up and cleaning.",
+            "location": "Downtown Dental Clinic",
+            "start_time": "2024-07-29T13:00:00",
+            "end_time": "2024-07-29T14:00:00",
+            "invitees": "",
+            "reminder": "1 day",
+            "organizer": ["Theo Appleseed"],
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Client Presentation Preparation",
+            "description": "Preparation session for upcoming client presentation with the team.",
+            "location": "124 Tech Park Blvd, Orchard County, CA",
+            "start_time": "2024-07-29T14:00:00",
+            "end_time": "2024-07-29T15:00:00",
+            "invitees": ["Kevin Chen", "Stefan Mustermann", "Michelle Barnes", "Dawei Shen"],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Weekly Team Meeting",
+            "description": "Regular weekly meeting to discuss team issues and updates.",
+            "location": "Conference Room A, Innovative Tech Solutions",
+            "start_time": "2024-07-29T16:00:00",
+            "end_time": "2024-07-29T17:00:00",
+            "invitees": ["Kevin Chen", "Stefan Mustermann", "Michelle Barnes", "Dawei Shen"],
+            "reminder": "30 minutes",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        }
+    ],
+    "24": [
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-07-31T19:30:00",
+            "end_time": "2024-07-31T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-08-07T19:30:00",
+            "end_time": "2024-08-07T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-08-14T19:30:00",
+            "end_time": "2024-08-14T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-08-21T19:30:00",
+            "end_time": "2024-08-21T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-08-28T19:30:00",
+            "end_time": "2024-08-28T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-09-04T19:30:00",
+            "end_time": "2024-09-04T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-09-11T19:30:00",
+            "end_time": "2024-09-11T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-09-18T19:30:00",
+            "end_time": "2024-09-18T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-09-25T19:30:00",
+            "end_time": "2024-09-25T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-10-02T19:30:00",
+            "end_time": "2024-10-02T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-10-09T19:30:00",
+            "end_time": "2024-10-09T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Salsa Dance Class",
+            "description": "Weekly salsa dance class to improve dance skills and enjoy a fun activity.",
+            "location": "Downtown Dance Studio, Orchard County, CA",
+            "start_time": "2024-10-16T19:30:00",
+            "end_time": "2024-10-16T20:30:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "reminder_time_ahead: 60 minutes",
+            "organizer": "Downtown Dance Studio",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:30:00"
+        }
+    ],
+    "25": [
+        {
+            "calendar_name": "personal",
+            "title": "Train Trip to Chicago",
+            "description": "Train trip to Chicago. Remember to leave 1 hour early from office to reach the station on time.",
+            "location": "Central Station",
+            "start_time": "2024-07-30T15:07:00",
+            "end_time": "2024-07-30T20:00:00",
+            "invitees": ["Theo Appleseed"],
+            "reminder": "1 hour",
+            "organizer": "Theo Appleseed",
+            "meeting_url": "",
+            "creation_time": "2024-07-29T07:45:00"
+        }
+    ]
+}

@@ -1,0 +1,107 @@
+{
+  "task_id": "75bca348-6d94-4f9f-bc57-e203c19f337b",
+  "plot_id": 21,
+  "plot_summary": "John Quinn is the protagonist. On Friday, July 26, 2024 at 4:00pm, Deborah Shooter, Apricot Sweeney were involved. Deborah proposes to give John a few free tickets to a concert where she's playing  1. Deborah messages telling John about a big gig at a famous night club in San Francisco on Saturday late night. 2. John emphatically congratulates Deborah. 3. Deborah proposes that she give some of her VIP free tickets to John, and that he could bring a few friends if he wants. 4. John says he only needs one ticket to invite his girlfriend. 5. John messages Apricot asking her if she's up for going to a concert for free where his neighbor is DJing, to which she agrees. 6. John creates an event for the concert inviting Apricot. 7. John messages Deborah the next day asking about the tickets, but Deborah only replies a few days later, slightly rudely saying that she does not have any free tickets left. ",
+  "tags": [
+    "astra_core",
+    "JOHN_QUINN",
+    "plot_21",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to find the text message you were sent about free tickets",
+  "reference_time": "2024-07-27T16:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Assistant searches for text message sent by Deborah Shooter regarding free tickets received on 26th of July 2024 at 16:04",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_21_75bca348-6d94-4f9f-bc57-e203c19f337b_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Thanks! I'd love to give you some VIP tickets. You can bring a few friends along if you want!",
+      "creation_datetime_iso": "2024-07-26T16:04:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Show the text about tickets ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "User wants me to locate a message mentioning tickets. I go to Messages. There are a number of messages but I see one received recently that talks about tickets. I see it was received from a contact called Deborah Shooter. I confirm with user if this is the contact. User has confirmed. I open the the message on 26th of July 2024 at 16:04and show it to user.",
+  "milestones": "[\n                # Milestone 0 – The agent uses a message-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The retrieved tool output contains Deborah’s 26-Jul-2024 16:04 message about free tickets\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"participants_addresses\": {\n                                                \"value\": \"deborah.shooter@nightclub.com\",\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-26T16:04:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"tickets\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent shows the user the message (or its key content)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"VIP tickets\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieval tool call → verify message found\n                (1, 2),  # Message found → user is shown the content\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to find the text message you were sent about free tickets ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-27T16:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

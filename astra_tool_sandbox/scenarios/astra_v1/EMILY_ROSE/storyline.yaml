@@ -1,0 +1,171 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+- id: 1
+  date: "Monday, December 2, 2024"
+  time: "8:00 AM"
+  people: "self"
+  event: "Emily checks her calendar for the week ahead, including scheduled meetings with Jenna at the community center about the upcoming charity event."
+  outcome: "Her calendar has multiple entries for event planning meetings with Jenna and Michael."
+  output_entities: ['calendar_events']
+
+- id: 2
+  date: "Monday, December 2, 2024"
+  time: "10:30 AM"
+  people: "Michael Thompson, Jenna Miles"
+  event: "Meeting at the community center to finalize the details for Christmas charity event."
+  outcome: "Meeting summary sent via email to Michael and Jenna."
+  output_entities: ['emails']
+
+- id: 3
+  date: "Tuesday, December 3, 2024"
+  time: "1:00 PM"
+  people: "Theo Appleseed"
+  event: "Discussion with Theo about logistics for community clean-up planned for the weekend and schedule the event."
+  outcome: "WhatsApp chat history with Theo detailing responsibilities for the clean-up event. Create a calendar event for weekend community clean-up event."
+  output_entities: ['whatsapp_messages', 'calendar_events']
+
+- id: 4
+  date: "Wednesday, December 4, 2024"
+  time: "3:00 PM"
+  people: "Ben Rose, Lucas Jones"
+  event: "Coordinating with Ben and Lucas to organize tools and equipment for the gardening project at the local park. Send out an calendar invte for them to meet and purchase the equipments."
+  outcome: "Messages exchanged with Ben and Lucas confirming the details of the project. Calendar invte sent."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 5
+  date: "Wednesday, December 4, 2024"
+  time: "7:00 PM"
+  people: "Jessica Lane"
+  event: "Planning session with Jessica over dinner regarding the holiday volunteering schedule."
+  outcome: "Email sent to volunteers with the finalized schedule of activities."
+  output_entities: ['emails']
+
+- id: 6
+  date: "Thursday, December 5, 2024"
+  time: "9:00 AM"
+  people: "Sarah Rose"
+  event: "Video call with Sarah to discuss family plans for the holiday season and potential engagement in charity events."
+  outcome: "Call log entry of a 30-minute call with Sarah. Follow-up with an email summarizing their plans and details for charity events. Send out calendar_events for events mentioned."
+  output_entities: ['call_logs', 'emails', 'calendar_events']
+
+- id: 7
+  date: "Thursday, December 5, 2024"
+  time: "4:00 PM"
+  people: "Oliver Green"
+  event: "Meeting Oliver at his cafe to discuss providing refreshments for the upcoming community gathering. Send out calendar invite for the upcoming gathering event."
+  outcome: "Confirmed order via message; digital receipt saved. Send out calendar invite for the upcoming gathering event."
+  output_entities: ['message_conversations', 'emails', 'calendar_events']
+
+- id: 8
+  date: "Friday, December 6, 2024"
+  time: "2:00 PM"
+  people: "Chloe Waters, Sophia Taylor"
+  event: "Community meeting discussing feedback on past events and brainstorming future initiatives."
+  outcome: "Survey results and feedback received via email."
+  output_entities: ['emails']
+
+- id: 9
+  date: "Saturday, December 7, 2024"
+  time: "11:00 AM"
+  people: "Nathan Blake"
+  event: "Nathan assists Emily with event setup for community holiday party. Communicate through email thread for the holiday part details and ads."
+  outcome: "Photos shared with Nathan and uploaded to community cloud storage. Send out calendar invite for the upcoming holiday party."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 10
+  date: "Saturday, December 7, 2024"
+  time: "6:00 PM"
+  people: "Linda Rose"
+  event: "Attending the community holiday party where Linda provides homemade treats."
+  outcome: "Community event pictures uploaded and shared on social media."
+  output_entities: ['message_conversations']
+
+- id: 11
+  date: "Sunday, December 8, 2024"
+  time: "8:00 AM"
+  people: "Henry Chester"
+  event: "Morning walk with Buster and offering gardening advice to Henry."
+  outcome: "Gardening tips documented and shared on community forum."
+  output_entities: ['emails']
+
+- id: 12
+  date: "Monday, December 9, 2024"
+  time: "9:00 AM"
+  people: "Sophia Nguyen"
+  event: "Discussion about catering requirements for the New Year's event."
+  outcome: "Order confirmation email with revised menu details."
+  output_entities: ['emails']
+
+- id: 13
+  date: "Monday, December 9, 2024"
+  time: "4:00 PM"
+  people: "Jenna Miles, Matt Duncan"
+  event: "Team meeting with Jenna and Matt for planning student engagement activities."
+  outcome: "Notes from meeting saved and shared with school contacts."
+  output_entities: ['calendar_events', 'emails']
+
+- id: 14
+  date: "Tuesday, December 10, 2024"
+  time: "10:00 AM"
+  people: "Sarah Green"
+  event: "Coffee with Sarah discussing new ideas for environmental outreach."
+  outcome: "Sarah sends follow-up email with links to resources."
+  output_entities: ['emails']
+
+- id: 15
+  date: "Wednesday, December 11, 2024"
+  time: "1:00 PM"
+  people: "Elaine Perkins"
+  event: "Taste testing session for community event menu with Elaine."
+  outcome: "Menus finalized; digital tasting notes saved."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 16
+  date: "Thursday, December 12, 2024"
+  time: "5:00 PM"
+  people: "Mia Campbell"
+  event: "Discussion with Mia about collaboration ideas between school and community."
+  outcome: "Presentation document sent to school board for approval."
+  output_entities: ['emails']
+
+- id: 17
+  date: "Friday, December 13, 2024"
+  time: "3:00 PM"
+  people: "Oscar Martinez"
+  event: "Weekend walk with Oscar and pets; brainstorming pet-friendly community activities."
+  outcome: "Oscar sends pet event ideas via message."
+  output_entities: ['message_conversations']
+
+- id: 18
+  date: "Saturday, December 14, 2024"
+  time: "12:00 PM"
+  people: "Daniel Kim"
+  event: "Meeting with Daniel at his cafe discussing upcoming events."
+  outcome: "Menu and resource support confirmed via email."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 19
+  date: "Sunday, December 15, 2024"
+  time: "11:00 AM"
+  people: "Tim Brooks"
+  event: "Technical set-up for community event sound system with Tim."
+  outcome: "Follow-up video call scheduled for system test."
+  output_entities: ['calendar_events', 'call_logs']
+
+- id: 20
+  date: "Monday, December 16, 2024"
+  time: "9:00 AM"
+  people: "Linda Kim"
+  event: "Coordinating with Linda on educational activities schedule at the local school."
+  outcome: "Shared calendar updated with school event dates."
+  output_entities: ['calendar_events']
+
+- id: 21
+  date: "Tuesday, December 17, 2024"
+  time: "2:00 PM"
+  people: "James Baldwin"
+  event: "Session with James to review photographs from the community holiday event."
+  outcome: "Selected photos agreed upon and saved to event archive. Calendar event sent out if no existing event already."
+  output_entities: ['emails', 'calendar_events']
+...

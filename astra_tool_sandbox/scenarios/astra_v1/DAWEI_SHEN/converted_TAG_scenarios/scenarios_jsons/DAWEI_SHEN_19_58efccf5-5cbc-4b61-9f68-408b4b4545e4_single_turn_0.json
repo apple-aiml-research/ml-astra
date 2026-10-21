@@ -1,0 +1,118 @@
+{
+  "task_id": "58efccf5-5cbc-4b61-9f68-408b4b4545e4",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "email",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have just sent the receipts for the props to Francis and want to let him know.",
+  "reference_time": "2024-12-12T19:35:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A message is sent to Francis Wagner saying; \"Hey man, I just passed on the receipts for the props\" at 19:35 12th of December 2024. "
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_58efccf5-5cbc-4b61-9f68-408b4b4545e4_single_turn_0",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "send_message",
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Receipt for Stage Props Order",
+      "sender": "dawei.shen@orchardtech.com",
+      "recipients": "francis.wagner@orchardtheater.com",
+      "cc": "",
+      "bcc": "",
+      "creation_time": "2024-12-12T19:30:00",
+      "body": "Hi Francis, I've placed the order for the stage props as discussed. Attached is the receipt for our records. Best, Dawei",
+      "attachment": "Order_Receipt_12122024.pdf",
+      "isSender": true,
+      "plotIndexKey": "19",
+      "plotValueIndex": 0,
+      "isPromptEntity": true
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Francis",
+      "last_name": "Wagner",
+      "full_name": "Francis Wagner",
+      "phone_number": "+1 555-456-7890-1234",
+      "alias": "Francis",
+      "email": "francis.wagner@orchardtheater.com",
+      "relationship": "Theater Manager",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Theater Manager",
+      "is_self": false,
+      "birthday": "1975-01-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text Fran saying; \"Hey man, I just passed on the receipts for the props.\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to Text Fran saying; \"Hey man, I just passed on the receipts for the props.\"\nwho do they mean by Fran? From recent correspondence email, I found the email titled 'Receipt for Stage Props Order' sent to Francis Wagner at 19:30:00, and the users contacts I can assume Fran refers to Francis Wagner in their contacts. I will now send their given statement to Francis Wagner via messages. ",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Francis / Fran in contacts (to resolve who \"Fran\" is)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms that Francis Wagner was retrieved from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Francis Wagner\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 555-456-7890-1234\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A text message to Francis is created with the right content and approximate time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Participants: Dawei (self) and Francis; allow either email or phone identifiers\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"dawei.shen@orchardtech.com\",\n                                                \"+1 555-123-4567-8901\",\n                                            ),\n                                            (\n                                                \"francis.wagner@orchardtheater.com\",\n                                                \"+1 555-456-7890-1234\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"I just passed on the receipts for the props.\",\n                                    \"status\": \"sent\",\n                                    # Target time 2024-12-12T19:35:00; allow close match\n                                    \"creation_datetime_iso\": \"2024-12-12T19:35:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contacts lookup → confirm Francis\n                (1, 2),  # Confirm Francis → send correct text message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "is_read_time": "2024-12-12T19:35:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You have just sent the receipts for the props to Francis and want to let him know.  ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"send_message\", \"search_emails\", \"get_all_emails\"]"
+}

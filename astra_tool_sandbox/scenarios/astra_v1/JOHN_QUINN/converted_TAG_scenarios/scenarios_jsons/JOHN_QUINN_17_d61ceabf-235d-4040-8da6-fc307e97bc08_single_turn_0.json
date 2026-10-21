@@ -1,0 +1,79 @@
+{
+  "task_id": "d61ceabf-235d-4040-8da6-fc307e97bc08",
+  "plot_id": 17,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 7:15pm, Ursula Quinn were involved. John gets reminded by his Mom about the birthday of his cousin, Bertie 1. Mom calls John to remind him about the birthday of his cousin, Bertie, which is on Thursday two weeks hence; and she asks him not to forget like he did last year. 2. John adds a reminder to his calendar.",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_17",
+    "contact",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to send a message to your mother to say \"I'm pretty offended by your tone by the way, I only forgot last year because I was in a coma.   You're just like Dad with those pirate party emails, always on my case.   Anyway, love you.  \"",
+  "reference_time": "2024-07-24T20:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1.  A message is sent to Ursula Quinn saying \"I'm pretty offended by your tone by the way, I only forgot last year because I was in a coma. You're just like Dad with those pirate party emails, always on my case. Anyway, love you.\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_17_d61ceabf-235d-4040-8da6-fc307e97bc08_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text Ursula saying \"I'm pretty offended by your tone by the way, I only forgot last year because I was in a coma. You're just like Dad with those pirate party emails, always on my case. Anyway, love you.\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to text Ursula to say \"I'm pretty offended by your tone by the way, I only forgot last year because I was in a coma. You're just like Dad with those pirate party emails, always on my case. Anyway, love you.\". I should first figure out who Ursula is. I will check the user's Contacts. \nHmm, I only see one Ursula, Ursula Quinn, so this must be who the user means. I will now draft a message to Ursula, using the content the user has already provided. \nLastly, I will present the draft to the user for their approval before I send it. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Ursula’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the contact lookup returned Ursula Quinn\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Ursula Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0124\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # depends on the contact search in Milestone 0\n                        ),\n                    ],\n                ),\n                # Milestone 2 – The requested text message is sent to Ursula\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [(\"ursula.quinn@modernart.org\", \"408-555-0124\")]\n                                    ],  # must include Ursula; extras allowed\n                                    \"content\": \"I'm pretty offended by your tone by the way, I only forgot last year because I was in a coma. You're just like Dad with those pirate party emails, always on my case. Anyway, love you.\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-24T20:05:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox chatter\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirmation\n                (1, 2),  # Confirmation of contact → message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to send a message to your mother to say \"I'm pretty offended by your tone by the way, I only forgot last year because I was in a coma.  You're just like Dad with those pirate party emails, always on my case.  Anyway, love you. \" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-24T20:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

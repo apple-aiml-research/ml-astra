@@ -1,0 +1,104 @@
+{
+  "task_id": "61c36a19-14d7-4a3a-9a79-ca73fb18393c",
+  "plot_id": 3,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 6 pm, Theo Appleseed were involved. Lucas and Theo meet for their usual evening workout session at the local gym. Lucas receives a message from Theo discussing fitness goals and the next 3 months. Book schedules for future session the next 3 months.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_3",
+    "messaging",
+    "calendar",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to Theo saying 'Hey man I'm gonna be 10 minutes late, sorry traffic is terrible!'.",
+  "reference_time": "2024-12-02T17:45:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to 'Theo Appleseed' on 2 December 2024 at 17:45 saying 'Hey man I'm gonna be 10 minutes late, sorry traffic is terrible!'.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_3_61c36a19-14d7-4a3a-9a79-ca73fb18393c_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Evening Workout Session with Theo",
+      "start_datetime_iso": "2024-12-02T18:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T19:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Theo Appleseed"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 30 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T10:30:00-08:00",
+      "notes": "Regular evening workout session focusing on strength and conditioning."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 12345-6789-1000-5678",
+      "alias": "Gym Buddy",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Gym buddy and workout partner",
+      "address": "45 Fit St, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Trainer",
+      "is_self": false,
+      "birthday": "1990-05-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "low",
+  "query": "Message Theo saying 'Hey man I'm gonna be 10 minutes late, sorry traffic is terrible!'.",
+  "reasoning": "Okay so, the user wants to message 'Theo' with the message content 'Hey man I'm gonna be 10 minutes late, sorry traffic is terrible!'. First, from checking the user's contacts, I can see only one 'Theo', 'Theo Appleseed'. This is who the user wants to message. As they have given me the message content, I will draft up the message and confirm with the user that no further changes are required before sending the message off.",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Theo in the contacts list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the contact lookup returned Theo Appleseed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Theo Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 12345-6789-1000-5678\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # Parse result from Milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – Message to Theo was sent with the correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Theo Appleseed\",\n                                    \"content\": \"Hey man I'm gonna be 10 minutes late, sorry traffic is terrible!\",\n                                    \"creation_datetime_iso\": \"2024-12-02T17:45:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # Compare against initial DB state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to send a message to Theo saying 'Hey man I'm gonna be 10 minutes late, sorry traffic is terrible!'. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"send_message\"]",
+  "is_read_time": "2024-12-02T17:45:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

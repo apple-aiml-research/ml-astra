@@ -1,0 +1,109 @@
+{
+  "task_id": "0d766458-ccb1-4633-be77-0f5219c20b51",
+  "plot_id": 4,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 3, 2024 at 7 am, Nathan Lewis, Jason Baker were involved. Lucas leads a triathlon training session for his group. Lucas takes notes on Jason’s performance, saving them digitally for future reference and email the summary of the note to each of them.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_4",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "Jason didn't show up to the training session so you want to make sure you notified him it was happening.",
+  "reference_time": "2024-12-03T09:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Jason Baker is confirmed as an invitee to Triathlon Training Session scheduled for 07:00-08:30",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_4_0d766458-ccb1-4633-be77-0f5219c20b51_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Triathlon Training Session",
+      "start_datetime_iso": "2024-12-03T07:00:00-08:00",
+      "end_datetime_iso": "2024-12-03T08:30:00-08:00",
+      "attendees_names": [
+        "Jason Baker",
+        "Lucas Garcia",
+        "Nathan Lewis"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T19:30:00-08:00",
+      "notes": "Lucas leads a triathlon training session for the group, focusing on improving performance and endurance."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Nathan",
+      "last_name": "Lewis",
+      "full_name": "Nathan Lewis",
+      "phone_number": "+1 12345-6789-1000-2468",
+      "alias": "Triathlon Buddy",
+      "email": "nathan.lewis@example.com",
+      "relationship": "Triathlon training group member",
+      "address": "90 Training Ave, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1989-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jason",
+      "last_name": "Baker",
+      "full_name": "Jason Baker",
+      "phone_number": "+1 12345-6789-1000-8520",
+      "alias": "Triathlon Competitor",
+      "email": "jason.baker@example.com",
+      "relationship": "Triathlon competitor",
+      "address": "67 Race Rd, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1988-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Is Jason Baker an invitee in the Triathlon Training Session? yes or no.",
+  "functional_complexity": "low",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "reasoning": "The user is asking about invitees of an event. \nFirst I should find the queried event. I see an exact match for the user's query, Triathlon Training Session scheduled for 07:00-08:30. Next, I should check the invitees to this event. The invitees for Triathlon Training Session scheduled for 07:00-08:30 are Nathan Lewis and Jason Baker.\nI should confirm to the user that Jason Baker is an invitee to Triathlon Training Session scheduled for 07:00-08:30.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Returned calendar data contains the training session with Jason Baker as an attendee\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Triathlon Training Session\",\n                                                \"partial\": False,\n                                            },\n                                            \"attendees_names\": {\n                                                \"value\": \"Jason Baker\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent communicates confirmation to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"yes\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar search precedes verification of returned data\n                (1, 2),  # Verification precedes informing the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. Jason didn't show up to the training session so you want to make sure you notified him it was happening. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-03T09:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

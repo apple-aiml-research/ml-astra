@@ -1,0 +1,93 @@
+{
+  "task_id": "65183a5e-51f9-4d09-8620-f1c34912f877",
+  "plot_id": 14,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Afternoon, July 26, 2024 at 12 pm, Michelle Barnes, Dawei Shen were involved. Lunch at a nearby restaurant to discuss personal and professional topics ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_14",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_high",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "A seagull flew into you and injured your ear while you were walking so you need to tell your coworkers you cannot make lunch.",
+  "reference_time": "2024-07-26T11:55:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Dawei Shen and Michelle Barnes to say \"I can't make lunch, a seagull flew into me and I fell down a manhole!\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_14_65183a5e-51f9-4d09-8620-f1c34912f877_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Tell Dawei and Michelle this via a message: \"I can't make lunch, a seagull flew into me and I fell down a manhole!\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "high",
+  "reasoning": "The user asks to message Dawei and Michelle. I see Dawei Shen and Michelle Barnes in contacts. The user wants to send them this message: \"I can't make lunch, a seagull flew into me and I fell down a manhole!\". So I can now send this message.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the contacts (Michelle & Dawei)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Dawei Shen is returned from the contact search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Dawei Shen\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"dawei.shen@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent looks up coworkers in the contacts database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Michelle Barnes is returned from the contact search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Michelle Barnes\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"michelle.barnes@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ],\n                ),\n                # Milestone 4 – A new message is sent to both Dawei and Michelle with the correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"michelle.barnes@example.com\",\n                                                \"1234-5678-9105\",\n                                            ),\n                                            (\n                                                \"dawei.shen@example.com\",\n                                                \"1234-5678-9106\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"I can't make lunch\",\n                                    \"creation_datetime_iso\": \"2024-07-26T11:55:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox chatter\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (2, 3),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. A seagull flew into you and injured your ear while you were walking so you need to tell your coworkers you cannot make lunch. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-26T11:55:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

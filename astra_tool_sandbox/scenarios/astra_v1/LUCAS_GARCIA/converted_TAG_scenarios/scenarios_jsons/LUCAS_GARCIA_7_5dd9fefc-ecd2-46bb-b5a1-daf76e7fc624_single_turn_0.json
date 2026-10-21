@@ -1,0 +1,90 @@
+{
+  "task_id": "5dd9fefc-ecd2-46bb-b5a1-daf76e7fc624",
+  "plot_id": 7,
+  "plot_summary": "Lucas Garcia is the protagonist. On Thursday, December 5, 2024 at 9 am, Sophie Bennett were involved. Lucas conducts a personalized fitness session for Sophie and her friends at the gym. Calendar invite and session notes are shared with Sophie for future reference.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_7",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what Sophie Bennett said in her last message but you cannot look at your phone right now.",
+  "reference_time": "2024-12-04T15:50:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The last text message received from Sophie Bennet is read out loud to the user. \n",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_7_5dd9fefc-ecd2-46bb-b5a1-daf76e7fc624_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Sophie Bennett",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "sophie.bennett@example.com"
+      ],
+      "sender_address": "sophie.bennett@example.com",
+      "content": "Sounds amazing! I'll pass this on to the others. Thanks, Lucas!",
+      "creation_datetime_iso": "2024-12-04T15:50:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sophie",
+      "last_name": "Bennett",
+      "full_name": "Sophie Bennett",
+      "phone_number": "+1 12345-6789-1000-8521",
+      "alias": "High School Friend's Sibling",
+      "email": "sophie.bennett@example.com",
+      "relationship": "High school friend's sibling",
+      "address": "34 School St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1994-10-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What did Sophie's last message say?\n",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to read out the contents of a message. They have provided me with context that the message is an email and it is the last received email from a contact named \"Sophie\". This should be enough information to find the message. I have searched the user's messages, and I have found a message from Sophie Bennett. I can assume this is the referenced message, so I will read it out to the user. \n",
+  "milestones": "[\n                # Milestone 0 – The agent tries to retrieve messages to locate Sophie’s last one\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved result contains Sophie Bennett’s most-recent message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"sophie.bennett@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Sounds amazing!\",\n                                                \"partial\": True,  # allow flexible punctuation / continuation\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user what Sophie said\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Sounds amazing\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # message retrieval → validation of correct message\n                (1, 2),  # validation → user-facing reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know what Sophie Bennett said in her last message but you cannot look at your phone right now. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-12-04T15:50:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

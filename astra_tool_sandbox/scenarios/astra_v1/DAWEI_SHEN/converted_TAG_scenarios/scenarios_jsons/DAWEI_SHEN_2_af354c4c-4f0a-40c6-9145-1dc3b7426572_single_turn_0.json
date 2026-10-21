@@ -1,0 +1,217 @@
+{
+  "task_id": "af354c4c-4f0a-40c6-9145-1dc3b7426572",
+  "plot_id": 2,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 1, 2024 at 8 pm, self, Charles Wilde, Vickie Lee, Francis Wagner were involved. Dawei messages Charles and Vickie on WhatsApp to confirm theater rehearsal, and Francis shares a Google Doc with schedule updates. Vickie says she will be 20 minutes late and apologizes. Francis emails the doc to the group.",
+  "tags": [
+    "astra_core",
+    "DAWEI_SHEN",
+    "plot_2",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "email",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You cannot attend the rehearsal tonight due to a medical emergency and have to reschedule for the following day.       You send an email to everyone in the rehearsal group confirming this and create a new calendar event for the following day 2-December-2024 and invite them.",
+  "reference_time": "2024-12-01T20:10:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email message saying \"I apologise for this guys but I wont be able to attend tonight's rehearsal as I'm extremely unwell, I've rescheduled the rehearsal for tomorrow. Calendar event to follow\" is created at 01-12-2024 at 20:10.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. A Calendar event is created called \"Rescheduled Theatre Rehearsal\" for 02-12-2024 at 21:00 to 22:00. Charles Wilde, Vickie Lee and Francis Wagner are the invitees.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_2_af354c4c-4f0a-40c6-9145-1dc3b7426572_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-01T19:50:00-08:00",
+      "content": "Hey Charles, just confirming we're still on for tonight's rehearsal at 8?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-01T19:52:00-08:00",
+      "content": "Yes, all set for 8 PM. See you there!",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-01T19:53:00-08:00",
+      "content": "Hi Vickie, are we good for the rehearsal at 8 tonight?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-01T19:55:00-08:00",
+      "content": "Hey Dawei, I might be around 20 mins late, sorry! Caught up with something.",
+      "status": "read"
+    }
+  ],
+  "emails": [
+    {
+      "subject": "Updated Rehearsal Schedule",
+      "sender_address": "francis.wagner@orchardtheater.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com",
+        "charles.wilde@orchardtheater.com",
+        "vickie.lee@orchardtheater.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-01T19:58:00-08:00",
+      "body": "Hello everyone,\n\nPlease find attached the updated schedule for tonight's rehearsal. Let me know if there are any issues.\n\nBest,\nFrancis",
+      "attachments": [
+        "Rehearsal_Schedule_Updated_2024-12-01.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cycling Trip with Vick",
+      "start_datetime_iso": "2024-12-01T07:00:00-08:00",
+      "end_datetime_iso": "2024-12-01T10:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Vick Li"
+      ],
+      "location": "Local Café, Napa Valley, CA",
+      "reminder_time_ahead": "60 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-30T12:00:00-08:00",
+      "notes": "Starting the day with a cycling trip at a local café in Napa Valley."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room B, Orchard Tech HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-01T12:00:00-08:00",
+      "notes": "Monthly team review to discuss project progress and assign new action items."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00"
+    },
+    {
+      "first_name": "Francis",
+      "last_name": "Wagner",
+      "full_name": "Francis Wagner",
+      "phone_number": "+1 555-456-7890-1234",
+      "alias": "Francis",
+      "email": "francis.wagner@orchardtheater.com",
+      "relationship": "Theater Manager",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Theater Manager",
+      "is_self": false,
+      "birthday": "1975-01-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need to email the folks that I can't make it to tonight's rehearsal and we're moving it to tomorrow at 9 o'clock in the evening. Also, create a calendar event for tomorrow called 'Rescheduled Theatre Rehearsal' and invite them. List their names to me as well.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to send an email to Charles, Vickie, and Francis letting them know that, due to a medical emergency, they can’t attend tonight’s rehearsal and have moved it to tomorrow at 9 pm. I will draft and send that email. Then I will immediately create a calendar event titled “Rescheduled Theatre Rehearsal” for 2-Dec-2024 from 21:00–22:00 and invite Charles Wilde, Vickie Lee, Francis Wagner, and myself (Dawei Shen).",
+  "reference_time_str": "Today is Sunday, December 1, 2024 or 2024-12-01T20:10:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Verify that the agent uses search tools to figure out who should attend\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                        # not including contacts here since the message is about \"today\"\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Verify that the correct email with subject \"Updated Rehearsal Schedule\" from Francis Wagner was found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Updated Rehearsal Schedule\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"francis.wagner@orchardtheater.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2: Verify agent sent an email informing Charles, Vickie, and Francis about cancellation and reschedule\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\n                                            \"charles.wilde@orchardtheater.com\",\n                                            \"vickie.lee@orchardtheater.com\",\n                                            \"francis.wagner@orchardtheater.com\",\n                                        ]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-01T20:10:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR\n                    ],  # exclude CALENDAR additions\n                ),\n                # Milestone 3: Verify agent created a Calendar event \"Rescheduled Theatre Rehearsal\" on 2-Dec-2024 21:00-22:00 and invited Charles, Vickie, Francis\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Rescheduled Theatre Rehearsal\",\n                                    \"start_datetime_iso\": \"2024-12-02T21:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Charles Wilde\",\n                                            \"Dawei Shen\",\n                                            \"Francis Wagner\",\n                                            \"Vickie Lee\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-01T20:10:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL\n                    ],  # exclude EMAIL additions\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # finding who are involved\n                (1, 2),  # Send email\n                (1, 3),  # create calendar event\n            ]",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "send_email",
+    "create_calendar_event"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You cannot attend the rehearsal tonight due to a medical emergency and have to reschedule for the following day.      You send an email to everyone in the rehearsal group confirming this and create a new calendar event for the following day 2-December-2024 and invite them. ",
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"send_email\", \"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-01T20:10:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

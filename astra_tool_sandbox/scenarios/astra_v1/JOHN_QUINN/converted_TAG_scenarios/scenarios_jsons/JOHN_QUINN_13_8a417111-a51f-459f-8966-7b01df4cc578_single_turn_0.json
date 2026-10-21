@@ -1,0 +1,138 @@
+{
+  "task_id": "8a417111-a51f-459f-8966-7b01df4cc578",
+  "plot_id": 13,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 11am, Theo Appleseed, Cookie Watson, Akira Muramoto, Robin Selmoure were involved. John invites his friends to go to a whole-day hike the weekend after  1. John sends individual messages to his friends inviting them for a hike the Saturday after next. 2. Each friend replies, with all accepting except for Robin, who refuses with a slightly bizarre excuse. 3. John sends a group message to the 3 friends who accepted, confirming the meeting place for the hike - the 'Batteries to Bluffs Trail'. The three freinds confirming in the message thread. 4. John creates an event for the hike with the relevant friends invited. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_13",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to double-check the duration of your upcoming group hike tomorrow, as you're wondering how many snacks you should bring.",
+  "reference_time": "2024-08-02T22:00:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The duration of the event, 'Group Hike at Batteries to Bluffs Trail', on Saturday, August 3rd at 8:00-14:00 is shown to the user. "
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_13_8a417111-a51f-459f-8966-7b01df4cc578_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Group Hike at Batteries to Bluffs Trail",
+      "start_datetime_iso": "2024-08-03T08:00:00-07:00",
+      "end_datetime_iso": "2024-08-03T14:00:00-07:00",
+      "attendees_names": [
+        "Akira Muramoto",
+        "Cookie Watson",
+        "John Quinn",
+        "Theo Appleseed"
+      ],
+      "location": "Batteries to Bluffs Trail, San Francisco, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T11:15:00-07:00",
+      "notes": "Hiking with Theo, Cookie, and Akira. Robin can't make it."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "College Friend",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": false,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@mckinley.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": "Management Consultant",
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "Can I get the event duration of tomorrow's hike?",
+  "reasoning": "The user wants to know the event duration of tomorrow's hike. I wonder what event they're talking about. I should check the user's calendar to figure it out. I see that user has one event called 'Group Hike at Batteries to Bluffs Trail', tomorrow, Saturday, August 3rd 2024 at 8:00-14:00. This must be the event. Okay, I'll give them the details of that event now, including the duration of 6 hours. ",
+  "milestones": "[\n                # Milestone 0 — Agent looks up tomorrow’s hike event in the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 — Agent tells the user the duration (≈6 hours) of the hike\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"6 hours\",\n                                            \"six hours\",\n                                            \"6hrs\",\n                                            \"6 hrs\",\n                                            \"6-hour\",\n                                            \"six-hour\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup precedes informing the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to double-check the duration of your upcoming group hike tomorrow, as you're wondering how many snacks you should bring. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-08-02T22:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

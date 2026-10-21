@@ -1,0 +1,110 @@
+{
+  "task_id": "98150a66-4ef9-4c2e-ab96-2017320bb5e4",
+  "plot_id": 13,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 9, 2024 at 8 am, self, Michelle Barnes were involved. Michelle emails Dawei with a key dataset update for their machine-learning model. She includes a few key questions for discussion during their team sync. Dawei drafts a response and schedules time on Tuesday afternoon to review the dataset with her.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_13",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "email",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to forward Michelle's email that contains questions about the machine-learning model to Stefan and Theo as they are also working on the project.",
+  "reference_time": "2024-12-09T08:10:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The email with subject 'Dataset Update for Machine Learning Model' is forwarded to stefan.mustermann@orchardtech.com and theo.appleseed@orchardtech.com.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_13_98150a66-4ef9-4c2e-ab96-2017320bb5e4_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Dataset Update for Machine Learning Model",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "creation_datetime_iso": "2024-12-09T08:00:00-08:00",
+      "body": "Hi Dawei,\n\nI hope this email finds you well. I am writing to share the latest updates on the dataset we've been working on for our machine-learning model. Attached you'll find the updated files along with a few key questions that we need to address:\n\n1. How do we intend to handle the increasing volume of unstructured data?\n2. Are there specific algorithms you suggest we explore for better accuracy?\n3. What are your thoughts on the timeline for the next phase of testing?\n\nLooking forward to discussing these during our team sync.\n\nBest regards,\nMichelle",
+      "attachments": [
+        "Updated_Dataset_Questions.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "email": "michelle.barnes@orchardtech.com"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "email": "theo.appleseed@orchardtech.com"
+    },
+    {
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "phone_number": "+1 555-789-0123-4568",
+      "first_name": "Theo",
+      "job_title": "Research Scientist",
+      "last_name": "Appleseed",
+      "relationship": "Coworker",
+      "company": "Orchard Tech",
+      "is_self": false,
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "alias": "Theo",
+      "full_name": "Theo Appleseed",
+      "email": "theo.appleseed@orchardtech.com",
+      "birthday": "1985-12-20T00:00:00-08:00"
+    },
+    {
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "phone_number": "+1 555-901-2345-6789",
+      "first_name": "Stefan",
+      "job_title": "Data Scientist",
+      "last_name": "Mustermann",
+      "relationship": "Coworker",
+      "company": "Orchard Tech",
+      "is_self": false,
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "alias": "Stefan",
+      "full_name": "Stefan Mustermann",
+      "email": "stefan.mustermann@orchardtech.com",
+      "birthday": "1987-11-30T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send the email with attachment 'Updated_Dataset_Questions.pdf' to Stefan Mustermann and Theo Appleseed.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "User needs to send the email with attachment 'Updated_Dataset_Questions.pdf' to Stefan Mustermann and Theo Appleseed. I'll check their emails and locate the one they refer to. Ok, I found the email that has the attachment 'Updated_Dataset_Questions.pdf', it's the email with the subject \"Dataset Update for Machine Learning Model\" received on 2024-12-09 08:00. I'll forward this email. Now I'll check user's contacts and locate Stefan Mustermann and Theo Appleseed. Ok, I've found their contact cards. I will forward the email to Stefan Mustermann (stefan.mustermann@orchardtech.com) and Theo Appleseed (theo.appleseed@orchardtech.com). I'll inform user that the email has been correctly forwarded.",
+  "reference_time_str": "Today is Monday, December 9, 2024 or 2024-12-09T08:10:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up existing emails\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – the right email is found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Dataset Update for Machine Learning Model\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-09T08:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2: agent search contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_contacts\",\n                                        \"search_contacts\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3: Theo are found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Theo Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"theo.appleseed@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ]\n                ),\n                # Milestone 4: agent search contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_contacts\",\n                                        \"search_contacts\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 5: Stefan are found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Stefan Mustermann\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"stefan.mustermann@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=4,\n                        ),\n                    ]\n                ),\n                # Milestone 6 - send_email tool is invoked\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"tool_trace\": json.dumps(\n                                        {\n                                            \"tool_name\": \"send_email\",\n                                            \"arguments\": {\n                                                \"recipients_addresses\": [\n                                                    \"stefan.mustermann@orchardtech.com\",\n                                                    \"theo.appleseed@orchardtech.com\",\n                                                ],\n                                                \"email_action\": \"send\",\n                                                \"email_id_referred\": \"place_holder\",\n                                                \"email_id_referred_action\": \"forward\",\n                                            },\n                                        },\n                                        ensure_ascii=False,\n                                    )\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": column_tool_trace_partial_arguments_similarity\n                            },\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.EMAIL],\n                ),\n                # Milestone 7 - email sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\n                                            \"stefan.mustermann@orchardtech.com\",\n                                            \"theo.appleseed@orchardtech.com\",\n                                        ]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-09T08:10:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email lookup precedes draft found\n                (2, 3),  # Contact lookup precedes contacts found\n                (4, 5),\n                (1, 7),  # send_email tool invoked precedes email sent\n            ]",
+  "tool_allow_list": [
+    "send_email",
+    "search_emails",
+    "get_all_emails",
+    "modify_draft_email",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to forward Michelle's email that contains questions about the machine-learning model to Stefan and Theo as they are also working on the project. ",
+  "tool_allow_list_str": "[\"send_email\", \"search_emails\", \"get_all_emails\", \"modify_draft_email\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-09T08:10:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

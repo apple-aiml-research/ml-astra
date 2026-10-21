@@ -1,0 +1,146 @@
+{
+  "task_id": "72ab6a56-9006-4f5e-b148-c0d2bb0fd751",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_12",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "phone_call",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You don't see Vickie at the Orchard theater.   You want to give Vickie a call and make sure that she is definitely on her way to your new rehearsal schedule.",
+  "reference_time": "2024-12-08T19:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An outgoing call to Vickie Lee is made.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_72ab6a56-9006-4f5e-b148-c0d2bb0fd751_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-01T19:53:00-08:00",
+      "content": "Hi Vickie, are we good for the rehearsal at 8 tonight?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-01T19:55:00-08:00",
+      "content": "Hey Dawei, I might be around 20 mins late, sorry! Caught up with something.",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-345-6789-0123",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-08T17:52:00-08:00",
+      "content": "I'm in for 7 PM. See you both then!",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-345-6789-0123",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "creation_datetime_iso": "2024-12-08T17:53:00-08:00",
+      "content": "Thanks, Vickie! Looking forward to it.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Theater Rehearsal",
+      "start_datetime_iso": "2024-12-08T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T22:00:00-08:00",
+      "attendees_names": [
+        "Charles Wilde",
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "location": "Orchard Theater, 789 Culture St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T17:55:00-08:00",
+      "notes": "Revised time for tonight's rehearsal with Charles and Vickie due to last-minute changes."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you please give Vickie a call for me",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user asked me to call Vickie. I found two people in Dawei's contacts, one is Vickie Lee and the other is Vick Li. These sound pretty similar, so I need to figure out which one the user actually wants to contact. I can check what's in user's calendar- it is currently 19:00 on December 8th 2024 and they have a calendar event called \"Theater Rehearsal\" that is on-going right now. Checking the attendees, it is Charles Wilde and Vickie Lee. This must be the Vickie he wants to contact, because maybe this person is not here yet for the rehearsal. I will find Vickie Lee's contact card. Ok, I located her contact and I'm calling her. I'll let user know, calling Vickie Lee.",
+  "reference_time_str": "Today is Sunday, December 8, 2024 or 2024-12-08T19:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent search for contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – correct number returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Vickie Lee\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 555-345-6789-0123\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # based on the function results in milestone 0\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new outgoing phone-call record to Vickie Lee exists\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.PHONE,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"receiver_address\": [\n                                        (\n                                            \"+1 555-345-6789-0123\",\n                                            \"vickie.lee@orchardtheater.com\",\n                                        )\n                                    ],\n                                    \"call_type\": \"outgoing\",\n                                    \"creation_datetime_iso\": \"2024-12-08T19:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"receiver_address\": column_str_contains_any_similarity,\n                                \"call_type\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "create_outgoing_call",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You don't see Vickie at the Orchard theater.  You want to give Vickie a call and make sure that she is definitely on her way to your new rehearsal schedule. ",
+  "tool_allow_list_str": "[\"create_outgoing_call\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-08T19:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

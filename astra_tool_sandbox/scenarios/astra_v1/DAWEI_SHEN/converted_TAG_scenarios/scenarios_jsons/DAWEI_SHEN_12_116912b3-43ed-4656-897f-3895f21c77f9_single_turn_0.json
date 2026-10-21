@@ -1,0 +1,123 @@
+{
+  "task_id": "116912b3-43ed-4656-897f-3895f21c77f9",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_12",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "email",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to email Vickie to ask if she would be up for running some lines before theatre practice tonight.",
+  "reference_time": "2024-12-08T18:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An email is sent to vickie.lee@orchardtheater.com asking: \"Would you be up for running some lines at 6:30 pm, half an hour before theatre practice tonight?\"",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_116912b3-43ed-4656-897f-3895f21c77f9_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-08T17:52:00-08:00",
+      "content": "I'm in for 7 PM. See you both then!",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-345-6789-0123",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "creation_datetime_iso": "2024-12-08T17:53:00-08:00",
+      "content": "Thanks, Vickie! Looking forward to it.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Theater Rehearsal",
+      "start_datetime_iso": "2024-12-08T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T22:00:00-08:00",
+      "attendees_names": [
+        "Charles Wilde",
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "location": "Orchard Theater, 789 Culture St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T17:55:00-08:00",
+      "notes": "Revised time for tonight's rehearsal with Charles and Vickie due to last-minute changes."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Email Vickie: 'Would you be up for running some lines half an hour before theatre practice tonight?' Be sure to include the exact time.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to email Vickie. I look up contacts and find Vickie Lee (vickie.lee@orchardtheater.com). Next, I check the calendar and see that “Theater Rehearsal” starts tonight at 7:00 pm, so half an hour before is 6:30 pm. I send an email to vickie.lee@orchardtheater.com: “Would you be up for running some lines at 6:30 pm, half an hour before theatre practice tonight?”",
+  "reference_time_str": "Today is Sunday, December 8, 2024 or 2024-12-08T18:05:00-08:00.",
+  "milestones": "[\n                # Fix - milestone 0 sould first find Vickie's contact in this case their email address\n                # Milestone 0 – The agent looks up the rehearsal time in the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1: Vikie contact found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Vickie Lee\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"vickie.lee@orchardtheater.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – The agent looks up the rehearsal time in the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3: rehearsal event found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Theater Rehearsal\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-08T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ]\n                ),\n                # Milestone 4 – A new email was actually sent to the required address and contains the key request\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"vickie.lee@orchardtheater.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": [(\"18:30\", \"6:30 pm\", \"6:30pm\")],\n                                    \"creation_datetime_iso\": \"2024-12-08T18:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_str_contains_any_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # search for Vickie's contact\n                (2, 3),  # search for related events\n            ]",
+  "tool_allow_list": [
+    "send_email",
+    "search_contacts",
+    "get_all_contacts",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to email Vickie to ask if she would be up for running some lines before theatre practice tonight. ",
+  "tool_allow_list_str": "[\"send_email\", \"search_contacts\", \"get_all_contacts\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-08T18:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

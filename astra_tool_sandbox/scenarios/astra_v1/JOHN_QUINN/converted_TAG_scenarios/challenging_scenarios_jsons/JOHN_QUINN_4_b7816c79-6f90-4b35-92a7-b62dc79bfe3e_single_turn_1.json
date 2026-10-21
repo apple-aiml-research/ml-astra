@@ -1,0 +1,97 @@
+{
+  "task_id": "b7816c79-6f90-4b35-92a7-b62dc79bfe3e",
+  "plot_id": 4,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 4 pm, Robin Selmour were involved. Robin expresses interest in the recent crisis in Peru.  1. Robin messages John asking if he knows about the recent crisis in Peru. 2. John replies to Robin playing coy, since he's cautious of revealing secret information he knows. 3. Robin insists nonetheless. 4. John does not budge, divulging nothing. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_4",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_yes",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply to Robin Selmour asking if she wants to meet to talk about the Peru crisis.",
+  "reference_time": "2024-07-22T16:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply text message is sent to Robin Selmour on 22 July 2024 at 16:15 saying 'Do you want to meet tomorrow to talk about the Peru crisis?'.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_4_b7816c79-6f90-4b35-92a7-b62dc79bfe3e_single_turn_1",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Robin Selmoure",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com"
+      ],
+      "sender_address": "robin.selmoure@palantir.com",
+      "content": "Understood, John. If you ever feel like sharing, you know where to find me!",
+      "creation_datetime_iso": "2024-07-22T16:08:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to Robin's text from ten minutes ago and say \"Do you want to meet tomorrow to talk about the Peru crisis?\".",
+  "misinformation": "yes",
+  "insufficient_context": "no",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to reply to Robin's text. There's only one Robin in their contacts, Robin Selmoure. Robin's most recent message says \"Understood, John. If you ever feel like sharing, you know where to find me!' and it was delivered at 16:08. But the user wants to reply to a message received ten minutes ago, and 16:08 was only seven minutes ago. I suppose the user was making an approximation when they said ten minutes, because this is the only message they could respond to. I'll craft the reply \"Do you want to meet tomorrow to talk about the Peru crisis?\" and send it.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up recent messages (or conversations) to find Robin's last text to reply to\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – confirm the retrieved results include the correct last message from Robin Selmoure\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"robin.selmoure@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Understood, John. If you ever feel like sharing, you know where to find me!\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-22T16:08:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,  # depend on retrieval in milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – A message is sent to Robin with the requested content, as a reply around the target time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Participants: John and Robin, identified by their email addresses\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"john.quinn@palantir.com\",\n                                                \"1234-5678-9108\",\n                                            ),\n                                            (\n                                                \"robin.selmoure@palantir.com\",\n                                                \"408-555-0132\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"Do you want to meet tomorrow to talk about the Peru crisis?\",\n                                    \"status\": \"sent\",\n                                    # Creation time on July 22, 2024 at ~16:15, allow approximate match\n                                    \"creation_datetime_iso\": \"2024-07-22T16:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieve messages\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n    \"send_message\",\n]",
+  "is_read_time": "2024-07-22T16:15:00-07:00",
+  "user_goal_prompt": "You are User A, John Quinn. You want to dictate a reply to Robin Selmour asking if she wants to meet to talk about the Peru crisis. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\", \"send_message\"]"
+}

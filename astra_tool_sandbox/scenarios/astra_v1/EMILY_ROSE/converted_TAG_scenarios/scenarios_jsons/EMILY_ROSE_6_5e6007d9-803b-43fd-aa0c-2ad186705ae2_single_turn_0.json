@@ -1,0 +1,96 @@
+{
+  "task_id": "5e6007d9-803b-43fd-aa0c-2ad186705ae2",
+  "plot_id": 6,
+  "plot_summary": "Emily Rose is the protagonist. On Thursday, December 5, 2024 at 9:00 AM, Sarah Rose were involved. Video call with Sarah to discuss family plans for the holiday season and potential engagement in charity events. Call log entry of a 30-minute call with Sarah. Follow-up with an email summarizing their plans and details for charity events. Send out calendar_events for events mentioned.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_6",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You are worried that you have scheduled the Family Christmas Eve gathering for the wrong time so you decide to check the time",
+  "reference_time": "2024-12-05T11:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The time of the event \"Family Christmas Eve Gathering\" on December 24, 2024 at 18:00-22:00 is presented to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_6_5e6007d9-803b-43fd-aa0c-2ad186705ae2_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "family",
+      "calendar_event_name": "Family Christmas Eve Gathering",
+      "start_datetime_iso": "2024-12-24T18:00:00-08:00",
+      "end_datetime_iso": "2024-12-24T22:00:00-08:00",
+      "attendees_names": [
+        "Ben Rose",
+        "Emily Rose",
+        "Linda Rose",
+        "Sarah Rose"
+      ],
+      "location": "123 Community Lane, Orchard County, CA 95662, USA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-05T10:00:00-08:00",
+      "notes": "Join the family for a festive Christmas Eve gathering with dinner and games at our house."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Rose",
+      "full_name": "Sarah Rose",
+      "phone_number": "+1 530-555-0124",
+      "alias": "Supportive Sister",
+      "email": "sarah.rose@orchardmail.com",
+      "relationship": "Sister",
+      "address": "125 Community Lane, Orchard County, CA 95662, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1996-08-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you tell me what time I scheduled the family Christmas Eve gathering event for",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know what time they scheduled their family Christmas Eve gathering event for. First thing I need to do is look at the user's calendar and see if there are any events that match that name. Ok I found one named \"Family Christmas Eve Gathering\" on December 24, 2024 at 18:00-22:00. This must be the event the user is referring to. Now that I have found it I can retrieve the time it is scheduled for and inform the user",
+  "milestones": "[\n                # Milestone 0 – Agent uses a calendar-reading tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned calendar data includes the correct Christmas Eve event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Family Christmas Eve Gathering\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-24T18:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,  # inspect output of Milestone 0 tool call\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent’s reply to the user contains the scheduled time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"6:00\",  # 6:00 (with minutes)\n                                            \"6 pm\",  # 6 pm\n                                            \"6 PM\",  # 6 PM\n                                            \"18:00\",  # 24-hr format\n                                            \"6pm\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool call leads to verifying correct event retrieval\n                (1, 2),  # After confirming event, agent responds to the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You are worried that you have scheduled the Family Christmas Eve gathering for the wrong time so you decide to check the time ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-05T11:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

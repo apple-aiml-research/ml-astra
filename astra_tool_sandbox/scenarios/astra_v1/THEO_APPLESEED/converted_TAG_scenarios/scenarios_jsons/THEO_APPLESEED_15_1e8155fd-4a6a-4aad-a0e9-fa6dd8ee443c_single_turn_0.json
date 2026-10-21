@@ -1,0 +1,112 @@
+{
+  "task_id": "1e8155fd-4a6a-4aad-a0e9-fa6dd8ee443c",
+  "plot_id": 15,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Evening, July 26, 2024 at 7 pm, Cookie Watson, John Quinn, Lucas Garcia were involved. Chat with Cookie to finalize plans for a weekend outing The details of the trip is finalized",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_15",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to Cookie Watson to confirm the meeting time for the hike.",
+  "reference_time": "2024-07-26T19:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Retrieve contact information for Cookie Watson.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. Send a message to Cookie Watson saying 'Hey just checking that meeting time is cool with you?'",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_15_1e8155fd-4a6a-4aad-a0e9-fa6dd8ee443c_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "1234-5678-9110",
+      "alias": "Luke",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Gym Buddy",
+      "address": "129 Fitness Blvd, Orchard County, CA",
+      "company": "Local Gym",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to Cookie Watson to confirm the meeting time for the hike saying, Hey just checking that meeting time is cool with you?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message to Cookie. I'll have a look in contacts for the name Cookie. I can see the only contact containing that name is Cookie Watson so I'll pull up that number. I shall use the text provided by user and show the draft to user before sending. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Cookie Watson in the contacts database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Cookie Watson’s contact information is returned from the lookup in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Cookie Watson\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"1234-5678-9107\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new outgoing message to Cookie Watson is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # At minimum Cookie's phone must appear among the participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9107\",\n                                                \"cookie.watson@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Hey just checking that meeting time is cool with you?\",\n                                    \"creation_datetime_iso\": \"2024-07-26T19:20:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send a message to Cookie Watson to confirm the meeting time for the hike. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-26T19:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

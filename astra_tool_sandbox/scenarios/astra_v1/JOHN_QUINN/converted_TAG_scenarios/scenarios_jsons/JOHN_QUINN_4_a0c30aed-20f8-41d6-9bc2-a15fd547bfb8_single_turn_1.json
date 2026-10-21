@@ -1,0 +1,94 @@
+{
+  "task_id": "a0c30aed-20f8-41d6-9bc2-a15fd547bfb8",
+  "plot_id": 4,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 4 pm, Robin Selmour were involved. Robin expresses interest in the recent crisis in Peru.  1. Robin messages John asking if he knows about the recent crisis in Peru. 2. John replies to Robin playing coy, since he's cautious of revealing secret information he knows. 3. Robin insists nonetheless. 4. John does not budge, divulging nothing. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_4",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to Robin Selmoure thanking their for understanding",
+  "reference_time": "2024-07-22T16:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message with the text \"Thank you for understanding\" is sent to Robin Selmoure",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_4_a0c30aed-20f8-41d6-9bc2-a15fd547bfb8_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Robin Selmoure",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com"
+      ],
+      "sender_address": "robin.selmoure@palantir.com",
+      "content": "Understood, John. If you ever feel like sharing, you know where to find me!",
+      "creation_datetime_iso": "2024-07-22T16:08:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply saying \"Thank you for understanding\" to the last message from robin.selmoure@palantir.com",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants me to reply to the most recent message from robin.selmoure@palantir.com with the text \"Thank you for understanding\". First I need to find the message the user is referring to. In the user's conversations I have found one with robin.selmoure@palantir.com so these must be the messages the user is referring to. There is also a contact card with the e-mail \"robin.selmoure@palantir.com\" linked to contact Robin Selmoure.  I will draft the message and send it to the specified contact informing the user of this before.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the relevant conversation/message thread\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved message list contains the latest message from Robin\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"robin.selmoure@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Understood, John.\",\n                                                \"partial\": True,  # only need to see part of the message body\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new message saying \"Thank you for understanding\" is sent to Robin\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Must include at least John and Robin; allow extras if the messaging system adds more identifiers\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9108\",\n                                                \"john.quinn@palantir.com\",\n                                            ),\n                                            (\n                                                \"408-555-0132\",\n                                                \"robin.selmoure@palantir.com\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"Thank you for understanding\",\n                                    \"creation_datetime_iso\": \"2024-07-22T16:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to reply to Robin Selmoure thanking their for understanding ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-22T16:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

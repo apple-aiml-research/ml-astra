@@ -1,0 +1,169 @@
+{
+  "task_id": "f4340985-d461-4029-b203-7d08e4abb9c6",
+  "plot_id": 19,
+  "plot_summary": "John Quinn is the protagonist. On Thursday, July 25, 2024 at 5:30pm, Apricot Sweeney were involved. John and Apricot agree on a hike for the Sunday after next  1. John messages Apricot with a 4 different hiking possibilities for the Sunday after next, mentioning also the locations and some descriptions of the most memorable things about each trail. 2. Apricot chooses the shortest one. 3. John sends her an email with the video of their last hike. 4. They exchange loving messages and end the conversation. 5. John makes a calendar event inviting Apricot to their relatively short hike. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_19",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to Apricot Sweeney saying \"Hey Babes! I almost forgot to ask if you could bring the massage oil I left at your house last time, I find after these hikes my calves get very tight and might need your tender touch.   A massage from an Apricot, how unusual!\"",
+  "reference_time": "2024-07-25T17:50:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "A message is sent to Apricot Sweeney",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_19_f4340985-d461-4029-b203-7d08e4abb9c6_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Hey Apricot! I've been thinking about our hike for the Sunday after next. I've got 4 trails in mind, each with something unique. Let me know which one sounds good to you!",
+      "creation_datetime_iso": "2024-07-25T17:30:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "apricot.sweeney@sfhealth.com",
+      "content": "Hi John! That sounds exciting. Could you tell me a bit more about the trails?",
+      "creation_datetime_iso": "2024-07-25T17:32:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Sure! The first one is a scenic route along the coast, about 5 miles long. The second is a forest trail, quite shaded and about 3 miles. The third is a hill challenge, about 4 miles but steep. The last one is a relaxing walk around a lake, just 2 miles.",
+      "creation_datetime_iso": "2024-07-25T17:35:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "apricot.sweeney@sfhealth.com",
+      "content": "Let's go for the lake walk! It sounds lovely and not too strenuous.",
+      "creation_datetime_iso": "2024-07-25T17:40:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Perfect! It's a date. I'll send you a video from our last hike to get us in the mood!",
+      "creation_datetime_iso": "2024-07-25T17:42:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Looking forward to our hike!",
+      "sender_address": "john.quinn@palantir.com",
+      "recipients_addresses": [
+        "apricot.sweeney@sfhealth.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-25T17:45:00-07:00",
+      "body": "Hey Apricot, Just sending you the video from our last hike. Can't wait to make more memories like these. See you soon!",
+      "attachments": [
+        "LastHike.mp4"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Hiking with Apricot",
+      "start_datetime_iso": "2024-08-04T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-04T12:00:00-07:00",
+      "attendees_names": [
+        "Apricot Sweeney",
+        "John Quinn"
+      ],
+      "location": "Lake Serenity Trail",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-25T17:50:00-07:00",
+      "notes": "Hiking around the lake, as chosen by Apricot. A relaxing walk to enjoy nature and each other's company."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send my belle a textual communiqué that says \"Hey Babes! I almost forgot to ask if you could bring the massage oil I left at your house last time, I find after these hikes my calves get very tight and might need your tender touch. A massage from an Apricot, how unusual!\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user refers to his \"belle\" which refers to a girlfriend or partner, which is evident from the user's contacts is Apricot Sweeney. The user wants the message to say \"Hey Babes! I almost forgot to ask if you could bring the massage oil I left at your house last time, I find after these hikes my calves get very tight and might need your tender touch. A massage from an Apricot, how unusual!\"",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Apricot’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm Apricot Sweeney appeared in the retrieved contact list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Apricot Sweeney\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"415-555-0128\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – A new text message to Apricot is sent with the requested content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Each tuple lists alternative identifiers for the same participant\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9108\",\n                                                \"john.quinn@palantir.com\",\n                                            ),  # John (sender)\n                                            (\n                                                \"415-555-0128\",\n                                                \"apricot.sweeney@sfhealth.com\",\n                                            ),  # Apricot (receiver)\n                                        ]\n                                    ],\n                                    \"content\": \"massage oil\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-25T17:50:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to send a message to Apricot Sweeney saying \"Hey Babes! I almost forgot to ask if you could bring the massage oil I left at your house last time, I find after these hikes my calves get very tight and might need your tender touch.  A massage from an Apricot, how unusual!\" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-25T17:50:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

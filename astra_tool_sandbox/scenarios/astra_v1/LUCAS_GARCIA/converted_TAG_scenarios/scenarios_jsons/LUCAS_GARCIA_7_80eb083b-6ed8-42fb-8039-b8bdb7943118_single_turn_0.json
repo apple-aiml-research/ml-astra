@@ -1,0 +1,113 @@
+{
+  "task_id": "80eb083b-6ed8-42fb-8039-b8bdb7943118",
+  "plot_id": 7,
+  "plot_summary": "Lucas Garcia is the protagonist. On Thursday, December 5, 2024 at 9 am, Sophie Bennett were involved. Lucas conducts a personalized fitness session for Sophie and her friends at the gym. Calendar invite and session notes are shared with Sophie for future reference.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_7",
+    "contact",
+    "calendar",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to know how many people will be attending the fitness session to plan the session accordingly.",
+  "reference_time": "2024-12-05T07:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed 3 people will be attending the event named \"Personalized Fitness Session with Sophie and Friends\" from 9:00-10:00 on 5 December 2024. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_7_80eb083b-6ed8-42fb-8039-b8bdb7943118_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Sophie Bennett",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "sophie.bennett@example.com"
+      ],
+      "sender_address": "sophie.bennett@example.com",
+      "content": "Hi Lucas! We're all set for tomorrow. There will be three of us joining. Looking forward to it!",
+      "creation_datetime_iso": "2024-12-04T15:20:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Personalized Fitness Session with Sophie and Friends",
+      "start_datetime_iso": "2024-12-05T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-05T10:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Sophie Bennett"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 30 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T15:00:00-08:00",
+      "notes": "Lucas conducts a personalized fitness session for Sophie Bennett and her friends at the gym."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sophie",
+      "last_name": "Bennett",
+      "full_name": "Sophie Bennett",
+      "phone_number": "+1 12345-6789-1000-8521",
+      "alias": "High School Friend's Sibling",
+      "email": "sophie.bennett@example.com",
+      "relationship": "High school friend's sibling",
+      "address": "34 School St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1994-10-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "How many people are attending the event with Sophie today?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know how many people are attending the event with Sophie today. I should figure out which event the user means. I will first need to know who Sophie is to look for events with them. \nI will check the user's Contacts for a Sophie. I can only see one, Sophie Bennett, so this must be who the user is looking for an event with. \nNext I will check the user's Calendar for an event with Sophie. Looks like there is only one, the Personalized Fitness Session with Sophie and Friends from 9:00-10:00 on the 5 December 2024. Now I will check the attendees. Hmm, looks like only Sophie is listed as an attendee. \nI should check their Messages to see if it is mentioned there. I have found one message, received at 15:20 on the 4 December 2024 from Sophie that reads \"Hi Lucas! We're all set for tomorrow. There will be three of us joining. Looking forward to it!\". I will let the user know there will be three people attending. ",
+  "milestones": "[\n                # Milestone 0 – Agent consults the message history to find details about Sophie's session\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms the message from Sophie mentioning three attendees was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"sophie.bennett@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"three\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Agent informs the user that three people will attend\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"3\", \"three\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You need to know how many people will be attending the fitness session to plan the session accordingly. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-12-05T07:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

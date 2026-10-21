@@ -1,0 +1,226 @@
+{
+  "task_id": "dd75c71b-90ed-4813-9702-fd4d6608b052",
+  "plot_id": 2,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 1, 2024 at 8 pm, self, Charles Wilde, Vickie Lee, Francis Wagner were involved. Dawei messages Charles and Vickie on WhatsApp to confirm theater rehearsal, and Francis shares a Google Doc with schedule updates. Vickie says she will be 20 minutes late and apologizes. Francis emails the doc to the group.",
+  "tags": [
+    "astra_core",
+    "DAWEI_SHEN",
+    "plot_2",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "contact",
+    "email",
+    "whatsapp_messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to send a follow up email to Charles Wilde, Vickie Lee and Francis Wagner giving feedback on the rehearsal and booking in the next rehearsal date for the same time the following week.",
+  "reference_time": "2024-12-01T21:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An email is sent to Charles Wilde, Vickie Lee and Francis Wagner about tonight’s rehearsal and confirming the next rehearsal at the same time next week.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A calendar event called 'Theatre Rehearsal' is created for 8-December-2024 at 20:00 inviting Dawei Shen, Charles Wilde, Vickie Lee and Francis Wagner.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_2_dd75c71b-90ed-4813-9702-fd4d6608b052_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-01T19:50:00-08:00",
+      "content": "Hey Charles, just confirming we're still on for tonight's rehearsal at 8?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-01T19:52:00-08:00",
+      "content": "Yes, all set for 8 PM. See you there!",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-01T19:53:00-08:00",
+      "content": "Hi Vickie, are we good for the rehearsal at 8 tonight?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-01T19:55:00-08:00",
+      "content": "Hey Dawei, I might be around 20 mins late, sorry! Caught up with something.",
+      "status": "read"
+    }
+  ],
+  "emails": [
+    {
+      "subject": "Updated Rehearsal Schedule",
+      "sender_address": "francis.wagner@orchardtheater.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com",
+        "charles.wilde@orchardtheater.com",
+        "vickie.lee@orchardtheater.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-01T19:58:00-08:00",
+      "body": "Hello everyone,\n\nPlease find attached the updated schedule for tonight's rehearsal. Let me know if there are any issues.\n\nBest,\nFrancis",
+      "attachments": [
+        "Rehearsal_Schedule_Updated_2024-12-01.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cycling Trip with Vick",
+      "start_datetime_iso": "2024-12-01T07:00:00-08:00",
+      "end_datetime_iso": "2024-12-01T10:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Vick Li"
+      ],
+      "location": "Local Café, Napa Valley, CA",
+      "reminder_time_ahead": "60 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-30T12:00:00-08:00",
+      "notes": "Starting the day with a cycling trip at a local café in Napa Valley."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room B, Orchard Tech HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-01T12:00:00-08:00",
+      "notes": "Monthly team review to discuss project progress and assign new action items."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00"
+    },
+    {
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "phone_number": "+1 555-456-7890-1234",
+      "first_name": "Francis",
+      "job_title": "Theater Manager",
+      "last_name": "Wagner",
+      "relationship": "Theater Manager",
+      "company": "Orchard Theater",
+      "is_self": false,
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "alias": "Francis",
+      "full_name": "Francis Wagner",
+      "email": "francis.wagner@orchardtheater.com",
+      "birthday": "1975-01-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send an email to Charles, Vickie and Francis about the rehearsal and set up a calendar event for Theatre Rehearsal at 8pm next week and let them know.",
+  "reasoning": "The user wants to (1) send a follow-up email to Charles Wilde, Vickie Lee and Francis Wagner giving feedback on tonight’s rehearsal and confirming the next rehearsal at the same time next week, and (2) create a calendar event called “Theatre Rehearsal” for 08-December-2024 at 20:00 with all four participants (Dawei, Charles, Vickie, Francis) invited.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reference_time_str": "Today is Sunday, December 1, 2024 or 2024-12-01T21:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Check if search contacts initiated (rehearsal was not marked in calendar)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Found related person's email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Vickie Lee\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"vickie.lee@orchardtheater.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2: Check if search contacts initiated (rehearsal was not marked in calendar)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3: Found related person's email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Charles Wilde\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"charles.wilde@orchardtheater.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ]\n                ),\n                # Milestone 4: Check if search contacts initiated (rehearsal was not marked in calendar)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 5: Found related person's email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Francis Wagner\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"francis.wagner@orchardtheater.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=4,\n                        ),\n                    ]\n                ),\n                # Milestone 6: Verify email sent with correct body and recipients\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\n                                            \"charles.wilde@orchardtheater.com\",\n                                            \"vickie.lee@orchardtheater.com\",\n                                            \"francis.wagner@orchardtheater.com\",\n                                        ]\n                                    ],\n                                    # \"body\": \"Well done tonight guys, great effort all. We will progress with the next scene next week at the same time?\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-01T21:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                # \"body\": column_rouge_l_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n                # Milestone 7: Verify calendar event creation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Theatre Rehearsal\",\n                                    \"start_datetime_iso\": \"2024-12-08T20:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Dawei Shen\",\n                                            \"Charles Wilde\",\n                                            \"Vickie Lee\",\n                                            \"Francis Wagner\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-01T21:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.EMAIL],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # find Vickie\n                (2, 3),  # find Charles\n                (4, 5),  # find Fracis\n            ]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_email",
+    "create_calendar_event",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to send a follow up email to Charles Wilde, Vickie Lee and Francis Wagner giving feedback on the rehearsal and booking in the next rehearsal date for the same time the following week.",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_email\", \"create_calendar_event\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-01T21:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

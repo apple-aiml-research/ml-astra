@@ -1,0 +1,81 @@
+{
+  "task_id": "0f6584cd-6554-4b94-bcb9-af620325e968",
+  "plot_id": 27,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo got messages to confirmation from optician mentioning the appointment on Friday Aug. 2nd at 14:30\n generate message thread that Theo received and confirmation the appointment\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_27",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to reply to the optician confirming your appointment.",
+  "reference_time": "2024-07-29T10:03:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "A text is sent to optician@example.com saying 'Thank you for the reminder. I confirm my appointment for August 2nd at 14:30.'."
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_27_0f6584cd-6554-4b94-bcb9-af620325e968_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "send_message",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "optician@example.com",
+      "participants_addresses": [
+        "optician@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "optician@example.com",
+      "content": "Hello Theo, this is a reminder that you have an appointment scheduled with us on Friday, August 2nd at 14:30. Please confirm your availability.",
+      "creation_datetime_iso": "2024-07-29T10:00:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to the eye doctor telling them 'Thank you for the reminder. I confirm my appointment for August 2nd at 14:30.'.",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to \"reply to the eye doctor\". There is a text from 3 minutes ago from \"optician@example.com\" which I can deduce is most likely the \"eye doctor\". I will send the reply of 'Thank you for the reminder. I confirm my appointment for August 2nd at 14:30.' to that contact address.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up recent messages to find the optician’s reminder\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the message retrieved is the reminder from the optician\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # Conversation must involve the optician\n                                            \"participants_addresses\": {\n                                                \"value\": \"optician@example.com\",\n                                                \"partial\": True,\n                                            },\n                                            # Content should mention “reminder”\n                                            \"content\": {\n                                                \"value\": \"reminder\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Verify a confirmation message was sent to the optician\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # At minimum the optician must be included; allow other participants (e.g., Theo)\n                                    \"participants_addresses\": [\n                                        [\"optician@example.com\"]\n                                    ],\n                                    \"content\": \"confirm my appointment\",  # substring check\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-29T10:03:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_subset_match_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You need to reply to the optician confirming your appointment. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"send_message\", \"search_messages\"]",
+  "is_read_time": "2024-07-29T10:03:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

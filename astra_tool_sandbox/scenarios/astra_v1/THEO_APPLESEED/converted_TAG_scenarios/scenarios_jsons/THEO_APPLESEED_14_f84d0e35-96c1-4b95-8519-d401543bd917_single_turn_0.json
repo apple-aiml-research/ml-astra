@@ -1,0 +1,127 @@
+{
+  "task_id": "f84d0e35-96c1-4b95-8519-d401543bd917",
+  "plot_id": 14,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Afternoon, July 26, 2024 at 12 pm, Michelle Barnes, Dawei Shen were involved. Lunch at a nearby restaurant to discuss personal and professional topics ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_14",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_high",
+    "messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are about time to have lunch with your cowokers, but you are stuck in traffic.   You want to reply to Michelle and Dawei separately letting them know.",
+  "reference_time": "2024-07-26T11:50:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "A message is sent to Michelle Barnes at 11:50 on July 26th 2024, saying 'I'm stuck in traffic I'll be ten minutes late.'.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A message is sent to Dawei Shen at 11:50 on July 26th 2024, saying 'I'm stuck in traffic I'll be ten minutes late.'.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_14_f84d0e35-96c1-4b95-8519-d401543bd917_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "send_message",
+    "search_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Michelle Barnes",
+      "participants_addresses": [
+        "michelle.barnes@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "michelle.barnes@example.com",
+      "content": "See you soon, Theo!",
+      "creation_datetime_iso": "2024-07-26T11:45:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Dawei Shen",
+      "participants_addresses": [
+        "dawei.shen@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "dawei.shen@example.com",
+      "content": "Excellent! I'll see you both there.",
+      "creation_datetime_iso": "2024-07-26T11:35:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "high",
+  "query": "Reply to Dawei and Michelle separately to say 'I'm stuck in traffic I'll be ten minutes late.'.",
+  "reasoning": "The user wants to reply to Dawei and Michelle separately. I can tell these are Michelle Barnes and Dawei Shen as they are the only matches in the user's contacts. I can then confirm with the user that the message saying, 'I'm stuck in traffic I'll be ten minutes late.' is correct and then send it on to them separately.",
+  "milestones": "[\n                # Milestone 0 – the agent looks up the contacts or messages(Michelle / Dawei)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                        \"get_all_messages\",\n                                        \"search_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 – messages sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"michelle.barnes@example.com\",\n                                                \"1234-5678-9105\",\n                                            ),\n                                            (\n                                                \"theo.appleseed@example.com\",\n                                                \"1234-5678-9101\",\n                                            ),\n                                        ],\n                                        [\n                                            (\n                                                \"dawei.shen@example.com\",\n                                                \"1234-5678-9106\",\n                                            ),\n                                            (\n                                                \"theo.appleseed@example.com\",\n                                                \"1234-5678-9101\",\n                                            ),\n                                        ],\n                                    ],\n                                    \"content\": [\"ten minutes late\", \"ten minutes late\"],\n                                    \"creation_datetime_iso\": \"2024-07-26T11:50:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"get_all_contacts\",\n    \"search_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You are about time to have lunch with your cowokers, but you are stuck in traffic.  You want to reply to Michelle and Dawei separately letting them know. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"send_message\", \"search_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-07-26T11:50:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

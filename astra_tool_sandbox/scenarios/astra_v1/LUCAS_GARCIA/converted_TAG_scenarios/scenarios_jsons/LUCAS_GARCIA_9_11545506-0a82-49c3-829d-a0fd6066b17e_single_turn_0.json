@@ -1,0 +1,94 @@
+{
+  "task_id": "11545506-0a82-49c3-829d-a0fd6066b17e",
+  "plot_id": 9,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 11 am, Sarah Lopez were involved. Lucas consults with Sarah regarding dietary plans for his gym clients. Emails are exchanged with dietary plans and recommendations.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_9",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to find the dietary plans to show to Theo.",
+  "reference_time": "2024-12-09T18:55:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email received at 15:00 on the 6 December 2024 from sarah.lopez@example.com with the subject line Re: Dietary Plans and Recommendations for Clients is presented to the user. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_9_11545506-0a82-49c3-829d-a0fd6066b17e_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Dietary Plans and Recommendations for Clients",
+      "sender_address": "sarah.lopez@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "body": "Hi Lucas,\n\nThanks for reaching out and for our productive discussion this morning. I've attached the dietary plans and nutritional guidelines we talked about. These are tailored specifically for active individuals aiming to maximize their performance and recovery.\n\nFeel free to reach out if you need further clarification or any additional information.\n\nBest wishes,\nSarah",
+      "attachments": [
+        "Dietary_Plans_for_Gym_Clients_Dec2024.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Lopez",
+      "full_name": "Sarah Lopez",
+      "phone_number": "+1 12345-6789-1000-9630",
+      "alias": "Dietitian Consultant",
+      "email": "sarah.lopez@example.com",
+      "relationship": "Dietitian consultant",
+      "address": "12 Nutrition Blvd, Orchard County, CA, USA",
+      "company": "Healthy Choices Nutrition",
+      "job_title": "Dietitian",
+      "is_self": false,
+      "birthday": "1985-11-02T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Pull up the email with the dietary plans",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to pull up the email with the dietary plans. I should go to Mail and see if I can find an email that matches this description. \nHmm, I can see two emails that mention dietary plans. I should figure out which the user means. I will check the contents of both emails. Only one email has an attachment that contains the actual plans, the Re: Dietary Plans and Recommendations for Clients from sarah.lopez@example.com which was received at 15:00 on the 6 December 2024. This must be the email the user meant. \nI will now show/summarize this email for the user. ",
+  "milestones": "[\n                # Milestone 0 – The agent tries to locate the relevant email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm that the located email matches the one with the dietary plans\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Re: Dietary Plans and Recommendations for Clients\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"sarah.lopez@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-06T15:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent presents the email (or its essential information) to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Dietary Plans and Recommendations\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search ➔ verify correct email found\n                (1, 2),  # Correct email found ➔ presented to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to find the dietary plans to show to Theo. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-09T18:55:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,124 @@
+{
+  "task_id": "bb940d83-0787-4ab7-b41d-1f67ea44965a",
+  "plot_id": 20,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 11, 2024 at 5 pm, Jessica Lin, Olivia Clark were involved. Lucas hosts a small gathering at the gym for a pre-holiday fitness celebration. Pictures and highlights from the event are shared on social media platforms.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_20",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are hands-free at the moment and want to know what the girls said in reply to your message about the pre-holiday fitness.",
+  "reference_time": "2024-12-11T19:32:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message received from Jessica Lin on 11 December 2024 at 19:25 saying 'Looking forward to sharing them. It's always nice to capture these moments. Thanks for putting this together, Lucas!' is read out to the user.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The message received from Olivia Clark in the message thread 'Pre-Holiday Fitness Celebration' on 11 December 2024 at 19:30 saying 'Definitely keeping us motivated and connected, even as the holidays approach. Thanks again!' is read out to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_20_bb940d83-0787-4ab7-b41d-1f67ea44965a_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Pre-Holiday Fitness Celebration",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "jessica.lin@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "jessica.lin@example.com",
+      "content": "Looking forward to sharing them. It's always nice to capture these moments. Thanks for putting this together, Lucas!",
+      "creation_datetime_iso": "2024-12-11T19:25:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Pre-Holiday Fitness Celebration",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "jessica.lin@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "olivia.clark@example.com",
+      "content": "Definitely keeping us motivated and connected, even as the holidays approach. Thanks again!",
+      "creation_datetime_iso": "2024-12-11T19:30:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Olivia",
+      "last_name": "Clark",
+      "full_name": "Olivia Clark",
+      "phone_number": "+1 12345-6789-1000-7531",
+      "alias": "Gym Member",
+      "email": "olivia.clark@example.com",
+      "relationship": "Local gym member",
+      "address": "89 Gym St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1992-09-30T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "moderate",
+  "reasoning": "Right so, the user is looking for responses from an 'Olivia' and 'Jessica' about plans before the holiday, Firstly, checking their contacts I can see a match for each, 'Olivia Clark' and 'Jessica Lin'. Next, I will check the user's message thread and can see that today, 11 December 2024, the user was last messaging in the 'Pre-Holiday Fitness Celebration'. The people included in this thread are 'Jessica Lin' and 'Olivia Clark'. This is the thread the user is searching for. \n\nI can see two unread messages from 'Jessica' and 'Olivia'. 'Jessica Lin' at 19:25 said 'Looking forward to sharing them. It's always nice to capture these moments. Thanks for putting this together, Lucas!' and 'Olivia Clark' at 19:30 said 'Definitely keeping us motivated and connected, even as the holidays approach. Thanks again!'. Now that I have found the requested messages I can read them out to the user.",
+  "query": "What did Jessica and Olivia say about plans before the holiday?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – The agent consults the message store\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The tool result contains Jessica’s 19:25 message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"jessica.lin@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-11T19:25:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent consults the message store\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – The tool result contains Olivia’s 19:30 message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"olivia.clark@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-11T19:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ],\n                ),\n                # Milestone 4 – The agent tells the user what both Jessica said\n                Milestone(\n                    snapshot_constraints=[\n                        # Verify Jessica’s quote appears\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"Definitely keeping us motivated\",\n                                            \"Looking forward to sharing them\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # message search → confirm Jessica’s message\n                (2, 3),  # message search → confirm Olivia’s message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You are hands-free at the moment and want to know what the girls said in reply to your message about the pre-holiday fitness. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-12-11T19:24:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

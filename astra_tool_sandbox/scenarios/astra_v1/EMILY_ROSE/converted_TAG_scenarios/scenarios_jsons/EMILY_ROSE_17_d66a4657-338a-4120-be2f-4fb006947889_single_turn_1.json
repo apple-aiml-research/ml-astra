@@ -1,0 +1,142 @@
+{
+  "task_id": "d66a4657-338a-4120-be2f-4fb006947889",
+  "plot_id": 17,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 13, 2024 at 3:00 PM, Oscar Martinez were involved. Weekend walk with Oscar and pets; brainstorming pet-friendly community activities. Oscar sends pet event ideas via message.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_17",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are wondering what time you sent in your last message to Oscar Martinez",
+  "reference_time": "2024-12-13T16:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The time of the message sent by the user on December 13, 2024 at 15:40 to Oscar Martinez is presented to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_17_d66a4657-338a-4120-be2f-4fb006947889_single_turn_1",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Oscar Martinez",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0123",
+      "content": "Awesome! Thanks for your enthusiasm, Oscar. Looking forward to it!",
+      "creation_datetime_iso": "2024-12-13T15:40:00-08:00",
+      "status": "sent"
+    },
+    {
+      "creation_datetime_iso": "2024-12-13T15:10:00-08:00",
+      "status": "sent",
+      "conversation_name": "Oscar Martinez",
+      "content": "Hi Oscar! It was great walking with you and the pets today. Got any brainstormed ideas on pet-friendly activities we could organize in the community?",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0123"
+    },
+    {
+      "creation_datetime_iso": "2024-12-13T15:15:00-08:00",
+      "status": "read",
+      "conversation_name": "Oscar Martinez",
+      "content": "Hey Emily! Yes, I've been thinking about organizing a 'Paws at the Park' event where we could have agility competitions, pet-safe zones, and a corner for adoption. What do you think?",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0140"
+    },
+    {
+      "creation_datetime_iso": "2024-12-13T15:20:00-08:00",
+      "status": "sent",
+      "conversation_name": "Oscar Martinez",
+      "content": "Love the idea, Oscar! It could really bring the community together. We could also invite local pet care vendors and have a 'Pet Tips' session.",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0123"
+    },
+    {
+      "creation_datetime_iso": "2024-12-13T15:25:00-08:00",
+      "status": "read",
+      "conversation_name": "Oscar Martinez",
+      "content": "Definitely! I can reach out to some vendors I know. Maybe we could run a mini training session as well?",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0140"
+    },
+    {
+      "creation_datetime_iso": "2024-12-13T15:30:00-08:00",
+      "status": "sent",
+      "conversation_name": "Oscar Martinez",
+      "content": "Great plan! Let me know how you go with that. Once we have a draft plan, we could run it by the community board for approval.",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0123"
+    },
+    {
+      "creation_datetime_iso": "2024-12-13T15:35:00-08:00",
+      "status": "read",
+      "conversation_name": "Oscar Martinez",
+      "content": "Sounds good. I'll have some notes typed up this weekend and send them over. Excited to see this come to life!",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0140"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time did I send that last message to the person who wants to organise 'Paws at the Park'.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know what time they last messaged the person who wants to organise 'Paws at the Park'. I will first look for this person in messages. I have found Oscar Martinez who has sent a message about organising 'Paws at the Park'.\n\nI will inform the user that the last message they sent to Oscar was at 15:40 on December 13th.",
+  "milestones": "[\n                # Milestone 0 – The agent consults the messages database (search or list)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned result set contains the expected message to Oscar at 2024-12-13 15:40\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Oscar Martinez\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-13T15:40:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent informs the user of the correct time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"3:40\", \"15:40\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Message lookup → verify correct message exists\n                (1, 2),  # Verified message → respond to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You are wondering what time you sent in your last message to Oscar Martinez ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]",
+  "is_read_time": "2024-12-13T16:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

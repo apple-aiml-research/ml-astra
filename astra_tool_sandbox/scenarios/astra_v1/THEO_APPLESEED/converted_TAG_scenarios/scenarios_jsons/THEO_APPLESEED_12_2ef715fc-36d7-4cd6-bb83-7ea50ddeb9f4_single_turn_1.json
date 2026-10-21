@@ -1,0 +1,111 @@
+{
+  "task_id": "2ef715fc-36d7-4cd6-bb83-7ea50ddeb9f4",
+  "plot_id": 12,
+  "plot_summary": "Theo Appleseed is the protagonist. On Thursday Evening, July 25, 2024 at 8pm, John Quinn were involved. John messages Theo to chat and plan an upcoming hiking trip for July 27, 2024 Itinerary, Locations and schedules are decided. A calander invite was sent out for the hiking trip with all the finalized information.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_12",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know when to leave home for your meeting tomorrow morning; you need 30 minutes to commute and 15 minutes to walk to your office.",
+  "reference_time": "2024-07-25T20:45:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed they need to leave the house at 08:15 (45 minutes before the 09:00 Project Review Meeting on 26 July 2024).",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_12_2ef715fc-36d7-4cd6-bb83-7ea50ddeb9f4_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Hiking Trip",
+      "start_datetime_iso": "2024-07-27T06:00:00-07:00",
+      "end_datetime_iso": "2024-07-27T10:00:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Theo Appleseed"
+      ],
+      "location": "Big Rock Mountain Trail, Orchard County, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-25T20:00:00-07:00",
+      "notes": "Hiking trip to the local mountain trails."
+    },
+    {
+      "organizer_name": "Theo Appleseed",
+      "creation_datetime_iso": "2024-07-25T12:00:00-07:00",
+      "calendar_event_name": "Project Review Meeting",
+      "attendees_names": [
+        "Kevin Chen",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "calendar_name": "work",
+      "reminder_time_ahead": "30 minutes",
+      "meeting_url": null,
+      "notes": "Review the progress of current projects and discuss next steps.",
+      "end_datetime_iso": "2024-07-26T10:00:00-07:00",
+      "start_datetime_iso": "2024-07-26T09:00:00-07:00"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When do I need to leave the house tomorrow morning? I need 30 minutes to commute and 15 minutes to walk to my office.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when to leave the house for their meeting tomorrow morning. Tomorrow is 26 July 2024; the only morning event that day is the 'Project Review Meeting' at 09:00 in Conference Room B at the office. The user needs 30 minutes to commute plus 15 minutes to walk to the office — 45 minutes of travel — so they must leave home 45 minutes before 09:00, at 08:15. I will tell the user to leave the house at 08:15.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events (tomorrow’s hike)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Returned calendar data includes tomorrow's Project Review Meeting (09:00)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Project Review Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-26T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user when to leave the house (08:15)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"8:15\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup → verify event found\n                (1, 2),  # Event found → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know when to leave home for your meeting tomorrow morning; you need 30 minutes to commute and 15 minutes to walk to your office. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-25T20:45:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

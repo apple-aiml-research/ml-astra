@@ -1,0 +1,100 @@
+{
+  "task_id": "a4d48dd4-4822-460c-8e8f-0e53f52d74e7",
+  "plot_id": 1,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 2, 2024 at 8:00 AM, self were involved. Emily checks her calendar for the week ahead, including scheduled meetings with Jenna at the community center about the upcoming charity event. Her calendar has multiple entries for event planning meetings with Jenna and Michael.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_1",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send an email to Jenna Miles about the upcoming charity event.",
+  "reference_time": "2024-12-02T10:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An email is sent to Jenna Miles with the content:  \"Hi Jenna, I just wanted to ask real quick what the charity event we talked about yesterday was. It's slipped my mind somehow and I can find no other record of it besides having talked to you about it. Thanks a million! -Emily Rose, Event Guru\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_1_a4d48dd4-4822-460c-8e8f-0e53f52d74e7_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Event Planning Meeting with Jenna",
+      "start_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T10:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Jenna Miles"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:00:00-07:00",
+      "notes": "Discuss details and logistics for the upcoming charity event."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jenna",
+      "last_name": "Miles",
+      "full_name": "Jenna Miles",
+      "phone_number": "+1 530-555-0131",
+      "alias": "Decor Diva",
+      "email": "jenna.miles@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Planner",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need an email sent to Jenna Miles at jenna.miles@orchardcommunity.org to say: \"Hi Jenna, I just wanted to ask real quick what the charity event we talked about yesterday was. It's slipped my mind somehow and I can find no other record of it besides having talked to you about it. Thanks a million! -Emily Rose, Event Guru\".",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to send an email to Jenna Miles at jenna.miles@orchardcommunity.org to say \"Hi Jenna, I just wanted to ask real quick what the charity event we talked about yesterday was. It's slipped my mind somehow and I can find no other record of it besides having talked to you about it. Thanks a million! -Emily Rose, Event Guru\". Since the user has provided me with all the ingredients i need to complete the task, I shall do so following user's instructions closely. With the user's confirmation, I'll send the email as requested.",
+  "milestones": "[\n                # Milestone 0 – Verify that a new outgoing email was sent to Jenna Miles\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"jenna.miles@orchardcommunity.org\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"charity event we talked about yesterday\",\n                                    \"creation_datetime_iso\": \"2024-12-02T10:20:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",       # to send the email\n    \"search_contacts\",  # agent may look up Jenna’s email address\n    \"get_all_contacts\", # fallback for contact lookup\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to send an email to Jenna Miles about the upcoming charity event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"send_email\"]",
+  "is_read_time": "2024-12-02T10:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,934 @@
+{
+    "2": [
+        {
+            "conversation_name": "reservations@chefsbite.com",
+            "participants": [
+                "john.quinn@palantir.com",
+                "reservations@chefsbite.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hello, I would like to book a table for two at your restaurant on July 25th. Could you please let me know the available times?",
+                    "creation_time": "2024-07-22T11:32:00",
+                    "status": ""
+                },
+                {
+                    "sender": "reservations@chefsbite.com",
+                    "sender_name": "Chef's Bite Reservations",
+                    "content": "Hi John, thank you for your interest in dining with us! We have availability at 5:00 PM and 9:00 PM on July 25th. Please let us know your preference.",
+                    "creation_time": "2024-07-22T11:45:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Thank you for the quick response. Could we possibly make it a bit earlier than 9:00 PM? Something around 8:00 PM would be perfect.",
+                    "creation_time": "2024-07-22T11:50:00",
+                    "status": ""
+                },
+                {
+                    "sender": "reservations@chefsbite.com",
+                    "sender_name": "Chef's Bite Reservations",
+                    "content": "I'm sorry, John, but our next available slot close to your requested time is at 8:30 PM. Would that work for you?",
+                    "creation_time": "2024-07-22T12:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "8:30 PM sounds great. Please confirm the reservation for two at that time.",
+                    "creation_time": "2024-07-22T12:05:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "3": [
+        {
+            "conversation_name": "Grace Quinn",
+            "participants": [
+                "1234-5678-9108",
+                "408-555-0126"
+            ],
+            "messages": [
+                {
+                    "sender": "1234-5678-9108",
+                    "sender_name": "John Quinn",
+                    "content": "Can you believe Dad is still sending me these Pirate Party emails?",
+                    "creation_time": "2024-07-22T14:10:00",
+                    "status": ""
+                },
+                {
+                    "sender": "408-555-0126",
+                    "sender_name": "Grace Quinn",
+                    "content": "Again? He just doesn't give up, does he?",
+                    "creation_time": "2024-07-22T14:12:00",
+                    "status": ""
+                },
+                {
+                    "sender": "1234-5678-9108",
+                    "sender_name": "John Quinn",
+                    "content": "It's like he's trying to annoy me on purpose. I'm not even responding this time.",
+                    "creation_time": "2024-07-22T14:15:00",
+                    "status": ""
+                },
+                {
+                    "sender": "408-555-0126",
+                    "sender_name": "Grace Quinn",
+                    "content": "Probably a good call. Just ignore it, maybe he'll stop if he doesn't get a reaction.",
+                    "creation_time": "2024-07-22T14:17:00",
+                    "status": ""
+                },
+                {
+                    "sender": "1234-5678-9108",
+                    "sender_name": "John Quinn",
+                    "content": "Yeah, that's what I'm hoping for. Thanks for letting me vent.",
+                    "creation_time": "2024-07-22T14:20:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "4": [
+        {
+            "conversation_name": "Robin Selmoure",
+            "participants": [
+                "john.quinn@palantir.com",
+                "robin.selmoure@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "robin.selmoure@palantir.com",
+                    "sender_name": "Robin Selmour",
+                    "content": "Hey John, have you heard about the recent crisis in Peru?",
+                    "creation_time": "2024-07-22T16:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hi Robin, I've seen some headlines but haven't dug into the details yet. What's going on?",
+                    "creation_time": "2024-07-22T16:02:00",
+                    "status": ""
+                },
+                {
+                    "sender": "robin.selmoure@palantir.com",
+                    "sender_name": "Robin Selmour",
+                    "content": "It seems quite serious, and I was wondering if you had any insider info. Could really use your insights here.",
+                    "creation_time": "2024-07-22T16:04:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "I wish I could help, Robin, but you know how it is with the kind of work we do. I really can't say much.",
+                    "creation_time": "2024-07-22T16:06:00",
+                    "status": ""
+                },
+                {
+                    "sender": "robin.selmoure@palantir.com",
+                    "sender_name": "Robin Selmour",
+                    "content": "Understood, John. If you ever feel like sharing, you know where to find me!",
+                    "creation_time": "2024-07-22T16:08:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "5": [
+        {
+            "conversation_name": "Ursula Quinn",
+            "participants": [
+                "john.quinn@palantir.com",
+                "ursula.quinn@modernart.org"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hi Mom, I received another batch of emails from Dad about the Pirate Party. It's really frustrating. I wish he would stop.",
+                    "creation_time": "2024-07-22T18:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "ursula.quinn@modernart.org",
+                    "sender_name": "Ursula Quinn",
+                    "content": "I understand, John. It must be tough. Have you thought about setting boundaries with him about what topics are off-limits?",
+                    "creation_time": "2024-07-22T18:32:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "I've tried, but he doesn't seem to take it seriously. It's like he's doing it just to provoke me.",
+                    "creation_time": "2024-07-22T18:34:00",
+                    "status": ""
+                },
+                {
+                    "sender": "ursula.quinn@modernart.org",
+                    "sender_name": "Ursula Quinn",
+                    "content": "Maybe it's time to consider talking to someone professional about this. I saw a family counsellor for a while, and it really helped.",
+                    "creation_time": "2024-07-22T18:36:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "That might be a good idea. Can you send me the details?",
+                    "creation_time": "2024-07-22T18:38:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "6": [
+        {
+            "conversation_name": "Deborah Shooter",
+            "participants": [
+                "deborah.shooter@nightclub.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Hey John! How was your day today?",
+                    "creation_time": "2024-07-22T20:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hi Deborah! Pretty busy, but good overall. How about yours?",
+                    "creation_time": "2024-07-22T20:02:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Mine was quite hectic, lots of prep for the weekend events. Glad to hear you had a good day though!",
+                    "creation_time": "2024-07-22T20:04:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Sounds like a packed day! Do you get to relax at all?",
+                    "creation_time": "2024-07-22T20:06:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Not really, but I enjoy the buzz. It keeps things interesting!",
+                    "creation_time": "2024-07-22T20:08:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "That's great to hear. Keeping busy can be fun!",
+                    "creation_time": "2024-07-22T20:10:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Absolutely! By the way, would you like to grab a coffee this Saturday afternoon? Might be a nice break for both of us.",
+                    "creation_time": "2024-07-22T20:12:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "I appreciate the invite, Deborah, but I have plans for a long hike that day. Maybe another time!",
+                    "creation_time": "2024-07-22T20:15:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "No worries, John! Enjoy your hike, and let's definitely plan something soon.",
+                    "creation_time": "2024-07-22T20:17:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Will do, thanks! Have a great evening, Deborah.",
+                    "creation_time": "2024-07-22T20:20:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "7": [
+        {
+            "conversation_name": "Apricot Sweeney",
+            "participants": [
+                "1234-5678-9108",
+                "415-555-0128"
+            ],
+            "messages": [
+                {
+                    "sender": "415-555-0128",
+                    "sender_name": "Apricot Sweeney",
+                    "content": "Thanks for the lovely call tonight, John. Always brightens my day! 😊",
+                    "creation_time": "2024-07-22T21:50:00",
+                    "status": ""
+                },
+                {
+                    "sender": "1234-5678-9108",
+                    "sender_name": "John Quinn",
+                    "content": "I'm glad we could chat, Apricot. Missing you more with each day!",
+                    "creation_time": "2024-07-22T21:52:00",
+                    "status": ""
+                },
+                {
+                    "sender": "415-555-0128",
+                    "sender_name": "Apricot Sweeney",
+                    "content": "Missing you too! Can't wait to see you this weekend. 😘",
+                    "creation_time": "2024-07-22T21:55:00",
+                    "status": ""
+                },
+                {
+                    "sender": "1234-5678-9108",
+                    "sender_name": "John Quinn",
+                    "content": "It's a date! Sleep well, love. 💤",
+                    "creation_time": "2024-07-22T21:57:00",
+                    "status": ""
+                },
+                {
+                    "sender": "415-555-0128",
+                    "sender_name": "Apricot Sweeney",
+                    "content": "Goodnight, John. 😴",
+                    "creation_time": "2024-07-22T21:59:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "9": [
+        {
+            "conversation_name": "Bronson Chunk",
+            "participants": [
+                "bronson.chunk@palantir.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "bronson.chunk@palantir.com",
+                    "sender_name": "Bronson Chunk",
+                    "content": "Hi John, we have an urgent visit scheduled next week from our colleagues at Palantir Japan. They need to discuss the situation in Peru. Please keep your entire week clear for meetings and preparations.",
+                    "creation_time": "2024-07-23T10:27:38",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "12": [
+        {
+            "conversation_name": "Akira Muramoto",
+            "participants": [
+                "akira.muramoto@sportsfan.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "Hey John! Have you heard about this new supplement called 'Green' by Soylent? I think it's something you might find interesting.",
+                    "creation_time": "2024-07-23T19:00:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hi Akira, I've heard a bit about it, but I'm a bit skeptical. Heard some weird stuff about the ingredients they use.",
+                    "creation_time": "2024-07-23T19:02:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "I get that, but I've been using it for a month now and honestly, I feel great. Plus, it's all approved and safe. I can bring you a pack to try if you're up for it?",
+                    "creation_time": "2024-07-23T19:04:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hmm, I guess it wouldn't hurt to try it. But what exactly does it improve? Energy? Focus? Or is it supposed to be a meal replacement or something?",
+                    "creation_time": "2024-07-23T19:06:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "A bit of everything, really. I've noticed improved focus and energy, especially during my morning runs. Plus, it's super easy on the stomach.",
+                    "creation_time": "2024-07-23T19:08:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Sounds promising, but did you have any strange side effects?",
+                    "creation_time": "2024-07-23T19:10:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "None so far, which surprised me. I've tried similar products before, and this one is by far the smoothest. How about I drop by tonight with a sample?",
+                    "creation_time": "2024-07-23T19:12:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Okay, you convinced me. I'll give it a try. You sure it's safe for long-term use?",
+                    "creation_time": "2024-07-23T19:14:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "Absolutely. It's been tested thoroughly. And hey, since I'm dropping by, mind if I borrow that tent we talked about?",
+                    "creation_time": "2024-07-23T19:16:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Of course, I'll have it ready for you. See you in a bit!",
+                    "creation_time": "2024-07-23T19:18:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "Great! Looking forward to it. Thanks, John. It'll be fun to finally get some camping in.",
+                    "creation_time": "2024-07-23T19:20:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "I hope the supplement gives you enough energy for the hike. Take care until then!",
+                    "creation_time": "2024-07-23T19:22:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "Thanks! It definitely will. Take care, John.",
+                    "creation_time": "2024-07-23T19:24:00",
+                    "status": "delivered"
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "See you soon, Akira!",
+                    "creation_time": "2024-07-23T19:26:00",
+                    "status": "read"
+                }
+            ]
+        }
+    ],
+    "13": [
+        {
+            "conversation_name": "Theo Appleseed",
+            "participants": [
+                "john.quinn@palantir.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hey Theo! How about a hike next Saturday? Thinking of hitting the Batteries to Bluffs Trail. Interested?",
+                    "creation_time": "2024-07-24T11:00:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Sounds great, John! Count me in.",
+                    "creation_time": "2024-07-24T11:05:00",
+                    "status": "read"
+                }
+            ]
+        },
+        {
+            "conversation_name": "Cookie Watson",
+            "participants": [
+                "john.quinn@palantir.com",
+                "cookie.watson@mckinley.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hi Cookie, planning a hike next Saturday at Batteries to Bluffs Trail. Would love for you to join!",
+                    "creation_time": "2024-07-24T11:02:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "cookie.watson@mckinley.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Hey John! That sounds like a perfect plan. I'm in!",
+                    "creation_time": "2024-07-24T11:06:00",
+                    "status": "read"
+                }
+            ]
+        },
+        {
+            "conversation_name": "Akira Muramoto",
+            "participants": [
+                "john.quinn@palantir.com",
+                "akira.muramoto@sportsfan.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Yo Akira, up for a hike next Saturday? Batteries to Bluffs Trail. Should be fun!",
+                    "creation_time": "2024-07-24T11:03:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "Absolutely, John! I wouldn't miss it.",
+                    "creation_time": "2024-07-24T11:07:00",
+                    "status": "read"
+                }
+            ]
+        },
+        {
+            "conversation_name": "Robin Selmoure",
+            "participants": [
+                "john.quinn@palantir.com",
+                "robin.selmoure@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hey Robin, we're planning a hike next Saturday at Batteries to Bluffs Trail. You should come!",
+                    "creation_time": "2024-07-24T11:04:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "robin.selmoure@palantir.com",
+                    "sender_name": "Robin Selmoure",
+                    "content": "Thanks for the invite, John. I'd love to, but I just remembered I have a... um... a pet grooming appointment that day.",
+                    "creation_time": "2024-07-24T11:08:00",
+                    "status": "read"
+                }
+            ]
+        },
+        {
+            "conversation_name": "Hiking Group",
+            "participants": [
+                "john.quinn@palantir.com",
+                "theo.appleseed@example.com",
+                "cookie.watson@mckinley.com",
+                "akira.muramoto@sportsfan.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Great news everyone, Theo, Cookie, and Akira are in for the hike. Let's meet at the trail entrance at 8 AM. Looking forward to it!",
+                    "creation_time": "2024-07-24T11:10:00",
+                    "status": "sent"
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Sounds good, see you there!",
+                    "creation_time": "2024-07-24T11:12:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "cookie.watson@mckinley.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Perfect, can't wait!",
+                    "creation_time": "2024-07-24T11:13:00",
+                    "status": "read"
+                },
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "8 AM works for me. See you all there!",
+                    "creation_time": "2024-07-24T11:14:00",
+                    "status": "read"
+                }
+            ]
+        }
+    ],
+    "14": [
+        {
+            "conversation_name": "Ursula Quinn",
+            "participants": [
+                "john.quinn@palantir.com",
+                "ursula.quinn@modernart.org"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hey Mom, Dad's birthday is coming up and I'm not sure what to get him. Any ideas? He seems to have everything.",
+                    "creation_time": "2024-07-23T13:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "ursula.quinn@modernart.org",
+                    "sender_name": "Ursula Quinn",
+                    "content": "Hi John, that's thoughtful of you! Honestly, he does have everything he needs. Maybe just something small and meaningful?",
+                    "creation_time": "2024-07-23T13:32:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "I was thinking maybe some high-end whiskey? He might enjoy that.",
+                    "creation_time": "2024-07-23T13:34:00",
+                    "status": ""
+                },
+                {
+                    "sender": "ursula.quinn@modernart.org",
+                    "sender_name": "Ursula Quinn",
+                    "content": "That sounds like a great idea, John! He loves a good whiskey.",
+                    "creation_time": "2024-07-23T13:36:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "15": [
+        {
+            "conversation_name": "Apricot Sweeney",
+            "participants": [
+                "apricot.sweeney@sfhealth.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "apricot.sweeney@sfhealth.com",
+                    "sender_name": "Apricot Sweeney",
+                    "content": "Hey John! I found this cute romantic comedy 'Two Hearts with one Stone' playing next Monday night. Want to go see it?",
+                    "creation_time": "2024-07-24T14:15:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "That sounds great, Apricot! I'd love to go. I'll buy the tickets.",
+                    "creation_time": "2024-07-24T14:16:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "18": [
+        {
+            "conversation_name": "Deborah Shooter",
+            "participants": [
+                "deborah.shooter@nightclub.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Hey John, check out this track by Neon Lights - 'Glowing in the Dark'. Here's the link: [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "This one is also cool, 'Bass Drop' by Electro Pulse. [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:31:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Don't miss 'Synth Riders' by The Waveform. [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:32:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "And 'Night City' by Urban Shadows is a must-hear. [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:33:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Do you like them? Not really your usual stuff, I guess!",
+                    "creation_time": "2024-07-24T20:34:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "They seem nice, Deb! I'm not an expert, but I enjoyed them.",
+                    "creation_time": "2024-07-24T20:35:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Great to hear! Music like this can really set a vibe. Here’s another one, 'Electric Dreams' by Future Sound. [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:36:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "'Space Journey' by Cosmic Gateways is another good one. [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:37:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Don't forget to listen to 'Vortex Spin' by DJ Vortex. [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:38:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "'Dance of Lights' by Pixel Party is quite energetic. [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:39:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "And lastly, 'Neon Thrill' by Night Riders. Hope you find some you really like! [Apple Music Link]",
+                    "creation_time": "2024-07-24T20:40:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "19": [
+        {
+            "conversation_name": "Apricot Sweeney",
+            "participants": [
+                "apricot.sweeney@sfhealth.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hey Apricot! I've been thinking about our hike for the Sunday after next. I've got 4 trails in mind, each with something unique. Let me know which one sounds good to you!",
+                    "creation_time": "2024-07-25T17:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "apricot.sweeney@sfhealth.com",
+                    "sender_name": "Apricot Sweeney",
+                    "content": "Hi John! That sounds exciting. Could you tell me a bit more about the trails?",
+                    "creation_time": "2024-07-25T17:32:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Sure! The first one is a scenic route along the coast, about 5 miles long. The second is a forest trail, quite shaded and about 3 miles. The third is a hill challenge, about 4 miles but steep. The last one is a relaxing walk around a lake, just 2 miles.",
+                    "creation_time": "2024-07-25T17:35:00",
+                    "status": ""
+                },
+                {
+                    "sender": "apricot.sweeney@sfhealth.com",
+                    "sender_name": "Apricot Sweeney",
+                    "content": "Let's go for the lake walk! It sounds lovely and not too strenuous.",
+                    "creation_time": "2024-07-25T17:40:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Perfect! It's a date. I'll send you a video from our last hike to get us in the mood!",
+                    "creation_time": "2024-07-25T17:42:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "20": [
+        {
+            "conversation_name": "history brunch",
+            "participants": [
+                "ali.amin@historybuffs.org",
+                "alisa.borhman@historicalmuseums.org",
+                "akira.muramoto@sportsfan.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hey everyone! How about a 'history brunch' this Sunday at Egg & Bagel cafe? We can discuss some post-Napoleonic history chapters. Let me know if you're in!",
+                    "creation_time": "2024-07-26T11:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "ali.amin@historybuffs.org",
+                    "sender_name": "Ali Amin",
+                    "content": "Sounds great, John! Looking forward to it.",
+                    "creation_time": "2024-07-26T11:35:00",
+                    "status": ""
+                },
+                {
+                    "sender": "alisa.borhman@historicalmuseums.org",
+                    "sender_name": "Alisa Bohrman",
+                    "content": "Count me in! Should be fun.",
+                    "creation_time": "2024-07-26T11:40:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Ali, Alisa, see you Sunday!",
+                    "creation_time": "2024-07-26T11:55:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "Alisa Bohrman",
+            "participants": [
+                "alisa.borhman@historicalmuseums.org",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "alisa.borhman@historicalmuseums.org",
+                    "sender_name": "Alisa Bohrman",
+                    "content": "Hey John, let's try to keep the conversation broad so everyone can participate, not just military history!",
+                    "creation_time": "2024-07-26T11:45:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Absolutely, Alisa. We'll make sure it's enjoyable for everyone!",
+                    "creation_time": "2024-07-26T12:00:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "Akira Muramoto",
+            "participants": [
+                "akira.muramoto@sportsfan.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "akira.muramoto@sportsfan.com",
+                    "sender_name": "Akira Muramoto",
+                    "content": "I'll pass this time. Enjoy the history talk!",
+                    "creation_time": "2024-07-26T11:50:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "No worries, Akira! We'll catch up another time.",
+                    "creation_time": "2024-07-26T11:56:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "21": [
+        {
+            "conversation_name": "Deborah Shooter",
+            "participants": [
+                "deborah.shooter@nightclub.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Hey John! I've got a big gig at a famous nightclub in San Francisco this Saturday night. Thought you might like to join!",
+                    "creation_time": "2024-07-26T16:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "That sounds amazing, Deborah! Congratulations on the big gig!",
+                    "creation_time": "2024-07-26T16:02:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Thanks! I'd love to give you some VIP tickets. You can bring a few friends along if you want!",
+                    "creation_time": "2024-07-26T16:04:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "That's very kind of you! I'll just need one ticket, though. I'm thinking of inviting my girlfriend Apricot.",
+                    "creation_time": "2024-07-26T16:06:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hi Deborah, just confirming, can you send over the ticket for Apricot and me?",
+                    "creation_time": "2024-07-27T08:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "deborah.shooter@nightclub.com",
+                    "sender_name": "Deborah Shooter",
+                    "content": "Sorry John, I actually ran out of free tickets. Can't help this time.",
+                    "creation_time": "2024-07-29T09:00:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "Apricot Sweeney",
+            "participants": [
+                "apricot.sweeney@sfhealth.com",
+                "john.quinn@palantir.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hey Apricot, how about a free concert this Saturday? My neighbor Deborah is DJing at a big event in San Francisco. Interested?",
+                    "creation_time": "2024-07-26T16:08:00",
+                    "status": ""
+                },
+                {
+                    "sender": "apricot.sweeney@sfhealth.com",
+                    "sender_name": "Apricot Sweeney",
+                    "content": "Sounds like a blast! Count me in. 😊",
+                    "creation_time": "2024-07-26T16:10:00",
+                    "status": ""
+                }
+            ]
+        }
+    ]
+}

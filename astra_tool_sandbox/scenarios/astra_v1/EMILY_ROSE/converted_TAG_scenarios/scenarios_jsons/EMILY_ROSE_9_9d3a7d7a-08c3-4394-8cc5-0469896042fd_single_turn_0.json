@@ -1,0 +1,80 @@
+{
+  "task_id": "9d3a7d7a-08c3-4394-8cc5-0469896042fd",
+  "plot_id": 9,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 7, 2024 at 11:00 AM, Nathan Blake were involved. Nathan assists Emily with event setup for community holiday party. Communicate through email thread for the holiday part details and ads. Photos shared with Nathan and uploaded to community cloud storage. Send out calendar invite for the upcoming holiday party.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_9",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send an email to Nathan Blake to apologize for a small mix-up and thank him for his help.",
+  "reference_time": "2024-12-07T19:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The email; \"My apologies, Nathan, it totally slipped my mind, and I think I entered your birth year wrong when I set up your details. Thank you so much for all your help, and I hope you can make it to the Community Holiday Party in two weeks. -Emily Rose\" is sent to event helper Nathan Blake. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_9_9d3a7d7a-08c3-4394-8cc5-0469896042fd_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Nathan",
+      "last_name": "Blake",
+      "full_name": "Nathan Blake",
+      "phone_number": "+1 530-555-0129",
+      "alias": "Event Helper",
+      "email": "nathan.blake@eventpros.com",
+      "relationship": "Friend",
+      "address": "300 College Ave, San Jose, CA 95112, USA",
+      "company": "Event Pros",
+      "job_title": "Event Specialist",
+      "is_self": false,
+      "birthday": "1993-12-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send my event helper the following by electronic mail: My apologies, Nathan, it totally slipped my mind, and I think I entered your birth year wrong when I set up your details. Thank you so much for all your help, and I hope you can make it to the Community Holiday Party in two weeks. -Emily Rose",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "User Emily Rose wants to send what i'm fairly certain is an email. User has provided the contents for the email, and refers to the intended recipient as user's event helper. I don't see anyone in contacts with that exact title, but i see from the text of the message that the recipient's name is Nathan. I find a Nathan Blake in contacts. Contact Nathan Blake is listed as an event specialist and i see from earlier messages that user Emily Rose and contact Nathan Blake engaged in an email correspondence about event planning. I'm certain this is the recipient user intends and i shall drafft and address the email accordingly and show it to user for approval. ",
+  "milestones": "[\n                # Milestone 0 – Agent attempts to retrieve contact info (Nathan Blake) via a contacts-related tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm that Nathan Blake appears in the result of Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Nathan Blake\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"nathan.blake@eventpros.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # use the tool output from Milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – Verify that an email was sent to Nathan with the appropriate body content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"nathan.blake@eventpros.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"birth year wrong\",  # key phrase from the user-provided body,\n                                    \"creation_datetime_iso\": \"2024-12-07T19:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,  # relaxed match on body text,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",  # fallback\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to send an email to Nathan Blake to apologize for a small mix-up and thank him for his help. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_email\"]",
+  "is_read_time": "2024-12-07T19:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

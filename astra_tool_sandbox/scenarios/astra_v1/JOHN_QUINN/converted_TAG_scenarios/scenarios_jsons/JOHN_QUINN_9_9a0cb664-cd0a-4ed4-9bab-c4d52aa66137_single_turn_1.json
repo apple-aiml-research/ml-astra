@@ -1,0 +1,82 @@
+{
+  "task_id": "9a0cb664-cd0a-4ed4-9bab-c4d52aa66137",
+  "plot_id": 9,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 10am, Bronson Chuck were involved. Bronson informs John of an unexpected work visit by their Japanese colleagues next week.  1. Bronson messages John mentioning about a urgent visit by Palantir's section in Japan to address the situation in Peru, and asking John to keep his whole week clear. 2. Bronson adds the visit as 5 separate events from Monday to Friday next week, each lasting a workday and inviting John and several colleagues. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_9",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You decide you need to cancel your doctors appointment as Bronson has asked you to keep your week clear for urgent meetings",
+  "reference_time": "2024-07-23T10:35:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Doctor's Appointment with Dr. Emilia Jackson\" at 15:00-16:00 on July 30 2024 is deleted",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_9_9a0cb664-cd0a-4ed4-9bab-c4d52aa66137_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Doctor's Appointment with Dr. Emilia Jackson",
+      "start_datetime_iso": "2024-07-30T15:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T16:00:00-07:00",
+      "attendees_names": [
+        "Endomore Clinic",
+        "John Quinn"
+      ],
+      "location": "Endomore Clinic, 450 Medical Plaza, San José, CA",
+      "reminder_time_ahead": "48 hours",
+      "organizer_name": "Endomore Clinic",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-04-23T10:05:00-07:00",
+      "notes": "Annual check-up and consultation."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants me to delete their doctors appointment next week. The first thing I need to do is check the user's calendar, specifically the 29th to the 4th of July. I can see one event named \"Doctor's Appointment with Dr. Emilia Jackson\". That must be the event they are referring to. I will delete it and inform the user. ",
+  "query": "Delete my doctor's appointment next week",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar events for next week\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms the doctor’s appointment was retrieved in the previous tool call\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Doctor's Appointment with Dr. Emilia Jackson\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-30T15:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The doctor’s appointment is deleted from the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Doctor's Appointment with Dr. Emilia Jackson\",\n                                    \"start_datetime_iso\": \"2024-07-30T15:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-30T16:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You decide you need to cancel your doctors appointment as Bronson has asked you to keep your week clear for urgent meetings ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-07-23T10:35:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

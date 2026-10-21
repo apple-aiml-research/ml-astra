@@ -1,0 +1,124 @@
+{
+  "task_id": "371a3c62-c450-4ba6-b60c-82f0ce5e800d",
+  "plot_id": 23,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:50 am, Theo Appleseed, Kevin Chen were involved. Theo email Kevin for his availibility trying to schedule and urgent 1:1. However, it turns out Kevin is only available at 1 to 2pm today.\n generate email threads between Theo and Kevin for Kevin's availibility for today",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_23",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "contact",
+    "calendar",
+    "astra_core"
+  ],
+  "user_goal": "You got through to Kevin and managed to schedule a quick meeting! But you you want to remind yourself what time your 1:1 with Kevin is today according to your emails with him.",
+  "reference_time": "2024-07-29T12:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that their 1:1 with Kevin Chen is set for 13:00-14:00 on July 29th according to their email.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_23_371a3c62-c450-4ba6-b60c-82f0ce5e800d_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "get_all_contacts",
+    "search_contacts",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Urgent: Request for 1:1 Meeting Today",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "kevin.chen@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-29T07:50:00-07:00",
+      "body": "Hi Kevin,\n\nI hope this message finds you well. I need to discuss an urgent matter with you today and would appreciate if we could have a 1:1 meeting. Could you please let me know your availability?\n\nBest regards,\nTheo Appleseed",
+      "attachments": null,
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Urgent: Request for 1:1 Meeting Today",
+      "sender_address": "kevin.chen@example.com",
+      "recipients_addresses": [
+        "theo.appleseed@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-29T08:05:00-07:00",
+      "body": "Hello Theo,\n\nThank you for reaching out. Today is quite packed, but I can make time between 1:00 PM to 2:00 PM. Let me know if this works for you.\n\nBest,\nKevin",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Re: Urgent: Request for 1:1 Meeting Today",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "kevin.chen@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-29T08:10:00-07:00",
+      "body": "Hi Kevin,\n\nThank you for your quick response. 1:00 PM to 2:00 PM works for me. I'll see you then.\n\nBest regards,\nTheo",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time is my meeting today according to my manager?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know what time their meeting is at today according to his manager. First, I should determine if they are referring to a specific contact. I can see that Kevin Chen is tagged as manager in the user's contacts, but I don't see any events with Kevin Chen in the user's calendar scheduled for today. Checking the user data, I did find an email thread titled \"Urgent: Request for 1:1 Meeting Today\" sent by the user today at 07:50. - it seems likely that this is the email the user is referring toI will go ahead and search through the user's email thread with Kevin Chen. I can see that the two have agreed to a meeting time of 13:00-14:00 on July 29, 2024. I will inform the user of this.",
+  "milestones": "[\n                # Milestone 0 – The agent looks through the user’s emails to find the meeting details\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Urgent: Request for 1:1 Meeting Today\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,  # Depend on search_email/get_all_emails result\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent’s reply to the user mentions the meeting start time (1 PM / 13:00)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"1:00\",\n                                            \"1 pm\",\n                                            \"1pm\",\n                                            \"13:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – The agent’s reply also mentions the meeting end time (2 PM / 14:00)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"2:00\",\n                                            \"2 pm\",\n                                            \"2pm\",\n                                            \"14:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You got through to Kevin and managed to schedule a quick meeting! But you you want to remind yourself what time your 1:1 with Kevin is today according to your emails with him. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"get_all_contacts\", \"search_contacts\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-07-29T12:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

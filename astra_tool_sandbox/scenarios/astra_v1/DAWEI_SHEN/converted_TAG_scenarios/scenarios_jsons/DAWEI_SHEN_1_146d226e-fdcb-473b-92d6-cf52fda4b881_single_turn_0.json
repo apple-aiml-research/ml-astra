@@ -1,0 +1,79 @@
+{
+  "task_id": "146d226e-fdcb-473b-92d6-cf52fda4b881",
+  "plot_id": 1,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 1, 2024 at 6 am, self, Vick Li were involved. Dawei checks his calendar for the cycling trip with Vick, starting at a local café in Napa Valley at 7 am. He texts Vick that he's on his way. Vick texts back and confirms he will be there on time.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_1",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know if you have any meetings coming up tomorrow.",
+  "reference_time": "2024-12-01T14:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The calendar is checked for meetings on Monday 2nd December 2024. None are found and the user is told that they have no meetings scheduled.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_1_146d226e-fdcb-473b-92d6-cf52fda4b881_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vick",
+      "last_name": "Li",
+      "full_name": "Vick Li",
+      "phone_number": "+1 555-890-1234-5678",
+      "alias": "Vick",
+      "email": "vick.li@techpals.com",
+      "relationship": "College Friend",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Tech Pals",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1994-07-22T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Do I have any meetings scheduled tomorrow?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "I have been asked to check to see if the user has meetings scheduled tomorrow. Today is Sunday 1 December 2024. That means that tomorrow will be Monday December 2nd 2024.\nThere does not appear to be any meetings scheduled for tomorrow.\nI inform the user that there are no meetings scheduled for tomorrow.",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – The agent checks the calendar for events (meetings) tomorrow\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The agent tells the user that there are no meetings scheduled tomorrow\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # We only care that the reply clearly communicates \"no meetings tomorrow\"\n                                    \"content\": [\n                                        (\n                                            \"no meeting\",\n                                            \"none\",\n                                            \"don't have\",\n                                            \"do not have\",\n                                            \"clear\",\n                                            \"free\",  # ADD: \"you're free\"\n                                            \"nothing\",  # ADD: \"nothing scheduled\"\n                                            \"no event\",  # ADD: alternative phrasing\n                                            \"zero\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool invocation → user informed of no meetings\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-12-01T14:00:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know if you have any meetings coming up tomorrow. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]"
+}

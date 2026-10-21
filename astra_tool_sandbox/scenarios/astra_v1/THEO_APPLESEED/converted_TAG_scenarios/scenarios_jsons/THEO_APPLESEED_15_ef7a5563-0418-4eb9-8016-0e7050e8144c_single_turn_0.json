@@ -1,0 +1,123 @@
+{
+  "task_id": "ef7a5563-0418-4eb9-8016-0e7050e8144c",
+  "plot_id": 15,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Evening, July 26, 2024 at 7 pm, Cookie Watson, John Quinn, Lucas Garcia were involved. Chat with Cookie to finalize plans for a weekend outing The details of the trip is finalized",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_15",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to Cookie.",
+  "reference_time": "2024-07-26T19:10:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "A message is sent to Cookie Watson that says \"6PM\". ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_15_ef7a5563-0418-4eb9-8016-0e7050e8144c_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "send_message",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Theo, everyone's confirmed. What's the meeting time?",
+      "creation_datetime_iso": "2024-07-26T19:10:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "1234-5678-9110",
+      "alias": "Luke",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Gym Buddy",
+      "address": "129 Fitness Blvd, Orchard County, CA",
+      "company": "Local Gym",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message replying top Cookie that says 6PM. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to reply to a contact called 'Cookie', so first I need to find this intended contact. From the user's request, I can tell they already have correspondence with this contact, so I will start in the user's messages. I found a \"Cookie Watson\" in the users chat history and I can see a message they just received from this contact that refers to a meeting time. With all of this in context, I can assume this is the intended contact. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to locate the existing conversation / message with Cookie\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the tool call in Milestone 0 returned the thread with Cookie Watson\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Cookie Watson\",\n                                                \"partial\": False,\n                                            },\n                                            # Either the conversation name or participant list must match;\n                                            # conversation_name is sufficient for positive identification.\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new outgoing message saying “6PM” was sent to Cookie\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # At minimum Cookie must be in the participants list.\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9107\",\n                                                \"cookie.watson@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"6PM\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-26T19:10:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,  # allows “6PM”, “6 pm”, etc.\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to reply to Cookie. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"send_message\", \"search_messages\"]",
+  "is_read_time": "2024-07-26T19:10:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

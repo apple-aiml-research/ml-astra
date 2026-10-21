@@ -1,0 +1,80 @@
+{
+  "task_id": "a07ddb29-435b-4112-b937-1b57ed9f6537",
+  "plot_id": 8,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 6, 2024 at 2:00 PM, Chloe Waters, Sophia Taylor were involved. Community meeting discussing feedback on past events and brainstorming future initiatives. Survey results and feedback received via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_8",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to read the email you just received from Sophia Taylor, but you are driving so you want the email to be read out to you.",
+  "reference_time": "2024-12-06T16:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email received on December 6, 2024 at 15:45 from Sophia.taylor@orchardbusiness.org is read out to the user. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_8_a07ddb29-435b-4112-b937-1b57ed9f6537_single_turn_1",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Thank You for Your Feedback!",
+      "sender_address": "sophia.taylor@orchardbusiness.org",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "chloe.waters@orchardmail.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:45:00-08:00",
+      "body": "Hi Emily,\n\nIt was indeed a great meeting today. Thank you for organizing it and for acknowledging our contributions. We are eager to see how our feedback will be implemented and are ready to assist wherever needed.\n\nWarmest regards,\nSophia Taylor",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "informational_complexity": "low",
+  "query": "Read me the email from Sophia",
+  "referential_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to read the email from Sophia. I first need to know Sophia's email address. I should check the user's Mail. \nThere is only one email address with Sophia in the email address, sophia.taylor@orchardbusiness.org, so this must be who the user meant. \nThe last email from Sophia was received at 15:46 on the 6 December 2024 and has a subject line of Re: Thank You for Your Feedback!. I will read this email to the user. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up emails (should invoke an email-retrieval tool)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved email is the one from Sophia Taylor\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"sophia.taylor@orchardbusiness.org\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Re: Thank You for Your Feedback!\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent reads the email content back to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"great meeting today\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool call → validate correct email found\n                (1, 2),  # Correct email found → agent reads it out\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to read the email you just received from Sophia Taylor, but you are driving so you want the email to be read out to you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "is_read_time": "2024-12-06T16:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

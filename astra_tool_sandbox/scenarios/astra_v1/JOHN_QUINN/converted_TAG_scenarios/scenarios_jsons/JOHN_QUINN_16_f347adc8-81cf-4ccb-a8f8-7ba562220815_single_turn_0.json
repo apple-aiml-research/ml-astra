@@ -1,0 +1,108 @@
+{
+  "task_id": "f347adc8-81cf-4ccb-a8f8-7ba562220815",
+  "plot_id": 16,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 5:45pm, Julie Patterson were involved. Julie asks John asking him to water her plant while she's on leave  1. Julie emails John to let him know that she needs to take urgent leave of absence next week and asks if he could water her plants while she's way. 2. John agrees, but asks more information about which plants she means and what is the proper care they need. 3. Julie mentions the 3 different plant she has at work and asks him to water them on Tuesday and Friday. 4. John agrees and adds the relevant calendar reminders on his phone. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_16",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to be reminded what days you are to water Julie's pants",
+  "reference_time": "2024-07-26T10:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Details for both \"Water Julie's Plants\" events in the calendar are summarised ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_16_f347adc8-81cf-4ccb-a8f8-7ba562220815_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Water Julie's Plants",
+      "start_datetime_iso": "2024-07-30T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T09:15:00-07:00",
+      "attendees_names": [
+        "John Quinn"
+      ],
+      "location": "Palantir Office",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T18:20:00-07:00",
+      "notes": "Water the fern and spider plant."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Water Julie's Plants",
+      "start_datetime_iso": "2024-08-02T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-02T09:15:00-07:00",
+      "attendees_names": [
+        "John Quinn"
+      ],
+      "location": "Palantir Office",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T18:20:00-07:00",
+      "notes": "Water the fern, spider plant, and succulent."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When am I watering my coworker's plants?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user want's to know when they are watering their coworker's plants. I must determine who the user's coworker is. They have multiple coworker's in their contacts. I'll see if I can find anything in their calendar. I can see two events scheduled for July 30th and August 2nd titled \"Water Julie's Plants\".  One of the coworkers listed in the user's contacts is Julie Patterson so I can assumer these are the events the user wants to be reminded of. I'll inform the user they are to water Julie's plants on July 30th and August 2nd.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The first watering event on July 30 2024 is present in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Water Julie's Plants\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-30T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The second watering event on August 2 2024 is present in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Water Julie's Plants\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-08-02T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 3 – Agent response to the user includes the two watering dates\n                Milestone(\n                    snapshot_constraints=[\n                        # Must mention July 30\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"July 30\", \"Jul 30\", \"2024-07-30\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        ),\n                        # Must mention August 2\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"August 2\", \"Aug 2\", \"2024-08-02\", \"2024-08-02T09:00\", \"2 August\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity,\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (0, 2),\n                (1, 3),\n                (2, 3),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to be reminded what days you are to water Julie's pants ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-26T10:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

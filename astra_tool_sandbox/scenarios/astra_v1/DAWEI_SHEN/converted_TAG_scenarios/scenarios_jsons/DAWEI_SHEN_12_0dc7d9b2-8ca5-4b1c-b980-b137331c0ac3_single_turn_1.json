@@ -1,0 +1,86 @@
+{
+  "task_id": "0dc7d9b2-8ca5-4b1c-b980-b137331c0ac3",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_12",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You were looking at your Calendar to see what events you have coming up this week when you noticed that you have a duplicate event.   You want to delete one.",
+  "reference_time": "2024-12-13T18:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "One instance of the event 'Dinner with Lukas and Vick' on 14 December 2024 from 19:00 to 21:00 is deleted.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_0dc7d9b2-8ca5-4b1c-b980-b137331c0ac3_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    }
+  ],
+  "contacts": [],
+  "phonecalls": [],
+  "query": "Delete one of the events with Vick and Lukas.",
+  "functional_complexity": "low",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "reasoning": "Ok, the user wants to delete one of the events with Vick and Lukas. I'll check up the calendar and find out which event with Vick and Lukas they want to delete. I see in the calendar there are two identical events titled “Dinner with Lukas and Vick” scheduled for 14 Dec 2024 from 19:00–21:00. I will remove one of them and then notify the user that the duplicated event has been deleted.",
+  "reference_time_str": "Today is Friday, December 13, 2024 or 2024-12-13T18:20:00-08:00.",
+  "milestones": "[\n                # Fix - milestone 0 should be search the calendar event.\n                # Milestone 0 – The agent looks up tonight's rehearsal in the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Dinner with Lukas and Vick event found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – One duplicate “Dinner with Lukas and Vick” event is removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dinner with Lukas and Vick\",\n                                    \"start_datetime_iso\": \"2024-12-14T19:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-14T21:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "remove_calendar_event",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You were looking at your Calendar to see what events you have coming up this week when you noticed that you have a duplicate event.  You want to delete one. ",
+  "tool_allow_list_str": "[\"remove_calendar_event\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-13T18:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

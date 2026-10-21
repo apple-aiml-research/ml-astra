@@ -1,0 +1,131 @@
+{
+  "task_id": "37403fbe-2322-4719-b677-27b6972bbaf2",
+  "plot_id": 25,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo has a booked train trip to Chicago. Leaving tomorrow at 15:07 pm from the Central Station.\n generate calendar_events for the plot. In the calender event added a note for saving 1h travel time from office. Also he received the ticket number and booking reference number through messages for the train ticket.\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_25",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "calendar",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "email",
+    "astra_core"
+  ],
+  "user_goal": "You booked a train trip to Chicago and you have the booking confirmation.  You want it added to your calendar as a 'Train Trip to Chicago' event with your parents invited as attendees.  The trip lasts about 5 hours and the end time should be rounded to the nearest hour.",
+  "reference_time": "2024-07-29T07:40:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A calendar event 'Train Trip to Chicago' is created for 30th July 2024 from 15:07 to 20:00 with John Appleseed and Sarah Appleseed added as attendees. "
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_25_37403fbe-2322-4719-b677-27b6972bbaf2_single_turn_0",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages",
+    "search_emails",
+    "get_all_emails",
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event",
+    "modify_calendar_event",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [
+    {
+      "creation_datetime_iso": "2024-07-29T07:35:00-07:00",
+      "status": "read",
+      "conversation_name": "booking@trainservice.com",
+      "content": "Dear Theo, your train ticket to Chicago is booked. Departure: July 30, 2024, 15:07 from Central Station. Ticket number: TK123456789, Booking reference: BR987654321.",
+      "participants_addresses": [
+        "booking@trainservice.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "booking@trainservice.com"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Train Trip to Chicago",
+      "start_datetime_iso": "2024-07-30T15:07:00-07:00",
+      "end_datetime_iso": "2024-07-30T20:00:00-07:00",
+      "attendees_names": [
+        "Theo Appleseed"
+      ],
+      "location": "Central Station",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:45:00-07:00",
+      "notes": "Train trip to Chicago. Remember to leave 1 hour early from office to reach the station on time."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Appleseed",
+      "full_name": "John Appleseed",
+      "phone_number": "1234-5678-9102",
+      "alias": "Dad",
+      "email": "john.appleseed@example.com",
+      "relationship": "Father",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Nearby University",
+      "job_title": "Professor of Theoretical Physics",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Appleseed",
+      "full_name": "Sarah Appleseed",
+      "phone_number": "1234-5678-9111",
+      "alias": "Mom",
+      "email": "sarah.appleseed@example.com",
+      "relationship": "Mother",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Regional Hospital",
+      "job_title": "Nurse",
+      "is_self": false,
+      "birthday": "1967-05-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I just booked a train to Chicago. Add it to my calendar as 'Train Trip to Chicago' and invite my parents. The trip runs about 5 hours; round the end time to the nearest hour.",
+  "functional_complexity": "high",
+  "informational_complexity": "high",
+  "referential_complexity": "high",
+  "reasoning": "First I'll search the user's messages for the train booking. The confirmation from booking@trainservice.com says departure is 30 July 2024 at 15:07. A 5-hour trip would end at 20:07, which rounds to 20:00. The user's parents are listed in contacts as John and Sarah Appleseed, so I'll look up both contacts. Then I'll create a 'Train Trip to Chicago' calendar event from 15:07 to 20:00 on 30 July 2024 with John and Sarah Appleseed added as attendees.",
+  "milestones": "[\n                # Milestone 0 – Agent searches messages for the train booking\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The train booking (departure 15:07) is found in the messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"booking@trainservice.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"15:07\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent searches contacts list to find parents\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 – John Appleseed’s contact was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"John Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"john.appleseed@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ]\n                ),\n                # Milestone 4 – Agent searches contacts list to find parents\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 5 – Sarah Appleseed’s contact was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Sarah Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"sarah.appleseed@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=4,\n                        )\n                    ]\n                ),\n                # Milestone 6 – A 'Train Trip to Chicago' event is created (15:07–20:00) with both parents invited\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Train Trip to Chicago\",\n                                    \"start_datetime_iso\": \"2024-07-30T15:07:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-30T20:00:00-07:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"John Appleseed\",\n                                            \"Sarah Appleseed\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-07-29T07:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # messages search → confirm booking found\n                (2, 3),  # contact search → confirm John\n                (4, 5),  # contact search → confirm Sarah\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"modify_calendar_event\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You booked a train trip to Chicago and you have the booking confirmation. You want it added to your calendar as a 'Train Trip to Chicago' event with your parents invited as attendees. The trip lasts about 5 hours and the end time should be rounded to the nearest hour. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\", \"search_emails\", \"get_all_emails\", \"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\", \"modify_calendar_event\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-29T07:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

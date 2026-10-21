@@ -1,0 +1,96 @@
+{
+  "task_id": "4de180be-befc-4f44-bc12-d2577e194be7",
+  "plot_id": 16,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 3 pm, Juan Garcia were involved. Lucas visits his father's coffee shop to discuss expanding healthy snack options. Emails exchanged with Juan offering suggestions and recipes.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_16",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply email to Juan Garcia saying \"Hey I think I have a few new ideas for the healthy eating initiative can I call you?\".",
+  "reference_time": "2024-12-09T18:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply email is sent to Juan Garcia saying \"Hey I think I have a few new ideas for the healthy eating initiative can I call you?\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_16_4de180be-befc-4f44-bc12-d2577e194be7_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Healthy Snack Options for the Coffee Shop",
+      "attachments": null,
+      "creation_datetime_iso": "2024-12-09T17:00:00-08:00",
+      "status": "read",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "body": "Hi Lucas,\n\nThanks for dropping by today and for the email. The recipes look fantastic, and I think our customers are going to love the change. I'll go through them in more detail and we can plan a taste test soon.\n\nAppreciate your initiative in bringing these healthy ideas to the shop!\n\nLove,\nDad",
+      "sender_address": "juan.garcia@example.com"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Garcia",
+      "full_name": "Juan Garcia",
+      "phone_number": "+1 12345-6789-1000-4321",
+      "alias": "Dad",
+      "email": "juan.garcia@example.com",
+      "relationship": "Father",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Garcia's Coffee Shop",
+      "job_title": "Coffee Shop Owner",
+      "is_self": false,
+      "birthday": "1963-11-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to reply to the email saying I have a few new ideas for the healthy eating initiative — can I call you?",
+  "reasoning": "The user wants to reply to 'the email' with a message about new ideas for the healthy eating initiative.\n\nI search the user's Inbox to find the email this refers to. The most recent relevant email is from Juan Garcia, 'Re: Healthy Snack Options for the Coffee Shop', which is about healthy snack/eating options, so this is the email to reply to.\n\nThe user has given what they want to say — that they have a few new ideas for the healthy eating initiative and would like to call — so I transcribe that into a reply to Juan Garcia and send it.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – the agent looks up either the contact or the existing email thread\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – a new sent email to Juan Garcia containing the requested text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"juan.garcia@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"healthy eating initiative\",\n                                    \"creation_datetime_iso\": \"2024-12-09T18:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,  # ensure Juan is included, allow extras\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,  # look for the key phrase fragment,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox chatter when checking EMAIL DB change\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to dictate a reply email to Juan Garcia saying \"Hey I think I have a few new ideas for the healthy eating initiative can I call you?\". ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-09T18:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

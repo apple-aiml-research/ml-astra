@@ -1,0 +1,161 @@
+{
+  "task_id": "a31c1ab3-701b-448e-96b2-1370163821f0",
+  "plot_id": 5,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 6:30 pm, Ursula Quinn were involved. John complains to his mom about the political messages his father forwards him  1. John messages his mom to complain about his father's forwarded emails from the Pirate Party. 2. She reassures him and mentions a family counsellor that she saw for her marriage. 3. Finally, she emails him a newsletter from the family counsellor. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_5",
+    "contact",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Your dad won't stop sending you spam emails and it's annoying.   You want to know how many emails he has sent you this week.",
+  "reference_time": "2024-07-23T12:10:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that they have received five emails from 'alfred.quinn@svmetal.com' on 22 July 2024 from 14:00 to 14:08. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_5_a31c1ab3-701b-448e-96b2-1370163821f0_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Upcoming Pirate Party Events",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "body": "Check out these exciting Pirate Party events happening in our state! Engage and make a difference!",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Join Us at the Pirate Party Rally",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:02:00-07:00",
+      "body": "Don't miss out on the Pirate Party rally this weekend. Let's bring change together!",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Pirate Party Volunteer Opportunities",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:04:00-07:00",
+      "body": "Get involved with the Pirate Party. Volunteer and be part of the movement!",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Pirate Party Fundraiser Event",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:06:00-07:00",
+      "body": "Help support our cause at the upcoming Pirate Party fundraiser. Every little bit helps!",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Pirate Party Discussion Forum Invitation",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:08:00-07:00",
+      "body": "Join the discussion on key issues at our next Pirate Party forum. Your voice matters!",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Alfred",
+      "last_name": "Quinn",
+      "full_name": "Alfred Quinn",
+      "phone_number": "408-555-0125",
+      "alias": "Dad",
+      "email": "alfred.quinn@svmetal.com",
+      "relationship": "Father",
+      "address": "127 Maple St, San José, CA 95126",
+      "company": "Suarez & Villa Metallurgy",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1963-07-30T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "How many emails did alfred.quinn@svmetal.com send me so far this week?",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know how many emails 'alfred.quinn@svmetal.com' sent them this week. I should check their Mail to find out. From checking their Mail, I can see that five emails have been received from 'alfred.quinn@svmetal.com' on 22 July 2024 between 14:00 and 14:08. I can present these to the user.\n",
+  "milestones": "[\n                # Milestone 0 – The agent looks through the user’s email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that at least one email returned by the tool call in Milestone 0\n                # is from Alfred Quinn (alfred.quinn@svmetal.com)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"alfred.quinn@svmetal.com\",\n                                                \"partial\": False,\n                                            }\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # use the tool output from Milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user the correct count (five emails) and\n                # references the sender address\n                Milestone(\n                    snapshot_constraints=[\n                        # Check that the agent mentions the number 5 / five\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"5\", \"five\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                        # Check that the agent mentions Alfred’s email address in the reply\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"alfred.quinn@svmetal.com\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # tool search → verify Alfred’s emails present\n                (1, 2),  # verified retrieval → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. Your dad won't stop sending you spam emails and it's annoying.  You want to know how many emails he has sent you this week. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-07-23T12:10:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

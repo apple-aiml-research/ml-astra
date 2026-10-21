@@ -1,0 +1,94 @@
+{
+  "task_id": "d8ace76c-5ce1-4440-90af-9adcc3542b34",
+  "plot_id": 16,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 5:45pm, Julie Patterson were involved. Julie asks John asking him to water her plant while she's on leave  1. Julie emails John to let him know that she needs to take urgent leave of absence next week and asks if he could water her plants while she's way. 2. John agrees, but asks more information about which plants she means and what is the proper care they need. 3. Julie mentions the 3 different plant she has at work and asks him to water them on Tuesday and Friday. 4. John agrees and adds the relevant calendar reminders on his phone. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_16",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to check which of Julie's plants you're supposed to water today to make sure you don't water the wrong ones.",
+  "reference_time": "2024-07-30T09:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed that the plants to be watered for the calendar event Water Julie's Plants on 2024-07-30 from 09:00 to 09:15 are the fern and spider plant.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_16_d8ace76c-5ce1-4440-90af-9adcc3542b34_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Water Julie's Plants",
+      "start_datetime_iso": "2024-07-30T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T09:15:00-07:00",
+      "attendees_names": [
+        "John Quinn"
+      ],
+      "location": "Palantir Office",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T18:20:00-07:00",
+      "notes": "Water the fern and spider plant."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Which plants are mentioned in the notes for watering Julie's plants today?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know which plants are mentioned in the notes for watering Julie's plants today. I can see that they have an event scheduled today, 30 July 2024, at 09:00 to 09:15 titled Water Julie's Plants. This must be the event they want to know about.\n\nThe event has a note attached stating \"Water the fern and spider plant.\" Great, I can let the user know that the fern and spider plant are the plants that are mentioned in the event notes for Water Julie's Plants today.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar to find today's watering event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct calendar event with notes was returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Water Julie's Plants\",\n                                                \"partial\": False,\n                                            },\n                                            # Make sure the notes mention at least \"fern\"\n                                            \"notes\": {\"value\": \"fern\", \"partial\": True},\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user which plants to water (must mention fern and spider plant)\n                Milestone(\n                    snapshot_constraints=[\n                        # Check mention of \"fern\"\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"fern\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Check mention of \"spider\" (covers “spider plant” wording variations)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"spider\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (0, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to check which of Julie's plants you're supposed to water today to make sure you don't water the wrong ones. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-30T09:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

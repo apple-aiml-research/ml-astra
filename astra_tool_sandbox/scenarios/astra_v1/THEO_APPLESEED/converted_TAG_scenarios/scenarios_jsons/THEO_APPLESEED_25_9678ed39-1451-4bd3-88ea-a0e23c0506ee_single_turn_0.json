@@ -1,0 +1,92 @@
+{
+  "task_id": "9678ed39-1451-4bd3-88ea-a0e23c0506ee",
+  "plot_id": 25,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo has a booked train trip to Chicago. Leaving tomorrow at 15:07 pm from the Central Station.\n generate calendar_events for the plot. In the calender event added a note for saving 1h travel time from office. Also he received the ticket number and booking reference number through messages for the train ticket.\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_25",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to find the message containing your ticket number for your train trip to Chicago",
+  "reference_time": "2024-07-30T13:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message from booking@trainservice.com is displayed to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_25_9678ed39-1451-4bd3-88ea-a0e23c0506ee_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "booking@trainservice.com",
+      "participants_addresses": [
+        "booking@trainservice.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "booking@trainservice.com",
+      "content": "Dear Theo, your train ticket to Chicago is booked. Departure: July 30, 2024, 15:07 from Central Station. Ticket number: TK123456789, Booking reference: BR987654321.",
+      "creation_datetime_iso": "2024-07-29T07:35:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Train Trip to Chicago",
+      "start_datetime_iso": "2024-07-30T15:07:00-07:00",
+      "end_datetime_iso": "2024-07-30T20:00:00-07:00",
+      "attendees_names": [
+        "Theo Appleseed"
+      ],
+      "location": "Central Station",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:45:00-07:00",
+      "notes": "Train trip to Chicago. Remember to leave 1 hour early from office to reach the station on time."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I don't know my ticket number.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user does not know his ticket number. I assume the user is asking to be reminded of it. I must determine which ticket number the user is referring to. I can see the user has a train journey this afternoon in their calendar. I will look through the user's messages to see if they received anything referencing a ticket number for the journey. I can see a message received yesterday from booking@trainservice.com containing a ticket number. I will display this message for the user.",
+  "milestones": "[\n                # Milestone 0 –  The agent looks through the user’s messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 –  Confirm the search returned the booking email that contains the ticket number\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"booking@trainservice.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"TK123456789\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 –  The user is shown the ticket number\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"TK123456789\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # search → verify correct message found\n                (1, 2),  # correct message found → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to find the message containing your ticket number for your train trip to Chicago ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-30T13:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,80 @@
+{
+  "task_id": "74b400e9-81af-477b-ae6e-1e78bf63263f",
+  "plot_id": 6,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 4, 2024 at 5 pm, Carol Reyes were involved. Lucas attends a beer tasting event with Carol at a new local brewery. Lucas texts Carol to thank her for organizing the event.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_6",
+    "messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to message Carol Reyes saying \"Carol, maybe it's because I'm drunk or maybe it's because I love you but I think we should explore our relationship\"",
+  "reference_time": "2024-12-04T21:50:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Carol Reyes saying \"Carol, maybe it's because I'm drunk or maybe it's because I love you but I think we should explore our relationship\"",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_6_74b400e9-81af-477b-ae6e-1e78bf63263f_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Carol",
+      "last_name": "Reyes",
+      "full_name": "Carol Reyes",
+      "phone_number": "+1 12345-6789-1000-6543",
+      "alias": "Beer Tasting Friend",
+      "email": "carol.reyes@example.com",
+      "relationship": "Beer tasting friend",
+      "address": "34 Brew St, Orchard County, CA, USA",
+      "company": "Craft Beer Co.",
+      "job_title": "Sales Representative",
+      "is_self": false,
+      "birthday": "1991-04-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to the woman from the beer tasting saying \"Carol, maybe it's because I'm drunk or maybe it's because I love you but I think we should explore our relationship\"",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message saying \"Carol, maybe it's because I'm drunk or maybe it's because I love you but I think we should explore our relationship\" to the woman the user went on a beer tasting with. From the Beer Tasting event it is evident that it was with the user's contact Carol Reyes.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Carol’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify Carol Reyes is included in the contact search results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Carol Reyes\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 12345-6789-1000-6543\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Message is sent to Carol with the intended content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require Carol to be among the participants; allow extras like the user's own address\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 12345-6789-1000-6543\",\n                                                \"carol.reyes@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Carol, maybe it's because I'm drunk or maybe it's because I love you but I think we should explore our relationship\",\n                                    \"creation_datetime_iso\": \"2024-12-04T21:50:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → verify Carol found\n                (1, 2),  # Carol found → message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to message Carol Reyes saying \"Carol, maybe it's because I'm drunk or maybe it's because I love you but I think we should explore our relationship\" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-12-04T21:50:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

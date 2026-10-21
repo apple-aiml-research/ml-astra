@@ -1,0 +1,93 @@
+{
+  "task_id": "b4c3eddc-61f9-4c1e-a057-c18f6164b199",
+  "plot_id": 18,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 8:30pm, Deborah Shooter were involved. Deborah sends John some music tracks she likes.  1. Deborah sends John 4 messages with links to electronic music tracks she likes on Apple Music, mentioning the band and song name. 2. Deborah asks John if he likes them, and he answers they seem nice, but he's not an expert in electronic music. 3. She says such music can be great and sends 5 more tracks. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_18",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Your neighbor Deborah has sent you an overwhelming amount of music recommendations.   You want to make sure you responded at least once to them so as not to offend her.",
+  "reference_time": "2024-07-24T22:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message sent from the user to Deborah Shooter on July 24th, at 20:35 is shown to the user with content 'They seem nice, Deb! I'm not an expert, but I enjoyed them.'. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_18_b4c3eddc-61f9-4c1e-a057-c18f6164b199_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "They seem nice, Deb! I'm not an expert, but I enjoyed them.",
+      "creation_datetime_iso": "2024-07-24T20:35:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to know if they responded today to their neighbor. I wonder who they're talking about. I should check their contacts to figure it out. I see the user has one contact listed as a neighbor, Deborah Shooter. It must be her. Okay, I'll search for a message response sent from the user today to Deborah Shooter. I see that the user responded to Deborah today, July 24th at 20:35. I'll show that message to the user now. ",
+  "query": "She sent so many recommendations. Did I respond to my neighbor today? If so read it out.",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent invokes a messages-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the returned conversation with Deborah\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Deborah Shooter\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent shows the user the outbound message content sent to Deborah\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"They seem nice\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. Your neighbor Deborah has sent you an overwhelming amount of music recommendations.  You want to make sure you responded at least once to them so as not to offend her. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-24T22:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

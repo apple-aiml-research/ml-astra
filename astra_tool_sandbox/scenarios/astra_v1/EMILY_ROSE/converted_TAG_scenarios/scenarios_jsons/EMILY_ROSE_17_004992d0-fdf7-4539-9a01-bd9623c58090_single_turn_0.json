@@ -1,0 +1,88 @@
+{
+  "task_id": "004992d0-fdf7-4539-9a01-bd9623c58090",
+  "plot_id": 17,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 13, 2024 at 3:00 PM, Oscar Martinez were involved. Weekend walk with Oscar and pets; brainstorming pet-friendly community activities. Oscar sends pet event ideas via message.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_17",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You had a really good brainstorming session with Oscar.    You want to send him a message requesting that the notes be submitted by email.",
+  "reference_time": "2024-12-13T15:50:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message saying \"Can you submit your notes via email?\" is sent to Oscar Martinez.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_17_004992d0-fdf7-4539-9a01-bd9623c58090_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Oscar Martinez",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0140",
+      "content": "Sounds good. I'll have some notes typed up this weekend and send them over. Excited to see this come to life!",
+      "creation_datetime_iso": "2024-12-13T15:35:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Oscar Martinez",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0140"
+      ],
+      "sender_address": "+1 530-555-0123",
+      "content": "Awesome! Thanks for your enthusiasm, Oscar. Looking forward to it!",
+      "creation_datetime_iso": "2024-12-13T15:40:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to Oscar Martinez saying \"Can you submit your notes via email?\". ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message to Oscar to say \"Can you submit your notes via email?\". But Oscar does not in the contacts, so I need to search messages conversations. I'll ask if the user is ready to send, and send as requested.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the existing conversation with Oscar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Return the existing conversation with Oscar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # Either direction is acceptable; one side must match the sister’s number\n                                            \"conversation_name\": {\n                                                \"value\": \"Oscar Martinez\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new outgoing message asking for notes via email is sent to Oscar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 530-555-0123\",\n                                                \"emily.rose@orchardcommunity.org\",\n                                            ),  # Emily (self)\n                                            (\"+1 530-555-0140\",),  # Oscar\n                                        ]\n                                    ],\n                                    \"content\": \"Can you submit your notes via email?\",\n                                    \"creation_datetime_iso\": \"2024-12-13T15:50:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You had a really good brainstorming session with Oscar.   You want to send him a message requesting that the notes be submitted by email. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-13T15:50:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

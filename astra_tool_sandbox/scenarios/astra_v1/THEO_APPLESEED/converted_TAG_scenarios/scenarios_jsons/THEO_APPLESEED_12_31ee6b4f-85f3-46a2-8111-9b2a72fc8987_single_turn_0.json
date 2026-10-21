@@ -1,0 +1,95 @@
+{
+  "task_id": "31ee6b4f-85f3-46a2-8111-9b2a72fc8987",
+  "plot_id": 12,
+  "plot_summary": "Theo Appleseed is the protagonist. On Thursday Evening, July 25, 2024 at 8pm, John Quinn were involved. John messages Theo to chat and plan an upcoming hiking trip for July 27, 2024 Itinerary, Locations and schedules are decided. A calander invite was sent out for the hiking trip with all the finalized information.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_12",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low"
+  ],
+  "user_goal": "You want to know who just texted you.",
+  "reference_time": "2024-07-25T20:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Messages are checked for the most recent text message. ",
+      "statefullness": "Stateless"
+    },
+    {
+      "statefullness": "Stateless",
+      "input_text": "2. The message received from John Quinn on July 25th at 20:00 is read aloud to the user. "
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_12_31ee6b4f-85f3-46a2-8111-9b2a72fc8987_single_turn_0",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Hey Theo! Are you up for a hike this Saturday? Thinking of hitting the Big Rock Mountain Trail.",
+      "creation_datetime_iso": "2024-07-25T20:00:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Who just texted me? ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know who just texted them. I should check their messages to the most recent message and who the sender was. I see one message from John Quinn received at 20:00. This must be the message they mean. I'll show the user the message from John. ",
+  "milestones": "[\n                # Milestone 0 – Agent checks messages to find the most recent text message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,  # tool call traces\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow either a direct \"get all\" or a targeted search over messages\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_messages\",\n                                        \"search_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms that the John Quinn message on 2024-07-25T20:00:00-07:00 exists in the retrieved messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        # Check key fields for the most recent message\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"John Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"john.quinn@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-25T20:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Hey Theo! Are you up for a hike this Saturday? Thinking of hitting the Big Rock Mountain Trail.\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,  # validate based on the messages retrieval in Milestone 0\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs the user who texted and reads the message content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,  # user-facing reply\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Must mention the sender and convey the message text\n                                    \"content\": [(\"John\", \"hike\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Require both the sender's name and some form of the message content\n                                \"content\": column_str_contains_all_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # messages retrieval → confirm correct latest message\n                (1, 2),  # confirmed message → user notified with sender and content\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n]",
+  "is_read_time": "2024-07-25T20:00:00-07:00",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know who just texted you.  ",
+  "minefields": null,
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]"
+}

@@ -1,0 +1,97 @@
+{
+  "task_id": "d997e259-1506-4e22-a77a-a95e0e51f17b",
+  "plot_id": 8,
+  "plot_summary": "Lucas Garcia is the protagonist. On Thursday, December 5, 2024 at 2 pm, Maria Garcia were involved. Lucas has a video call with his mother to catch up and discuss family updates. Video call logs are saved, and Maria sends an email with family pictures.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_8",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to see the photos your mother emailed you.",
+  "reference_time": "2024-12-05T21:40:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The email received from 'Maria Garcia' on 5 December 2024 at 15:30 with the subject 'Family Pictures from Today's Chat' and the attachment 'Family_Photos_Dec2024.zip' is displayed to the user."
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_8_d997e259-1506-4e22-a77a-a95e0e51f17b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Family Pictures from Today's Chat",
+      "sender_address": "maria.garcia@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-05T15:30:00-08:00",
+      "body": "Hi Lucas,\n\nIt was wonderful catching up with you earlier today! I've attached some of the family photos I mentioned. Everyone's excited about the holidays, and we’ll keep you updated on any plans.\n\nTake care and see you soon!\n\nLove,\nMom",
+      "attachments": [
+        "Family_Photos_Dec2024.zip"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Garcia",
+      "full_name": "Maria Garcia",
+      "phone_number": "+1 12345-6789-1000-8765",
+      "alias": "Mom",
+      "email": "maria.garcia@example.com",
+      "relationship": "Mother",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County School District",
+      "job_title": "School Teacher",
+      "is_self": false,
+      "birthday": "1965-03-10T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "low",
+  "reasoning": "Okay so, the user is looking for an email received from their 'mom'. Firstly looking in their contacts, I can see no contact named 'mom', but I can see a contact named 'Maria Garcia' with the alias listed as 'mom'. This is the contact the user is referring to.\n\nNext, they want me to display an email received from 'Maria'. Checking the user's Mail, I can see one email received from 'Maria Garcia' at 15:30 on 5 December 2024, with the subject 'Family Pictures from Today's Chat' and the attachment 'Family_Photos_Dec2024.zip'. I can confirm with the user that this is the correct email, and then display it to them.",
+  "query": "Show me my mom's email.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – The agent invokes an e-mail retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The expected e-mail from Maria Garcia is present in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"maria.garcia@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Family Pictures from Today's Chat\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent displays the e-mail (subject or attachment mention) to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"Family Pictures\",  # subject key phrase\n                                            \"Family_Photos_Dec2024.zip\",  # attachment file name\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n    \"search_contacts\",   # possible lookup of \"Mom\" alias → email address\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to see the photos your mother emailed you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-05T21:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

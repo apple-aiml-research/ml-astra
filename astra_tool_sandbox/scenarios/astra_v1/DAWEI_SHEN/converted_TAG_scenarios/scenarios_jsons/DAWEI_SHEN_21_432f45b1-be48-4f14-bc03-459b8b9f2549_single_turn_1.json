@@ -1,0 +1,115 @@
+{
+  "task_id": "432f45b1-be48-4f14-bc03-459b8b9f2549",
+  "plot_id": 21,
+  "plot_summary": "Dawei Shen is the protagonist. On Saturday, December 14, 2024 at 7 pm, self, Lukas Hürholz, Vick Li were involved. Dawei, Lukas, and Vick meet for dinner at a local restaurant in Orchard County. Dawei shares the address in their group text. Lukas sends a group selfie afterward, thanking Dawei for the evening.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_21",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "contact",
+    "astra_core"
+  ],
+  "user_goal": "You were short money at the dinner and one of your friend covered your cost.        you want to create an event to remind you to send him money in the morning.",
+  "reference_time": "2024-12-14T20:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An event 'Pay Lukas' is created for 11:00 AM on Sunday, December 15, 2024 with Lukas Hürholz invited.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_21_432f45b1-be48-4f14-bc03-459b8b9f2549_single_turn_1",
+  "messages": [
+    {
+      "conversation_name": "Lukas Hürholz",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+44 123-456-7890-1234"
+      ],
+      "sender_address": "+44 123-456-7890-1234",
+      "content": "Hey Dawei, I'll be in California next weekend for work. Would love to catch up over dinner if you're free!",
+      "creation_datetime_iso": "2024-12-08T09:00:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Dinner at a local restaurant",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com",
+        "lukas.hurholz@londonbanking.co.uk"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "Here's the address for our dinner on December 14th: Local Restaurant, Orchard County, CA. See you both at 7 pm!",
+      "creation_datetime_iso": "2024-12-08T09:30:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lukas",
+      "last_name": "Hürholz",
+      "full_name": "Lukas Hürholz",
+      "phone_number": "+44 123-456-7890-1234",
+      "alias": "Lukas",
+      "email": "lukas.hurholz@londonbanking.co.uk",
+      "relationship": "High School Friend",
+      "address": "456 Finance St, London, UK",
+      "company": "London Banking",
+      "job_title": "Banker",
+      "is_self": false,
+      "birthday": "1994-12-31T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Create an event called 'Pay dinner bill' tomorrow at 1 hour before noon and invite him, not Vick. It's for the dinner last night — the one I forgot to pay him at.",
+  "informational_complexity": "moderate",
+  "referential_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to create an event to remind them to pay dinner bill for the dinner last night. First, I'll search the calendar for the dinner event to confirm the context - I find 'Dinner with Lukas and Vick' from last night. Next, the user mentioned not Vick, so I'll search contacts to confirm Lukas's full name is Lukas Hürholz. Now I can create the 'Pay dinner bill' event for 11:00 AM (one hour before noon) tomorrow, Sunday December 15th 2024, and invite Lukas Hürholz.",
+  "reference_time_str": "Today is Saturday, December 14, 2024 or 2024-12-14T20:00:00-08:00.",
+  "milestones": "[\n                # M0: search calendars\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The returned results include Lukas\n                # Milestone 1 – The specific Dec-4 event was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_count_extractor,\n                                        count_expected=2,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2: Verify that a calendar event 'Pay Lukas' is created for all day Sunday 11 am, December 15, 2024\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Pay dinner bill\",\n                                    \"start_datetime_iso\": \"2024-12-15T11:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\"Lukas Hürholz\", \"Dawei Shen\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-14T20:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list": [
+    "create_calendar_event",
+    "search_calendar_events",
+    "get_all_calendars",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You were short money at the dinner and one of your friend covered your cost.       you want to create an event to remind you to send him money in the morning. ",
+  "tool_allow_list_str": "[\"create_calendar_event\", \"search_calendar_events\", \"get_all_calendars\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-14T20:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

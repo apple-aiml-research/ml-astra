@@ -1,0 +1,137 @@
+{
+  "task_id": "10e8bd71-55aa-4d17-93d9-e4f1b8d51b47",
+  "plot_id": 15,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 10 am, self, Jeff Bing were involved. Dawei attends the tech panel hosted by Jeff. Afterward, Jeff emails Dawei a thank-you note and a link to the recorded session. Dawei responds with appreciation and forwards the session link to his team.",
+  "tags": [
+    "astra_core",
+    "DAWEI_SHEN",
+    "plot_15",
+    "calendar",
+    "email",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to schedule a time on Saturday half an hour later after dinner to re-watch the full length of the Tech Panel you attended this week.  Thankfully Jeff emailed a link of the recording to you.",
+  "reference_time": "2024-12-10T12:10:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event with name including keywords \"recording\" is created on 14 December 2024 from 21:30-23:30.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_15_10e8bd71-55aa-4d17-93d9-e4f1b8d51b47_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Thank You for Attending the Tech Panel",
+      "sender_address": "jeff.bing@bingelectronics.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-10T12:00:00-08:00",
+      "body": "Hi Dawei,\n\nThank you for attending today's tech panel discussion. Your insights and questions greatly contributed to the depth of our discussion. Please find attached the recording of the session.\n\nBest regards,\nJeff Bing",
+      "attachments": [
+        "Tech_Panel_Recording_2024-12-10.mp4"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Jeff Bing",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make time to re-watch Jeff's recording from beginning to end on Saturday, starting once I'm home from dinner — it takes me about 30 minutes to get home.",
+  "referential_complexity": "high",
+  "functional_complexity": "high",
+  "informational_complexity": "high",
+  "reasoning": "The user wants to re-watch Jeff’s recording on Saturday night, starting right after they get home from dinner. They also said 'from beginning to end' and that it takes them about 30 minutes to get home.\n\nFirst, I’ll find the relevant dinner on Saturday. I see 'Dinner with Lukas and Vick' ending at 21:00. Since the user said they need time to get home, I’ll add a 30-minute buffer and plan the new event to start at 21:30.\n\nNext, I’ll identify the recording. There’s one Jeff in contacts (Jeff Bing). In email, I see a link from jeff.bing@bingelectronics.com to a 'Tech Panel' recording. That’s the likely target.\n\nDuration logic: because the user said 'from the beginning to the end,' I should schedule the full runtime if known. The source event 'Tech Panel Hosted by Jeff Bing' lasted ~2 hours, so I’ll set the event length to 2 hours. \n\nI’ll create a calendar event titled 'Re-watch Jeff’s recording' on Saturday from 21:30–23:30 and present it for confirmation.",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – (Optional but likely) calendar search used to understand Saturday dinner timing\n                # The agent may look up existing calendar events to know when dinner ends on Saturday.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    # Either search a specific day/event or just list calendars\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The specific event was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_count_extractor,\n                                        count_expected=2,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 0 – the agent looks up the calendar to find the event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – the calendar lookup returns the correct Tech Panel event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Tech Panel Hosted by Jeff Bing\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-10T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,  # depends on the tool call in milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 1 – New calendar event created for re-watching the recording on 2024-12-14 from 21:30–23:30\n                # This is the main success condition.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Event name must reference \"recording\" somewhere\n                                    \"calendar_event_name\": \"recording\",\n                                    \"start_datetime_iso\": \"2024-12-14T21:30:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-14T23:30:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-10T12:10:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Only require that \"recording\" appears as a substring in the title\n                                \"calendar_event_name\": column_contains_similarity,\n                                # Times should match exactly for this task\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                # Calendar lookup (0) may inform the scheduling (1), but creation can be validated independently.\n                (0, 1),\n                (2, 3),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",   # needed to create the new re-watch event\n    \"search_calendar_events\",  # to find Saturday dinner event and its end time\n    \"get_all_calendars\",       # fallback to list calendar events if search is broad\n]",
+  "is_read_time": "2024-12-10T12:10:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to schedule a time on Saturday half an hour later after dinner to re-watch the full length of the Tech Panel you attended this week. Thankfully Jeff emailed a link of the recording to you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]"
+}

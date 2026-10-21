@@ -1,0 +1,76 @@
+{
+  "task_id": "7f70cab7-c917-468c-99cd-9e171fc6721b",
+  "plot_id": 26,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo checked his messages and found out that he recently got a lot of spam messages about “exciting opportunities to invest in new cryptocurrencies” from three different unknown senders.\n generate messages Theo recieved between July 21, 2024 to July 28, 2024. The message should also contain fake url and a message\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_26",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know who the sender of the first crypto text you got was.",
+  "reference_time": "2024-07-28T13:25:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The sender of that message received on July 21st at 14:35 is checked and given to the user as Crypto Invest (unknown1@crypto-invest.com).",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_26_7f70cab7-c917-468c-99cd-9e171fc6721b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "unknown1@crypto-invest.com",
+      "participants_addresses": [
+        "theo.appleseed@example.com",
+        "unknown1@crypto-invest.com"
+      ],
+      "sender_address": "unknown1@crypto-invest.com",
+      "content": "Unlock the potential of your future with our exclusive cryptocurrency investment opportunities! Visit now: www.crypto-invest.com/start",
+      "creation_datetime_iso": "2024-07-21T14:35:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Who was the sender of the first crypto text I got? ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know who was the sender of the first crypto text they got was. Okay, I start off by searching messages for messages mentioning \"crypto\" and I find multiple matches. I see that the earliest message was received on July 21st at 14:35 from Cypto Invest. I'll show the user the message with its sender. ",
+  "milestones": "[\n                # Milestone 0 – The agent queries the message store for crypto-related messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the July 21 2024 14:35 message from unknown1@crypto-invest.com was returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"unknown1@crypto-invest.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-21T14:35:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # validate result of Milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user the sender was “Crypto Invest” (or gives the exact address)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"Crypto Invest\",\n                                            \"unknown1@crypto-invest.com\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know who the sender of the first crypto text you got was. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-28T13:25:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

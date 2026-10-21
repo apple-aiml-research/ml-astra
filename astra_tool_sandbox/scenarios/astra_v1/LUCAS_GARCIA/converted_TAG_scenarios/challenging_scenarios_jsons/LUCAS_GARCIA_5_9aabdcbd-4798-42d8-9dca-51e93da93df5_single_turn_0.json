@@ -1,0 +1,53 @@
+{
+  "scenario_name": "LUCAS_GARCIA_5_9aabdcbd-4798-42d8-9dca-51e93da93df5_single_turn_0",
+  "plot_id": 5,
+  "reference_time": "2024-12-03T13:05:00-08:00",
+  "is_read_time": "2024-12-03T13:05:00-08:00",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You are wondering what time you called your high school friend Emmanuel ",
+  "user_goal": "You are wondering what time you called your high school friend Emmanuel",
+  "query": "What time did I call Emmanuel Gonzales ",
+  "success_conditions": [
+    {
+      "input_text": "1. The time of the incoming call from Emmanuel Gonzales on December 03, 2024 at 11:45 is presented to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "reasoning": "The user wants to know when they sent their last call to Emmanuel Gonzales took place. First thing I need to do is search the user's call logs. Ok I found a call to Emmanuel Gonzales at 11:45 on December 03, 2024. But it was the incoming instead of outgoing. Ok now that I have that I will retrieve the time of the call and inform the user that the last call was from Emmanuel instead of outgoing, asn was on 11:45.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up phone-call history\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved phone-call list contains the call with Emmanuel on 2024-12-03 11:45\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"caller_address\": {\n                                                \"value\": \"+1 12345-6789-1000-1357\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-03T11:45:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the correct call time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"11:45\",\n                                            \"11:45 am\",\n                                            \"11:45am\",\n                                            \"11:45 a.m.\",\n                                            \"11:45 AM\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"incoming\",\n                                            \"from\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "minefields": null,
+  "tool_allow_list": [
+    "search_phonecall_logs",
+    "get_all_phone_calls",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "insufficient_context": "no",
+  "misinformation": "yes",
+  "tool_allow_list_str": "[\"search_phonecall_logs\", \"get_all_phone_calls\", \"search_contacts\", \"get_all_contacts\"]",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_5",
+    "phone_call",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_yes",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "phonecalls": [
+    {
+      "creation_datetime_iso": "2024-12-03T11:45:00-08:00",
+      "receiver_address": "+1 12345-6789-1000-1234",
+      "call_type": "incoming",
+      "caller_address": "+1 12345-6789-1000-1357",
+      "duration_in_hms": "00:02:00",
+      "voice_mail_transcription": null
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "task_id": "85e0761d-9e51-4169-8a31-3cd1a23d6486",
+  "plot_id": 19,
+  "plot_summary": "Theo Appleseed is the protagonist. On Sunday Morning, July 28, 2024 at 10 am, Cookie were involved. Solo time for reading and relaxation Theo texts Cookie afterwards to share about this book he was reading",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_19",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what time you messaged Cookie asking for recommendations.",
+  "reference_time": "2024-07-28T14:20:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. User is informed that the message they sent to Cookie Watson saying \"Hey Cookie, just finished an amazing sci-fi novel this morning! Starting a new historical fiction next. Got any recommendations?\" was sent at 10:15 on 2024-07-28."
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_19_85e0761d-9e51-4169-8a31-3cd1a23d6486_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Hey Cookie, just finished an amazing sci-fi novel this morning! Starting a new historical fiction next. Got any recommendations?",
+      "creation_datetime_iso": "2024-07-28T10:15:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Tell me when I last messaged Cookie.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when they last messaged Cookie. There is only one Cookie in their contacts: Cookie Watson. I'll check their messages with them.\n\nThe last message the user sent to Cookie Watson says \"Hey Cookie, just finished an amazing sci-fi novel this morning! Starting a new historical fiction next. Got any recommendations?\" and was sent at 10:15 on 2024-07-28. Great, I can let the user know.",
+  "milestones": "[\n                # Milestone 0 – The agent looks through messages to find the latest conversation with Cookie\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the correct message (to Cookie Watson at 2024-07-28 10:15) was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Cookie Watson\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"amazing sci-fi novel\",\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-28T10:15:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent tells the user the correct time and date\n                Milestone(\n                    snapshot_constraints=[\n                        # Check time phrase present\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"10:15\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        ),\n                        # Check date phrase present (any reasonable phrasing)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"today\",\n                                            \"July 28\",\n                                            \"Jul 28\",\n                                            \"28 July\",\n                                            \"28 Jul\",\n                                            \"7-28\",\n                                            \"07-28\",\n                                            \"7/28\",\n                                            \"07/28\",\n                                            \"the 28th\",\n                                            \"28th of July\",\n                                            \"2024-07-28T10:15\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity,\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Message search → validate correct message found\n                (1, 2),  # Correct message found → inform user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",   # optional but plausible for resolving “Cookie”\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know what time you messaged Cookie asking for recommendations. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-28T14:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

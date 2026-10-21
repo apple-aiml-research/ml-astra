@@ -1,0 +1,93 @@
+{
+  "task_id": "2447abc5-12d9-4d06-b315-bd4134f04c5d",
+  "plot_id": 5,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 3, 2024 at 7 am, self, Paul Harper were involved. Paul calls Dawei to check if he can watch his cat for the weekend, as Paul is heading out of town. Dawei agrees and notes the dates. Dawei adds the task to his calendar and sets a reminder to pick up Paul's house key on Thursday.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_5",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know how long you're watching Paul's cat for.",
+  "reference_time": "2024-12-07T00:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The duration of the event, 3 days, \"Cat Sitting for Paul\" scheduled from  00:00 6th December 2024 until 23:59 8th December 2024, is announced to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_5_2447abc5-12d9-4d06-b315-bd4134f04c5d_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cat Sitting for Paul",
+      "start_datetime_iso": "2024-12-06T00:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T23:59:59-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Paul Harper's House, 125 Neighbor St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T07:05:00-08:00",
+      "notes": "Watch Paul's cat over the weekend while he is out of town."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you tell me the duration of my calendar event called Cat Sitting for Paul? Round in days.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know the duration of the calendar event called Cat Sitting for Paul.\n\nI should locate it in the calendar, then calculate its duration by finding the difference between its start and end time.\n\nIt is roughly 3 days, and I will relay this information to the user.",
+  "milestones": "[\n                # Milestone 0 – the agent queries the calendar to locate the event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – the agent tells the user the duration (≈ 3 days, or explicit date range)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"3 days\",\n                                            \"three days\",\n                                            \"3-day\",\n                                            \"three-day\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar lookup precedes informing the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know how long you're watching Paul's cat for. ",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-07T00:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

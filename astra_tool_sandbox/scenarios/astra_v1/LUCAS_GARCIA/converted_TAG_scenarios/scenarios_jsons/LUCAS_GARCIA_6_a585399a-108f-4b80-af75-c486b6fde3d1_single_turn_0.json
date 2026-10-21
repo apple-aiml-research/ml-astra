@@ -1,0 +1,98 @@
+{
+  "task_id": "a585399a-108f-4b80-af75-c486b6fde3d1",
+  "plot_id": 6,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 4, 2024 at 5 pm, Carol Reyes were involved. Lucas attends a beer tasting event with Carol at a new local brewery. Lucas texts Carol to thank her for organizing the event.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_6",
+    "calendar",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know the location of your beer tasting with Carol so you can get good parking before the traffic.",
+  "reference_time": "2024-12-04T16:25:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed of the location for the 'Beer Tasting Event with Carol', 'New Local Brewery, Orchard County, CA', which is scheduled for 4 December 2024 from 17:00 to 19:00 with Carol Reyes."
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_6_a585399a-108f-4b80-af75-c486b6fde3d1_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Beer Tasting Event with Carol",
+      "start_datetime_iso": "2024-12-04T17:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T19:00:00-08:00",
+      "attendees_names": [
+        "Carol Reyes",
+        "Lucas Garcia"
+      ],
+      "location": "New Local Brewery, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T12:00:00-08:00",
+      "notes": "Attending a beer tasting event with Carol at a new local brewery to explore new craft beers."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Carol",
+      "last_name": "Reyes",
+      "full_name": "Carol Reyes",
+      "phone_number": "+1 12345-6789-1000-6543",
+      "alias": "Beer Tasting Friend",
+      "email": "carol.reyes@example.com",
+      "relationship": "Beer tasting friend",
+      "address": "34 Brew St, Orchard County, CA, USA",
+      "company": "Craft Beer Co.",
+      "job_title": "Sales Representative",
+      "is_self": false,
+      "birthday": "1991-04-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "low",
+  "query": "What's the location of my upcoming beer tasting?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "reasoning": "Okay so, the user is wanting to know the location of their 'beer tasting'. Checking their calendar, I can see an event matching titled 'Beer Tasting Event with Carol' scheduled for today, 4 December 2024 from 17:00 to 19:00 with Carol Reyes listed as an attendee. This is the event the user is searching for, and it's the next event in their calendar. The location information is added as 'New Local Brewery, Orchard County, CA'. I can inform the user of this.",
+  "milestones": "[\n                # Milestone 0 – The agent consults the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The “Beer Tasting Event with Carol” and its location were returned from the calendar lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Beer Tasting Event with Carol\",\n                                                \"partial\": False,\n                                            },\n                                            \"location\": {\n                                                \"value\": \"New Local Brewery, Orchard County, CA\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user the correct location\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"New Local Brewery\", \"Orchard County, CA\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know the location of your beer tasting with Carol so you can get good parking before the traffic. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-12-04T16:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

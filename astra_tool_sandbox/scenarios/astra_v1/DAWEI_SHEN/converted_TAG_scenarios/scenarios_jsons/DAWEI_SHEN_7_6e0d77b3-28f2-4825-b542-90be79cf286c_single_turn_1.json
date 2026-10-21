@@ -1,0 +1,109 @@
+{
+  "task_id": "6e0d77b3-28f2-4825-b542-90be79cf286c",
+  "plot_id": 7,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 4, 2024 at 3 pm, self, Kevin Chen, Stefan Mustermann were involved. Dawei hosts a virtual meeting to discuss updates for Friday's strategy meeting with Kevin and Stefan. Kevin sends a follow-up email summarizing the meeting action items.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_7",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know if you have any review meetings planned for next week.",
+  "reference_time": "2024-12-06T09:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The 'Team Review Meeting' scheduled on 13th December 2024 between 10:00 and 11:00 is announced to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_7_6e0d77b3-28f2-4825-b542-90be79cf286c_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room B, Orchard Tech HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-01T12:00:00-08:00",
+      "notes": "Monthly team review to discuss project progress and assign new action items."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Stefan",
+      "last_name": "Mustermann",
+      "full_name": "Stefan Mustermann",
+      "phone_number": "+1 555-901-2345-6789",
+      "alias": "Stefan",
+      "email": "stefan.mustermann@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "birthday": "1987-11-30T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Do I have any review meetings between now and Friday 13th December 2024?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user has requested me to check if there's any review meetings they have between today, December 6th 2024, and December 13th 2024. Over the next 7 days I have found one event that meets the criteria. It is a meeting on Friday December 13th 2024  called ' Team Review Meeting'. \nI tell the user this information.",
+  "milestones": "[\n                # Milestone 0 – The agent queries the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the expected event appears in the tool’s result\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Team Review Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-13T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent informs the user about the meeting\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"Team Review Meeting\",\n                                            \"team review meeting\",\n                                            \"December 13\",\n                                            \"13th December\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar queried → verify event found\n                (1, 2),  # Event found → user is informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know if you have any review meetings planned for next week. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-06T09:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

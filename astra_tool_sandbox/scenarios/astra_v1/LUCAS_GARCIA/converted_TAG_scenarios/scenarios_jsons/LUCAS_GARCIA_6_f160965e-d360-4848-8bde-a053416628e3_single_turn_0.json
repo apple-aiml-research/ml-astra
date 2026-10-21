@@ -1,0 +1,93 @@
+{
+  "task_id": "f160965e-d360-4848-8bde-a053416628e3",
+  "plot_id": 6,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 4, 2024 at 5 pm, Carol Reyes were involved. Lucas attends a beer tasting event with Carol at a new local brewery. Lucas texts Carol to thank her for organizing the event.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_6",
+    "messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You sent your beer tasting friend Carol a thank you message, for organizing the beer tasting that you both attended today.   You want to know if she responded, as you're dying to ask what her favorite beers were when she does.",
+  "reference_time": "2024-12-04T21:35:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The message from Carol Reyes, received on December 4th, at 21:35, is shared with the user."
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_6_f160965e-d360-4848-8bde-a053416628e3_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Carol Reyes",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "carol.reyes@example.com"
+      ],
+      "sender_address": "carol.reyes@example.com",
+      "content": "Hi Lucas! I'm so glad you enjoyed it. The brewery was really excited to host us. Do you have a favorite from the selection?",
+      "creation_datetime_iso": "2024-12-04T21:35:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Carol",
+      "last_name": "Reyes",
+      "full_name": "Carol Reyes",
+      "phone_number": "+1 12345-6789-1000-6543",
+      "alias": "Beer Tasting Friend",
+      "email": "carol.reyes@example.com",
+      "relationship": "Beer tasting friend",
+      "address": "34 Brew St, Orchard County, CA, USA",
+      "company": "Craft Beer Co.",
+      "job_title": "Sales Representative",
+      "is_self": false,
+      "birthday": "1991-04-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Did my beer-buddy message me back yet?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know if their beer-buddy messaged them back. I wonder who they mean. I'll check their contacts to figure it out. I don't see anyone listed with that name or description. However, I see one contact, Carol Reyes, listed as 'Beer Tasting friend'.  This is very similar to beer buddy, so I think they must mean her. I'll search for new messages from Carol Reyes. I see one new message from Carol, received on December 4th, 2024, at 21:35. I'll show that to the user now. ",
+  "milestones": "[\n                # Milestone 0 – Agent queries the message store to see if “beer-buddy” responded\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The searched messages include Carol Reyes’ reply from 2024-12-04 21:35\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Carol Reyes\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-04T21:35:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the content of Carol’s message (or a clear excerpt)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"glad you enjoyed\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # message search → verify Carol’s reply found\n                (1, 2),  # reply found → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You sent your beer tasting friend Carol a thank you message, for organizing the beer tasting that you both attended today.  You want to know if she responded, as you're dying to ask what her favorite beers were when she does. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-12-04T21:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

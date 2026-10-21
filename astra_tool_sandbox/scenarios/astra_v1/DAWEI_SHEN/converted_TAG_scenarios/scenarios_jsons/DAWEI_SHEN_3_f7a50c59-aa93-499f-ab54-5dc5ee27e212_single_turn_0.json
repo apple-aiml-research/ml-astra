@@ -1,0 +1,116 @@
+{
+  "task_id": "f7a50c59-aa93-499f-ab54-5dc5ee27e212",
+  "plot_id": 3,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 2, 2024 at 9 am, self, Michelle Barnes, Theo Appleseed were involved. Michelle emails Dawei a revised draft for the virtual assistant algorithm. Theo comments on the email thread to suggest an additional improvement. Dawei replies with his approval and schedules a meeting for Wednesday to discuss further updates.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_3",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "you have had a hectic few weeks so the time the Discussion on Virtual Assistant Algorithm Updates starts has slipped your mind.        you ask your assistant for a reminder.",
+  "reference_time": "2024-12-04T07:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. user is informed the start time of 'Discussion on Virtual Assistant Algorithm Updates' is 10:00 on 4th of December 2024",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_3_f7a50c59-aa93-499f-ab54-5dc5ee27e212_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Revised Draft for Virtual Assistant Algorithm",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "theo.appleseed@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "body": "Hi Dawei, I've attached the revised draft for the virtual assistant algorithm. Please review and let us know your thoughts. Best, Michelle",
+      "attachments": [
+        "Revised_Algorithm_Draft.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Revised Draft for Virtual Assistant Algorithm",
+      "sender_address": "theo.appleseed@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com",
+        "michelle.barnes@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T09:15:00-08:00",
+      "body": "Hi all, I suggest adding an additional improvement to the section on user interaction. I've noted this in the draft attached. Cheers, Theo",
+      "attachments": [
+        "Revised_Algorithm_Draft_with_Comments.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Revised Draft for Virtual Assistant Algorithm",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "michelle.barnes@orchardtech.com",
+        "theo.appleseed@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T09:30:00-08:00",
+      "body": "Thanks, Michelle and Theo. I've reviewed the draft and your comments. I approve the changes. Let's schedule a meeting for Wednesday to discuss further. Best, Dawei",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Discussion on Virtual Assistant Algorithm Updates",
+      "start_datetime_iso": "2024-12-04T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T09:35:00-08:00",
+      "notes": "Meeting to discuss further updates on the virtual assistant algorithm based on the recent feedback."
+    }
+  ],
+  "contacts": [],
+  "phonecalls": [],
+  "query": "When is today's discussion?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok, the user wants to know when today's discussion is. when looking at the calendar I found an event titled 'Discussion on Virtual Assistant Algorithm Updates'. I believe this is the discussion they are referring to. I will inform them that the event starts at 10:00 today. ",
+  "reference_time_str": "Today is Wednesday, December 4, 2024 or 2024-12-04T07:30:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Agent queries the calendar for the meeting time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: the correct discussion meeting got brought up\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Discussion on Virtual Assistant Algorithm Updates\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-04T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – User receives a response mentioning the correct start time and date\n                Milestone(\n                    snapshot_constraints=[\n                        # Check mention of the correct time\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"10:00\", \"10 am\", \"10am\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. you have had a hectic few weeks so the time the Discussion on Virtual Assistant Algorithm Updates starts has slipped your mind.       you ask your assistant for a reminder. ",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-04T07:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

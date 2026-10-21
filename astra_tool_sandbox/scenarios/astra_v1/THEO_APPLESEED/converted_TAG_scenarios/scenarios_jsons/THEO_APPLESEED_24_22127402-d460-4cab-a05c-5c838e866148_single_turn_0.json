@@ -1,0 +1,80 @@
+{
+  "task_id": "22127402-d460-4cab-a05c-5c838e866148",
+  "plot_id": 24,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo signed up to Salsa classes every Wednesday evening for last 1h from 19:30 to 20:30 for 12 weeks\n generate calendar_events for Theo's Salsa classes",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_24",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You had a really good time at your last salsa class, you can't wait for the next one and want to know when it is.",
+  "reference_time": "2024-07-31T23:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1) Date of upcoming salsa class is confirmed as August 7, 2024 19:30-20:30.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_24_22127402-d460-4cab-a05c-5c838e866148_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-07T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-07T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Tell me the date of my next salsa class.",
+  "reasoning": "The user is asking about the date of an upcoming event.\nI should look into their calendar and confirm.\nI have found the queried event, Salsa Class scheduled for August 7, 2024 19:30-20:30.\nI should inform the user.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – The agent looks in the calendar for upcoming salsa classes\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved calendar event is the correct salsa class on Aug 7 2024 19:30\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Salsa Dance Class\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-08-07T19:30:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user the correct date and time of the next class\n                Milestone(\n                    snapshot_constraints=[\n                        # Check date mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"August 7\", \"Aug 7\", \"7 August\", \"7 Aug\", \"8/7\", \"08/07\", \"08-07\", \"next Wednesday\", \"2024-08-07T19:30\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                        # Check time mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"19:30\",\n                                            \"7:30\",\n                                            \"7:30 pm\",\n                                            \"7:30pm\",\n                                            \"19:30-20:30\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar search → verify correct event retrieved\n                (1, 2),  # Correct event retrieved → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You had a really good time at your last salsa class, you can't wait for the next one and want to know when it is. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-31T23:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

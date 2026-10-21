@@ -1,0 +1,128 @@
+{
+  "task_id": "3a88cb84-6602-473d-90fd-c75fd55fd798",
+  "plot_id": 3,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 2, 2024 at 9 am, self, Michelle Barnes, Theo Appleseed were involved. Michelle emails Dawei a revised draft for the virtual assistant algorithm. Theo comments on the email thread to suggest an additional improvement. Dawei replies with his approval and schedules a meeting for Wednesday to discuss further updates.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_3",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "email"
+  ],
+  "user_goal": "You want to e-mail everyone who attended today's virtual assistant discussion saying you found today's meeting very productive and you also want to schedule another meeting for Friday",
+  "reference_time": "2024-12-04T20:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An e-mail is sent to michelle.barnes@orchardtech.com and theo.appleseed@orchardtech.com saying you found today's meeting very productive.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. An event \"Discussion on Virtual Assistant Algorithm Updates\" is scheduled for Friday 6 December at 10:00 – 11:00 in Conference Room B, Orchard Tech, Orchard County, CA with Michelle Barnes and Theo Appleseed as invitees.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_3_3a88cb84-6602-473d-90fd-c75fd55fd798_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Revised Draft for Virtual Assistant Algorithm",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "theo.appleseed@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "body": "Hi Dawei, I've attached the revised draft for the virtual assistant algorithm. Please review and let us know your thoughts. Best, Michelle",
+      "attachments": [
+        "Revised_Algorithm_Draft.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Discussion on Virtual Assistant Algorithm Updates",
+      "start_datetime_iso": "2024-12-04T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T09:35:00-08:00",
+      "notes": "Meeting to discuss further updates on the virtual assistant algorithm based on the recent feedback."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Theo",
+      "email": "theo.appleseed@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Scientist",
+      "is_self": false,
+      "birthday": "1985-12-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send an e-mail to Michelle Barnes and Theo Appleseed saying that I found our meeting today to be very productive and then schedule another meeting copying today's meeting's details for this Friday.",
+  "reasoning": "The user wants to immediately send an email to Michelle Barnes and Theo Appleseed saying that they found today’s meeting very productive. Next, the user wants another meeting scheduled for this Friday that mirrors today’s “Discussion on Virtual Assistant Algorithm Updates” session.\n\nI will:\n1. Look up Michelle Barnes and Theo Appleseed in contacts.\n2. Compose and send an email to them stating that today’s meeting was very productive.\n3. Locate today’s calendar event titled “Discussion on Virtual Assistant Algorithm Updates” (10:00 – 11:00 on 4 Dec 2024).\n4. Create a new event with the same title, attendees, and details for Friday, 6 Dec 2024, 10:00 – 11:00.\n\nThese steps satisfy the user’s request.",
+  "referential_complexity": "moderate",
+  "functional_complexity": "high",
+  "informational_complexity": "moderate",
+  "reference_time_str": "Today is Wednesday, December 4, 2024 or 2024-12-04T20:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0: agent search contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_contacts\",\n                                        \"search_contacts\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Michelle Found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Michelle Barnes\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"michelle.barnes@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2: agent search contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_contacts\",\n                                        \"search_contacts\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3: Theo Found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Theo Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"theo.appleseed@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ]\n                ),\n                # 4: search for calendar\n                Milestone(\n                    snapshot_constraints=[\n                        # 1. Tool usage to search calendar events\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # 5. Ensure calendar event with 'Discussion on Virtual Assistant Algorithm Updates' is retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Discussion on Virtual Assistant Algorithm Updates\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-04T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=4,\n                        )\n                    ]\n                ),\n                # Milestone 6 – a new e-mail addressed to Michelle and Theo was actually sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\n                                            \"michelle.barnes@orchardtech.com\",\n                                            \"theo.appleseed@orchardtech.com\",\n                                        ]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"productive\",\n                                    \"creation_datetime_iso\": \"2024-12-04T20:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n                # Milestone 7 – a new Friday meeting was added with the correct details\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Discussion on Virtual Assistant Algorithm Updates\",\n                                    \"start_datetime_iso\": \"2024-12-06T10:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-06T11:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\"Michelle Barnes\", \"Theo Appleseed\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-04T20:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.EMAIL],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # need to find michelle's contact\n                (2, 3),  # need to find theo's contact\n                (4, 5),  # need to find today's meeting\n            ]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "send_email",
+    "create_calendar_event"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to e-mail everyone who attended today's virtual assistant discussion saying you found today's meeting very productive and you also want to schedule another meeting for Friday ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"send_email\", \"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-04T20:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

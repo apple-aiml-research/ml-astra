@@ -1,0 +1,98 @@
+{
+  "task_id": "e52d334f-182f-48d4-9500-bfd874d6f918",
+  "plot_id": 10,
+  "plot_summary": "Dawei Shen is the protagonist. On Saturday, December 7, 2024 at 10 am, self, Jess Zimmer were involved. Dawei messages Jess to confirm their weekend brunch plans at her favorite café. Jess replies with the café address. Dawei updates the calendar with brunch details and saves Jess's message with the café address for navigation later.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_10",
+    "calendar",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "astra_core"
+  ],
+  "user_goal": "You want to add your brunch plans discussed with Jess to your calendar.",
+  "reference_time": "2024-12-07T10:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Messages from Jess are searched for details regarding brunch.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. New calendar event with title contains 'brunch' and Jess Zimmer as an invitee created, with location Bluebird Café and starts on 2024-12-07T11:00:00. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_10_e52d334f-182f-48d4-9500-bfd874d6f918_single_turn_0",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "sender_address": "jess.zimmer@fintechstartup.com",
+      "content": "Yes, definitely! Let's meet at the Bluebird Café. It's at 202 Main St, Orchard County. See you at 11?",
+      "creation_datetime_iso": "2024-12-07T10:05:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Add my brunch date with Jess to my calendar based on our discussion. ",
+  "reasoning": "The user wants to add Brunch with Jess to calendar. The user mentioned a discussion, so I will first search messages from Jess for brunch details. \n\nI can see Jess has given the time of 11am for brunch and has also sent the address of the café, Bluebird Café, so I can assume the user wants to add the event for 11am. I will also save the message to the event containing the address of the café. ",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Messages from Jess are searched for brunch details (information retrieval)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm a message thread from Jess with brunch time and address was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        # We just need to confirm that the key brunch message from Jess exists\n                                        match_conditions={\n                                            \"participants_addresses\": {\n                                                \"value\": [\n                                                    \"dawei.shen@orchardtech.com\",\n                                                    \"jess.zimmer@fintechstartup.com\",\n                                                ],\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"jess.zimmer@fintechstartup.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Let's meet at the Bluebird Café\",\n                                                \"partial\": True,  # allow full sentence match\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Calendar event created for brunch with Jess at 11am on Dec 7, 2024, with address saved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Brunch with Jess\",\n                                    \"start_datetime_iso\": \"2024-12-07T11:00:00-08:00\",\n                                    # We don't strictly require end time; if set, it'll be ignored unless included here\n                                    \"location\": [\n                                        (\"Bluebird Café\", \"202 Main St, Orchard County\")\n                                    ],\n                                    # Attendees: at least Dawei and Jess by name, allow extras\n                                    \"attendees_names\": [[\"Dawei Shen\", \"Jess Zimmer\"]],\n                                    \"creation_datetime_iso\": \"2024-12-07T10:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_rouge_l_similarity,\n                                \"location\": column_str_contains_any_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.SANDBOX,\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Search messages → confirm brunch details from Jess\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n    \"create_calendar_event\",\n    \"get_all_calendars\",\n]",
+  "is_read_time": "2024-12-07T10:05:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to add your brunch plans discussed with Jess to your calendar.  ",
+  "minefields": null,
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\", \"create_calendar_event\"]"
+}

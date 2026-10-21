@@ -1,0 +1,110 @@
+{
+  "task_id": "1268ef52-c6f7-4f36-a105-619608214ff1",
+  "plot_id": 15,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 10 am, self, Jeff Bing were involved. Dawei attends the tech panel hosted by Jeff. Afterward, Jeff emails Dawei a thank-you note and a link to the recorded session. Dawei responds with appreciation and forwards the session link to his team.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_15",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_high",
+    "contact",
+    "email",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You will need to email Jeff inviting him and create a new event in your calendar.",
+  "reference_time": "2024-12-10T11:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Send an email to jeff.bing@bingelectronics.com saying \"And another thing, how would you like to go for lunch tomorrow at 13:00?\".",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. Create a calendar event called 'Lunch with Jeff Bing' for 13:00 December 11th 2024.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_15_1268ef52-c6f7-4f36-a105-619608214ff1_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Invitation: Tech Panel Discussion on December 10",
+      "sender_address": "jeff.bing@bingelectronics.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T10:10:00-08:00",
+      "body": "Hello Dawei,\n\nI hope this message finds you well. I'm excited to invite you to a tech panel discussion I'm hosting next Tuesday, December 10, at the Tech Hub Conference Center here in Orchard County. We'll be discussing the latest trends and innovations in consumer electronics. Your insights would be incredibly valuable, and I would be thrilled if you could join us.\n\nPlease find the event details attached. Let me know if you can make it!\n\nBest regards,\nJeff Bing",
+      "attachments": [
+        "Tech_Panel_Details.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Jeff Bing",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Also another thing for Jeff, say \"And another thing, how would you like to go for lunch tomorrow at 13:00?\" by email. And calendar that.",
+  "referential_complexity": "moderate",
+  "reasoning": "Firstly, the user seems to want to message someone called Jeff. The user has recently emailed Jeff Bing and by the way they say 'and another thing for Jeff', I think I can safely assume that they are emailing him again. A scan of the user's contacts confirms that there is only one Jeff in their contacts so it must be Jeff Bing.\n\nWhen the user say 'calendar that', they must mean the aforementioned lunch plan with Jeff Bing. I'll create an event for 13:00 December 11th 2024 called 'Lunch with Jeff Bing'.",
+  "informational_complexity": "low",
+  "functional_complexity": "high",
+  "reference_time_str": "Today is Tuesday, December 10, 2024 or 2024-12-10T11:05:00-08:00.",
+  "milestones": "[\n                # Milestone 0 & 1: Verify that Jeff Bing's email is found\n                Milestone(\n                    snapshot_constraints=[\n                        # Agent uses a contact search tool to retrieve Theo's contact\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                Milestone(\n                    snapshot_constraints=[\n                        # Verify that Jeff Bing's contact is among the results\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"email\": {\n                                                \"value\": \"jeff.bing@bingelectronics.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2: Verify that email sent includes correct content and recipient\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"jeff.bing@bingelectronics.com\"]\n                                    ],\n                                    \"body\": \"And another thing, how would you like to go for lunch tomorrow at 13:00?\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-10T11:05:00-08:00\",\n                                },\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR\n                    ],  # exclude CALENDAR additions\n                ),\n                # Milestone 3: Verify calendar event details\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Lunch with Jeff Bing\",\n                                    \"start_datetime_iso\": \"2024-12-11T13:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-10T11:05:00-08:00\",\n                                },\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL\n                    ],  # exclude EMAIL additions\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_email",
+    "create_calendar_event"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You will need to email Jeff inviting him and create a new event in your calendar. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_email\", \"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-10T11:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,82 @@
+{
+  "task_id": "9d3c0267-c09a-4592-83bd-faa0602275e6",
+  "plot_id": 8,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 9am, Dr. Emilia Jackson were involved. John is reminded of his planned doctor visit next week.  1. John receives an email from his endocrinologist at 'Endomore Clinic' with a reminder of their planned appointment next week Tuesday afternoon. 2. This email is part of a short email thread with another email confirming his appointment 3 months ago. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_8",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Due to the visits from plantar Japan and the current tense work situation.   you wish to cancel the doctors appointment.   hoping to reschedule when things are less tense.",
+  "reference_time": "2024-07-29T10:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Doctor's Appointment with Dr. Emilia Jackson\" at 15:00-16:00 on 30 July 2024 is deleted.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_8_9d3c0267-c09a-4592-83bd-faa0602275e6_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Doctor's Appointment with Dr. Emilia Jackson",
+      "start_datetime_iso": "2024-07-30T15:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T16:00:00-07:00",
+      "attendees_names": [
+        "Endomore Clinic",
+        "John Quinn"
+      ],
+      "location": "Endomore Clinic, 450 Medical Plaza, San José, CA",
+      "reminder_time_ahead": "48 hours",
+      "organizer_name": "Endomore Clinic",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-04-23T10:05:00-07:00",
+      "notes": "Annual check-up and consultation."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Delete \"Doctor's Appointment with Dr. Emilia Jackson.\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to delete \"Doctor's Appointment with Dr. Emilia Jackson.\" First I will establish which event they are referring to which the user has given as \"Doctor's Appointment with Dr. Emilia Jackson.\" This event is occurring at 15:00-16:00 on 30th of July. I will now delete the event \"Doctor's Appointment with Dr. Emilia Jackson\" at 15:00-16:00 on 30th of July.",
+  "milestones": "[\n                # Milestone 0 – Verify the agent looked up calendar information (either listing or searching)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The calendar event has been removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Doctor's Appointment with Dr. Emilia Jackson\",\n                                    \"start_datetime_iso\": \"2024-07-30T15:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-30T16:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare against the initial pre-task snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. Due to the visits from plantar Japan and the current tense work situation.  you wish to cancel the doctors appointment.  hoping to reschedule when things are less tense. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-07-29T10:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

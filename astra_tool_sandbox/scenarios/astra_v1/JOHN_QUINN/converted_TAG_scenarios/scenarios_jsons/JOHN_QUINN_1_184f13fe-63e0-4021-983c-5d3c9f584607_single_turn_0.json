@@ -1,0 +1,141 @@
+{
+  "task_id": "184f13fe-63e0-4021-983c-5d3c9f584607",
+  "plot_id": 1,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 8 am, Bronson Chunk, Robin Selmoure, Julie Patterson were involved. Bronson sets up urgent meetings and stand-ups due to a security situation in Peru for the next two weeks  1. Bronson sets up an urgent morning meeting at 10am to deal with a new security situation in Peru. 2. John creates daily stand-up calendar events for every single following workday in the next 2 weeks. i.e. this should result in 9 additional calendar events. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_1",
+    "calendar",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "The time of the meeting Bronson set up today are displayed",
+  "reference_time": "2024-07-22T08:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The details of \"Urgent Security Meeting - Peru Situation\" scheduled for July 22nd are displayed to the user.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_1_184f13fe-63e0-4021-983c-5d3c9f584607_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Urgent Security Meeting - Peru Situation",
+      "sender_address": "bronson.chunk@palantir.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com",
+        "julie.patterson@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T08:05:00-07:00",
+      "body": "Please join us at 10 AM today in Conference Room B to discuss the new security situation in Peru. It's crucial we strategize our approach.",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Urgent Security Meeting - Peru Situation",
+      "start_datetime_iso": "2024-07-22T10:00:00-07:00",
+      "end_datetime_iso": "2024-07-22T11:00:00-07:00",
+      "attendees_names": [
+        "Bronson Chunk",
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Bronson Chunk",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:00:00-07:00",
+      "notes": "Discuss and strategize on the new security situation emerging in Peru."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Bronson",
+      "last_name": "Chunk",
+      "full_name": "Bronson Chunk",
+      "phone_number": "408-555-0130",
+      "alias": "Boss",
+      "email": "bronson.chunk@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Project Manager",
+      "is_self": false,
+      "birthday": "1980-09-09T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time is the meeting he scheduled this morning ",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know what time the meeting someone scheduled this morning is. I need to figure out who the user is referring to and what meeting they are referring to also. Looking at the user's calendar I can only see one meeting scheduled for 10:00 am. Bronson Chunk is listed in the attendees and I can see the user received an email about the meeting from Bronson this morning so I can assume Bronson is the person the user is referring to. I'll inform the user the meeting begins at 10:00 am.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar information (morning meeting)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct meeting was retrieved from the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Urgent Security Meeting - Peru Situation\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-22T10:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # Depends on calendar lookup in Milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent informs the user of the meeting time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"10 am\",\n                                            \"10am\",\n                                            \"10 a.m.\",\n                                            \"10:00\",\n                                            \"10 AM\",\n                                            \"10 AM\",  # include narrow-non-breaking-space variant just in case\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup → verify correct meeting retrieved\n                (1, 2),  # Meeting retrieved → user informed of the time\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_contacts\",\n    \"search_contacts\",\n    \"get_all_emails\",\n    \"search_emails\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. The time of the meeting Bronson set up today are displayed ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-22T08:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

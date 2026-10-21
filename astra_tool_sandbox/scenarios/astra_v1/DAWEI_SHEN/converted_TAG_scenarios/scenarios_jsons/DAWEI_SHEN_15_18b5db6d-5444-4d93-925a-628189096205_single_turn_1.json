@@ -1,0 +1,101 @@
+{
+  "task_id": "18b5db6d-5444-4d93-925a-628189096205",
+  "plot_id": 15,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 10 am, self, Jeff Bing were involved. Dawei attends the tech panel hosted by Jeff. Afterward, Jeff emails Dawei a thank-you note and a link to the recorded session. Dawei responds with appreciation and forwards the session link to his team.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_15",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "email",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to check how long until your next meeting as you want to bring Jeff out to lunch to celebrate his achievement of hosting a tech panel.",
+  "reference_time": "2024-12-10T11:10:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The assistant replies with '2 hours and 50 minutes'.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_15_18b5db6d-5444-4d93-925a-628189096205_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "creation_datetime_iso": "2024-12-09T08:00:00-08:00",
+      "cc_addresses": null,
+      "status": "read",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "subject": "Dataset Update for Machine Learning Model",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "bcc_addresses": null,
+      "attachments": [
+        "Updated_Dataset_Questions.pdf"
+      ],
+      "body": "Hi Dawei,\n\nI hope this email finds you well. I am writing to share the latest updates on the dataset we've been working on for our machine-learning model. Attached you'll find the updated files along with a few key questions that we need to address:\n\n1. How do we intend to handle the increasing volume of unstructured data?\n2. Are there specific algorithms you suggest we explore for better accuracy?\n3. What are your thoughts on the timeline for the next phase of testing?\n\nLooking forward to discussing these during our team sync.\n\nBest regards,\nMichelle"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Dataset Review with Michelle",
+      "start_datetime_iso": "2024-12-10T14:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T15:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room A, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-09T08:15:00-08:00",
+      "notes": "Review the updated dataset and discuss key questions as outlined in Michelle's email."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "How much time do I have until my next event with the person who emailed me yesterday? Replies in 'X hours and XX minutes' format.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "Right so the user wants to know how much time is left until the next event today with the person who emailed them yesterday.\n\nI need to find out who emailed them yesterday so I check their emails and see the latest is from Michelle Barnes received on the 9th December at 8:00, subject Dataset Update for Machine Learning Model.\n\nNow that I know who is the person for the event they have with, I will check their calendar and find the event scheduled with Michelle. I can see the next event is named 'Dataset Review with Michelle'. It is scheduled for 10th December at 14:00 with Michelle Barnes as an invitee. \n\nThe current time is 10th December 11:10. Therefore the time remaining until 14:00 is 2 hours and 50 minutes. I will respond user with exactly \"2 hours and 50 minutes\" in the requested format.",
+  "reference_time_str": "Today is Tuesday, December 10, 2024 or 2024-12-10T11:10:00-08:00.",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        # 0. Tool usage to search emails\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"get_all_emails\", \"search_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                Milestone(\n                    snapshot_constraints=[\n                        # 1. Ensure email from Michelle Found\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Dataset Update for Machine Learning Model\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"michelle.barnes@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                Milestone(\n                    snapshot_constraints=[\n                        # 2. Tool usage to search calendar events\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                Milestone(\n                    snapshot_constraints=[\n                        # 3. Ensure calendar event with 'Dataset Review with Michelle' at 14:00 on Dec 10 is retrieved\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dataset Review with Michelle\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-10T14:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ]\n                ),\n                Milestone(\n                    snapshot_constraints=[\n                        # 4. User-facing response includes reference to time until 2pm event with Michelle\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"2 hours and 50 minutes\",\n                                            \"two hours and fifty minutes\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # find the emails\n                (2, 3),  # find the calendar evnets\n            ]",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to check how long until your next meeting as you want to bring Jeff out to lunch to celebrate his achievement of hosting a tech panel. ",
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-10T11:10:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

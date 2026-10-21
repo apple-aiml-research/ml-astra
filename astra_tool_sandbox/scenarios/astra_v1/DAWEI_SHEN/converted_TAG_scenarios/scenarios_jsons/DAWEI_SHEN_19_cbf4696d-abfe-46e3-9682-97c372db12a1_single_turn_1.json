@@ -1,0 +1,136 @@
+{
+  "task_id": "cbf4696d-abfe-46e3-9682-97c372db12a1",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "email",
+    "messaging",
+    "whatsapp_messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're not sure if you remembered to send the stage props order receipt to Francis, so you ask your assistant to check.",
+  "reference_time": "2024-12-14T14:55:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed that they emailed Francis Wagner with the receipt for stage props order on December 12th 2024.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_cbf4696d-abfe-46e3-9682-97c372db12a1_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-12T19:00:00-08:00",
+      "content": "Hey Dawei, I found a great supplier for the stage props we need. Here's the link: [PropsSupplier.com]",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-12T19:02:00-08:00",
+      "content": "Thanks Charles! Checking it out now.",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-12T19:05:00-08:00",
+      "content": "Looks good, I'll place the order.",
+      "status": "read"
+    }
+  ],
+  "emails": [
+    {
+      "subject": "Receipt for Stage Props Order",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "francis.wagner@orchardtheater.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T19:30:00-08:00",
+      "body": "Hi Francis, I've placed the order for the stage props as discussed. Attached is the receipt for our records. Best, Dawei",
+      "attachments": [
+        "Order_Receipt_12122024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Francis",
+      "last_name": "Wagner",
+      "full_name": "Francis Wagner",
+      "phone_number": "+1 555-456-7890-1234",
+      "alias": "Francis",
+      "email": "francis.wagner@orchardtheater.com",
+      "relationship": "Theater Manager",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Theater Manager",
+      "is_self": false,
+      "birthday": "1975-01-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Did I remember to send the receipt to the theatre manager? Yes or No.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know if they sent a receipt to the theatre manager. First I'll need to figure out who the theatre manager is.\n\nBy checking the user's contacts I can see that Francis Wagner is listed as Theatre Manager. Now I'll see if I can find any communications with Francis Wagner mentioning a receipt.\n\nI didn't find any text messages with Francis Wagner. I did find an email that the user sent to Francis Wagner on December 12th 2024 at 19:30. I'll have a look at the email content now.\n\nThe email's subject line is Receipt for Stage Props Order, and the body of the email states that the receipt for the order for stage props is attached. I can't find any other emails to Francis Wagner that mention a receipt, so I will assume that this is the receipt the user wanted to send.\n\nNow I can inform the user that they emailed Francis Wagner the receipt for an order for stage props on December 12th 2024.",
+  "reference_time_str": "Today is Saturday, December 14, 2024 or 2024-12-14T14:55:00-08:00.",
+  "milestones": "[\n                # Milestone 0: agent search contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_contacts\",\n                                        \"search_contacts\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Francis contact found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Francis Wagner\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – the agent looks through the mailbox\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – the queried email to Francis is indeed found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Receipt\",\n                                                \"partial\": True,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": [\n                                                    \"francis.wagner@orchardtheater.com\"\n                                                ],\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ],\n                ),\n                # Milestone 4 – the user is informed of the result\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"yes\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (2, 3),\n            ]",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "search_messages",
+    "get_all_messages",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You're not sure if you remembered to send the stage props order receipt to Francis, so you ask your assistant to check. ",
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"search_messages\", \"get_all_messages\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-14T14:55:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

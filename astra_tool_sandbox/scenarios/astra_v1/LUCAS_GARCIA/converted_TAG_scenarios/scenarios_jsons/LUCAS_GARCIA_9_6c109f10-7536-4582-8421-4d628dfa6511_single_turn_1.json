@@ -1,0 +1,111 @@
+{
+  "task_id": "6c109f10-7536-4582-8421-4d628dfa6511",
+  "plot_id": 9,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 11 am, Sarah Lopez were involved. Lucas consults with Sarah regarding dietary plans for his gym clients. Emails are exchanged with dietary plans and recommendations.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_9",
+    "email",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to thank Sarah Lopez for her help with the dietary plans and recommendations for clients.",
+  "reference_time": "2024-12-06T15:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The e-mail \"Hey Sarah, thanks again for the help with this! Regards, Lucas\" is sent to Sarah Lopez. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_9_6c109f10-7536-4582-8421-4d628dfa6511_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Dietary Plans and Recommendations for Clients",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "sarah.lopez@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T13:00:00-08:00",
+      "body": "Hi Sarah,\n\nThank you for the insightful consultation earlier today. As we discussed, I am eager to enhance the dietary plans for my gym clients, focusing on a balanced approach that can align with their active lifestyles.\n\nCould you please send me the recommended meal plans and any pertinent nutritional guidelines? I believe your insights will be immensely beneficial to our fitness programs.\n\nLooking forward to your response.\n\nBest regards,\nLucas",
+      "attachments": null,
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Dietary Plans and Recommendations for Clients",
+      "sender_address": "sarah.lopez@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "body": "Hi Lucas,\n\nThanks for reaching out and for our productive discussion this morning. I've attached the dietary plans and nutritional guidelines we talked about. These are tailored specifically for active individuals aiming to maximize their performance and recovery.\n\nFeel free to reach out if you need further clarification or any additional information.\n\nBest wishes,\nSarah",
+      "attachments": [
+        "Dietary_Plans_for_Gym_Clients_Dec2024.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Lopez",
+      "full_name": "Sarah Lopez",
+      "phone_number": "+1 12345-6789-1000-9630",
+      "alias": "Dietitian Consultant",
+      "email": "sarah.lopez@example.com",
+      "relationship": "Dietitian consultant",
+      "address": "12 Nutrition Blvd, Orchard County, CA, USA",
+      "company": "Healthy Choices Nutrition",
+      "job_title": "Dietitian",
+      "is_self": false,
+      "birthday": "1985-11-02T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Email Sarah Lopez this: \"Hey Sarah, thanks again for the help with this! Regards, Lucas.\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to email Sarah Lopez a given message. \nFirst of all, I have no hesitation to figure out who the recipient of this e-mail should be: Sarah Lopez is included in the user query. \nNext I will need to figure out how the user wants to send the message, which is not a problem because I see the query contains 'Email'. Based on the user context, I see there is an email thread There is an email received on December 06 2024 at 15:00, and the request by the user is made on December 06 2024 at 15:30. Therefore, I will send the user's message saying \"Hey Sarah, thanks again for the help with this! Regards, Lucas.\" to Sarah Lopez and as a response to her last email.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Sarah Lopez in contacts (or lists contacts)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new email is sent to Sarah Lopez with the thank-you note\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"sarah.lopez@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"thanks again\",  # key phrase to confirm correct message,\n                                    \"creation_datetime_iso\": \"2024-12-06T15:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,  # Sarah must be included; extras allowed\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to thank Sarah Lopez for her help with the dietary plans and recommendations for clients. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-06T15:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

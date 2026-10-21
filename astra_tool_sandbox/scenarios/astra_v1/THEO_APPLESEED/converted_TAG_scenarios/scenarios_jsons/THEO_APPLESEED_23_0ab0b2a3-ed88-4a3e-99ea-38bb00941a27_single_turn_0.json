@@ -1,0 +1,121 @@
+{
+  "task_id": "0ab0b2a3-ed88-4a3e-99ea-38bb00941a27",
+  "plot_id": 23,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:50 am, Theo Appleseed, Kevin Chen were involved. Theo email Kevin for his availibility trying to schedule and urgent 1:1. However, it turns out Kevin is only available at 1 to 2pm today.\n generate email threads between Theo and Kevin for Kevin's availibility for today",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_23",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "calendar",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to cancel your dentist appointment event and schedule a 1:1 with Kevin there instead from 1:00 pm - 2:00 pm with him as an invitee.",
+  "reference_time": "2024-07-29T08:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The Dentist appointment calendar event Is deleted.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. A new calendar event titled \"1:1 with Kevin\" is created for 1:00pm - 2:00 pm with Kevin Chen as an invitee.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_23_0ab0b2a3-ed88-4a3e-99ea-38bb00941a27_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event",
+    "create_calendar_event",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Urgent: Request for 1:1 Meeting Today",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "kevin.chen@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-29T08:10:00-07:00",
+      "body": "Hi Kevin,\n\nThank you for your quick response. 1:00 PM to 2:00 PM works for me. I'll see you then.\n\nBest regards,\nTheo",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dentist Appointment",
+      "start_datetime_iso": "2024-07-29T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "attendees_names": [
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dental Clinic",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Routine dental check-up and cleaning."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Delete my Dentist Appointment event and replace it with a new event called 1:1 with Kevin.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to delete Dentist Appointment. I'll first find it in their calendar. Ok, I found the Dentist Appointment today scheduled at 1:00-2:00pm. I will delete it. And next, user wants to schedule a 1:1 with Kevin from 1:00pm - 2:00pm. I need to figure out which Kevin, so I searched the contact and find Kevin Chen as the mananger. I've created it with Kevin Chen as an attendee. I'll inform user that I've deleted the event and replaced it with 1:1 with Kevin as user has instructed. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks through the calendar to locate the Dentist appointment\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the Dentist Appointment surfaced in the tool output from Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dentist Appointment\",\n                                                \"partial\": False,\n                                            },\n                                            # Start time check is optional but adds confidence\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-29T13:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Dentist Appointment is removed from the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dentist Appointment\",\n                                    \"start_datetime_iso\": \"2024-07-29T13:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T14:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ]\n                ),\n                # Milestone 3 – New 1:1 with Kevin Chen is created for the same time slot\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"1:1 with Kevin\",\n                                    \"start_datetime_iso\": \"2024-07-29T13:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T14:00:00-07:00\",\n                                    \"attendees_names\": [[\"Kevin Chen\"]],\n                                    \"creation_datetime_iso\": \"2024-07-29T08:20:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Require at least Kevin in attendees; allow extras (e.g., Theo)\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox chatter when checking calendar diff\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar search → confirmation of Dentist appointment found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"remove_calendar_event\",\n    \"create_calendar_event\",\n    \"get_all_contacts\",   # Optional fallback to obtain Kevin’s details\n    \"search_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to cancel your dentist appointment event and schedule a 1:1 with Kevin there instead from 1:00 pm - 2:00 pm with him as an invitee. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\", \"create_calendar_event\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-29T08:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

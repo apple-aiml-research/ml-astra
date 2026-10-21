@@ -1,0 +1,178 @@
+{
+  "task_id": "7547607e-4f6e-4232-bb34-5acc17362244",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "whatsapp_messaging",
+    "messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to your theatre friend, Charles, to tell him you've run into a small problem and to ask him to call you.",
+  "reference_time": "2024-12-12T19:01:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Charles Wilde with the text \"We've run into a small problem. Can you call?\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_7547607e-4f6e-4232-bb34-5acc17362244_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-01T19:50:00-08:00",
+      "content": "Hey Charles, just confirming we're still on for tonight's rehearsal at 8?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-01T19:52:00-08:00",
+      "content": "Yes, all set for 8 PM. See you there!",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-234-5678-9012",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-08T17:50:00-08:00",
+      "content": "Hey Dawei, heads up, we need to adjust tonight's rehearsal schedule. Can we start at 7 PM instead?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-234-5678-9012",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "creation_datetime_iso": "2024-12-08T17:51:00-08:00",
+      "content": "Got it, Charles. Updating our calendar now.",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-234-5678-9012",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "creation_datetime_iso": "2024-12-08T17:54:00-08:00",
+      "content": "👍",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-12T19:00:00-08:00",
+      "content": "Hey Dawei, I found a great supplier for the stage props we need. Here's the link: [PropsSupplier.com]",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vickie",
+      "phone_number": "+1 555-345-6789-0123",
+      "email": "vickie.lee@orchardtheater.com",
+      "is_self": false,
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "full_name": "Vickie Lee",
+      "company": "Orchard Theater",
+      "relationship": "Theater Friend",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "job_title": "Director",
+      "alias": "Vickie",
+      "last_name": "Lee",
+      "birthday": "1989-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send my theatre friend a message who just texted me that says \"We've run into a small problem. Can you call?\". ",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to message the theatre friend who just texted them. Checking contacts, two people are listed as \"Theater Friend\": Vickie Lee and Charles Wilde. To find which one just texted, I look at recent messages and see that Charles Wilde recently sent a text, so the user means Charles Wilde. I'll send him the message the user dictated, \"We've run into a small problem. Can you call?\".",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T19:01:00-08:00.",
+  "milestones": "[\n                # Milestone 0: agent search contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_contacts\",\n                                        \"search_contacts\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Charles contact found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Charles Wilde\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2: agent search contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_whatsapp_messages\",\n                                        \"search_whatsapp_messages\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3: Charles text found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Charles Wilde\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ]\n                ),\n                # Milestone 4 – A new WhatsApp entry to Charles is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"charles.wilde@orchardtheater.com\",\n                                                \"+1 555-234-5678-9012\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"can you call\",\n                                    \"creation_datetime_iso\": \"2024-12-12T19:01:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (2, 3),\n            ]",
+  "tool_allow_list": [
+    "send_whatsapp_message",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "search_messages",
+    "get_all_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to send a message to your theatre friend, Charles, to tell him you've run into a small problem and to ask him to call you. ",
+  "tool_allow_list_str": "[\"send_whatsapp_message\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"search_messages\", \"get_all_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T19:01:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

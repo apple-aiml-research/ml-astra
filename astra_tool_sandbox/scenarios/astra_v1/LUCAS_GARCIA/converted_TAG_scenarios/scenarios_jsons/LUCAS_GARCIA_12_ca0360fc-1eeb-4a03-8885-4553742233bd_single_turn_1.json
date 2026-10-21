@@ -1,0 +1,94 @@
+{
+  "task_id": "ca0360fc-1eeb-4a03-8885-4553742233bd",
+  "plot_id": 12,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 3 pm, Brian Carter were involved. Lucas attends a triathlon strategy meeting with Brian and team. Meeting notes are recorded and shared among team members for future reference. Messages exchanged with Brian post-meeting.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_12",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You're trying to think of what time you had the Triathlon meeting with Brian but it's escaping you.   You want to ask the assistant what time it was at.",
+  "reference_time": "2024-12-08T13:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event information of \"Triathlon Strategy Meeting with Brian and Team\" on Saturday 7th December at 15:00-16:00 is shown to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_12_ca0360fc-1eeb-4a03-8885-4553742233bd_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Triathlon Strategy Meeting with Brian and Team",
+      "start_datetime_iso": "2024-12-07T15:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T16:00:00-08:00",
+      "attendees_names": [
+        "Brian Carter",
+        "Lucas Garcia"
+      ],
+      "location": "Orchard County Fitness Center, Conference Room",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T10:00:00-08:00",
+      "notes": "Lucas attends a strategy meeting with triathlon coach Brian Carter and the team to discuss upcoming triathlon plans and strategies."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Brian",
+      "last_name": "Carter",
+      "full_name": "Brian Carter",
+      "phone_number": "+1 12345-6789-1000-7410",
+      "alias": "Triathlon Coach",
+      "email": "brian.carter@example.com",
+      "relationship": "Triathlon coach",
+      "address": "45 Coach St, Orchard County, CA, USA",
+      "company": "Orchard County Triathlon Club",
+      "job_title": "Head Coach",
+      "is_self": false,
+      "birthday": "1980-04-28T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you please tell me what time I had the \"Triathlon Strategy Meeting with Brian and Team\" event at?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking me what time their event \"Triathlon Strategy Meeting with Brian and Team\" occurred at. I'll search in their calendar for events with this name.... I only found one event which matches the exact criteria, an event which occurred on Saturday 7th December at 15:00. This has to be the event the user is referring to, so I'll show them the event as requested.",
+  "milestones": "[\n                # Milestone 0 – The agent queries the calendar database to find the requested event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct event (name and start time) was returned by the calendar query\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Triathlon Strategy Meeting with Brian and Team\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-07T15:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user the correct time of the meeting\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"3 pm\",\n                                            \"3:00 pm\",\n                                            \"3pm\",\n                                            \"3 p.m.\",\n                                            \"15:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You're trying to think of what time you had the Triathlon meeting with Brian but it's escaping you.  You want to ask the assistant what time it was at. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-08T13:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

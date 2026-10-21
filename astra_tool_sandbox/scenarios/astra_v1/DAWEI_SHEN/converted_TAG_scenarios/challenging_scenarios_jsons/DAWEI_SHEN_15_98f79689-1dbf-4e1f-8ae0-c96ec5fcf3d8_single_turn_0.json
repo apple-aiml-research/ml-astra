@@ -1,0 +1,99 @@
+{
+  "task_id": "98f79689-1dbf-4e1f-8ae0-c96ec5fcf3d8",
+  "plot_id": 15,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 10 am, self, Jeff Bing were involved. Dawei attends the tech panel hosted by Jeff. Afterward, Jeff emails Dawei a thank-you note and a link to the recorded session. Dawei responds with appreciation and forwards the session link to his team.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_15",
+    "email",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_yes",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if you received a response from Michelle about the recorded tech panel session you sent her.",
+  "reference_time": "2024-12-10T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed with no, that there's no record of the user sending the tech panel session to Michelle.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_15_98f79689-1dbf-4e1f-8ae0-c96ec5fcf3d8_single_turn_0",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Dataset Update for Machine Learning Model",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T08:00:00-08:00",
+      "body": "Hi Dawei,\n\nI hope this email finds you well. I am writing to share the latest updates on the dataset we've been working on for our machine-learning model. Attached you'll find the updated files along with a few key questions that we need to address:\n\n1. How do we intend to handle the increasing volume of unstructured data?\n2. Are there specific algorithms you suggest we explore for better accuracy?\n3. What are your thoughts on the timeline for the next phase of testing?\n\nLooking forward to discussing these during our team sync.\n\nBest regards,\nMichelle",
+      "attachments": [
+        "Updated_Dataset_Questions.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Did Michelle say anything about the tech panel recording link I sent? Yes or No.",
+  "reasoning": "The user wants to know if they received a response to a tech panel recording they sent Michelle. They only have one contact named Michelle, Michelle Barnes, so I need to look for a response from them. Since the user didn't specify the app they used to send the tech panel recording link, I will search for either messages or emails with that shared link to a tech panel session. There are no message or email threads with Michelle Barnes that mention a tech panel session, so the user must have been thinking of someone else they sent it to. I'll inform them with no, and that the last email I see from Michelle has the subject \"Dataset Update for Machine Learning Model.\" is not related to tech panel.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "insufficient_context": "no",
+  "misinformation": "yes",
+  "milestones": "[\n                # Milestone 0 – Agent searches emails for anything from/to Michelle or related to tech panel / recording\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm that the only relevant email from Michelle is the dataset update on Dec 9 at 8:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        # We only require that this email exists in the search results.\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"michelle.barnes@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Dataset Update for Machine Learning Model\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-09T08:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – User-facing answer states there is no record of Michelle replying about the tech panel link\n                # and mentions the last email details (time and subject).\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # We check for both \"no record\" and the last-email info (subject + time).\n                                    \"content\": \"no\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (\n                    0,\n                    1,\n                ),  # email search → confirm dataset update email from Michelle exists\n                (1, 2),  # confirmed info → user-facing explanation\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "is_read_time": "2024-12-10T18:00:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know if you received a response from Michelle about the recorded tech panel session you sent her.  ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"search_messages\", \"get_all_messages\"]"
+}

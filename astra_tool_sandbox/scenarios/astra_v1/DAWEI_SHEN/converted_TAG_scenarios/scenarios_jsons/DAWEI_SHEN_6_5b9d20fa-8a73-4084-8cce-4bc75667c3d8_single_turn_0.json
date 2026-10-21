@@ -1,0 +1,88 @@
+{
+  "task_id": "5b9d20fa-8a73-4084-8cce-4bc75667c3d8",
+  "plot_id": 6,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 3, 2024 at 8 pm, self, Hua Shen, Yuting Tao were involved. Dawei receives a video call from his parents in Shanghai to catch up on the week. They talk about their holiday plans. Dawei promises to email them flight details for his trip to Shanghai later in the month.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_6",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_high",
+    "calendar",
+    "email",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to block off the trip to Shanghai for the holidays in your calendar and also email this to your team lead in work, Kevin Chen.",
+  "reference_time": "2024-12-05T13:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The system will list December 20th 2024 to January 5th 2025 in the user's calendar as \"Christmas Holidays\".",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. Kevin Chen will be emailed Dawei's calendar schedule of  December 20th 2024 to January 5th 2025 being \"Christmas Holidays\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_6_5b9d20fa-8a73-4084-8cce-4bc75667c3d8_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Visit Details for Shanghai Trip",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "hua.shen@shenelectronics.cn",
+        "yuting.tao@retired.cn"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-03T21:00:00-08:00",
+      "body": "Dear Mom and Dad,\n\nIt was great catching up today! As promised, I'm sending you the details of my upcoming trip to Shanghai. I'll be arriving on December 20th and staying until January 5th. I'm looking forward to spending the holidays with you both and catching up in person.\n\nLet me know if there's anything special you'd like to do during my visit.\n\nWarm regards,\nDawei",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you please mark the 20th December to the 5th January in my calendar as Christmas Holidays and email it to Kevin Chen",
+  "reasoning": "The user wants me to put 20th December 2024 to the 5th January 2025 in their calendar as Christmas Holidays. There are no conflicts in the calendar so I am able to add this without difficulty.\n\nThe user also asks me to email it to Kevin Chen. By it, I'm guessing that they must be referring to their newly scheduled event. This would make sense, because Kevin Chen is a coworker and is Dawei's team lead, so would benefit from knowing the user's holiday schedule. I will email this information, including a mention of \"Christmas Holidays\", to kevin.chen@orchardtech.com.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "high",
+  "reference_time_str": "Today is Thursday, December 5, 2024 or 2024-12-05T13:15:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The holiday trip is entered into the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Christmas Holidays\",\n                                    \"start_datetime_iso\": \"2024-12-20\",  # only check the date portion\n                                    \"end_datetime_iso\": \"2025-01-05\",\n                                    \"creation_datetime_iso\": \"2024-12-05T13:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.EMAIL],\n                ),\n                # Milestone 1 – The agent looks at the user’s contact\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – Kevin’s contact information was actually returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Kevin Chen\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"kevin.chen@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=1,  # parse the results of the search done in milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 3 – An email is sent to Kevin Chen with the holiday schedule\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"kevin.chen@orchardtech.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"Christmas\",  # ensure the holiday mention is present somewhere,\n                                    \"creation_datetime_iso\": \"2024-12-05T13:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 3), (1, 2)]",
+  "tool_allow_list": [
+    "create_calendar_event",
+    "send_email",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to block off the trip to Shanghai for the holidays in your calendar and also email this to your team lead in work, Kevin Chen. ",
+  "tool_allow_list_str": "[\"create_calendar_event\", \"send_email\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-05T13:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

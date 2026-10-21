@@ -1,0 +1,84 @@
+{
+  "task_id": "4376b7f9-e554-40d4-b579-958ddb88d737",
+  "plot_id": 15,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 8 am, self were involved. Lucas updates his calendar for the week’s upcoming events and sessions. New events and reminders are added to the calendar.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_15",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to your friend Theo Appleseed who you haven't heard from in a week.",
+  "reference_time": "2024-12-09T15:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message; 'Hey bro haven't heard from you in ages, just checking in you big jerk haha' is texted to Theo Appleseed at 15:25 on 9 December 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_15_4376b7f9-e554-40d4-b579-958ddb88d737_single_turn_0",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 12345-6789-1000-5678",
+      "alias": "Gym Buddy",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Gym buddy and workout partner",
+      "address": "45 Fit St, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Trainer",
+      "is_self": false,
+      "birthday": "1990-05-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text Gym Buddy and say 'Hey bro haven't heard from you in ages, just checking in you big jerk haha.'\nA: Message sent.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message to Gym Buddy. I'll check the user's contacts. I can see that Theo Appleseed has the alias of Gym Buddy so I'll send the message to him.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up contacts (Gym Buddy)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify Theo Appleseed was returned from the contact search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Theo Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 12345-6789-1000-5678\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Message sent to Theo with correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require Theo to be one of the participants; allow extras (e.g., Lucas' own address)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 12345-6789-1000-5678\",\n                                                \"theo.appleseed@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"haven't heard from you in ages\",\n                                    \"creation_datetime_iso\": \"2024-12-09T15:25:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.PHONE,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → verify Theo returned\n                (1, 2),  # Theo confirmed → message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to send a message to your friend Theo Appleseed who you haven't heard from in a week. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"send_message\"]",
+  "is_read_time": "2024-12-09T15:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

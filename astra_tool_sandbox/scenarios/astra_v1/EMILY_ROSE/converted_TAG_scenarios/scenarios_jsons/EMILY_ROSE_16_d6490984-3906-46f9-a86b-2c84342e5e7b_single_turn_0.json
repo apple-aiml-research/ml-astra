@@ -1,0 +1,99 @@
+{
+  "task_id": "d6490984-3906-46f9-a86b-2c84342e5e7b",
+  "plot_id": 16,
+  "plot_summary": "Emily Rose is the protagonist. On Thursday, December 12, 2024 at 5:00 PM, Mia Campbell were involved. Discussion with Mia about collaboration ideas between school and community. Presentation document sent to school board for approval.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_16",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "messaging",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what Mia Campbell said in her email, but you are driving so you cannot read it.",
+  "reference_time": "2024-12-12T17:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email received from mia.campbell@students.orchardschools.org at 17:30 on December 12, 2024 is read out loud to the user. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_16_d6490984-3906-46f9-a86b-2c84342e5e7b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Collaboration Ideas for School and Community Engagement",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "mia.campbell@students.orchardschools.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T17:05:00-08:00",
+      "body": "Hi Mia,\n\nThank you for the insightful discussion today. I've attached the presentation document we discussed, outlining our proposed collaboration ideas between the school and our community center. Please review it at your convenience and share your thoughts. I hope we can present this to the school board for approval soon.\n\nBest regards,\nEmily Rose\nEvent Coordinator\nOrchard County Community Center",
+      "attachments": [
+        "School_Community_Collaboration_Proposal.pdf"
+      ],
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Collaboration Ideas for School and Community Engagement",
+      "sender_address": "mia.campbell@students.orchardschools.org",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T17:30:00-08:00",
+      "body": "Hello Emily,\n\nThank you for sending over the document. The ideas look promising, and I believe they will greatly benefit our students. I will forward this to the school board and get back to you with their feedback. Looking forward to making this happen!\n\nBest,\nMia Campbell",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What did Mia just say?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know what was said by a specific contact under the name of \"Mia\". I do not know which contact this refers to, and I also do not know which form of communication the user refers to. First, I will figure out who \"Mia\" is. I have searched through the user's contacts and messaging channels like messages and email, and I have found a \"Mia Campbell\" with email \"mia.campbell@students.orchardschools.org\" that the user has had email correspondence with. This contact emailed the user 5 minutes ago, which is even more evidence that this is the user's intended contact. I can safely assume that this is the email the user wants read out to them. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to retrieve recent emails (expects use of email-searching tools)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved email is the one from Mia Campbell at 17:30\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"mia.campbell@students.orchardschools.org\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-12T17:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # depend on email search outcome\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user what Mia said (must include core phrase(s) from the email body)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"school board\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,  # ensure message mentions the school board, indicating correct email content\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to know what Mia Campbell said in her email, but you are driving so you cannot read it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-12T17:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

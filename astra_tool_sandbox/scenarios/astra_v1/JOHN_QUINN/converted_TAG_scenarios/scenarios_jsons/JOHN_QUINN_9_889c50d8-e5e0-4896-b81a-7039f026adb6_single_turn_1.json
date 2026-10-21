@@ -1,0 +1,109 @@
+{
+  "task_id": "889c50d8-e5e0-4896-b81a-7039f026adb6",
+  "plot_id": 9,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 10am, Bronson Chuck were involved. Bronson informs John of an unexpected work visit by their Japanese colleagues next week.  1. Bronson messages John mentioning about a urgent visit by Palantir's section in Japan to address the situation in Peru, and asking John to keep his whole week clear. 2. Bronson adds the visit as 5 separate events from Monday to Friday next week, each lasting a workday and inviting John and several colleagues. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_9",
+    "contact",
+    "messaging",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to schedule a meeting with your coworkers to start preparations for the Palantir Japan visit.",
+  "reference_time": "2024-07-23T10:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Julie Patterson and Robin Selmoure saying \"We need to meet to discuss the visit next week.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_9_889c50d8-e5e0-4896-b81a-7039f026adb6_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    },
+    {
+      "last_name": "Chunk",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "phone_number": "408-555-0130",
+      "alias": "Boss",
+      "birthday": "1980-09-09T00:00:00-07:00",
+      "full_name": "Bronson Chunk",
+      "job_title": "Project Manager",
+      "first_name": "Bronson",
+      "relationship": "Coworker",
+      "company": "Palantir",
+      "is_self": false,
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "email": "bronson.chunk@palantir.com"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need you to message my coworkers, not my boss, to say \"We need to meet to discuss the visit next week.\"",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to message their coworkers — but not their boss — to say \"We need to meet to discuss the visit next week.\". I first check the user's Contacts to find their coworkers. At Palantir there are three coworkers: Bronson Chunk (Project Manager), Julie Patterson (Data Analyst) and Robin Selmoure (Software Engineer). Since the user said 'not my boss', I should exclude the manager, Bronson Chunk, and message the other two coworkers, Julie Patterson and Robin Selmoure. The user has provided the content of the message so I will use that in the draft, then present it to the user for their approval before I send it. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up coworkers in the contact list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Julie Patterson is found in the search result from Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Julie Patterson\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0131\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent looks up coworkers in the contact list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 – Robin Selmoure is found in the search result from Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Robin Selmoure\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0132\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ]\n                ),\n                # Milestone 4 – A group message is created containing Julie & Robin with correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"julie.patterson@palantir.com\",\n                                                \"408-555-0131\",\n                                            ),\n                                            (\n                                                \"robin.selmoure@palantir.com\",\n                                                \"408-555-0132\",\n                                            ),\n                                            (\n                                                \"john.quinn@palantir.com\",\n                                                \"1234-5678-9108\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"We need to meet to discuss the visit next week.\",\n                                    \"creation_datetime_iso\": \"2024-07-23T10:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.SANDBOX,\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (2, 3),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to schedule a meeting with your coworkers to start preparations for the Palantir Japan visit. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-23T10:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

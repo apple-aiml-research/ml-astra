@@ -1,0 +1,105 @@
+{
+  "task_id": "3867cdf1-3d24-4623-b34e-32eeb50305a0",
+  "plot_id": 4,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 4 pm, Robin Selmour were involved. Robin expresses interest in the recent crisis in Peru.  1. Robin messages John asking if he knows about the recent crisis in Peru. 2. John replies to Robin playing coy, since he's cautious of revealing secret information he knows. 3. Robin insists nonetheless. 4. John does not budge, divulging nothing. ",
+  "tags": [
+    "astra_core",
+    "JOHN_QUINN",
+    "plot_4",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "calendar"
+  ],
+  "user_goal": "You tell Robin to be patient as they will learn more about the Peru situation at tomorrows daily standup and they must not talk about the meeting with anyone, mention the exact date and starting time of the meeting in the message.",
+  "reference_time": "2024-07-22T16:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Message is sent to Robin Selmoure that more information regarding Peru will be divulged at the daily standup meeting on the 23rd at 9 am ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_4_3867cdf1-3d24-4623-b34e-32eeb50305a0_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message",
+    "search_contacts",
+    "get_all_contacts",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Robin Selmoure",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com"
+      ],
+      "sender_address": "robin.selmoure@palantir.com",
+      "content": "Hey John, have you heard about the recent crisis in Peru?",
+      "creation_datetime_iso": "2024-07-22T16:00:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "meeting_url": null,
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+      "calendar_name": "work",
+      "location": "Conference Room B, Palantir HQ",
+      "start_datetime_iso": "2024-07-23T09:00:00-07:00",
+      "organizer_name": "John Quinn",
+      "reminder_time_ahead": "15 minutes",
+      "end_datetime_iso": "2024-07-23T09:30:00-07:00"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send my work colleague Robin a message that more about the Peru situation will be discussed at the daily stand up tomorrow and its important that information will need to be treated as sensitive. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to reply back to co-worker Robin Selmoure that more information on the Peru security situation will be forthcoming at the meeting the following day and that it is important that he not divulge any of the information learned with anyone outside of the workplace. \n\nI will message robin.selmoure@palantir.com that situation with Peru will be discussed at the next meeting and it is important to keep what is revealed to be not shared with anyone outside of Palantir. Also I will mention 23rd and 9 am in the message per user's request. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the existing conversation / contact info\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new outgoing message is sent to Robin mentioning Peru & tomorrow’s stand-up\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require that Robin is one of the participants; other addresses (e.g. John) are allowed\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"408-555-0132\",\n                                                \"robin.selmoure@palantir.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"content\": \"Peru\",  # match the message topic the query dictates (\"the Peru situation\"),\n                                    \"creation_datetime_iso\": \"2024-07-22T16:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"content\": column_contains_similarity,  # ensure “Peru” (and thus the stand-up msg) is mentioned,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox traces when verifying stateful change\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Information-retrieval step precedes sending the message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",          # needed to create the new message\n    \"search_messages\",       # plausible way to locate the Robin conversation\n    \"get_all_messages\",      # fallback for the same purpose\n    \"search_contacts\",       # plausible way to resolve Robin’s address\n    \"get_all_contacts\",      # fallback for contact lookup\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You tell Robin to be patient as they will learn more about the Peru situation at tomorrows daily standup and they must not talk about the meeting with anyone, mention the exact date and starting time of the meeting in the message. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\", \"search_contacts\", \"get_all_contacts\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-07-22T16:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

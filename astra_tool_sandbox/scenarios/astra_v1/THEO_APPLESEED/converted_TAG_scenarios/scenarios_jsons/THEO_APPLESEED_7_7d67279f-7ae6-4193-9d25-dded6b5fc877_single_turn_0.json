@@ -1,0 +1,178 @@
+{
+  "task_id": "7d67279f-7ae6-4193-9d25-dded6b5fc877",
+  "plot_id": 7,
+  "plot_summary": "Theo Appleseed is the protagonist. On Wednesday Morning, July 24, 2024 at 10 am, Michelle Barnes were involved. Brainstorming session for a new project Theo shares some ideas and strategies via email for further research",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_7",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "contact",
+    "astra_core"
+  ],
+  "user_goal": "The meetings today all went pretty well, so you're going to do an overall catch-up meeting before EOD on Friday so that all of the departments are clued in on what everyone is working on.",
+  "reference_time": "2024-07-24T16:45:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The system will create the event \"Catch-up Meeting\" on Friday 26th July 2024 at 16:00, with Michelle Barnes and Dawei Shen as attendees.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_7_7d67279f-7ae6-4193-9d25-dded6b5fc877_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Invitation: Project Brainstorming Session",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "michelle.barnes@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T15:00:00-07:00",
+      "body": "Hi Michelle,\n\nI would like to invite you to a brainstorming session for our new project. Let's meet tomorrow at 10 AM in Conference Room B. Please prepare any initial ideas you might have.\n\nBest,\nTheo",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Project Brainstorming Session",
+      "start_datetime_iso": "2024-07-24T10:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T11:30:00-07:00",
+      "attendees_names": [
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T15:00:00-07:00",
+      "notes": "Brainstorming session with Michelle Barnes to discuss and generate ideas for the new project."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Data Review Meeting",
+      "start_datetime_iso": "2024-07-24T15:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T16:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T12:00:00-07:00",
+      "notes": "Meeting to discuss recent findings and outline action items for data refinement."
+    },
+    {
+      "attendees_names": [
+        "Cookie Watson",
+        "Theo Appleseed"
+      ],
+      "calendar_name": "personal",
+      "meeting_url": null,
+      "start_datetime_iso": "2024-07-24T19:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T21:00:00-07:00",
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "reminder_time_ahead": "reminder_time_ahead: 120 minutes",
+      "organizer_name": "Theo Appleseed",
+      "calendar_event_name": "Dinner with Cookie",
+      "notes": "Dinner at the newly opened local pub, Pony & Jigger.",
+      "location": "Pony & Jigger, Orchard County, CA"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00"
+    },
+    {
+      "last_name": "Watson",
+      "job_title": null,
+      "alias": "Cookie",
+      "birthday": "1997-07-12T00:00:00-07:00",
+      "company": "McKinley Consulting",
+      "phone_number": "1234-5678-9107",
+      "email": "cookie.watson@example.com",
+      "first_name": "Cookie",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "relationship": "College Friend",
+      "full_name": "Cookie Watson",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "is_self": false
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you make a new event for me this Friday 16:00 called catch-up meeting and then please add both of the people that I met today during work to it",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user asked me to create a new event \"Catch-up Meeting\" for this Friday at 16:00 , but I have some things to figure out first. For one, I need to figure out when \"this Friday\" is. Today is Wednesday 24th July 2024, so this Friday must be the 26th July. I'll check the user's calendar to see if he has any events for that day, but it looks all clear. \n\nNow the next thing I need to figure out is who he wants added to the event. He said to add \"both of the people that he met today during work to it\". But who did he meet with? I had better check his calendar and see what he had on today. I found 3 events - \"Project Brainstorming Session\" with Michelle Barnes at 10:00, \"Data Review Meeting\" with Dawei Shen at 15:00, and \"Dinner with Cookie\" with Cookie Watson at 19:00. So he met with 3 people today, and so who are the 2 he wants added to the event?\n\nLooking again, the user said 'people he met today during work'. If a typical workday is 09:00-17:00, the only two people he met during that timeline were Michelle Barnes and Dawei Shen. If this is also a meeting about work, then these have to be the people he is referring to.\n\nWith the user's confirmation, I will create the event \"Catch-up Meeting\" on Friday 26th July 2024 at 16:00, with Michelle Barnes and Dawei Shen as attendees.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up who was met today by querying calendars\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct event (10:00 brainstorming session) was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Project Brainstorming Session\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-24T10:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – The agent looks up who was met today by querying calendars\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Confirm the correct event (10:00 brainstorming session) was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Data Review Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-24T15:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ],\n                ),\n                # Milestone 4 – Verify a new calendar event called “Catch-up Meeting” is created for\n                # Friday 26 July 2024 at 16:00 that includes Michelle Barnes and Dawei Shen\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Catch-up Meeting\",\n                                    \"start_datetime_iso\": \"2024-07-26T16:00:00-07:00\",\n                                    # We do not check end time; default similarity ignores unspecified fields\n                                    \"attendees_names\": [\n                                        [\n                                            \"Michelle Barnes\",\n                                            \"Dawei Shen\",\n                                            \"Theo Appleseed\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-07-24T16:45:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Name can be matched loosely to allow for casing / punctuation variations\n                                \"calendar_event_name\": column_rouge_l_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                # Require Michelle & Dawei & Theo\n                                \"attendees_names\": column_list_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to pre-task state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (2, 3)]",
+  "tool_allow_list_runtime": "[\n    \"get_all_contacts\",\n    \"search_contacts\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. The meetings today all went pretty well, so you're going to do an overall catch-up meeting before EOD on Friday so that all of the departments are clued in on what everyone is working on. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_contacts\", \"search_contacts\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-24T16:45:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

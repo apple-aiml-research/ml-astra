@@ -1,0 +1,93 @@
+{
+  "task_id": "4773e82d-d6f6-4e51-8e5a-7d30d9687a9e",
+  "plot_id": 6,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 4, 2024 at 5 pm, Carol Reyes were involved. Lucas attends a beer tasting event with Carol at a new local brewery. Lucas texts Carol to thank her for organizing the event.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_6",
+    "messaging",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to dictate a reply to Carol saying that you understand what they mean about the stout but the lager had some interesting fruity notes.",
+  "reference_time": "2024-12-04T21:55:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A reply message is sent to Carol saying that you understand what they mean about the stout but the lager had some interesting fruity notes."
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_6_4773e82d-d6f6-4e51-8e5a-7d30d9687a9e_single_turn_1",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_messages",
+    "get_all_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Carol Reyes",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "carol.reyes@example.com"
+      ],
+      "sender_address": "carol.reyes@example.com",
+      "content": "I'm torn between the stout and the lager, but I think the stout wins by a slight margin. We should do this again sometime soon!",
+      "creation_datetime_iso": "2024-12-04T21:42:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Carol",
+      "last_name": "Reyes",
+      "full_name": "Carol Reyes",
+      "phone_number": "+1 12345-6789-1000-6543",
+      "alias": "Beer Tasting Friend",
+      "email": "carol.reyes@example.com",
+      "relationship": "Beer tasting friend",
+      "address": "34 Brew St, Orchard County, CA, USA",
+      "company": "Craft Beer Co.",
+      "job_title": "Sales Representative",
+      "is_self": false,
+      "birthday": "1991-04-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a reply to Carol saying I understand what she means about the stout, but the lager had some interesting fruity notes.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a reply to Carol. I will find the contact called Carol, which is confirmed as Carol Reyes, and reply to her most recent message. The user has given the content of the reply: that they understand what Carol means about the stout, but the lager had some interesting fruity notes. I send that reply to Carol.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Carol or the related conversation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – A reply message is created and sent to Carol that references stout & lager\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"lucas.garcia@example.com\",\n                                                \"+1 12345-6789-1000-1234\",\n                                            ),\n                                            (\n                                                \"carol.reyes@example.com\",\n                                                \"+1 12345-6789-1000-6543\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"lager had some interesting fruity notes\",\n                                    \"creation_datetime_iso\": \"2024-12-04T21:55:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Ensure both Lucas and Carol are included (any valid identifier per tuple)\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                # Confirm key idea (lager + notes) appears in the message body\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Information retrieval precedes sending the reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",     # Needed to send the reply\n    \"search_contacts\",  # Likely used to find Carol’s details\n    \"get_all_contacts\", # Fallback listing of contacts\n    \"search_messages\",  # Possible path to locate existing conversation\n    \"get_all_messages\", # Fallback for message retrieval\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to dictate a reply to Carol saying that you understand what they mean about the stout but the lager had some interesting fruity notes. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_messages\", \"get_all_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-04T21:55:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

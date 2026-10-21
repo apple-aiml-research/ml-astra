@@ -1,0 +1,135 @@
+{
+  "task_id": "668e2282-db2d-4486-a4ba-117d9fc32c1e",
+  "plot_id": 18,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Evening, July 27, 2024 at 6 pm, Emily Rose, Neighbors were involved. Neighborhood gathering Meeting neighbors and engaging in community activities",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_18",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You have gotten delayed with household chores and want to let Emily Rose know that you will be an hour late this evening to the neighborhood gathering.",
+  "reference_time": "2024-07-27T14:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "A message is sent to Emily Rose that says \"Hi Emily. I will be around an hour late this evening\" ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_18_668e2282-db2d-4486-a4ba-117d9fc32c1e_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "emily.rose@example.com",
+      "content": "Hi Theo! Don't forget about the neighborhood gathering this Saturday at 6 pm. Hope to see you there!",
+      "creation_datetime_iso": "2024-07-24T10:00:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Hi Emily, looking forward to it! See you on Saturday.",
+      "creation_datetime_iso": "2024-07-24T10:15:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "emily.rose@example.com",
+      "content": "Great! Feel free to bring along any friends or family!",
+      "creation_datetime_iso": "2024-07-24T10:30:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Will do! My friend John might join as well.",
+      "creation_datetime_iso": "2024-07-24T11:00:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "emily.rose@example.com",
+      "content": "That sounds wonderful. The more, the merrier!",
+      "creation_datetime_iso": "2024-07-24T11:30:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "1234-5678-9109",
+      "alias": "Em",
+      "email": "emily.rose@example.com",
+      "relationship": "Neighbor",
+      "address": "128 Neighborly St, Orchard County, CA",
+      "company": "Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": false,
+      "birthday": "1985-06-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Tell Emily hi and I will be around an hour late this evening ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to inform an 'Emily' that they will be late this evening. To gather context, I will look through the user's calendar to see if there is an event logged for this evening. I have found an event called 'Neighborhood Gathering\" and there appears to be an 'Emily Rose' listed on the event. After searching the user's messages, I can see correspondence with Emily Rose regarding this event. Therefore, I can assume this is the intended contact. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to locate Emily Rose in the contacts database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify Emily Rose’s contact details were indeed returned from Milestone 0’s search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Emily Rose\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"emily.rose@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new message is sent to Emily informing her the user will be an hour late\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Only need to prove Emily’s address is among the participants\n                                    \"participants_addresses\": [\n                                        [(\"emily.rose@example.com\", \"1234-5678-9109\")]\n                                    ],\n                                    \"content\": \"hour late\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-27T14:20:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You have gotten delayed with household chores and want to let Emily Rose know that you will be an hour late this evening to the neighborhood gathering. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-27T14:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,141 @@
+{
+  "task_id": "088f1173-9a5c-4cb0-8513-604c192a512c",
+  "plot_id": 15,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 10 am, self, Jeff Bing were involved. Dawei attends the tech panel hosted by Jeff. Afterward, Jeff emails Dawei a thank-you note and a link to the recorded session. Dawei responds with appreciation and forwards the session link to his team.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_15",
+    "calendar",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Now that you have read the email from Jeff and replied, you want to reach out again to invite him to the Dataset Review with Michelle today.",
+  "reference_time": "2024-12-10T12:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email is sent to jeff.bing@bingelectronics.com to say \"Thanks again for your email Jeff. I'd actually like to invite you to a Data set review I'm having with my colleague Michelle Barnes today at 14:00.\".",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. Jeff Bing is added as an invitee to the event named \"Dataset Review with Michelle\" at 14:00-15:30 on 10 December 2024.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_15_088f1173-9a5c-4cb0-8513-604c192a512c_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "send_email",
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event",
+    "create_calendar_event",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Thank You for Attending the Tech Panel",
+      "sender_address": "jeff.bing@bingelectronics.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-10T12:00:00-08:00",
+      "body": "Hi Dawei,\n\nThank you for attending today's tech panel discussion. Your insights and questions greatly contributed to the depth of our discussion. Please find attached the recording of the session.\n\nBest regards,\nJeff Bing",
+      "attachments": [
+        "Tech_Panel_Recording_2024-12-10.mp4"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Thank You for Attending the Tech Panel",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "jeff.bing@bingelectronics.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-10T12:30:00-08:00",
+      "body": "Hello Jeff,\n\nThank you for hosting such an engaging panel. The discussion was incredibly enlightening. I've shared the session recording with my team, and we are all excited to explore some of the ideas presented.\n\nBest,\nDawei",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Dataset Review with Michelle",
+      "start_datetime_iso": "2024-12-10T14:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T15:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room A, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-09T08:15:00-08:00",
+      "notes": "Review the updated dataset and discuss key questions as outlined in Michelle's email."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to Jeff Bing's email again and say \"Thanks again for your email Jeff. I'd actually like to invite you to a Data set review I'm having with my colleague Michelle Barnes today at 14:00.\" then invite him to my meeting later today.",
+  "reasoning": "The user wants to reply again to the recent email received from jeff.bing@bingelectronics.com after their initial reply they sent at 12:00. They want to say \"Thanks again for your email Jeff. I'd actually like to invite you to a Data set review I'm having with my colleague Michelle Barnes today at 14:00.\". so I'll craft that as the reply and send it to Jeff. \nNow, the user wants to add him as an invitee to a meeting they're having later today. Today is December 10th, and it's already 12:30, so I'll see what other meetings are happening today after this point. I see Dataset Review with Michelle at 14:00-15:00, so I'll add Jeff as an invitee to that.",
+  "misinformation": "no",
+  "insufficient_context": "no",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "milestones": "[\n                # Milestone 0 – The agent reads/searches the relevant email thread with Jeff\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm Jeff's \"Thank You for Attending the Tech Panel\" email was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Thank You for Attending the Tech Panel\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"jeff.bing@bingelectronics.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": [\"dawei.shen@orchardtech.com\"],\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Email is sent to Jeff with the specified body (replying again)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"jeff.bing@bingelectronics.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"Thanks again for your email Jeff. I'd actually like to invite you to a Data set review I'm having with my colleague Michelle Barnes today at 14:00.\",\n                                    \"creation_datetime_iso\": \"2024-12-10T12:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                # Require the key phrase to appear; allow extra polite text if the agent adds any\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 3 – The agent looks up today's calendar events (to find \"Dataset Review with Michelle\")\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 4 – Confirm the \"Dataset Review with Michelle\" event at 14:00 was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dataset Review with Michelle\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-10T14:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-10T15:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=3,\n                        )\n                    ]\n                ),\n                # Milestone 5 – Jeff is added as an attendee to the \"Dataset Review with Michelle\" event via update_similarity\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dataset Review with Michelle\",\n                                    \"start_datetime_iso\": \"2024-12-10T14:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-10T15:30:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\"Dawei Shen\", \"Michelle Barnes\", \"Jeff Bing\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-10T12:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Ensure at least these attendees are included; allow extras if the agent invites others\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search → confirm Jeff's email\n                (1, 2),  # Having found Jeff's email, send reply/invitation email\n                (3, 4),  # Calendar search → confirm target event\n                (4, 5),  # After confirming event, update attendees to include Jeff\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"send_email\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"modify_calendar_event\",\n]",
+  "is_read_time": "2024-12-10T12:30:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. Now that you have read the email from Jeff and replied, you want to reach out again to invite him to the Dataset Review with Michelle today. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"send_email\", \"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\", \"create_calendar_event\", \"remove_calendar_event\"]"
+}

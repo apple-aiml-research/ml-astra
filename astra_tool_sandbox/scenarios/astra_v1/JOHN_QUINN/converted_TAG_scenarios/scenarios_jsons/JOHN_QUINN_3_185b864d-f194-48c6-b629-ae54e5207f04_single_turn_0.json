@@ -1,0 +1,151 @@
+{
+  "task_id": "185b864d-f194-48c6-b629-ae54e5207f04",
+  "plot_id": 3,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 2 pm, Alfred Quinn, Grace Quinn were involved. John's dad forwards political emails to John, who complains to his sister  1. Jonh's dad forwards John several (3 to 5) detailed emails mentioning various events organized by the Pirate Party in different cities in the state. 2. The forwarded emails don't directly address John, but are instead generic emails that were forwarded to him. 3. Feeling irritated, rather than respond to his dad, he exchanges some messages with his sister to complain about his dad's behavior. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_3",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to dictate a message to your sister saying that you will be unavailable for the next 2 hours.",
+  "reference_time": "2024-07-22T14:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Grace Quinn saying that you will be unavailable for the next 2 hours.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_3_185b864d-f194-48c6-b629-ae54e5207f04_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Grace Quinn",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "408-555-0126"
+      ],
+      "sender_address": "1234-5678-9108",
+      "content": "Can you believe Dad is still sending me these Pirate Party emails?",
+      "creation_datetime_iso": "2024-07-22T14:10:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Grace Quinn",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "408-555-0126"
+      ],
+      "sender_address": "408-555-0126",
+      "content": "Again? He just doesn't give up, does he?",
+      "creation_datetime_iso": "2024-07-22T14:12:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Grace Quinn",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "408-555-0126"
+      ],
+      "sender_address": "1234-5678-9108",
+      "content": "It's like he's trying to annoy me on purpose. I'm not even responding this time.",
+      "creation_datetime_iso": "2024-07-22T14:15:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Grace Quinn",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "408-555-0126"
+      ],
+      "sender_address": "408-555-0126",
+      "content": "Probably a good call. Just ignore it, maybe he'll stop if he doesn't get a reaction.",
+      "creation_datetime_iso": "2024-07-22T14:17:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Grace Quinn",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "408-555-0126"
+      ],
+      "sender_address": "1234-5678-9108",
+      "content": "Yeah, that's what I'm hoping for. Thanks for letting me vent.",
+      "creation_datetime_iso": "2024-07-22T14:20:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Alfred",
+      "last_name": "Quinn",
+      "full_name": "Alfred Quinn",
+      "phone_number": "408-555-0125",
+      "alias": "Dad",
+      "email": "alfred.quinn@svmetal.com",
+      "relationship": "Father",
+      "address": "127 Maple St, San José, CA 95126",
+      "company": "Suarez & Villa Metallurgy",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1963-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Grace",
+      "last_name": "Quinn",
+      "full_name": "Grace Quinn",
+      "phone_number": "408-555-0126",
+      "alias": "Sis",
+      "email": "grace.quinn@example.com",
+      "relationship": "Sister",
+      "address": "129 Maple St, San José, CA 95126",
+      "company": null,
+      "job_title": "Writer",
+      "is_self": false,
+      "birthday": "1993-05-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to dictate a message reply to my little sis saying \"Hi sis, I will be unavailable for the next 2 hours sorry about that\".",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to dictate a reply to the their \"little sis\". I am not sure who the user might be referring to. I go through the user contacts and I see there is a contact card with the alias 'Sis' attached to Grace Quinn. I can assume that's the contact the user wants to send the message to. \n\nI should locate the message history with this contact by searching their name in the user's Messages and then start a draft reply.\n\nAs the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the message if the user confirms that the message was transcribed correctly.",
+  "milestones": "[\n                # Milestone 0 ─ The agent tries to find the sister’s contact\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 ─ Verify the contact result includes Grace Quinn (the sister)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Grace Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0126\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 ─ A new message to the sister is sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9108\",\n                                                \"john.quinn@palantir.com\",\n                                            ),  # self\n                                            (\n                                                \"408-555-0126\",\n                                                \"grace.quinn@example.com\",\n                                            ),  # sister\n                                        ]\n                                    ],\n                                    \"content\": [(\"unavailable for the next 2 hours\",)],\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-22T14:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_str_contains_any_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Must find contact before confirming it\n                (1, 2),  # Must confirm contact before sending the message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to dictate a message to your sister saying that you will be unavailable for the next 2 hours. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-22T14:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

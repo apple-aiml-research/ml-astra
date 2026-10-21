@@ -1,0 +1,102 @@
+{
+  "task_id": "8a9d94c8-6701-4d06-b04d-25fa2b7e021b",
+  "plot_id": 1,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 2, 2024 at 8:00 AM, self were involved. Emily checks her calendar for the week ahead, including scheduled meetings with Jenna at the community center about the upcoming charity event. Her calendar has multiple entries for event planning meetings with Jenna and Michael.",
+  "tags": [
+    "astra_core",
+    "EMILY_ROSE",
+    "plot_1",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You're not sure if you have added your decor diva as an invitee to your meeting, you don't want her to miss it.",
+  "reference_time": "2024-12-02T08:35:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. Event Planning Meeting with Jenna scheduled for December 02, 2024 09:00-10:00 is checked for invitee Jenna Miles."
+    },
+    {
+      "statefullness": "Stateless",
+      "input_text": "2. User has been told that Jenna Miles is invited with a reply 'yes'."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_1_8a9d94c8-6701-4d06-b04d-25fa2b7e021b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Event Planning Meeting with Jenna",
+      "start_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T10:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Jenna Miles"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:00:00-07:00",
+      "notes": "Discuss details and logistics for the upcoming charity event."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jenna",
+      "last_name": "Miles",
+      "full_name": "Jenna Miles",
+      "phone_number": "+1 530-555-0131",
+      "alias": "Decor Diva",
+      "email": "jenna.miles@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Planner",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Check if I invited decor diva to the first Event Planning Meeting I have today, yes or no",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user is asking me to check if they invited decor diva to their first event planning meeting today. First, I'll find the event user is referring to. I see the first meeting they got today for event planning is the one scheduled today December 02 at 09:00 named Event planning meeting with Jenna. And then, by checking the contact card I found that Jenna Miles has the alias as 'Decor Diva'. This means that user wants to find out if they have added Jenna Miles as attendee in the event. \nI can see that Jenna Miles is an invitee to this event.\nI should confirm this to the user with yes.",
+  "milestones": "[\n                # Milestone 0 – Agent queries the calendar to find today’s event(s)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Validate that the expected Event Planning Meeting was actually retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Event Planning Meeting with Jenna\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-02T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent lets the user know that Jenna / Decor Diva is invited\n                Milestone(\n                    snapshot_constraints=[\n                        # Must confirm invitation status\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"yes\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar queried -> event verified\n                (1, 2),  # Event verified   -> user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You're not sure if you have added your decor diva as an invitee to your meeting, you don't want her to miss it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-02T08:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

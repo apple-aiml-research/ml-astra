@@ -1,0 +1,120 @@
+{
+  "task_id": "d6a6c9d1-f353-45b1-bd71-e87f5711c1c5",
+  "plot_id": 9,
+  "plot_summary": "Theo Appleseed is the protagonist. On Wednesday Evening, July 24, 2024 at 7pm, Cookie Watson were involved. Theo meets Cookie for Dinner at Pony & Jigger Theo and Cookie exchanged share messages after the event talking about how great the gathering was.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_9",
+    "calendar",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "astra_core"
+  ],
+  "user_goal": "You can't remember how much you owe Cookie for dinner, so you want to text her to ask her to send you a payment request.",
+  "reference_time": "2024-07-24T21:50:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A new message is sent to Cookie Watson with keywords \"venmo\" and \"dinner\" at 21:50 on 24 July 2024. "
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_9_d6a6c9d1-f353-45b1-bd71-e87f5711c1c5_single_turn_0",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages",
+    "send_message",
+    "search_contacts",
+    "get_all_contacts",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "I had a fantastic time, Theo! Let's plan another dinner soon. Safe drive home!",
+      "creation_datetime_iso": "2024-07-24T21:45:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Cookie",
+      "start_datetime_iso": "2024-07-24T19:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T21:00:00-07:00",
+      "attendees_names": [
+        "Cookie Watson",
+        "Theo Appleseed"
+      ],
+      "location": "Pony & Jigger, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 120 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "notes": "Dinner at the newly opened local pub, Pony & Jigger."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "Reply to Cookie Watson to say \"Send me a venmo request for dinner\"",
+  "reasoning": "The user wants to reply to Cookie Watson saying \"Send me a venmo request for dinner\". I'm not sure if they mean via email or text, so I'll check to see if Cookie Watson has recently emailed or texted the user.\n\nI found a text message from Cookie Watson received five minutes ago (at 21:45 on 2024/07/24), so this must be what the user wants to reply to. Great, I can now send the message.",
+  "milestones": "[\n                # Milestone 0 – Agent uses messages search/listing to find recent conversation with Cookie (for replying context)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – New message sent to Cookie with venmo and dinner mentioned, at the correct time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Conversation should involve Theo and Cookie in some form (email/phone)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"cookie.watson@example.com\",\n                                                \"1234-5678-9107\",\n                                            ),\n                                            (\n                                                \"theo.appleseed@example.com\",\n                                                \"1234-5678-9101\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": [(\"Send me a venmo request for dinner\",)],\n                                    \"creation_datetime_iso\": \"2024-07-24T21:50:00-07:00\",\n                                    \"status\": \"sent\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Require both participants (Theo and Cookie) identified by any of their addresses, no extras\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                # Allow minor wording variations but must include both keywords\n                                \"content\": column_str_contains_any_similarity,\n                                # Time should be close to the specified timestamp\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                                \"status\": column_exact_match_similarity,\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n    \"send_message\",\n]",
+  "is_read_time": "2024-07-24T21:50:00-07:00",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You can't remember how much you owe Cookie for dinner, so you want to text her to ask her to send you a payment request.  ",
+  "minefields": null,
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\", \"send_message\", \"search_contacts\", \"get_all_contacts\", \"search_calendar_events\", \"get_all_calendars\"]"
+}

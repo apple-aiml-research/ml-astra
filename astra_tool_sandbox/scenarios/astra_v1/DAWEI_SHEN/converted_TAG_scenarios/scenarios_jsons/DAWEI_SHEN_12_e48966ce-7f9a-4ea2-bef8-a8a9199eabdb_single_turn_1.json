@@ -1,0 +1,108 @@
+{
+  "task_id": "e48966ce-7f9a-4ea2-bef8-a8a9199eabdb",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "astra_core",
+    "DAWEI_SHEN",
+    "plot_12",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "contact",
+    "messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to message your friend about grabbing a celebratory dinner the evening of the upcoming tech panel you're both attending.",
+  "reference_time": "2024-12-08T18:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is composed and sent to Jeff Bing saying 'Hey Jeff, looking forward to the tech panel! Are you free for dinner on Tuesday at 18:30?'.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_e48966ce-7f9a-4ea2-bef8-a8a9199eabdb_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Invitation: Tech Panel Discussion on December 10",
+      "sender_address": "jeff.bing@bingelectronics.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T10:10:00-08:00",
+      "body": "Hello Dawei,\n\nI hope this message finds you well. I'm excited to invite you to a tech panel discussion I'm hosting next Tuesday, December 10, at the Tech Hub Conference Center here in Orchard County. We'll be discussing the latest trends and innovations in consumer electronics. Your insights would be incredibly valuable, and I would be thrilled if you could join us.\n\nPlease find the event details attached. Let me know if you can make it!\n\nBest regards,\nJeff Bing",
+      "attachments": [
+        "Tech_Panel_Details.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Jeff Bing",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "other": [],
+  "query": "Text my friend saying 'Hey there, looking forward to the tech panel! Are you free for dinner on Tuesday at 18:30?'.",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to send the message: 'Hey there, looking forward to the tech panel! Are you free for dinner on Tuesday at 18:30?' to their friend. From the message content I understand the user wants to message someone and it's related to 'tech panel'. I see there's an upcoming event \"Tech Panel Hosted by Jeff Bing\" scheduled on December 10 at 09:00. I understand the contact user refers to is Jeff Bing. I’ll locate Jeff Bing's contact card. Ok, I found his contact. I'll sent him a message saying \"Hey Jeff, looking forward to the tech panel! Are you free for dinner on Tuesday at 18:30?\" Now I'll inform user that the message is sent.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "reference_time_str": "Today is Sunday, December 8, 2024 or 2024-12-08T18:40:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent queries calendars to locate tech panel\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Tech Panel returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Tech Panel Hosted by Jeff Bing\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – The agent queries contacts to locate Jeff Bing\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Jeff Bing is returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jeff Bing\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ],\n                ),\n                # Milestone 4 – Message is sent to Jeff and recorded in the messaging log\n                Milestone(\n                    snapshot_constraints=[\n                        # A new outbound message appears with the correct content\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Jeff Bing\",\n                                    \"content\": \"Are you free for dinner\",\n                                    \"creation_datetime_iso\": \"2024-12-08T18:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tech Panel Found\n                (2, 3),  # Contact search → confirmation Jeff found\n            ]",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "send_message",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to message your friend about grabbing a celebratory dinner the evening of the upcoming tech panel you're both attending. ",
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"send_message\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-08T18:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

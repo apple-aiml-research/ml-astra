@@ -1,0 +1,84 @@
+{
+  "task_id": "2e63a288-ce35-4689-b4e0-b9ab93e5058e",
+  "plot_id": 21,
+  "plot_summary": "Emily Rose is the protagonist. On Tuesday, December 17, 2024 at 2:00 PM, James Baldwin were involved. Session with James to review photographs from the community holiday event. Selected photos agreed upon and saved to event archive. Calendar event sent out if no existing event already.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_21",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to set a calendar event with the following information: Photo Review Session with James Baldwin\n2024.   12.   17 02:00 pm - 03:30 pm\nOrchard County Community Center\nEmily Rose, James Baldwin\nBusy\nwork\nSession to review and select photographs from the community holiday event.",
+  "reference_time": "2024-12-10T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "A calendar event is created for: Photo Review Session with James Baldwin\n2024.12.17 02:00 pm - 03:30 pm\nOrchard County Community Center\nEmily Rose, James Baldwin\nBusy\nwork\nSession to review and select photographs from the community holiday event.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_21_2e63a288-ce35-4689-b4e0-b9ab93e5058e_single_turn_0",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Photo Review Session with James Baldwin",
+      "start_datetime_iso": "2024-12-17T14:00:00-08:00",
+      "end_datetime_iso": "2024-12-17T15:30:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "James Baldwin"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-10T10:00:00-08:00",
+      "notes": "Session to review and select photographs from the community holiday event."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need you to put this on my calendar: Photo Review Session with James Baldwin\n2024.12.17 02:00 pm - 03:30 pm\nOrchard County Community Center\nEmily Rose, James Baldwin\nBusy\nwork\nSession to review and select photographs from the community holiday event.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "User has given me all the information i need to create a calendar event. I will create a new event titled \"Photo Review Session with James Baldwin\" and schedule it from 2:00 pm - 3:30 pm on December 17th 2024. It will take place at Orchard County Community Center and both the user and James Baldwin will be the invitees. ",
+  "milestones": "[\n                # Milestone 0 –  Verify a new calendar event matching the user request was added\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Photo Review Session with James Baldwin\",\n                                    \"start_datetime_iso\": \"2024-12-17T14:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-17T15:30:00-08:00\",\n                                    \"location\": \"Orchard County Community Center\",\n                                    \"attendees_names\": [\n                                        [\"Emily Rose\", \"James Baldwin\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-10T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",   # to add the event\n    \"get_all_calendars\",       # optional retrieval / duplicate check\n    \"search_calendar_events\",  # optional targeted duplicate check\n    \"get_all_contacts\",        # optional attendee resolution\n    \"search_contacts\",         # optional attendee resolution\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to set a calendar event with the following information: Photo Review Session with James Baldwin\n2024.  12.  17 02:00 pm - 03:30 pm\nOrchard County Community Center\nEmily Rose, James Baldwin\nBusy\nwork\nSession to review and select photographs from the community holiday event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-12-10T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

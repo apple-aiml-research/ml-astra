@@ -1,0 +1,93 @@
+{
+  "task_id": "af487d75-d0c7-4ea5-b041-cdefb02803f9",
+  "plot_id": 10,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 7, 2024 at 6:00 PM, Linda Rose were involved. Attending the community holiday party where Linda provides homemade treats. Community event pictures uploaded and shared on social media.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_10",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to dictate a reply to Linda saying that you will be a little late to the holiday party because you have to feed your goldfish.",
+  "reference_time": "2024-12-07T16:25:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A reply message is sent to Linda saying that you will be a little late to the holiday party because you have to feed your goldfish."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_10_af487d75-d0c7-4ea5-b041-cdefb02803f9_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Holiday Party Prep",
+      "participants_addresses": [
+        "emily.rose@orchardcommunity.org",
+        "linda.rose@homemadetreats.com"
+      ],
+      "sender_address": "linda.rose@homemadetreats.com",
+      "content": "That should be all. See you soon at the party!",
+      "creation_datetime_iso": "2024-12-07T16:15:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Linda",
+      "last_name": "Rose",
+      "full_name": "Linda Rose",
+      "phone_number": "+1 530-555-0126",
+      "alias": "Culinary Mom",
+      "email": "linda.rose@homemadetreats.com",
+      "relationship": "Mother",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Homemade Treats",
+      "job_title": "Culinary Artist",
+      "is_self": false,
+      "birthday": "1967-07-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to dictate a message reply to my mom saying \"Linda just to say I will be a little late to the holiday party because I have to feed my goldfish.\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to dictate a reply to their mom. I must figure out who their mom is. In their contacts Linda Rose has an alias of 'Culinary Mom' so I can assume Linda is the intended recipient \n\nI should locate the message history with this contact by searching their name in the user's Messages and then start a draft reply.\n\nAs the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the message if the user confirms that the message was transcribed correctly.\n",
+  "milestones": "[\n                # Milestone 0 – Agent tries to locate Linda or the existing conversation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new outgoing message to Linda mentioning being late due to feeding goldfish\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (  # At least one identifier for Linda must appear\n                                                \"linda.rose@homemadetreats.com\",\n                                                \"+1 530-555-0126\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"feed my goldfish\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-07T16:25:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Require Linda (by email or phone) to be included, allow other participants\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                # Check essential phrasing, allow paraphrases around it\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial database state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",      # needed to create the reply\n    \"search_contacts\",   # to resolve Linda\n    \"get_all_contacts\",  # fallback listing\n    \"search_messages\",   # to find the existing thread\n    \"get_all_messages\",  # fallback listing\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to dictate a reply to Linda saying that you will be a little late to the holiday party because you have to feed your goldfish. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-07T16:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

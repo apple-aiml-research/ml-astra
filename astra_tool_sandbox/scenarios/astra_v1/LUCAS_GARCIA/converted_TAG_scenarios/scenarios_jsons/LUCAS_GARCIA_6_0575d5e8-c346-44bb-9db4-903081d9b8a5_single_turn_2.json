@@ -1,0 +1,100 @@
+{
+  "task_id": "0575d5e8-c346-44bb-9db4-903081d9b8a5",
+  "plot_id": 6,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 4, 2024 at 5 pm, Carol Reyes were involved. Lucas attends a beer tasting event with Carol at a new local brewery. Lucas texts Carol to thank her for organizing the event.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_6",
+    "contact",
+    "calendar",
+    "messaging",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to Carol Reyes saying thank you",
+  "reference_time": "2024-12-04T22:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message; \"I had a great time at the beer tasting last night. Looking forward to the next one!\" is sent to Carol Reyes via text. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_6_0575d5e8-c346-44bb-9db4-903081d9b8a5_single_turn_2",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Beer Tasting Event with Carol",
+      "start_datetime_iso": "2024-12-04T17:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T19:00:00-08:00",
+      "attendees_names": [
+        "Carol Reyes",
+        "Lucas Garcia"
+      ],
+      "location": "New Local Brewery, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T12:00:00-08:00",
+      "notes": "Attending a beer tasting event with Carol at a new local brewery to explore new craft beers."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Carol",
+      "last_name": "Reyes",
+      "full_name": "Carol Reyes",
+      "phone_number": "+1 12345-6789-1000-6543",
+      "alias": "Beer Tasting Friend",
+      "email": "carol.reyes@example.com",
+      "relationship": "Beer tasting friend",
+      "address": "34 Brew St, Orchard County, CA, USA",
+      "company": "Craft Beer Co.",
+      "job_title": "Sales Representative",
+      "is_self": false,
+      "birthday": "1991-04-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text the person I sampled some brewskis with tonight. Have the text say \"I had a great time at the beer tasting last night. Looking forward to the next one!\"",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to text one of their friends; I need to figure out who. The user said they sampled some brewskis with this person tonight. Let me look at their calendar events from today. December 4th. The only event on the calendar was \"Beer Tasting Event with Carol\" from 17:00-19:00. A beer tasting event seems like the kind of place you would sample brewskis, so this must be the event they're referring to. I see Carol Reyes attended this event, so that must be who the user wants to text. I'll send the text they want to Carol Reyes, saying \"I had a great time at the beer tasting last night. Looking forward to the next one!\"",
+  "milestones": "[\n                # Milestone 0 — Agent looks up the contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 —  Confirm that Carol Reyes was returned from the contact lookup above\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Beer Tasting Event with Carol\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent uses a contact-retrieval tool (search_contacts / get_all_contacts)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Carol Reyes is found in the contact-search result from Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Carol Reyes\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"carol.reyes@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,  # look at the tool result from Milestone 2\n                        )\n                    ],\n                ),\n                # Milestone 4 — Verify a new text message was sent to Carol with the requested content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Ensure Carol is included among the participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"carol.reyes@example.com\",\n                                                \"+1 12345-6789-1000-6543\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"I had a great time at the beer tasting last night\",\n                                    \"creation_datetime_iso\": \"2024-12-04T22:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (2, 3)]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to send a message to Carol Reyes saying thank you ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-04T22:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

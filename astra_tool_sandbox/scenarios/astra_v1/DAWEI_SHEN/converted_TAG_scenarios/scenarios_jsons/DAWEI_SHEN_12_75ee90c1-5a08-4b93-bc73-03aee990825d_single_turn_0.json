@@ -1,0 +1,195 @@
+{
+  "task_id": "75ee90c1-5a08-4b93-bc73-03aee990825d",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_12",
+    "calendar",
+    "whatsapp_messaging",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "messaging",
+    "astra_core"
+  ],
+  "user_goal": "You can't remember what time your Theater Rehearsal has been rescheduled to.",
+  "reference_time": "2024-12-08T17:54:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that the event named Theater Rehearsal is scheduled for 8 December 2024 at 19:00-22:00, at Orchard Theater.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_75ee90c1-5a08-4b93-bc73-03aee990825d_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "creation_datetime_iso": "2024-12-01T19:50:00-08:00",
+      "status": "sent",
+      "content": "Hey Charles, just confirming we're still on for tonight's rehearsal at 8?",
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901"
+    },
+    {
+      "creation_datetime_iso": "2024-12-01T19:52:00-08:00",
+      "status": "read",
+      "content": "Yes, all set for 8 PM. See you there!",
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012"
+    },
+    {
+      "creation_datetime_iso": "2024-12-08T17:50:00-08:00",
+      "status": "read",
+      "content": "Hey Dawei, heads up, we need to adjust tonight's rehearsal schedule. Can we start at 7 PM instead?",
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-234-5678-9012",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012"
+    },
+    {
+      "creation_datetime_iso": "2024-12-08T17:51:00-08:00",
+      "status": "sent",
+      "content": "Got it, Charles. Updating our calendar now.",
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-234-5678-9012",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "dawei.shen@orchardtech.com"
+    },
+    {
+      "creation_datetime_iso": "2024-12-08T17:54:00-08:00",
+      "status": "sent",
+      "content": "👍",
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-234-5678-9012",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "dawei.shen@orchardtech.com"
+    }
+  ],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Theater Rehearsal",
+      "start_datetime_iso": "2024-12-08T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T22:00:00-08:00",
+      "attendees_names": [
+        "Charles Wilde",
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "location": "Orchard Theater, 789 Culture St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T17:55:00-08:00",
+      "notes": "Revised time for tonight's rehearsal with Charles and Vickie due to last-minute changes."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Remind me of the new time for tonight practice again.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to be reminded the new time of tonight practice. This implies that one of their events has changed times.\n\nFrom their recent messages in the last half hour I can see that Charles sent a message about changing their rehearsal time so that must be what the user is looking for.\n\nThe user's Theater Rehearsal event on 8 December 2024 is scheduled from 19:00-22:00 so I will tell the user that.",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent uses calendar tools to look up rehearsal timing\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms that related conversation was found in messages history\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Charles Wilde\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – User-facing response mentions the correct date, time window, and location\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # We just need key facts; phrasing can vary\n                                    \"content\": [\n                                        (\n                                            \"7 pm\",\n                                            \"7 p.m.\",\n                                            \"7pm\",\n                                            \"19:00\",\n                                            \"7:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Whatsapp lookup → confirm correct event details\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-12-08T17:54:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You can't remember what time your Theater Rehearsal has been rescheduled to. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"search_messages\", \"get_all_messages\"]"
+}

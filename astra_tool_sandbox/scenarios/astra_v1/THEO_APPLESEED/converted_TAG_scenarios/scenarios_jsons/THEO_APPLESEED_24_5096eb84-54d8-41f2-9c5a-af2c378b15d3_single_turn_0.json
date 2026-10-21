@@ -1,0 +1,96 @@
+{
+  "task_id": "5096eb84-54d8-41f2-9c5a-af2c378b15d3",
+  "plot_id": 24,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo signed up to Salsa classes every Wednesday evening for last 1h from 19:30 to 20:30 for 12 weeks\n generate calendar_events for Theo's Salsa classes",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_24",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to write a message to Cookie Watson inviting her to attend salsa dance classes with you.",
+  "reference_time": "2024-07-29T10:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Cookie Watson inviting her to attend salsa dance classes with you.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_24_5096eb84-54d8-41f2-9c5a-af2c378b15d3_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-07-31T19:30:00-07:00",
+      "end_datetime_iso": "2024-07-31T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to dictate a message to Cookie Watson saying \"Hi Cookie I'm going to salsa dance classes on July 31st do you want to come with me? :D\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to dictate a message to the contact called Cookie Watson.\n\nI should locate the message history with this contact by searching their name in the user's Messages and then start a draft message with her.\n\nAs the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the message if the user confirms that the message was transcribed correctly.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Cookie Watson in the contacts list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – Verify that Cookie Watson was returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Cookie Watson\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"1234-5678-9107\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # depend on Milestone 0 output\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new message inviting Cookie to salsa class was sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Ensure Cookie is one of the participants (either via phone or email)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9107\",\n                                                \"cookie.watson@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    # Check that the body of the message references the salsa class invitation\n                                    \"content\": \"salsa\",\n                                    \"creation_datetime_iso\": \"2024-07-29T10:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        ),\n                    ],\n                    # No need to guard-rail other DBs—expected single change\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # contact lookup → confirm Cookie returned\n                (1, 2),  # confirm Cookie → message is sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"get_all_messages\",\n    \"search_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to write a message to Cookie Watson inviting her to attend salsa dance classes with you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-29T10:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

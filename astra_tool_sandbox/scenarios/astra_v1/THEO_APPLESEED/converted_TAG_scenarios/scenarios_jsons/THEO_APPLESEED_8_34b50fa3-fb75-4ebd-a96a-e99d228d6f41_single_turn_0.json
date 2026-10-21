@@ -1,0 +1,104 @@
+{
+  "task_id": "34b50fa3-fb75-4ebd-a96a-e99d228d6f41",
+  "plot_id": 8,
+  "plot_summary": "Theo Appleseed is the protagonist. On Wednesday Afternoon, July 24, 2024 at 3pm, Dawei Shen were involved. Data review meeting to discuss recent findings Dawei shares action items for data refinement",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_8",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "calendar",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You notice that Dawei is late to the data meeting and you decide to text him asking where he is.",
+  "reference_time": "2024-07-24T15:10:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "A message will be sent to Dawei Shen on the 24th July 2024 at 15:10 saying 'Where are you? I'm here at our data meeting'.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_8_34b50fa3-fb75-4ebd-a96a-e99d228d6f41_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Data Review Meeting",
+      "start_datetime_iso": "2024-07-24T15:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T16:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T12:00:00-07:00",
+      "notes": "Meeting to discuss recent findings and outline action items for data refinement."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text who I'm supposed to be with at this meeting now saying 'Where are you? I'm here at our data meeting'.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "Right, the user wants to send a message to whom they're supposed to be with at a meeting. I can see from their calendar they're currently at an event named 'Data Review Meeting' with Dawei Shen added as an invitee. This must be the event the user is referring to and thus I can concur that Dawei Shen is who the user wants to send a message to. I can then confirm with the user and send it.",
+  "milestones": "[\n                # Milestone 0 – Agent looks at the calendar to figure out who the meeting is with\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the returned calendar event is the Data Review Meeting with Dawei Shen\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Data Review Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            # Make sure Dawei is one of the attendees\n                                            \"attendees_names\": {\n                                                \"value\": \"Dawei Shen\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Agent searches contacts (or lists them) to get Dawei’s messaging address\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Confirm Dawei Shen’s contact details were indeed in the tool output of Milestone 2\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Dawei Shen\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"1234-5678-9106\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ],\n                ),\n                # Milestone 4 – A new outgoing message is created that contains the required text and is addressed to Dawei\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9106\",\n                                                \"dawei.shen@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Where are you? I'm here at our data meeting\",\n                                    \"creation_datetime_iso\": \"2024-07-24T15:10:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox chatter while checking message creation\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (2, 3),\n                (3, 4),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You notice that Dawei is late to the data meeting and you decide to text him asking where he is. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-24T15:10:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

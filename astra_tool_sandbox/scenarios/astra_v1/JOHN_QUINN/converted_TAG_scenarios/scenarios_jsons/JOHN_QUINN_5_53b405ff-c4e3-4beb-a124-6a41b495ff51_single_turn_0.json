@@ -1,0 +1,128 @@
+{
+  "task_id": "53b405ff-c4e3-4beb-a124-6a41b495ff51",
+  "plot_id": 5,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 6:30 pm, Ursula Quinn were involved. John complains to his mom about the political messages his father forwards him  1. John messages his mom to complain about his father's forwarded emails from the Pirate Party. 2. She reassures him and mentions a family counsellor that she saw for her marriage. 3. Finally, she emails him a newsletter from the family counsellor. ",
+  "tags": [
+    "astra_core",
+    "JOHN_QUINN",
+    "plot_5",
+    "calendar",
+    "email",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "contact"
+  ],
+  "user_goal": "You want to set aside time to look at the family counselling newsletter your mom passed on to you.",
+  "reference_time": "2024-07-22T18:45:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event about Review Newsletter is created at 18:00-18:30 on 23 July 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_5_53b405ff-c4e3-4beb-a124-6a41b495ff51_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "create_calendar_event",
+    "search_emails",
+    "get_all_emails",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Ursula Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "ursula.quinn@modernart.org"
+      ],
+      "sender_address": "ursula.quinn@modernart.org",
+      "content": "I understand, John. It must be tough. Have you thought about setting boundaries with him about what topics are off-limits?",
+      "creation_datetime_iso": "2024-07-22T18:32:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Ursula Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "ursula.quinn@modernart.org"
+      ],
+      "sender_address": "ursula.quinn@modernart.org",
+      "content": "Maybe it's time to consider talking to someone professional about this. I saw a family counsellor for a while, and it really helped.",
+      "creation_datetime_iso": "2024-07-22T18:36:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Family Counsellor Newsletter",
+      "sender_address": "ursula.quinn@modernart.org",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T18:40:00-07:00",
+      "body": "Hi John, Here's the newsletter from the family counsellor I mentioned. I hope you find it helpful. Love, Mom",
+      "attachments": [
+        "Family_Counselling_Newsletter_July_2024.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Set aside half an hour around 6 tomorrow to review what mom just sent me. ",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "Ok so the user wants to set aside half an hour around 6 tomorrow to review what mom just sent them. First let's establish what the user's mother sent them. In text, they refer to a family counsellor and the user asks for details. I can also see an email just received by the user with a link attached. This must be what they are referring to. Next, is the name of the event which I will keep simple to make the intent of the event clear and to the point. I will call it something like Review Newsletter. Next, is the time which was given by the user which is about half an hour around 6 tomorrow. There seems to be no conflicts tomorrow for 6 so I will set the event to 18:00-18:30 on 23 July 2024. I will now create an event Review Newsletter at 18:00-18:30 on 23 July 2024. ",
+  "milestones": "[\n                # Milestone 0 – the agent uses an email-retrieval tool to locate what Mom sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – confirm that the email “Family Counsellor Newsletter” from Mom\n                # was actually returned by the tool call in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Family Counsellor Newsletter\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"ursula.quinn@modernart.org\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – the calendar event “Review Newsletter” is created for\n                # 23 July 2024 18:00–18:30\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"review\",\n                                    \"start_datetime_iso\": \"2024-07-23T18:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-23T18:30:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-22T18:45:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"create_calendar_event\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to set aside time to look at the family counselling newsletter your mom passed on to you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"create_calendar_event\", \"search_emails\", \"get_all_emails\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-07-22T18:45:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

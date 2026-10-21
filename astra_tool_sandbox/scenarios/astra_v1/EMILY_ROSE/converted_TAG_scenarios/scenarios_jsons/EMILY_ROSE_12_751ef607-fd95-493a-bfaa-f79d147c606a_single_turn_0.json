@@ -1,0 +1,63 @@
+{
+  "task_id": "751ef607-fd95-493a-bfaa-f79d147c606a",
+  "plot_id": 12,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 9, 2024 at 9:00 AM, Sophia Nguyen were involved. Discussion about catering requirements for the New Year's event. Order confirmation email with revised menu details.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_12",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You've been emailing Sophia about the new year's event you're planning together, but you don't have the event on your own personal calendar yet, so you want to get it added.",
+  "reference_time": "2024-12-09T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A new calendar event named New Year's Event is scheduled for December 31 2024, 21:00-23:59."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_12_751ef607-fd95-493a-bfaa-f79d147c606a_single_turn_0",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make a new event called New Year's Event for 21:00-23:59 on 31 December 2024.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to add an event from their calendar. They have specified the event is to be named \"New Year's Event\" and it is to take place on December 31st at 21:00-23:59. Using this information I can confirm with the user and create the event.",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"New Year's Event\",\n                                    # Use substrings so any timezone suffix is accepted\n                                    \"start_datetime_iso\": \"2024-12-31T21:00\",\n                                    \"end_datetime_iso\": \"2024-12-31T23:59\",\n                                    \"creation_datetime_iso\": \"2024-12-09T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against the initial state\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\"create_calendar_event\"]",
+  "user_goal_prompt": "You are User A, Emily Rose. You've been emailing Sophia about the new year's event you're planning together, but you don't have the event on your own personal calendar yet, so you want to get it added. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-12-09T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

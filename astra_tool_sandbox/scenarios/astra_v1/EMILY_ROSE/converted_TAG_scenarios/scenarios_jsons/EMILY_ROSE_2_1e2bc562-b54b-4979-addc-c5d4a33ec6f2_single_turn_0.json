@@ -1,0 +1,131 @@
+{
+  "task_id": "1e2bc562-b54b-4979-addc-c5d4a33ec6f2",
+  "plot_id": 2,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 2, 2024 at 10:30 AM, Michael Thompson, Jenna Miles were involved. Meeting at the community center to finalize the details for Christmas charity event. Meeting summary sent via email to Michael and Jenna.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_2",
+    "contact",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Jenna has been so helpful you want to go all out for her birthday but need to be reminded when that is.",
+  "reference_time": "2024-12-11T16:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed Jenna Miles' birthday is the 14 February 1991.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_2_1e2bc562-b54b-4979-addc-c5d4a33ec6f2_single_turn_0",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Event Planning Meeting with Jenna",
+      "start_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T10:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Jenna Miles"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:00:00-07:00",
+      "notes": "Discuss details and logistics for the upcoming charity event."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Event Coordination Meeting with Michael",
+      "start_datetime_iso": "2024-12-02T10:30:00-08:00",
+      "end_datetime_iso": "2024-12-02T11:30:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Michael Thompson"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:15:00-07:00",
+      "notes": "Finalize event schedule and assign responsibilities."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Thompson",
+      "full_name": "Michael Thompson",
+      "phone_number": "+1 530-555-0130",
+      "alias": "Community Leader",
+      "email": "michael.thompson@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1985-06-30T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jenna",
+      "last_name": "Miles",
+      "full_name": "Jenna Miles",
+      "phone_number": "+1 530-555-0131",
+      "alias": "Decor Diva",
+      "email": "jenna.miles@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Planner",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When is Jenna's birthday?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when Jenna's birthday is. I should first figure out who Jenna is. I will check the user's Contacts for a Jenna. \n\nLooks like there is only one Jenna, Jenna Miles, so this must be who the user means. Next I will check Jenna's contact card for her birthday. It's 14 February 1991 so I'll tell the user.\n\nJenna's birthday is the 14 February 1991. I will tell the user this. ",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – The agent looks up contacts to find Jenna\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirms Jenna Miles was retrieved with her birthday field\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jenna Miles\",\n                                                \"partial\": False,\n                                            },\n                                            \"birthday\": {\n                                                \"value\": \"1991-02-14\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent tells the user Jenna's correct birthday (14 February 1991)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # We just need to see that the response mentions Feb 14, 1991 in some form\n                                    \"content\": [\n                                        (\n                                            \"February 14, 1991\",\n                                            \"14 February 1991\",\n                                            \"1991-02-14\",\n                                            \"February 14\",\n                                            \"Feb 14\",\n                                            \"14 February\",\n                                            \"14 Feb\",\n                                            \"14th of February\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirm Jenna and her birthday\n                (1, 2),  # Having retrieved Jenna's birthday → informing the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "is_read_time": "2024-12-11T16:20:00-08:00",
+  "user_goal_prompt": "You are User A, Emily Rose. Jenna has been so helpful you want to go all out for her birthday but need to be reminded when that is.  ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_calendar_events\", \"get_all_calendars\"]"
+}

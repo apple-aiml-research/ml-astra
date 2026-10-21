@@ -1,0 +1,158 @@
+{
+  "task_id": "78acf828-9cb8-4f3b-b47f-1df0e0769a15",
+  "plot_id": 18,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Evening, July 27, 2024 at 6 pm, Emily Rose, Neighbors were involved. Neighborhood gathering Meeting neighbors and engaging in community activities",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_18",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "calendar",
+    "messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are on your way to the neighbourhood gathering but you got stuck in traffic, so you want to send a text to Emily to tell her that you are on the way,",
+  "reference_time": "2024-07-27T18:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message \"Hey I'm on the way but caught in traffic, see you soon!\" is sent to Emily Rose. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_18_78acf828-9cb8-4f3b-b47f-1df0e0769a15_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_messages",
+    "send_message",
+    "search_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "emily.rose@example.com",
+      "content": "Hi Theo! Don't forget about the neighborhood gathering this Saturday at 6 pm. Hope to see you there!",
+      "creation_datetime_iso": "2024-07-24T10:00:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Hi Emily, looking forward to it! See you on Saturday.",
+      "creation_datetime_iso": "2024-07-24T10:15:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "emily.rose@example.com",
+      "content": "Great! Feel free to bring along any friends or family!",
+      "creation_datetime_iso": "2024-07-24T10:30:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Will do! My friend John might join as well.",
+      "creation_datetime_iso": "2024-07-24T11:00:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "emily.rose@example.com",
+      "content": "That sounds wonderful. The more, the merrier!",
+      "creation_datetime_iso": "2024-07-24T11:30:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Neighborhood Gathering",
+      "start_datetime_iso": "2024-07-27T18:00:00-07:00",
+      "end_datetime_iso": "2024-07-27T21:00:00-07:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "location": "128 Neighborly St, Orchard County, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-10T12:00:00-07:00",
+      "notes": "A friendly neighborhood gathering hosted by Emily Rose to engage with neighbors and participate in community activities."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "1234-5678-9109",
+      "alias": "Em",
+      "email": "emily.rose@example.com",
+      "relationship": "Neighbor",
+      "address": "128 Neighborly St, Orchard County, CA",
+      "company": "Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": false,
+      "birthday": "1985-06-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you let the organizer know \"I'm on the way but caught in traffic, see you soon!\"",
+  "reasoning": "The user wants me to send a text message. I need to find out who the organizer of the event is. I searched user's calendar, and the event \"Neighbourhood Gathering\", which is running from 18:00 to 21:00. The attendees contain Emily Rose, who is also the organizer. Next I need to check the user data, and I found messages between Emily Rose and Theo mentioning the neighbourhood gathering and Emily reminding Theo to come. It's likely that Emily Rose is the person that Theo wants to message.\n\nWith the user's confirmation, I will send the message \"Hey I'm on the way but caught in traffic, see you soon!\" to Emily Rose. ",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – The agent uses a read-only lookup tool (contacts or calendar) to figure out who to text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the correct calendar event was returned in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Neighborhood Gathering\",\n                                                \"partial\": False,\n                                            },\n                                            # original start time (optional but strengthens check)\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-27T18:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new text message is sent to Emily that contains the traffic/“on the way” note\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # At least Emily’s address (email or phone) must be among the participants.\n                                    \"participants_addresses\": [\n                                        [(\"emily.rose@example.com\", \"1234-5678-9109\")]\n                                    ],\n                                    \"content\": \"on the way\",  # key phrase\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-27T18:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You are on your way to the neighbourhood gathering but you got stuck in traffic, so you want to send a text to Emily to tell her that you are on the way, ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_messages\", \"send_message\", \"search_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-07-27T18:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

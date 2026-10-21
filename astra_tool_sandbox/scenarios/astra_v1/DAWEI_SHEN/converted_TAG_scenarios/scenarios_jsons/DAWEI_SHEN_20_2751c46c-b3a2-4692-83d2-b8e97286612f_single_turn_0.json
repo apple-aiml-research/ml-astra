@@ -1,0 +1,61 @@
+{
+  "scenario_name": "DAWEI_SHEN_20_2751c46c-b3a2-4692-83d2-b8e97286612f_single_turn_0",
+  "plot_id": 20,
+  "reference_time_str": "Today is Saturday, December 14, 2024 or 2024-12-14T17:40:00-08:00.",
+  "user_goal": "You are running late for your dinner with Lukas and Vick, so you'd like your assistant to help you calculate how much time left.",
+  "query": "How much time do I have left until my outing with Lukas and Vick? Reply in X hour and XX minutes format.",
+  "success_conditions": [
+    {
+      "input_text": "The assistant tells the user there are 1 hour and 20 minutes left until the outing.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "reasoning": "1. Look up the user’s calendar using search_calendar_events / get_all_calendars.\n2. Find the event named “Dinner with Lukas and Vick,” which starts at 7:00 PM today.\n3. Compare the current time (5:40 PM) with the event start time (7:00 PM) to get the remaining duration.\n4. Reply to the user in the requested “X hour and XX minutes” format: “1 hour and 20 minutes.”",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar information with the proper tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The returned calendar data contains the correct event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – The user is informed of the correct date and time\n                Milestone(\n                    snapshot_constraints=[\n                        # Check the time-of-day is mentioned (allow several possible phrasings)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"1 hour and 20 minutes\",\n                                            \"1 hr and 20 min\",\n                                            \"1 hour 20 minutes\",\n                                            \"1 hr 20 min\",\n                                            \"an hour and 20 minutes\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "reference_time": "2024-12-14T17:40:00-08:00",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_20",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "annotation_need_update": true,
+  "plot_summary": null,
+  "user_goal_prompt": "You are User A, Dawei Shen. You are running late for your dinner with Lukas and Vick, so you'd like your assistant to help you calculate how much time left. ",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-14T17:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "calendars": [
+    {
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "organizer_name": "Dawei Shen",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "calendar_name": "personal",
+      "meeting_url": null,
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant.",
+      "reminder_time_ahead": "1 day"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "task_id": "433c27b2-37ee-440d-af09-8b68301bf168",
+  "plot_id": 8,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 5, 2024 at 5 pm, self, Jess Zimmer were involved. Jess messages Dawei to ask about their upcoming holiday plans. Dawei replies, confirming their itinerary for the upcoming theater night. Jess shares a photo of the tickets on WhatsApp.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_8",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have received confirmation on the purchase of tickets from Jess for your theatre night with her.      You now want to put the event in you calendar officially",
+  "reference_time": "2024-12-05T18:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. An event called 'Theatre with Jess' with Jess Zimmer as an invitee is created for 19:00-21:00 on 7th of December 2024. "
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_8_433c27b2-37ee-440d-af09-8b68301bf168_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "sender_name": "Jess Zimmer",
+      "sender_address": "jess.zimmer@fintechstartup.com",
+      "creation_datetime_iso": "2024-12-05T17:05:00-08:00",
+      "content": "Here are the tickets for our theater night! 🎭",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Could you create an event with Jess called 'Theatre with Jess?' its on the 7th, is 2 hours long and starts at 19:00. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to create an event called 'Theatre with Jess' with Jess. They have given me the relevant info when it comes to the name and where it falls on the calendar. The Jess they're referring to seems to be Jess Zimmer as they are the only Jess in their contacts. I will now create an event called 'Theatre with Jess' with Jess Zimmer as an invitee for 19:00-21:00 on 7th of December 2024. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to look up “Jess” in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the contact returned includes Jess Zimmer\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jess Zimmer\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"jess.zimmer@fintechstartup.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Calendar event “Theatre with Jess” has been created for 7 Dec 2024 19:00-21:00 with Jess as attendee\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Theatre with Jess\",\n                                    \"start_datetime_iso\": \"2024-12-07T19:00\",\n                                    \"end_datetime_iso\": \"2024-12-07T21:00\",\n                                    \"attendees_names\": [[\"Jess Zimmer\"]],\n                                    \"creation_datetime_iso\": \"2024-12-05T18:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_rouge_l_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirmation of Jess\n                (1, 2),  # Contact confirmed → calendar event created\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You have received confirmation on the purchase of tickets from Jess for your theatre night with her.     You now want to put the event in you calendar officially ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-05T18:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,90 @@
+{
+  "task_id": "373036fe-cd10-40e9-8f04-43e3aac6715f",
+  "plot_id": 12,
+  "plot_summary": "Theo Appleseed is the protagonist. On Thursday Evening, July 25, 2024 at 8pm, John Quinn were involved. John messages Theo to chat and plan an upcoming hiking trip for July 27, 2024 Itinerary, Locations and schedules are decided. A calander invite was sent out for the hiking trip with all the finalized information.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_12",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what John has said as you are messaging him but need to be hands-free at the moment.",
+  "reference_time": "2024-07-25T20:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message received from John Quinn on the 25th July 2024 at 20:04 saying 'How about we start early? Meet at 6 AM?' is read out to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_12_373036fe-cd10-40e9-8f04-43e3aac6715f_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "How about we start early? Meet at 6 AM?",
+      "creation_datetime_iso": "2024-07-25T20:04:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "moderate",
+  "query": "Read out my latest message. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "reasoning": "Right so, the user wants their latest message read out. I need to see, among all the user's received texts, which one came in most recently, so which one came in closest to the current time of 20:05. From their message log I can see that the last person they were messaging was John Quinn. I can then read out John Quinn's latest message received at 20:04 on the 25th July 2024 which says 'How about we start early? Meet at 6 AM?'.",
+  "milestones": "[\n                # Milestone 0 – The agent must invoke a tool to retrieve the latest messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the tool’s output contained John Quinn’s latest message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"john.quinn@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"How about we start early? Meet at 6 AM?\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent read the message out to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"How about we start early\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know what John has said as you are messaging him but need to be hands-free at the moment. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-25T20:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,95 @@
+{
+  "task_id": "e2779080-580c-4550-8034-2427f18c56de",
+  "plot_id": 5,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 3, 2024 at 7 am, self, Paul Harper were involved. Paul calls Dawei to check if he can watch his cat for the weekend, as Paul is heading out of town. Dawei agrees and notes the dates. Dawei adds the task to his calendar and sets a reminder to pick up Paul's house key on Thursday.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_5",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You set a calendar event to remind you to pick up some cat food for Paul's cat on the weekend on 7 after work this Thursday",
+  "reference_time": "2024-12-03T07:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A calendar event called 'Pick up cat food' is created for Thursday December 5th 2024",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_5_e2779080-580c-4550-8034-2427f18c56de_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "create_calendar_event",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cat Sitting for Paul",
+      "start_datetime_iso": "2024-12-06T00:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T23:59:59-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Paul Harper's House, 125 Neighbor St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T07:05:00-08:00",
+      "notes": "Watch Paul's cat over the weekend while he is out of town."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Set up an event to remind me to grab cat food on Thursday at 7 after work. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok, the user wants to set up an event to be reminded to grab cat food on Thursday after work at 7. As it is a reminder to get cat food, and based on the user's input, I will name the event \"Pick up cat food\". The user might be busy with work on Thursday so I will schedule it towards the end of their work day. 7pm seems to fit into the calendar without causing trouble. As it is to help remind the user I will set it for the default duration, that is, 30 minutes. Then, I will create the event 'Pick up cat food' on Thursday December 5th at 19:00 with a default duration of 30 minutes. ",
+  "milestones": "[\n                # Milestone 0 – Verify a new calendar event for picking up cat food on Thurs Dec 5 2024 was added\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Event name should reference cat food\n                                    \"calendar_event_name\": \"cat food\",\n                                    \"start_datetime_iso\": \"2024-12-05T19:00:00\",\n                                    # Dawei should appear as an attendee (extras allowed)\n                                    \"attendees_names\": [[\"Dawei Shen\"]],\n                                    \"creation_datetime_iso\": \"2024-12-03T07:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against the initial calendar state\n                        )\n                    ],\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You set a calendar event to remind you to pick up some cat food for Paul's cat on the weekend on 7 after work this Thursday ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"create_calendar_event\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-03T07:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

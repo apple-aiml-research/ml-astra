@@ -1,0 +1,81 @@
+{
+  "task_id": "ba499c2c-ae8d-4cfa-ab26-2b25d87baf85",
+  "plot_id": 22,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo checked his calendar and found out his calendar is fully packed from 8 am to 5pm today. His only available between 3pm to 4pm. He also has a dentist appointment at 1pm for an hour. The rest of his schedule is filled with work meetings for today.\n Generate calendar_events for Theo for July 29, 2024",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_22",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to delete your event called Dentist Appointment\" at 13:00pm on 29 July 2024 due to your schedule being packed.",
+  "reference_time": "2024-07-29T11:00:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The event \"Dentist Appointment\" at 13:00 on 29th July 2024 is removed from the calendar."
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_22_ba499c2c-ae8d-4cfa-ab26-2b25d87baf85_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "remove_calendar_event",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dentist Appointment",
+      "start_datetime_iso": "2024-07-29T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "attendees_names": [
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dental Clinic",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Routine dental check-up and cleaning."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "Remove the Dentist event",
+  "reasoning": "The user needs to delete a specific calendar event. The user has presented this event as 'Dentist' event. I see the user's calendar has an event named 'Dentist Appointment' at 13:00-14:00 today 29 July 2024. From here I will remove the event from the calendar and confirm to the user.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events to locate the dentist appointment\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the returned search results include the correct dentist event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dentist Appointment\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-29T13:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify the dentist appointment has been removed from the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dentist Appointment\",\n                                    \"start_datetime_iso\": \"2024-07-29T13:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T14:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Must locate the event before confirming its presence\n                (1, 2),  # After confirming the correct event, verify it was removed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",   # primary way to delete the event\n    \"modify_calendar_event\",   # fallback if agent opts to cancel by modification\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to delete your event called Dentist Appointment\" at 13:00pm on 29 July 2024 due to your schedule being packed. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"remove_calendar_event\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-29T11:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

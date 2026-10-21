@@ -1,0 +1,106 @@
+{
+  "task_id": "c3c51b11-3a19-4983-ac75-172d4c7de762",
+  "plot_id": 17,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 11, 2024 at 8 pm, self, Jess Zimmer were involved. Dawei receives a WhatsApp message from Jess, sharing a link to a new play they might enjoy. She asks if they can plan to see it. Dawei books tickets online and sends Jess the confirmation.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_17",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_moderate",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to pull up your most recent message from Jess on WhatsApp and respond to it.",
+  "reference_time": "2024-12-11T20:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The most recent message from Jess Zimmer on WhatsApp, which was received on December 11 2024 at 20:00 is presented to the user. ",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. A message is drafted saying \" Hey Jess, just bought us tickets for the play. I emailed the confirmation to you.\" And sent to Jess Zimmer on WhatsApp.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_17_c3c51b11-3a19-4983-ac75-172d4c7de762_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-123-4567-8902"
+      ],
+      "sender_name": "Jess Zimmer",
+      "sender_address": "+1 555-123-4567-8902",
+      "creation_datetime_iso": "2024-12-11T20:00:00-08:00",
+      "content": "Hey Dawei, check out this play I found! Looks fascinating and right up our alley. How about we plan to see it next weekend? Here’s the link: [Play Link]",
+      "status": "read"
+    }
+  ],
+  "emails": [
+    {
+      "subject": "Ticket Confirmation for Our Play Date",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-11T20:15:00-08:00",
+      "body": "Hi Jess, I've booked the tickets for us. Here's the confirmation [Ticket Confirmation PDF]. Looking forward to it!",
+      "attachments": [
+        "TicketConfirmation.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Show me the most recent message from Jess on WhatsApp and reply to it saying Hey Jess, just bought us tickets for the play. I emailed the confirmation to you.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants me to show them the most recent message from Jess on WhatsApp. I look up WhatsApp messages for the contact Jess Zimmer by calling the appropriate WhatsApp-read tool. The most recent message was received at 20:00 on 11 December 2024 and says something like, “Hey Dawei, here’s the play I found …”. I present that message to the user. Next, the user wants to reply, “Hey Jess, just bought us tickets for the play. I emailed the confirmation to you.” I draft that exact reply, confirm, and then send it to Jess Zimmer on WhatsApp.",
+  "reference_time_str": "Today is Wednesday, December 11, 2024 or 2024-12-11T20:15:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up WhatsApp messages (must call a WhatsApp-read tool)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_whatsapp_messages\",\n                                        \"search_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved result contains Jess Zimmer’s message with the play link\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_name\": {\n                                                \"value\": \"Jess Zimmer\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-11T20:00:00\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A WhatsApp reply is actually sent out\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Jess Zimmer\",\n                                    \"content\": \"just bought us tickets\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-11T20:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # retrieved the message\n            ]",
+  "tool_allow_list": [
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to pull up your most recent message from Jess on WhatsApp and respond to it. ",
+  "tool_allow_list_str": "[\"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-11T20:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

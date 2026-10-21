@@ -1,0 +1,104 @@
+{
+  "task_id": "b0869e27-e468-45dc-86f6-f057b21aea94",
+  "plot_id": 3,
+  "plot_summary": "Emily Rose is the protagonist. On Tuesday, December 3, 2024 at 1:00 PM, Theo Appleseed were involved. Discussion with Theo about logistics for community clean-up planned for the weekend and schedule the event. WhatsApp chat history with Theo detailing responsibilities for the clean-up event. Create a calendar event for weekend community clean-up event.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_3",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "calendar",
+    "whatsapp_messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're not sure if you scheduled the clean up event for the right date, you need to check.",
+  "reference_time": "2024-12-03T16:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Date of Community Clean-up scheduled for December 07, 2024 09:00-12:00 is provided to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_3_b0869e27-e468-45dc-86f6-f057b21aea94_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ],
+      "sender_name": "Emily Rose",
+      "sender_address": "+1 530-555-0123",
+      "creation_datetime_iso": "2024-12-03T13:00:00-08:00",
+      "content": "Hi Theo, just checking in about the community clean-up this weekend. Do you have the list of supplies we need?",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Community Clean-Up",
+      "start_datetime_iso": "2024-12-07T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T12:00:00-08:00",
+      "attendees_names": [
+        "Community Volunteers",
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "location": "Orchard Park",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T14:00:00-08:00",
+      "notes": "Organizing and executing the community clean-up event. Volunteers should bring gloves, trash bags, and rakes."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What date is the event I talked to Theo about scheduled for?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user is asking about the date of an event. \nFirst, I should determine which event they are referring to. The user has mentioned a conversation with Theo. Looking at the user's contacts, I can see only one Theo, Theo Appleseed. I should find this conversation.\nI have found a conversation with Theo Appleseed. I can see that the user has mentioned a community clean-up event on the weekend in a message sent December 03 2024, 13:00.\nI should search for this in the user's calendar.\nI see a matching event, Community Clean-up scheduled for December 07, 2024 09:00-12:00.\nI should inform the user of these dates.",
+  "milestones": "[\n                # Milestone 0 –  The agent looks up the calendar to find the clean-up event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 –  The retrieved calendar data contains the Community Clean-Up on 2024-12-07\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Community Clean-Up\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-07T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 –  The agent tells the user the correct date\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"December 7\",\n                                            \"December 07\",\n                                            \"Dec 7\",\n                                            \"Dec. 7\",\n                                            \"7 December\",\n                                            \"07 December\",\n                                            \"2024-12-07\",\n                                            \"2024-12-07T09:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar lookup → verify correct event found\n                (1, 2),  # event found → inform user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You're not sure if you scheduled the clean up event for the right date, you need to check. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-12-03T16:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

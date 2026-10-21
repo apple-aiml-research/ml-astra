@@ -1,0 +1,79 @@
+{
+  "task_id": "5aeb7cb5-7b3f-419f-aea3-803e39f55de2",
+  "plot_id": 16,
+  "plot_summary": "Emily Rose is the protagonist. On Thursday, December 12, 2024 at 5:00 PM, Mia Campbell were involved. Discussion with Mia about collaboration ideas between school and community. Presentation document sent to school board for approval.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_16",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to Orchard School staff member's email to say thanks.",
+  "reference_time": "2024-12-12T17:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An email reply is sent to the email mia.campbell@students.orchardschools.org\nRe: Collaboration Ideas for School and Community Engagement by saying, Yeah, sure thanks. Best, Emily Rose, Event Guru. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_16_5aeb7cb5-7b3f-419f-aea3-803e39f55de2_single_turn_0",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Collaboration Ideas for School and Community Engagement",
+      "sender_address": "mia.campbell@students.orchardschools.org",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T17:30:00-08:00",
+      "body": "Hello Emily,\n\nThank you for sending over the document. The ideas look promising, and I believe they will greatly benefit our students. I will forward this to the school board and get back to you with their feedback. Looking forward to making this happen!\n\nBest,\nMia Campbell",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a reply email to Orchard School staff member by saying, Yeah, sure thanks. Best, Emily Rose, Event Guru. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "User Emily Rose has given me all i need to prepare and send an email reply. I shall draft it first and then show it to user for approval. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up existing email thread\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved email is the one from Mia with the expected subject\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Collaboration Ideas for School and Community Engagement\",\n                                                \"partial\": True,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"mia.campbell@students.orchardschools.org\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A reply email has been sent to Mia\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"mia.campbell@students.orchardschools.org\"]\n                                    ],\n                                    \"subject\": \"Collaboration Ideas for School and Community Engagement\",\n                                    \"status\": \"sent\",\n                                    \"body\": \"Yeah, sure thanks.\",\n                                    \"creation_datetime_iso\": \"2024-12-12T17:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"subject\": column_contains_similarity,  # allow \"Re: ...\" prefix\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,  # look for key phrase,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email lookup → verify correct email obtained\n                (1, 2),  # Correct email obtained → reply sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to reply to Orchard School staff member's email to say thanks. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-12T17:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

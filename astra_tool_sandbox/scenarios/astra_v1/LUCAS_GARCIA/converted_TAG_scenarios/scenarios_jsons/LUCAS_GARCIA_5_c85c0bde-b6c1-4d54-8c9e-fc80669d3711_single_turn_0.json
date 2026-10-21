@@ -1,0 +1,96 @@
+{
+  "task_id": "c85c0bde-b6c1-4d54-8c9e-fc80669d3711",
+  "plot_id": 5,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 3, 2024 at 12 pm, Emmanuel Gonzales were involved. Lucas has lunch with Emmanuel to catch up and reminisce about their high school days. Lucas receives a call from Emmanuel during lunch to confirm the meeting location. Lucas follow up by a calendar invite.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_5",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Emmanuel's old ACL injury is acting up so he won't be able to make the lunch.   So you want to cancel it.",
+  "reference_time": "2024-12-03T11:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Lunch with Emmanuel from 12:00-13:30 on the 3 December 2024 is deleted. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_5_c85c0bde-b6c1-4d54-8c9e-fc80669d3711_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Lunch with Emmanuel",
+      "start_datetime_iso": "2024-12-03T12:00:00-08:00",
+      "end_datetime_iso": "2024-12-03T13:30:00-08:00",
+      "attendees_names": [
+        "Emmanuel Gonzales",
+        "Lucas Garcia"
+      ],
+      "location": "Orchard County Cafe",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T09:00:00-08:00",
+      "notes": "Catch up and reminisce about high school days with Emmanuel Gonzales."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Emmanuel",
+      "last_name": "Gonzales",
+      "full_name": "Emmanuel Gonzales",
+      "phone_number": "+1 12345-6789-1000-1357",
+      "alias": "High School Friend",
+      "email": "emmanuel.gonzales@example.com",
+      "relationship": "High School friend",
+      "address": "78 Old School Rd, Orchard County, CA, USA",
+      "company": "Orchard County High School",
+      "job_title": "Football Coach",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Delete the event in one hour. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to delete the event in one hour. I should figure out what time that will be. It is currently 11:05 so in one hour it will be before 12:05. \nNext I will check the user's Calendar for an event at 12:00. Looks like there is only one, the Lunch with Emmanuel from 12:00-13:30 on the 3 December 2024. This is the only event so this must be the one the user meant. \nI will delete it and let the user know. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events to identify the one that needs deletion\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the lunch event (Dec 3 2024 12:00) was surfaced from the previous tool call\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Lunch with Emmanuel\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-03T12:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – Event is removed from the Calendar database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Lunch with Emmanuel\",\n                                    \"start_datetime_iso\": \"2024-12-03T12:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"remove_calendar_event\",   # direct deletion\n    \"modify_calendar_event\",   # alternate way to cancel\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. Emmanuel's old ACL injury is acting up so he won't be able to make the lunch.  So you want to cancel it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-12-03T11:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

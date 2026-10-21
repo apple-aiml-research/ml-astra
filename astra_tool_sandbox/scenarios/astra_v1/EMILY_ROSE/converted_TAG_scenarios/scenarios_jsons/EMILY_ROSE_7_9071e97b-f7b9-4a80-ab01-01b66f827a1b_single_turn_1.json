@@ -1,0 +1,91 @@
+{
+  "task_id": "9071e97b-f7b9-4a80-ab01-01b66f827a1b",
+  "plot_id": 7,
+  "plot_summary": "Emily Rose is the protagonist. On Thursday, December 5, 2024 at 4:00 PM, Oliver Green were involved. Meeting Oliver at his cafe to discuss providing refreshments for the upcoming community gathering. Send out calendar invite for the upcoming gathering event. Confirmed order via message; digital receipt saved. Send out calendar invite for the upcoming gathering event.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_7",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to Oliver's message to tell him that it was a pleasure",
+  "reference_time": "2024-12-05T16:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A new text message is sent to Oliver Green saying \"It was a pleasure\"",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_7_9071e97b-f7b9-4a80-ab01-01b66f827a1b_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Oliver Green",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0128"
+      ],
+      "sender_address": "+1 530-555-0128",
+      "content": "Perfect! Thanks again, Emily. Excited for the gathering!",
+      "creation_datetime_iso": "2024-12-05T16:35:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Oliver",
+      "last_name": "Green",
+      "full_name": "Oliver Green",
+      "phone_number": "+1 530-555-0128",
+      "alias": "Cafe King",
+      "email": "oliver.green@dailybrewcafe.com",
+      "relationship": "Friend",
+      "address": "101 Main St, Orchard County, CA 95662, USA",
+      "company": "Daily Brew Cafe",
+      "job_title": "Owner",
+      "is_self": false,
+      "birthday": "1990-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "Reply to my last message with the text \"It was a pleasure\"",
+  "reasoning": "The user wants me to reply to their last message with the text  \"It was a pleasure\".  First I need to find the most recent message received by the user. Now that I have found that I can draft a reply to the most recent message and ask the user if it is ready to be sent",
+  "milestones": "[\n                # Milestone 0 – The agent tries to locate the relevant conversation or message.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new outgoing message to Oliver Green with the correct text was sent.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 530-555-0123\",\n                                                \"emily.rose@orchardcommunity.org\",\n                                            ),  # Emily Rose\n                                            (\n                                                \"+1 530-555-0128\",\n                                                \"oliver.green@dailybrewcafe.com\",\n                                            ),  # Oliver Green\n                                        ]\n                                    ],\n                                    \"content\": \"It was a pleasure\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-05T16:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieve messages → send reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to reply to Oliver's message to tell him that it was a pleasure ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-05T16:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

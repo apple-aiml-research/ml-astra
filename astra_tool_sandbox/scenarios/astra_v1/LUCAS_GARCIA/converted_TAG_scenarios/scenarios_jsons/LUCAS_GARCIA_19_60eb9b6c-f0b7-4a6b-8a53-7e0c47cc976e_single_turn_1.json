@@ -1,0 +1,100 @@
+{
+  "task_id": "60eb9b6c-f0b7-4a6b-8a53-7e0c47cc976e",
+  "plot_id": 19,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 11, 2024 at 7 am, David Turner were involved. Lucas has an early morning surf session with his surfing buddy, David. The wave was perfect. They both were very excited and enjoyed it. Lucas captures moments of the surfing activities, sharing them on iMessage. Lucas messages David to coordinate next surfing sesssion.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_19",
+    "messaging",
+    "whatsapp_messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want a yes or no answer to whether your friend has replied back about your plan for next weekend, so you can block off time for it.",
+  "reference_time": "2024-12-12T15:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is told no - David Turner has not replied since the user asked him at 07:50 on 2024-12-11 to confirm a time for next weekend. His last message, at 07:45, said he would confirm back soon and nothing has arrived since.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_19_60eb9b6c-f0b7-4a6b-8a53-7e0c47cc976e_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "Coach Lucas",
+      "sender_address": "+1 12345-6789-1000-1234",
+      "creation_datetime_iso": "2024-12-11T07:50:00-08:00",
+      "content": "Looking forward to it! Just let me know when it's confirmed.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Has my friend replied back about our plan for next weekend? Yes or No.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants a yes or no answer about whether their friend has replied about the plan for next weekend. First I need to work out which plan and which friend. \nSearching the user's messages for the weekend plan, the only thread about it is on WhatsApp with David Turner, where at 07:40 on 2024-12-11 the user wrote about planning their next session for next weekend. \nDavid answered at 07:45 saying early morning should be perfect and that he would confirm back soon, and the user then asked at 07:50 to be told once it was confirmed. \nThere is nothing from David after that, so he has not replied back and the answer is no.",
+  "milestones": "[\n                # Milestone 0 – agent looks up the WhatsApp thread about the weekend plan\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – retrieved WhatsApp thread shows the last message from Coach Lucas\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_name\": {\n                                                \"value\": \"Coach Lucas\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Looking forward to it! Just let me know when it's confirmed.\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – agent tells the user that David has not replied yet\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"no\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # WhatsApp lookup -> the unanswered message in the result\n                (1, 2),  # -> the yes or no answer\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_whatsapp_messages\",\n    \"get_all_whatsapp_messages\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want a yes or no answer to whether your friend has replied back about your plan for next weekend, so you can block off time for it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\"]",
+  "is_read_time": "2024-12-12T15:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

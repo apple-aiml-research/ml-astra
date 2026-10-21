@@ -1,0 +1,78 @@
+{
+  "task_id": "c613949f-520d-4506-849c-dda4aad6ca33",
+  "plot_id": 15,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 11, 2024 at 1:00 PM, Elaine Perkins were involved. Taste testing session for community event menu with Elaine. Menus finalized; digital tasting notes saved.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_15",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You father expressed some interest in helping out with the menu, you decide to give him a call after your tasting session.",
+  "reference_time": "2024-12-11T14:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Ben Rose's phone number is given to the user as +1 530-555-0125.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_15_c613949f-520d-4506-849c-dda4aad6ca33_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ben",
+      "last_name": "Rose",
+      "full_name": "Ben Rose",
+      "phone_number": "+1 530-555-0125",
+      "alias": "Green Thumb Dad",
+      "email": "ben.rose@gardensplus.com",
+      "relationship": "Father",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Gardens Plus",
+      "job_title": "Landscape Designer",
+      "is_self": false,
+      "birthday": "1965-03-12T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Give me my father's phone number.",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking for a phone number.\nFirst, I should identify the queried contact. Looking through I cannot see anyone named father. I should also check contact tags. I see that Ben Rose is tagged as father.\nBen Rose's phone number is saved as +1 530-555-0125.\nI should inform the user. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up contacts (explicitly or as fallback) to find the father’s number\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Agent tells the user Ben Rose’s phone number\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"530-555-0125\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity  # phone number must appear\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup precedes informing the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You father expressed some interest in helping out with the menu, you decide to give him a call after your tasting session. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-12-11T14:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

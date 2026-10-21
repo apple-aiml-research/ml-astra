@@ -1,0 +1,115 @@
+{
+  "task_id": "581d637d-ed7b-42af-b66d-8ce984c3b3fb",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "whatsapp_messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You checked out the link that Charles sent you about the props website, you want to send him a message thanking him and telling him you ordered a couple pieces.",
+  "reference_time": "2024-12-12T19:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The message \"Thanks for that Charles! Ordered us a couple bits.\" is sent to Charles Wilde on WhatsApp.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_581d637d-ed7b-42af-b66d-8ce984c3b3fb_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-12T19:00:00-08:00",
+      "content": "Hey Dawei, I found a great supplier for the stage props we need. Here's the link: [PropsSupplier.com]",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-12T19:02:00-08:00",
+      "content": "Thanks Charles! Checking it out now.",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-12T19:05:00-08:00",
+      "content": "Looks good, I'll place the order.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a reply to Charles on WhatsApp saying \"Thanks for that Charles! Ordered us a couple bits.\".",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a WhatsApp reply to Charles (contact: +1 555-234-5678-9012 / charles.wilde@orchardtheater.com) saying \"Thanks for that Charles! Ordered us a couple bits.\". I will locate that chat and send the message.",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T19:25:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – a new WhatsApp message to Charles is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # At least Charles’ number must be among the participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"charles.wilde@orchardtheater.com\",\n                                                \"+1 555-234-5678-9012\",\n                                            )\n                                        ]\n                                    ],\n                                    # Body should clearly thank Charles / mention ordering\n                                    \"content\": \"Thanks for that Charles! Ordered us a couple bits.\",\n                                    \"creation_datetime_iso\": \"2024-12-12T19:25:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list": [
+    "send_whatsapp_message",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You checked out the link that Charles sent you about the props website, you want to send him a message thanking him and telling him you ordered a couple pieces. ",
+  "tool_allow_list_str": "[\"send_whatsapp_message\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T19:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

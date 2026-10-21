@@ -1,0 +1,436 @@
+{
+    "1": [
+        {
+            "calendar_name": "Work",
+            "title": "Morning Personal Training Session with Nathan",
+            "description": "A personal training session with triathlon buddy Nathan to work on strength and endurance.",
+            "location": "Orchard County Fitness Center",
+            "start_time": "2024-12-02T09:00:00",
+            "end_time": "2024-12-02T10:00:00",
+            "invitees": [
+                "Nathan Lewis"
+            ],
+            "reminder": "reminder_time_ahead: 30 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-11-28T08:00:00"
+        },
+        {
+            "calendar_name": "Work",
+            "title": "Online Fitness Class with Megan",
+            "description": "Conduct an online fitness class focusing on full-body workout for student Megan.",
+            "location": "Online",
+            "start_time": "2024-12-02T11:00:00",
+            "end_time": "2024-12-02T12:00:00",
+            "invitees": [
+                "Megan Johnson"
+            ],
+            "reminder": "reminder_time_ahead: 15 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "https://fitness.zoom.us/j/123456789",
+            "creation_time": "2024-11-28T08:30:00"
+        },
+        {
+            "calendar_name": "Work",
+            "title": "Lunch Meeting with Dietitian Sarah",
+            "description": "Discuss new nutrition plans and healthy meal ideas to recommend to clients.",
+            "location": "Healthy Choices Cafe, Orchard County, CA",
+            "start_time": "2024-12-02T13:00:00",
+            "end_time": "2024-12-02T14:00:00",
+            "invitees": [
+                "Sarah Lopez"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-11-28T09:00:00"
+        },
+        {
+            "calendar_name": "Work",
+            "title": "Afternoon Group Fitness Class",
+            "description": "Lead a group fitness class focusing on circuit training.",
+            "location": "Orchard County Fitness Center",
+            "start_time": "2024-12-02T15:00:00",
+            "end_time": "2024-12-02T16:00:00",
+            "invitees": [
+                "Jessica Lin",
+                "Olivia Clark",
+                "Alex Martin",
+                "Theo Appleseed"
+            ],
+            "reminder": "reminder_time_ahead: 45 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-11-28T09:30:00"
+        }
+    ],
+    "2": [
+        {
+            "calendar_name": "Work",
+            "title": "Meeting with Jessica: Joint Fitness Workshop Planning",
+            "description": "Discussing the details and schedule of the upcoming joint fitness workshop at Orchard County Fitness Center.",
+            "location": "Orchard County Fitness Center, Meeting Room",
+            "start_time": "2024-12-02T10:00:00",
+            "end_time": "2024-12-02T11:00:00",
+            "invitees": [
+                "Jessica Lin"
+            ],
+            "reminder": "reminder_time_ahead: 30 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-11-28T09:15:00"
+        }
+    ],
+    "3": [
+        {
+            "calendar_name": "Work",
+            "title": "Evening Workout Session with Theo",
+            "description": "Regular evening workout session focusing on strength and conditioning.",
+            "location": "Orchard County Fitness Center",
+            "start_time": "2024-12-02T18:00:00",
+            "end_time": "2024-12-02T19:00:00",
+            "invitees": [
+                "Theo Appleseed"
+            ],
+            "reminder": "reminder_time_ahead: 30 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-11-28T10:30:00"
+        },
+        {
+            "calendar_name": "Work",
+            "title": "Fitness Planning for Next 3 Months",
+            "description": "Discussion and planning with Theo regarding fitness goals and session scheduling for the upcoming three months.",
+            "location": "Cafe at Orchard County Fitness Center",
+            "start_time": "2024-12-02T19:00:00",
+            "end_time": "2024-12-02T19:30:00",
+            "invitees": [
+                "Theo Appleseed"
+            ],
+            "reminder": "reminder_time_ahead: 15 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-11-28T10:45:00"
+        }
+    ],
+    "4": [
+        {
+            "calendar_name": "work",
+            "title": "Triathlon Training Session",
+            "description": "Lucas leads a triathlon training session for the group, focusing on improving performance and endurance.",
+            "location": "Orchard County Fitness Center",
+            "start_time": "2024-12-03T07:00:00",
+            "end_time": "2024-12-03T08:30:00",
+            "invitees": [
+                "Nathan Lewis",
+                "Jason Baker"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-02T19:30:00"
+        }
+    ],
+    "5": [
+        {
+            "calendar_name": "Personal",
+            "title": "Lunch with Emmanuel",
+            "description": "Catch up and reminisce about high school days with Emmanuel Gonzales.",
+            "location": "Orchard County Cafe",
+            "start_time": "2024-12-03T12:00:00",
+            "end_time": "2024-12-03T13:30:00",
+            "invitees": [
+                "Emmanuel Gonzales"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-03T09:00:00"
+        }
+    ],
+    "6": [
+        {
+            "calendar_name": "Personal",
+            "title": "Beer Tasting Event with Carol",
+            "description": "Attending a beer tasting event with Carol at a new local brewery to explore new craft beers.",
+            "location": "New Local Brewery, Orchard County, CA",
+            "start_time": "2024-12-04T17:00:00",
+            "end_time": "2024-12-04T19:00:00",
+            "invitees": [
+                "Carol Reyes"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-02T12:00:00"
+        }
+    ],
+    "7": [
+        {
+            "calendar_name": "Work",
+            "title": "Personalized Fitness Session with Sophie and Friends",
+            "description": "Lucas conducts a personalized fitness session for Sophie Bennett and her friends at the gym.",
+            "location": "Orchard County Fitness Center",
+            "start_time": "2024-12-05T09:00:00",
+            "end_time": "2024-12-05T10:00:00",
+            "invitees": [
+                "Sophie Bennett"
+            ],
+            "reminder": "reminder_time_ahead: 30 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-02T15:00:00"
+        }
+    ],
+    "9": [
+        {
+            "calendar_name": "Work",
+            "title": "Dietary Plan Consultation with Sarah Lopez",
+            "description": "Consultation with dietitian Sarah Lopez to discuss dietary plans and recommendations for gym clients.",
+            "location": "Orchard County Fitness Center, Meeting Room",
+            "start_time": "2024-12-06T11:00:00",
+            "end_time": "2024-12-06T12:00:00",
+            "invitees": [
+                "Sarah Lopez"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-03T14:00:00"
+        }
+    ],
+    "10": [
+        {
+            "calendar_name": "Personal",
+            "title": "Surfing Session with David",
+            "description": "Lucas and David meet at the local beach for a surfing session.",
+            "location": "Local Beach, Orchard County, CA",
+            "start_time": "2024-12-06T18:00:00",
+            "end_time": "2024-12-06T19:30:00",
+            "invitees": [
+                "David Turner"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-05T16:00:00"
+        }
+    ],
+    "11": [
+        {
+            "calendar_name": "Work",
+            "title": "Motivational Talk at Local Gym",
+            "description": "Lucas Garcia provides a motivational talk aimed at inspiring gym members, focusing on overcoming challenges and achieving fitness goals.",
+            "location": "Orchard County Fitness Center",
+            "start_time": "2024-12-07T09:00:00",
+            "end_time": "2024-12-07T10:00:00",
+            "invitees": [
+                "Olivia Clark"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-03T09:00:00"
+        }
+    ],
+    "12": [
+        {
+            "calendar_name": "Work",
+            "title": "Triathlon Strategy Meeting with Brian and Team",
+            "description": "Lucas attends a strategy meeting with triathlon coach Brian Carter and the team to discuss upcoming triathlon plans and strategies.",
+            "location": "Orchard County Fitness Center, Conference Room",
+            "start_time": "2024-12-07T15:00:00",
+            "end_time": "2024-12-07T16:00:00",
+            "invitees": [
+                "Brian Carter"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-03T10:00:00"
+        }
+    ],
+    "13": [
+        {
+            "calendar_name": "Work",
+            "title": "Online Fitness Class with Megan and Participants",
+            "description": "Lucas hosts an online fitness class for Megan Johnson and other participants. The session will be recorded and uploaded to YouTube for feedback.",
+            "location": "Online",
+            "start_time": "2024-12-08T10:00:00",
+            "end_time": "2024-12-08T11:00:00",
+            "invitees": [
+                "Megan Johnson",
+                "Alex Martin",
+                "Olivia Clark",
+                "Jessica Lin"
+            ],
+            "reminder": "reminder_time_ahead: 15 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "https://fitness.zoom.us/j/987654321",
+            "creation_time": "2024-12-06T12:00:00"
+        }
+    ],
+    "15": [
+        {
+            "calendar_name": "Work",
+            "title": "Team Meeting for Gym Event Planning",
+            "description": "Lucas will discuss the final plans for the upcoming gym event with his team.",
+            "location": "Orchard County Fitness Center, Conference Room",
+            "start_time": "2024-12-13T14:00:00",
+            "end_time": "2024-12-13T15:30:00",
+            "invitees": [
+                "Jessica Lin",
+                "Theo Appleseed"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-09T08:05:00"
+        },
+        {
+            "calendar_name": "Personal",
+            "title": "Dinner with Family",
+            "description": "Lucas will join his family for a relaxing dinner and some quality time.",
+            "location": "Family Home, Orchard County, CA",
+            "start_time": "2024-12-14T18:00:00",
+            "end_time": "2024-12-14T20:00:00",
+            "invitees": [
+                "Maria Garcia",
+                "Juan Garcia"
+            ],
+            "reminder": "reminder_time_ahead: 2 hours",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-09T08:10:00"
+        },
+        {
+            "calendar_name": "Work",
+            "title": "Client Progress Review Meeting",
+            "description": "Lucas will meet with Coach Brian to review client progress and strategies for the upcoming quarter.",
+            "location": "Orchard County Fitness Center, Meeting Room",
+            "start_time": "2024-12-16T10:00:00",
+            "end_time": "2024-12-16T11:30:00",
+            "invitees": [
+                "Brian Carter"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-09T08:15:00"
+        },
+        {
+            "calendar_name": "Work",
+            "title": "Online Fitness Class Development",
+            "description": "Lucas will work on developing new content and structure for his online fitness classes.",
+            "location": "Orchard County Fitness Center, Office",
+            "start_time": "2024-12-15T09:00:00",
+            "end_time": "2024-12-15T12:00:00",
+            "invitees": [],
+            "reminder": "reminder_time_ahead: 30 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-09T08:20:00"
+        },
+        {
+            "calendar_name": "Personal",
+            "title": "Meditation and Relaxation Hour",
+            "description": "Lucas dedicates an hour for meditation and relaxation.",
+            "location": "Home",
+            "start_time": "2024-12-15T06:00:00",
+            "end_time": "2024-12-15T07:00:00",
+            "invitees": [],
+            "reminder": "reminder_time_ahead: 15 minutes",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-09T08:25:00"
+        }
+    ],
+    "17": [
+        {
+            "calendar_name": "Work",
+            "title": "Joint Workout Session for New Gym Members",
+            "description": "Lucas and Jessica conduct a joint workout session for new gym members to integrate them into the gym community and establish a welcoming environment.",
+            "location": "Orchard County Fitness Center",
+            "start_time": "2024-12-10T09:00:00",
+            "end_time": "2024-12-10T10:30:00",
+            "invitees": [
+                "Jessica Lin"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-07T11:00:00"
+        }
+    ],
+    "18": [
+        {
+            "calendar_name": "Personal",
+            "title": "Brewery Adventure with Carol",
+            "description": "Lucas and Carol will explore another local brewery for a new beer tasting adventure, enjoying the flavors and documenting their experience.",
+            "location": "New Local Brewery, Orchard County, CA",
+            "start_time": "2024-12-10T14:00:00",
+            "end_time": "2024-12-10T16:00:00",
+            "invitees": [
+                "Carol Reyes"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-02T12:00:00"
+        }
+    ],
+    "19": [
+        {
+            "calendar_name": "Personal",
+            "title": "Early Morning Surfing Session with David",
+            "description": "Lucas and his surfing buddy David will enjoy an early morning session at the local beach. Perfect waves are expected to make this a memorable outing.",
+            "location": "Local Beach, Orchard County, CA",
+            "start_time": "2024-12-11T07:00:00",
+            "end_time": "2024-12-11T08:30:00",
+            "invitees": [
+                "David Turner"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-08T10:00:00"
+        }
+    ],
+    "20": [
+        {
+            "calendar_name": "Work",
+            "title": "Pre-Holiday Fitness Celebration",
+            "description": "Lucas hosts a small gathering at the gym for a pre-holiday fitness celebration with Jessica Lin and Olivia Clark. The event will include light workouts, music, and socializing as a festive way to celebrate the upcoming holidays.",
+            "location": "Orchard County Fitness Center",
+            "start_time": "2024-12-11T17:00:00",
+            "end_time": "2024-12-11T19:00:00",
+            "invitees": [
+                "Jessica Lin",
+                "Olivia Clark"
+            ],
+            "reminder": "reminder_time_ahead: 1 hour",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-09T10:00:00"
+        }
+    ],
+    "21": [
+        {
+            "calendar_name": "Personal",
+            "title": "Reunion Brunch with High School Football Team Friends",
+            "description": "Lucas organizes a reunion brunch with his high school football team friends to catch up and rekindle old connections over brunch, with plans to exchange photos and share updates post-event.",
+            "location": "The Orchard Cafe, Orchard County, CA",
+            "start_time": "2024-12-12T10:00:00",
+            "end_time": "2024-12-12T12:00:00",
+            "invitees": [
+                "Emmanuel Gonzales",
+                "Mike Jordan",
+                "Steve Rivers"
+            ],
+            "reminder": "1 day",
+            "organizer": "Lucas Garcia",
+            "meeting_url": "",
+            "creation_time": "2024-12-04T10:00:00"
+        }
+    ]
+}

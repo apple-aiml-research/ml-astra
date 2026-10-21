@@ -1,0 +1,91 @@
+{
+  "task_id": "73897293-4cb9-4dfb-97b4-786d4efc25d4",
+  "plot_id": 18,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Evening, July 27, 2024 at 6 pm, Emily Rose, Neighbors were involved. Neighborhood gathering Meeting neighbors and engaging in community activities",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_18",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to send a message to Emily Rose saying \"Thanks for tonight Emily! looking forward to the next one!\"",
+  "reference_time": "2024-07-27T21:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A text message is sent to Emily Rose via \"1234-5678-9109\" saying \"Thanks for tonight Emily! looking forward to the next one!\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_18_73897293-4cb9-4dfb-97b4-786d4efc25d4_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Emily Rose",
+      "participants_addresses": [
+        "emily.rose@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "emily.rose@example.com",
+      "content": "Hi Theo! Don't forget about the neighborhood gathering this Saturday at 6 pm. Hope to see you there!",
+      "creation_datetime_iso": "2024-07-24T10:00:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "1234-5678-9109",
+      "alias": "Em",
+      "email": "emily.rose@example.com",
+      "relationship": "Neighbor",
+      "address": "128 Neighborly St, Orchard County, CA",
+      "company": "Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": false,
+      "birthday": "1985-06-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message saying, \"Thanks for tonight Emily! looking forward to the next one!\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message saying, \"Thanks for tonight Emily! looking forward to the next one!\". The user states Emily so I will search for the contact card (Emily Rose) and add and send the message.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Emily Rose in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Verify Emily Rose was returned from the contact-search in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Emily Rose\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"emily.rose@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – Confirm a new message was sent to Emily with the correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [(\"emily.rose@example.com\", \"1234-5678-9109\")]\n                                    ],\n                                    \"content\": \"Thanks for tonight\",\n                                    \"creation_datetime_iso\": \"2024-07-27T21:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → verify Emily\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send a message to Emily Rose saying \"Thanks for tonight Emily! looking forward to the next one!\" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-27T21:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

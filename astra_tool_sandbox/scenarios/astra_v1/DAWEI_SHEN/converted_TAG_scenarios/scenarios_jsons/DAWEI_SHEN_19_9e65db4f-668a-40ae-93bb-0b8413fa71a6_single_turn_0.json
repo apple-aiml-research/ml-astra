@@ -1,0 +1,144 @@
+{
+  "task_id": "9e65db4f-668a-40ae-93bb-0b8413fa71a6",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "whatsapp_messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to send a message to Charles letting him know you emailed the receipt to Francis",
+  "reference_time": "2024-12-12T19:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "A WhatsApp message is sent to Charles Wilde saying \"I emailed receipt to Francis.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_9e65db4f-668a-40ae-93bb-0b8413fa71a6_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-12T19:00:00-08:00",
+      "content": "Hey Dawei, I found a great supplier for the stage props we need. Here's the link: [PropsSupplier.com]",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-12T19:02:00-08:00",
+      "content": "Thanks Charles! Checking it out now.",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-12T19:05:00-08:00",
+      "content": "Looks good, I'll place the order.",
+      "status": "read"
+    }
+  ],
+  "emails": [
+    {
+      "subject": "Receipt for Stage Props Order",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "francis.wagner@orchardtheater.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T19:30:00-08:00",
+      "body": "Hi Francis, I've placed the order for the stage props as discussed. Attached is the receipt for our records. Best, Dawei",
+      "attachments": [
+        "Order_Receipt_12122024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00"
+    },
+    {
+      "first_name": "Francis",
+      "last_name": "Wagner",
+      "full_name": "Francis Wagner",
+      "phone_number": "+1 555-456-7890-1234",
+      "alias": "Francis",
+      "email": "francis.wagner@orchardtheater.com",
+      "relationship": "Theater Manager",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Theater Manager",
+      "is_self": false,
+      "birthday": "1975-01-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Tell Charles via WhatsApp that I emailed the receipt to Francis.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user would like me to tell Charles via WhatsApp that he emailed the receipt to Francis. Looking through the user's contacts there is only one contact named Charles. The user also has an existing WhatsApp chat with Charles so I will assume Charles Wilde is the intended recipient. I'll write \"I emailed receipt to Francis.\" and present it to the user. With their approval I will send the message.",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T19:40:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Check if search contacts initiated (rehearsal was not marked in calendar)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Found related person's email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Charles Wilde\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"charles.wilde@orchardtheater.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – new WhatsApp message to Charles confirming the receipt was emailed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require Charles to be one of the participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"charles.wilde@orchardtheater.com\",\n                                                \"+1 555-234-5678-9012\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"I emailed receipt to Francis.\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-12T19:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list": [
+    "send_whatsapp_message",
+    "search_contacts",
+    "get_all_contacts",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to send a message to Charles letting him know you emailed the receipt to Francis ",
+  "tool_allow_list_str": "[\"send_whatsapp_message\", \"search_contacts\", \"get_all_contacts\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T19:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

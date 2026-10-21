@@ -1,0 +1,96 @@
+{
+  "task_id": "b8234357-0a41-4dce-9e5f-0ad113c56aab",
+  "plot_id": 9,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 11 am, Sarah Lopez were involved. Lucas consults with Sarah regarding dietary plans for his gym clients. Emails are exchanged with dietary plans and recommendations.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_9",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send another email to Sarah Lopez to clarify what types of diets you are looking for for your clients.",
+  "reference_time": "2024-12-06T15:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An email is sent to Sarah Lopez saying, Hi Sarah, Thanks for your earlier email, but I thought you would also include diet plans for the lazy sedentary people who come to my gym too, just as a matter of course. Do better. Could you send a much more diverse range of diet plans this time? Signed, the Coachinator. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_9_b8234357-0a41-4dce-9e5f-0ad113c56aab_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Dietary Plans and Recommendations for Clients",
+      "sender_address": "sarah.lopez@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "body": "Hi Lucas,\n\nThanks for reaching out and for our productive discussion this morning. I've attached the dietary plans and nutritional guidelines we talked about. These are tailored specifically for active individuals aiming to maximize their performance and recovery.\n\nFeel free to reach out if you need further clarification or any additional information.\n\nBest wishes,\nSarah",
+      "attachments": [
+        "Dietary_Plans_for_Gym_Clients_Dec2024.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Lopez",
+      "full_name": "Sarah Lopez",
+      "phone_number": "+1 12345-6789-1000-9630",
+      "alias": "Dietitian Consultant",
+      "email": "sarah.lopez@example.com",
+      "relationship": "Dietitian consultant",
+      "address": "12 Nutrition Blvd, Orchard County, CA, USA",
+      "company": "Healthy Choices Nutrition",
+      "job_title": "Dietitian",
+      "is_self": false,
+      "birthday": "1985-11-02T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send an email to that diet lady and say, Hi Sarah, Thanks for your earlier email, but I thought you would also include diet plans for the lazy sedentary people who come to my gym too, just as a matter of course. Do better. Could you send a much more diverse range of diet plans this time? Signed, the Coachinator. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "User Lucas Garcia wants to send an email to someone user calls the diet lady and addresses by the name Sarah. Consulting user's contacts, I see a Sarah, Sarah Lopez, to be exact. I also see on close examination of same that she goes by the alias Dietitian Cosultant. This aligns with the job listed for her, namely, Dietitian. I shall address the email to her and once ready, I shall present it to user for inspection and approval. ",
+  "milestones": "[\n                # Milestone 0 –  Agent looks up the “diet lady” (Sarah) in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 –  Confirm Sarah Lopez was actually returned from the contact search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Sarah Lopez\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"sarah.lopez@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 –  An email is actually sent to Sarah with the requested wording\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"sarah.lopez@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"diverse range of diet plans\",\n                                    \"creation_datetime_iso\": \"2024-12-06T15:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # contact lookup → verify Sarah returned\n                (1, 2),  # verified contact → email sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to send another email to Sarah Lopez to clarify what types of diets you are looking for for your clients. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_email\"]",
+  "is_read_time": "2024-12-06T15:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

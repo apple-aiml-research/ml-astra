@@ -1,0 +1,131 @@
+{
+  "task_id": "811187da-f773-4308-9272-f78ac8e04e73",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "astra_core",
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "calendar",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to schedule a team review meeting to consolidate all comments regarding research progress.",
+  "reference_time": "2024-12-12T09:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A meeting called \"Team Review Meeting\" is scheduled for  2024.12.13 09:00 am - 10:30 am at Conference Room C, Orchard Tech, Orchard County, CA"
+    },
+    {
+      "input_text": "2. Kevin Chen, Stefan Mustermann are added to the \"Team Review Meeting\" event",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The following note is added to the \"Team Review Meeting\" event: Review meeting to consolidate comments on the recent research updates.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "4. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_811187da-f773-4308-9272-f78ac8e04e73_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Research Progress Update",
+      "sender_address": "kevin.chen@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "stefan.mustermann@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T09:00:00-08:00",
+      "body": "Hi Dawei,\n\nI wanted to update you on the current status of our research project. We've made significant progress on the algorithms, and I've attached the latest results for your review. Please have a look and let me know your thoughts.\n\nBest regards,\nKevin",
+      "attachments": [
+        "Research_Results_Dec2024.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room B, Orchard Tech HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-01T12:00:00-08:00",
+      "notes": "Monthly team review to discuss project progress and assign new action items."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Stefan",
+      "last_name": "Mustermann",
+      "full_name": "Stefan Mustermann",
+      "phone_number": "+1 555-901-2345-6789",
+      "alias": "Stefan",
+      "email": "stefan.mustermann@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "birthday": "1987-11-30T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Add an event to my calendar called \"Team Review Meeting\" for tomorrow at 9am to 10:30am and add my colleagues Kevin Chen and Stefan Mustermann. The location is Conference Room C, Orchard Tech, Orchard County, CA. Please add a note that says \"Review meeting to consolidate comments on the recent research updates\" and set it as a busy work event",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "Ok what I'm thinking is that I need to add an event to the calendar called \"Team Review Meeting\" for 2024.12.13 09:00 am - 10:30 \nInvite contacts \"Kevin Chen\" and \"Stefan Mustermann\", the location is Conference Room C, Orchard Tech, Orchard County, CA.\nTag the event as \"Busy\" and \"work\".\nFinally add a note that says:\n\"Review meeting to consolidate comments on the recent research updates\"\nSo the plan is to schedule the event immediately as there is no other Calendar conflicts.",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T09:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 –  A “Team Review Meeting” entry created with the requested details\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Team Review Meeting\",\n                                    \"start_datetime_iso\": \"2024-12-13T09:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-13T10:30:00-08:00\",\n                                    \"location\": \"Conference Room C\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Kevin Chen\",\n                                            \"Stefan Mustermann\",\n                                            \"Dawei Shen\",\n                                        ]\n                                    ],\n                                    \"notes\": \"Review meeting to consolidate comments on the recent research updates\",\n                                    \"creation_datetime_iso\": \"2024-12-12T09:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"location\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list": [
+    "create_calendar_event",
+    "search_contacts",
+    "get_all_contacts",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to schedule a team review meeting to consolidate all comments regarding research progress. ",
+  "tool_allow_list_str": "[\"create_calendar_event\", \"search_contacts\", \"get_all_contacts\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T09:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

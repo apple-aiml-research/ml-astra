@@ -1,0 +1,92 @@
+{
+  "task_id": "becc734d-73c0-4522-afab-ed1d4d48a77a",
+  "plot_id": 16,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 3 pm, Juan Garcia were involved. Lucas visits his father's coffee shop to discuss expanding healthy snack options. Emails exchanged with Juan offering suggestions and recipes.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_16",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what Juan said in his last email but you cannot look at your phone right now.",
+  "reference_time": "2024-12-09T17:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The last email received from juan.garcia@example.com is read out loud to the user. \n",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_16_becc734d-73c0-4522-afab-ed1d4d48a77a_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Healthy Snack Options for the Coffee Shop",
+      "sender_address": "juan.garcia@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T17:00:00-08:00",
+      "body": "Hi Lucas,\n\nThanks for dropping by today and for the email. The recipes look fantastic, and I think our customers are going to love the change. I'll go through them in more detail and we can plan a taste test soon.\n\nAppreciate your initiative in bringing these healthy ideas to the shop!\n\nLove,\nDad",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Garcia",
+      "full_name": "Juan Garcia",
+      "phone_number": "+1 12345-6789-1000-4321",
+      "alias": "Dad",
+      "email": "juan.garcia@example.com",
+      "relationship": "Father",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Garcia's Coffee Shop",
+      "job_title": "Coffee Shop Owner",
+      "is_self": false,
+      "birthday": "1963-11-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Read out the email I got from Juan Garcia on December 09 2024 at 17:00.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking me to read out an email.\nFirst, I need to find the email in question in the user's inbox. The user has given me a sender, date, and time. I have found the email in question, received from Juan Garcia on December 09 2024 at 17:00. I will read this out for the user.",
+  "milestones": "[\n                # Milestone 0 – Agent invokes an email-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved email is the one from Juan on 2024-12-09 17:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"juan.garcia@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-09T17:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent communicates the email body (reads it out loud) to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"The recipes look fantastic\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieval tool call → validate correct email found\n                (1, 2),  # Correct email found → ensure user is told the contents\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know what Juan said in his last email but you cannot look at your phone right now. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-09T16:59:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

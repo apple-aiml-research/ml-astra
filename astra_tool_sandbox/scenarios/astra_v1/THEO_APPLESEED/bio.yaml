@@ -1,0 +1,31 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+name: Theo Appleseed
+age: 25
+birthday: "1999-02-22"
+locale: en_US
+language_knowledge: |
+  - English: C2
+location: |
+  Orchard County, California
+timezone: |
+  US/Pacific
+occupation: |
+  Applied Researcher in the Tech Sector
+background: |
+  Theo recently graduated from a prestigious university with a degree in Computer Science.
+  His passion for technology and innovation led him to a role as an applied researcher at a cutting-edge tech company in Orchard County.
+  Despite his professional focus, Theo maintains a balanced lifestyle, cherishing his time spent outdoors,
+  whether hiking in the local trails or exploring new parks.
+hobbies_and_interests: |
+  outdoors: Theo is an avid hiker and enjoys spending his weekends exploring nature.
+  reading: He has a keen interest in science fiction and historical novels, often spending his evenings engrossed in a good book.
+  cooking: Theo finds relaxation in the kitchen, experimenting with new recipes and hosting small dinner parties for close friends.
+social_interactions: |
+  Theo’s social circle primarily includes his coworkers, with whom he shares professional
+  camaraderie and occasional after-work outings. He is also close to a few university friends who
+  live in the area, and they often meet up for book club sessions or outdoor adventures.
+  Family is important to Theo, and he regularly visits his parents who live a few hours away
+  in a neighboring town.
+...

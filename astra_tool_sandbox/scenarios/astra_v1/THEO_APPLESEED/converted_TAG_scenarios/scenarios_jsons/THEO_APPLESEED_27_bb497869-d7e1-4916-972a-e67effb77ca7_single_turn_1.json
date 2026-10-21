@@ -1,0 +1,104 @@
+{
+  "task_id": "bb497869-d7e1-4916-972a-e67effb77ca7",
+  "plot_id": 27,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo got messages to confirmation from optician mentioning the appointment on Friday Aug. 2nd at 14:30\n generate message thread that Theo received and confirmation the appointment\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_27",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to create an event to signify the optician's appointment.",
+  "reference_time": "2024-07-29T10:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Optician's Appointment\" is created at 14:30-15:30 on 2 August. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_27_bb497869-d7e1-4916-972a-e67effb77ca7_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "optician@example.com",
+      "participants_addresses": [
+        "optician@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "optician@example.com",
+      "content": "Hello Theo, this is a reminder that you have an appointment scheduled with us on Friday, August 2nd at 14:30. Please confirm your availability.",
+      "creation_datetime_iso": "2024-07-29T10:00:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "optician@example.com",
+      "participants_addresses": [
+        "optician@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Thank you for the reminder. I confirm my appointment for August 2nd at 14:30.",
+      "creation_datetime_iso": "2024-07-29T10:05:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "optician@example.com",
+      "participants_addresses": [
+        "optician@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "optician@example.com",
+      "content": "Thank you, Theo. We have confirmed your appointment for August 2nd at 14:30. We look forward to seeing you then.",
+      "creation_datetime_iso": "2024-07-29T10:10:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Create an event called \"Optician's Appointment\" at 14:30-15:30 this Friday. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to create an event called \"Optician's Appointment\" at 14:30-15:30 this Friday. First is the name which is given to us by the user. Next is the time frame which is also given to us by the user.  I will now create the event \"Optician's Appointment\" at 14:30-15:30 on 2 August. ",
+  "milestones": "[\n                # Milestone 0 – Verify that a new calendar entry for the optician’s appointment\n                #                on Friday 2 Aug 2024 14:30-15:30 was created.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Optician's Appointment\",\n                                    \"start_datetime_iso\": \"2024-08-02T14:30\",  # substring match, timezone-flexible\n                                    \"end_datetime_iso\": \"2024-08-02T15:30\",\n                                    \"creation_datetime_iso\": \"2024-07-29T10:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    # The agent might list or search calendar events to avoid duplicates,\n    # so include the read-only variants as permissible but not required.\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to create an event to signify the optician's appointment. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-29T10:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

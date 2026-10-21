@@ -1,0 +1,81 @@
+{
+  "task_id": "e317f4b3-6f49-4a1a-9a9b-be0254b5b3bf",
+  "plot_id": 13,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 9, 2024 at 8 am, self, Michelle Barnes were involved. Michelle emails Dawei with a key dataset update for their machine-learning model. She includes a few key questions for discussion during their team sync. Dawei drafts a response and schedules time on Tuesday afternoon to review the dataset with her.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_13",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want a summary of the questions that were laid out in Michelle's key dataset update email.",
+  "reference_time": "2024-12-09T10:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The assistant provides the user with a concise summary of Michelle Barnes’s three questions—about handling unstructured data, algorithm accuracy, and the timeline for the next testing phase.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_13_e317f4b3-6f49-4a1a-9a9b-be0254b5b3bf_single_turn_0",
+  "emails": [
+    {
+      "subject": "Dataset Update for Machine Learning Model",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T08:00:00-08:00",
+      "body": "Hi Dawei,\n\nI hope this email finds you well. I am writing to share the latest updates on the dataset we've been working on for our machine-learning model. Attached you'll find the updated files along with a few key questions that we need to address:\n\n1. How do we intend to handle the increasing volume of unstructured data?\n2. Are there specific algorithms you suggest we explore for better accuracy?\n3. What are your thoughts on the timeline for the next phase of testing?\n\nLooking forward to discussing these during our team sync.\n\nBest regards,\nMichelle",
+      "attachments": [
+        "Updated_Dataset_Questions.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    }
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "calendars": [],
+  "phonecalls": [],
+  "query": "Please summarize the questions Michelle included in her email earlier. ",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "Ok, so the user wants a summary of questions that were outlined in an email from Michelle.  \n\nFirst, I need to find the email from Michelle Barnes that discusses the dataset update. Once I retrieve it, I locate the three questions she listed: (1) how we plan to handle unstructured data, (2) concerns about algorithm accuracy, and (3) the timeline for the next testing phase.  \n\nFinally, I provide the user with a concise summary of those three questions.",
+  "reference_time_str": "Today is Monday, December 9, 2024 or 2024-12-09T10:05:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the relevant email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The email from Michelle Barnes is found in the tool result\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"michelle.barnes@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Dataset Update for Machine Learning Model\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The user is given a spoken / written summary that includes all three question topics\n                Milestone(\n                    snapshot_constraints=[\n                        # Question topic 1: handling unstructured data\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"unstructured data\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Question topic 2: algorithms / accuracy\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"algorithm\", \"accuracy\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                        # Question topic 3: testing timeline / next phase\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"timeline\", \"next phase\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want a summary of the questions that were laid out in Michelle's key dataset update email. ",
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-09T10:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

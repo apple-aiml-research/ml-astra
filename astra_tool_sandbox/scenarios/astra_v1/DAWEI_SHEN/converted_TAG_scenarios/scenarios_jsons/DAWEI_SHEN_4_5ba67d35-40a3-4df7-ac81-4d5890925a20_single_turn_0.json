@@ -1,0 +1,80 @@
+{
+  "task_id": "5ba67d35-40a3-4df7-ac81-4d5890925a20",
+  "plot_id": 4,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 2, 2024 at 8 pm, self, Mia Tang were involved. Mia texts Dawei to remind him that the property tax is due in a week. Dawei adds a reminder on his calendar to pay property tax on Friday morning.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_4",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to remind yourself of when you are looking after Paul's cat to make sure not to double book yourself.",
+  "reference_time": "2024-12-05T18:55:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is presented with the information of their event 'Cat Sitting for Paul' taking place from 6th December 00:00 until 8th December 23:59.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_4_5ba67d35-40a3-4df7-ac81-4d5890925a20_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cat Sitting for Paul",
+      "start_datetime_iso": "2024-12-06T00:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T23:59:59-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Paul Harper's House, 125 Neighbor St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T07:05:00-08:00",
+      "notes": "Watch Paul's cat over the weekend while he is out of town."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When am I cat sitting? Tell me the exact date range.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Okay so, the user wants to know when they are cat sitting. I can see in their calendar that there is an event named 'Cat Sitting for Paul' scheduled from 6th December 00:00 until 8th December 23:59. \n\nI can deduce that from the user's initial query that this is what they were referring to. The exact date range for cat sitting is from Friday December 06 to Sunday December 08. I'll inform user of this.",
+  "reference_time_str": "Today is Thursday, December 5, 2024 or 2024-12-05T18:55:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Agent looked up calendar information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – event found\n                Milestone(\n                    snapshot_constraints=[\n                        # Event name mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"Cat Sitting for Paul\", \"cat sitting\", \"cat-sitting\", \"cat sit\", \"Paul's cat\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        ),\n                    ]\n                ),\n                # Milestone 2 – User is told the key event details with the date range that starts on December 6 and ends on December 8\n                Milestone(\n                    snapshot_constraints=[\n                        # Start-date mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"December 6\", \"Dec 6\", \"6 December\", \"6th December\", \"6th of December\", \"the 6th\", \"2024-12-06\", \"December 6-8\", \"Dec 6-8\", \"6-8 December\", \"2024-12-06T00:00\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity,\n                            },\n                        ),\n                        # End-date mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"December 8\", \"Dec 8\", \"8 December\", \"8th December\", \"8th of December\", \"the 8th\", \"2024-12-08\", \"December 6-8\", \"Dec 6-8\", \"6-8 December\", \"2024-12-08T23:59\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup leads to informing the user\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to remind yourself of when you are looking after Paul's cat to make sure not to double book yourself. ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-05T18:55:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

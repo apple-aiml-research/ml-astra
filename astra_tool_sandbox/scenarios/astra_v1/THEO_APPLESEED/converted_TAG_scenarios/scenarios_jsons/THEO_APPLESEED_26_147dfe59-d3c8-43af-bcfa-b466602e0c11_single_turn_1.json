@@ -1,0 +1,107 @@
+{
+  "task_id": "147dfe59-d3c8-43af-bcfa-b466602e0c11",
+  "plot_id": 26,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo checked his messages and found out that he recently got a lot of spam messages about “exciting opportunities to invest in new cryptocurrencies” from three different unknown senders.\n generate messages Theo recieved between July 21, 2024 to July 28, 2024. The message should also contain fake url and a message\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_26",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to delete all the spam crypto messages   that you received.",
+  "reference_time": "2024-07-23T16:50:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The message received from 'unknown1@crypto-invest.com' on the 21st July 2024 at 14:35 saying 'Unlock the potential of your future with our exclusive cryptocurrency investment opportunities! Visit now: www.crypto-invest.com/start' is deleted."
+    },
+    {
+      "input_text": "2. The message received from 'offers@blockchainbuzz.net' on the 22nd July 2024 at 10:20 saying 'Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer' is deleted.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The message received from 'info@cryptogains.io' on the 23rd July 2024 at 16:45 saying 'See how you can multiply your investment in just a few months! Visit www.cryptogains.io for more information.' is deleted.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_26_147dfe59-d3c8-43af-bcfa-b466602e0c11_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "remove_message_or_conversation",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "unknown1@crypto-invest.com",
+      "participants_addresses": [
+        "theo.appleseed@example.com",
+        "unknown1@crypto-invest.com"
+      ],
+      "sender_address": "unknown1@crypto-invest.com",
+      "content": "Unlock the potential of your future with our exclusive cryptocurrency investment opportunities! Visit now: www.crypto-invest.com/start",
+      "creation_datetime_iso": "2024-07-21T14:35:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "offers@blockchainbuzz.net",
+      "participants_addresses": [
+        "offers@blockchainbuzz.net",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "offers@blockchainbuzz.net",
+      "content": "Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer",
+      "creation_datetime_iso": "2024-07-22T10:20:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "info@cryptogains.io",
+      "participants_addresses": [
+        "info@cryptogains.io",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "info@cryptogains.io",
+      "content": "See how you can multiply your investment in just a few months! Visit www.cryptogains.io for more information.",
+      "creation_datetime_iso": "2024-07-23T16:45:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "high",
+  "query": "Remove my spam messages.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "reasoning": "Okay so, the user wants to remove their spam messages. I can see in their messages that they have three messages from unknown senders. These messages contain content about crypto. I can confirm with the user that they wish to delete the messages from 'unknown1@crypto-invest.com', 'offers@blockchainbuzz.net' and 'info@cryptogains.io' and then delete them.",
+  "milestones": "[\n                # Milestone 0 – Agent consults message list (information-retrieval prerequisite)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Spam message from unknown1@crypto-invest.com removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender_address\": \"unknown1@crypto-invest.com\",\n                                    \"content\": \"Unlock the potential\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                            reference_milestone_node_index=-1,  # compare with original snapshot\n                        )\n                    ]\n                ),\n                # Milestone 2 – Spam message from offers@blockchainbuzz.net removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender_address\": \"offers@blockchainbuzz.net\",\n                                    \"content\": \"don't miss out\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n                # Milestone 3 – Spam message from info@cryptogains.io removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender_address\": \"info@cryptogains.io\",\n                                    \"content\": \"multiply your investment\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"remove_message_or_conversation\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to delete all the spam crypto messages   that you received. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"remove_message_or_conversation\", \"search_messages\"]",
+  "is_read_time": "2024-07-23T16:50:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

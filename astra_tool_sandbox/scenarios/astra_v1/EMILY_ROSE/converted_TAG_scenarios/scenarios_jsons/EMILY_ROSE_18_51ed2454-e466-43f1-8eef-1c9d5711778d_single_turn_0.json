@@ -1,0 +1,79 @@
+{
+  "task_id": "51ed2454-e466-43f1-8eef-1c9d5711778d",
+  "plot_id": 18,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 14, 2024 at 12:00 PM, Daniel Kim were involved. Meeting with Daniel at his cafe discussing upcoming events. Menu and resource support confirmed via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_18",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "After going over the menu you realise that there will be an additional 12 guests that will be attending the event.    You want to inform Daniel Kim of this.",
+  "reference_time": "2024-12-14T13:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email is sent to Chef Daniel Kim with the text ' Hi Daniel, I just realised that we actually have 12 extra guests attending the event. Best, Emily.'",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_18_51ed2454-e466-43f1-8eef-1c9d5711778d_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Confirmation of Menu and Resources for Upcoming Events",
+      "sender_address": "daniel.kim@localcafe.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-14T13:00:00-08:00",
+      "body": "Hello Emily,\n\nIt was great seeing you today. I confirm the arrangements for the menu and resources as discussed. Looking forward to another successful series of events with the Orchard County Community Center.\n\nWarm regards,\nDaniel Kim\nOwner, Local Cafe",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send an email to Chef Daniel Kim saying 'Hi Daniel, I just realised that we actually have 12 extra guests attending the event. Best, Emily.'",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send Chef Daniel Kim an email. Let me look in Mail to see who this is. It must be daniel.kim@localcafe.com as they are the only chef the user has emailed and they have the same name.\n\nI will draft up the message with the requested text which is 'Hi Daniel, I just realised that we actually have 12 extra guests attending the event. Best, Emily.'\n\nI will confirm it with the user and then send it.",
+  "milestones": "[\n                # Milestone 0 – Verify that a new email was sent to Daniel Kim with the correct message text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"daniel.kim@localcafe.com\"]\n                                    ],\n                                    \"body\": \"12 extra guests\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-14T13:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"body\": column_contains_similarity,  # message must mention “12 extra guests”\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against the initial state\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",      # to create the outgoing email\n    \"search_emails\",   # plausible lookup of prior thread with Daniel Kim\n    \"get_all_emails\",  # fallback retrieval of existing emails\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. After going over the menu you realise that there will be an additional 12 guests that will be attending the event.   You want to inform Daniel Kim of this. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-14T13:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,85 @@
+{
+  "task_id": "9bbf6166-662c-4ace-83f7-b4b11fa52218",
+  "plot_id": 20,
+  "plot_summary": "Dawei Shen is the protagonist. On Friday, December 13, 2024 at 10 am, self, Michelle Barnes, Kevin Chen were involved. During the team review, Dawei assigns action items to Michelle and Kevin via follow-up emails. Michelle acknowledges receipt of the email, and Kevin schedules time to review his action item.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_20",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to the email from Michelle to thank her",
+  "reference_time": "2024-12-13T10:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An email reply with the body \"Thanks Michelle\" is sent to michelle.barnes@orchardtech.com.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_20_9bbf6166-662c-4ace-83f7-b4b11fa52218_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Action Items from Team Review",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "kevin.chen@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-13T10:15:00-08:00",
+      "body": "Hello Dawei, I've received the action items and will start working on the data analysis report. I'll reach out if I need any additional data. Thanks, Michelle",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to Michelle's email with the text \"Thanks Michelle\"",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to reply to Michelle's email. I will search for the most recent email from michelle.barnes@orchardtech.com (received at 2024-12-13 10:15). Once found, I will send a reply in that thread with the body “Thanks Michelle”.",
+  "reference_time_str": "Today is Friday, December 13, 2024 or 2024-12-13T10:30:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Agent uses a tool to find recent emails from Michelle\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Verify emails from michelle.barnes@orchardtech.com were returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"michelle.barnes@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-13T10:15:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Action Items from Team Review\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2: Confirm a new sent email to Michelle with the phrase “Thanks Michelle”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"tool_trace\": json.dumps(\n                                        {\n                                            \"tool_name\": \"send_email\",\n                                            \"arguments\": {\n                                                \"email_action\": \"send\",\n                                                \"email_id_referred\": \"place_holder\",  # must send email with a thread id to reply an email\n                                                \"email_id_referred_action\": \"reply\",\n                                            },\n                                        },\n                                        ensure_ascii=False,\n                                    )\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": column_tool_trace_partial_arguments_similarity\n                            },\n                        ),\n                    ]\n                ),\n                # Milestone 3: Confirm a new sent email to Michelle with the phrase “Thanks Michelle”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"michelle.barnes@orchardtech.com\"]\n                                    ],\n                                    \"body\": \"Thanks Michelle\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-13T10:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to reply to the email from Michelle to thank her ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-13T10:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

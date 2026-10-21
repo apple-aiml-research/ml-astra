@@ -1,0 +1,139 @@
+{
+  "task_id": "13ca6647-6f9d-4fb4-9c44-9a2fa6b1b107",
+  "plot_id": 6,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 3, 2024 at 8 pm, self, Hua Shen, Yuting Tao were involved. Dawei receives a video call from his parents in Shanghai to catch up on the week. They talk about their holiday plans. Dawei promises to email them flight details for his trip to Shanghai later in the month.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_6",
+    "calendar",
+    "messaging",
+    "contact",
+    "whatsapp_messaging",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_yes",
+    "phone_call",
+    "email",
+    "astra_core"
+  ],
+  "user_goal": "You want to surprise your parents with a dinner at your favourite restaurant in Shanghai, using the details from the discussion about the trip to decide when would best to book.  If the assistant said they need more information, end the conversation.",
+  "reference_time": "2024-12-03T20:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that key information is missing to complete this task.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. No calendar event shall be created.",
+      "statefullness": "Statelful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_6_13ca6647-6f9d-4fb4-9c44-9a2fa6b1b107_single_turn_0",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_messages",
+    "get_all_messages",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "search_calendar_events",
+    "get_all_calendars",
+    "create_calendar_event",
+    "get_all_phone_calls",
+    "search_phonecall_logs",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Visit Details for Shanghai Trip",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "hua.shen@shenelectronics.cn",
+        "yuting.tao@retired.cn"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-03T21:00:00-08:00",
+      "body": "Dear Mom and Dad,\n\nIt was great catching up today! ...",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Hua",
+      "last_name": "Shen",
+      "full_name": "Hua Shen",
+      "phone_number": "+86 123-456-7890-1234",
+      "alias": "Dad",
+      "email": "hua.shen@shenelectronics.cn",
+      "relationship": "Father",
+      "address": "88 Innovation Blvd, Shanghai, China",
+      "company": "Shen Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Yuting",
+      "last_name": "Tao",
+      "full_name": "Yuting Tao",
+      "phone_number": "+86 234-567-8901-2345",
+      "alias": "Mom",
+      "email": "yuting.tao@retired.cn",
+      "relationship": "Mother",
+      "address": "88 Innovation Blvd, Shanghai, China",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1967-07-08T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "incoming",
+      "caller_address": "+86 123-456-7890-1234",
+      "receiver_address": "+1 555-123-4567-8901",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-12-03T20:00:00-08:00",
+      "duration_in_hms": "00:30:00"
+    }
+  ],
+  "query": "Find out when my parents said they were busy during my trip to Shanghai and schedule a dinner event in the downtime if possible.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to surprise their parents with a dinner during their trip to Shanghai, using details from their previous discussions to decide when to book.\n\nOkay, so first I’ll identify the user’s parents from their contacts. Then I’ll look through any conversations with them — in Messages, Mail, or calendar notes — to find when they mentioned being busy or available during the trip dates.\n\nHowever, I don’t see any relevant messages or emails mentioning their availability, and I don’t have access to phone call details. Since there’s no information about when the parents are free, I can’t schedule the dinner yet.\n\nI’ll let the user know that this information is missing and it is not possible for me to create a calendar event.",
+  "insufficient_context": "yes",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent attempts to retrieve information about parents' availability (emails, messages, phone logs, calendar)\n                Milestone(\n                    snapshot_constraints=[\n                        # Any use of search/get tools over emails, messages, whatsapp, calendar, phone logs counts\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": [RoleType.EXECUTION_ENVIRONMENT],\n                                    \"recipient\": [RoleType.AGENT],\n                                    \"tool_trace\": [\"\"],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_emails\",\n                                        \"search_emails\",\n                                        \"get_all_messages\",\n                                        \"search_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_phone_calls\",\n                                        \"search_phonecall_logs\",\n                                        \"get_all_calendars\",\n                                        \"search_calendar_events\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    # Read-only tools to look for availability information\n    \"get_all_emails\",\n    \"search_emails\",\n    \"get_all_messages\",\n    \"search_messages\",\n    \"get_all_whatsapp_messages\",\n    \"search_whatsapp_messages\",\n    \"get_all_phone_calls\",\n    \"search_phonecall_logs\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-12-03T20:15:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to surprise your parents with a dinner at your favourite restaurant in Shanghai, using the details from the discussion about the trip to decide when would best to book. If the assistant said they need more information, end the conversation.",
+  "minefields": "[\n                # Should not create calendar event\n                Minefield(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"create_calendar_event\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_messages\", \"get_all_messages\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"search_calendar_events\", \"get_all_calendars\", \"create_calendar_event\", \"get_all_phone_calls\", \"search_phonecall_logs\", \"get_all_emails\", \"search_emails\"]"
+}

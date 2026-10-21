@@ -1,0 +1,97 @@
+{
+  "task_id": "89720d06-8e0f-421d-8e3d-19925b772e79",
+  "plot_id": 2,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 10 am, Jessica Lin were involved. Lucas and Jessica discuss upcoming joint fitness workshop at the gym. Lucas notes down the workshop details and follows up with an email to finalize the schedule. Send out corresponding calendar events.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_2",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply email to Jessica Lin saying \"Hi Jessica slight amendment to the previous email, could we make it the 11th instead?\".",
+  "reference_time": "2024-12-02T11:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply email is sent to Jessica Lin saying \"Hi Jessica slight amendment to the previous email, could we make it the 11th instead?\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_2_89720d06-8e0f-421d-8e3d-19925b772e79_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "modify_draft_email",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Finalizing Schedule for Upcoming Joint Fitness Workshop",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "jessica.lin@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T11:00:00-08:00",
+      "body": "Hi Jessica,\n\nGreat discussing the plans for our upcoming joint fitness workshop earlier today. Based on our conversation, we'd like to finalize the schedule. Please confirm if the afternoon on December 10th works for you.\n\nLooking forward to a productive workshop!\n\nBest,\nLucas",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to Jessica with this; \"Hi Jessica slight amendment to the previous email, could we make it the 11th instead?\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to reply to Jessica with a given message. First is establishing who Jessica is. There is inly one Jessica in the user's contacts so it must be Jessica Lin. Next is the mode of communication which is hinted at by the user. They want to reply so there must be a relevant thread with Jessica that was received recently. I have found the email thread 'Finalizing Schedule for Upcoming Joint Fitness Workshop' which must be what the user is referring to. I will now send the user's given message to Jessica Lin via email at 11:00 on 2 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – Verify a new outgoing email to Jessica Lin was sent with the requested message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Jessica must be one of the recipients\n                                    \"recipients_addresses\": [\n                                        [\"jessica.lin@example.com\"]\n                                    ],\n                                    # Email must actually be sent\n                                    \"status\": \"sent\",\n                                    # Body should mention the date change request\n                                    \"body\": \"could we make it the 11th instead?\",\n                                    \"creation_datetime_iso\": \"2024-12-02T11:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Require Jessica to appear in the recipients list; allow other addresses if the agent CCs themselves\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",          # To send the reply\n    \"search_emails\",       # To locate the original thread (optional but likely)\n    \"get_all_emails\",      # Fallback listing\n    \"search_contacts\",     # To resolve Jessica’s address (optional but plausible)\n    \"get_all_contacts\",    # Fallback listing\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to dictate a reply email to Jessica Lin saying \"Hi Jessica slight amendment to the previous email, could we make it the 11th instead?\". ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"modify_draft_email\", \"send_email\"]",
+  "is_read_time": "2024-12-02T11:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

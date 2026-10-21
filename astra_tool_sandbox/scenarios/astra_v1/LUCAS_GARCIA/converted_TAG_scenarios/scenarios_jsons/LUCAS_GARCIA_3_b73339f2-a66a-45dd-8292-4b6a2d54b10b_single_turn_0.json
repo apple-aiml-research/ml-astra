@@ -1,0 +1,124 @@
+{
+  "task_id": "b73339f2-a66a-45dd-8292-4b6a2d54b10b",
+  "plot_id": 3,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 6 pm, Theo Appleseed were involved. Lucas and Theo meet for their usual evening workout session at the local gym. Lucas receives a message from Theo discussing fitness goals and the next 3 months. Book schedules for future session the next 3 months.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_3",
+    "calendar",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You and Theo have agreed to the plan proposed in your messages and you want to schedule them in the calendar.",
+  "reference_time": "2024-12-02T19:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The event \"Evening Workout Session with Theo\" with Theo Appleseed as an invitee is scheduled for 18:00-19:00 on 4 December 2024. "
+    },
+    {
+      "input_text": "2. The event \"Evening Workout Session with Theo\" with Theo Appleseed as an invitee is scheduled for 18:00-19:00 on 6 December 2024. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_3_b73339f2-a66a-45dd-8292-4b6a2d54b10b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Theo Appleseed",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Sure thing! How about we aim for evening sessions on Mondays, Wednesdays, and Fridays around 6 pm? We can tweak as needed based on our progress.",
+      "creation_datetime_iso": "2024-12-02T19:20:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Theo Appleseed",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Perfect. I'll lock those times in my calendar. Thanks, Lucas! Looking forward to smashing those goals together!",
+      "creation_datetime_iso": "2024-12-02T19:25:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Fitness Planning for Next 3 Months",
+      "start_datetime_iso": "2024-12-02T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T19:30:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Theo Appleseed"
+      ],
+      "location": "Cafe at Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 15 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T10:45:00-08:00",
+      "notes": "Discussion and planning with Theo regarding fitness goals and session scheduling for the upcoming three months."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 12345-6789-1000-5678",
+      "alias": "Gym Buddy",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Gym buddy and workout partner",
+      "address": "45 Fit St, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Trainer",
+      "is_self": false,
+      "birthday": "1990-05-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need to schedule two events with Theo for our planned evening workout sessions on Wednesday and Friday for an hour at 6. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "high",
+  "reasoning": "Ok so the user wants to schedule two events with Theo for their planned evening workout sessions on Wednesday and Friday for an hour at 6. These events seem interconnected so I believe some of the information will overlap. Let's start with what does. First is establishing who Theo is. There is only one Theo in the user's contacts which is Theo Appleseed. I will add them as an invitee to both events. Next is the name which I will deduce from what the user is looking to do on both days. I Feel \"Evening Workout Session with Theo\" would make sense. Next is the runtime which is consistent to both events. Both will be scheduled for 18:00-19:00. Now where they split apart is the days they are due to happen on as this is still two different events. The first event is occurring on Wednesday so I will schedule it in on 4 December. The second is happening on Friday so I will schedule it in on 6 of December. I will now schedule the event \"Evening Workout Session with Theo\" for 18:00-19:00 on 4 December 2024 and the event \"Evening Workout Session with Theo\" for 18:00-19:00 on 6 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up contact information (Theo)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify Theo Appleseed is found in the contact-search results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Theo Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Calendar event for Wednesday 4-Dec-2024 is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Evening Workout Session with Theo\",\n                                    \"start_datetime_iso\": \"2024-12-04T18:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-04T19:00:00-08:00\",\n                                    \"attendees_names\": [[\"Theo Appleseed\"]],\n                                    \"creation_datetime_iso\": \"2024-12-02T19:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_rouge_l_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n                # Milestone 3 – Calendar event for Friday 6-Dec-2024 is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Evening Workout Session with Theo\",\n                                    \"start_datetime_iso\": \"2024-12-06T18:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-06T19:00:00-08:00\",\n                                    \"attendees_names\": [[\"Theo Appleseed\"]],\n                                    \"creation_datetime_iso\": \"2024-12-02T19:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_rouge_l_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # contact search → confirm Theo\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_contacts\",\n    \"search_contacts\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You and Theo have agreed to the plan proposed in your messages and you want to schedule them in the calendar. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\"]",
+  "is_read_time": "2024-12-02T19:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

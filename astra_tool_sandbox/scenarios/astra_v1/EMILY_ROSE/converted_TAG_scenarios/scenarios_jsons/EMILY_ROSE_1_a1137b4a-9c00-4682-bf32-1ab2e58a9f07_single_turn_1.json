@@ -1,0 +1,111 @@
+{
+  "task_id": "a1137b4a-9c00-4682-bf32-1ab2e58a9f07",
+  "plot_id": 1,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 2, 2024 at 8:00 AM, self were involved. Emily checks her calendar for the week ahead, including scheduled meetings with Jenna at the community center about the upcoming charity event. Her calendar has multiple entries for event planning meetings with Jenna and Michael.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_1",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You know you have an event coordination meeting later today but you can't remember if it starts at 10:30 or 11:30.  You want to find out which time it actually starts at so you know how much time you have to eat beforehand.",
+  "reference_time": "2024-12-02T08:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed of the time of the event, 'Event Coordination Meeting with Michael' on 2 December 2024, from 10:30 to 11:30 with 'Michael Thompson' listed as an attendee.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_1_a1137b4a-9c00-4682-bf32-1ab2e58a9f07_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Event Coordination Meeting with Michael",
+      "start_datetime_iso": "2024-12-02T10:30:00-08:00",
+      "end_datetime_iso": "2024-12-02T11:30:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Michael Thompson"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:15:00-07:00",
+      "notes": "Finalize event schedule and assign responsibilities."
+    },
+    {
+      "attendees_names": [
+        "Emily Rose",
+        "Jenna Miles"
+      ],
+      "reminder_time_ahead": "30 minutes",
+      "creation_datetime_iso": "2023-11-01T08:00:00-07:00",
+      "meeting_url": null,
+      "end_datetime_iso": "2024-12-02T10:00:00-08:00",
+      "organizer_name": "Emily Rose",
+      "start_datetime_iso": "2024-12-02T09:00:00-08:00",
+      "location": "Orchard County Community Center",
+      "notes": "Discuss details and logistics for the upcoming charity event.",
+      "calendar_event_name": "Event Planning Meeting with Jenna",
+      "calendar_name": "work"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lane",
+      "full_name": "Jessica Lane",
+      "phone_number": "+1 530-555-0127",
+      "alias": "Bestie",
+      "email": "jessica.lane@orchardmail.com",
+      "relationship": "Best Friend",
+      "address": "200 Friendship Blvd, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Volunteer Coordinator",
+      "is_self": false,
+      "birthday": "1994-04-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to know the time of their second event today. From checking their calendar, I can see that the second event scheduled for today, December 2nd 2024 is 'Event Coordination Meeting with Michael', from 10:30 to 11:30 with 'Michael Thompson' listed as an attendee. Now that I have found the requested time information, I can read this out to the user.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "Can I get an event time for my second event today.",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Calendar information retrieval to find today's events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the specific event \"Event Coordination Meeting with Michael\" on 2024-12-02 10:30–11:30 was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Event Coordination Meeting with Michael\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-02T10:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-02T11:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"attendees_names\": {\n                                                \"value\": [\n                                                    \"Emily Rose\",\n                                                    \"Michael Thompson\",\n                                                ],\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – User-facing response includes correct event name and time window\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Need mention of event, date, and 10:30–11:30 time range\n                                    \"content\": \"Event Coordination Meeting with Michael on 2024-12-02 from 10:30 to 11:30\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_rouge_l_similarity,\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar search → confirm correct event retrieved\n                (\n                    1,\n                    2,\n                ),  # Confirmed event details → inform user with correct time window\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-12-02T08:00:00-08:00",
+  "user_goal_prompt": "You are User A, Emily Rose. You know you have an event coordination meeting later today but you can't remember if it starts at 10:30 or 11:30. You want to find out which time it actually starts at so you know how much time you have to eat beforehand.  ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]"
+}

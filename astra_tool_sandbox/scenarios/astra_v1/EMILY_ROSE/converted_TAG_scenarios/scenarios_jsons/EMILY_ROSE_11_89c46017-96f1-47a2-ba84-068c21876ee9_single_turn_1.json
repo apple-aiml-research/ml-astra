@@ -1,0 +1,87 @@
+{
+  "task_id": "89c46017-96f1-47a2-ba84-068c21876ee9",
+  "plot_id": 11,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 8, 2024 at 8:00 AM, Henry Chester were involved. Morning walk with Buster and offering gardening advice to Henry. Gardening tips documented and shared on community forum.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_11",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Your gardening project coordination meeting has been rescheduled for 1 hour later due to a scheduling conflict for 2 of the members.    You want to update the change in your Calendar accordingly.",
+  "reference_time": "2024-12-05T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The 'Gardening Project Coordination Meeting' event on Friday, December 6th 2024 at 15:00 - 16:00 is rescheduled for the same day, at 16:00-17:00. ",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_11_89c46017-96f1-47a2-ba84-068c21876ee9_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Gardening Project Coordination Meeting",
+      "start_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T16:00:00-08:00",
+      "attendees_names": [
+        "Ben Rose",
+        "Emily Rose",
+        "Lucas Jones"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-04T15:18:00-08:00",
+      "notes": "Meeting with Ben and Lucas to organize tools and equipment for the gardening project at the local park."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reschedule the Gardening Project Coordination Meeting to start an hour later. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to reschedule the the Gardening Project Coordination Meeting. I wonder what they're referring to. I should check their calendar for related events. I see an event with the same title, 'Gardening Project Coordination Meeting' on Friday, December 6th at 15:00-16:00. It must be that one. Before I reschedule the event I need to check for any events occurring at the request time, 16:00-17:00. Okay, I see no possible conflict with the requested rescheduling. I'll reschedule the event now for December 6th 2024 at 16:00-17:00 and tell the user the event time was successfully updated.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar events to find the meeting\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The meeting has been moved from 15:00–16:00 to 16:00–17:00 on the same date\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Gardening Project Coordination Meeting\",\n                                    \"start_datetime_iso\": \"2024-12-06T16:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-06T17:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-05T18:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"modify_calendar_event\",      # direct update path\n    \"remove_calendar_event\",      # fallback path if agent deletes then recreates\n    \"create_calendar_event\",      # fallback creation after removal\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. Your gardening project coordination meeting has been rescheduled for 1 hour later due to a scheduling conflict for 2 of the members.   You want to update the change in your Calendar accordingly. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\"]",
+  "is_read_time": "2024-12-05T18:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

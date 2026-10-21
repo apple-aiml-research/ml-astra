@@ -1,0 +1,94 @@
+{
+  "task_id": "63a39b34-3972-482e-a51e-4b11bc6c053b",
+  "plot_id": 17,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 10, 2024 at 9 am, Jessica Lin were involved. Lucas and Jessica conduct a joint workout session at the gym for new members. Session details and follow-up messages sent to participants.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_17",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to make sure your upcoming workout session you're doing this morning for new workout members is definitely at 9 and you're not going to be late if you arrive for that time.",
+  "reference_time": "2024-12-10T07:15:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The details of the event 'Joint Workout Session for New Gym Members' on December 10th, 2024, at 09:00-10:30, is shown to the user. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_17_63a39b34-3972-482e-a51e-4b11bc6c053b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Joint Workout Session for New Gym Members",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T10:30:00-08:00",
+      "attendees_names": [
+        "Jessica Lin",
+        "Lucas Garcia"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-07T11:00:00-08:00",
+      "notes": "Lucas and Jessica conduct a joint workout session for new gym members to integrate them into the gym community and establish a welcoming environment."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When is the Joint Workout Session for New Gym Members?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when the Joint Workout Session for New Gym Members is. I should check their calendar for that event. I see one event with that exact name 'Joint Workout Session for New Gym Members', taking place on December 10th, 2024, at 09:00-10:30. I'll tell the user the details of the event now. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the desired event was returned in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Joint Workout Session for New Gym Members\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-10T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent replies to the user with the correct details\n                Milestone(\n                    snapshot_constraints=[\n                        # Check the event name is mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Joint Workout Session\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Check the start time is mentioned (any reasonable phrasing)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"9:00\", \"9 am\", \"9am\", \"09:00\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool invocation → event confirmed\n                (1, 2),  # Event confirmed → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to make sure your upcoming workout session you're doing this morning for new workout members is definitely at 9 and you're not going to be late if you arrive for that time. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-10T07:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

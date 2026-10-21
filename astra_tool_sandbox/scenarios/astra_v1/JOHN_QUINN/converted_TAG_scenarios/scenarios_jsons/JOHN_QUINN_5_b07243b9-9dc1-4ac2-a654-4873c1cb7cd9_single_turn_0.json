@@ -1,0 +1,92 @@
+{
+  "task_id": "b07243b9-9dc1-4ac2-a654-4873c1cb7cd9",
+  "plot_id": 5,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 6:30 pm, Ursula Quinn were involved. John complains to his mom about the political messages his father forwards him  1. John messages his mom to complain about his father's forwarded emails from the Pirate Party. 2. She reassures him and mentions a family counsellor that she saw for her marriage. 3. Finally, she emails him a newsletter from the family counsellor. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_5",
+    "contact",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to see the last message you sent to your mom.",
+  "reference_time": "2024-07-22T19:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is shown the last message they sent to Ursula Quinn on July 22nd 2024 at 18:38 that says 'That might be a good idea. Can you send me the details?'",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_5_b07243b9-9dc1-4ac2-a654-4873c1cb7cd9_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Ursula Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "ursula.quinn@modernart.org"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "That might be a good idea. Can you send me the details?",
+      "creation_datetime_iso": "2024-07-22T18:38:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Show me the last message I sent to Ursula Quinn.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to see the last message they sent to Ursula Quinn. Let me look for their messages. Okay I have found the conversation. I will show the user the last message they sent, which was sent on July 22nd 2024 at 18:38 and says 'That might be a good idea. Can you send me the details?'.",
+  "milestones": "[\n                # Milestone 0 – The agent looks for messages (must call a message-searching tool)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The tool output includes the correct last message sent to Ursula Quinn\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Ursula Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"That might be a good idea. Can you send me the details?\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-22T18:38:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"status\": {\n                                                \"value\": \"sent\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user the correct last message content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"That might be a good idea. Can you send me the details?\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # tool call → verify correct message present\n                (1, 2),  # correct message found → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to see the last message you sent to your mom. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-22T19:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

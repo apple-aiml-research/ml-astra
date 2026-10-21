@@ -1,0 +1,185 @@
+{
+  "task_id": "8c94825f-765a-4866-b025-8f169af97404",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_12",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "whatsapp_messaging",
+    "messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to ask Vickie and Charles if they want you to bring anything to the rehearsal.",
+  "reference_time": "2024-12-08T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A whatsApp message is sent to Vickie Lee that says \"Do you need me to bring anything to the rehearsal?\" ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. A WhatsApp message is sent to Charles Wilde that says something like \"Do you need me to bring anything to the rehearsal?\" ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_8c94825f-765a-4866-b025-8f169af97404_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-01T19:52:00-08:00",
+      "content": "Yes, all set for 8 PM. See you there!",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-234-5678-9012",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-08T17:50:00-08:00",
+      "content": "Hey Dawei, heads up, we need to adjust tonight's rehearsal schedule. Can we start at 7 PM instead?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "+1 555-123-4567-8901",
+      "creation_datetime_iso": "2024-12-01T19:53:00-08:00",
+      "content": "Hi Vickie, are we good for the rehearsal at 8 tonight?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-01T19:55:00-08:00",
+      "content": "Hey Dawei, I might be around 20 mins late, sorry! Caught up with something.",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-345-6789-0123",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-08T17:52:00-08:00",
+      "content": "I'm in for 7 PM. See you both then!",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Theater Rehearsal",
+      "start_datetime_iso": "2024-12-08T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T22:00:00-08:00",
+      "attendees_names": [
+        "Charles Wilde",
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "location": "Orchard Theater, 789 Culture St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T17:55:00-08:00",
+      "notes": "Revised time for tonight's rehearsal with Charles and Vickie due to last-minute changes."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you message Vickie and Charles separately, like we usually do, and ask if they need me to bring anything to the rehearsal?",
+  "reasoning": "The user wants to send two separate messages: one to Vickie and another to Charles. I'll first find out the exact contacts that user wants to send message to, then find their contact cards. OK, I see that there's an immediate event that matches with 'rehearsal' - \"Theater Rehearsal\" on December 08 at 19:00 with Vickie Lee and Charles Wilde as invitees. So user wants to message Vickie Lee and Charles Wilde. Now I shall locate Vickie and Charles' contact cards. I got them. Now I need to find out what messaging app they usually use. Ok, I see they messaged each other via whatsApp. I'll now send a whatsApp message to Vickie Lee and another to Charles Wilde saying \"Do you want me to bring anything to the rehearsal?\". Ok, I'll inform user that both messages are sent.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reference_time_str": "Today is Sunday, December 8, 2024 or 2024-12-08T18:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0: the agent should have tried to search whatsapp for past conversations\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Vickie Lee's conversation found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Vickie Lee\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2: the agent should have tried to search whatsapp for past conversations\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                ),\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3: Charles's conversation found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Charles Wilde\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ]\n                ),\n                # Milestone 4 – new WhatsApp message to Vickie Lee and Charles Wilde\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": [\n                                        \"Vickie Lee\",\n                                        \"Charles Wilde\",\n                                    ],\n                                    \"content\": [\n                                        \"rehearsal\",\n                                        \"rehearsal\",\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-08T18:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # found Vickie' past messages\n                (2, 3),  # found Charles messages\n            ]",
+  "tool_allow_list": [
+    "send_whatsapp_message",
+    "send_message",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "search_messages",
+    "get_all_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to ask Vickie and Charles if they want you to bring anything to the rehearsal. ",
+  "tool_allow_list_str": "[\"send_whatsapp_message\", \"send_message\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"search_messages\", \"get_all_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-08T18:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

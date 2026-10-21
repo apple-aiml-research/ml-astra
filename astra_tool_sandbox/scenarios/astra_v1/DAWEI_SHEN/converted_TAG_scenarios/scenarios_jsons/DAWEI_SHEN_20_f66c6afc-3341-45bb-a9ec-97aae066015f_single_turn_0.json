@@ -1,0 +1,84 @@
+{
+  "task_id": "f66c6afc-3341-45bb-a9ec-97aae066015f",
+  "plot_id": 20,
+  "plot_summary": "Dawei Shen is the protagonist. On Friday, December 13, 2024 at 10 am, self, Michelle Barnes, Kevin Chen were involved. During the team review, Dawei assigns action items to Michelle and Kevin via follow-up emails. Michelle acknowledges receipt of the email, and Kevin schedules time to review his action item.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_20",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have had a busy week at work and haven't had much down-time.        You want to schedule an hour to chill today in your calendar.",
+  "reference_time": "2024-12-13T10:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "A new event is added on 2024-12-13 from 16:00 to 17:00 called \"Chill\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_20_f66c6afc-3341-45bb-a9ec-97aae066015f_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T10:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Stefan Mustermann"
+      ],
+      "location": "Conference Room C, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-12T09:30:00-08:00",
+      "notes": "Review meeting to consolidate comments on the recent research updates."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room B, Orchard Tech HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-01T12:00:00-08:00",
+      "notes": "Monthly team review to discuss project progress and assign new action items."
+    }
+  ],
+  "contacts": [],
+  "phonecalls": [],
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "query": "Add an event called 'Chill' for today at 16:00 - 17:00.",
+  "reasoning": "The user wants to add an event called \"Chill\" to their calendar, I'll have to find out when. Now I have the time information I can add the Chill event to the calendar on 2024-12-13 at 16:00 - 17:00.",
+  "reference_time_str": "Today is Friday, December 13, 2024 or 2024-12-13T10:05:00-08:00.",
+  "milestones": "[\n                # Milestone 0:  A new calendar event called “chill” on 2024-12-13 from 16:00-17:00 must be added\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Chill\",\n                                    \"start_datetime_iso\": \"2024-12-13T16:00:00\",\n                                    \"end_datetime_iso\": \"2024-12-13T17:00:00\",\n                                    \"creation_datetime_iso\": \"2024-12-13T10:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_exact_match_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You have had a busy week at work and haven't had much down-time.       You want to schedule an hour to chill today in your calendar. ",
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-13T10:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

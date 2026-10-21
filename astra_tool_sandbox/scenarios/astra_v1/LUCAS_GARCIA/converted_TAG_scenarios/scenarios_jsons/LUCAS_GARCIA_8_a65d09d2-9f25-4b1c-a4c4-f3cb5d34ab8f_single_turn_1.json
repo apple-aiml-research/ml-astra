@@ -1,0 +1,90 @@
+{
+  "task_id": "a65d09d2-9f25-4b1c-a4c4-f3cb5d34ab8f",
+  "plot_id": 8,
+  "plot_summary": "Lucas Garcia is the protagonist. On Thursday, December 5, 2024 at 2 pm, Maria Garcia were involved. Lucas has a video call with his mother to catch up and discuss family updates. Video call logs are saved, and Maria sends an email with family pictures.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_8",
+    "contact",
+    "phone_call",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know how long your video call with your mother was.",
+  "reference_time": "2024-12-05T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that his video call on December 5th at 14:00 to Maria Garcia lasted 20 minutes.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_8_a65d09d2-9f25-4b1c-a4c4-f3cb5d34ab8f_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_phone_calls",
+    "search_phonecall_logs"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Garcia",
+      "full_name": "Maria Garcia",
+      "phone_number": "+1 12345-6789-1000-8765",
+      "alias": "Mom",
+      "email": "maria.garcia@example.com",
+      "relationship": "Mother",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County School District",
+      "job_title": "School Teacher",
+      "is_self": false,
+      "birthday": "1965-03-10T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "outgoing",
+      "caller_address": "+1 12345-6789-1000-1234",
+      "receiver_address": "+1 12345-6789-1000-8765",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-12-05T14:00:00-08:00",
+      "duration_in_hms": "00:20:00"
+    }
+  ],
+  "query": "How long was my call with Maria Garcia today?",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know how long their call with Maria Garcia was today. I will search for this. I will inform the user that the call was 20 minutes long.",
+  "milestones": "[\n                # Milestone 0 – The agent queries phone-call history to locate the call\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned result includes the expected phone-call record\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"receiver_address\": {\n                                                \"value\": \"+1 12345-6789-1000-8765\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-05T14:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"duration_in_hms\": {\n                                                \"value\": \"00:20:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent informs the user that the call lasted 20 minutes\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"20 minutes\", \"00:20:00\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_phonecall_logs\",\n    \"get_all_phone_calls\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know how long your video call with your mother was. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_phone_calls\", \"search_phonecall_logs\"]",
+  "is_read_time": "2024-12-05T18:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

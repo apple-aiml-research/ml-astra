@@ -1,0 +1,80 @@
+{
+  "task_id": "2b110ceb-1937-4af1-a684-a432165fc002",
+  "plot_id": 5,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 7:00 PM, Jessica Lane were involved. Planning session with Jessica over dinner regarding the holiday volunteering schedule. Email sent to volunteers with the finalized schedule of activities.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_5",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to create a calendar event for your planning session with Jessica over dinner for 19:00 tonight.",
+  "reference_time": "2024-12-04T12:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A calendar event created with title including Planning Session for 19:00 on 2024-12-04, Jessica Lane is invited as an attendee and Greek Delights is the location. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_5_2b110ceb-1937-4af1-a684-a432165fc002_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lane",
+      "full_name": "Jessica Lane",
+      "phone_number": "+1 530-555-0127",
+      "alias": "Bestie",
+      "email": "jessica.lane@orchardmail.com",
+      "relationship": "Best Friend",
+      "address": "200 Friendship Blvd, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Volunteer Coordinator",
+      "is_self": false,
+      "birthday": "1994-04-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make a calendar event named Planning Session for 19:00 today at Greek Delights and invite Jessica",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "User Emily Rose wants to create a calendar event and has provided all the necessary information. I create the information and send an invitation to Jessica Lane",
+  "milestones": "[\n                # Milestone 0 – A new calendar event is created for 19:00 on 2024-12-04 with Jessica invited\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Planning Session\",\n                                    \"start_datetime_iso\": \"2024-12-04T19:00\",\n                                    \"location\": \"Greek Delights\",\n                                    \"attendees_names\": [[\"Jessica Lane\"]],\n                                    \"creation_datetime_iso\": \"2024-12-04T12:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,  # must contain “Planning Session”\n                                \"start_datetime_iso\": column_contains_similarity,  # allow any timezone suffix\n                                \"location\": column_contains_similarity,  # must mention “Greek Delights”\n                                \"attendees_names\": column_list_subset_match_similarity,  # Jessica must be in the list,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to create a calendar event for your planning session with Jessica over dinner for 19:00 tonight. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\"]",
+  "is_read_time": "2024-12-04T12:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

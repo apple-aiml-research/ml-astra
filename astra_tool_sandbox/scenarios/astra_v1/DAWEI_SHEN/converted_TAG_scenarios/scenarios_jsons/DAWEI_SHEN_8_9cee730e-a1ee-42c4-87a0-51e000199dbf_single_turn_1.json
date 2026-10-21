@@ -1,0 +1,123 @@
+{
+  "task_id": "9cee730e-a1ee-42c4-87a0-51e000199dbf",
+  "plot_id": 8,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 5, 2024 at 5 pm, self, Jess Zimmer were involved. Jess messages Dawei to ask about their upcoming holiday plans. Dawei replies, confirming their itinerary for the upcoming theater night. Jess shares a photo of the tickets on WhatsApp.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_8",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have confirmed the itinerary for your theatre night with Jess and want to create an event to mark it in your calendar at 7pm tonight, last about 2 hours.",
+  "reference_time": "2024-12-05T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event called 'Theatre Night' with Jess Zimmer as an invitee is set up at 19:00 to 21:00 on 5th of December 2024",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_8_9cee730e-a1ee-42c4-87a0-51e000199dbf_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "sender_address": "jess.zimmer@fintechstartup.com",
+      "content": "Hey Dawei, just checking in about our plans for the theater night. Have you confirmed the itinerary?",
+      "creation_datetime_iso": "2024-12-05T17:00:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "Hi Jess! Yes, all set for the theater night. We should be good to go!",
+      "creation_datetime_iso": "2024-12-05T17:02:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "sender_name": "Jess Zimmer",
+      "sender_address": "jess.zimmer@fintechstartup.com",
+      "creation_datetime_iso": "2024-12-05T17:05:00-08:00",
+      "content": "Here are the tickets for our theater night! 🎭",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Set up my theatre night with my girlfriend tonight, one hour from now and last 2 hours. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to set up their theatre night with their girlfriend for tonight one hour from now. I assume their girlfriend refers to Jess Zimmer by the information provided on the contact card for Jess Zimmer. They have also spoken about a theatre night recently over Messages and WhatsApp, and have shared itinerary of it on December 5 at 17:00.  I will now create an event 'Theatre Night' with Jess Zimmer as an invitee at 19:00 and end at 21:00 on 5th of December 2024. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up girlfriend / Jess in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify that the contact data for Jess Zimmer was actually returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jess Zimmer\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"jess.zimmer@fintechstartup.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new calendar event has been created for the theatre night\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Theatre Night\",\n                                    \"start_datetime_iso\": \"2024-12-05T19:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-05T21:00:00-08:00\",\n                                    \"attendees_names\": [[\"Jess Zimmer\"]],\n                                    \"creation_datetime_iso\": \"2024-12-05T18:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                # Require Jess to be on the invite list, allow extra attendees such as self\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",   # fallback\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You have confirmed the itinerary for your theatre night with Jess and want to create an event to mark it in your calendar at 7pm tonight, last about 2 hours. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\"]",
+  "is_read_time": "2024-12-05T18:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

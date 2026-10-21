@@ -1,0 +1,100 @@
+{
+  "task_id": "c41a3fd9-dfe8-4d8b-a810-49ad6b1eb1d7",
+  "plot_id": 19,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 15, 2024 at 11:00 AM, Tim Brooks were involved. Technical set-up for community event sound system with Tim. Follow-up video call scheduled for system test.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_19",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to on confirm with your sister Sarah Rose that she is still able to make it to the Winter Wonderland Charity Event taking place this afternoon from 14:00 to 18:00.",
+  "reference_time": "2024-12-15T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Sarah Rose that says \"Hey sis just checking in that you are still available for the charity event today, haven't heard from you in a while.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_19_c41a3fd9-dfe8-4d8b-a810-49ad6b1eb1d7_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "family",
+      "calendar_event_name": "Winter Wonderland Charity Event",
+      "start_datetime_iso": "2024-12-15T14:00:00-08:00",
+      "end_datetime_iso": "2024-12-15T18:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Sarah Rose"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "2 days",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-05T10:10:00-08:00",
+      "notes": "Participate in the Winter Wonderland charity event to support community engagement."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Rose",
+      "full_name": "Sarah Rose",
+      "phone_number": "+1 530-555-0124",
+      "alias": "Supportive Sister",
+      "email": "sarah.rose@orchardmail.com",
+      "relationship": "Sister",
+      "address": "125 Community Lane, Orchard County, CA 95662, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1996-08-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Message my sister saying 'hey sis just checking in that you are still available for the charity event today, haven't heard from you in a while.'",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message to their sister. Looking contacts, I can see that Sarah Rose is listed as sister. I'll send the message to her.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the sister’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Sarah Rose is confirmed in the contact‐search results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Sarah Rose\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 530-555-0124\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Message to Sarah is created in the messaging database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"sarah.rose@orchardmail.com\",\n                                                \"+1 530-555-0124\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"charity event\",\n                                    \"creation_datetime_iso\": \"2024-12-15T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to on confirm with your sister Sarah Rose that she is still able to make it to the Winter Wonderland Charity Event taking place this afternoon from 14:00 to 18:00. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-15T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

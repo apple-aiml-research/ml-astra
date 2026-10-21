@@ -1,0 +1,115 @@
+{
+  "task_id": "b74b7bcc-1894-4949-9036-2d293a1f5276",
+  "plot_id": 11,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 9 am, self, Vick Li, Lukas Hürholz were involved. Lukas texts Dawei to inform him he’ll be in California next weekend for work and wants to catch up. Dawei discusses plans with Vick during their Sunday cycling trip. Dawei texts Lukas confirming dinner plans for next Saturday and blocks it on his calendar.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_11",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to delete the event 'Dinner with Lukas and Vick' because you got an upset stomach.",
+  "reference_time": "2024-12-14T15:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The event 'Dinner with Lukas and Vick' from 19:00 to 21:00 on December 14th is deleted from the calendar.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_11_b74b7bcc-1894-4949-9036-2d293a1f5276_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lukas",
+      "last_name": "Hürholz",
+      "full_name": "Lukas Hürholz",
+      "phone_number": "+44 123-456-7890-1234",
+      "alias": "Lukas",
+      "email": "lukas.hurholz@londonbanking.co.uk",
+      "relationship": "High School Friend",
+      "address": "456 Finance St, London, UK",
+      "company": "London Banking",
+      "job_title": "Banker",
+      "is_self": false,
+      "birthday": "1994-12-31T00:00:00-08:00"
+    },
+    {
+      "first_name": "Vick",
+      "last_name": "Li",
+      "full_name": "Vick Li",
+      "phone_number": "+1 555-890-1234-5678",
+      "alias": "Vick",
+      "email": "vick.li@techpals.com",
+      "relationship": "College Friend",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Tech Pals",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1994-07-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to delete my event 'Dinner with Lukas and Vick'.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to delete their event 'Dinner with Lukas and Vick'. I will look for this in the Calendar. Ok, I found this event in their calendar 'Dinner with Lukas and Vick' scheduled on December 14 07:00 pm, and got duplicated entries. I will delete both of the events and inform user of the deletion.",
+  "reference_time_str": "Today is Saturday, December 14, 2024 or 2024-12-14T15:20:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Calendar lookup tool used\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The specific Dec-14 event was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_count_extractor,\n                                        count_expected=2,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – the calendar event is actually removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dinner with Lukas and Vick\",\n                                    \"start_datetime_iso\": \"2024-12-14T19:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare against the initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # find the event\n                (1, 2),  # remomve all the events\n            ]",
+  "tool_allow_list": [
+    "remove_calendar_event",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to delete the event 'Dinner with Lukas and Vick' because you got an upset stomach. ",
+  "tool_allow_list_str": "[\"remove_calendar_event\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-14T15:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

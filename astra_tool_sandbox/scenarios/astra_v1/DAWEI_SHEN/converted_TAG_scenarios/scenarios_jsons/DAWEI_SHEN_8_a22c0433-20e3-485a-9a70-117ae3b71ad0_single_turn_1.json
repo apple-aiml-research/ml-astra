@@ -1,0 +1,95 @@
+{
+  "task_id": "a22c0433-20e3-485a-9a70-117ae3b71ad0",
+  "plot_id": 8,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 5, 2024 at 5 pm, self, Jess Zimmer were involved. Jess messages Dawei to ask about their upcoming holiday plans. Dawei replies, confirming their itinerary for the upcoming theater night. Jess shares a photo of the tickets on WhatsApp.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_8",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to check what events you have scheduled at 13:00 this week.",
+  "reference_time": "2024-12-01T12:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. User calendar is checked for events scheduled at 13:00 hours from 2024.12.01 00:00 - 2024.12.07 23:59 and the information is relayed to the user."
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_8_a22c0433-20e3-485a-9a70-117ae3b71ad0_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cycling Trip with Vick",
+      "start_datetime_iso": "2024-12-01T07:00:00-08:00",
+      "end_datetime_iso": "2024-12-01T10:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Vick Li"
+      ],
+      "location": "Local Café, Napa Valley, CA",
+      "reminder_time_ahead": "60 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-30T12:00:00-08:00",
+      "notes": "Starting the day with a cycling trip at a local café in Napa Valley."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Do I have any stuff on this week which is scheduled at the same time as 3 hours after my Cycling Trip with Vick ends?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "I infer that \"Do I have stuff on this week\" means that user wants to look at calendar events in the current week. The request is being made on December 01, 2024 at 12:00, so I will check between 2024.12.01 at 12:00 and 2024.12.07 23:59, the time frame corresponding to 'this week' taking into account the user's request.\n\nThe time frame they want to look at is stated as \"the same time as 3 hours after my Cycling Trip with Vick ends\". \n\nI should search for cycling trip in the user calendar and confirm the time at which this event ends. To calculate the time frame the user wants to look at I should add 3 hours to this time (10:00 + 03:00 = 13:00). \n\nI should then search the user calendar for the current week with the time frame 13:00. To do this, I will need to take into account all the events the user has scheduled for the current week. \n\nI see no events scheduled in the user calendar at 13:00 in the current week, so I will share this information with the user.",
+  "milestones": "[\n                # Milestone 0 – The agent queries the calendar for this week\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Agent tells the user there are no events at 13:00 this week\n                Milestone(\n                    snapshot_constraints=[\n                        # Response conveys that there are no events\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"no\",\n                                            \"not\",\n                                            \"none\",\n                                            \"don't have any\",\n                                            \"nothing scheduled\",\n                                            \"clear\",\n                                            \"no meetings\",\n                                            \"no appointments\",\n                                            \"aren't any\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar search precedes the user-facing response\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to check what events you have scheduled at 13:00 this week. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-01T12:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

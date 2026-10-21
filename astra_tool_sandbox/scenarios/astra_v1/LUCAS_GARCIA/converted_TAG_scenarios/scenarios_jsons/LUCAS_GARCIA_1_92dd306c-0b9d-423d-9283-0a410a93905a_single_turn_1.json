@@ -1,0 +1,83 @@
+{
+  "task_id": "92dd306c-0b9d-423d-9283-0a410a93905a",
+  "plot_id": 1,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 8 am, self were involved. Lucas starts his day by checking his calendar for upcoming fitness classes and appointments. A list of calendar events outlining his day, including training sessions and meetings with clients, is viewed.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_1",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want a quick reminder when the afternoon class is.",
+  "reference_time": "2024-12-02T13:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that the event \"Afternoon Group Fitness Class\" is scheduled to start at 15:00 on 2 December 2024. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_1_92dd306c-0b9d-423d-9283-0a410a93905a_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Afternoon Group Fitness Class",
+      "start_datetime_iso": "2024-12-02T15:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T16:00:00-08:00",
+      "attendees_names": [
+        "Alex Martin",
+        "Jessica Lin",
+        "Lucas Garcia",
+        "Olivia Clark",
+        "Theo Appleseed"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 45 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T09:30:00-08:00",
+      "notes": "Lead a group fitness class focusing on circuit training."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When does \"Afternoon Group Fitness Class\" start today?",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to know when \"Afternoon Group Fitness Class\" starts today. First I will find the given event in the calendar. Now that I have found it I will check the start time.  I will now inform the user that the event \"Afternoon Group Fitness Class\" is scheduled to start at 15:00 on 2 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – Agent uses a calendar-related read tool to find the event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the correct event was returned by the calendar search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Afternoon Group Fitness Class\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-02T15:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent informs the user of the correct start time and date\n                Milestone(\n                    snapshot_constraints=[\n                        # Check that the reply contains the correct time\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"15:00\",\n                                            \"3:00 pm\",\n                                            \"3 pm\",\n                                            \"3 p.m.\",\n                                            \"3pm\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar search → verify event\n                (1, 2),  # Event found → reply to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want a quick reminder when the afternoon class is. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-02T13:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

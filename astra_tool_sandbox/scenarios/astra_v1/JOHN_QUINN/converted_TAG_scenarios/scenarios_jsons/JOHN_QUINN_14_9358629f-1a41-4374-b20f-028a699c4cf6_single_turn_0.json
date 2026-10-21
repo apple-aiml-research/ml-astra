@@ -1,0 +1,129 @@
+{
+  "task_id": "9358629f-1a41-4374-b20f-028a699c4cf6",
+  "plot_id": 14,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 1:30pm, Ursula Quinn were involved. John has a discussion with his mom about his dad's birthday and ends up ordering his dad some high end whiskey  1. John messages his mom to ask her what to buy his dad for his upcoming birthday. 2. His mom is not very helpful, saying they have everything they need. 3. John ends up ordering some high-end whiskey online, and receives an email with the purchase confirmation. 4. He sends the purchase confirmation to his mom. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_14",
+    "contact",
+    "calendar",
+    "messaging",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to Robin Selmoure saying that you will be 5 minutes late to the Daily Stand up event.",
+  "reference_time": "2024-07-26T08:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply message is sent to Robin Selmoure including \"5 minutes late\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_14_9358629f-1a41-4374-b20f-028a699c4cf6_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-26T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-26T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message to a coworker about running late for a meeting.First the user mentioned Julie but corrected themselves. According to the calendar, there's a Daily Stand-up meeting scheduled at 9 am later today, participants including both Julie Patterson and Robin Selmoure. So I assume it should be Robin. I will then send the message if the user confirms that the message was transcribed correctly",
+  "query": "I want to send a message to my cowoker Julie, nope I mean the other one, saying \"I will be 5 minutes late to the stand up event sorry about that\".",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the coworker contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The contact returned from Milestone 0 includes Robin Selmoure\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=partial(\n                                    result_list_match_existence_extractor,\n                                    match_conditions={\n                                        \"full_name\": {\n                                            \"value\": \"Robin Selmoure\",\n                                            \"partial\": False,\n                                        },\n                                        \"email\": {\n                                            \"value\": \"robin.selmoure@palantir.com\",\n                                            \"partial\": False,\n                                        },\n                                    },\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # use the tool result from Milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – A new message is sent to Robin that mentions being 5 minutes late\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require at least one identifier (email or phone) for Robin,\n                                    # Allowing extra participants such as the user (John)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"robin.selmoure@palantir.com\",\n                                                \"408-555-0132\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"5 minutes late\",\n                                    \"creation_datetime_iso\": \"2024-07-26T08:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to send a message to Robin Selmoure saying that you will be 5 minutes late to the Daily Stand up event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"send_message\"]",
+  "is_read_time": "2024-07-26T08:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

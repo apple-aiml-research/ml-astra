@@ -1,0 +1,100 @@
+{
+  "task_id": "0080439b-75a3-4c18-b65c-5a83a7d845df",
+  "plot_id": 2,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Afternoon, July 22, 2024 at 2 pm, Cookie Watson were involved. Cookie reaches out for dinner later this week via SMS They set on Wednesday night for dinner at a newly open local pub named Pony & Jigger",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_2",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to Cookie Watson asking to reschedule the date on 24th July 2024 at 19:00 to 20:00 due to work schedule changing.",
+  "reference_time": "2024-07-23T19:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message to Cookie Watson is sent saying \"Hey Cookie, just asking if we can change our date time to 20:00 as I wont get off work early enough.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_2_0080439b-75a3-4c18-b65c-5a83a7d845df_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Cookie",
+      "start_datetime_iso": "2024-07-24T19:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T21:00:00-07:00",
+      "attendees_names": [
+        "Cookie Watson",
+        "Theo Appleseed"
+      ],
+      "location": "Pony & Jigger, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 120 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "notes": "Dinner at the newly opened local pub, Pony & Jigger."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to Cookie Watson saying \"Hey Cookie, just asking if we can change our date time to 20:00 as I wont get off work early enough.\".",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message saying \"Hey Cookie, just asking if we can change our date time to 20:00 as I wont get off work early enough.\" They want to message Cookie Watson. I found Cookie Watson in their contacts, so that's who I'll send the message to.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Cookie’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Verify Cookie Watson appears in the result of the previous contact-lookup call\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Cookie Watson\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"1234-5678-9107\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – A new message is sent to Cookie with the correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"cookie.watson@example.com\",\n                                                \"1234-5678-9107\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Hey Cookie, just asking if we can change our date time to 20:00 as I wont get off work early enough.\",\n                                    \"creation_datetime_iso\": \"2024-07-23T19:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send a message to Cookie Watson asking to reschedule the date on 24th July 2024 at 19:00 to 20:00 due to work schedule changing. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-23T19:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

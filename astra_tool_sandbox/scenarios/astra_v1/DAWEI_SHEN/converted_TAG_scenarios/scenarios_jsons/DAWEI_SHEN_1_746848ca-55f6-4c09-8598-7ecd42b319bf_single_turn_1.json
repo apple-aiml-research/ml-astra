@@ -1,0 +1,66 @@
+{
+  "task_id": "746848ca-55f6-4c09-8598-7ecd42b319bf",
+  "plot_id": 1,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 1, 2024 at 6 am, self, Vick Li were involved. Dawei checks his calendar for the cycling trip with Vick, starting at a local café in Napa Valley at 7 am. He texts Vick that he's on his way. Vick texts back and confirms he will be there on time.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_1",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know how long your event 'Cycling Trip with Vick' is.",
+  "reference_time": "2024-12-01T06:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that their event 'Cycling Trip with Vick' on December 1st which begins at 07:00 and ends at 10:00 is three hours long.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_1_746848ca-55f6-4c09-8598-7ecd42b319bf_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cycling Trip with Vick",
+      "start_datetime_iso": "2024-12-01T07:00:00-08:00",
+      "end_datetime_iso": "2024-12-01T10:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Vick Li"
+      ],
+      "location": "Local Café, Napa Valley, CA",
+      "reminder_time_ahead": "60 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-30T12:00:00-08:00",
+      "notes": "Starting the day with a cycling trip at a local café in Napa Valley."
+    }
+  ],
+  "contacts": [],
+  "phonecalls": [],
+  "query": "How long is my event 'Cycling Trip with Vick'?",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know how long their event 'Cycling Trip with Vick' is. Let me go to their calendar to check. I will inform them that this event which begins at 07:00 and ends at 10:00 is three hours long.",
+  "reference_time_str": "Today is Sunday, December 1, 2024 or 2024-12-01T06:25:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Agent uses calendar tools to access events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Confirm that the cycling event was retrieved (contains expected event)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Cycling Trip with Vick\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-01T07:00:00\",\n                                                \"partial\": True,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-01T10:00:00\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2: Agent informs user event lasts three hours\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"3 hours\", \"three hours\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know how long your event 'Cycling Trip with Vick' is. ",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-01T06:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,96 @@
+{
+  "task_id": "5e36a294-49bf-414e-9f11-1368892deb53",
+  "plot_id": 14,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 9, 2024 at 7 pm, self, Paul Harper were involved. Paul texts Dawei, thanking him for watching his cat over the weekend. Dawei replies, sharing a funny photo of the cat napping by the window. Paul reacts to the photo with a laughing emoji.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_14",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "astra_core"
+  ],
+  "user_goal": "You have received a message but you don't know who it's from, you want to check if it was a reply from Paul.",
+  "reference_time": "2024-12-09T19:10:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. Most recent incoming messages are retrieved and checked."
+    },
+    {
+      "input_text": "2. Message from Paul Harper received on December 9th 2024 19:05 is pulled up.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_14_5e36a294-49bf-414e-9f11-1368892deb53_single_turn_1",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "+1 555-678-9012-3456",
+      "content": "😂 That's hilarious! Looks like he found his new favorite spot. Thanks for the photo!",
+      "creation_datetime_iso": "2024-12-09T19:05:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Has Paul sent a reply? Show it to me if he has.",
+  "reasoning": "The user is asking whether Paul has sent a reply to their message and asking me to show it to them.\nFirstly I should search for a conversation with Paul. I can see one Paul in their messaging history, Paul Harper. Looking through their conversation I can see one new message received at 19:05.\nThe user has asked me to show them the new message, I should pull the reply from Paul Harper.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent uses a messages retrieval tool to look for recent replies (e.g., from Paul)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm that a message from Paul Harper at the expected time exists in the retrieved results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # Any one of the identifiers below is sufficient to uniquely ground the message\n                                            \"participants_addresses\": {\n                                                \"value\": [\n                                                    \"+1 555-123-4567-8901\",\n                                                    \"+1 555-678-9012-3456\",\n                                                ],\n                                                \"partial\": True,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"+1 555-678-9012-3456\",  # Paul's number\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-09T19:05:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"That's hilarious! Looks like he found his new favorite spot. Thanks for the photo!\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",  # populated by the extractor if the message is found\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # validate against the tool output in Milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent informs the user whether Paul has replied and shows the reply content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # We only require that the content include Paul's reply text (or a substantial part of it),\n                                    # not the exact phrasing of the agent's explanation.\n                                    \"content\": \"That's hilarious! Looks like he found his new favorite spot. Thanks for the photo!\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # retrieve messages → confirm Paul's reply exists\n                (1, 2),  # confirm Paul's reply → surface it correctly to the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "is_read_time": "2024-12-09T19:10:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You have received a message but you don't know who it's from, you want to check if it was a reply from Paul. ",
+  "minefields": null,
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]"
+}

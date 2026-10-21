@@ -1,0 +1,107 @@
+{
+  "task_id": "a1e44a0c-0d5e-43db-b26e-0fc4d2fed5c0",
+  "plot_id": 21,
+  "plot_summary": "John Quinn is the protagonist. On Friday, July 26, 2024 at 4:00pm, Deborah Shooter, Apricot Sweeney were involved. Deborah proposes to give John a few free tickets to a concert where she's playing  1. Deborah messages telling John about a big gig at a famous night club in San Francisco on Saturday late night. 2. John emphatically congratulates Deborah. 3. Deborah proposes that she give some of her VIP free tickets to John, and that he could bring a few friends if he wants. 4. John says he only needs one ticket to invite his girlfriend. 5. John messages Apricot asking her if she's up for going to a concert for free where his neighbor is DJing, to which she agrees. 6. John creates an event for the concert inviting Apricot. 7. John messages Deborah the next day asking about the tickets, but Deborah only replies a few days later, slightly rudely saying that she does not have any free tickets left. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_21",
+    "calendar",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You've been invited to a concert, you want to check your availability for that day before you schedule the event.",
+  "reference_time": "2024-07-26T16:11:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Calendar is checked for availability on July 27, 2024.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_21_a1e44a0c-0d5e-43db-b26e-0fc4d2fed5c0_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Hey John! I've got a big gig at a famous nightclub in San Francisco this Saturday night. Thought you might like to join!",
+      "creation_datetime_iso": "2024-07-26T16:00:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Is there any events scheduled for this Saturday?",
+  "functional_complexity": "low",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "reasoning": "The user is asking about their availability on a specific day. \nI should consult their calendar and check. I can see no events scheduled for July 27, 2024. I should inform the user.",
+  "milestones": "[\n                # Milestone 0 – Agent consults the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Agent replies to the user indicating availability / no events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"no events\",\n                                            \"nothing scheduled\",\n                                            \"free\",\n                                            \"available\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar checked → inform user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You've been invited to a concert, you want to check your availability for that day before you schedule the event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-26T16:11:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

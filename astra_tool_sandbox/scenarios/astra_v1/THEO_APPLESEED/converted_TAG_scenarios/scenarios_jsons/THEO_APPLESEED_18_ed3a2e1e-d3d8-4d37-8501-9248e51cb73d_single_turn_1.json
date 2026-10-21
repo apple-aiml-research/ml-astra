@@ -1,0 +1,98 @@
+{
+  "task_id": "ed3a2e1e-d3d8-4d37-8501-9248e51cb73d",
+  "plot_id": 18,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Evening, July 27, 2024 at 6 pm, Emily Rose, Neighbors were involved. Neighborhood gathering Meeting neighbors and engaging in community activities",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_18",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send your old friend John an email letting him know that he's going with you to a neighborhood gathering.",
+  "reference_time": "2024-07-24T12:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "An email is sent to John Quinn with the text \"Hey John Boy, my neighbor Emily Rose invited me to some neighborhood gathering going on on the 27th and I told her you would be there. Can't wait to catch up then. It's starts at 6PM.\"",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_18_ed3a2e1e-d3d8-4d37-8501-9248e51cb73d_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "1234-5678-9109",
+      "alias": "Em",
+      "email": "emily.rose@example.com",
+      "relationship": "Neighbor",
+      "address": "128 Neighborly St, Orchard County, CA",
+      "company": "Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": false,
+      "birthday": "1985-06-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send my old college friend John the following via email: \"Hey John Boy, my neighbor Emily Rose invited me to some neighborhood gathering going on on the 27th and I told her you would be there. Can't wait to catch up then. It's starts at 6PM.\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send an email to their old friend John with the text \"Hey John Boy, my neighbor Emily Rose invited me to some neighborhood gathering going on on the 27th and I told her you would be there. Can't wait to catch up then. It's starts at 6PM.\" The user has two contacts called John, with John Appleseed as father and John Quinn as College Friend. So I presume I should draft an email to John Quinn as the user mentioned \"old friend\". I shall show the draft of the email to the user first for approval before sending. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up contacts (either searches or lists all)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The returned contact list includes John Quinn with the correct phone number\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"John Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"john.quinn@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,  # depends on tool output from milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – Verify that an email was sent to John Quinn with the correct text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"john.quinn@palantir.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"Hey John Boy\",\n                                    \"creation_datetime_iso\": \"2024-07-24T12:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                # Only require the opening phrase; the full body can vary in punctuation or minor wording\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",        # to create the outgoing email\n    \"search_contacts\",   # reasonable way to look up John Quinn\n    \"get_all_contacts\",  # fallback listing of contacts\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send your old friend John an email letting him know that he's going with you to a neighborhood gathering. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_email\"]",
+  "is_read_time": "2024-07-24T12:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

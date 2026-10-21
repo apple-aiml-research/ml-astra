@@ -1,0 +1,80 @@
+{
+  "task_id": "78f86716-5328-4dcb-8af2-aac938e3ccfd",
+  "plot_id": 5,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 3, 2024 at 12 pm, Emmanuel Gonzales were involved. Lucas has lunch with Emmanuel to catch up and reminisce about their high school days. Lucas receives a call from Emmanuel during lunch to confirm the meeting location. Lucas follow up by a calendar invite.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_5",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to text Emmanuel to tell him you enjoyed the lunch you had together.",
+  "reference_time": "2024-12-03T14:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The message \"Hey Emmanuel, again great to catch up today\" is sent to Emmanuel Gonzales via text."
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_5_78f86716-5328-4dcb-8af2-aac938e3ccfd_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Emmanuel",
+      "last_name": "Gonzales",
+      "full_name": "Emmanuel Gonzales",
+      "phone_number": "+1 12345-6789-1000-1357",
+      "alias": "High School Friend",
+      "email": "emmanuel.gonzales@example.com",
+      "relationship": "High School friend",
+      "address": "78 Old School Rd, Orchard County, CA, USA",
+      "company": "Orchard County High School",
+      "job_title": "Football Coach",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text the Football Coach saying this; \"Hey Emmanuel, again great to catch up today.\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking to send a message.\nFirst, I need to identify the intended recipient. The user has referred to them as a football coach. Looking through the user's contacts I can see that Emmanuel Gonzales is tagged as a football coach. This must be who the user is referring to.\nNext, I will compose the message as requested.\nA message will be sent to Emmanuel Gonzales saying  \"Hey Emmanuel, again great to catch up today.\"",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Emmanuel in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The contact returned from the previous tool call includes Emmanuel Gonzales\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Emmanuel Gonzales\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 12345-6789-1000-1357\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – A text message is sent containing the required content to Emmanuel\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [(\"+1 12345-6789-1000-1357\",)]\n                                    ],\n                                    \"content\": \"Hey Emmanuel, again great to catch up today\",\n                                    \"creation_datetime_iso\": \"2024-12-03T14:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirm Emmanuel contact\n                (1, 2),  # Confirmed contact → send message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to text Emmanuel to tell him you enjoyed the lunch you had together. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-12-03T14:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

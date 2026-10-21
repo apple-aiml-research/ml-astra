@@ -1,0 +1,90 @@
+{
+  "task_id": "d67cd98b-2f26-420c-955f-a5e51f880a85",
+  "plot_id": 4,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 3:00 PM, Ben Rose, Lucas Jones were involved. Coordinating with Ben and Lucas to organize tools and equipment for the gardening project at the local park. Send out an calendar invte for them to meet and purchase the equipments. Messages exchanged with Ben and Lucas confirming the details of the project. Calendar invte sent.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_4",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You are wondering what time you sent in your last message to the Gardeing Project Coordination",
+  "reference_time": "2024-12-04T15:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The time of the message sent by the user at 15:15 on December 4 2024 to the \"Gardening Project Coordination\" group is presented to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_4_d67cd98b-2f26-420c-955f-a5e51f880a85_single_turn_0",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Gardening Project Coordination",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0125",
+        "+1 530-555-0141"
+      ],
+      "sender_address": "+1 530-555-0123",
+      "content": "Great! I'll send out the calendar invite now. Thanks, everyone.",
+      "creation_datetime_iso": "2024-12-04T15:15:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ben",
+      "last_name": "Rose",
+      "full_name": "Ben Rose",
+      "phone_number": "+1 530-555-0125",
+      "alias": "Green Thumb Dad",
+      "email": "ben.rose@gardensplus.com",
+      "relationship": "Father",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Gardens Plus",
+      "job_title": "Landscape Designer",
+      "is_self": false,
+      "birthday": "1965-03-12T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time did I send that last message into the gardening project coordination group",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when they sent their last message into the gardening project coordination group. First thing I need to do is search the user's messages to find a group with a name that matches. Ok I found the group \"Gardening Project Coordination\". Now that I have found that I just need to take a look at the last message sent by the user. Ok now that I have that I will retrieve the time of the message and inform the user",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the Gardening Project Coordination messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the expected message (Dec 4 2024 15:15) was returned from the lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Gardening Project Coordination\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-04T15:15:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"+1 530-555-0123\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user the correct time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"3:15 PM\",\n                                            \"3:15 pm\",\n                                            \"3:15pm\",\n                                            \"3:15 p.m.\",\n                                            \"15:15\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Message lookup → confirm correct message retrieved\n                (1, 2),  # Retrieval confirmed → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You are wondering what time you sent in your last message to the Gardeing Project Coordination ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]",
+  "is_read_time": "2024-12-04T15:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

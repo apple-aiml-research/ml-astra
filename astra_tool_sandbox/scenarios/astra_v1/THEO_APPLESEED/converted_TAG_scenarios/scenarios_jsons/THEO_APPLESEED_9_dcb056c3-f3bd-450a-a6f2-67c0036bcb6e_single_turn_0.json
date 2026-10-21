@@ -1,0 +1,81 @@
+{
+  "task_id": "dcb056c3-f3bd-450a-a6f2-67c0036bcb6e",
+  "plot_id": 9,
+  "plot_summary": "Theo Appleseed is the protagonist. On Wednesday Evening, July 24, 2024 at 7pm, Cookie Watson were involved. Theo meets Cookie for Dinner at Pony & Jigger Theo and Cookie exchanged share messages after the event talking about how great the gathering was.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_9",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to send her a message after you just had dinner together.",
+  "reference_time": "2024-07-24T23:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Cookie Watson reading \"Hey are you still up?\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_9_dcb056c3-f3bd-450a-a6f2-67c0036bcb6e_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send something to Cookie that says this \"Hey are you still up?\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send something to Cookie saying \"Hey are you still up?\".\n\n Hmm I should first figure out what they mean by a \"thing\". As they have given me a message to send the user must mean either a message or an email. \n\nHmm, looks like all correspondence between Cookie Watson and the user is conducted through Message so this must be what the user meant. As they have already given me the content of the Message I will write it up for them. \n\nNext I will ask the user if they want to send the message and if they confirm I will send it to Cookie. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Cookie’s contact/past chatting history information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Message to Cookie has been sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require Cookie to be one of the participants (allowing either phone or email);\n                                    # other participants (e.g., the user themself) are allowed.\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"cookie.watson@example.com\",\n                                                \"1234-5678-9107\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Hey are you still up?\",\n                                    \"creation_datetime_iso\": \"2024-07-24T23:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                # No dependencies - contact lookup and message sending are independent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send her a message after you just had dinner together. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"search_messages\", \"get_all_messages\"]",
+  "is_read_time": "2024-07-24T23:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

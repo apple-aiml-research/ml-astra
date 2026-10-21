@@ -1,0 +1,67 @@
+{
+  "task_id": "2980c6ab-0a80-4913-acbe-65e50a9cf894",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "After sending the prop receipts to Francis you want to meet with him to discuss further prop acquisition in the future.",
+  "reference_time": "2024-12-12T19:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. an event called 'Prop Discussion' with Francis Wagner as an invitee is created for 13:00-13:30 on 15th of December 2024",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_2980c6ab-0a80-4913-acbe-65e50a9cf894_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Francis",
+      "last_name": "Wagner",
+      "full_name": "Francis Wagner",
+      "phone_number": "+1 555-456-7890-1234",
+      "alias": "Francis",
+      "email": "francis.wagner@orchardtheater.com",
+      "relationship": "Theater Manager",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Theater Manager",
+      "is_self": false,
+      "birthday": "1975-01-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make an event called 'Prop Discussion' on Sunday at one and add Francis to it while you're at it. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to make an event called 'Prop Discussion' on Sunday at one and add Francis to it. Francis refers to Francis Wagner, as he is the only Francis in contacts. The user themself, Dawei Shen, will also be an attendee by default. Because no duration was specified, I will schedule it for the default 30 minutes, 13:00 – 13:30, on Sunday, 15 December 2024. I will create the event titled 'Prop Discussion' for 13:00-13:30 on 15 December 2024 with attendees Dawei Shen and Francis Wagner.",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T19:25:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Francis in the contacts list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1: Francis contact found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Francis Wagner\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – The “Prop Discussion” event is actually added to the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Prop Discussion\",\n                                    \"start_datetime_iso\": \"2024-12-15T13:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\"Dawei Shen\", \"Francis Wagner\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-12T19:25:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # looked up contact → initiate calendar creation\n            ]",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "create_calendar_event"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. After sending the prop receipts to Francis you want to meet with him to discuss further prop acquisition in the future. ",
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T19:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

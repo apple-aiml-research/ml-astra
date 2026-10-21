@@ -1,0 +1,79 @@
+{
+  "task_id": "0487ba0c-aba4-4eae-a58c-7937bab6be30",
+  "plot_id": 18,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 14, 2024 at 12:00 PM, Daniel Kim were involved. Meeting with Daniel at his cafe discussing upcoming events. Menu and resource support confirmed via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_18",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a reply email to Daniel Kim about the menu and resources.",
+  "reference_time": "2024-12-14T13:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email is sent in reply to the email from Daniel Kim called Re: Confirmation of Menu and Resources for Upcoming Events to say  \"Hey Daniel, Yeah, it was swell seeing you too. So I just want to make absolutely sure that everything you agreed to provide is being provided gratis, right? Thanks, Emily Rose, Event Guru\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_18_0487ba0c-aba4-4eae-a58c-7937bab6be30_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Confirmation of Menu and Resources for Upcoming Events",
+      "sender_address": "daniel.kim@localcafe.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-14T13:00:00-08:00",
+      "body": "Hello Emily,\n\nIt was great seeing you today. I confirm the arrangements for the menu and resources as discussed. Looking forward to another successful series of events with the Orchard County Community Center.\n\nWarm regards,\nDaniel Kim\nOwner, Local Cafe",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Email back the local cafe and say \"Hey Daniel, Yeah, it was swell seeing you too. So I just want to make absolutely sure that everything you agreed to provide is being provided gratis, right? Thanks, Emily Rose, Event Guru\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking to send an email.\nFirst, I should find the intended recipient. The user has provided me with local cafe, I can see they have recently received an email from this address daniel.kim@localcafe.com. \nNext, I will draft the message as instructed.\nAn email with the text \"Hey Daniel, Yeah, it was swell seeing you too. So I just want to make absolutely sure that everything you agreed to provide is being provided gratis, right? Thanks, Emily Rose, Event Guru\" will be send to daniel.kim@localcafe.com",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Daniel’s previous email (information-retrieval)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved email is Daniel Kim’s\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"daniel.kim@localcafe.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Re: Confirmation of Menu and Resources for Upcoming Events\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A reply email is sent to Daniel Kim\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"daniel.kim@localcafe.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"gratis\",\n                                    \"creation_datetime_iso\": \"2024-12-14T13:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to send a reply email to Daniel Kim about the menu and resources. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-14T13:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

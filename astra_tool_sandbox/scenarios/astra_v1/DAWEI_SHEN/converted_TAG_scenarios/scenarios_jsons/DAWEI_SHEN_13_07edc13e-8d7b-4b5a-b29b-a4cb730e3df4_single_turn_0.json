@@ -1,0 +1,81 @@
+{
+  "task_id": "07edc13e-8d7b-4b5a-b29b-a4cb730e3df4",
+  "plot_id": 13,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 9, 2024 at 8 am, self, Michelle Barnes were involved. Michelle emails Dawei with a key dataset update for their machine-learning model. She includes a few key questions for discussion during their team sync. Dawei drafts a response and schedules time on Tuesday afternoon to review the dataset with her.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_13",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know what time your dataset review event is over at.",
+  "reference_time": "2024-12-10T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1.The user is informed that their event Dataset Review with Michelle ends at 15:30.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_13_07edc13e-8d7b-4b5a-b29b-a4cb730e3df4_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Dataset Review with Michelle",
+      "start_datetime_iso": "2024-12-10T14:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T15:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room A, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-09T08:15:00-08:00",
+      "notes": "Review the updated dataset and discuss key questions as outlined in Michelle's email."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time does my Dataset Review with Michelle end at?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Okay so the user wants to know when their event 'Dataset Review with Michelle' will finish at. I will go to the calendar and check. I found the event 'Dataset Review with Michelle' scheduled to start at 14:00 and ends at 15:30. I will inform them of this.",
+  "reference_time_str": "Today is Tuesday, December 10, 2024 or 2024-12-10T10:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent consults the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The expected event (and its end time) is found in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dataset Review with Michelle\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-10T15:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – The user is told the correct end times\n                Milestone(\n                    snapshot_constraints=[\n                        # Check the end time\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"15:30\", \"3:30\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know what time your dataset review event is over at. ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-10T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,101 @@
+{
+  "task_id": "fffd197a-a5c6-4aca-a9c3-cdddba4d306d",
+  "plot_id": 18,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 9 am, self, Kevin Chen, Stefan Mustermann were involved. Dawei receives an email from Kevin summarizing their research progress. Stefan replies-all with an updated graph and invites feedback. Dawei schedules a team review on Friday to consolidate comments.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_18",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have read the emails from both kevin.       chen@orchardtech.       com and stefan.       mustermann@orchardtech.       com and are now ready to reply to their message with the feedback \"Hey guys, everything looks great.        Let's add a conclusion piece to the end of the document to round up the general information.       \"",
+  "reference_time": "2024-12-12T09:10:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An email is sent to kevin.chen@orchardtech.com replying to his email saying \"Hey guys, everything looks great. Let's add a conclusion piece to the end of the document to round up the general information.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_18_fffd197a-a5c6-4aca-a9c3-cdddba4d306d_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Research Progress Update",
+      "sender_address": "kevin.chen@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "stefan.mustermann@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T09:00:00-08:00",
+      "body": "Hi Dawei,\n\nI wanted to update you on the current status of our research project. We've made significant progress on the algorithms, and I've attached the latest results for your review. Please have a look and let me know your thoughts.\n\nBest regards,\nKevin",
+      "attachments": [
+        "Research_Results_Dec2024.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Stefan",
+      "last_name": "Mustermann",
+      "full_name": "Stefan Mustermann",
+      "phone_number": "+1 555-901-2345-6789",
+      "alias": "Stefan",
+      "email": "stefan.mustermann@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "birthday": "1987-11-30T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to Kevin's email with \"Hey guys, everything looks great. Let's add a conclusion piece to the end of the document to round up the general information.\".",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "User wants to reply to Kevin’s recent email, so I’ll send a reply to kevin.chen@orchardtech.com that says: \"Hey guys, everything looks great. Let’s add a conclusion piece to the end of the document to round up the general information.\"",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T09:10:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks through the user’s emails to figure out which email to reply back\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # 1. Verify that emails with research progress found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"kevin.chen@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-12T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Research Progress Update\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – a new email has been sent to Kevin and Stefan with the requested feedback\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"tool_trace\": json.dumps(\n                                        {\n                                            \"tool_name\": \"send_email\",\n                                            \"arguments\": {\n                                                \"email_action\": \"send\",\n                                                \"email_id_referred\": \"place_holder\",  # must send email with a thread id to reply an email\n                                                \"email_id_referred_action\": \"reply\",\n                                            },\n                                        },\n                                        ensure_ascii=False,\n                                    )\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": column_tool_trace_partial_arguments_similarity\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 3 – a new email has been sent to Kevin and Stefan with the requested feedback\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\n                                            \"kevin.chen@orchardtech.com\",\n                                        ]\n                                    ],\n                                    \"subject\": \"Re\",\n                                    \"status\": \"sent\",\n                                    \"body\": \"add a conclusion piece\",\n                                    \"creation_datetime_iso\": \"2024-12-12T09:10:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"subject\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # email record appears\n            ]",
+  "tool_allow_list": [
+    "send_email",
+    "search_emails",
+    "get_all_emails",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You have read the emails from both kevin.      chen@orchardtech.      com and stefan.      mustermann@orchardtech.      com and are now ready to reply to their message with the feedback \"Hey guys, everything looks great.       Let's add a conclusion piece to the end of the document to round up the general information.      \" ",
+  "tool_allow_list_str": "[\"send_email\", \"search_emails\", \"get_all_emails\", \"get_all_contacts\", \"search_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T09:10:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

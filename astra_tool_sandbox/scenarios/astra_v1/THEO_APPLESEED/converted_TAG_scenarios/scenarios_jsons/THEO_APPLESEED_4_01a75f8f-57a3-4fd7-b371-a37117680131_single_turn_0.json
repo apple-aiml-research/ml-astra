@@ -1,0 +1,96 @@
+{
+  "task_id": "01a75f8f-57a3-4fd7-b371-a37117680131",
+  "plot_id": 4,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Morning, July 23, 2024 at 9 am, Kevin Chen were involved. One-on-one meeting with Kevin to discuss project progress ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_4",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You realize you have double booked yourself today so want to delete one of the events.",
+  "reference_time": "2024-07-29T10:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Brainstorming Session from 11:00-12:00 on 29 July 2024 is deleted. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_4_01a75f8f-57a3-4fd7-b371-a37117680131_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "remove_calendar_event",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Brainstorming Session",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "126 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Brainstorming session with Michelle to explore new approaches to the current research problem."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Delete my event today with just Michelle Barnes. ",
+  "reasoning": "The user wants to delete their event with just Michelle Barnes. I should check their Calendar for any events. Looks like they have a lot of events today. I see Michelle Barnes as an invitee on four events today: \"Follow-up Sync with Michelle and Dawei\" from 11:00-12:00 with Michelle Barnes and Dawei Shen as invitees; \"Brainstorming Session\" from 11:00-12:00 with Michelle Barnes as an invitee; \"Client Presentation Preparation\" from 14:00-15:00 with Kevin Chen, Stefan Mustermann, Michelle Barnes, and Dawei Shen as invitees; \"Weekly Team Meeting\" from 16:00-17:00 with Kevin Chen, Stefan Mustermann, Michelle Barnes, and Dawei Shen as invitees. The user specified they want to delete the one with ONLY Michelle so I should check the invitees of the events where Michelle is the only invitee. Looks like the only event with only Michelle is the Brainstorming Session from 11:00-12:00 on 29 July 2024. I will delete it and let the user know.",
+  "functional_complexity": "low",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The desired “Brainstorming Session” event is found in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Brainstorming Session\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-29T11:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Event is removed from the Calendar database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Brainstorming Session\",\n                                    \"start_datetime_iso\": \"2024-07-29T11:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T12:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup → verify event found\n                (1, 2),  # Event found → event removed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You realize you have double booked yourself today so want to delete one of the events. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"remove_calendar_event\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-29T10:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

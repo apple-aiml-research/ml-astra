@@ -1,0 +1,105 @@
+{
+  "task_id": "bb9d9b90-4467-4f3a-877a-02875e920ec5",
+  "plot_id": 21,
+  "plot_summary": "Dawei Shen is the protagonist. On Saturday, December 14, 2024 at 7 pm, self, Lukas Hürholz, Vick Li were involved. Dawei, Lukas, and Vick meet for dinner at a local restaurant in Orchard County. Dawei shares the address in their group text. Lukas sends a group selfie afterward, thanking Dawei for the evening.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_21",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "messaging",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You realize you sent the wrong address to Lukas and Vick for the restaurant you're to meet at tonight.        You need to send them a new message with the correct address.",
+  "reference_time": "2024-12-14T18:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Lukas and Vick in the group chat called Dinner at a local restaurant.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The message is to say exactly Hey I was wrong about the address I gave you guys — the correct address is Local Restaurant, Orange County, CA. See you both at 7 pm!",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_21_bb9d9b90-4467-4f3a-877a-02875e920ec5_single_turn_1",
+  "messages": [
+    {
+      "conversation_name": "Dinner at a local restaurant",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com",
+        "lukas.hurholz@londonbanking.co.uk"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "Here's the address for our dinner on December 14th: Local Restaurant, Orchard County, CA. See you both at 7 pm!",
+      "creation_datetime_iso": "2024-12-08T09:30:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lukas",
+      "last_name": "Hürholz",
+      "full_name": "Lukas Hürholz",
+      "phone_number": "+44 123-456-7890-1234",
+      "alias": "Lukas",
+      "email": "lukas.hurholz@londonbanking.co.uk",
+      "relationship": "High School Friend",
+      "address": "456 Finance St, London, UK",
+      "company": "London Banking",
+      "job_title": "Banker",
+      "is_self": false,
+      "birthday": "1994-12-31T00:00:00-08:00"
+    },
+    {
+      "first_name": "Vick",
+      "last_name": "Li",
+      "full_name": "Vick Li",
+      "phone_number": "+1 555-890-1234-5678",
+      "alias": "Vick",
+      "email": "vick.li@techpals.com",
+      "relationship": "College Friend",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Tech Pals",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1994-07-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message in the group chat called Dinner at a local restaurant and have it say the following words verbatim: \nHey I was wrong about the address I gave you guys — the correct address is Local Restaurant, Orange County, CA. See you both at 7 pm!",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user has provided the exact words to send. I will send that message immediately in the existing group chat named “Dinner at a local restaurant,” which includes Lukas, Vick, and the user, so they all receive the corrected address.",
+  "reference_time_str": "Today is Saturday, December 14, 2024 or 2024-12-14T18:40:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Ensure a new message is added to the thread \"Dinner at a local restaurant\" with correct participants\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Dinner at a local restaurant\",\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"dawei.shen@orchardtech.com\",\n                                                \"+1 555-123-4567-8901\",\n                                            ),\n                                            (\n                                                \"vick.li@techpals.com\",\n                                                \"+1 555-345-6789-0123\",\n                                            ),\n                                            (\n                                                \"lukas.hurholz@londonbanking.co.uk\",\n                                                \"+44 123-456-7890-1234\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"Hey I was wrong about the address I gave you guys \\u2014 the correct address is Local Restaurant, Orange County, CA. See you both at 7 pm!\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-14T18:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_exact_match_similarity,\n                                \"conversation_name\": column_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You realize you sent the wrong address to Lukas and Vick for the restaurant you're to meet at tonight.       You need to send them a new message with the correct address. ",
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-14T18:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

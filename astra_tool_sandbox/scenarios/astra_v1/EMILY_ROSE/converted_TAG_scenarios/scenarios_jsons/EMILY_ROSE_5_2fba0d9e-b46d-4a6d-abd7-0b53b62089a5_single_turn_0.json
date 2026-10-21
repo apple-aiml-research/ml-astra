@@ -1,0 +1,118 @@
+{
+  "task_id": "2fba0d9e-b46d-4a6d-abd7-0b53b62089a5",
+  "plot_id": 5,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 7:00 PM, Jessica Lane were involved. Planning session with Jessica over dinner regarding the holiday volunteering schedule. Email sent to volunteers with the finalized schedule of activities.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_5",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You realize you forgot to include Matt in your email with the volunteering schedule so need to send it to him separately.",
+  "reference_time": "2024-12-04T20:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email with the subject line Finalized Holiday Volunteering Schedule, sent on the 4 December 2024 at 20:30 is forwarded to Matt Duncan. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_5_2fba0d9e-b46d-4a6d-abd7-0b53b62089a5_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Finalized Holiday Volunteering Schedule",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "volunteers@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "jessica.lane@orchardmail.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-04T20:30:00-08:00",
+      "body": "Hello Team,\n\nI hope this message finds you well. Following our productive planning session this evening with Jessica, we have finalized the volunteering schedule for the upcoming holiday events. Please find attached the detailed schedule of activities.\n\nWe appreciate your commitment and look forward to another successful season of community engagement. Should you have any questions or require further clarification, do not hesitate to reach out.\n\nThank you all for your dedication and hard work!\n\nBest regards,\nEmily Rose\nEvent Coordinator\nOrchard County Community Center",
+      "attachments": [
+        "Holiday_Volunteering_Schedule.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lane",
+      "full_name": "Jessica Lane",
+      "phone_number": "+1 530-555-0127",
+      "alias": "Bestie",
+      "email": "jessica.lane@orchardmail.com",
+      "relationship": "Best Friend",
+      "address": "200 Friendship Blvd, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Volunteer Coordinator",
+      "is_self": false,
+      "birthday": "1994-04-10T00:00:00-07:00"
+    },
+    {
+      "first_name": "Matt",
+      "last_name": "Duncan",
+      "full_name": "Matt Duncan",
+      "phone_number": "+1 530-555-0132",
+      "alias": "Young Volunteer",
+      "email": "matt.duncan@students.orchardschools.org",
+      "relationship": "Event Volunteer",
+      "address": "400 School Rd, Orchard County, CA 95662, USA",
+      "company": "Orchard High School",
+      "job_title": "Student",
+      "is_self": false,
+      "birthday": "2005-10-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Forward the volunteering schedule email to Matt. ",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to forward the volunteering schedule email to Matt. I first need to figure out who Matt is. I should check the user's Contacts for a Matt. \n\nHmm, looks like there is only one Matt in the user's Contacts, Matt Duncan, so this must be who the user means. Next I'll get Matt's email address from his contact card so I have somewhere to forward the requested email to. Matt's email address is matt.duncan@students.orchardschools.org.\n\nNext I will look in Mail for the volunteering schedule email. There is only one email with that subject line, that was sent at 20:30 on the 4 December 2024, so that must be what the user meant. \n\nI will now forward this email to matt.duncan@students.orchardschools.org",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Matt in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Matt Duncan’s contact details were present in the tool result from Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Matt Duncan\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"matt.duncan@students.orchardschools.org\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent searches for the volunteering schedule email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 – The correct email (Finalized Holiday Volunteering Schedule) was found from Milestone 2\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Finalized Holiday Volunteering Schedule\",\n                                                \"partial\": False,\n                                            },\n                                            # We don’t strictly need date/time, subject suffices\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ]\n                ),\n                # Milestone 4 – A new forwarded / sent email to Matt exists\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"matt.duncan@students.orchardschools.org\"]\n                                    ],\n                                    \"subject\": \"Finalized Holiday Volunteering Schedule\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-04T20:35:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"subject\": column_contains_similarity,  # allow “Fwd:” prefix, etc.\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # contact lookup -> confirm Matt\n                (2, 3),  # email search   -> confirm volunteering schedule email\n                (1, 4),  # having Matt info precedes sending email\n                (3, 4),  # having original email precedes forwarding\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_emails\",\n    \"get_all_emails\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You realize you forgot to include Matt in your email with the volunteering schedule so need to send it to him separately. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-04T20:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,78 @@
+{
+  "task_id": "d75b6651-a4f4-4da6-895c-f7e5a0beabcd",
+  "plot_id": 28,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Afternoon, July 30, 2024 at 1 pm, Theo Appleseed were involved. Theo messages in a group chat with friends planning and discussing the upcoming weekend hiking trip\n Generate a thread of messages involving 3 friends of Theo discussing the upcoming hike to the Carpathians for the weekend\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_28",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what time Cookie messaged about planning a meal for your hiking trip to the Carpathians this weekend.",
+  "reference_time": "2024-07-30T16:40:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. User is informed that Cookie Watson sent a message about planning a meal for after the Carpathians hike at 13:10 on 2024-07-30."
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_28_d75b6651-a4f4-4da6-895c-f7e5a0beabcd_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Carpathians Hiking",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "john.quinn@palantir.com",
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Theo, should we plan a meal for when we finish the hike? Maybe a small celebration?",
+      "creation_datetime_iso": "2024-07-30T13:10:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When did my college friend mention planning a meal for our hike?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know when their college friend mentioned planning a meal for their hike. I can see two college friends in their contacts: Cookie Watson and John Quinn. I'm not sure which one the user is talking about, so I'll see if I can find any other indications.\n\nI didn't find any upcoming hiking events in the user's calendar, but I did find a message group chat called Carpathians Hiking, of which both Cookie and John are members. I'll look through the messages here to see if the one the user wants to know about is here.\n\nThere is a message from Cookie Watson at 13:10 on 2024-07-30 that says \"Theo, should we plan a meal for when we finish the hike? Maybe a small celebration?\" This must be the message the user is interested in.\n\nI'll go ahead and let them know that Cookie Watson messaged about planning a meal for after their hike at 13:10 today.",
+  "milestones": "[\n                # Milestone 0 – A message-retrieval tool is invoked\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved result set contains Cookie’s meal-planning message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"cookie.watson@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"plan a meal\",\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-30T13:10:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs the user of the correct time in their reply\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"13:10\",\n                                            \"1:10 pm\",\n                                            \"1:10pm\",\n                                            \"1:10 p.m.\",\n                                            \"1:10\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know what time Cookie messaged about planning a meal for your hiking trip to the Carpathians this weekend. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-30T16:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

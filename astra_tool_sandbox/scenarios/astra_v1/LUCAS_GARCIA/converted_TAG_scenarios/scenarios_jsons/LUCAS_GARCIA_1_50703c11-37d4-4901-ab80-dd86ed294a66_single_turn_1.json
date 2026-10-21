@@ -1,0 +1,116 @@
+{
+  "task_id": "50703c11-37d4-4901-ab80-dd86ed294a66",
+  "plot_id": 1,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 8 am, self were involved. Lucas starts his day by checking his calendar for upcoming fitness classes and appointments. A list of calendar events outlining his day, including training sessions and meetings with clients, is viewed.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_1",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You need to mentally prepare for the day so  want to know how many meetings you have, not workout sessions.",
+  "reference_time": "2024-12-02T07:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed they have 3 meetings today: Meeting with Jessica: Joint Fitness Workshop Planning from 10:00-11:00, Lunch Meeting with Dietitian Sarah from 13:00-14:00, and Fitness Planning for Next 3 Months from 19:00-19:30 on 2 December 2024. ",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The workout and fitness class events are not listed or counted among the meetings.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_1_50703c11-37d4-4901-ab80-dd86ed294a66_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Meeting with Jessica: Joint Fitness Workshop Planning",
+      "start_datetime_iso": "2024-12-02T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T11:00:00-08:00",
+      "attendees_names": [
+        "Jessica Lin",
+        "Lucas Garcia"
+      ],
+      "location": "Orchard County Fitness Center, Meeting Room",
+      "reminder_time_ahead": "reminder_time_ahead: 30 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T09:15:00-08:00",
+      "notes": "Discussing the details and schedule of the upcoming joint fitness workshop at Orchard County Fitness Center."
+    },
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Lunch Meeting with Dietitian Sarah",
+      "start_datetime_iso": "2024-12-02T13:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T14:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Sarah Lopez"
+      ],
+      "location": "Healthy Choices Cafe, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T09:00:00-08:00",
+      "notes": "Discuss new nutrition plans and healthy meal ideas to recommend to clients."
+    },
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Fitness Planning for Next 3 Months",
+      "start_datetime_iso": "2024-12-02T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T19:30:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Theo Appleseed"
+      ],
+      "location": "Cafe at Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 15 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T10:45:00-08:00",
+      "notes": "Discussion and planning with Theo regarding fitness goals and session scheduling for the upcoming three months."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What do I have scheduled for today, meeting-wise, not fitness classes? How many in total?",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know how many meeting they have today. I should check their Calendar for any meetings today. \nHmm, looks like there is only 3 meetings today, the Meeting with Jessica: Joint Fitness Workshop Planning from 10:00-11:00 on the 2 December 2024 and Lunch Meeting with Dietitian Sarah from 13:00-14:00 on 2 December 2024, and Fitness Planning for Next 3 Months with Theo at 7pm. All other events like 'Evening Workout Session with Theo', 'Afternoon Group Fitness Class' and 'Online Fitness Class with Megan' are not meeting related \nI will let the user know. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up today’s calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Calendar output includes the Jessica planning meeting\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Meeting with Jessica: Joint Fitness Workshop Planning\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent looks up today’s calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 – Calendar output includes the lunch meeting with Sarah\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Lunch Meeting with Dietitian Sarah\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ]\n                ),\n                # Milestone 4 – Agent looks up today’s calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 5 – Calendar output includes the  planning session with Theo\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Fitness Planning for Next 3 Months\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=4,\n                        )\n                    ]\n                ),\n                # Milestone 6 – Agent tells the user they have three meetings\n                Milestone(\n                    snapshot_constraints=[\n                        # States there are 3 meetings (numeric or word)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"3\", \"three\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar search -> confirm Jessica event returned\n                (2, 3),  # calendar search -> confirm Sarah event returned\n                (4, 5),  # Fitness Planning for Next 3 Months returned\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You need to mentally prepare for the day so  want to know how many meetings you have, not workout sessions. ",
+  "minefields": "[\n                # Should not return the other meetings\n                Minefield(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"Evening Workout Session with Theo\",\n                                            \"Afternoon Group Fitness Class\",\n                                            \"Online Fitness Class with Megan\",\n                                            \"Morning Personal Training Session with Nathan\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-02T07:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

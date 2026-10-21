@@ -1,0 +1,20 @@
+{
+    "5": [
+        {
+            "call_type": "incoming",
+            "caller": "+1 12345-6789-1000-1357",
+            "receiver": "+1 12345-6789-1000-1234",
+            "creation_time": "2024-12-03T11:45:00",
+            "duration": "2 minutes"
+        }
+    ],
+    "8": [
+        {
+            "call_type": "outgoing",
+            "caller": "+1 12345-6789-1000-1234",
+            "receiver": "+1 12345-6789-1000-8765",
+            "creation_time": "2024-12-05T14:00:00",
+            "duration": "20 minutes"
+        }
+    ]
+}

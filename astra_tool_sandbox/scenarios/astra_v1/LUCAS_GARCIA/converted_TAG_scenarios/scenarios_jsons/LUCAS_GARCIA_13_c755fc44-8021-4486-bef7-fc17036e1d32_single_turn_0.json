@@ -1,0 +1,97 @@
+{
+  "task_id": "c755fc44-8021-4486-bef7-fc17036e1d32",
+  "plot_id": 13,
+  "plot_summary": "Lucas Garcia is the protagonist. On Sunday, December 8, 2024 at 10 am, Megan Johnson were involved. Lucas hosts an online fitness class for Megan and other participants. YouTube video of the session is uploaded and shared with participants for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_13",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are wondering what time you sent in your last email to Megan, Olivia and Alex",
+  "reference_time": "2024-12-08T12:50:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The time of the email sent by the user on December 08, 2024 at 11:30 with title \"Recap and Video from December 8th Online Fitness Class\" is presented to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_13_c755fc44-8021-4486-bef7-fc17036e1d32_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Recap and Video from December 8th Online Fitness Class",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "megan.johnson@example.com",
+        "olivia.clark@example.com",
+        "alex.martin@example.com"
+      ],
+      "cc_addresses": [
+        "jessica.lin@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-08T11:30:00-08:00",
+      "body": "Hi Everyone,\n\nThank you all for participating in today's online fitness class. I'm thrilled with the energy and dedication you all brought to the session!\n\nI've uploaded the session to YouTube for you to review and share your thoughts. Here's the link: https://www.youtube.com/watch?v=FITNESSSESSION123\n\nI look forward to your feedback and to planning our next workout together.\n\nStay active,\nLucas",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Megan",
+      "last_name": "Johnson",
+      "full_name": "Megan Johnson",
+      "phone_number": "+1 12345-6789-1000-3210",
+      "alias": "Online Class Student",
+      "email": "megan.johnson@example.com",
+      "relationship": "Online fitness class student",
+      "address": "56 Fitness Way, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1995-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time did I send that last email regarding to the Online Class Recap?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when they sent their last email regarding to regarding to the Online Class Recap. First thing I need to do is search the user's emails. Ok I found an email sent to megan.johnson@example.com,\nolivia.clark@example.com and alex.martin@example.com with title \"Recap and Video from December 8th Online Fitness Class\". That must be the email the user is referring to. Ok now that I have that I will retrieve the time of the email and inform the user",
+  "milestones": "[\n                # Milestone 0 – Agent looks through the email database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The expected recap email (with correct time) is present in the retrieved results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Recap and Video from December 8th Online Fitness Class\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-08T11:30:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the correct time (11:30)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"11:30\",\n                                            \"11:30am\",\n                                            \"11:30 am\",\n                                            \"11:30 AM\",\n                                            \"11:30a.m.\",\n                                            \"11:30 a.m.\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # email search → confirm correct email found\n                (1, 2),  # correct email found → agent informs user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You are wondering what time you sent in your last email to Megan, Olivia and Alex ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-08T12:50:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

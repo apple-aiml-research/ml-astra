@@ -1,0 +1,79 @@
+{
+  "task_id": "9820cf06-256b-433a-976b-d6fb508b286f",
+  "plot_id": 5,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 3, 2024 at 7 am, self, Paul Harper were involved. Paul calls Dawei to check if he can watch his cat for the weekend, as Paul is heading out of town. Dawei agrees and notes the dates. Dawei adds the task to his calendar and sets a reminder to pick up Paul's house key on Thursday.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_5",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You need to message Paul to find out which cat food his cat likes.",
+  "reference_time": "2024-12-03T08:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A message is sent to Paul Harper saying \"Hey Paul which cat food does your cat like?\"."
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_5_9820cf06-256b-433a-976b-d6fb508b286f_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Message Paul \"Hey Paul which cat food does your cat like?\".",
+  "referential_complexity": "low",
+  "functional_complexity": "low",
+  "informational_complexity": "low",
+  "reasoning": "The user wants to message Paul, I can see they only have one Paul in their contacts list so I will send a message to Paul Harper saying \"Hey Paul which cat food does your cat like?\".",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Paul’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify Paul Harper was returned from the contact search/listing\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Paul Harper\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 555-678-9012-3456\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A message is sent to Paul containing the cat-food inquiry\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Make sure Paul's address is among the participants.\n                                    \"conversation_name\": \"Paul Harper\",\n                                    # Ensure the message content references “cat food”.\n                                    \"content\": \"cat food\",\n                                    \"creation_datetime_iso\": \"2024-12-03T08:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirm Paul found\n                (1, 2),  # Paul found → message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",     # To send the SMS/IM\n    \"search_contacts\",  # To find Paul\n    \"get_all_contacts\", # Fallback for listing contacts\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You need to message Paul to find out which cat food his cat likes. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-03T08:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

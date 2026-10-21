@@ -1,0 +1,133 @@
+{
+  "task_id": "5a6bad52-4901-4fda-a5b3-5ed12b2db4dd",
+  "plot_id": 16,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Morning, July 27, 2024 at 10 am, John Quinn were involved. After Hiking trip in the morning. They spend the morning exploring a new trail and discussing life.  John and Theo had a great time and both heading home. They chats in the group message with each other about how good the hiking was and continue the discussion about their current life.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_16",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to create a reminder to go pick up that book John recommended you.",
+  "reference_time": "2024-07-27T11:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"John's Book Recommendation\" is created for 15:00-15:30 on 27 July 2024. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_16_5a6bad52-4901-4fda-a5b3-5ed12b2db4dd_single_turn_1",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Hey John, that trail was amazing! Really enjoyed the hike and our chat.",
+      "creation_datetime_iso": "2024-07-27T10:30:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Absolutely, Theo! It was a great way to start the day. Got some new perspectives from our discussion too.",
+      "creation_datetime_iso": "2024-07-27T10:45:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Definitely. It's always refreshing to get out and clear the mind. Helps a lot with creativity, don't you think?",
+      "creation_datetime_iso": "2024-07-27T11:00:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "For sure. Speaking of creativity, have you read that new sci-fi book I mentioned last time? Think you'd like it.",
+      "creation_datetime_iso": "2024-07-27T11:15:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Not yet, but it's next on my list. Thanks for the recommendation! Let's plan another hike soon?",
+      "creation_datetime_iso": "2024-07-27T11:30:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Create an event \"John's Book Recommendation\" for 15:00-15:30 today.",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to create an event \"John's Book Recommendation\" for 15:00-15:30 today. First is the event name which was given to me by the user. as \"John's Book Recommendation.\" Next is the timeframe which was also given to me by the user as 15:00-15:30 today.  I will now create the event \"John's Book Recommendation\" for 15:00-15:30 on 27 July 2024.",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Book Recommendation\",\n                                    \"start_datetime_iso\": \"2024-07-27T15:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-27T15:30:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-27T11:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against pre-task snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to create a reminder to go pick up that book John recommended you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-07-27T11:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

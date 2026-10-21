@@ -1,0 +1,36 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+name: Emily Rose
+age: 29
+locale: en_US
+language_knowledge: |
+  - English: Native
+location: |
+  Orchard County, CA, USA
+timezone: |
+  US/Pacific
+occupation: |
+  Event Coordinator at the Orchard County Community Center
+background: |
+  Emily Rose was raised in a quaint town in Northern California, embodying a deep sense of community from an early age.
+  With a degree in Public Relations from San Jose State University, she returned to her roots with the ambition to enrich
+  her hometown's communal spirit. As an Event Coordinator, Emily leverages her organizational prowess and enthusiasm for
+  social gatherings to fortify community engagement.
+hobbies_and_interests: |
+  gardening:
+    Emily has a green thumb and loves spending her weekends tending to her garden. She grows a variety of flowers and vegetables,
+    which she often uses to decorate community event spaces or shares with her neighbors.
+  pet_care:
+    A devoted pet owner, Emily has a dog named Buster and a cat named Whiskers. She enjoys taking Buster for walks in the local
+    park and has trained him to perform tricks for community children during events.
+  community_volunteering:
+    Beyond her job, Emily is deeply involved in volunteering. She helps organize charity events, local clean-ups, and food drives,
+    believing strongly in giving back to her community.
+social_interactions: |
+    Emily is known for her friendly and sociable personality. She interacts regularly with her neighbors,
+    particularly Theo Appleseed, with whom she shares ideas for community improvement. Her role as an Event Coordinator
+    involves constant communication with various community members, from local business owners to school representatives.
+    Emily also maintains a close relationship with her family, who support her community initiatives and attend many of
+    her events.
+...

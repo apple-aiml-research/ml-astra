@@ -1,0 +1,88 @@
+{
+  "task_id": "80db21f1-817c-437a-bc96-19791eecc9f6",
+  "plot_id": 3,
+  "plot_summary": "Emily Rose is the protagonist. On Tuesday, December 3, 2024 at 1:00 PM, Theo Appleseed were involved. Discussion with Theo about logistics for community clean-up planned for the weekend and schedule the event. WhatsApp chat history with Theo detailing responsibilities for the clean-up event. Create a calendar event for weekend community clean-up event.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_3",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "whatsapp_messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to Theo Appleseed on WhatsApp saying wonderful Theo I'll catch you then.",
+  "reference_time": "2024-12-03T13:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message to Theo Appleseed on WhatsApp saying \"wonderful Theo I'll catch you then\" at 13:20 on December 3 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_3_80db21f1-817c-437a-bc96-19791eecc9f6_single_turn_0",
+  "tool_allow_list": [
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ],
+      "sender_name": "Theo Appleseed",
+      "sender_address": "+1 530-555-0133",
+      "creation_datetime_iso": "2024-12-03T13:10:00-08:00",
+      "content": "Fantastic! Thanks, Emily. I'll see you Thursday to finalize everything.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to Theo Appleseed on WhatsApp saying wonderful Theo I'll catch you then.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to use the app WhatsApp to send a message to Theo Appleseed. They have provided the content of the message so I'll send that now.",
+  "milestones": "[\n                # Milestone 0 – A new WhatsApp message was sent to Theo with the requested content & timestamp\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\"+1 530-555-0123\", \"+1 530-555-0133\"]\n                                    ],\n                                    \"content\": \"wonderful Theo I'll catch you then\",\n                                    \"creation_datetime_iso\": \"2024-12-03T13:20:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_names\": column_list_subset_match_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list_runtime": "[\n    \"send_whatsapp_message\",\n    \"search_whatsapp_messages\",\n    \"get_all_whatsapp_messages\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to send a message to Theo Appleseed on WhatsApp saying wonderful Theo I'll catch you then. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-12-03T13:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

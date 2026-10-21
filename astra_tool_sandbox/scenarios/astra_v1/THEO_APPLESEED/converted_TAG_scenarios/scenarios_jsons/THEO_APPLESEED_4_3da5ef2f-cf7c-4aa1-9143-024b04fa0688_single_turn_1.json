@@ -1,0 +1,112 @@
+{
+  "task_id": "3da5ef2f-cf7c-4aa1-9143-024b04fa0688",
+  "plot_id": 4,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Morning, July 23, 2024 at 9 am, Kevin Chen were involved. One-on-one meeting with Kevin to discuss project progress ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_4",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "email",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to check whether you mentioned the location of the upcoming meeting to Kevin anywhere, and if so, find where you said it.",
+  "reference_time": "2024-07-23T08:55:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is being told the location is Conference Room B, mentioned in calendar.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_4_3da5ef2f-cf7c-4aa1-9143-024b04fa0688_single_turn_1",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Agenda for Upcoming One-on-One Meeting",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "kevin.chen@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-16T09:05:00-07:00",
+      "body": "Hi Kevin,\n\nI've scheduled our one-on-one meeting for July 23, 2024, at 9:00 AM to discuss the progress and next steps for our project. Please let me know if you have any specific points you'd like to cover.\n\nBest,\nTheo",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_event_name": "One-on-one Project Discussion",
+      "organizer_name": "Theo Appleseed",
+      "end_datetime_iso": "2024-07-23T10:00:00-07:00",
+      "creation_datetime_iso": "2024-07-16T09:00:00-07:00",
+      "attendees_names": [
+        "Kevin Chen",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "start_datetime_iso": "2024-07-23T09:00:00-07:00",
+      "calendar_name": "work",
+      "meeting_url": null,
+      "notes": "Meeting with Kevin to discuss the progress and updates on the current project tasks and deadlines.",
+      "reminder_time_ahead": "30 minutes"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Did I mention the location of the upcoming meeting to Kevin anywhere? if so where did I say it?",
+  "informational_complexity": "high",
+  "referential_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know whether they \"mentioned the location of the upcoming meeting to Kevin\", and if so, where.\n\nOkay, so from this, I can infer that the user is asking me to check across their communication channels — most likely their email, messages, or calendar invites — to see if the meeting location was ever shared with Kevin.\n\nI will now check the user’s Messages, Mail, and Calendar to see if they have been in contact with anyone named \"Kevin\".\n\nGreat, I can see that they sent an email to \"kevin.chen@example.com\" at 09:05 AM on July 16th, 2024, titled \"Agenda for Upcoming One-on-One Meeting\". This email mentions the date and time, but not the location.\n\nHowever, I also found a calendar event titled \"One-on-one Project Discussion\" that includes Kevin Chen as an attendee and lists the location as \"Conference Room B\".\n\nSince the location appears only in the calendar invite, I’ll reply to the user that the location was mentioned in the calendar as \"Conference Room B\".",
+  "milestones": "[\n                # Milestone 0 – Agent invokes an email-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved email includes the expected subject\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Agenda for Upcoming One-on-One Meeting\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent uses a calendar-reading tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – The expected calendar event is present in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"One-on-one Project Discussion\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-23T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"location\": {\n                                                \"value\": \"Conference Room B, Innovative Tech Solutions\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=2,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 – The agent presents that email (or its subject/body) back to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"calendar\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool invocation → confirm correct email retrieved\n                (\n                    2,\n                    3,\n                ),  # Tool invocation -> calendar found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to check whether you mentioned the location of the upcoming meeting to Kevin anywhere, and if so, find where you said it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-07-23T08:55:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

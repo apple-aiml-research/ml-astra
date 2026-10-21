@@ -1,0 +1,186 @@
+{
+  "task_id": "ecb87370-0d88-4b70-8ffa-357f9b0eb164",
+  "plot_id": 22,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo checked his calendar and found out his calendar is fully packed from 8 am to 5pm today. His only available between 3pm to 4pm. He also has a dentist appointment at 1pm for an hour. The rest of his schedule is filled with work meetings for today.\n Generate calendar_events for Theo for July 29, 2024",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_22",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want a summary of the events you have in the day ahead.",
+  "reference_time": "2024-07-29T07:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A summary of the events scheduled on 2024/07/29 is provided to the user: Project Sync Meeting (08:00-09:00), Data Analysis Review (09:30-10:30), Follow-up Sync with Michelle and Dawei (11:00-12:00), Brainstorming Session (11:00-12:00), Dentist Appointment (13:00-14:00), Client Presentation Preparation (14:00-15:00), and Weekly Team Meeting (16:00-17:00).",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_22_ecb87370-0d88-4b70-8ffa-357f9b0eb164_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Project Sync Meeting",
+      "start_datetime_iso": "2024-07-29T08:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly synchronization meeting with the team to discuss project updates and next steps."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Data Analysis Review",
+      "start_datetime_iso": "2024-07-29T09:30:00-07:00",
+      "end_datetime_iso": "2024-07-29T10:30:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Theo Appleseed"
+      ],
+      "location": "127 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Review of recent data analysis results with Dawei and discuss implications for the project."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Brainstorming Session",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "126 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Brainstorming session with Michelle to explore new approaches to the current research problem."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dentist Appointment",
+      "start_datetime_iso": "2024-07-29T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "attendees_names": [
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dental Clinic",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Routine dental check-up and cleaning."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Client Presentation Preparation",
+      "start_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T15:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "124 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Preparation session for upcoming client presentation with the team."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Weekly Team Meeting",
+      "start_datetime_iso": "2024-07-29T16:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T17:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room A, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Regular weekly meeting to discuss team issues and updates."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Follow-up Sync with Michelle and Dawei",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T11:00:00-07:00",
+      "notes": "Break-out session to delve deeper into specific project details."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Read today's event information out loud.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants today's event information to be read out to them. I'll check their calendar for events scheduled today, 2024/07/29.\n\nI found seven events on the user's calendar today: Project Sync Meeting (08:00-09:00), Data Analysis Review (09:30-10:30), Follow-up Sync with Michelle and Dawei (11:00-12:00), Brainstorming Session (11:00-12:00), Dentist Appointment (13:00-14:00), Client Presentation Preparation (14:00-15:00), and Weekly Team Meeting (16:00-17:00).\n\nI'll go ahead and inform the user about their events.",
+  "milestones": "[\n                # Milestone 0 – The agent queries the calendar for today’s events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm at least one expected event (Project Sync Meeting) is found in the\n                #               calendar-query result from Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Project Sync Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-29T08:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The user receives a summary that mentions all seven events\n                Milestone(\n                    snapshot_constraints=[\n                        # Project Sync Meeting\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Project Sync Meeting\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Data Analysis Review\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Data Analysis Review\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Follow-up Sync with Michelle and Dawei\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Follow-up Sync\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Brainstorming Session\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Brainstorming Session\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Dentist Appointment\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Dentist Appointment\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Client Presentation Preparation\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Client Presentation Preparation\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Weekly Team Meeting\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Weekly Team Meeting\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool call → confirmation event retrieved\n                (1, 2),  # Confirmation of retrieval → user-facing summary\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want a summary of the events you have in the day ahead. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-29T07:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

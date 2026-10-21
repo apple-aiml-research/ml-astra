@@ -1,0 +1,94 @@
+{
+  "task_id": "37a363f9-2da3-4161-bae9-21351bd37c51",
+  "plot_id": 6,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 8pm, Deborah Shooter were involved. Deborah messages John trying to make conversation in a flirty manner.  1. John and Deborah have a very long conversation about how their respective days went. 2. John and Deborah exchanging numerous messages. 3. Deborah finally invites him to go for a coffee on Saturday afternoon. 4. John gently refuses.",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_6",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to dictate a reply to Deborah Shooter saying that actually you've realised that you have a thirst that only she can quench and that you would like to meet up.",
+  "reference_time": "2024-07-22T20:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply message is sent to Deborah Shooter saying \"I have a thirst that only you can quench and I'd like to meet up\" at 20:30 on 22 July 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_6_37a363f9-2da3-4161-bae9-21351bd37c51_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "No worries, John! Enjoy your hike, and let's definitely plan something soon.",
+      "creation_datetime_iso": "2024-07-22T20:17:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to dictate a message reply to Deborah Shooter saying \"Hi Debbie actually I will take you up on your offer to meet, I've realised that I have a thirst that only you can quench.\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to dictate a reply to the contact called Deborah Shooter.\n\nI should locate the message history with this contact by searching their name in the user's Messages and then start a draft reply.\n\nAs the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the message if the user confirms that the message was transcribed correctly.\n",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the existing conversation or messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new outgoing message to Deborah Shooter is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"408-555-0133\",\n                                                \"deborah.shooter@nightclub.com\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": [(\"thirst that only you can quench\",)],\n                                    \"creation_datetime_iso\": \"2024-07-22T20:30:00-07:00\",\n                                    \"status\": \"sent\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_str_contains_any_similarity,\n                                \"status\": column_exact_match_similarity,\n                                # creation_datetime_iso defaults to exact match,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieval precedes sending the message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to dictate a reply to Deborah Shooter saying that actually you've realised that you have a thirst that only she can quench and that you would like to meet up. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-22T20:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

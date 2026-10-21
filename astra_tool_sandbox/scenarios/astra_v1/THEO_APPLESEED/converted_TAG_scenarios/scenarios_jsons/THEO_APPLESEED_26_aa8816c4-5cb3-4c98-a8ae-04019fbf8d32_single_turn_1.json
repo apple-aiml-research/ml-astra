@@ -1,0 +1,161 @@
+{
+  "task_id": "aa8816c4-5cb3-4c98-a8ae-04019fbf8d32",
+  "plot_id": 26,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo checked his messages and found out that he recently got a lot of spam messages about “exciting opportunities to invest in new cryptocurrencies” from three different unknown senders.\n generate messages Theo recieved between July 21, 2024 to July 28, 2024. The message should also contain fake url and a message\n",
+  "tags": [
+    "astra_core",
+    "THEO_APPLESEED",
+    "plot_26",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "email"
+  ],
+  "user_goal": "You want to get rid of and block all the recent annoying spams from your message inbox.",
+  "reference_time": "2024-07-29T11:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Crypto spam has been deleted from incoming messages. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. User has been informed with 'No' as there's no related blocking tools for senders. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_26_aa8816c4-5cb3-4c98-a8ae-04019fbf8d32_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "remove_message_or_conversation",
+    "search_messages",
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [
+    {
+      "conversation_name": "unknown1@crypto-invest.com",
+      "participants_addresses": [
+        "theo.appleseed@example.com",
+        "unknown1@crypto-invest.com"
+      ],
+      "sender_address": "unknown1@crypto-invest.com",
+      "content": "Unlock the potential of your future with our exclusive cryptocurrency investment opportunities! Visit now: www.crypto-invest.com/start",
+      "creation_datetime_iso": "2024-07-21T14:35:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "offers@blockchainbuzz.net",
+      "participants_addresses": [
+        "offers@blockchainbuzz.net",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "offers@blockchainbuzz.net",
+      "content": "Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer",
+      "creation_datetime_iso": "2024-07-22T10:20:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "info@cryptogains.io",
+      "participants_addresses": [
+        "info@cryptogains.io",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "info@cryptogains.io",
+      "content": "See how you can multiply your investment in just a few months! Visit www.cryptogains.io for more information.",
+      "creation_datetime_iso": "2024-07-23T16:45:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "promo@digitalcoins.com",
+      "participants_addresses": [
+        "promo@digitalcoins.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "promo@digitalcoins.com",
+      "content": "Exclusive offer for you, Theo! Join our investment group now at www.digitalcoins.com/join",
+      "creation_datetime_iso": "2024-07-24T09:15:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "contact@futurecrypto.net",
+      "participants_addresses": [
+        "contact@futurecrypto.net",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "contact@futurecrypto.net",
+      "content": "Invest in the future of finance. Secure your spot at www.futurecrypto.net/signup",
+      "creation_datetime_iso": "2024-07-25T12:30:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "deals@coinrealm.org",
+      "participants_addresses": [
+        "deals@coinrealm.org",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "deals@coinrealm.org",
+      "content": "Theo, start your crypto journey with us and see your money grow! Check out www.coinrealm.org",
+      "creation_datetime_iso": "2024-07-26T18:05:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "hello@investcrypto.today",
+      "participants_addresses": [
+        "hello@investcrypto.today",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "hello@investcrypto.today",
+      "content": "Ready to make some real money? Visit www.investcrypto.today to begin!",
+      "creation_datetime_iso": "2024-07-27T11:50:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "team@cryptonow.com",
+      "participants_addresses": [
+        "team@cryptonow.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "team@cryptonow.com",
+      "content": "Don't miss your chance to be part of the crypto revolution. Join us at www.cryptonow.com",
+      "creation_datetime_iso": "2024-07-28T13:25:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want you to delete those annoying messages and can you block the senders? Yes or No.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants me to delete those annoying messages and ask if I can block the senders. I first need to understand what are the annoying messages. I will search the user's messages and emails for these. User has received a large amount of spam messages in regards to cryptocurrency and would like to set up blocking and filters. \n\nI will ask the user permission and then delete these messages. Also the user want to block the senders, but after searching the available tools, there're no related tools. I will reply \"No\" to them as I cannot perform the ask due to lack of tools ",
+  "milestones": "[\n                # Milestone 0 – The agent tries to discover the spam messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – All eight crypto-spam conversations have been removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": [\n                                        \"unknown1@crypto-invest.com\",\n                                        \"offers@blockchainbuzz.net\",\n                                        \"info@cryptogains.io\",\n                                        \"promo@digitalcoins.com\",\n                                        \"contact@futurecrypto.net\",\n                                        \"deals@coinrealm.org\",\n                                        \"hello@investcrypto.today\",\n                                        \"team@cryptonow.com\",\n                                    ]\n                                }\n                            ),\n                            # default exact-match on conversation_name is sufficient\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        ),\n                    ],\n                ),\n                # Milestone 2: Check that the user is informed with No\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"No\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity,\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Must first inspect messages, then delete them\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",            # fallback for inspection\n    \"remove_message_or_conversation\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to get rid of and block all the recent annoying spams from your message inbox. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"remove_message_or_conversation\", \"search_messages\", \"search_emails\", \"get_all_emails\"]",
+  "is_read_time": "2024-07-29T11:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,78 @@
+{
+  "task_id": "7b269c26-f854-4079-af82-3a56c218cdcd",
+  "plot_id": 11,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 8, 2024 at 8:00 AM, Henry Chester were involved. Morning walk with Buster and offering gardening advice to Henry. Gardening tips documented and shared on community forum.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_11",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what Henry said in his last email but you cannot look at your phone right now.",
+  "reference_time": "2024-12-08T10:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email received from henry.chester@gardensupplies.com, with the subject \"Re: Gardening Tips from Today's Walk\" from 10:00 on 8 December 2024, is read out loud to the user. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_11_7b269c26-f854-4079-af82-3a56c218cdcd_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Gardening Tips from Today's Walk",
+      "sender_address": "henry.chester@gardensupplies.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-08T10:00:00-08:00",
+      "body": "Hello Emily,\n\nThank you for the wonderful morning and for the gardening tips document. I've already skimmed through it and found some great points that we can implement right away. I'll make sure to pass this along to our customers and fellow gardening enthusiasts.\n\nLooking forward to our next walk and chat. Have a great day ahead!\n\nBest,\nHenry",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What did henry's last email say? Be literal, verbatim.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to read out the contents of a message. They have provided me with context that the message is an email and it is the last received email from a contact named \"Henry\". This should be enough information to find the email. I have searched the user's emails, and I have found an email from Henry Chester. I can assume this is the referenced message, so I will read it out to the user. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to locate Henry’s most recent email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the retrieved email matches Henry’s last message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"henry.chester@gardensupplies.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Re: Gardening Tips from Today's Walk\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-08T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent relays the email content back to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Thank you for the wonderful morning\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search → confirm correct email\n                (1, 2),  # Correct email found → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to know what Henry said in his last email but you cannot look at your phone right now. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-08T09:59:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,102 @@
+{
+  "task_id": "b9f47272-d25e-46bd-8a4f-9409c2c85970",
+  "plot_id": 19,
+  "plot_summary": "Theo Appleseed is the protagonist. On Sunday Morning, July 28, 2024 at 10 am, Cookie were involved. Solo time for reading and relaxation Theo texts Cookie afterwards to share about this book he was reading",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_19",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "After texting your friends, you realise you really enjoyed your reading time and want to be sure you leave time for to read next weekend.    You ask the assistant to schedule in time for next Sunday in your calendar.",
+  "reference_time": "2024-07-28T11:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Solo Time for Reading and Relaxation\" is created from 10:00-11:00 on Sunday 4 August 2024.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_19_b9f47272-d25e-46bd-8a4f-9409c2c85970_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Hey Cookie, just finished an amazing sci-fi novel this morning! Starting a new historical fiction next. Got any recommendations?",
+      "creation_datetime_iso": "2024-07-28T10:15:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Morning John! Wrapped up the amazing sci-fi book you've recommended today and diving into another. Perfect way to recharge before our next hike. How's your weekend going?",
+      "creation_datetime_iso": "2024-07-28T10:30:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Create an event called \"Solo Time for Reading and Relaxation\" next Sunday from 10:00-11:00 in the morning. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Okay, so the user asked me to create an event for next Sunday, 4th August 2024 at 10:00-11:00 called \"Solo Time for Reading and Relaxation\". There doesn't appear to be any clashes on the calendar at this time. I will now create an event \"Solo Time for Reading and Relaxation\" from 10:00-11:00 on Sunday 4 August 2024.",
+  "milestones": "[\n                # Milestone 0 – A new calendar event has been created for next Sunday 10-11 am\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Solo Time for Reading and Relaxation\",\n                                    \"start_datetime_iso\": \"2024-08-04T10:00\",\n                                    \"end_datetime_iso\": \"2024-08-04T11:00\",\n                                    \"creation_datetime_iso\": \"2024-07-28T11:05:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_exact_match_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,  # allow any timezone offset\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. After texting your friends, you realise you really enjoyed your reading time and want to be sure you leave time for to read next weekend.   You ask the assistant to schedule in time for next Sunday in your calendar. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-28T11:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

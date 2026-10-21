@@ -1,0 +1,94 @@
+{
+  "task_id": "5c8beb79-8df8-476b-b256-d447a0aabb27",
+  "plot_id": 12,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 19pm, Akira Muramoto were involved. Akira tries to convince John to try some food supplements and asks to borrow his tent today  1. Akira starts a conversation with John where he tells him how thrilled he is about a new food supplement called 'Green' by the Soylent company, and suggests that John try it. 2. John expresses his hesitancy about trying the product since he heard some strange rumours about unusual ingredients. 3. After exchanging over 15 messages, John's hesitancy is progressively broken, and at the end Akira manages to convince John. 4. Akira proposes that he can bring him a pack tonight, as John had promised to lend him a tent last week. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_12",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to add an event to calendar for tonight to remind you that Akira is calling over.",
+  "reference_time": "2024-07-23T19:15:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A new event is created for July 23, 2024 called \"Akira coming over\" between 20:00 - 23:00."
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_12_5c8beb79-8df8-476b-b256-d447a0aabb27_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Akira Muramoto",
+      "participants_addresses": [
+        "akira.muramoto@sportsfan.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "akira.muramoto@sportsfan.com",
+      "content": "None so far, which surprised me. I've tried similar products before, and this one is by far the smoothest. How about I drop by tonight with a sample?",
+      "creation_datetime_iso": "2024-07-23T19:12:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you create an event between 8 and 11 called \"Akira coming over\" tonight? ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to create a new event and has provided all the details I need to do so. I will check the user's calendar for availability. The user's calendar is free for the time range they provided. I will add the event. ",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Akira coming over\",\n                                    \"start_datetime_iso\": \"2024-07-23T20:00:00\",\n                                    \"end_datetime_iso\": \"2024-07-23T23:00:00\",\n                                    \"creation_datetime_iso\": \"2024-07-23T19:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_exact_match_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to add an event to calendar for tonight to remind you that Akira is calling over. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_contacts\", \"search_contacts\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-23T19:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

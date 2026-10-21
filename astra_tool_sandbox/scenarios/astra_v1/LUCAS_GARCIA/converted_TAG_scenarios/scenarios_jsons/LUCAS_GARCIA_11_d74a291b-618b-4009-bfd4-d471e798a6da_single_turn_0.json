@@ -1,0 +1,93 @@
+{
+  "task_id": "d74a291b-618b-4009-bfd4-d471e798a6da",
+  "plot_id": 11,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 9 am, Olivia Clark were involved. Lucas provides a motivational talk at the local gym attended by Olivia. Messages exchanged with Olivia post-event for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_11",
+    "messaging",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are occupied at the moment and want to know what Olivia has text back.",
+  "reference_time": "2024-12-07T11:18:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The text message received from Olivia Clark on 7 December 2024 at 11:15 saying 'Hi Lucas! It was fantastic, truly motivating. I particularly appreciated the segment on maintaining mental resilience. It was just what I needed to hear.' is read out to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_11_d74a291b-618b-4009-bfd4-d471e798a6da_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "olivia.clark@example.com",
+      "content": "Hi Lucas! It was fantastic, truly motivating. I particularly appreciated the segment on maintaining mental resilience. It was just what I needed to hear.",
+      "creation_datetime_iso": "2024-12-07T11:15:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Olivia",
+      "last_name": "Clark",
+      "full_name": "Olivia Clark",
+      "phone_number": "+1 12345-6789-1000-7531",
+      "alias": "Gym Member",
+      "email": "olivia.clark@example.com",
+      "relationship": "Local gym member",
+      "address": "89 Gym St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1992-09-30T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "moderate",
+  "query": "Read out what Olivia said.",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "reasoning": "Okay so, the user is looking to know what 'Olivia' said. Checking their contacts, I can see only one matching 'Olivia', 'Olivia Clark'. Checking the message thread next between her and the user I can see they were messaging today, 7 December 2024 and the last message received from Olivia was at 11:15 saying 'Hi Lucas! It was fantastic, truly motivating. I particularly appreciated the segment on maintaining mental resilience. It was just what I needed to hear.'. Now that I have found the requested message I can read it out to the user.",
+  "milestones": "[\n                # Milestone 0 – agent invokes a tool to look for the relevant text message(s)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – confirm that the returned message includes Olivia’s 11:15 am text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"olivia.clark@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Hi Lucas! It was fantastic, truly motivating. I particularly appreciated the segment on maintaining mental resilience. It was just what I needed to hear.\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-07T11:15:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – agent’s reply to the user contains the core content of Olivia’s message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"It was fantastic, truly motivating.\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You are occupied at the moment and want to know what Olivia has text back. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-12-07T11:18:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

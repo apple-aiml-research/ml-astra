@@ -1,0 +1,47 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+# 0
+- name: "Theo Appleseed"
+  relationship: "Self"
+# 1
+- name: "John Appleseed"
+  relationship: "Father"
+  bio: "John is a theoretical physics professor at a nearby university. He inspired Theo's love for science and technology and enjoys discussing various topics with Theo."
+# 2
+- name: "Kevin Chen"
+  relationship: "Manager"
+  bio: "Kevin is Theo's manager at the tech company. He is supportive and encourages innovation within the team, often guiding Theo through challenging projects."
+# 3
+- name: "Stefan Mustermann"
+  relationship: "Coworker"
+  bio: "Stefan works alongside Theo as a peer in the applied research department. They often collaborate on projects and share a mutual respect for each other's skills."
+# 4
+- name: "Michelle Barnes"
+  relationship: "Coworker"
+  bio: "Michelle is another coworker in Theo's team. Known for her problem-solving skills, she and Theo frequently brainstorm together on complex research problems."
+# 5
+- name: "Dawei Shen"
+  relationship: "Coworker"
+  bio: "Dawei, a data analyst, works closely with Theo, providing critical insights and data support for research projects. They share a professional camaraderie."
+# 6
+- name: "Cookie Watson"
+  relationship: "College Friend"
+  bio: "Cookie, a close friend from college, shares Theo's love for cooking. They often meet up to try new recipes and catch up over dinner parties."
+# 7
+- name: "John Quinn"
+  relationship: "College Friend"
+  bio: "John, another college friend, is Theo's go-to buddy for outdoor adventures. They frequently plan hiking trips and enjoy discussing their favorite books."
+# 8
+- name: "Emily Rose"
+  relationship: "Neighbor"
+  bio: "Emily lives next door to Theo. She is a friendly and sociable person who often invites Theo over for community events and neighborhood gatherings."
+# 9
+- name: "Lucas Garcia"
+  relationship: "Gym Buddy"
+  bio: "Lucas met Theo at the local gym. They quickly became workout partners, motivating each other to stay fit and sharing a love for healthy living."
+# 10
+- name: "Sarah Appleseed"
+  relationship: "Mother"
+  bio: "Sarah, Theo's mother, is a kind and nurturing person who works as a nurse. She deeply cares for her family and loves spending time with Theo during his visits home."
+...

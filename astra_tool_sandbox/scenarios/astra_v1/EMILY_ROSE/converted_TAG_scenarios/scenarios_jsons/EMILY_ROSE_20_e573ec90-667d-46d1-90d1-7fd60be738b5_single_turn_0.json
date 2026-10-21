@@ -1,0 +1,86 @@
+{
+  "task_id": "e573ec90-667d-46d1-90d1-7fd60be738b5",
+  "plot_id": 20,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 16, 2024 at 9:00 AM, Linda Kim were involved. Coordinating with Linda on educational activities schedule at the local school. Shared calendar updated with school event dates.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_20",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to schedule another meeting with Linda Kim for the same time on Thursday",
+  "reference_time": "2024-12-16T11:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The calendar event \"Educational Activities Coordination Meeting\" is copied to December 19 at 9:00 am.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_20_e573ec90-667d-46d1-90d1-7fd60be738b5_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Educational Activities Coordination Meeting",
+      "start_datetime_iso": "2024-12-16T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-16T10:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Linda Kim"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:00:00-07:00",
+      "notes": "Coordinating with Linda Kim on educational activities schedule at the local school."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Copy this morning's meeting to Thursday at the same time",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to copy this morning's meeting to Thursday at the same time. I'll look at the user's calendar to see if they had any meetings this morning. I found an event titled \"Educational Activities Coordination Meeting\" which took place this morning at 9:00 am. I can assume this is the event the user wants to copy. I will copy the meeting to 9:00 on December 19 and inform the user.",
+  "milestones": "[\n                # Milestone 0 – Agent searches calendar to locate “this morning’s meeting”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct calendar event (Dec 16, 2024 09:00) was returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Educational Activities Coordination Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-16T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new calendar event has been created for Thursday, Dec 19 2024 09:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Educational Activities Coordination Meeting\",\n                                    \"start_datetime_iso\": \"2024-12-19T09:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-19T10:00:00-08:00\",\n                                    \"attendees_names\": [[\"Emily Rose\", \"Linda Kim\"]],\n                                    \"creation_datetime_iso\": \"2024-12-16T11:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to schedule another meeting with Linda Kim for the same time on Thursday ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"create_calendar_event\"]",
+  "is_read_time": "2024-12-16T11:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,99 @@
+{
+  "task_id": "30a20200-6558-4030-9de4-ee068ac5290b",
+  "plot_id": 4,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 4 pm, Robin Selmour were involved. Robin expresses interest in the recent crisis in Peru.  1. Robin messages John asking if he knows about the recent crisis in Peru. 2. John replies to Robin playing coy, since he's cautious of revealing secret information he knows. 3. Robin insists nonetheless. 4. John does not budge, divulging nothing. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_4",
+    "contact",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Lately you feel like your coworker Robin is only interested in being close to you to get inside information.   You're fed up and want to text her how you feel before deleting her number.",
+  "reference_time": "2024-07-22T16:25:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message response saying \"You only like me for my insider info.\" is sent to Robin Selmoure. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. Robin Selmoure is removed from the user's contacts. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_4_30a20200-6558-4030-9de4-ee068ac5290b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "remove_contact",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Robin Selmoure",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com"
+      ],
+      "sender_address": "robin.selmoure@palantir.com",
+      "content": "Understood, John. If you ever feel like sharing, you know where to find me!",
+      "creation_datetime_iso": "2024-07-22T16:08:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to Robin saying \"You only like me for my insider info\" and then delete her contact info.",
+  "functional_complexity": "high",
+  "informational_complexity": "moderate",
+  "referential_complexity": "low",
+  "reasoning": "The user wants to reply to Robin with the message \"You only like me for my insider info\". I wonder who Robin is. I should check their contacts to figure it out. I see one contact with that name, Robin Selmoure. It must be them. I'll ask the user to confirm before sending them that text.\nThe user also wants to delete the contact information for Robin Selmoure, so I'll delete that information now. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the most recent message thread\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved message list contains the latest message from Robin\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"robin.selmoure@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Understood, John.\",\n                                                \"partial\": True,  # only need to see part of the message body\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify a new outgoing message to Robin containing the required text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Robin Selmoure\",\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"408-555-0132\",\n                                                \"robin.selmoure@palantir.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"You only like me for my insider info\",\n                                    \"creation_datetime_iso\": \"2024-07-22T16:25:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Robin must be one of the participants; allow extras such as the sender\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                # The message body must contain the critical phrase (case-insensitive substring match)\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against the initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.SANDBOX,\n                    ],  # Exclude changes from other databases in the milestones when multiple entities are being modified in parallel\n                ),\n                # Milestone 3 – Verify that Robin Selmoure’s contact entry was removed #Another milestone before this is required to account for deleting the contact (before this is verified).\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CONTACT,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"full_name\": \"Robin Selmoure\",\n                                    \"email\": \"robin.selmoure@palantir.com\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.SANDBOX,\n                    ],  # Exclude changes from other databases in the milestones when multiple entities are being modified in parallel\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",    # Required to create the new message\n    \"remove_contact\",  # Required to delete Robin’s contact entry\n    \"search_contacts\", # Likely used to locate Robin before deletion / messaging\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. Lately you feel like your coworker Robin is only interested in being close to you to get inside information.  You're fed up and want to text her how you feel before deleting her number. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"remove_contact\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-22T16:25:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,102 @@
+{
+  "task_id": "9a0a1e3f-57ab-4af5-8046-68b4f2c07c47",
+  "plot_id": 10,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 6 pm, David Turner were involved. Lucas goes surfing with David at the local beach. Message between Lucas and David and meet up the beach for their surfing session via WhatsApp.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_10",
+    "contact",
+    "messaging",
+    "whatsapp_messaging",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what your last WhatsApp message from David Turner says.",
+  "reference_time": "2024-12-06T16:38:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The last WhatsApp message received from David Turner is read out loud to the user. \n",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_10_9a0a1e3f-57ab-4af5-8046-68b4f2c07c47_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "David Turner",
+      "sender_address": "+1 12345-6789-1000-9876",
+      "creation_datetime_iso": "2024-12-06T16:35:00-08:00",
+      "content": "Hey Lucas! Definitely, can't wait to catch some waves. What time are you thinking?",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What did my instructor's text message say?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "misinformation": "no",
+  "insufficient_context": "no",
+  "reasoning": "User wants to know what their instructor's text message said. I'll check their contacts and see if there's any contact that shows as user's instructor. Ok, I see there are fitness instructor whose name is  Jessica Lin and surf instructor whose name is David Turner. I'll check user's messages and see if either of these two contacts exchanged texts with the user. Ok, I didn't find any text message threads with these two contacts. I'll keep looking at other message apps, such as whatsApp. Ok, I found a whatsApp message from David Turner that literally just came in. I believe that's the message user refers to even though user mistakenly said \"text message\". I'll read David Turner's whatsApp message received on December 6 at 16:35 to user. ",
+  "milestones": "[\n                # Milestone 0 – Agent uses WhatsApp retrieval tool(s) to look for the instructor's message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow either a direct search or a full fetch of WhatsApp messages\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the WhatsApp message from David Turner was retrieved\n                # and matches key identifying fields (sender and content snippet)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # Verify we found the WhatsApp message from David Turner\n                                            \"sender_name\": {\n                                                \"value\": \"David Turner\",\n                                                \"partial\": False,\n                                            },\n                                            \"participants_names\": {\n                                                # Conversation participants include Lucas and David\n                                                \"value\": [\n                                                    \"Coach Lucas\",\n                                                    \"David Turner\",\n                                                ],\n                                                \"partial\": True,\n                                            },\n                                            # Check a distinctive phrase from the message body\n                                            \"content\": {\n                                                \"value\": \"can't wait to catch some waves\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user what the last message from David said\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            # We only care that the agent's reply paraphrases or quotes\n                            # the actual WhatsApp message content from David Turner.\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Require that the response includes the core idea / phrase\n                                    \"content\": \"can't wait to catch some waves. What time are you thinking?\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Use substring / fuzzy match so paraphrasing is allowed,\n                                # but the key content of David's message must be present.\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (\n                    0,\n                    1,\n                ),  # WhatsApp search/fetch → confirm correct David Turner message found\n                (1, 2),  # Correct message identified → user is told what it says\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_whatsapp_messages\",\n    \"search_whatsapp_messages\",\n]",
+  "is_read_time": "2024-12-06T16:34:00-08:00",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know what your last WhatsApp message from David Turner says.\n ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\"]"
+}

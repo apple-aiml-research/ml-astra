@@ -1,0 +1,113 @@
+{
+  "task_id": "077f4562-27d6-414d-9d13-6fea94bafcfc",
+  "plot_id": 10,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 6 pm, David Turner were involved. Lucas goes surfing with David at the local beach. Message between Lucas and David and meet up the beach for their surfing session via WhatsApp.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_10",
+    "whatsapp_messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send another WhatsApp message to David Turner saying 'surf's up brah, let's curl the biggest wave and rip the fattest cloud and ride the last gnar.  '",
+  "reference_time": "2024-12-06T17:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Send a message to David Turner.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_10_077f4562-27d6-414d-9d13-6fea94bafcfc_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "David Turner",
+      "sender_address": "+1 12345-6789-1000-9876",
+      "creation_datetime_iso": "2024-12-06T16:45:00-08:00",
+      "content": "Sounds perfect. I'll bring the surfboards. See you there!",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "Coach Lucas",
+      "sender_address": "+1 12345-6789-1000-1234",
+      "creation_datetime_iso": "2024-12-06T16:50:00-08:00",
+      "content": "Awesome, David. Looking forward to it! Let's make the most of the day.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Message my surfing buddy saying 'surf's up brah, let's curl the biggest wave and rip the fattest cloud and ride the last gnar'",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message their surfing buddy. Looking in the users contacts I see their name is David Turner.I can see they have been using WhatsApp to message.I'll send the message to him.",
+  "milestones": "[\n                # Milestone 0 – A new WhatsApp message was sent to David Turner with the requested surfing text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Both Lucas (self) and David must be in the chat\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"david.turner@example.com\",\n                                                \"+1 12345-6789-1000-9876\",\n                                            ),\n                                        ]\n                                    ],\n                                    # Key phrase from the requested message\n                                    \"content\": \"surf's up brah\",\n                                    \"creation_datetime_iso\": \"2024-12-06T17:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial DB state\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_whatsapp_message\",\n    \"search_contacts\",     # to resolve David Turner’s number if needed\n    \"get_all_contacts\",    # fallback for contact lookup\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to send another WhatsApp message to David Turner saying 'surf's up brah, let's curl the biggest wave and rip the fattest cloud and ride the last gnar. ' ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\"]",
+  "is_read_time": "2024-12-06T17:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

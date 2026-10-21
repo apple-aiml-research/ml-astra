@@ -1,0 +1,856 @@
+{
+    "2": [
+        {
+            "conversation_name": "Cookie Watson",
+            "participants": [
+                "cookie.watson@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Hey Theo! Are you free for dinner this Wednesday? There’s a new pub, Pony & Jigger, that just opened. Thought we could check it out!",
+                    "creation_time": "2024-07-22T14:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hi Cookie! Wednesday works for me. What time were you thinking?",
+                    "creation_time": "2024-07-22T14:02:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "How about 7 PM? Gives us plenty of time to enjoy the evening.",
+                    "creation_time": "2024-07-22T14:05:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Perfect! See you at Pony & Jigger at 7 then. Looking forward to it!",
+                    "creation_time": "2024-07-22T14:07:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Great! It’s a date. See you Wednesday!",
+                    "creation_time": "2024-07-22T14:10:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "5": [
+        {
+            "conversation_name": "Stefan Mustermann",
+            "participants": [
+                "stefan.mustermann@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey Stef, are you ready for lunch? Let's head to the cafeteria.",
+                    "creation_time": "2024-07-23T13:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "stefan.mustermann@example.com",
+                    "sender_name": "Stefan Mustermann",
+                    "content": "Sure, I'll meet you there in 5 minutes.",
+                    "creation_time": "2024-07-23T13:01:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Looks like Michelle is coming too. Let's grab our usual table.",
+                    "creation_time": "2024-07-23T13:04:00",
+                    "status": ""
+                },
+                {
+                    "sender": "stefan.mustermann@example.com",
+                    "sender_name": "Stefan Mustermann",
+                    "content": "Got it. I'm already here, saved us a spot.",
+                    "creation_time": "2024-07-23T13:05:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "Michelle Barnes",
+            "participants": [
+                "michelle.barnes@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Michelle, joining us for lunch?",
+                    "creation_time": "2024-07-23T13:02:00",
+                    "status": ""
+                },
+                {
+                    "sender": "michelle.barnes@example.com",
+                    "sender_name": "Michelle Barnes",
+                    "content": "Would love to! See you there.",
+                    "creation_time": "2024-07-23T13:03:00",
+                    "status": ""
+                },
+                {
+                    "sender": "michelle.barnes@example.com",
+                    "sender_name": "Michelle Barnes",
+                    "content": "Walking over now. Anything new with the project?",
+                    "creation_time": "2024-07-23T13:06:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "We'll discuss it over lunch. See you in a bit!",
+                    "creation_time": "2024-07-23T13:07:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "9": [
+        {
+            "conversation_name": "Cookie Watson",
+            "participants": [
+                "cookie.watson@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey Cookie, looking forward to dinner tonight at Pony & Jigger!",
+                    "creation_time": "2024-07-24T18:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Absolutely, Theo! Can't wait to catch up and enjoy some good food.",
+                    "creation_time": "2024-07-24T18:15:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Just parked the car. I'll see you inside in a few minutes.",
+                    "creation_time": "2024-07-24T18:55:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Great, grabbing a table now. See you soon!",
+                    "creation_time": "2024-07-24T18:57:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Thanks for tonight, Cookie. It was great catching up and the food was amazing!",
+                    "creation_time": "2024-07-24T21:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "I had a fantastic time, Theo! Let's plan another dinner soon. Safe drive home!",
+                    "creation_time": "2024-07-24T21:45:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "10": [
+        {
+            "conversation_name": "Lucas Garcia",
+            "participants": [
+                "lucas.garcia@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Lucas Garcia",
+                    "content": "Great session today, Theo! Ready to plan next week?",
+                    "creation_time": "2024-07-25T09:05:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Absolutely, Lucas! Thinking same time, same place?",
+                    "creation_time": "2024-07-25T09:06:00",
+                    "status": ""
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Lucas Garcia",
+                    "content": "Works for me! Let's keep pushing the weights up.",
+                    "creation_time": "2024-07-25T09:07:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Definitely, aiming for those gains! I'll set up the invite.",
+                    "creation_time": "2024-07-25T09:08:00",
+                    "status": ""
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Lucas Garcia",
+                    "content": "Perfect, see you next week!",
+                    "creation_time": "2024-07-25T09:10:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "12": [
+        {
+            "conversation_name": "John Quinn",
+            "participants": [
+                "john.quinn@palantir.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Hey Theo! Are you up for a hike this Saturday? Thinking of hitting the Big Rock Mountain Trail.",
+                    "creation_time": "2024-07-25T20:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Sounds great, John! What time are we thinking?",
+                    "creation_time": "2024-07-25T20:02:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "How about we start early? Meet at 6 AM?",
+                    "creation_time": "2024-07-25T20:04:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Perfect, I’ll put it on the calendar. Looking forward to it!",
+                    "creation_time": "2024-07-25T20:06:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Awesome! I'll pack some snacks. See you Saturday!",
+                    "creation_time": "2024-07-25T20:08:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "14": [
+        {
+            "conversation_name": "Michelle Barnes",
+            "participants": [
+                "michelle.barnes@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey Michelle, are we still on for lunch at 12 pm today to discuss some work stuff and catch up?",
+                    "creation_time": "2024-07-26T11:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "michelle.barnes@example.com",
+                    "sender_name": "Michelle Barnes",
+                    "content": "Yes, looking forward to it! See you at the usual spot?",
+                    "creation_time": "2024-07-26T11:05:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Michelle, Dawei mentioned he's bringing some data insights. Could be useful for our current project.",
+                    "creation_time": "2024-07-26T11:20:00",
+                    "status": ""
+                },
+                {
+                    "sender": "michelle.barnes@example.com",
+                    "sender_name": "Michelle Barnes",
+                    "content": "That sounds perfect. I'll bring my notes from the last meeting for us to review as well.",
+                    "creation_time": "2024-07-26T11:25:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "All set then! Catch you both at noon.",
+                    "creation_time": "2024-07-26T11:40:00",
+                    "status": ""
+                },
+                {
+                    "sender": "michelle.barnes@example.com",
+                    "sender_name": "Michelle Barnes",
+                    "content": "See you soon, Theo!",
+                    "creation_time": "2024-07-26T11:45:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "Dawei Shen",
+            "participants": [
+                "dawei.shen@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hi Dawei, just confirming our lunch today at noon. Michelle will join us too.",
+                    "creation_time": "2024-07-26T11:10:00",
+                    "status": ""
+                },
+                {
+                    "sender": "dawei.shen@example.com",
+                    "sender_name": "Dawei Shen",
+                    "content": "Great, I'll be there. Might bring some interesting data insights to discuss.",
+                    "creation_time": "2024-07-26T11:15:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Sounds good, Dawei. Michelle is also bringing some notes to review. It's shaping up to be a productive lunch!",
+                    "creation_time": "2024-07-26T11:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "dawei.shen@example.com",
+                    "sender_name": "Dawei Shen",
+                    "content": "Excellent! I'll see you both there.",
+                    "creation_time": "2024-07-26T11:35:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "15": [
+        {
+            "conversation_name": "Cookie Watson",
+            "participants": [
+                "cookie.watson@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey Cookie, are we all set for the hike this weekend?",
+                    "creation_time": "2024-07-26T19:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Hi Theo! Yes, I'm checking in with John and Lucas now.",
+                    "creation_time": "2024-07-26T19:02:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Theo, everyone's confirmed. What's the meeting time?",
+                    "creation_time": "2024-07-26T19:10:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Great! Let's meet at 6 AM at the trailhead.",
+                    "creation_time": "2024-07-26T19:12:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "16": [
+        {
+            "conversation_name": "John Quinn",
+            "participants": [
+                "john.quinn@palantir.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey John, that trail was amazing! Really enjoyed the hike and our chat.",
+                    "creation_time": "2024-07-27T10:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Absolutely, Theo! It was a great way to start the day. Got some new perspectives from our discussion too.",
+                    "creation_time": "2024-07-27T10:45:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Definitely. It's always refreshing to get out and clear the mind. Helps a lot with creativity, don't you think?",
+                    "creation_time": "2024-07-27T11:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "For sure. Speaking of creativity, have you read that new sci-fi book I mentioned last time? Think you'd like it.",
+                    "creation_time": "2024-07-27T11:15:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Not yet, but it's next on my list. Thanks for the recommendation! Let's plan another hike soon?",
+                    "creation_time": "2024-07-27T11:30:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "18": [
+        {
+            "conversation_name": "Emily Rose",
+            "participants": [
+                "emily.rose@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "emily.rose@example.com",
+                    "sender_name": "Emily Rose",
+                    "content": "Hi Theo! Don't forget about the neighborhood gathering this Saturday at 6 pm. Hope to see you there!",
+                    "creation_time": "2024-07-24T10:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hi Emily, looking forward to it! See you on Saturday.",
+                    "creation_time": "2024-07-24T10:15:00",
+                    "status": ""
+                },
+                {
+                    "sender": "emily.rose@example.com",
+                    "sender_name": "Emily Rose",
+                    "content": "Great! Feel free to bring along any friends or family!",
+                    "creation_time": "2024-07-24T10:30:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Will do! My friend John might join as well.",
+                    "creation_time": "2024-07-24T11:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "emily.rose@example.com",
+                    "sender_name": "Emily Rose",
+                    "content": "That sounds wonderful. The more, the merrier!",
+                    "creation_time": "2024-07-24T11:30:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "19": [
+        {
+            "conversation_name": "Cookie Watson",
+            "participants": [
+                "cookie.watson@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey Cookie, just finished an amazing sci-fi novel this morning! Starting a new historical fiction next. Got any recommendations?",
+                    "creation_time": "2024-07-28T10:15:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "John Quinn",
+            "participants": [
+                "john.quinn@palantir.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Morning John! Wrapped up the amazing sci-fi book you've recommended today and diving into another. Perfect way to recharge before our next hike. How's your weekend going?",
+                    "creation_time": "2024-07-28T10:30:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "21": [
+        {
+            "conversation_name": "John Appleseed",
+            "participants": [
+                "john.appleseed@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey Dad, are you ready for our video call at 5?",
+                    "creation_time": "2024-07-28T16:45:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.appleseed@example.com",
+                    "sender_name": "John Appleseed",
+                    "content": "All set, Theo! Looking forward to catching up.",
+                    "creation_time": "2024-07-28T16:47:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Great! Mom's joining soon too.",
+                    "creation_time": "2024-07-28T16:55:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.appleseed@example.com",
+                    "sender_name": "John Appleseed",
+                    "content": "Perfect, let's have a great family time!",
+                    "creation_time": "2024-07-28T16:57:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "Sarah Appleseed",
+            "participants": [
+                "sarah.appleseed@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hi Mom, just checking if you're ready for our call?",
+                    "creation_time": "2024-07-28T16:50:00",
+                    "status": ""
+                },
+                {
+                    "sender": "sarah.appleseed@example.com",
+                    "sender_name": "Sarah Appleseed",
+                    "content": "Yes, dear. I'll be online shortly.",
+                    "creation_time": "2024-07-28T16:52:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "25": [
+        {
+            "conversation_name": "booking@trainservice.com",
+            "participants": [
+                "booking@trainservice.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "booking@trainservice.com",
+                    "sender_name": "Train Service",
+                    "content": "Dear Theo, your train ticket to Chicago is booked. Departure: July 30, 2024, 15:07 from Central Station. Ticket number: TK123456789, Booking reference: BR987654321.",
+                    "creation_time": "2024-07-29T07:35:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "26": [
+        {
+            "conversation_name": "unknown1@crypto-invest.com",
+            "participants": [
+                "theo.appleseed@example.com",
+                "unknown1@crypto-invest.com"
+            ],
+            "messages": [
+                {
+                    "sender": "unknown1@crypto-invest.com",
+                    "sender_name": "Crypto Invest",
+                    "content": "Unlock the potential of your future with our exclusive cryptocurrency investment opportunities! Visit now: www.crypto-invest.com/start",
+                    "creation_time": "2024-07-21T14:35:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "offers@blockchainbuzz.net",
+            "participants": [
+                "offers@blockchainbuzz.net",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "offers@blockchainbuzz.net",
+                    "sender_name": "Blockchain Buzz",
+                    "content": "Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer",
+                    "creation_time": "2024-07-22T10:20:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "info@cryptogains.io",
+            "participants": [
+                "info@cryptogains.io",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "info@cryptogains.io",
+                    "sender_name": "Crypto Gains",
+                    "content": "See how you can multiply your investment in just a few months! Visit www.cryptogains.io for more information.",
+                    "creation_time": "2024-07-23T16:45:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "promo@digitalcoins.com",
+            "participants": [
+                "promo@digitalcoins.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "promo@digitalcoins.com",
+                    "sender_name": "Digital Coins",
+                    "content": "Exclusive offer for you, Theo! Join our investment group now at www.digitalcoins.com/join",
+                    "creation_time": "2024-07-24T09:15:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "contact@futurecrypto.net",
+            "participants": [
+                "contact@futurecrypto.net",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "contact@futurecrypto.net",
+                    "sender_name": "Future Crypto",
+                    "content": "Invest in the future of finance. Secure your spot at www.futurecrypto.net/signup",
+                    "creation_time": "2024-07-25T12:30:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "deals@coinrealm.org",
+            "participants": [
+                "deals@coinrealm.org",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "deals@coinrealm.org",
+                    "sender_name": "Coin Realm",
+                    "content": "Theo, start your crypto journey with us and see your money grow! Check out www.coinrealm.org",
+                    "creation_time": "2024-07-26T18:05:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "hello@investcrypto.today",
+            "participants": [
+                "hello@investcrypto.today",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "hello@investcrypto.today",
+                    "sender_name": "Invest Crypto",
+                    "content": "Ready to make some real money? Visit www.investcrypto.today to begin!",
+                    "creation_time": "2024-07-27T11:50:00",
+                    "status": ""
+                }
+            ]
+        },
+        {
+            "conversation_name": "team@cryptonow.com",
+            "participants": [
+                "team@cryptonow.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "team@cryptonow.com",
+                    "sender_name": "Crypto Now",
+                    "content": "Don't miss your chance to be part of the crypto revolution. Join us at www.cryptonow.com",
+                    "creation_time": "2024-07-28T13:25:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "27": [
+        {
+            "conversation_name": "optician@example.com",
+            "participants": [
+                "optician@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "optician@example.com",
+                    "sender_name": "Optician",
+                    "content": "Hello Theo, this is a reminder that you have an appointment scheduled with us on Friday, August 2nd at 14:30. Please confirm your availability.",
+                    "creation_time": "2024-07-29T10:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Thank you for the reminder. I confirm my appointment for August 2nd at 14:30.",
+                    "creation_time": "2024-07-29T10:05:00",
+                    "status": ""
+                },
+                {
+                    "sender": "optician@example.com",
+                    "sender_name": "Optician",
+                    "content": "Thank you, Theo. We have confirmed your appointment for August 2nd at 14:30. We look forward to seeing you then.",
+                    "creation_time": "2024-07-29T10:10:00",
+                    "status": ""
+                }
+            ]
+        }
+    ],
+    "28": [
+        {
+            "conversation_name": "Carpathians Hiking",
+            "participants": [
+                "cookie.watson@example.com",
+                "john.quinn@palantir.com",
+                "lucas.garcia@example.com",
+                "theo.appleseed@example.com"
+            ],
+            "messages": [
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey John! Are we still on for the hike to the Carpathians this weekend?",
+                    "creation_time": "2024-07-30T13:00:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Absolutely, Theo! Can't wait. Should we start planning the route and supplies?",
+                    "creation_time": "2024-07-30T13:02:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Yes, let's do that. I'll add Cookie and Lucas to the chat so they can chime in too.",
+                    "creation_time": "2024-07-30T13:03:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Hey Cookie, joining in for the hike this weekend? We're planning supplies now.",
+                    "creation_time": "2024-07-30T13:04:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Wouldn't miss it! I can bring some homemade trail snacks. What else do we need?",
+                    "creation_time": "2024-07-30T13:05:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Lucas, are you in for the hike? We're discussing what to bring.",
+                    "creation_time": "2024-07-30T13:06:00",
+                    "status": ""
+                },
+                {
+                    "sender": "lucas.garcia@example.com",
+                    "sender_name": "Lucas Garcia",
+                    "content": "Count me in! I'll handle the first aid kit and water supplies.",
+                    "creation_time": "2024-07-30T13:07:00",
+                    "status": ""
+                },
+                {
+                    "sender": "john.quinn@palantir.com",
+                    "sender_name": "John Quinn",
+                    "content": "Great! I'll map out the trail tonight and share it with everyone tomorrow.",
+                    "creation_time": "2024-07-30T13:08:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "Perfect, John. Thanks for taking the lead on that!",
+                    "creation_time": "2024-07-30T13:09:00",
+                    "status": ""
+                },
+                {
+                    "sender": "cookie.watson@example.com",
+                    "sender_name": "Cookie Watson",
+                    "content": "Theo, should we plan a meal for when we finish the hike? Maybe a small celebration?",
+                    "creation_time": "2024-07-30T13:10:00",
+                    "status": ""
+                },
+                {
+                    "sender": "theo.appleseed@example.com",
+                    "sender_name": "Theo Appleseed",
+                    "content": "That sounds like a fantastic idea, Cookie! Let's do it.",
+                    "creation_time": "2024-07-30T13:11:00",
+                    "status": ""
+                }
+            ]
+        }
+    ]
+}

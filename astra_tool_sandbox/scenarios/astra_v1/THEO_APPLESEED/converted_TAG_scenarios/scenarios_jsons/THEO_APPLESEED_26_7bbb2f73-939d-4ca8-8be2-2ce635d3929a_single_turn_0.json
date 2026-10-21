@@ -1,0 +1,182 @@
+{
+  "task_id": "7bbb2f73-939d-4ca8-8be2-2ce635d3929a",
+  "plot_id": 26,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo checked his messages and found out that he recently got a lot of spam messages about “exciting opportunities to invest in new cryptocurrencies” from three different unknown senders.\n generate messages Theo recieved between July 21, 2024 to July 28, 2024. The message should also contain fake url and a message\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_26",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to delete messages that related to the words \"crypto\" and \"blockchain\"",
+  "reference_time": "2024-07-29T10:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "A message from \"Crypto Invest\" is deleted",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A message from \"Blockchain Buzz\" is deleted",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A message from \"Crypto Gains\" is deleted",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A message from \"Digital Coins\" is deleted",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A message from \"Future Crypto\" is deleted",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A message from \"Coin Realm\" is deleted",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A message from \"Invest Crypto\" is deleted",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A message from \"Crypto Now\" is deleted",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_26_7bbb2f73-939d-4ca8-8be2-2ce635d3929a_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "remove_message_or_conversation",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "unknown1@crypto-invest.com",
+      "participants_addresses": [
+        "theo.appleseed@example.com",
+        "unknown1@crypto-invest.com"
+      ],
+      "sender_address": "unknown1@crypto-invest.com",
+      "content": "Unlock the potential of your future with our exclusive cryptocurrency investment opportunities! Visit now: www.crypto-invest.com/start",
+      "creation_datetime_iso": "2024-07-21T14:35:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "offers@blockchainbuzz.net",
+      "participants_addresses": [
+        "offers@blockchainbuzz.net",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "offers@blockchainbuzz.net",
+      "content": "Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer",
+      "creation_datetime_iso": "2024-07-22T10:20:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "info@cryptogains.io",
+      "participants_addresses": [
+        "info@cryptogains.io",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "info@cryptogains.io",
+      "content": "See how you can multiply your investment in just a few months! Visit www.cryptogains.io for more information.",
+      "creation_datetime_iso": "2024-07-23T16:45:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "promo@digitalcoins.com",
+      "participants_addresses": [
+        "promo@digitalcoins.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "promo@digitalcoins.com",
+      "content": "Exclusive offer for you, Theo! Join our investment group now at www.digitalcoins.com/join",
+      "creation_datetime_iso": "2024-07-24T09:15:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "contact@futurecrypto.net",
+      "participants_addresses": [
+        "contact@futurecrypto.net",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "contact@futurecrypto.net",
+      "content": "Invest in the future of finance. Secure your spot at www.futurecrypto.net/signup",
+      "creation_datetime_iso": "2024-07-25T12:30:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "deals@coinrealm.org",
+      "participants_addresses": [
+        "deals@coinrealm.org",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "deals@coinrealm.org",
+      "content": "Theo, start your crypto journey with us and see your money grow! Check out www.coinrealm.org",
+      "creation_datetime_iso": "2024-07-26T18:05:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "hello@investcrypto.today",
+      "participants_addresses": [
+        "hello@investcrypto.today",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "hello@investcrypto.today",
+      "content": "Ready to make some real money? Visit www.investcrypto.today to begin!",
+      "creation_datetime_iso": "2024-07-27T11:50:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "team@cryptonow.com",
+      "participants_addresses": [
+        "team@cryptonow.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "team@cryptonow.com",
+      "content": "Don't miss your chance to be part of the crypto revolution. Join us at www.cryptonow.com",
+      "creation_datetime_iso": "2024-07-28T13:25:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "high",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "query": "Remove all spam messages that related to crypto or blockchain.",
+  "reasoning": "Looks like the user wants to remove all messages related to crypto or blockchain. There looks to be eight messages that fit the description. I shall remove them per the users wishes.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up messages (either via search or full listing)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – All eight crypto / blockchain spam messages have been removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender_address\": [\n                                        \"unknown1@crypto-invest.com\",\n                                        \"offers@blockchainbuzz.net\",\n                                        \"info@cryptogains.io\",\n                                        \"promo@digitalcoins.com\",\n                                        \"contact@futurecrypto.net\",\n                                        \"deals@coinrealm.org\",\n                                        \"hello@investcrypto.today\",\n                                        \"team@cryptonow.com\",\n                                    ],\n                                    \"conversation_name\": [\n                                        \"unknown1@crypto-invest.com\",\n                                        \"offers@blockchainbuzz.net\",\n                                        \"info@cryptogains.io\",\n                                        \"promo@digitalcoins.com\",\n                                        \"contact@futurecrypto.net\",\n                                        \"deals@coinrealm.org\",\n                                        \"hello@investcrypto.today\",\n                                        \"team@cryptonow.com\",\n                                    ],\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"remove_message_or_conversation\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to delete messages that related to the words \"crypto\" and \"blockchain\" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"remove_message_or_conversation\", \"search_messages\"]",
+  "is_read_time": "2024-07-29T10:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

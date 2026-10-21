@@ -1,0 +1,104 @@
+{
+  "task_id": "68f71f55-49a7-4012-a51a-8767b24ce9ea",
+  "plot_id": 7,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 9pm, Apricot Sweeney were involved. Apricot and John call and message each other.  1. Apricot calls John and they have a long call. 2. Before going to bed, John and Apricot exchange a few loving messages. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_7",
+    "contact",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if Apricot has responded to your last message yet before you go to sleep.",
+  "reference_time": "2024-07-22T21:54:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. User is informed that Apricot Sweeney has not yet responded to their last message sent at 21:52 on July 22nd, 2024 which reads 'I'm glad we could chat, Apricot. Missing you more with each day!'."
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_7_68f71f55-49a7-4012-a51a-8767b24ce9ea_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "415-555-0128",
+      "content": "Thanks for the lovely call tonight, John. Always brightens my day! 😊",
+      "creation_datetime_iso": "2024-07-22T21:50:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "1234-5678-9108",
+      "content": "I'm glad we could chat, Apricot. Missing you more with each day!",
+      "creation_datetime_iso": "2024-07-22T21:52:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Has Apricot replied to my latest text message?",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know whether Apricot has replied to their latest text message. Apricot Sweeney is the only contact by that name, so I'll check their messages with the user.\n\nI can see that the user's latest text message to Apricot Sweeney was sent at 21:52 today, July 22nd, 2024 which reads 'I'm glad we could chat, Apricot. Missing you more with each day!'. There has not yet been a reply received, so I'll let the user know that Apricot has not yet replied.",
+  "milestones": "[\n                # Milestone 0 – agent looks up recent messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – agent tells the user Apricot has not replied yet\n                Milestone(\n                    snapshot_constraints=[\n                        # Contains Apricot's name\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Apricot\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Mentions lack of reply\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"hasn't\",\n                                            \"has not\",\n                                            \"not yet\",\n                                            \"no reply\",\n                                            \"no response\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\"get_all_messages\", \"search_messages\"]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know if Apricot has responded to your last message yet before you go to sleep. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-22T21:54:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

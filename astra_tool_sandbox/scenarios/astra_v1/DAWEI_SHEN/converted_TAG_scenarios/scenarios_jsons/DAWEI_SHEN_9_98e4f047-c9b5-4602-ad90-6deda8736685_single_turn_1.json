@@ -1,0 +1,106 @@
+{
+  "task_id": "98e4f047-c9b5-4602-ad90-6deda8736685",
+  "plot_id": 9,
+  "plot_summary": "Dawei Shen is the protagonist. On Friday, December 6, 2024 at 10 am, self, Jeff Bing were involved. Jeff calls Dawei to invite him to a tech panel he's hosting in Orchard County next Tuesday. Dawei agrees to attend and blocks the time in his calendar. Dawei receives an email with panel details.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_9",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to check the time of the tech panel you are attending tomorrow.",
+  "reference_time": "2024-12-09T14:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. the user is informed that 'Tech Panel Hosted by Jeff Bing' is at 09:00-11:00 on 10 December 2024. "
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_9_98e4f047-c9b5-4602-ad90-6deda8736685_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Invitation: Tech Panel Discussion on December 10",
+      "sender_address": "jeff.bing@bingelectronics.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T10:10:00-08:00",
+      "body": "Hello Dawei,\n\nI hope this message finds you well. I'm excited to invite you to a tech panel discussion I'm hosting next Tuesday, December 10, at the Tech Hub Conference Center here in Orchard County. We'll be discussing the latest trends and innovations in consumer electronics. Your insights would be incredibly valuable, and I would be thrilled if you could join us.\n\nPlease find the event details attached. Let me know if you can make it!\n\nBest regards,\nJeff Bing",
+      "attachments": [
+        "Tech_Panel_Details.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Jeff Bing",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "incoming",
+      "caller_address": "+1 555-789-0123-4567",
+      "receiver_address": "+1 555-123-4567-8901",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-12-06T10:00:00-08:00",
+      "duration_in_hms": "00:05:00"
+    }
+  ],
+  "query": "When's Jeff's tech panel?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know When Jeff's tech panel is. What do they mean by Jeff's tech panel? When looking at the calendar I found an event called Tech Panel Hosted by Jeff Bing. this must be what they're referring to. The runtime for that is 09:00-11:00. I will inform the user now of this.",
+  "reference_time_str": "Today is Monday, December 9, 2024 or 2024-12-09T14:30:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Agent queried the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The “Tech Panel Hosted by Jeff Bing” event (09:00-11:00, 10 Dec 2024) was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Tech Panel Hosted by Jeff Bing\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-10T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – User is informed of event name, date, and time\n                Milestone(\n                    snapshot_constraints=[\n                        # Must mention the date 10 December 2024 (allow either order)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"December 10\",\n                                            \"Dec 10\",\n                                            \"10 December\",\n                                            \"10th of December\",\n                                            \"12/10\",\n                                            \"12-10\",\n                                            \"the 10th\",\n                                            \"Tue\",\n                                            \"Tuesday\",\n                                            \"tomorrow\",\n                                            \"2024-12-10T09:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                        # Must mention the time range 09:00-11:00 (allow 9:00)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"9:00\", \"9 o'clock\", \"9 am\", \"9am\", \"9 a.m.\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to check the time of the tech panel you are attending tomorrow. ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-09T14:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,117 @@
+{
+  "task_id": "c1fa0952-ac51-4f60-92c1-77fe8b2c5e8a",
+  "plot_id": 12,
+  "plot_summary": "Theo Appleseed is the protagonist. On Thursday Evening, July 25, 2024 at 8pm, John Quinn were involved. John messages Theo to chat and plan an upcoming hiking trip for July 27, 2024 Itinerary, Locations and schedules are decided. A calander invite was sent out for the hiking trip with all the finalized information.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_12",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "contact",
+    "messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to take care of your niece so you need to tell your friend you're canceling your hiking plans",
+  "reference_time": "2024-07-26T21:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to John Quinn with the text \"I can't go hiking anymore, sorry something has come up, my niece has gotten pretty sick so I wanna be around in case she needs me. Let's reschedule for next week maybe?\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_12_c1fa0952-ac51-4f60-92c1-77fe8b2c5e8a_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "search_messages",
+    "get_all_messages",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "attendees_names": [
+        "John Quinn",
+        "Theo Appleseed"
+      ],
+      "reminder_time_ahead": "2 hours",
+      "creation_datetime_iso": "2024-07-25T20:00:00-07:00",
+      "meeting_url": null,
+      "end_datetime_iso": "2024-07-27T10:00:00-07:00",
+      "organizer_name": "Theo Appleseed",
+      "start_datetime_iso": "2024-07-27T06:00:00-07:00",
+      "location": "Big Rock Mountain Trail, Orchard County, CA",
+      "notes": "Hiking trip to the local mountain trails.",
+      "calendar_event_name": "Hiking Trip",
+      "calendar_name": "personal"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "phone_number": "1234-5678-9102",
+      "relationship": "Father",
+      "full_name": "John Appleseed",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "alias": "Dad",
+      "first_name": "John",
+      "birthday": "1965-03-22T00:00:00-08:00",
+      "last_name": "Appleseed",
+      "job_title": "Professor of Theoretical Physics",
+      "is_self": false,
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Nearby University",
+      "email": "john.appleseed@example.com"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you send John a thing saying \"I can't go hiking anymore, sorry something has come up, my niece has gotten pretty sick so I wanna be around in case she needs me. Let's reschedule for next week maybe?\"",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to communicate with someone named John. First let me figure out how they want to communicate, and then figure out who they mean by John. They want to send John a 'thing'. Since they've dictated some content to send, I'll formulate a text message. Now, They have two Johns in their contacts - John Quinn and John Appleseed. The text they're asking me to send mentions hiking, so let me see if either John is in the user's calendar events. I see an event named 'Hiking Trip' on 27 July 2024 at 6:00-10:00 with John Quinn as an invitee, so I'll assume that's who the user wants to text. What's more, looking at their previous texts, I can see they were talking to John Quinn about hiking, so that gives me even more confidence that John Quinn is the right John to contact. I'll send the message the user dictated, \"I can't go hiking anymore, sorry something has come up, my niece has gotten pretty sick so I wanna be around in case she needs me. Let's reschedule for next week maybe?\". ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up John Quinn in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the contact search returned John Quinn\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"John Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"1234-5678-9108\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"john.quinn@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent looks up which John in the personal context\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – A new outgoing message to John Quinn with the correct content has been created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [(\"john.quinn@palantir.com\", \"1234-5678-9108\")]\n                                    ],\n                                    \"content\": \"I can't go hiking anymore\",\n                                    \"creation_datetime_iso\": \"2024-07-26T21:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search → confirm John Quinn found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You need to take care of your niece so you need to tell your friend you're canceling your hiking plans ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"search_messages\", \"get_all_messages\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-07-26T21:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,110 @@
+{
+  "task_id": "13a28600-99ed-4389-8a9d-36645012fd5d",
+  "plot_id": 4,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 3, 2024 at 7 am, Nathan Lewis, Jason Baker were involved. Lucas leads a triathlon training session for his group. Lucas takes notes on Jason’s performance, saving them digitally for future reference and email the summary of the note to each of them.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_4",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You had a great time with everyone training for the triathlon.   You want to remind yourself who you were training with again, so you ask the assistant.",
+  "reference_time": "2024-12-03T11:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The attendees of the event \"Triathlon Training Session\" which occurred on December 3rd 2024 at 07:00, Nathan Lewis and Jason Baker, are shown to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_4_13a28600-99ed-4389-8a9d-36645012fd5d_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Triathlon Training Session",
+      "start_datetime_iso": "2024-12-03T07:00:00-08:00",
+      "end_datetime_iso": "2024-12-03T08:30:00-08:00",
+      "attendees_names": [
+        "Jason Baker",
+        "Lucas Garcia",
+        "Nathan Lewis"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T19:30:00-08:00",
+      "notes": "Lucas leads a triathlon training session for the group, focusing on improving performance and endurance."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Nathan",
+      "last_name": "Lewis",
+      "full_name": "Nathan Lewis",
+      "phone_number": "+1 12345-6789-1000-2468",
+      "alias": "Triathlon Buddy",
+      "email": "nathan.lewis@example.com",
+      "relationship": "Triathlon training group member",
+      "address": "90 Training Ave, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1989-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jason",
+      "last_name": "Baker",
+      "full_name": "Jason Baker",
+      "phone_number": "+1 12345-6789-1000-8520",
+      "alias": "Triathlon Competitor",
+      "email": "jason.baker@example.com",
+      "relationship": "Triathlon competitor",
+      "address": "67 Race Rd, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1988-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Who did I do my early morning event with",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user asked me who they did their early morning event with. I have some things to figure out first - what exactly do they mean by their early morning event? I'll have a look at their calendar and see if there was anything they had scheduled early this morning. I found the event \"Triathlon Training Session\" which took place at 07:00 today, and has Nathan Lewis and Jason Baker as attendees - is it possible they are referring to this event? \n\nSince this seems to be the only likely match in the user's calendar, I will inform them of the attendees.",
+  "milestones": "[\n                # Milestone 0 – Agent queries the calendar to discover the early-morning event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned calendar data contains the December 3rd 07:00 Triathlon event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Triathlon Training Session\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-03T07:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent’s answer to the user includes BOTH Nathan Lewis and Jason Baker\n                Milestone(\n                    snapshot_constraints=[\n                        # Presence of Nathan Lewis\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Nathan Lewis\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Presence of Jason Baker\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Jason Baker\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You had a great time with everyone training for the triathlon.  You want to remind yourself who you were training with again, so you ask the assistant. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-03T11:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

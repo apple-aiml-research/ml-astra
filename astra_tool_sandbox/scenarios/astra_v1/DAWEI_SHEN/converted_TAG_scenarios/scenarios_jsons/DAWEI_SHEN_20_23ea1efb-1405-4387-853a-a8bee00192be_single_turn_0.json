@@ -1,0 +1,169 @@
+{
+  "task_id": "23ea1efb-1405-4387-853a-a8bee00192be",
+  "plot_id": 20,
+  "plot_summary": "Dawei Shen is the protagonist. On Friday, December 13, 2024 at 10 am, self, Michelle Barnes, Kevin Chen were involved. During the team review, Dawei assigns action items to Michelle and Kevin via follow-up emails. Michelle acknowledges receipt of the email, and Kevin schedules time to review his action item.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_20",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "contact",
+    "calendar",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to set up a meeting on Monday at 9:00 to see how the folks are getting on with their action items from the review meeting, you have sent emails about action items last Friday.",
+  "reference_time": "2024-12-15T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "A calendar event is created for 9:00 AM on Monday, December 16, 2024 with attendees Dawei Shen, Michelle Barnes, and Kevin Chen.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_20_23ea1efb-1405-4387-853a-a8bee00192be_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Action Items from Team Review",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "michelle.barnes@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "kevin.chen@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-13T10:05:00-08:00",
+      "body": "Hi Michelle, Following our team review today, I'm assigning you the task of analyzing the latest data trends for our upcoming project. Please prepare a detailed report by next Friday. Let me know if you need any specific data sets or further clarifications. Best, Dawei",
+      "attachments": null,
+      "status": "sent"
+    },
+    {
+      "subject": "Action Items from Team Review",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "kevin.chen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "michelle.barnes@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-13T10:10:00-08:00",
+      "body": "Hi Kevin, As discussed in today's review, please schedule a time next week to go over the development needs for the new features we're planning to implement. I would like to ensure we're on track with the project timeline. Regards, Dawei",
+      "attachments": null,
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Action Items from Team Review",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "kevin.chen@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-13T10:15:00-08:00",
+      "body": "Hello Dawei, I've received the action items and will start working on the data analysis report. I'll reach out if I need any additional data. Thanks, Michelle",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T10:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Stefan Mustermann"
+      ],
+      "location": "Conference Room C, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-12T09:30:00-08:00",
+      "notes": "Review meeting to consolidate comments on the recent research updates."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room B, Orchard Tech HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-01T12:00:00-08:00",
+      "notes": "Monthly team review to discuss project progress and assign new action items."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Set up a meeting to see how the guys are getting on with their action items from the team review meeting tomorrow at 9.",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "referential_complexity": "high",
+  "reasoning": "The user wants to set up a meeting with the guys to check how they are getting on with their action items, first I will find out when the user wants this meeting to be held.\nThe user has confirmed a date and time for the meeting, now I need to find out who he is referring to as the guys. I have found emails from the user addressed to Michelle Barnes and Kevin Chen with the title \"Action Items\", I will assume these are the people the user is referencing in his query.\nI will now create a calendar event titled Team Meeting at 9:00 on Monday December 16 2024 with Dawei Shen, Michelle Barnes and Kevin Chen.",
+  "reference_time_str": "Today is Sunday, December 15, 2024 or 2024-12-15T10:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0: search for emails\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # M1: Action items found from email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-13\",\n                                                \"partial\": True,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Action Items from Team Review\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – A calendar event reflecting the user’s request is added\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"start_datetime_iso\": \"2024-12-16T09:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Dawei Shen\",\n                                            \"Michelle Barnes\",\n                                            \"Kevin Chen\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-15T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"attendees_names\": column_list_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.MESSAGING,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event",
+    "search_emails",
+    "get_all_emails"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to set up a meeting on Monday at 9:00 to see how the folks are getting on with their action items from the review meeting, you have sent emails about action items last Friday. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\", \"search_emails\", \"get_all_emails\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-15T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

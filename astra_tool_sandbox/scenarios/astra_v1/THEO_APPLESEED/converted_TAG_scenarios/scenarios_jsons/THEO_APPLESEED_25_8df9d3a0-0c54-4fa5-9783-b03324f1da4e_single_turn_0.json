@@ -1,0 +1,90 @@
+{
+  "task_id": "8df9d3a0-0c54-4fa5-9783-b03324f1da4e",
+  "plot_id": 25,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo has a booked train trip to Chicago. Leaving tomorrow at 15:07 pm from the Central Station.\n generate calendar_events for the plot. In the calender event added a note for saving 1h travel time from office. Also he received the ticket number and booking reference number through messages for the train ticket.\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_25",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "contact",
+    "phone_call",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to remember when you last rang your father.",
+  "reference_time": "2024-07-27T12:25:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1.The user is informed that the last call to John Appleseed was on 23 July 2024 at 18:00. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_25_8df9d3a0-0c54-4fa5-9783-b03324f1da4e_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_phone_calls",
+    "search_phonecall_logs"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Appleseed",
+      "full_name": "John Appleseed",
+      "phone_number": "1234-5678-9102",
+      "alias": "Dad",
+      "email": "john.appleseed@example.com",
+      "relationship": "Father",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Nearby University",
+      "job_title": "Professor of Theoretical Physics",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "outgoing",
+      "caller_address": "1234-5678-9101",
+      "receiver_address": "1234-5678-9102",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-07-23T18:00:00-07:00",
+      "duration_in_hms": "00:30:00"
+    }
+  ],
+  "query": "When did I last call my dad?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know when they last called their dad. I should first check their Contacts for a contact named Father. Hmm looks like they don't have one, but looking at their relationships, John Appleseed has \"father\" as his relationship to the user, and I know father and dad are synonymous with each other so this must be who the user means. Next I will check Phone to see when the last call to John Appleseed was. Looks like it was made on the 23 July 2024 at 18:00. I will tell the user this. ",
+  "milestones": "[\n                # Milestone 0 – Agent retrieves phone-call history\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm an outgoing call to John Appleseed was returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"receiver_address\": {\n                                                \"value\": \"1234-5678-9102\",\n                                                \"partial\": False,\n                                            },\n                                            \"call_type\": {\n                                                \"value\": \"outgoing\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,  # depends on retrieval in Milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent informs the user of the last call time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"July 23\",\n                                            \"23 July\",\n                                            \"07-23\",\n                                            \"07/23\",\n                                            \"Tuesday\",\n                                            \"Jul 23\",\n                                            \"7/23\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_phonecall_logs\",\n    \"get_all_phone_calls\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to remember when you last rang your father. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_phone_calls\", \"search_phonecall_logs\"]",
+  "is_read_time": "2024-07-27T12:25:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

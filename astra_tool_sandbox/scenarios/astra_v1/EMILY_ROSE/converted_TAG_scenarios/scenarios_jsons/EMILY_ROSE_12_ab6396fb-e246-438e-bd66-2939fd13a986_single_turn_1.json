@@ -1,0 +1,80 @@
+{
+  "task_id": "ab6396fb-e246-438e-bd66-2939fd13a986",
+  "plot_id": 12,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 9, 2024 at 9:00 AM, Sophia Nguyen were involved. Discussion about catering requirements for the New Year's event. Order confirmation email with revised menu details.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_12",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to see the last email from Sophia.",
+  "reference_time": "2024-12-09T11:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is shown the last email from Sophia Nguyen sent on December 9th at 09:15 titled \"Re: Finalizing Catering Details for New Year's Event\" with the text 'Hello Emily, Thank you for your feedback. We can definitely accommodate the changes you've requested: 1. We'll increase the vegetarian options by 30%. 2. Two gluten-free desserts will be added to the menu. 3. A selection of non-alcoholic sparkling beverages will be available. I've attached the revised menu for your review. Please confirm if everything looks good, and we can proceed with the final preparations. Best regards, Sophia Nguyen'.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_12_ab6396fb-e246-438e-bd66-2939fd13a986_single_turn_1",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Finalizing Catering Details for New Year's Event",
+      "sender_address": "sophia.nguyen@localcatering.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T09:15:00-08:00",
+      "body": "Hello Emily,\n\nThank you for your feedback. We can definitely accommodate the changes you've requested:\n1. We'll increase the vegetarian options by 30%.\n2. Two gluten-free desserts will be added to the menu.\n3. A selection of non-alcoholic sparkling beverages will be available.\n\nI've attached the revised menu for your review. Please confirm if everything looks good, and we can proceed with the final preparations.\n\nBest regards,\nSophia Nguyen",
+      "attachments": [
+        "Revised_Menu_Details.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Show me the last email I received.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to see the last email they received. Let me look in Mail with the date time closest to user request's date time. Okay I have found it. It's an email from Sophia Nguyen received on Dec 9 at 9:15. I will show the user the last email they received from ",
+  "milestones": "[\n                # Milestone 0 – the agent looks up emails\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – confirm the desired email is present in the tool output obtained in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Re: Finalizing Catering Details for New Year's Event\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"sophia.nguyen@localcatering.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – the agent shows the user the content of that email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"We can definitely accommodate\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # email search -> email confirmed\n                (1, 2),  # email confirmed -> user shown email\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to see the last email from Sophia. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "is_read_time": "2024-12-09T11:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

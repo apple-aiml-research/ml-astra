@@ -1,0 +1,91 @@
+{
+  "task_id": "7928a858-fa42-4d49-be2d-d674cdf2a997",
+  "plot_id": 16,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Morning, July 27, 2024 at 10 am, John Quinn were involved. After Hiking trip in the morning. They spend the morning exploring a new trail and discussing life.  John and Theo had a great time and both heading home. They chats in the group message with each other about how good the hiking was and continue the discussion about their current life.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_16",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to send a message to John Quinn saying 'how about next week?'",
+  "reference_time": "2024-07-27T11:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to John Quinn saying 'how about next week?'",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_16_7928a858-fa42-4d49-be2d-d674cdf2a997_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "John Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Not yet, but it's next on my list. Thanks for the recommendation! Let's plan another hike soon?",
+      "creation_datetime_iso": "2024-07-27T11:30:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to John Quinn saying 'how about next week?'",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message to John Quinn. I'll check the user's contacts for a contact under this name. There is a contact under that name so I'll pull up that number. Next I'll ask the user what they'd like to say. Okay, now that I have the content of the message I can send it and notify the user.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up John Quinn in the contacts database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – Verify that John Quinn’s contact information was returned from the search in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"John Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            # Either phone or email may appear – we just need to see one of them\n                                            \"email\": {\n                                                \"value\": \"john.quinn@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new message has been sent to John with the requested content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Confirm John is among the participants\n                                    \"participants_addresses\": [\n                                        [(\"john.quinn@palantir.com\", \"1234-5678-9108\")]\n                                    ],\n                                    \"content\": \"how about next week?\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-27T11:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirm John Quinn found\n                (1, 2),  # Contact confirmed → message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",      # Needed to create the new message\n    \"search_contacts\",   # Primary way to find John Quinn\n    \"get_all_contacts\",  # Fallback if the agent enumerates contacts\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send a message to John Quinn saying 'how about next week?' ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-27T11:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

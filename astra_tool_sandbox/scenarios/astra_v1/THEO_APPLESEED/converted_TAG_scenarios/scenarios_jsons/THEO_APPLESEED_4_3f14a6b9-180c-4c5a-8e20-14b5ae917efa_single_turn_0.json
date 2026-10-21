@@ -1,0 +1,104 @@
+{
+  "task_id": "3f14a6b9-180c-4c5a-8e20-14b5ae917efa",
+  "plot_id": 4,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Morning, July 23, 2024 at 9 am, Kevin Chen were involved. One-on-one meeting with Kevin to discuss project progress ",
+  "tags": [
+    "astra_core",
+    "THEO_APPLESEED",
+    "plot_4",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to discuss further with Kevin a topic from today's one-on-one meeting via email.",
+  "reference_time": "2024-07-23T15:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "The email sent to Kevin Chen at 09:05 retrieved with the following subject \"Agenda for Upcoming One-on-One Meeting\".",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "An email is sent to Kevin Chen with the following content: \"Hey Kev, I just want to reiterate how important it is that we put together a strong, competitive bid for this new contract. Let us find ways to keep our costs efficient without compromising the quality we promise the client, so we can protect our margin. -Theo\" ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_4_3f14a6b9-180c-4c5a-8e20-14b5ae917efa_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Agenda for Upcoming One-on-One Meeting",
+      "sender_address": "theo.appleseed@example.com",
+      "recipients_addresses": [
+        "kevin.chen@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-16T09:05:00-07:00",
+      "body": "Hi Kevin,\n\nI've scheduled our one-on-one meeting for July 23, 2024, at 9:00 AM to discuss the progress and next steps for our project. Please let me know if you have any specific points you'd like to cover.\n\nBest,\nTheo",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send my manager the following words following the email I have sent him earlier: Hey Kev, I just want to reiterate how important it is that we put together a strong, competitive bid for this new contract. Let us find ways to keep our costs efficient without compromising the quality we promise the client, so we can protect our margin. -Theo",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "User wants to send a follow up email to the user's earlier email this morning to their manager. I see an email from 09:05 to Kevin Chen. I go through the user's contacts and I see Kevin Chen listed as the user's manager. The user has provided everything I need to draft an email with a text they want me to include. The user has also provided the name of the contact they want the email to be sent to, Kevin Chen. I shall do so and show the result to user for user approval before sending. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the earlier email sent to Kevin (information-retrieval)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms the retrieved email is the 09:05 message with the expected subject\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Agenda for Upcoming One-on-One Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"theo.appleseed@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": [\"kevin.chen@example.com\"],\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – New follow-up email has been sent to Kevin with the requested body text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"kevin.chen@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"Hey Kev\",\n                                    \"creation_datetime_iso\": \"2024-07-23T15:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,  # ensures “Hey Kev …” text appears,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n    \"send_email\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to discuss further with Kevin a topic from today's one-on-one meeting via email. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-07-23T15:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,77 @@
+{
+  "task_id": "869b440e-6c90-483d-93b2-3b290eaff753",
+  "plot_id": 26,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo checked his messages and found out that he recently got a lot of spam messages about “exciting opportunities to invest in new cryptocurrencies” from three different unknown senders.\n generate messages Theo recieved between July 21, 2024 to July 28, 2024. The message should also contain fake url and a message\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_26",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to delete the spam message from Blockchain Buzz",
+  "reference_time": "2024-07-22T14:25:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. Message received at 10:20 on 2024-07-22 from Blockchain Buzz that reads \"Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer\" is deleted."
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_26_869b440e-6c90-483d-93b2-3b290eaff753_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "remove_message_or_conversation",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "offers@blockchainbuzz.net",
+      "participants_addresses": [
+        "offers@blockchainbuzz.net",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "offers@blockchainbuzz.net",
+      "content": "Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer",
+      "creation_datetime_iso": "2024-07-22T10:20:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Get rid of the spam from Blockchain.",
+  "reasoning": "The user wants to get rid of the spam from Blockchain. I'm not sure if they mean spam email, spam message, or some other type of spam, so I'll take a look through their info.\n\nI didn't find a contact named Blockchain, but I did find a message from Blockchain Buzz received at 10:20 on 2024-07-22 that reads \"Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer\". I conclude that this is the entity in question.\n\nSince the user wants to get rid of the spam, I will delete this message and let the user know.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – Agent looks up messages to locate the spam\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": [RoleType.EXECUTION_ENVIRONMENT],\n                                    \"recipient\": [RoleType.AGENT],\n                                    \"tool_trace\": [\"\"],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Verify the spam message from Blockchain Buzz was actually retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"offers@blockchainbuzz.net\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-22T10:20:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": [RoleType.EXECUTION_ENVIRONMENT],\n                                    \"recipient\": [RoleType.AGENT],\n                                    \"content\": [\"{matched}\"],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Confirm the spam message has been removed from the MESSAGING database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender_address\": [\"offers@blockchainbuzz.net\"],\n                                    \"creation_datetime_iso\": [\n                                        \"2024-07-22T10:20:00-07:00\"\n                                    ],\n                                    \"content\": [\n                                        \"Theo, don't miss out on the next big wave in blockchain technology. Invest today at www.blockchainbuzz.net/offer\"\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieved message after searching\n                (1, 2),  # Deleted the located spam message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n    \"remove_message_or_conversation\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to delete the spam message from Blockchain Buzz ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"remove_message_or_conversation\", \"search_messages\"]",
+  "is_read_time": "2024-07-22T14:25:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

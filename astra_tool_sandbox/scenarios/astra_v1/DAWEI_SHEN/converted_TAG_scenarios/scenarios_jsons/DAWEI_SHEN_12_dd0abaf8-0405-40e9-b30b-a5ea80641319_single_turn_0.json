@@ -1,0 +1,198 @@
+{
+  "task_id": "dd0abaf8-0405-40e9-b30b-a5ea80641319",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_12",
+    "referential_complexity_low",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know how many not work related events you have this week that are 2 hours long",
+  "reference_time": "2024-12-08T22:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The number of non-work related events in the user's calendar with a duration of two hours taking place over the next seven days is presented to the user: one.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_dd0abaf8-0405-40e9-b30b-a5ea80641319_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Discussion on Virtual Assistant Algorithm Updates",
+      "start_datetime_iso": "2024-12-04T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T09:35:00-08:00",
+      "notes": "Meeting to discuss further updates on the virtual assistant algorithm based on the recent feedback."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Pay Property Tax",
+      "start_datetime_iso": "2024-12-06T08:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T08:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T20:10:00-08:00",
+      "notes": "Reminder to pay the property tax to avoid late fees."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cat Sitting for Paul",
+      "start_datetime_iso": "2024-12-06T00:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T23:59:59-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Paul Harper's House, 125 Neighbor St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T07:05:00-08:00",
+      "notes": "Watch Paul's cat over the weekend while he is out of town."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Strategy Meeting Preparation",
+      "start_datetime_iso": "2024-12-04T15:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T16:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Stefan Mustermann"
+      ],
+      "location": "Virtual - Orchard Tech",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": "https://orchardtech.zoom.us/j/1234567890",
+      "creation_datetime_iso": "2024-12-03T12:00:00-08:00",
+      "notes": "Virtual meeting to discuss updates and prepare for Friday's strategy meeting."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Brunch with Jess",
+      "start_datetime_iso": "2024-12-07T11:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T13:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "location": "Bluebird Café, 202 Main St, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-07T10:10:00-08:00",
+      "notes": "Brunch at Bluebird Café with Jess. Address: 202 Main St, Orchard County."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Theater Rehearsal",
+      "start_datetime_iso": "2024-12-08T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T22:00:00-08:00",
+      "attendees_names": [
+        "Charles Wilde",
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "location": "Orchard Theater, 789 Culture St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T17:55:00-08:00",
+      "notes": "Revised time for tonight's rehearsal with Charles and Vickie due to last-minute changes."
+    },
+    {
+      "location": "Local Restaurant, Orchard County, CA",
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant.",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "meeting_url": null,
+      "reminder_time_ahead": "1 day",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "organizer_name": "Dawei Shen"
+    },
+    {
+      "location": "Local Restaurant, Orchard County, CA",
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant.",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "meeting_url": null,
+      "reminder_time_ahead": "1 day",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "organizer_name": "Dawei Shen"
+    },
+    {
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics.",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "meeting_url": null,
+      "reminder_time_ahead": "1 day",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "organizer_name": "Jeff Bing"
+    }
+  ],
+  "contacts": [],
+  "phonecalls": [],
+  "query": "How many events do I have this week that are 2 hours long? not work related",
+  "functional_complexity": "low",
+  "referential_complexity": "low",
+  "informational_complexity": "high",
+  "reasoning": "The user wants to know how many events they have this week that are \"2 hours long\". I'll check their Calendar to see which events correspond to this stated duration.\n\nI've found two events, one named \"Tech Panel Hosted by Jeff Bing\", taking place from 09:00 - 11:00 on December 10th 2024, and the other named \"Dinner with Lukas and Vick\", taking place from 19:00 - 21:00 on December 14th 2024, but there is a duplication. I'll inform the user the number of non-work events are one which is the dinner with Lucas and Vick.",
+  "reference_time_str": "Today is Sunday, December 8, 2024 or 2024-12-08T22:35:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks at the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Tech Panel found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_count_extractor,\n                                        count_expected=2,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – User is informed about the number (2) of 2-hour events\n                Milestone(\n                    snapshot_constraints=[\n                        # Must mention the number 2 (either numeral or word)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"1\", \"one\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know how many not work related events you have this week that are 2 hours long ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-08T22:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

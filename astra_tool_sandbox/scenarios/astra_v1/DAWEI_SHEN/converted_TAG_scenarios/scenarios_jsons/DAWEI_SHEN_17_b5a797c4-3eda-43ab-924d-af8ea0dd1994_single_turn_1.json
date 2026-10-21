@@ -1,0 +1,68 @@
+{
+  "task_id": "b5a797c4-3eda-43ab-924d-af8ea0dd1994",
+  "plot_id": 17,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 11, 2024 at 8 pm, self, Jess Zimmer were involved. Dawei receives a WhatsApp message from Jess, sharing a link to a new play they might enjoy. She asks if they can plan to see it. Dawei books tickets online and sends Jess the confirmation.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_17",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "whatsapp_messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to have another look at the link to the play that Jess Zimmer sent you.",
+  "reference_time": "2024-12-11T22:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. WhatsApp message from Jess Zimmer containing a link to a play is presented.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_17_b5a797c4-3eda-43ab-924d-af8ea0dd1994_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-123-4567-8902"
+      ],
+      "sender_name": "Jess Zimmer",
+      "sender_address": "+1 555-123-4567-8902",
+      "creation_datetime_iso": "2024-12-11T20:00:00-08:00",
+      "content": "Hey Dawei, check out this play I found! Looks fascinating and right up our alley. How about we plan to see it next weekend? Here’s the link: [Play Link]",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [],
+  "phonecalls": [],
+  "query": "Can you pull up the WhatsApp message with the link to the play that my girlfriend sent to me.",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "To satisfy the user, I will first search the WhatsApp message history for any messages that contain a link to a play. I will look for one sent by “Jess Zimmer.” After locating that message, I will confirm that “Jess Zimmer” is indeed listed in the contacts (tagged as the girlfriend). Finally, I will show the user the original WhatsApp message that contains the text “check out this play I found” along with the link to the play.",
+  "reference_time_str": "Today is Wednesday, December 11, 2024 or 2024-12-11T22:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks for WhatsApp messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved result contains Jess Zimmer’s message with the play link\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_name\": {\n                                                \"value\": \"Jess Zimmer\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – The agent looks for contacts to make sure who is the girlfried\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – The retrieved result contains Jess Zimmer\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jess Zimmer\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ],\n                ),\n                # Milestone 4 – The agent shows the message (or link) to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"check out this play I found\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Search WhatsApp → verify Jess’s message found\n                (2, 3),  # Verify Jess is his girlfriend\n            ]",
+  "tool_allow_list": [
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to have another look at the link to the play that Jess Zimmer sent you. ",
+  "tool_allow_list_str": "[\"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-11T22:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,111 @@
+{
+  "task_id": "22749921-3ac0-45d5-a9b1-05c90c1fe3a3",
+  "plot_id": 15,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 2:15pm, Apricot Sweeney were involved. John and Apricot discuss seeing a film next Monday night  1. Apricot sends a link to a romantic comedy film ('Two Hearts with one Stone') she wants to see on Monday. 2. John agrees and says he'll buy the tickets. 3. John creates a calendar reminder and adds Apricot to it. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_15",
+    "contact",
+    "messaging",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a text to your neighbor Deborah Shooter inviting her to see a movie called Two Hearts with One Stone.",
+  "reference_time": "2024-07-24T14:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A text is sent to Deborah Shooter, neighbor saying; \"Hey Debster, How would you like to see Two Stones with One Heart Monday night at 7? Let me know.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_15_22749921-3ac0-45d5-a9b1-05c90c1fe3a3_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Movie Night with Apricot",
+      "start_datetime_iso": "2024-07-29T19:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T21:00:00-07:00",
+      "attendees_names": [
+        "Apricot Sweeney",
+        "John Quinn"
+      ],
+      "location": "Downtown Cinema, San Francisco",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T14:17:00-07:00",
+      "notes": "Going to watch 'Two Hearts with one Stone' with Apricot."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send my neighbor this text: Hey Debster, How would you like to see Two Stones with One Heart Monday night at 7? Let me know. ",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "User John Quinn wants to send an unnamed nighbor a text. I see from the contents that the neighbor's name is Debster, but this could be a nickname. I see from contacts a neighbor of user called Deborah Shooter. I think this is the intended recipient of the text message. I shall draft and address the text and show it to user for approval. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the neighbour in the contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify that the contact information for Deborah Shooter was actually returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Deborah Shooter\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0133\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new outgoing text message to Deborah Shooter containing the expected invitation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"deborah.shooter@nightclub.com\",\n                                                \"408-555-0133\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"How would you like to see Two Stones with One Heart\",\n                                    \"creation_datetime_iso\": \"2024-07-24T14:20:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to send a text to your neighbor Deborah Shooter inviting her to see a movie called Two Hearts with One Stone. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-24T14:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

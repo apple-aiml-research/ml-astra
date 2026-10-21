@@ -1,0 +1,80 @@
+{
+  "task_id": "9d8ebc84-cf63-4179-8220-c4fbf225d5c4",
+  "plot_id": 1,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 8 am, self were involved. Lucas starts his day by checking his calendar for upcoming fitness classes and appointments. A list of calendar events outlining his day, including training sessions and meetings with clients, is viewed.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_1",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to make sure Jessica Lin is still okay to attend the meeting scheduled for 10AM.",
+  "reference_time": "2024-12-02T07:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email is sent to Jessica Lin that says \"Hi Jessica. Are you still okay for our meeting this morning?\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_1_9d8ebc84-cf63-4179-8220-c4fbf225d5c4_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need help sending my coworker an email that says Hi Jessica. Are you still okay for our meeting this morning?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send an email and has provided me with all the necessary details. I will start by searching for the intended contact. The user has provided me with an alias, so this requires little work on my part. I have found a contact called \"Jessica Lin\" with this alias. The user also provided me with the exact contents they want written in the email, so I will copy what they said and send it in an email to this contact. ",
+  "milestones": "[\n                # Milestone 0 – Agent invokes a contact-lookup tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The correct coworker (Jessica Lin) is returned from the contact search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jessica Lin\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"jessica.lin@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new email is sent to Jessica with the requested body text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"jessica.lin@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"Hi Jessica. Are you still okay for our meeting this morning?\",\n                                    \"creation_datetime_iso\": \"2024-12-02T07:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to make sure Jessica Lin is still okay to attend the meeting scheduled for 10AM. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_email\"]",
+  "is_read_time": "2024-12-02T07:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

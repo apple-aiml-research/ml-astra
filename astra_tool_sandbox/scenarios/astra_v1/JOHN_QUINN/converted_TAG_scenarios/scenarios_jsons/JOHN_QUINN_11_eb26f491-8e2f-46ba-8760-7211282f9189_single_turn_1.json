@@ -1,0 +1,117 @@
+{
+  "task_id": "eb26f491-8e2f-46ba-8760-7211282f9189",
+  "plot_id": 11,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 18pm, Ursula Quinn were involved. John's mom's earphones broke, and John orders her a replacement pair  1. John receives a call from his mom, who complains about the fact that her headphones broke down. 2. John orders a new pair of headphones at Target, receiving an email confirmation of his purchase with an order number, as well as a DHL tracking number (both numbers are realistic and non-consecutive). 3. John forwards the purchase confirmation email to his mom. 4. John adds a calendar event where he invites his mom, as a reminder of the approximate day and the 5 hour time window when the headphones will be delivered on Friday. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_11",
+    "contact",
+    "messaging",
+    "calendar",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You already emailed your mom the tracking number for the headphones you got her, but you want to text her to remind her they'll be delivered soon.",
+  "reference_time": "2024-07-26T12:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A text message is sent to Ursula Quinn saying \"Remember your headphones are getting delivered today! If you forgot the tracking number it's in the email I sent you.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_11_eb26f491-8e2f-46ba-8760-7211282f9189_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "get_all_calendars",
+    "search_calendar_events",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Headphone Purchase Confirmation",
+      "sender_address": "john.quinn@palantir.com",
+      "recipients_addresses": [
+        "ursula.quinn@modernart.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T18:10:00-07:00",
+      "body": "Hi Mom, I've ordered a new pair of headphones for you as yours broke down. They will be delivered to your address this Friday between 1pm and 6pm. The order number is 987654321 and the DHL tracking number is 123456789. Love, John",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "family",
+      "calendar_event_name": "Headphone Delivery for Mom",
+      "start_datetime_iso": "2024-07-26T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-26T18:00:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Ursula Quinn"
+      ],
+      "location": "125 Maple St, San José, CA 95126",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T18:15:00-07:00",
+      "notes": "Delivery of new headphones for Mom between 1pm and 6pm."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a text to Mom that says \"Remember your headphones are getting delivered today! If you forgot the tracking number it's in the email I sent you.\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a text to their mom. I see Ursula Quinn listed in their contacts as their mother so that's who I'll send it to. They want the text to say \"Remember your headphones are getting delivered today! If you forgot the tracking number it's in the email I sent you.\" so I'll do that now.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Mom/Ursula in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms Ursula Quinn (“Mom”) was returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Ursula Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0124\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new text message is sent to Mom with the correct reminder\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Each tuple represents acceptable identifiers for the same participant\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9108\",\n                                                \"john.quinn@palantir.com\",\n                                            ),  # John’s phone (sender)\n                                            (\n                                                \"408-555-0124\",\n                                                \"ursula.quinn@modernart.org\",\n                                            ),  # Mom’s phone (recipient)\n                                        ]\n                                    ],\n                                    \"content\": \"Remember your headphones are getting delivered today!\",\n                                    \"creation_datetime_iso\": \"2024-07-26T12:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial DB state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX,\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup -> verify Ursula retrieved\n                (1, 2),  # Ursula retrieved -> message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You already emailed your mom the tracking number for the headphones you got her, but you want to text her to remind her they'll be delivered soon. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"get_all_calendars\", \"search_calendar_events\", \"send_message\"]",
+  "is_read_time": "2024-07-26T12:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

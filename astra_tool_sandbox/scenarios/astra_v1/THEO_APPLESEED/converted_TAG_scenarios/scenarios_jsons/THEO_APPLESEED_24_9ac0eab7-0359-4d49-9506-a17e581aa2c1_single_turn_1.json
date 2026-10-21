@@ -1,0 +1,256 @@
+{
+  "task_id": "9ac0eab7-0359-4d49-9506-a17e581aa2c1",
+  "plot_id": 24,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo signed up to Salsa classes every Wednesday evening for last 1h from 19:30 to 20:30 for 12 weeks\n generate calendar_events for Theo's Salsa classes",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_24",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to double check the time of your salsa class.",
+  "reference_time": "2024-08-04T17:30:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The user is informed that \"Salsa Dance Class\" takes place every Wednesday from 19:30-20:30 until October 16. "
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_24_9ac0eab7-0359-4d49-9506-a17e581aa2c1_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-07-31T19:30:00-07:00",
+      "end_datetime_iso": "2024-07-31T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-07T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-07T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-14T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-14T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-21T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-21T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-08-28T19:30:00-07:00",
+      "end_datetime_iso": "2024-08-28T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-09-04T19:30:00-07:00",
+      "end_datetime_iso": "2024-09-04T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-10-16T19:30:00-07:00",
+      "end_datetime_iso": "2024-10-16T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-10-09T19:30:00-07:00",
+      "end_datetime_iso": "2024-10-09T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-10-02T19:30:00-07:00",
+      "end_datetime_iso": "2024-10-02T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-09-25T19:30:00-07:00",
+      "end_datetime_iso": "2024-09-25T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-09-18T19:30:00-07:00",
+      "end_datetime_iso": "2024-09-18T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Salsa Dance Class",
+      "start_datetime_iso": "2024-09-11T19:30:00-07:00",
+      "end_datetime_iso": "2024-09-11T20:30:00-07:00",
+      "attendees_names": [
+        "Downtown Dance Studio",
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dance Studio, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 60 minutes",
+      "organizer_name": "Downtown Dance Studio",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly salsa dance class to improve dance skills and enjoy a fun activity."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "\"Salsa Dance Class\" does take place every Wednesday from 19:30-20:30 right? Until when?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to know if \"Salsa Dance Class\" takes place every Wednesday from 19:30-20:30. First I will locate the event \"Salsa Dance Class.\" \"Salsa Dance Class\" is on the calendar and takes place every Wednesday from 19:30-20:30, starting 7/31 until 10/16.  I will now let the user know that \"Salsa Dance Class\" takes place every Wednesday from 19:30-20:30 and it ends on 10-16. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The agent tells the user that class is every Wednesday 19:30-20:30\n                Milestone(\n                    snapshot_constraints=[\n                        # Confirms mention of the end date\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"October 16\",\n                                            \"Oct 16\",\n                                            \"16 October\",\n                                            \"10-16\",\n                                            \"10/16\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup precedes user response\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to double check the time of your salsa class. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-08-04T17:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,124 @@
+{
+  "task_id": "d1e4f333-1baf-4e12-93ca-f2e8dfbef2b0",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_12",
+    "calendar",
+    "messaging",
+    "contact",
+    "whatsapp_messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "misinformation_yes",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You wants to message Charles and ask him if he could bring the lines to the theatre rehearsal as you can't find yours.",
+  "reference_time": "2024-12-08T18:10:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A whatsApp message is sent to Charles Wilde saying something like \"can you bring the lines to the rehearsal as I can't find mine.\" without mentioning tomorrow in the content.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_d1e4f333-1baf-4e12-93ca-f2e8dfbef2b0_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_whatsapp_message",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "get_all_calendars",
+    "search_calendar_events",
+    "search_messages",
+    "get_all_messages",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Theater Rehearsal",
+      "start_datetime_iso": "2024-12-08T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T22:00:00-08:00",
+      "attendees_names": [
+        "Charles Wilde",
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "location": "Orchard Theater, 789 Culture St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T17:55:00-08:00",
+      "notes": "Revised time for tonight's rehearsal with Charles and Vickie due to last-minute changes."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Message Charles in our usual way, asking him if he can bring the lines to the rehearsal tomorrow as I can't find mine, and make sure I'm correct about that information before sending",
+  "referential_complexity": "moderate",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to send a new message to Charles in their usual way and I need to make sure the user is correct about that information before sending. I see there is only one contact named Charles, Charles Wilde. And I see the recent message between user and Charles is via whatsApp, so it's clear user wants to send whatsApp message to Charles Wilde. But the user wants to send with the content \"can you bring the lines to the rehearsal tomorrow as I can't find mine. Thanks!\", however based on the user's calendar, the theatre rehearsal is scheduled on 12/08 Sunday which is today not tomorrow. I'll inform user about the issue with tomorrow, and I've adjusted the and send the whatsApp message removing tomorrow.",
+  "insufficient_context": "no",
+  "misinformation": "yes",
+  "milestones": "[\n                # Milestone 0 – Agent looks up contact info for Charles (by name, or via listing contacts)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm Charles Wilde was retrieved from contacts in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Charles Wilde\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 555-234-5678-9012\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent uses calendar tools to look up the rehearsal event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Confirm that the Theater Rehearsal event on 2024-12-08 19:00–22:00 was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Theater Rehearsal\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-08T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-08T22:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"attendees_names\": {\n                                                \"value\": [\n                                                    \"Charles Wilde\",\n                                                    \"Dawei Shen\",\n                                                    \"Vickie Lee\",\n                                                ],\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ],\n                ),\n                # Milestone 4 – WhatsApp message sent to Charles with adjusted content (no \"tomorrow\")\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # participants: Dawei (self) and Charles, can be matched by either email or phone\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"dawei.shen@orchardtech.com\",\n                                                \"+1 555-123-4567-8901\",\n                                            ),\n                                            (\n                                                \"charles.wilde@orchardtheater.com\",\n                                                \"+1 555-234-5678-9012\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": [(\"bring\", \"lines\")],\n                                    \"creation_datetime_iso\": \"2024-12-08T18:10:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Ensure it's specifically a conversation between Dawei and Charles\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                # Ensure content contain keywords\n                                \"content\": column_str_contains_any_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.PHONE,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirm Charles\n                (2, 3),  # theatre rehearsal found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_whatsapp_message\",\n    \"get_all_whatsapp_messages\",\n    \"search_whatsapp_messages\",\n]",
+  "is_read_time": "2024-12-08T18:10:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You wants to message Charles and ask him if he could bring the lines to the theatre rehearsal as you can't find yours. ",
+  "minefields": "[\n                # Minefield 0 – WhatsApp message sent to Charles with must not contain tomorrow\n                Minefield(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # participants: Dawei (self) and Charles, can be matched by either email or phone\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"dawei.shen@orchardtech.com\",\n                                                \"+1 555-123-4567-8901\",\n                                            ),\n                                            (\n                                                \"charles.wilde@orchardtheater.com\",\n                                                \"+1 555-234-5678-9012\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"tomorrow\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Ensure it's specifically a conversation between Dawei and Charles\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                # Ensure content matches exactly the required phrasing (including removal of \"tomorrow\")\n                                \"content\": column_contains_similarity,\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.PHONE,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_whatsapp_message\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"get_all_calendars\", \"search_calendar_events\", \"search_messages\", \"get_all_messages\", \"send_message\"]"
+}

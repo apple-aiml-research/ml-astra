@@ -1,0 +1,93 @@
+{
+  "task_id": "83c5320f-f89b-4270-8085-a688aec5f8ae",
+  "plot_id": 17,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 10, 2024 at 9 am, Jessica Lin were involved. Lucas and Jessica conduct a joint workout session at the gym for new members. Session details and follow-up messages sent to participants.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_17",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply message to Jessica Lin saying \"Do you have any recommendations for electrolytes for the next session?\".",
+  "reference_time": "2024-12-10T11:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply message is sent to Jessica Lin saying \"Do you have any recommendations for electrolytes for the next session?\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_17_83c5320f-f89b-4270-8085-a688aec5f8ae_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Jessica Lin - Joint Workout Session",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "jessica.lin@example.com",
+        "alex.martin@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "jessica.lin@example.com",
+      "content": "Great session today, everyone! Remember to stay hydrated and stretch out those muscles. Looking forward to seeing you all next time!",
+      "creation_datetime_iso": "2024-12-10T11:05:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to dictate a reply message to Jessica Lin saying \"Do you have any recommendations for electrolytes for the next session?\".",
+  "reasoning": "The user wants to dictate a reply to the contact called Jessica Lin.\n\nI should locate the message history with this contact by searching their name in the user's Messages and then start a draft reply.\n\nAs the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the message if the user confirms that the message was transcribed correctly.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the relevant conversation/message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the retrieved message(s) involve Jessica Lin\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # Verify Jessica is one of the participants in at least one returned message\n                                            \"participants_addresses\": {\n                                                \"value\": \"jessica.lin@example.com\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new reply message is sent that contains the requested text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Make sure the conversation includes Jessica (other participants allowed)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 12345-6789-1000-3690\",\n                                                \"jessica.lin@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"electrolytes\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-10T11:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",  # fallback\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to dictate a reply message to Jessica Lin saying \"Do you have any recommendations for electrolytes for the next session?\". ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-10T11:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

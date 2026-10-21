@@ -1,0 +1,92 @@
+{
+  "task_id": "5e603949-f195-4974-9b0d-8aa1b7aa619e",
+  "plot_id": 17,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Afternoon, July 27, 2024 at 3 pm, Sarah Appleseed were involved. Phone call with his mother to check in and chat about the week ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_17",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "phone_call",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You just wrapped up a great catch-up call with your mother.    You want to send a message to her to schedule a future call.",
+  "reference_time": "2024-07-27T15:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A new message is sent to Sarah Appleseed (\"1234-5678-9111\") with the text \"when would you be free for another call?\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_17_5e603949-f195-4974-9b0d-8aa1b7aa619e_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_phone_calls",
+    "search_phonecall_logs",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Appleseed",
+      "full_name": "Sarah Appleseed",
+      "phone_number": "1234-5678-9111",
+      "alias": "Mom",
+      "email": "sarah.appleseed@example.com",
+      "relationship": "Mother",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Regional Hospital",
+      "job_title": "Nurse",
+      "is_self": false,
+      "birthday": "1967-05-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "outgoing",
+      "caller_address": "1234-5678-9101",
+      "receiver_address": "1234-5678-9111",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-07-27T15:00:00-07:00",
+      "duration_in_hms": "00:30:00"
+    }
+  ],
+  "query": "Send a new message to whom I just had a call with saying when would you be free for another call",
+  "functional_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "reasoning": "The user wants to send the text \"when would you be free for another call?\" to \"the person they just had a call with\". First, I'll look through the user's call history information to see any calls they made today (July 27th). I found one call on that day between the user and Sarah Appleseed, so she must be the person that the user wants to text. I'll add the user provided text as requested and check for confirmation before sending.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up who the last call was with (or otherwise identifies the mother)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The tool output includes the recent call with Sarah Appleseed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"receiver_address\": {\n                                                \"value\": \"1234-5678-9111\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – A new message is created and sent to Sarah Appleseed with the requested text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require that Sarah is one of the participants; self contact may also appear\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9111\",\n                                                \"sarah.appleseed@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"when would you be free for another call\",\n                                    \"creation_datetime_iso\": \"2024-07-27T15:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool use → verify Sarah found\n                (1, 2),  # Sarah identified → message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_phonecall_logs\",\n    \"get_all_phone_calls\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You just wrapped up a great catch-up call with your mother.   You want to send a message to her to schedule a future call. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_phone_calls\", \"search_phonecall_logs\", \"send_message\"]",
+  "is_read_time": "2024-07-27T15:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

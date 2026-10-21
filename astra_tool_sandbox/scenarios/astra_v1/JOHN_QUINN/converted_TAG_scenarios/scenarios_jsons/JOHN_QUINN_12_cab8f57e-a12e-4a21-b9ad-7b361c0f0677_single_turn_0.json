@@ -1,0 +1,99 @@
+{
+  "task_id": "cab8f57e-a12e-4a21-b9ad-7b361c0f0677",
+  "plot_id": 12,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 19pm, Akira Muramoto were involved. Akira tries to convince John to try some food supplements and asks to borrow his tent today  1. Akira starts a conversation with John where he tells him how thrilled he is about a new food supplement called 'Green' by the Soylent company, and suggests that John try it. 2. John expresses his hesitancy about trying the product since he heard some strange rumours about unusual ingredients. 3. After exchanging over 15 messages, John's hesitancy is progressively broken, and at the end Akira manages to convince John. 4. Akira proposes that he can bring him a pack tonight, as John had promised to lend him a tent last week. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_12",
+    "contact",
+    "email",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "messaging",
+    "astra_core"
+  ],
+  "user_goal": "You need to send an email to school friend Akira Muramoto because you forgot you had a previous engagement.",
+  "reference_time": "2024-07-23T19:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "An email is sent to Akira Muramoto at akira.muramoto@sportsfan.com.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The email is to state: Hey, I know you said to come on over to pick up the tent and give me the supplement and all, but i remembered I have to go out now, so I won't be here. I'll leave the tent with my next door neighbor Deborah. Her place is the one with the ugly autumnal wreath on the door. You can leave the Soylent Green with her too. -John",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_12_cab8f57e-a12e-4a21-b9ad-7b361c0f0677_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_email"
+  ],
+  "messages": [
+    {
+      "creation_datetime_iso": "2024-07-23T19:00:00-07:00",
+      "content": "Hey John! Have you heard about this new supplement called 'Green' by Soylent? I think it's something you might find interesting.",
+      "sender_address": "akira.muramoto@sportsfan.com",
+      "participants_addresses": [
+        "akira.muramoto@sportsfan.com",
+        "john.quinn@palantir.com"
+      ],
+      "status": "read",
+      "conversation_name": "Akira Muramoto"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send my Soylent Green friend the following email: \nHey, I know you said to come on over to pick up the tent and give me the supplement and all, but i remembered I have to go out now, so I won't be here. I'll leave the tent with my next door neighbor Deborah. Her place is the one with the ugly autumnal wreath on the door. You can leave the Soylent Green with her too. -John",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "User John Quinn has provided the contents of an email to be sent to someone referred to only as their 'Soylent Green friend'. To find who that is, I search the messages for 'Soylent' and find a recent chat with Akira Muramoto about Green by Soylent, so the 'Soylent Green friend' is Akira Muramoto. I shall draft and address the email to akira.muramoto@sportsfan.com and show it to the user for approval. ",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"akira.muramoto@sportsfan.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    # Only a key fragment of the body is required.\n                                    \"body\": \"pick up the tent\",\n                                    \"creation_datetime_iso\": \"2024-07-23T19:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You need to send an email to school friend Akira Muramoto because you forgot you had a previous engagement. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_email\"]",
+  "is_read_time": "2024-07-23T19:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

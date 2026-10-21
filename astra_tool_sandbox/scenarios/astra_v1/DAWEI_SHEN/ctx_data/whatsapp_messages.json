@@ -1,0 +1,152 @@
+{
+    "2": [
+        {
+            "sender": "+1 555-123-4567-8901",
+            "sender_name": "Dawei Shen",
+            "recipient": "+1 555-234-5678-9012",
+            "recipient_name": "Charles Wilde",
+            "group_name": "",
+            "message": "Hey Charles, just confirming we're still on for tonight's rehearsal at 8?",
+            "creation_time": "2024-12-01T19:50:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 555-234-5678-9012",
+            "sender_name": "Charles Wilde",
+            "recipient": "+1 555-123-4567-8901",
+            "recipient_name": "Dawei Shen",
+            "group_name": "",
+            "message": "Yes, all set for 8 PM. See you there!",
+            "creation_time": "2024-12-01T19:52:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 555-123-4567-8901",
+            "sender_name": "Dawei Shen",
+            "recipient": "+1 555-345-6789-0123",
+            "recipient_name": "Vickie Lee",
+            "group_name": "",
+            "message": "Hi Vickie, are we good for the rehearsal at 8 tonight?",
+            "creation_time": "2024-12-01T19:53:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 555-345-6789-0123",
+            "sender_name": "Vickie Lee",
+            "recipient": "+1 555-123-4567-8901",
+            "recipient_name": "Dawei Shen",
+            "group_name": "",
+            "message": "Hey Dawei, I might be around 20 mins late, sorry! Caught up with something.",
+            "creation_time": "2024-12-01T19:55:00",
+            "status": ""
+        }
+    ],
+    "8": [
+        {
+            "sender": "jess.zimmer@fintechstartup.com",
+            "sender_name": "Jess Zimmer",
+            "recipient": "dawei.shen@orchardtech.com",
+            "recipient_name": "Dawei Shen",
+            "group_name": "",
+            "message": "Here are the tickets for our theater night! 🎭",
+            "creation_time": "2024-12-05T17:05:00",
+            "status": ""
+        }
+    ],
+    "12": [
+        {
+            "sender": "+1 555-234-5678-9012",
+            "sender_name": "Charles Wilde",
+            "recipient": "dawei.shen@orchardtech.com",
+            "recipient_name": "Dawei Shen",
+            "group_name": "Theater Group",
+            "message": "Hey Dawei, heads up, we need to adjust tonight's rehearsal schedule. Can we start at 7 PM instead?",
+            "creation_time": "2024-12-08T17:50:00",
+            "status": ""
+        },
+        {
+            "sender": "dawei.shen@orchardtech.com",
+            "sender_name": "Dawei Shen",
+            "recipient": "+1 555-234-5678-9012",
+            "recipient_name": "Charles Wilde",
+            "group_name": "Theater Group",
+            "message": "Got it, Charles. Updating our calendar now.",
+            "creation_time": "2024-12-08T17:51:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 555-345-6789-0123",
+            "sender_name": "Vickie Lee",
+            "recipient": "dawei.shen@orchardtech.com",
+            "recipient_name": "Dawei Shen",
+            "group_name": "Theater Group",
+            "message": "I'm in for 7 PM. See you both then!",
+            "creation_time": "2024-12-08T17:52:00",
+            "status": ""
+        },
+        {
+            "sender": "dawei.shen@orchardtech.com",
+            "sender_name": "Dawei Shen",
+            "recipient": "+1 555-345-6789-0123",
+            "recipient_name": "Vickie Lee",
+            "group_name": "Theater Group",
+            "message": "Thanks, Vickie! Looking forward to it.",
+            "creation_time": "2024-12-08T17:53:00",
+            "status": ""
+        },
+        {
+            "sender": "dawei.shen@orchardtech.com",
+            "sender_name": "Dawei Shen",
+            "recipient": "+1 555-234-5678-9012",
+            "recipient_name": "Charles Wilde",
+            "group_name": "Theater Group",
+            "message": "👍",
+            "creation_time": "2024-12-08T17:54:00",
+            "status": ""
+        }
+    ],
+    "17": [
+        {
+            "sender": "+1 555-123-4567-8902",
+            "sender_name": "Jess Zimmer",
+            "recipient": "+1 555-123-4567-8901",
+            "recipient_name": "Dawei Shen",
+            "group_name": "",
+            "message": "Hey Dawei, check out this play I found! Looks fascinating and right up our alley. How about we plan to see it next weekend? Here’s the link: [Play Link]",
+            "creation_time": "2024-12-11T20:00:00",
+            "status": ""
+        }
+    ],
+    "19": [
+        {
+            "sender": "+1 555-234-5678-9012",
+            "sender_name": "Charles Wilde",
+            "recipient": "+1 555-123-4567-8901",
+            "recipient_name": "Dawei Shen",
+            "group_name": "",
+            "message": "Hey Dawei, I found a great supplier for the stage props we need. Here's the link: [PropsSupplier.com]",
+            "creation_time": "2024-12-12T19:00:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 555-123-4567-8901",
+            "sender_name": "Dawei Shen",
+            "recipient": "+1 555-234-5678-9012",
+            "recipient_name": "Charles Wilde",
+            "group_name": "",
+            "message": "Thanks Charles! Checking it out now.",
+            "creation_time": "2024-12-12T19:02:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 555-123-4567-8901",
+            "sender_name": "Dawei Shen",
+            "recipient": "+1 555-234-5678-9012",
+            "recipient_name": "Charles Wilde",
+            "group_name": "",
+            "message": "Looks good, I'll place the order.",
+            "creation_time": "2024-12-12T19:05:00",
+            "status": ""
+        }
+    ]
+}

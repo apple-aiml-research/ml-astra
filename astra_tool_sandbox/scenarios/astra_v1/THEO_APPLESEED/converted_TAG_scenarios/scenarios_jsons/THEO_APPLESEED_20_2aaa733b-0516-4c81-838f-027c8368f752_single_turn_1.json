@@ -1,0 +1,102 @@
+{
+  "task_id": "2aaa733b-0516-4c81-838f-027c8368f752",
+  "plot_id": 20,
+  "plot_summary": "Theo Appleseed is the protagonist. On Sunday Afternoon, July 28, 2024 at 1 pm, Cookie were involved. Attends a cooking class to learn a new recipe ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_20",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send Cookie a text about the incident at the cooking class.",
+  "reference_time": "2024-07-28T17:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "An SMS message is sent to Cookie Watson. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The text of the message is: Hey Cookie Bear, just want to say sorry. I had no idea how allergic you are to shellfish till I put the shrimp in your muffin batter as a joke. I wish  you could have seen how fast your face swelled up. You would have laughed like I did too. Again, sorry. -Theo Man",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_20_2aaa733b-0516-4c81-838f-027c8368f752_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cooking Class",
+      "start_datetime_iso": "2024-07-28T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-28T16:00:00-07:00",
+      "attendees_names": [
+        "Cookie Watson",
+        "Local Culinary School",
+        "Theo Appleseed"
+      ],
+      "location": "Local Culinary School, Orchard County, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "Local Culinary School",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-21T12:00:00-07:00",
+      "notes": "Attending a cooking class to learn new recipes and enhance cooking skills."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send Cookie Watson, my college friend, the following SMS message: Hey Cookie Bear, just want to say sorry. I had no idea how allergic you are to shellfish till I put the shrimp in your muffin batter as a joke. I wish  you could have seen how fast your face swelled up. You would have laughed like I did too. Again, sorry. -Theo Man",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "I shall draft SMS message as requested as I have all information spelled out for me. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Cookie’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm Cookie Watson was returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Cookie Watson\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"1234-5678-9107\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Verify SMS message was sent to Cookie with correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9107\",\n                                                \"cookie.watson@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Hey Cookie Bear\",\n                                    \"creation_datetime_iso\": \"2024-07-28T17:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list_runtime": "[\"send_message\", \"search_contacts\", \"get_all_contacts\"]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send Cookie a text about the incident at the cooking class. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-28T17:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

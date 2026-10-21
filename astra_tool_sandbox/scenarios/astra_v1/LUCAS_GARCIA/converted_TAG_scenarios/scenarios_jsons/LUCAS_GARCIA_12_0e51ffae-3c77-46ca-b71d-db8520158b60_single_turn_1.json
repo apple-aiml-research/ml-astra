@@ -1,0 +1,90 @@
+{
+  "task_id": "0e51ffae-3c77-46ca-b71d-db8520158b60",
+  "plot_id": 12,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 3 pm, Brian Carter were involved. Lucas attends a triathlon strategy meeting with Brian and team. Meeting notes are recorded and shared among team members for future reference. Messages exchanged with Brian post-meeting.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_12",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to see what the last message in the triathlon strategy meeting session chat was.",
+  "reference_time": "2024-12-07T20:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message sent by Brian Carter on December 7th 2024 at 16:45 is presented to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_12_0e51ffae-3c77-46ca-b71d-db8520158b60_single_turn_1",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Triathlon Strategy Session",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "brian.carter@example.com"
+      ],
+      "sender_address": "brian.carter@example.com",
+      "content": "You too, Lucas! Let's keep this momentum going.",
+      "creation_datetime_iso": "2024-12-07T16:45:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Brian",
+      "last_name": "Carter",
+      "full_name": "Brian Carter",
+      "phone_number": "+1 12345-6789-1000-7410",
+      "alias": "Triathlon Coach",
+      "email": "brian.carter@example.com",
+      "relationship": "Triathlon coach",
+      "address": "45 Coach St, Orchard County, CA, USA",
+      "company": "Orchard County Triathlon Club",
+      "job_title": "Head Coach",
+      "is_self": false,
+      "birthday": "1980-04-28T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Pull up the last message sent to the 'Triathlon Strategy Session' today.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "I will check the users messages for the chat called ' Triathlon Strategy Session'. I found it. The last message was sent by Brian Carter at 16:45 on December 7th 2024. I present this message to the user.",
+  "milestones": "[\n                # Milestone 0 – Agent invokes a message-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The expected “Triathlon Strategy Session” message is present in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Triathlon Strategy Session\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Let's keep this momentum going.\",\n                                                \"partial\": True,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"brian.carter@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the content of the last message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Let's keep this momentum going.\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool call → verify retrieved message\n                (1, 2),  # Retrieved message → user-facing reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to see what the last message in the triathlon strategy meeting session chat was. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]",
+  "is_read_time": "2024-12-07T20:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,86 @@
+{
+  "task_id": "cd883b67-a730-4948-bf93-5a68320b65e0",
+  "plot_id": 8,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 6, 2024 at 2:00 PM, Chloe Waters, Sophia Taylor were involved. Community meeting discussing feedback on past events and brainstorming future initiatives. Survey results and feedback received via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_8",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You meant to express your gratitude by email to two attendees, Chloe, and Sophia, for giving feedback during today's community meeting.    You want to make sure you sent them the email.",
+  "reference_time": "2024-12-06T15:15:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. Email messages are checked for an email sent from the user to Chloe and Sophia and the email sent on December 6th at 15:00 is found. "
+    },
+    {
+      "statefullness": "Stateless",
+      "input_text": "2. The user is replied with 'Yes'."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_8_cd883b67-a730-4948-bf93-5a68320b65e0_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Thank You for Your Feedback!",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "chloe.waters@orchardmail.com",
+        "sophia.taylor@orchardbusiness.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "body": "Dear Chloe and Sophia,\n\nI hope this message finds you well. I wanted to extend my heartfelt thanks for your invaluable feedback during today's community meeting. Your insights are crucial as we plan our future events and initiatives.\n\nWe are currently compiling all the feedback and will share a detailed plan by next week. Your continued support and active participation are what make our community events successful and meaningful.\n\nThank you once again for your dedication to our community.\n\nWarm regards,\nEmily Rose\nEvent Coordinator, Orchard County Community Center",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to know if they sent an email to the two ladies who spoke up today. I wonder who they are. I'll check their emails to see if they sent any emails that could be sent to those people. I see the user sent an email addressed to \"Chloe and Sophia\", on December 6th, 2024, at 15:00. It seems to express gratitude for feedback the two girls gave today. I think this could be what the user is referring to by \"the two ladies who spoke up today\". I assume then this is the email the user wants to know if they sent. I'll tell the user the details of this email now and reply with Yes.",
+  "informational_complexity": "high",
+  "referential_complexity": "high",
+  "functional_complexity": "moderate",
+  "query": "Did I send an email to the two ladies who spoke up today? Yes or No.",
+  "milestones": "[\n                # Milestone 0 — Agent invokes an email–retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 — Returned tool output includes the specific “Thank You” email sent to Chloe & Sophia\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"recipients_addresses\": {\n                                                \"value\": [\n                                                    \"chloe.waters@orchardmail.com\",\n                                                    \"sophia.taylor@orchardbusiness.org\",\n                                                ],\n                                                \"partial\": False,\n                                            },\n                                            \"status\": {\n                                                \"value\": \"sent\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Thank You for Your Feedback!\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 — Agent answers the user, confirming the email was sent and showing its details\n                Milestone(\n                    snapshot_constraints=[\n                        # Response contains confirmation\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"yes\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You meant to express your gratitude by email to two attendees, Chloe, and Sophia, for giving feedback during today's community meeting.   You want to make sure you sent them the email. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-06T15:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,111 @@
+{
+  "task_id": "cfb47e4e-8a91-4249-bf99-23d5aca36e0b",
+  "plot_id": 4,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 2, 2024 at 8 pm, self, Mia Tang were involved. Mia texts Dawei to remind him that the property tax is due in a week. Dawei adds a reminder on his calendar to pay property tax on Friday morning.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_4",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You decide that you want to move the \"Pay Property Tax\" event to Thursday as you want to pay it a day earlier",
+  "reference_time": "2024-12-02T21:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The date of the \"Pay Property Tax\" event is updated to be the 5 December 2024",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_4_cfb47e4e-8a91-4249-bf99-23d5aca36e0b_single_turn_0",
+  "messages": [
+    {
+      "conversation_name": "Mia Tang",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "mia.tang@accountingpros.com"
+      ],
+      "sender_address": "mia.tang@accountingpros.com",
+      "content": "Hi Dawei, just a friendly reminder that your property tax is due next week. Please make sure to process the payment to avoid any late fees.",
+      "creation_datetime_iso": "2024-12-02T20:00:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Mia Tang",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "mia.tang@accountingpros.com"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "Thanks for the reminder, Mia! I'll set a reminder to take care of it first thing Friday morning.",
+      "creation_datetime_iso": "2024-12-02T20:05:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Pay Property Tax",
+      "start_datetime_iso": "2024-12-06T08:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T08:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T20:10:00-08:00",
+      "notes": "Reminder to pay the property tax to avoid late fees."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Mia",
+      "last_name": "Tang",
+      "full_name": "Mia Tang",
+      "phone_number": "+1 555-567-8901-2345",
+      "alias": "Mia",
+      "email": "mia.tang@accountingpros.com",
+      "relationship": "Accountant",
+      "address": "321 Finance Ave, Orchard County, CA 94022, USA",
+      "company": "Accounting Pros",
+      "job_title": "Accountant",
+      "is_self": false,
+      "birthday": "1986-10-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Update the date of the \"Pay Property Tax\" event to be the 5 December 2024",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to update the date of their Pay Property Tax event. First I need to find this event; I locate it at 08:00 on 06/Dec/2024 titled \"Pay Property Tax.\" Now that I have found it I can update the date to 05/Dec/2024 at the same 08:00 time and inform the user.",
+  "reference_time_str": "Today is Monday, December 2, 2024 or 2024-12-02T21:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 - search calendar for the event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # 1. Calendar Event Found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Pay Property Tax\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-06T08:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The “Pay Property Tax” event has been moved to 5 Dec 2024\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Pay Property Tax\",\n                                    \"start_datetime_iso\": \"2024-12-05T08:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-02T21:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "modify_calendar_event",
+    "create_calendar_event",
+    "remove_calendar_event"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You decide that you want to move the \"Pay Property Tax\" event to Thursday as you want to pay it a day earlier ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"modify_calendar_event\", \"create_calendar_event\", \"remove_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-02T21:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

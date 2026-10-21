@@ -1,0 +1,103 @@
+{
+  "task_id": "a25559ea-1126-45ed-ab5b-e3be70ec001b",
+  "plot_id": 2,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 11:30 am, Apricot Sweeney were involved. John plans an expensive surprise dinner date for his girlfriend on Thursday  1. John wants to surprise Apricot with a romantic dinner at a Michelin star restaurant called Chef's Bite. 2. John has an iMessage correspondence with the restaurant to book a table for two. 3. This results in an extended back and forth of suggesting possible times since the restaurant is heavily booked, but finally agreeing on a suitable day and time on Thursday late evening. 4. John also creates an event, at the time agreed with the restaurant, mentioning a low key greek restaurant that is next door to the Michelin one and invites Apricot to it, without any mention of the real restaurant since any mention of Chef's Bite will ruin the surprise. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_2",
+    "contact",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You messed up the booking for you dinner with Apricot and the original time slot is no longer available, you need to edit the event to reflect that.",
+  "reference_time": "2024-07-22T13:00:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. Start time of Dinner with Apricot scheduled for July 25, 2024, 20:30-22:30 is changed to 21:00-22:30. "
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_2_a25559ea-1126-45ed-ab5b-e3be70ec001b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Apricot",
+      "start_datetime_iso": "2024-07-25T20:30:00-07:00",
+      "end_datetime_iso": "2024-07-25T22:30:00-07:00",
+      "attendees_names": [
+        "Apricot Sweeney",
+        "John Quinn"
+      ],
+      "location": "Greek Delights, 101 Foodie Lane, San José, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T11:30:00-07:00",
+      "notes": "Dinner at Greek Delights, seems reasonably priced and decent reviews!"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make my dinner with Apricot start a half hour later, but end at the same time.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking to edit the scheduling of an event.\nFirst, I should find the event in the user's calendar. I can see an exact match for the user's query, Dinner with Apricot scheduled for July 25, 2024, 20:30-22:30.\nThe user has asked me to change the start time of this event, but to keep the end time the same.\n Dinner with Apricot is now scheduled for July 25, 2024, 21:00-22:30.\nI should inform the user.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the calendar to find the dinner event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                #  Milestone 1\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Apricot\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-25T20:30:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Calendar event start time is updated to 21:00 while end time stays 22:30\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dinner with Apricot\",\n                                    \"start_datetime_iso\": \"2024-07-25T21:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-25T22:30:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-22T13:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"modify_calendar_event\",      # preferred way to adjust the start time\n    # Fallbacks if the agent decides to delete-and-recreate instead\n    \"remove_calendar_event\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You messed up the booking for you dinner with Apricot and the original time slot is no longer available, you need to edit the event to reflect that. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-22T13:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

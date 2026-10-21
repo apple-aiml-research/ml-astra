@@ -1,0 +1,79 @@
+{
+  "task_id": "77c41036-c896-4fb6-abf2-72a432a34c1b",
+  "plot_id": 17,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 7:15pm, Ursula Quinn were involved. John gets reminded by his Mom about the birthday of his cousin, Bertie 1. Mom calls John to remind him about the birthday of his cousin, Bertie, which is on Thursday two weeks hence; and she asks him not to forget like he did last year. 2. John adds a reminder to his calendar.",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_17",
+    "contact",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to text your mother to let her know you added Bertie's birthday to your calendar so you won'f forget",
+  "reference_time": "2024-07-24T19:25:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Ursula Quinn with the text \"I added Bertie's birthday to my calendar so there's no need to worry now\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_17_77c41036-c896-4fb6-abf2-72a432a34c1b_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to Ursula Quinn for me saying \"I added Bertie's birthday to my calendar so there's no need to worry now\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to send a message to Ursula Quinn saying \"I added Bertie's birthday to my calendar so there's no need to worry now\". I need to look through their contacts and find that contact. There is a contact named Ursula Quinn who is listed as the user's mother so that must be who they are referring to. I will draft the message with the given text and ask the user if it is ready to be sent",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Mom / Ursula in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that Ursula Quinn was returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Ursula Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0124\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new outgoing message has been sent to Ursula with the proper content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # At least one identifier for Ursula must be present,\n                                    # and there must be no participants other than the sender & Ursula.\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"408-555-0124\",\n                                                \"ursula.quinn@modernart.org\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"added Bertie's birthday\",\n                                    \"creation_datetime_iso\": \"2024-07-24T19:25:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirmed Ursula found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to text your mother to let her know you added Bertie's birthday to your calendar so you won'f forget ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-24T19:25:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

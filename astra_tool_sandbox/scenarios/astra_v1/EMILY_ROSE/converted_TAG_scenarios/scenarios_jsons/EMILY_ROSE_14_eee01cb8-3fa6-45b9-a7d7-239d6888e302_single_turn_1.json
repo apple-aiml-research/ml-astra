@@ -1,0 +1,94 @@
+{
+  "task_id": "eee01cb8-3fa6-45b9-a7d7-239d6888e302",
+  "plot_id": 14,
+  "plot_summary": "Emily Rose is the protagonist. On Tuesday, December 10, 2024 at 10:00 AM, Sarah Green were involved. Coffee with Sarah discussing new ideas for environmental outreach. Sarah sends follow-up email with links to resources.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_14",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what Sarah said in her last email but you cannot look at your phone right now.",
+  "reference_time": "2024-12-10T12:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email received from 'Sarah Green' on 10 December 2024 at 12:00 with the subject line 'Great Ideas from Our Coffee Meeting' is read out loud to the user. \n",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_14_eee01cb8-3fa6-45b9-a7d7-239d6888e302_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Great Ideas from Our Coffee Meeting",
+      "sender_address": "sarah.green@orchardmail.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-10T12:00:00-08:00",
+      "body": "Hi Emily,\n\nIt was wonderful catching up over coffee this morning! I've attached a few links and resources that could help us with the new environmental outreach programs we discussed. Looking forward to seeing how these ideas take shape and benefit our community.\n\nBest regards,\nSarah",
+      "attachments": [
+        "Environmental_Resources_Links.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Rose",
+      "full_name": "Sarah Rose",
+      "phone_number": "+1 530-555-0124",
+      "alias": "Supportive Sister",
+      "email": "sarah.rose@orchardmail.com",
+      "relationship": "Sister",
+      "address": "125 Community Lane, Orchard County, CA 95662, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1996-08-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What did the email I received from Sarah Green at 12:00 on December 10 2024 say.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "I have every bit of information I need to access the email. I open the email and present it to the user and also read it out loud.",
+  "milestones": "[\n                # Milestone 0 – Agent invokes an email-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The retrieved email matches Sarah Green’s 12 pm Dec 10 2024 message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"sarah.green@orchardmail.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-10T12:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Great Ideas from Our Coffee Meeting\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent conveys the email body (or key excerpts) to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"It was wonderful catching up\",\n                                            \"wonderful catching up over coffee\",\n                                            \"I've attached a few links\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to know what Sarah said in her last email but you cannot look at your phone right now. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-10T12:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

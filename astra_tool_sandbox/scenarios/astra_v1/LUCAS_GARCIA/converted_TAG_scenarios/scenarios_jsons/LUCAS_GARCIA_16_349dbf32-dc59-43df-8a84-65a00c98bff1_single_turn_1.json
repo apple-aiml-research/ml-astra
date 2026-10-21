@@ -1,0 +1,93 @@
+{
+  "task_id": "349dbf32-dc59-43df-8a84-65a00c98bff1",
+  "plot_id": 16,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 3 pm, Juan Garcia were involved. Lucas visits his father's coffee shop to discuss expanding healthy snack options. Emails exchanged with Juan offering suggestions and recipes.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_16",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to your father's email",
+  "reference_time": "2024-12-09T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply is sent to Juan Garcia's email saying something like \"Hey Dad, Sounds fantastic. Let me know what you think. Speak Soon. Best, Lucas\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_16_349dbf32-dc59-43df-8a84-65a00c98bff1_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Healthy Snack Options for the Coffee Shop",
+      "sender_address": "juan.garcia@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T17:00:00-08:00",
+      "body": "Hi Lucas,\n\nThanks for dropping by today and for the email. The recipes look fantastic, and I think our customers are going to love the change. I'll go through them in more detail and we can plan a taste test soon.\n\nAppreciate your initiative in bringing these healthy ideas to the shop!\n\nLove,\nDad",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Garcia",
+      "full_name": "Juan Garcia",
+      "phone_number": "+1 12345-6789-1000-4321",
+      "alias": "Dad",
+      "email": "juan.garcia@example.com",
+      "relationship": "Father",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Garcia's Coffee Shop",
+      "job_title": "Coffee Shop Owner",
+      "is_self": false,
+      "birthday": "1963-11-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to my dad's email I received with something like sounds fantastic, let me know what you think, speak soon.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to reply to their dad's email with something like sounds fantastic, let me know what you think, speak soon. The user's father is Lucas Garcia. I'll look at their inbox. The last email they received was from their father Lucas Garcia. I'll write \"Hey Dad, Sounds fantastic. Let me know what you think. Speak Soon. Best, Lucas\" and send the email. I'll inform the suer when this is done.",
+  "milestones": "[\n                # Milestone 0 – verify a reply email was sent to Juan Garcia\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,  # a new email should have been created\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"juan.garcia@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"sounds fantastic\",  # will match as substring,\n                                    \"creation_datetime_iso\": \"2024-12-09T18:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,  # look for the key phrase,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial DB snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",      # to send the reply\n    \"search_emails\",   # to locate the dad’s original email (likely step)\n    \"get_all_emails\",  # fallback listing of inbox\n    \"search_contacts\", # optionally resolve \"Dad\" to email address\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to reply to your father's email ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-09T18:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,95 @@
+{
+  "task_id": "8dc4cc12-d8ed-439f-ac64-0d0ae6d305c9",
+  "plot_id": 14,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Afternoon, July 26, 2024 at 12 pm, Michelle Barnes, Dawei Shen were involved. Lunch at a nearby restaurant to discuss personal and professional topics ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_14",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're sitting in the restaurant with Michelle and realize you forgot to add this lunch to your calendar.",
+  "reference_time": "2024-07-26T12:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. New event Work Lunch is scheduled for July 26,2024 12:00-13:00 with Michelle Barnes and Dawei Shen as attendees.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_14_8dc4cc12-d8ed-439f-ac64-0d0ae6d305c9_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event",
+    "modify_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make a new event called Work Lunch for 12:00-13:00 today and add Michelle Barnes and Dawei Shen as participants.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking me to create an event.\nBefore proceeding I should ensure this will not create any clashes.\nI can see no potential clashes.\nI will go ahead and schedule the new event.\nNew event Work Lunch is scheduled for July 26,2024 12:00-13:00.\nI will now add Michelle Barnes and Dawei Shen as participants.\nI should inform the user.",
+  "milestones": "[\n                # Milestone 0 – A new calendar event “Work Lunch” has been created for today 12:00-13:00 with the two coworkers invited\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Work Lunch\",\n                                    \"start_datetime_iso\": \"2024-07-26T12:00:00\",\n                                    \"end_datetime_iso\": \"2024-07-26T13:00:00\",\n                                    \"attendees_names\": [\n                                        [\"Michelle Barnes\", \"Dawei Shen\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-07-26T12:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You're sitting in the restaurant with Michelle and realize you forgot to add this lunch to your calendar. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\", \"modify_calendar_event\"]",
+  "is_read_time": "2024-07-26T12:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

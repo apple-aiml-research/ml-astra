@@ -1,0 +1,207 @@
+{
+  "task_id": "9ab96ab5-cbef-458d-a01c-9338b349e05d",
+  "plot_id": 22,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo checked his calendar and found out his calendar is fully packed from 8 am to 5pm today. His only available between 3pm to 4pm. He also has a dentist appointment at 1pm for an hour. The rest of his schedule is filled with work meetings for today.\n Generate calendar_events for Theo for July 29, 2024",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_22",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to clear your schedule for today except for your dentist appointment",
+  "reference_time": "2024-07-29T07:40:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The event Project Sync Meeting on 29 July 2024 at 8:00-9:00 is deleted from the calendar"
+    },
+    {
+      "input_text": "2. The event Data Analysis Review on 29 July 2024 at 9:30-10:30 is deleted from the calendar",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The event Brainstorming Session on 29 July 2024 at 11:00-12:00 is deleted from the calendar",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "4. The event Follow-up Sync with Michelle and Dawei on 29 July 2024 at 11:00-12:00 is deleted from the calendar",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "5. The event client presentation preparation on 29 July 2024 at 14:00-15:00 is deleted from the calendar",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "6. The event Weekly Team Meeting on 29 July 2024 at 16:00-17:00 is deleted from the calendar",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_22_9ab96ab5-cbef-458d-a01c-9338b349e05d_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Project Sync Meeting",
+      "start_datetime_iso": "2024-07-29T08:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly synchronization meeting with the team to discuss project updates and next steps."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Data Analysis Review",
+      "start_datetime_iso": "2024-07-29T09:30:00-07:00",
+      "end_datetime_iso": "2024-07-29T10:30:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Theo Appleseed"
+      ],
+      "location": "127 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Review of recent data analysis results with Dawei and discuss implications for the project."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Brainstorming Session",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "126 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Brainstorming session with Michelle to explore new approaches to the current research problem."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dentist Appointment",
+      "start_datetime_iso": "2024-07-29T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "attendees_names": [
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dental Clinic",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Routine dental check-up and cleaning."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Client Presentation Preparation",
+      "start_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T15:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "124 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Preparation session for upcoming client presentation with the team."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Weekly Team Meeting",
+      "start_datetime_iso": "2024-07-29T16:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T17:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room A, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Regular weekly meeting to discuss team issues and updates."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Follow-up Sync with Michelle and Dawei",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T11:00:00-07:00",
+      "notes": "Break-out session to delve deeper into specific project details."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Get rid of everything today except the tooth cleaning",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user is asking me to delete multiple events.\nI should look at the user's calendar.\nThe user has asked me to delete all but one event.\nFirst, I should identify which event they want to keep. The user has mentioned a tooth fixing person, I cannot see any exact matches. However, I can see a Dentist Appointment, this is related to the tooth mentioned by the user. I will ensure this event is not deleted.\nI will go ahead and delete the following events from July 29, 2024: Project Sync Meeting 08:00-08:30, Dara Analysis Review 09:30-10:30, Brainstorming Session 11:00-12:00, Follow-up Sync with Michelle and Dawei 11:00-12:00, Client Presentation Preparation 14:00-15:00, Weekly Team Meeting 16:00-17:00.",
+  "milestones": "[\n                # Milestone 0 – The assistant looks at today’s calendar to figure out what to delete\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # ---------- Removals ----------\n                # Milestone 1 – Project Sync Meeting removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Project Sync Meeting\",\n                                    \"start_datetime_iso\": \"2024-07-29T08:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Data Analysis Review removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Data Analysis Review\",\n                                    \"start_datetime_iso\": \"2024-07-29T09:30:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n                # Milestone 3 – Brainstorming Session removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Brainstorming Session\",\n                                    \"start_datetime_iso\": \"2024-07-29T11:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n                # Milestone 4 – Follow-up Sync with Michelle and Dawei removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Follow-up Sync with Michelle and Dawei\",\n                                    \"start_datetime_iso\": \"2024-07-29T11:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n                # Milestone 5 – Client Presentation Preparation removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Client Presentation Preparation\",\n                                    \"start_datetime_iso\": \"2024-07-29T14:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n                # Milestone 6 – Weekly Team Meeting removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Weekly Team Meeting\",\n                                    \"start_datetime_iso\": \"2024-07-29T16:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to clear your schedule for today except for your dentist appointment ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-07-29T07:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

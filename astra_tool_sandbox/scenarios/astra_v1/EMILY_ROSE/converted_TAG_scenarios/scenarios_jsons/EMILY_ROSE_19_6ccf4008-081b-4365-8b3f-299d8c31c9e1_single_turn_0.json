@@ -1,0 +1,96 @@
+{
+  "task_id": "6ccf4008-081b-4365-8b3f-299d8c31c9e1",
+  "plot_id": 19,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 15, 2024 at 11:00 AM, Tim Brooks were involved. Technical set-up for community event sound system with Tim. Follow-up video call scheduled for system test.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_19",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You have forgotten the time you agreed to set up with Tim today.    You need to ask the assistant to remind you of the time.",
+  "reference_time": "2024-12-15T10:55:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The details of the event \"Technical Setup for Community Event\" are read out to the user."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_19_6ccf4008-081b-4365-8b3f-299d8c31c9e1_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Technical Setup for Community Event",
+      "start_datetime_iso": "2024-12-15T11:00:00-08:00",
+      "end_datetime_iso": "2024-12-15T13:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Tim Brooks"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:45:00-07:00",
+      "notes": "Setting up the sound system with Tim Brooks for the upcoming community event."
+    },
+    {
+      "calendar_name": "family",
+      "calendar_event_name": "Winter Wonderland Charity Event",
+      "start_datetime_iso": "2024-12-15T14:00:00-08:00",
+      "end_datetime_iso": "2024-12-15T18:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Sarah Rose"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "2 days",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-05T10:10:00-08:00",
+      "notes": "Participate in the Winter Wonderland charity event to support community engagement."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time is that setup with Tim today again?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user asks for when something is today, so I check calendar for events and find two - \"Technical Setup for Community Event\" at 11:00 and \"Winter Wonderland Charity Event\" at 14:00. Since the user told me me they are looking for the details of the \"one with Tim\", I check these events and find the event \"Technical Setup for Community Event\" includes Tim Brooke. I'll inform the user of the time of this event, which is at 11:00.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The desired event is contained in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Technical Setup for Community Event\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-15T11:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent tells the user the correct time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"11:00\",\n                                            \"11 am\",\n                                            \"11am\",\n                                            \"11 a.m.\",\n                                            \"11 o'clock\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You have forgotten the time you agreed to set up with Tim today.   You need to ask the assistant to remind you of the time. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-15T10:55:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

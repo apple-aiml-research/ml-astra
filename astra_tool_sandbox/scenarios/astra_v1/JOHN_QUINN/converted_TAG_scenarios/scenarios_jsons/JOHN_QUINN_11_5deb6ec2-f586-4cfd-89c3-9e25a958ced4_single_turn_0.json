@@ -1,0 +1,93 @@
+{
+  "task_id": "5deb6ec2-f586-4cfd-89c3-9e25a958ced4",
+  "plot_id": 11,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 18pm, Ursula Quinn were involved. John's mom's earphones broke, and John orders her a replacement pair  1. John receives a call from his mom, who complains about the fact that her headphones broke down. 2. John orders a new pair of headphones at Target, receiving an email confirmation of his purchase with an order number, as well as a DHL tracking number (both numbers are realistic and non-consecutive). 3. John forwards the purchase confirmation email to his mom. 4. John adds a calendar event where he invites his mom, as a reminder of the approximate day and the 5 hour time window when the headphones will be delivered on Friday. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_11",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to make sure your Mom can see the reminder invite you sent her by asking your Dad to check.",
+  "reference_time": "2024-07-23T18:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A text message is sent to Alfred Quinn that says \"Hi Dad. Can you make sure Mom sees the reminder invite for her headphone delivery?\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_11_5deb6ec2-f586-4cfd-89c3-9e25a958ced4_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Alfred",
+      "last_name": "Quinn",
+      "full_name": "Alfred Quinn",
+      "phone_number": "408-555-0125",
+      "alias": "Dad",
+      "email": "alfred.quinn@svmetal.com",
+      "relationship": "Father",
+      "address": "127 Maple St, San José, CA 95126",
+      "company": "Suarez & Villa Metallurgy",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1963-07-30T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you text my father and say this: \"Hi Dad. Can you make sure Mom sees the reminder invite for her headphone delivery?\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message, which seems pretty straight forward. First, I need to figure out who the contact \"Dad: is. I can see in the user's contacts a \"Alfred Quinn\" under the \"father\" relationship. I can safely assume this is the intended contact. \n\nNext I will draft up the text and get confirmation in order to send it. Then I will send it.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Dad’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A text message to Alfred (“Dad”) with the requested content was created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require Alfred’s phone number to be included; allow additional participants (e.g., the user themself)\n                                    \"participants_addresses\": [\n                                        [(\"alfred.quinn@svmetal.com\", \"408-555-0125\")]\n                                    ],\n                                    # Core content; match loosely to allow minor punctuation / spacing differences\n                                    \"content\": \"her headphone delivery\",\n                                    \"creation_datetime_iso\": \"2024-07-23T18:20:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to pre-task snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",     # to create the outgoing SMS\n    \"search_contacts\",  # to find “Dad” (Alfred Quinn)\n    \"get_all_contacts\", # fallback contact retrieval\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to make sure your Mom can see the reminder invite you sent her by asking your Dad to check. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-23T18:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

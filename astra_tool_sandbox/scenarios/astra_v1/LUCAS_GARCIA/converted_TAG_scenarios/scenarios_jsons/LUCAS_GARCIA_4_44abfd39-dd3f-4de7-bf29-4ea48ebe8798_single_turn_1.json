@@ -1,0 +1,115 @@
+{
+  "task_id": "44abfd39-dd3f-4de7-bf29-4ea48ebe8798",
+  "plot_id": 4,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 3, 2024 at 7 am, Nathan Lewis, Jason Baker were involved. Lucas leads a triathlon training session for his group. Lucas takes notes on Jason’s performance, saving them digitally for future reference and email the summary of the note to each of them.",
+  "tags": [
+    "astra_core",
+    "LUCAS_GARCIA",
+    "plot_4",
+    "email",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to dictate a follow-up email to your triathlon trainee since the pdf you've sent earlier is broken and you'd like to resend one to them later.",
+  "reference_time": "2024-12-03T09:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply email is sent to Jason Baker saying \"Hey my apologies, the previous pdf file is broken. I will resend you one later today.\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_4_44abfd39-dd3f-4de7-bf29-4ea48ebe8798_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "modify_draft_email",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Triathlon Training Session Summary - December 3, 2024",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "jason.baker@example.com"
+      ],
+      "cc_addresses": [
+        "nathan.lewis@example.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-03T08:30:00-08:00",
+      "body": "Hi Jason,\n\nI hope you're doing well after our triathlon training session this morning. I wanted to share the notes I took based on your performance:\n\n- Your swimming technique has shown improvement, especially in maintaining a consistent breathing rhythm, which will enhance your endurance.\n- The cycling session went well, but focusing on your speed during hill climbs could be beneficial.\n- Your running pace remains solid, and incorporating more interval training can further boost your stamina.\n\nIf you have any questions or require more details on the feedback, feel free to reach out.\n\nBest,\nLucas",
+      "attachments": [
+        "Triathlon_Session_Notes_12032024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Nathan",
+      "last_name": "Lewis",
+      "full_name": "Nathan Lewis",
+      "phone_number": "+1 12345-6789-1000-2468",
+      "alias": "Triathlon Buddy",
+      "email": "nathan.lewis@example.com",
+      "relationship": "Triathlon training group member",
+      "address": "90 Training Ave, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1989-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jason",
+      "last_name": "Baker",
+      "full_name": "Jason Baker",
+      "phone_number": "+1 12345-6789-1000-8520",
+      "alias": "Triathlon Competitor",
+      "email": "jason.baker@example.com",
+      "relationship": "Triathlon competitor",
+      "address": "67 Race Rd, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1988-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Draft an email response to my trainee competing in the triathlon saying \"Hey my apologies, the previous pdf file is broken. I will resend you one later today.\", then read it to me and send it. ",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user is asking to draft an email response to their trainee competing in the triathlon. I am not sure who this is referring to. I will go through the user contacts first and see what I find out. There I see there is a contact with the alias \"triathlon competitor\" corresponding to Jason Baker, so chances are this is the person the user is referring to. Additionally, the user says they want to draft an e-mail response. This takes me to the Email app. There, I see there is an e-mail thread between Jason Baker and the user. Based on this, I am sure this is the e-mail the user wants to respond to. \n\nNext, I will draft the email as requested. An email saying \"Hey my apologies, the previous pdf file is broken. I will resend you one later today.\" Once this is written, I will read the content to the user, as requested. \n\nOnly after getting the user's approval, I will send the e-mail to Jason Baker using the existing thread. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up contacts to identify the triathlon trainee\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct contact Jason Baker returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jason Baker\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # depend on lookup in Milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent looks up email to find the thread\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Confirm the correct email thread returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Triathlon Training Session Summary - December 3, 2024\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,  # depend on lookup in Milestone 2\n                        )\n                    ],\n                ),\n                # Milestone 4: send the email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"jason.baker@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"the previous pdf file is broken\",\n                                    \"creation_datetime_iso\": \"2024-12-03T09:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (2, 3)]",
+  "tool_allow_list_runtime": "[\"send_email\"]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to dictate a follow-up email to your triathlon trainee since the pdf you've sent earlier is broken and you'd like to resend one to them later. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"modify_draft_email\", \"send_email\"]",
+  "is_read_time": "2024-12-03T09:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

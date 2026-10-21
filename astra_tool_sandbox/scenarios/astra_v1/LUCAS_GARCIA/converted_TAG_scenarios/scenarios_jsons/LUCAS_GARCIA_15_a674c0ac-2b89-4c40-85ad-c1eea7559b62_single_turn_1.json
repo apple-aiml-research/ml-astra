@@ -1,0 +1,94 @@
+{
+  "task_id": "a674c0ac-2b89-4c40-85ad-c1eea7559b62",
+  "plot_id": 15,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 8 am, self were involved. Lucas updates his calendar for the week’s upcoming events and sessions. New events and reminders are added to the calendar.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_15",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know who is attending tomorrow's client progress review meeting.",
+  "reference_time": "2024-12-15T22:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that 'Brian Carter' is listed as an attendee for 'Client Progress Review Meeting' scheduled on 16 December 2024 from 10:00 to 11:30.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_15_a674c0ac-2b89-4c40-85ad-c1eea7559b62_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Client Progress Review Meeting",
+      "start_datetime_iso": "2024-12-16T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-16T11:30:00-08:00",
+      "attendees_names": [
+        "Brian Carter",
+        "Lucas Garcia"
+      ],
+      "location": "Orchard County Fitness Center, Meeting Room",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-09T08:15:00-08:00",
+      "notes": "Lucas will meet with Coach Brian to review client progress and strategies for the upcoming quarter."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Brian",
+      "last_name": "Carter",
+      "full_name": "Brian Carter",
+      "phone_number": "+1 12345-6789-1000-7410",
+      "alias": "Triathlon Coach",
+      "email": "brian.carter@example.com",
+      "relationship": "Triathlon coach",
+      "address": "45 Coach St, Orchard County, CA, USA",
+      "company": "Orchard County Triathlon Club",
+      "job_title": "Head Coach",
+      "is_self": false,
+      "birthday": "1980-04-28T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "low",
+  "reasoning": "Right so, the user is wanting to know who is attending their 'client progress review' scheduled for tomorrow. Tomorrow's date is 16 December 2024. Looking at the user's calendar for then, I can see one event scheduled from 10:00 to 11:30 titled 'Client Progress Review Meeting'. It has 'Brian Carter' listed as an attendee. Now that I have found the required information for the requested event, I can confirm this to the user. ",
+  "query": "Who's coming to the client progress review tomorrow?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events (information-retrieval step)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Agent replies to the user mentioning “Brian Carter”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Brian Carter\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,  # loosened match – must contain the name\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know who is attending tomorrow's client progress review meeting. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-15T22:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

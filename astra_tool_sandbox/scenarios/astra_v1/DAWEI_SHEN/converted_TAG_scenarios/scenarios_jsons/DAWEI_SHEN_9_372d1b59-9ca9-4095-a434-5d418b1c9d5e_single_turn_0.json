@@ -1,0 +1,142 @@
+{
+  "task_id": "372d1b59-9ca9-4095-a434-5d418b1c9d5e",
+  "plot_id": 9,
+  "plot_summary": "Dawei Shen is the protagonist. On Friday, December 6, 2024 at 10 am, self, Jeff Bing were involved. Jeff calls Dawei to invite him to a tech panel he's hosting in Orchard County next Tuesday. Dawei agrees to attend and blocks the time in his calendar. Dawei receives an email with panel details.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_9",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "email",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You'd like to send a reply to the email \"Invitation: Tech Panel Discussion on December 10\" and cc Theo.        Also add Theo Appleseed as an attendee to the corresponding calendar event.",
+  "reference_time": "2024-12-06T10:12:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "A reply to the email \"Invitation: Tech Panel Discussion on December 10\" received on December 6th 2024 at 10:10 is sent. The email reads: \"Hi Jeff, thank you so much for the invite, I'm really looking forward to it.\" and CCs Theo Appleseed (theo.appleseed@orchardtech.com).",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "A new calendar event with key word \"Tech Panel\" with Theo Appleseed as the only invitee created for Tuesday 10th December 2024 at 09:00-11:00, a shadow version of \"Tech Panel Hosted by Jeff Bing\".",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_9_372d1b59-9ca9-4095-a434-5d418b1c9d5e_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Invitation: Tech Panel Discussion on December 10",
+      "sender_address": "jeff.bing@bingelectronics.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T10:10:00-08:00",
+      "body": "Hello Dawei,\n\nI hope this message finds you well. I'm excited to invite you to a tech panel discussion I'm hosting next Tuesday, December 10, at the Tech Hub Conference Center here in Orchard County. We'll be discussing the latest trends and innovations in consumer electronics. Your insights would be incredibly valuable, and I would be thrilled if you could join us.\n\nPlease find the event details attached. Let me know if you can make it!\n\nBest regards,\nJeff Bing",
+      "attachments": [
+        "Tech_Panel_Details.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Jeff Bing",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Mia",
+      "last_name": "Tang",
+      "full_name": "Mia Tang",
+      "phone_number": "+1 555-567-8901-2345",
+      "alias": "Mia",
+      "email": "mia.tang@accountingpros.com",
+      "relationship": "Accountant",
+      "address": "321 Finance Ave, Orchard County, CA 94022, USA",
+      "company": "Accounting Pros",
+      "job_title": "Accountant",
+      "is_self": false,
+      "birthday": "1986-10-10T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00"
+    },
+    {
+      "company": "Orchard Tech",
+      "first_name": "Theo",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "relationship": "Coworker",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "full_name": "Theo Appleseed",
+      "alias": "Theo",
+      "birthday": "1985-12-20T00:00:00-08:00",
+      "is_self": false,
+      "phone_number": "+1 555-789-0123-4568",
+      "job_title": "Research Scientist",
+      "email": "theo.appleseed@orchardtech.com",
+      "last_name": "Appleseed"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want you to reply to Jeff's email with: \"Hi Jeff, thank you so much for the invite, I'm really looking forward to it.\" CC Theo Appleseed on the reply, and go ahead and send him a shadow calendar invite too.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user asked me to do two things. First, they want me to reply to the email titled \"Invitation: Tech Panel Discussion on December 10\"—I found that message in their inbox (received on Dec 6 2024 at 10:10). I will reply with the exact text: \"Hi Jeff, thank you so much for the invite, I'm really looking forward to it.\" and CC Theo Appleseed (theo.appleseed@orchardtech.com).\n\nSecond, they want me to send Theo a shadow calendar invite for the corresponding event. I searched their contacts and located Theo Appleseed’s email. Then I looked up the calendar event \"Tech Panel Hosted by Jeff Bing\" scheduled for Tuesday, 10 Dec 2024, 09:00–11:00. I will create another event with same details but add Theo Appleseed as the only invitee so he receives the shadow invite.",
+  "reference_time_str": "Today is Friday, December 6, 2024 or 2024-12-06T10:12:00-08:00.",
+  "milestones": "[\n                # M0: search emails\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # M1 the email found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Invitation: Tech Panel Discussion on December 10\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-06T10:10:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # M2: search for Theo\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Theo Appleseed’s contact information was actually returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Theo Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"theo.appleseed@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,  # parse the results of the search done in milestone 2\n                        )\n                    ],\n                ),\n                # Milestone 4 – reply action triggered\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"tool_trace\": json.dumps(\n                                        {\n                                            \"tool_name\": \"send_email\",\n                                            \"arguments\": {\n                                                \"email_action\": \"send\",\n                                                \"email_id_referred\": \"place_holder\",  # must send email with a thread id to reply an email\n                                                \"email_id_referred_action\": \"reply\",\n                                                \"cc_recipients_addresses\": [\n                                                    \"theo.appleseed@orchardtech.com\"\n                                                ],\n                                            },\n                                        },\n                                        ensure_ascii=False,\n                                    )\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": column_tool_trace_partial_arguments_similarity\n                            },\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n                # Milestone 5 – A reply email to Jeff Bing has been sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"jeff.bing@bingelectronics.com\"]\n                                    ],\n                                    \"cc_addresses\": [\n                                        [\"theo.appleseed@orchardtech.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"subject\": \"Re\",\n                                    \"body\": \"looking forward\",\n                                    \"creation_datetime_iso\": \"2024-12-06T10:12:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,  # contains the key phrase\n                                \"subject\": column_contains_similarity,  # Reply the email,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n                # Milestone 6 – The agent looks up calendar events (to locate the one that to be shadowed)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # M7: found the calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Tech Panel Hosted by Jeff Bing\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-10T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=6,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 8 – Theo Appleseed has been sent a shadow invite\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Tech Panel\",\n                                    \"attendees_names\": [\n                                        [\"Dawei Shen\", \"Theo Appleseed\"]\n                                    ],\n                                    \"organizer_name\": \"Dawei Shen\",\n                                    \"creation_datetime_iso\": \"2024-12-06T10:12:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.EMAIL],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Find the email\n                (2, 3),  # Search for Theo\n                (6, 7),  # Found the calendar events\n            ]",
+  "tool_allow_list": [
+    "send_email",
+    "search_emails",
+    "get_all_emails",
+    "search_contacts",
+    "get_all_contacts",
+    "create_calendar_event",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You'd like to send a reply to the email \"Invitation: Tech Panel Discussion on December 10\" and cc Theo.       Also add Theo Appleseed as an attendee to the corresponding calendar event. ",
+  "tool_allow_list_str": "[\"send_email\", \"search_emails\", \"get_all_emails\", \"search_contacts\", \"get_all_contacts\", \"create_calendar_event\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-06T10:12:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

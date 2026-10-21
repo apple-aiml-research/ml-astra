@@ -1,0 +1,122 @@
+{
+  "task_id": "08463809-83c4-415f-ab89-ebc5cdbd870e",
+  "plot_id": 6,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Evening, July 23, 2024 at 6 pm, John Appleseed were involved. Phone call with his father to catch up and discuss a book they are both reading ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_6",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "contact",
+    "phone_call",
+    "calendar",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to follow up with your dad regarding the discussion you had about a book",
+  "reference_time": "2024-07-23T18:35:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to the contact John Appleseed saying \"great chat earlier, lets discuss the book this Sunday over another call, I'll send you a calendar invite!\".",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. A calendar event is created for the 28th of July 2024 at 17:00-17:30 called \"Book call with Dad\". John Appleseed is invited to the event.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_6_08463809-83c4-415f-ab89-ebc5cdbd870e_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_phone_calls",
+    "search_phonecall_logs",
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cooking Class",
+      "start_datetime_iso": "2024-07-28T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-28T16:00:00-07:00",
+      "attendees_names": [
+        "Cookie Watson",
+        "Local Culinary School",
+        "Theo Appleseed"
+      ],
+      "location": "Local Culinary School, Orchard County, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "Local Culinary School",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-21T12:00:00-07:00",
+      "notes": "Attending a cooking class to learn new recipes and enhance cooking skills."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Appleseed",
+      "full_name": "John Appleseed",
+      "phone_number": "1234-5678-9102",
+      "alias": "Dad",
+      "email": "john.appleseed@example.com",
+      "relationship": "Father",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Nearby University",
+      "job_title": "Professor of Theoretical Physics",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "outgoing",
+      "caller_address": "1234-5678-9101",
+      "receiver_address": "1234-5678-9102",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-07-23T18:00:00-07:00",
+      "duration_in_hms": "00:30:00"
+    }
+  ],
+  "query": "Send a message to the guy I just got off the phone with saying \"great chat earlier, lets discuss the book this Sunday over another call, I'll send you a calendar invite!\" and invite him to a new event named Book Call with Dad an hour after Cooking Class ends, and make the event last one sixth the duration of Cooking Class.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to text the guy they just got off the phone with. I see a phone call that started at 18:00 and lasted half an hour so it just ended five minutes ago. The call was with John Appleseed, so I will text him the content of the message the user asked me to. \n\nNow, I need to create a new event on the calendar named Book Call with Dad and add John Appleseed as an invitee. I need to schedule it for an hour after Cooking Class ends. I see the event named Cooking Class is on 28 July 2024 at 13:00-16:00, meaning it ends at 16:00 on 28 July 2024. One hour after 16:00 is 17:00, so I will schedule the new event to start at 17:00. \n\nNow I need to figure out the end time. The user said they want it to be one sixth the duration of the event named Cooking Class. Cooking Class lasted 3 hours, or 180 minutes. One sixth of 180 is 30, so the event should last 30 minutes. Because it will start at 17:00, I will have it end at 17:30.",
+  "milestones": "[\n                # Milestone 0 – the agent consults phone logs to determine who was just called\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – confirm that the phone-log results include the recent call with John Appleseed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # Either caller or receiver field should contain John Appleseed\n                                            \"receiver_address\": {\n                                                \"value\": \"1234-5678-9102\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – a message is sent to John Appleseed with the requested wording\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"content\": \"great chat earlier, lets discuss the book this Sunday over another call, I'll send you a calendar invite!\",\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9102\",\n                                                \"john.appleseed@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-07-23T18:35:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n                # Milestone 3 – Agent looks up the user’s calendar to figure out when the cooking class ends\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 – Confirm the “Cooking Class” event (13:00-16:00 on 28-Jul-2024) was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Cooking Class\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=3,\n                        )\n                    ],\n                ),\n                # Milestone 5 – the calendar event “Book Call with Dad” is created for Sun 28-Jul-2024 17:00-17:30 with Dad invited\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Book Call with Dad\",\n                                    \"start_datetime_iso\": \"2024-07-28T17:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-28T17:30:00-07:00\",\n                                    \"attendees_names\": [[\"John Appleseed\"]],\n                                    \"creation_datetime_iso\": \"2024-07-23T18:35:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.MESSAGING],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (3, 4)]",
+  "tool_allow_list_runtime": "[\n    \"search_phonecall_logs\",\n    \"get_all_phone_calls\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"send_message\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to follow up with your dad regarding the discussion you had about a book ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_phone_calls\", \"search_phonecall_logs\", \"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\", \"send_message\"]",
+  "is_read_time": "2024-07-23T18:35:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

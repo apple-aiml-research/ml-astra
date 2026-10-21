@@ -1,0 +1,107 @@
+{
+  "task_id": "62c50bfc-2143-42a1-9783-fc41c2b1168e",
+  "plot_id": 14,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Afternoon, July 26, 2024 at 12 pm, Michelle Barnes, Dawei Shen were involved. Lunch at a nearby restaurant to discuss personal and professional topics ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_14",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're wondering when you last heard from Michelle.",
+  "reference_time": "2024-07-26T16:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed that their most recent message from Michelle Barnes, which reads \"See you soon, Theo!\", was received at 11:45 on 2024-07-26.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_14_62c50bfc-2143-42a1-9783-fc41c2b1168e_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Michelle Barnes",
+      "participants_addresses": [
+        "michelle.barnes@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "michelle.barnes@example.com",
+      "content": "See you soon, Theo!",
+      "creation_datetime_iso": "2024-07-26T11:45:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When did Michelle say she would see me soon?",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when Michelle said she would see them soon. The only Michelle in the user's contacts is Michelle Barnes, so I'll check messages with Michelle Barnes.\n\nI found a message from Michelle Barnes that says \"See you soon, Theo!\" This must be the message the user is interested in. I'll inform them that this message was received at 11:45 today (2024-07-26).",
+  "milestones": "[\n                # Milestone 0 – The agent uses a messaging-retrieval tool to look for Michelle’s message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved message is from Michelle and contains “See you soon”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"michelle.barnes@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"See you soon\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Agent’s answer to the user contains the correct time & date info\n                Milestone(\n                    snapshot_constraints=[\n                        # Time substring (11:45 ...)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"11:45\",)],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        ),\n                        # Date substring (July 26 / 07-26 / 26 July)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"July 26\",\n                                            \"Jul 26\",\n                                            \"26 July\",\n                                            \"26 Jul\",\n                                            \"7-26\",\n                                            \"07-26\",\n                                            \"7/26\",\n                                            \"07/26\",\n                                            \"the 26th\",\n                                            \"26th of July\",\n                                            \"today\",\n                                            \"2024-07-26T11:45\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You're wondering when you last heard from Michelle. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-07-26T16:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

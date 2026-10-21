@@ -1,0 +1,345 @@
+{
+  "task_id": "5679abc7-fd52-4fe6-987f-ef23adbd1d4c",
+  "plot_id": 10,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 15pm,  were involved. John wants to order an ornamental stand for his bow and engages in a discussion with a specialised store  1. John exchanges several emails asking about several different models of stands, trying to understand which would be the best fit for his mongolian bow. 2. After agreeing on a specific model by email, John calls the store to order the stand. 3. John adds an event on next Wednesday late afternoon to go pick up the stand from the store. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_10",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to email sales@archeryworld.  com telling them that the bow stand is the wrong size and you want to return it.",
+  "reference_time": "2024-07-31T16:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email is created saying \"Hello, the bow stand I picked up today is the wrong size, can I return this today?\" and is sent to sales@archeryworld.com.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_10_5679abc7-fd52-4fe6-987f-ef23adbd1d4c_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Inquiry about Bow Stands for a Mongolian Bow",
+      "sender_address": "john.quinn@palantir.com",
+      "recipients_addresses": [
+        "sales@archeryworld.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T15:00:00-07:00",
+      "body": "Hello, I am interested in purchasing a stand for my Mongolian bow. Could you provide information on the models that would be suitable for this type of bow? Thank you, John Quinn",
+      "attachments": null,
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Inquiry about Bow Stands for a Mongolian Bow",
+      "sender_address": "sales@archeryworld.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T15:15:00-07:00",
+      "body": "Hi John, Thank you for reaching out. We have several models that would be perfect for a Mongolian bow. I have attached the details and specifications of each model. Please let us know if you need more information. Best, Archery World Sales Team",
+      "attachments": [
+        "Bow_Stands_Catalog.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Inquiry about Bow Stands for a Mongolian Bow",
+      "sender_address": "john.quinn@palantir.com",
+      "recipients_addresses": [
+        "sales@archeryworld.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T15:30:00-07:00",
+      "body": "Thank you for the prompt response and the detailed information. I am interested in the 'Classic Wood Stand' model. Could you confirm if it's available and the price? Regards, John",
+      "attachments": null,
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Inquiry about Bow Stands for a Mongolian Bow",
+      "sender_address": "sales@archeryworld.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T15:45:00-07:00",
+      "body": "Hello John, The 'Classic Wood Stand' is available and it is priced at $120. If you would like to proceed with the purchase, please let us know and we can prepare your order. Thanks, Archery World Sales Team",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Re: Inquiry about Bow Stands for a Mongolian Bow",
+      "sender_address": "john.quinn@palantir.com",
+      "recipients_addresses": [
+        "sales@archeryworld.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T16:00:00-07:00",
+      "body": "That sounds great. I would like to confirm the purchase of the 'Classic Wood Stand'. Could you please prepare the order? I will pick it up next Wednesday. Best, John",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Pick Up Bow Stand",
+      "start_datetime_iso": "2024-07-31T17:00:00-07:00",
+      "end_datetime_iso": "2024-07-31T18:00:00-07:00",
+      "attendees_names": [
+        "John Quinn"
+      ],
+      "location": "Archery World, 123 Archer Rd, San José, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T16:10:00-07:00",
+      "notes": "Pick up the 'Classic Wood Stand' from Archery World store."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Alfred",
+      "last_name": "Quinn",
+      "full_name": "Alfred Quinn",
+      "phone_number": "408-555-0125",
+      "alias": "Dad",
+      "email": "alfred.quinn@svmetal.com",
+      "relationship": "Father",
+      "address": "127 Maple St, San José, CA 95126",
+      "company": "Suarez & Villa Metallurgy",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1963-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Grace",
+      "last_name": "Quinn",
+      "full_name": "Grace Quinn",
+      "phone_number": "408-555-0126",
+      "alias": "Sis",
+      "email": "grace.quinn@example.com",
+      "relationship": "Sister",
+      "address": "129 Maple St, San José, CA 95126",
+      "company": null,
+      "job_title": "Writer",
+      "is_self": false,
+      "birthday": "1993-05-18T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "College Friend",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": false,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@mckinley.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": "Management Consultant",
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "Bronson",
+      "last_name": "Chunk",
+      "full_name": "Bronson Chunk",
+      "phone_number": "408-555-0130",
+      "alias": "Boss",
+      "email": "bronson.chunk@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Project Manager",
+      "is_self": false,
+      "birthday": "1980-09-09T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ali",
+      "last_name": "Amin",
+      "full_name": "Ali Amin",
+      "phone_number": "408-555-0134",
+      "alias": "Ali",
+      "email": "ali.amin@historybuffs.org",
+      "relationship": "Friend",
+      "address": "160 History Ln, San José, CA 95110",
+      "company": "History Buffs Inc.",
+      "job_title": "Historical Consultant",
+      "is_self": false,
+      "birthday": "1988-10-10T00:00:00-07:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Alisa",
+      "last_name": "Borhman",
+      "full_name": "Alisa Borhman",
+      "phone_number": "408-555-0136",
+      "alias": "Alisa",
+      "email": "alisa.borhman@historicalmuseums.org",
+      "relationship": "School Friend",
+      "address": "170 Past Ave, San José, CA 95132",
+      "company": "San José Historical Museum",
+      "job_title": "Curator",
+      "is_self": false,
+      "birthday": "1998-11-11T00:00:00-08:00"
+    },
+    {
+      "first_name": "Astrid",
+      "last_name": "von Neumann",
+      "full_name": "Astrid von Neumann",
+      "phone_number": "+49 12345678901234567",
+      "alias": "Astrid",
+      "email": "astrid.vonneumann@regenerative-viticulture.de",
+      "relationship": "Friend of a Friend",
+      "address": "Weinbergweg 12, 53507 Dernau, Deutschland",
+      "company": "Regenerativer Bauernhof Ahrwein",
+      "job_title": "Viticulturistin",
+      "is_self": false,
+      "birthday": "1999-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to send an email to \"the archery people\". The requested message is \"Hello, the bow stand I picked up today is the wrong size, Can I return this today?\". \n\nI'm not fully sure who the intended recipient is. I'm going to look in the user's email data to see if I can find anything with \"archery\".... I found 5 emails from an address called sales@archeryworld.com. The emails also contain the same string value as the user utterance, mentioning a \"bow stand\". \n\nWith the user's confirmation, I will send the message as requested to the address sales@archeryworld.com.",
+  "query": "Can you email the archery world people and write \"Hello, the bow stand I picked up today is the wrong size, can I return this today?\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"sales@archeryworld.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"wrong size\",\n                                    \"creation_datetime_iso\": \"2024-07-31T16:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",\n    \"search_emails\",\n    \"get_all_emails\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to email sales@archeryworld. com telling them that the bow stand is the wrong size and you want to return it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-07-31T16:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

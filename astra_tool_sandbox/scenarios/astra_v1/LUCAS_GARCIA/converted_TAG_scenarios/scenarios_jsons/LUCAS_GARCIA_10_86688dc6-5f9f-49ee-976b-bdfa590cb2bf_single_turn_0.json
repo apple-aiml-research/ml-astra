@@ -1,0 +1,103 @@
+{
+  "task_id": "86688dc6-5f9f-49ee-976b-bdfa590cb2bf",
+  "plot_id": 10,
+  "plot_summary": "Lucas Garcia is the protagonist. On Friday, December 6, 2024 at 6 pm, David Turner were involved. Lucas goes surfing with David at the local beach. Message between Lucas and David and meet up the beach for their surfing session via WhatsApp.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_10",
+    "calendar",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "David needs some motivation so you invited him to tomorrow's talk.",
+  "reference_time": "2024-12-06T21:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. David Turner is added as an invitee to Motivational Talk at Local Gym scheduled for December 07, 2024, 09:00-10:00.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_10_86688dc6-5f9f-49ee-976b-bdfa590cb2bf_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Motivational Talk at Local Gym",
+      "start_datetime_iso": "2024-12-07T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T10:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Olivia Clark"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T09:00:00-08:00",
+      "notes": "Lucas Garcia provides a motivational talk aimed at inspiring gym members, focusing on overcoming challenges and achieving fitness goals."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Add David to the motivational talk at local gym tomorrow.",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user is asking to edit invitees of an event.\nFirst, I should find the queried event in the user's calendar. I see an exact match for the user's query, Motivational Talk at Local Gym scheduled for December 07, 2024, 09:00-10:00.\nNext, I will locate the named person in the user's contacts. I have found David Turner in the user's contacts.\nFinally I will add David as an invitee to the named event. David Turner is now an invitee of Motivational Talk at Local Gym scheduled for December 07, 2024, 09:00-10:00. I should inform the user.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the calendar to locate the “Motivational Talk” event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the desired calendar event was actually returned in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Motivational Talk at Local Gym\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-07T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent searches contacts to resolve “David Turner”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 – Confirm that the contact search actually contained David Turner\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"David Turner\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"david.turner@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=2,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 4 – Calendar event updated so that David Turner is now an attendee\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Motivational Talk at Local Gym\",\n                                    \"start_datetime_iso\": \"2024-12-07T09:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-07T10:00:00-08:00\",\n                                    \"attendees_names\": [[\"David Turner\"]],\n                                    \"creation_datetime_iso\": \"2024-12-06T21:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # found event\n                (2, 3),  # found contact\n                (1, 4),  # after locating event, it gets modified\n                (3, 4),  # after confirming contact, event is modified\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"modify_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. David needs some motivation so you invited him to tomorrow's talk. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-12-06T21:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

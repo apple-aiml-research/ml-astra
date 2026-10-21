@@ -1,0 +1,87 @@
+{
+  "task_id": "08bf93bf-a827-49b6-a50c-c3045dbd8eb9",
+  "plot_id": 7,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 9pm, Apricot Sweeney were involved. Apricot and John call and message each other.  1. Apricot calls John and they have a long call. 2. Before going to bed, John and Apricot exchange a few loving messages. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_7",
+    "phone_call",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know the duration of your call to Apricot",
+  "reference_time": "2024-07-22T22:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The duration of the voice call with Apricot Sweeney on July 22, 2024 at 21:00 is presented to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_7_08bf93bf-a827-49b6-a50c-c3045dbd8eb9_single_turn_0",
+  "tool_allow_list": [
+    "search_phonecall_logs",
+    "get_all_phone_calls"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "incoming",
+      "caller_address": "415-555-0128",
+      "receiver_address": "1234-5678-9108",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-07-22T21:00:00-07:00",
+      "duration_in_hms": "00:45:00"
+    }
+  ],
+  "query": "How long was my call to Apricot ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know how long the call to Apricot was. First thing I need to do is search the user's call history. There is only one call in the user's history and it is from Apricot Sweeney so this must what they are looking for. The duration is 45 minutes. I will now inform the user ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up phone call logs\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirms the call to/from Apricot with 45-minute duration is present in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"caller_address\": {\n                                                \"value\": \"415-555-0128\",\n                                                \"partial\": False,\n                                            },\n                                            \"duration_in_hms\": {\n                                                \"value\": \"00:45:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-22T21:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent tells the user the call lasted 45 minutes\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"45 minutes\",\n                                            \"45 mins\",\n                                            \"45min\",\n                                            \"00:45:00\",\n                                            \"0:45\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # phone-log search → confirm correct call found\n                (1, 2),  # call confirmed → inform user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_phonecall_logs\",\n    \"get_all_phone_calls\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know the duration of your call to Apricot ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_phonecall_logs\", \"get_all_phone_calls\"]",
+  "is_read_time": "2024-07-22T22:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,95 @@
+{
+  "task_id": "ebd52a21-87b7-4123-8c39-27f56b3e23c5",
+  "plot_id": 19,
+  "plot_summary": "John Quinn is the protagonist. On Thursday, July 25, 2024 at 5:30pm, Apricot Sweeney were involved. John and Apricot agree on a hike for the Sunday after next  1. John messages Apricot with a 4 different hiking possibilities for the Sunday after next, mentioning also the locations and some descriptions of the most memorable things about each trail. 2. Apricot chooses the shortest one. 3. John sends her an email with the video of their last hike. 4. They exchange loving messages and end the conversation. 5. John makes a calendar event inviting Apricot to their relatively short hike. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_19",
+    "email",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want desperately to recall your email to Apricot because you mistakenly attached the video of your last hike with Theo Appleseed instead of your last hike with Apricot, and this could be hugely embarassing.",
+  "reference_time": "2024-07-25T17:50:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "The email Looking forward to our hike!\n25/07/2024, 17:45:00\nLastHike.mp4\nis recalled. \n",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_19_ebd52a21-87b7-4123-8c39-27f56b3e23c5_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "remove_email_or_thread"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Looking forward to our hike!",
+      "sender_address": "john.quinn@palantir.com",
+      "recipients_addresses": [
+        "apricot.sweeney@sfhealth.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-25T17:45:00-07:00",
+      "body": "Hey Apricot, Just sending you the video from our last hike. Can't wait to make more memories like these. See you soon!",
+      "attachments": [
+        "LastHike.mp4"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need to recall the email with the video i made on the trails now. ",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "User John Quinn wants to recall an email. User isn't specific, but does mention trails. I see that user has just sent an email five minutes ago called Looking forward to our hike. Hiking can involve trails, so this lead looks promising. Digging deeper into this email, I see a video has been sent along with the email and the name of the video is LastHike. I shall confirm with user that this is the rdesired email and recall it if so. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks for the email that must be recalled\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the targeted email (subject & attachment) appears in the search results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Looking forward to our hike!\",\n                                                \"partial\": False,\n                                            },\n                                            # Only need to know the attachment list contains the filename\n                                            \"attachments\": {\n                                                \"value\": [\"LastHike.mp4\"],\n                                                \"partial\": True,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": [\n                                                    \"apricot.sweeney@sfhealth.com\"\n                                                ],\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The email has been successfully recalled / removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"subject\": \"Looking forward to our hike!\",\n                                    \"sender_address\": \"john.quinn@palantir.com\",\n                                    \"recipients_addresses\": [\n                                        [\"apricot.sweeney@sfhealth.com\"]\n                                    ],\n                                    \"attachments\": [[\"LastHike.mp4\"]],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"attachments\": column_list_subset_match_similarity,\n                                \"subject\": column_exact_match_similarity,\n                                \"sender_address\": column_exact_match_similarity,\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # searched → verified correct email located\n                (1, 2),  # located email → email removed / recalled\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",      # fallback listing\n    \"remove_email_or_thread\",  # used to recall / delete the sent email\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want desperately to recall your email to Apricot because you mistakenly attached the video of your last hike with Theo Appleseed instead of your last hike with Apricot, and this could be hugely embarassing. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"remove_email_or_thread\"]",
+  "is_read_time": "2024-07-25T17:50:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,119 @@
+{
+  "task_id": "7f29751b-9288-43e1-8a3f-75c16fdedeff",
+  "plot_id": 14,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 9, 2024 at 7 pm, self, Paul Harper were involved. Paul texts Dawei, thanking him for watching his cat over the weekend. Dawei replies, sharing a funny photo of the cat napping by the window. Paul reacts to the photo with a laughing emoji.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_14",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if Paul found the photo you sent to him of his cat funny.",
+  "reference_time": "2024-12-09T19:10:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A search is made for a message from Paul Harper in response to a photo of his cat sent by the user. ",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The message response from Paul Harper on the December 9th at 19:05 is shown to the user. And user is informed that Paul found the photo hilarious",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_14_7f29751b-9288-43e1-8a3f-75c16fdedeff_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "+1 555-678-9012-3456",
+      "content": "Hey Dawei, thanks a ton for watching the cat over the weekend. Really appreciate it!",
+      "creation_datetime_iso": "2024-12-09T19:00:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "+1 555-123-4567-8901",
+      "content": "No worries, Paul! It was my pleasure. Check out this funny photo of your cat napping by the window.",
+      "creation_datetime_iso": "2024-12-09T19:02:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "+1 555-678-9012-3456",
+      "content": "😂 That's hilarious! Looks like he found his new favorite spot. Thanks for the photo!",
+      "creation_datetime_iso": "2024-12-09T19:05:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know if his friend found the photo the user sent to him funny. Okay, I know that the user had a recent calendar event called \"Cat Sitting for Paul\". I assume the friend is Paul Harper, the only Paul in his contacts. I search messages with Paul Harper for a photo sent from the user and I found the response from Paul received on December 9 at 19:05, I'll show it to the user and inform the user that Paul found the photo hilarious",
+  "informational_complexity": "moderate",
+  "referential_complexity": "high",
+  "query": "Did my friend find the photo of his cat I sent him funny?",
+  "milestones": "[\n                # Milestone 0 – The agent looks through the message history\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved messages include Paul Harper’s 19:05 response containing the laughing reaction\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"+1 555-678-9012-3456\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"That's hilarious\",\n                                                \"partial\": True,  # allow small variations / emoji\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent shows (quotes/paraphrases) Paul’s laughing response to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"That's hilarious\",\n                                            \"😂\",\n                                            \"laughing\",\n                                            \"found it funny\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know if Paul found the photo you sent to him of his cat funny. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-09T19:10:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

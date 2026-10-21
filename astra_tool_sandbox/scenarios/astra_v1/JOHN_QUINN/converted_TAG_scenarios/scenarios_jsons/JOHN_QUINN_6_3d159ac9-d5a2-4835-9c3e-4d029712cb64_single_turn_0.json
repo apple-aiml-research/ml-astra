@@ -1,0 +1,101 @@
+{
+  "task_id": "3d159ac9-d5a2-4835-9c3e-4d029712cb64",
+  "plot_id": 6,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 8pm, Deborah Shooter were involved. Deborah messages John trying to make conversation in a flirty manner.  1. John and Deborah have a very long conversation about how their respective days went. 2. John and Deborah exchanging numerous messages. 3. Deborah finally invites him to go for a coffee on Saturday afternoon. 4. John gently refuses.",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_6",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You worry that you may have been harsh when you turned down Deborah's offer for coffee so you ask the assistant to read the message back to you so you can analyze what you wrote.",
+  "reference_time": "2024-07-22T22:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The text message sent to Deborah Shooter at 20:15 on 22 July 2024 that says \"I appreciate the invite, Deborah, but I have plans for a long hike that day. Maybe another time!\" is presented to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_6_3d159ac9-d5a2-4835-9c3e-4d029712cb64_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "I appreciate the invite, Deborah, but I have plans for a long hike that day. Maybe another time!",
+      "creation_datetime_iso": "2024-07-22T20:15:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Will do, thanks! Have a great evening, Deborah.",
+      "creation_datetime_iso": "2024-07-22T20:20:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you read the penultimate message I sent to Debrah Shooter",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to read the penultimate message they sent to Deborah Shooter. First I need to find the user's conversation with Deborah, Now that I have found that I need to retrieve the penultimate, or second-to-last, message the user sent in it. The last message the user sent was sent at 20:20 on the 22 July 2024 and the message before that, so the one I'm looking for, was at 20:15 on the same day. This must be the message they want so I will read it to them now.",
+  "milestones": "[\n                # Milestone 0 – The agent invokes a message-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The assistant tells the user the correct penultimate message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"I appreciate the invite\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (\n                    0,\n                    1,\n                ),  # Tool invocation precedes delivering the message content to the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You worry that you may have been harsh when you turned down Deborah's offer for coffee so you ask the assistant to read the message back to you so you can analyze what you wrote. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-22T22:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

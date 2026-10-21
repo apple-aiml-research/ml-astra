@@ -1,0 +1,86 @@
+{
+  "task_id": "19d00cac-e46a-4354-b2a9-e8bff6fd03b8",
+  "plot_id": 20,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 16, 2024 at 9:00 AM, Linda Kim were involved. Coordinating with Linda on educational activities schedule at the local school. Shared calendar updated with school event dates.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_20",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "The event you coordinated with Linda went extremely well! The school is asking if you could try to plan another one in January after the holidays.    If you use the same format and just adapt some things you can reuse your preparation - so you'll add a new event for this in your calendar.",
+  "reference_time": "2024-12-16T14:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"EA Coordination Round 2\" is created for January 14th 2025 at 09:00 in the user's calendar.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_20_19d00cac-e46a-4354-b2a9-e8bff6fd03b8_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Educational Activities Coordination Meeting",
+      "start_datetime_iso": "2024-12-16T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-16T10:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Linda Kim"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:00:00-07:00",
+      "notes": "Coordinating with Linda Kim on educational activities schedule at the local school."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I'd like to add another one to my calendar called \"EA Coordination Round 2\" for January 14th 2025 at 09:00.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking me to add \"another one to their calendar\". I'm not fully sure what the user means, but the full utterance looks like they want me to add a new event to their calendar. If this is so, I have the date, time and event title that I can use to create the event. \n\nWith the user's confirmation, I'll add \"EA Coordination Round 2\" to the calendar for January 14th 2025 at 09:00.",
+  "milestones": "[\n                # Milestone 0 – Verify that a new calendar event titled\n                # “EA Coordination Round 2” starting on 2025-01-14 at 09:00 was added\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"EA Coordination Round 2\",\n                                    \"start_datetime_iso\": \"2025-01-14T09:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-16T14:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. The event you coordinated with Linda went extremely well! The school is asking if you could try to plan another one in January after the holidays.   If you use the same format and just adapt some things you can reuse your preparation - so you'll add a new event for this in your calendar. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-12-16T14:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

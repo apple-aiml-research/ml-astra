@@ -1,0 +1,119 @@
+{
+  "task_id": "1b4eab37-cbc5-48c4-af28-6fb7a888573d",
+  "plot_id": 19,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 11, 2024 at 7 am, David Turner were involved. Lucas has an early morning surf session with his surfing buddy, David. The wave was perfect. They both were very excited and enjoyed it. Lucas captures moments of the surfing activities, sharing them on iMessage. Lucas messages David to coordinate next surfing sesssion.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_19",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to message Dave letting him know he was electric on the waters this morning.",
+  "reference_time": "2024-12-11T08:45:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message \"Killed it today Dave!\" is sent to David Turner via whatsapp. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_19_1b4eab37-cbc5-48c4-af28-6fb7a888573d_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "get_all_messages",
+    "search_messages",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "Coach Lucas",
+      "sender_address": "+1 12345-6789-1000-1234",
+      "creation_datetime_iso": "2024-12-11T07:50:00-08:00",
+      "content": "Looking forward to it! Just let me know when it's confirmed.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Early Morning Surfing Session with David",
+      "start_datetime_iso": "2024-12-11T07:00:00-08:00",
+      "end_datetime_iso": "2024-12-11T08:30:00-08:00",
+      "attendees_names": [
+        "David Turner",
+        "Lucas Garcia"
+      ],
+      "location": "Local Beach, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T10:00:00-08:00",
+      "notes": "Lucas and his surfing buddy David will enjoy an early morning session at the local beach. Perfect waves are expected to make this a memorable outing."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Message Dave on the usual channel; \"Killed it today Dave!\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to message Dave on the usual channel a given message. First I'll establish who Dave is. There is only one Dave in the user's contacts so I assume it is David turner they're looking to message. Next is what the usual channels are which when looking at the user's contact with Dave seems to be whatsapp so thats what I'll use. I will now message David Turner the user's given message at 08:45 on 11 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – The agent tries to identify “Dave” in the channel\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_messages\",\n                                        \"search_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                        \"search_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirms that David Turner’s contact information was obtained\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"participants_names\": {\n                                                \"value\": \"David Turner\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The text message to David Turner was actually sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # At least David’s phone (or any of his identifiers) must be present as a participant.\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 12345-6789-1000-9876\",\n                                                \"david.turner@example.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Killed it today Dave!\",\n                                    \"creation_datetime_iso\": \"2024-12-11T08:45:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Require David’s identifier, allow no extras beyond the union of the tuples\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                # Exact content match is fine – it’s short and precise\n                                \"content\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",  # fallback listing all contacts\n    \"send_message\",      # required to create the outgoing SMS/iMessage\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to message Dave letting him know he was electric on the waters this morning. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"get_all_messages\", \"search_messages\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\"]",
+  "is_read_time": "2024-12-11T08:45:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

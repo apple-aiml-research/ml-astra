@@ -1,0 +1,86 @@
+{
+  "task_id": "180418c6-0c70-42cd-9102-fcf99f6fff31",
+  "plot_id": 8,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 6, 2024 at 2:00 PM, Chloe Waters, Sophia Taylor were involved. Community meeting discussing feedback on past events and brainstorming future initiatives. Survey results and feedback received via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_8",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply to Sophia asking her if she's free to meet up for a coffee to discuss her contributions during the community meeting.",
+  "reference_time": "2024-12-06T15:45:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email; 'Hi Sophia I was just wondering if you were free to meet for a coffee to discuss your ideas during the community meeting' is sent to Sophia Taylor at 15:45 on 6 December 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_8_180418c6-0c70-42cd-9102-fcf99f6fff31_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "modify_draft_email",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Thank You for Your Feedback!",
+      "sender_address": "sophia.taylor@orchardbusiness.org",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "chloe.waters@orchardmail.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:45:00-08:00",
+      "body": "Hi Emily,\n\nIt was indeed a great meeting today. Thank you for organizing it and for acknowledging our contributions. We are eager to see how our feedback will be implemented and are ready to assist wherever needed.\n\nWarmest regards,\nSophia Taylor",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to dictate a reply email to Sophia saying \"Hi Sophia I was just wondering if you were free to meet for a coffee to discuss your ideas during the community meeting.\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to dictate a reply email to the contact called Sophia.\n\nI should locate the email history with this contact by searching their name in the user's Inbox and then start a draft reply.\n\nAs the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the email if the user confirms that the message was transcribed correctly.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the relevant email thread (or inbox) before replying\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A reply (or new) email is actually sent to Sophia with the requested coffee-chat text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"sophia.taylor@orchardbusiness.org\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"meet for a coffee\",\n                                    \"creation_datetime_iso\": \"2024-12-06T15:45:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Ensure Sophia is in the To/Recipients list (allowing possible extras like CC)\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                # Body must contain the key phrase; we allow for additional text/formatting\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                    # Ignore unrelated sandbox traffic when checking EMAIL DB addition\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to dictate a reply to Sophia asking her if she's free to meet up for a coffee to discuss her contributions during the community meeting. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"modify_draft_email\", \"send_email\"]",
+  "is_read_time": "2024-12-06T15:45:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

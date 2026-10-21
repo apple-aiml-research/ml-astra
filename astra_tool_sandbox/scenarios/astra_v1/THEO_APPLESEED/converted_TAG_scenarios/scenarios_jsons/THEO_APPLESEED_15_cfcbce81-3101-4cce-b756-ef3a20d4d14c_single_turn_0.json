@@ -1,0 +1,179 @@
+{
+  "task_id": "cfcbce81-3101-4cce-b756-ef3a20d4d14c",
+  "plot_id": 15,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Evening, July 26, 2024 at 7 pm, Cookie Watson, John Quinn, Lucas Garcia were involved. Chat with Cookie to finalize plans for a weekend outing The details of the trip is finalized",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_15",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "contact",
+    "messaging",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You send a message to your hiking folks after the trip to Big Rock Mountain today saying \"Well done today guys! excellent hike, one to remember! Looking forward to the next one\".",
+  "reference_time": "2024-07-27T18:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to a group chat including John Quinn, Cookie Watson and Lucas Garcia stating \"Well done today guys! excellent hike, one to remember! Looking forward to the next one\". at 18:40pm.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_15_cfcbce81-3101-4cce-b756-ef3a20d4d14c_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Hey Cookie, are we all set for the hike this weekend?",
+      "creation_datetime_iso": "2024-07-26T19:00:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Hi Theo! Yes, I'm checking in with John and Lucas now.",
+      "creation_datetime_iso": "2024-07-26T19:02:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Theo, everyone's confirmed. What's the meeting time?",
+      "creation_datetime_iso": "2024-07-26T19:10:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Great! Let's meet at 6 AM at the trailhead.",
+      "creation_datetime_iso": "2024-07-26T19:12:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Hiking Trip",
+      "start_datetime_iso": "2024-07-27T06:00:00-07:00",
+      "end_datetime_iso": "2024-07-27T10:00:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Theo Appleseed"
+      ],
+      "location": "Big Rock Mountain Trail, Orchard County, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-25T20:00:00-07:00",
+      "notes": "Hiking trip to the local mountain trails."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "Johnny",
+      "email": "john.quinn@palantir.com",
+      "relationship": "College Friend",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": false,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "1234-5678-9110",
+      "alias": "Luke",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Gym Buddy",
+      "address": "129 Fitness Blvd, Orchard County, CA",
+      "company": "Local Gym",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to my hiking folks today saying \"Well done today guys! excellent hike, one to remember! Looking forward to the next one\"",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to send a message to the hiking folks today. I need to look for who has attended the hiking. First I checked the calendar, there's a hiking event scheduled earlier today with invitation from John Quinn from 6 am to 10 am to Big Rock Mountain Trail. But the user mentioned \"folks\" so I need to look for others who have attended. I search the message history, and from Cookie Watson, on 7/26 19:02 she mentioned John and Lucas. Then I checked the user's contact card confirmed that it's John Quinn (from the calendar event) and Lucas Garcia. Then I will set up a message with them as participants for this in a group. After this I will ask for the body of the message. which is supplied at \"Well done today guys! excellent hike, one to remember! Looking forward to the next one\". After this, I will send the message>",
+  "milestones": "[\n                # Milestone 0 – The agent queries the contacts database to locate hiking friends\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm that at least John Quinn was returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"John Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"john.quinn@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # depends on contact search in milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – A new group message to the hiking folks is sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"john.quinn@palantir.com\",\n                                                \"1234-5678-9108\",\n                                            ),\n                                            (\n                                                \"cookie.watson@example.com\",\n                                                \"1234-5678-9107\",\n                                            ),\n                                            (\n                                                \"lucas.garcia@example.com\",\n                                                \"1234-5678-9110\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"Well done today guys!\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-27T18:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Require that each hiking friend is present (email or phone allowed), extra addresses (e.g., Theo) are OK\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You send a message to your hiking folks after the trip to Big Rock Mountain today saying \"Well done today guys! excellent hike, one to remember! Looking forward to the next one\". ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-27T18:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,103 @@
+{
+  "task_id": "a3c3b16e-62f5-4841-86ac-e42879f6eabd",
+  "plot_id": 22,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo checked his calendar and found out his calendar is fully packed from 8 am to 5pm today. His only available between 3pm to 4pm. He also has a dentist appointment at 1pm for an hour. The rest of his schedule is filled with work meetings for today.\n Generate calendar_events for Theo for July 29, 2024",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_22",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know how much time there is between the events client presentation preparation and weekly team meeting.",
+  "reference_time": "2024-07-29T13:50:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that the amount of time between the events named \"Client Presentation Preparation\" and \"Weekly Team Meeting\" is 1 hour. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_22_a3c3b16e-62f5-4841-86ac-e42879f6eabd_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Client Presentation Preparation",
+      "start_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T15:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "124 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Preparation session for upcoming client presentation with the team."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Weekly Team Meeting",
+      "start_datetime_iso": "2024-07-29T16:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T17:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room A, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Regular weekly meeting to discuss team issues and updates."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need to know how much time there is between the client presentation and the team meeting please ",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know how much time there is between \"the client presentation\" and \"the team meeting\".\n\nOkay, first of all, I need to go to the user's Calendar to see if they have any upcoming events that correspond to these descriptions.\n\nGreat, okay, I can see that they have one event named \"Client Presentation Preparation\" that's happening from 14:00 - 15:00, July 29th, 2024, and another named \"Weekly Team Meeting\", taking place from 16:00 - 17:00, July 29th, 2024.\n\nThe later of the two meetings starts at 16:00, and the earlier of the two meetings ends at 15:00, so I calculate the time between these two events is 1 hour. \n\nI will now inform the user of this. ",
+  "milestones": "[\n                # Milestone 0 – Agent consulted calendar data\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Agent told the user the gap is one hour\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"1 hour\",\n                                            \"one hour\",\n                                            \"1-hour\",\n                                            \"1 hr\",\n                                            \"one hr\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know how much time there is between the events client presentation preparation and weekly team meeting. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-29T13:50:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

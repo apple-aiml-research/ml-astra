@@ -1,0 +1,107 @@
+{
+  "task_id": "27590c4b-e5c6-4567-900d-8f5ceb51d383",
+  "plot_id": 9,
+  "plot_summary": "Dawei Shen is the protagonist. On Friday, December 6, 2024 at 10 am, self, Jeff Bing were involved. Jeff calls Dawei to invite him to a tech panel he's hosting in Orchard County next Tuesday. Dawei agrees to attend and blocks the time in his calendar. Dawei receives an email with panel details.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_9",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know the location of the tech panel that Jeff Bing has invited you to",
+  "reference_time": "2024-12-06T11:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The assistant tells the user that the Tech Panel will take place at the Tech Hub Conference Center.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_9_27590c4b-e5c6-4567-900d-8f5ceb51d383_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Invitation: Tech Panel Discussion on December 10",
+      "sender_address": "jeff.bing@bingelectronics.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T10:10:00-08:00",
+      "body": "Hello Dawei,\n\nI hope this message finds you well. I'm excited to invite you to a tech panel discussion I'm hosting next Tuesday, December 10, at the Tech Hub Conference Center here in Orchard County. We'll be discussing the latest trends and innovations in consumer electronics. Your insights would be incredibly valuable, and I would be thrilled if you could join us.\n\nPlease find the event details attached. Let me know if you can make it!\n\nBest regards,\nJeff Bing",
+      "attachments": [
+        "Tech_Panel_Details.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Jeff Bing",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Jeff",
+      "last_name": "Bing",
+      "full_name": "Jeff Bing",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Jeff",
+      "email": "jeff.bing@bingelectronics.com",
+      "relationship": "Family Friend",
+      "address": "678 Commerce Rd, Orchard County, CA 94022, USA",
+      "company": "Bing Electronics",
+      "job_title": "CEO",
+      "is_self": false,
+      "birthday": "1969-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "incoming",
+      "caller_address": "+1 555-789-0123-4567",
+      "receiver_address": "+1 555-123-4567-8901",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-12-06T10:00:00-08:00",
+      "duration_in_hms": "00:05:00"
+    }
+  ],
+  "query": "Where is the event Jeff invited me to taking place",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "So the user wants to know the location of an event Jeff has invited them to. I will search their emails for Jeff Bing’s invitation. The email titled “Invitation: Tech Panel Discussion on December 10” contains the details, including that the Tech Panel is being held at the Tech Hub Conference Center. I will respond to the user with that location.",
+  "reference_time_str": "Today is Friday, December 6, 2024 or 2024-12-06T11:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – An email lookup tool is invoked to retrieve information about the Tech Panel\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1: The email found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Invitation: Tech Panel Discussion on December 10\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-06T10:10:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The user receives the address / location of the Tech Panel\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Either phrase should appear in the reply\n                                    \"content\": \"Tech Hub Conference Center\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # check for email\n                (1, 2),  # reply given email\n            ]",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know the location of the tech panel that Jeff Bing has invited you to ",
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-06T11:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

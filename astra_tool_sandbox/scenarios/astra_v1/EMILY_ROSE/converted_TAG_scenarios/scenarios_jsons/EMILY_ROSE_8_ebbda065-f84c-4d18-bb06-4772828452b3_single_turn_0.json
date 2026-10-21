@@ -1,0 +1,83 @@
+{
+  "task_id": "ebbda065-f84c-4d18-bb06-4772828452b3",
+  "plot_id": 8,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 6, 2024 at 2:00 PM, Chloe Waters, Sophia Taylor were involved. Community meeting discussing feedback on past events and brainstorming future initiatives. Survey results and feedback received via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_8",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to set up a calendar event called \"Next events discussion\" on 17th December 2024 at 10:00 am.",
+  "reference_time": "2024-12-06T15:50:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A calendar event called \"Next events discussion\" on 17th December 2024 at 10:00 am is created.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_8_ebbda065-f84c-4d18-bb06-4772828452b3_single_turn_0",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Thank You for Your Feedback!",
+      "sender_address": "sophia.taylor@orchardbusiness.org",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "chloe.waters@orchardmail.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:45:00-08:00",
+      "body": "Hi Emily,\n\nIt was indeed a great meeting today. Thank you for organizing it and for acknowledging our contributions. We are eager to see how our feedback will be implemented and are ready to assist wherever needed.\n\nWarmest regards,\nSophia Taylor",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Create a calendar event called \"Next events discussion\" on 17th December 2024 at 10:00 am please",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to create an event called \"Next events discussion\". I will ask the user for the date and time of the event. This is given as 17th December 2024 at 10:00 am. After this I will set up the event.",
+  "milestones": "[\n                # Milestone 0 – Agent invokes the calendar-creation tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"create_calendar_event\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new calendar event matching the requested title and start-time exists\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Next events discussion\",\n                                    \"start_datetime_iso\": \"2024-12-17T10:00\",  # partial string; timezone/seconds may vary,\n                                    \"creation_datetime_iso\": \"2024-12-06T15:50:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool call should precede the actual creation in the database\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"get_all_calendars\",       # optional look-up for conflicts\n    \"search_calendar_events\",  # optional look-up for conflicts\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to set up a calendar event called \"Next events discussion\" on 17th December 2024 at 10:00 am. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-12-06T15:50:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

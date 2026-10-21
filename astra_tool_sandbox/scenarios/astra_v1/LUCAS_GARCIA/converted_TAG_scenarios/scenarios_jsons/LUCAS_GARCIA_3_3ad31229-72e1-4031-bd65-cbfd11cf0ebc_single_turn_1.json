@@ -1,0 +1,93 @@
+{
+  "task_id": "3ad31229-72e1-4031-bd65-cbfd11cf0ebc",
+  "plot_id": 3,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 6 pm, Theo Appleseed were involved. Lucas and Theo meet for their usual evening workout session at the local gym. Lucas receives a message from Theo discussing fitness goals and the next 3 months. Book schedules for future session the next 3 months.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_3",
+    "messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're eager to know if your gym buddy Theo got back to you about your gym session suggestion.",
+  "reference_time": "2024-12-02T19:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The message from Theo Appleseed, received on December 2nd, 2024, at 19:25, is shown to the user. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_3_3ad31229-72e1-4031-bd65-cbfd11cf0ebc_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Theo Appleseed",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Perfect. I'll lock those times in my calendar. Thanks, Lucas! Looking forward to smashing those goals together!",
+      "creation_datetime_iso": "2024-12-02T19:25:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 12345-6789-1000-5678",
+      "alias": "Gym Buddy",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Gym buddy and workout partner",
+      "address": "45 Fit St, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Trainer",
+      "is_self": false,
+      "birthday": "1990-05-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to know if they got a reply from my gym buddy. I wonder who they mean. I should check their contacts to try to figure it out. I see that Theo Appleseed is listed as a gym buddy so I think it must be him. Okay, I'll check for a new message from Theo Appleseed. I see one new message from Theo Appleseed, received on December 2nd, 2024, at 19:25. I'll show that message to the user now. ",
+  "query": "Did I get a reply from my gym buddy?",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – The agent looks through messages to find any reply from the gym buddy\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the expected message from Theo Appleseed (gym buddy) was\n                # returned in the tool output captured in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Theo Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Perfect.\",\n                                                \"partial\": True,  # allow substring match\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-02T19:25:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent’s response to the user shows (quotes or includes) the\n                # message from Theo so the user can read it\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Perfect.\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # message-search → verify Theo’s reply found\n                (1, 2),  # verified reply → user is shown the message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You're eager to know if your gym buddy Theo got back to you about your gym session suggestion. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-12-02T19:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

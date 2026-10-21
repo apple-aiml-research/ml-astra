@@ -1,0 +1,138 @@
+{
+  "task_id": "55eba1db-4e7a-4eb3-bd27-7435c220455b",
+  "plot_id": 10,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 7, 2024 at 6:00 PM, Linda Rose were involved. Attending the community holiday party where Linda provides homemade treats. Community event pictures uploaded and shared on social media.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_10",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a text to your mother, Linda Rose, to tell her that you forgot the napkins.",
+  "reference_time": "2024-12-07T17:50:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "A text is sent to Linda Rose in the Holiday Party Prep chat saying \"I forgot the napkins for the Pearl Harbor Day Party. So sorry! We'll have to make do without them, I guess.\" ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_10_55eba1db-4e7a-4eb3-bd27-7435c220455b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Holiday Party Prep",
+      "participants_addresses": [
+        "emily.rose@orchardcommunity.org",
+        "linda.rose@homemadetreats.com"
+      ],
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "content": "Hi Mom! Just checking in to see if you need any last-minute items for the treats you're preparing for the holiday party tonight.",
+      "creation_datetime_iso": "2024-12-07T16:00:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Holiday Party Prep",
+      "participants_addresses": [
+        "emily.rose@orchardcommunity.org",
+        "linda.rose@homemadetreats.com"
+      ],
+      "sender_address": "linda.rose@homemadetreats.com",
+      "content": "Hi Emily! Thanks for checking. Could you bring some extra napkins? I think we might run short.",
+      "creation_datetime_iso": "2024-12-07T16:05:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Holiday Party Prep",
+      "participants_addresses": [
+        "emily.rose@orchardcommunity.org",
+        "linda.rose@homemadetreats.com"
+      ],
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "content": "Absolutely, I'll bring a pack with me. Anything else?",
+      "creation_datetime_iso": "2024-12-07T16:10:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Holiday Party Prep",
+      "participants_addresses": [
+        "emily.rose@orchardcommunity.org",
+        "linda.rose@homemadetreats.com"
+      ],
+      "sender_address": "linda.rose@homemadetreats.com",
+      "content": "That should be all. See you soon at the party!",
+      "creation_datetime_iso": "2024-12-07T16:15:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Holiday Party Prep",
+      "participants_addresses": [
+        "emily.rose@orchardcommunity.org",
+        "linda.rose@homemadetreats.com"
+      ],
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "content": "Great! Can't wait to see everyone and enjoy the evening. See you there!",
+      "creation_datetime_iso": "2024-12-07T16:20:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Linda",
+      "last_name": "Rose",
+      "full_name": "Linda Rose",
+      "phone_number": "+1 530-555-0126",
+      "alias": "Culinary Mom",
+      "email": "linda.rose@homemadetreats.com",
+      "relationship": "Mother",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Homemade Treats",
+      "job_title": "Culinary Artist",
+      "is_self": false,
+      "birthday": "1967-07-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need to send a reply text about the napkins saying, I forgot the napkins for the Pearl Harbor Day Party. So sorry! We'll have to make do without them, I guess. ",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "User Emily Rose wants to send a message about napkins as a reply. The intended recipient is user's mother, something I can see from the message, but i see no prior messages to or from user's mother directly. I do see, however, a message from user's mother regarding napkins in the chat called Holiday Party Prep. Since both the user and the user's mother are the only participants in that chat, I shall send it there after getting approval from user. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to locate the appropriate conversation or recent messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Accept either direct listing or a search over messages to find the thread\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                        # (contacts lookup could also be used, but the key\n                                        # retrieval step is a message/conversation lookup)\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the conversation “Holiday Party Prep” was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Holiday Party Prep\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",  # populated by extractor\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new outgoing message with the apology about napkins was sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"Holiday Party Prep\",\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"emily.rose@orchardcommunity.org\",\n                                                \"+1 530-555-0123\",\n                                            ),\n                                            (\n                                                \"linda.rose@homemadetreats.com\",\n                                                \"+1 530-555-0126\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"forgot the napkins\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-07T17:50:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"conversation_name\": column_exact_match_similarity,\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # retrieved messages → verified correct conversation\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to send a text to your mother, Linda Rose, to tell her that you forgot the napkins. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-07T17:50:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

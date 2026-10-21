@@ -1,0 +1,130 @@
+{
+  "task_id": "a678ce75-0db7-4d5d-abc2-683840f8fe2c",
+  "plot_id": 20,
+  "plot_summary": "John Quinn is the protagonist. On Friday, July 26, 2024 at 11:30am, Ali Amin, Alisa Borhman, Akira Muramoto were involved. John invites his friends to a 'history brunch' on Sunday late morning.  1. John messages his friends in a group chat, suggesting that they could meet up for a 'history brunch' at the local Egg & Bagel cafe to discuss post-Napoleonic history. 2. Ali enthusiastically replies in the group chat with everyone. 3. Alisa also replies agreeing in the group chat with everyone. 4. Alisa sends a separate message only to John asking him to make sure it does not devolve into John and Ali monopolizing the conversation with a focus on military history. 5. Akira does not respond to the group chat but writes to John separately saying he's not really interested, sounding slightly exasperated. 6. John answers separately to each of the 3 message threads (group chat with everyone, Alice, Akira). 7. John makes an invite for the brunch adding the people who accepted ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_20",
+    "contact",
+    "messaging",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to ask Akira if they are sure that they aren't coming and if there is any reason that makes them not want to come.",
+  "reference_time": "2024-07-26T18:30:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "A message is sent to Akira Muramoto saying \"Just making sure you're not interested in coming. Is there something we do that you don't like?\""
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_20_a678ce75-0db7-4d5d-abc2-683840f8fe2c_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Akira Muramoto",
+      "participants_addresses": [
+        "akira.muramoto@sportsfan.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "akira.muramoto@sportsfan.com",
+      "content": "I'll pass this time. Enjoy the history talk!",
+      "creation_datetime_iso": "2024-07-26T11:50:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Akira Muramoto",
+      "participants_addresses": [
+        "akira.muramoto@sportsfan.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "No worries, Akira! We'll catch up another time.",
+      "creation_datetime_iso": "2024-07-26T11:56:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ali",
+      "last_name": "Amin",
+      "full_name": "Ali Amin",
+      "phone_number": "408-555-0134",
+      "alias": "Ali",
+      "email": "ali.amin@historybuffs.org",
+      "relationship": "Friend",
+      "address": "160 History Ln, San José, CA 95110",
+      "company": "History Buffs Inc.",
+      "job_title": "Historical Consultant",
+      "is_self": false,
+      "birthday": "1988-10-10T00:00:00-07:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Alisa",
+      "last_name": "Borhman",
+      "full_name": "Alisa Borhman",
+      "phone_number": "408-555-0136",
+      "alias": "Alisa",
+      "email": "alisa.borhman@historicalmuseums.org",
+      "relationship": "School Friend",
+      "address": "170 Past Ave, San José, CA 95132",
+      "company": "San José Historical Museum",
+      "job_title": "Curator",
+      "is_self": false,
+      "birthday": "1998-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to Akira Muramoto saying Just making sure you're not interested in coming. Is there something we do that you don't like?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants a message sent to Akira Muramoto. I find this contact in the users contacts. I set the contact as the recipient of the message.\nI draft the message as requested by the user and wait for confirmation. Once received I send the message.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Akira Muramoto’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new outgoing message is sent to Akira with the requested content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require Akira and John to be the only (or at least the) participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"akira.muramoto@sportsfan.com\",\n                                                \"408-555-0135\",\n                                            ),\n                                            (\n                                                \"john.quinn@palantir.com\",\n                                                \"1234-5678-9108\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"Just making sure\",  # key phrase\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-26T18:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to ask Akira if they are sure that they aren't coming and if there is any reason that makes them not want to come. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-26T18:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

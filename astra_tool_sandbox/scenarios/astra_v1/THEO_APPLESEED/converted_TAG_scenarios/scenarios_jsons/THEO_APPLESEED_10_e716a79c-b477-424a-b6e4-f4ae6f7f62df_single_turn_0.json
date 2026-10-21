@@ -1,0 +1,94 @@
+{
+  "task_id": "e716a79c-b477-424a-b6e4-f4ae6f7f62df",
+  "plot_id": 10,
+  "plot_summary": "Theo Appleseed is the protagonist. On Thursday Morning, July 25, 2024 at 8am, Lucas Garcia were involved. Early morning gym session. After the gym session, Lucas texted Theo to talk about Theo's training progress and planning their session next week. They plan their workout session for the next week via messages and sent out and calendar invite for it.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_10",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You have forgotten what time you arranged to meet Lucas at the gym tomorrow and would like to be reminded.",
+  "reference_time": "2024-07-24T18:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that the event named 'Gym Session with Lucas' is scheduled for 08:00-09:00 on 25 July 2024.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_10_e716a79c-b477-424a-b6e4-f4ae6f7f62df_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Gym Session with Lucas",
+      "start_datetime_iso": "2024-07-25T08:00:00-07:00",
+      "end_datetime_iso": "2024-07-25T09:00:00-07:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Theo Appleseed"
+      ],
+      "location": "Local Gym, 129 Fitness Blvd, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T12:00:00-07:00",
+      "notes": "Weekly gym session focusing on strength training."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "1234-5678-9110",
+      "alias": "Luke",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Gym Buddy",
+      "address": "129 Fitness Blvd, Orchard County, CA",
+      "company": "Local Gym",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time is my event with Lucas tomorrow?",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "referential_complexity": "moderate",
+  "reasoning": "The user wants to know what time their event with Lucas is tomorrow. First I should figure out what date is tomorrow. As today is the 24 July 2024 tomorrow will be 25 July 2024. Looking at their Calendar they only have one event with Lucas Garcia, the Gym Session with Lucas at 08:00-09:00 on 25 July 2024. I will tell the user it starts at 08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar events (tomorrow’s event with Lucas)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct calendar entry (Gym Session with Lucas @ 08:00) was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Gym Session with Lucas\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-25T08:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",  # placeholder filled by extractor\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user the event is at 8 am\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"8:00\",\n                                            \"8 am\",\n                                            \"8am\",\n                                            \"8 a.m.\",\n                                            \"08:00\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool call → verify retrieved event\n                (1, 2),  # Retrieved event → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You have forgotten what time you arranged to meet Lucas at the gym tomorrow and would like to be reminded. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-24T18:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

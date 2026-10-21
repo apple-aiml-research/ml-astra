@@ -1,0 +1,96 @@
+{
+  "task_id": "f8198e32-b5e5-4544-acb1-6acff9c744f7",
+  "plot_id": 15,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 2:15pm, Apricot Sweeney were involved. John and Apricot discuss seeing a film next Monday night  1. Apricot sends a link to a romantic comedy film ('Two Hearts with one Stone') she wants to see on Monday. 2. John agrees and says he'll buy the tickets. 3. John creates a calendar reminder and adds Apricot to it. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_15",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to cancel Movie Night with Apricot after what happened between her and Deborah the other night.",
+  "reference_time": "2024-07-29T10:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Delete the calendar event Movie Night with Apricot scheduled for July 29 2024 from 19:00 to 21:00.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_15_f8198e32-b5e5-4544-acb1-6acff9c744f7_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Movie Night with Apricot",
+      "start_datetime_iso": "2024-07-29T19:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T21:00:00-07:00",
+      "attendees_names": [
+        "Apricot Sweeney",
+        "John Quinn"
+      ],
+      "location": "Downtown Cinema, San Francisco",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T14:17:00-07:00",
+      "notes": "Going to watch 'Two Hearts with one Stone' with Apricot."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Forget about the movie night.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "So I'll presume by the mention of movie night that the user is referring to the upcoming event Movie Night with Apricot. The user says to 'forget' the event so I'll take that to mean that they want to delete the event.",
+  "milestones": "[\n                # Milestone 0 – Agent attempts to locate the movie night event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the desired event appears in the search results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Movie Night with Apricot\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify the event has been removed from the calendar database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Movie Night with Apricot\",\n                                    \"start_datetime_iso\": \"2024-07-29T19:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T21:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to cancel Movie Night with Apricot after what happened between her and Deborah the other night. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-07-29T10:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

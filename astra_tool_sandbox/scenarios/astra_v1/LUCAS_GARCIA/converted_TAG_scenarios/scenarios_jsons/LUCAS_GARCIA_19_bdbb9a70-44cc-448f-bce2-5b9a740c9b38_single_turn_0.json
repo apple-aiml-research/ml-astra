@@ -1,0 +1,98 @@
+{
+  "task_id": "bdbb9a70-44cc-448f-bce2-5b9a740c9b38",
+  "plot_id": 19,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 11, 2024 at 7 am, David Turner were involved. Lucas has an early morning surf session with his surfing buddy, David. The wave was perfect. They both were very excited and enjoyed it. Lucas captures moments of the surfing activities, sharing them on iMessage. Lucas messages David to coordinate next surfing sesssion.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_19",
+    "contact",
+    "calendar",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You forgot which beach you surfed at last Wednesday",
+  "reference_time": "2024-12-13T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The location details of the event \"Early Morning Surfing Session with David\" from 07:00-08:30 on the 11 December 2024 are given",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_19_bdbb9a70-44cc-448f-bce2-5b9a740c9b38_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Early Morning Surfing Session with David",
+      "start_datetime_iso": "2024-12-11T07:00:00-08:00",
+      "end_datetime_iso": "2024-12-11T08:30:00-08:00",
+      "attendees_names": [
+        "David Turner",
+        "Lucas Garcia"
+      ],
+      "location": "Local Beach, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T10:00:00-08:00",
+      "notes": "Lucas and his surfing buddy David will enjoy an early morning session at the local beach. Perfect waves are expected to make this a memorable outing."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Where did the coolest surf instructor and I go last Wednesday?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know where they went with 'the coolest surf instructor' last Wednesday. \n\nFirst, I will need to figure out who the user is referring to. I will go through the user contacts. There I see that one contact, David Turner, is reported to work as a surf instructor. It is likely the user is referring to this person. \n\nAlso, the user is referring to an event taking place 'last Wednesday'. The request is being made on Friday December 13, 2024 at 10:00. Looking at the calendar, I see there is an event titled \"Early Morning Surfing Session with David\" from 07:00-08:30 on Wednesday December 11 2024 with David Turner mentioned as an invitee. This must be what the user is asking about. I explore the event details, and I see the location is listed there. I'll inform the user the event took place at Local Beach, Orchard County, CA",
+  "milestones": "[\n                # Milestone 0 – the agent queries the calendar to locate last Wednesday’s surf event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – confirm the correct calendar event (with location) was returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Early Morning Surfing Session with David\",\n                                                \"partial\": False,\n                                            },\n                                            \"location\": {\n                                                \"value\": \"Local Beach\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – the agent informs the user of the correct location\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Local Beach\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar query → verify event retrieved\n                (1, 2),  # Event verified → respond to user with location\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"search_contacts\",   # optional, but plausible for confirming “surf instructor”\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You forgot which beach you surfed at last Wednesday ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-13T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

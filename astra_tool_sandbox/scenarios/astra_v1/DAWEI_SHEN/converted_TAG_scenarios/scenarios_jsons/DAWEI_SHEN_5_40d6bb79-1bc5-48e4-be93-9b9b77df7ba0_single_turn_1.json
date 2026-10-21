@@ -1,0 +1,127 @@
+{
+  "task_id": "40d6bb79-1bc5-48e4-be93-9b9b77df7ba0",
+  "plot_id": 5,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 3, 2024 at 7 am, self, Paul Harper were involved. Paul calls Dawei to check if he can watch his cat for the weekend, as Paul is heading out of town. Dawei agrees and notes the dates. Dawei adds the task to his calendar and sets a reminder to pick up Paul's house key on Thursday.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_5",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have been asked over the phone to do cat sitting for Paul.    You agree but know that you will need to cancel the event on Friday as it's the first day you'll take care of the cat and you'd perfer to be with the cat for the entire day.",
+  "reference_time": "2024-12-03T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Calendar is checked for clashes with Cat Sitting for Paul event occurring all day December 6th to December 8th 2024.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. Clashing events are moved to December 5th 2024.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_5_40d6bb79-1bc5-48e4-be93-9b9b77df7ba0_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cat Sitting for Paul",
+      "start_datetime_iso": "2024-12-06T00:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T23:59:59-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Paul Harper's House, 125 Neighbor St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T07:05:00-08:00",
+      "notes": "Watch Paul's cat over the weekend while he is out of town."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Pay Property Tax",
+      "start_datetime_iso": "2024-12-06T08:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T08:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T20:10:00-08:00",
+      "notes": "Reminder to pay the property tax to avoid late fees."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "incoming",
+      "caller_address": "+1 555-678-9012-3456",
+      "receiver_address": "+1 555-123-4567-8901",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-12-03T07:00:00-08:00",
+      "duration_in_hms": "00:05:00"
+    }
+  ],
+  "query": "My property tax clashes with cat sitting, move it to the day before cat sitting.",
+  "reasoning": "The user is asking me to move a clashing event.\nBased on the user request, the event being referred to is Pay Property Tax occurring on December 6th 2024 at 8:00-8:30. This clashes with Cat Sitting for Paul which occurs all day across December 6th to 8th 2024.\nBefore I move any events I should check if this will create a further clash. I can see no events scheduled for December 5th. \nI will move Pay Property Tax to December 5th, the start time remains 8:00 and the end time remains 8:30.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – The agent inspects the calendar to detect the clash\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1: The clashing “Pay Property Tax” event is found.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Pay Property Tax\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-06T08:00:00\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – The “Pay Property Tax” event has been moved to 8 AM-8:30 AM on 5 Dec 2024\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Pay Property Tax\",\n                                    \"start_datetime_iso\": \"2024-12-05T08:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-05T08:30:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-03T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against the pre-task snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar inspection precedes the rescheduling action\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"modify_calendar_event\",      # preferred direct reschedule\n    \"remove_calendar_event\",      # possible alternative path (delete + recreate)\n    \"create_calendar_event\",      # companion to remove_calendar_event if used\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You have been asked over the phone to do cat sitting for Paul.   You agree but know that you will need to cancel the event on Friday as it's the first day you'll take care of the cat and you'd perfer to be with the cat for the entire day. ",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-03T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

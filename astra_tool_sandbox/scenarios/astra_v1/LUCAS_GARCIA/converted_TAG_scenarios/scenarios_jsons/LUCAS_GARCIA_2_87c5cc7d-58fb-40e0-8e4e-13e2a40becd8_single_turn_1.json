@@ -1,0 +1,92 @@
+{
+  "task_id": "87c5cc7d-58fb-40e0-8e4e-13e2a40becd8",
+  "plot_id": 2,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 10 am, Jessica Lin were involved. Lucas and Jessica discuss upcoming joint fitness workshop at the gym. Lucas notes down the workshop details and follows up with an email to finalize the schedule. Send out corresponding calendar events.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_2",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know exactly what you said to Jessica Lin in your email.",
+  "reference_time": "2024-12-02T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Email sent to Jessica Lin on December 02 2024 at 11:00 is read out to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_2_87c5cc7d-58fb-40e0-8e4e-13e2a40becd8_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Finalizing Schedule for Upcoming Joint Fitness Workshop",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "jessica.lin@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T11:00:00-08:00",
+      "body": "Hi Jessica,\n\nGreat discussing the plans for our upcoming joint fitness workshop earlier today. Based on our conversation, we'd like to finalize the schedule. Please confirm if the afternoon on December 10th works for you.\n\nLooking forward to a productive workshop!\n\nBest,\nLucas",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Read me back the last email I sent to Jessica Lin.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to read back the last email they sent to Jessica Lin, so I'll do that now.",
+  "milestones": "[\n                # Milestone 0 – Agent uses an email-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Agent tells the user the content of the last email to Jessica Lin\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Please confirm if the afternoon on December 10th works for you\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieval precedes user-facing answer\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know exactly what you said to Jessica Lin in your email. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-02T18:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,98 @@
+{
+  "task_id": "b4de61cf-cc3a-4769-a387-b0f62c299f50",
+  "plot_id": 2,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 10 am, Jessica Lin were involved. Lucas and Jessica discuss upcoming joint fitness workshop at the gym. Lucas notes down the workshop details and follows up with an email to finalize the schedule. Send out corresponding calendar events.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_2",
+    "calendar",
+    "contact",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are wondering what time you sent in your last email to Jessica Lin",
+  "reference_time": "2024-12-02T16:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The time of the email sent by the user on December 02, 2024 at 11:00 to jessica.lin@example.com is presented to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_2_b4de61cf-cc3a-4769-a387-b0f62c299f50_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Finalizing Schedule for Upcoming Joint Fitness Workshop",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "jessica.lin@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T11:00:00-08:00",
+      "body": "Hi Jessica,\n\nGreat discussing the plans for our upcoming joint fitness workshop earlier today. Based on our conversation, we'd like to finalize the schedule. Please confirm if the afternoon on December 10th works for you.\n\nLooking forward to a productive workshop!\n\nBest,\nLucas",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time did I send that last email to Jessica Lin",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know when they sent their last email to Jessica Lin. First thing I need to do is search the user's emails. Ok I found an email sent to jessica.lin@example.com. That must be the email the user is referring to. Ok now that I have that I will retrieve the time of the email and inform the user",
+  "milestones": "[\n                # Milestone 0 – The agent looks through the email store\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm that the email sent to Jessica Lin on 2024-12-02 11:00-08:00\n                #               appeared in the result list obtained in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"recipients_addresses\": {\n                                                \"value\": [\"jessica.lin@example.com\"],\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-02T11:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # use output from Milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – The assistant tells the user the correct time (11:00 am)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"11:00\",\n                                            \"11 am\",\n                                            \"11am\",\n                                            \"11 a.m.\",\n                                            \"11 AM\",\n                                            \"11AM\",\n                                            \"11 A.M.\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You are wondering what time you sent in your last email to Jessica Lin ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-02T16:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

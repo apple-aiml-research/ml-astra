@@ -1,0 +1,92 @@
+{
+  "task_id": "a00c615f-ee14-4268-b4b5-826fa2799f95",
+  "plot_id": 14,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 1:30pm, Ursula Quinn were involved. John has a discussion with his mom about his dad's birthday and ends up ordering his dad some high end whiskey  1. John messages his mom to ask her what to buy his dad for his upcoming birthday. 2. His mom is not very helpful, saying they have everything they need. 3. John ends up ordering some high-end whiskey online, and receives an email with the purchase confirmation. 4. He sends the purchase confirmation to his mom. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_14",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know the order number from your whiskey order to be able to track it.",
+  "reference_time": "2024-07-25T15:30:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The order number of '#998877' received by email on 23 July 2024 at 13:45 from 'orders@whiskeyworld.com' with the subject 'Order Confirmation - Premium Whiskey' is presented to the user."
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_14_a00c615f-ee14-4268-b4b5-826fa2799f95_single_turn_0",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Order Confirmation - Premium Whiskey",
+      "sender_address": "orders@whiskeyworld.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T13:45:00-07:00",
+      "body": "Dear John Quinn, Thank you for your purchase from Whiskey World. Your order of Glenlivet Archive 21 Year Old Whiskey has been confirmed. Your order number is #998877. Cheers, Whiskey World Team",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What's the order number in my whiskey email?",
+  "reasoning": "Okay, so the user is searching for an 'order number' from their 'whiskey' email. From checking their Mail app, I can see one matching email received on 23 July 2024 at 13:45 from 'orders@whiskeyworld.com' with the subject 'Order Confirmation - Premium Whiskey'. Within the content of that email I can see the order number the user is searching for, '#998877'. I can then present this order number to the user.",
+  "referential_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent searches or lists emails to locate the whiskey order confirmation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Agent informs the user of the order number #998877\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"#998877\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1)  # Retrieve emails → present order number to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know the order number from your whiskey order to be able to track it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "is_read_time": "2024-07-25T15:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

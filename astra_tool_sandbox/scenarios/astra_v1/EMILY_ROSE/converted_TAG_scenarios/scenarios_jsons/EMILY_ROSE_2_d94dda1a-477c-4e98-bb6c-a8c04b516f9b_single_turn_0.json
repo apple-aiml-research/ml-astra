@@ -1,0 +1,114 @@
+{
+  "task_id": "d94dda1a-477c-4e98-bb6c-a8c04b516f9b",
+  "plot_id": 2,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 2, 2024 at 10:30 AM, Michael Thompson, Jenna Miles were involved. Meeting at the community center to finalize the details for Christmas charity event. Meeting summary sent via email to Michael and Jenna.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_2",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to set aside some time to make sure you've reviewed the notes you made on the meeting to make sure everything is covered.",
+  "reference_time": "2024-12-02T12:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Review Meeting Notes\" is created for 14:00-14:30 on 2 December 2024 at 12:00 on 2 December 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_2_d94dda1a-477c-4e98-bb6c-a8c04b516f9b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "create_calendar_event",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Summary of Today's Meeting on Christmas Charity Event",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "michael.thompson@orchardcommunity.org",
+        "jenna.miles@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-02T11:45:00-08:00",
+      "body": "Hello Michael and Jenna,\n\nThank you both for the productive meeting this morning. We covered all the necessary details to ensure our Christmas charity event is a success. Here’s a brief overview of what we discussed:\n\n1. Finalized the event schedule and assigned responsibilities.\n2. Confirmed the list of invitees and special guests.\n3. Discussed the layout and decorations for the event space.\n4. Reviewed the timeline for volunteer assignments.\n5. Agreed on the marketing and promotion strategies.\n\nPlease find attached the meeting notes and the finalized event plan. Let me know if there are any further adjustments to be made.\n\nBest regards,\nEmily Rose\nEvent Coordinator\nOrchard County Community Center",
+      "attachments": [
+        "Christmas_Charity_Event_Details.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Michael",
+      "last_name": "Thompson",
+      "full_name": "Michael Thompson",
+      "phone_number": "+1 530-555-0130",
+      "alias": "Community Leader",
+      "email": "michael.thompson@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1985-06-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jenna",
+      "last_name": "Miles",
+      "full_name": "Jenna Miles",
+      "phone_number": "+1 530-555-0131",
+      "alias": "Decor Diva",
+      "email": "jenna.miles@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Planner",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Set aside some time around 2 so I can be sure I've covered everything in the meeting notes. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to set aside some time around 2 to make sure they've covered everything in the meeting notes. First I'll name the event something that means the events intent is clear. As the intent is to review the meeting notes I will name the event \"Review Meeting Notes.\" Next is the time in which the event will take place. The user has given most of the details but has not specified a run time. I will set it to the default runtime of half an hour which the user may change if they need more time. I will now create the event \"Review Meeting Notes\" for 14:00-14:30 on 2 December 2024 at 12:00 on 2 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – verify that the calendar entry was created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Review Meeting Notes\",\n                                    \"start_datetime_iso\": \"2024-12-02T14:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-02T14:30:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-02T12:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            # Only match the critical fields; defaults are fine for others\n                            reference_milestone_node_index=-1,  # compare with the pre-task snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to set aside some time to make sure you've reviewed the notes you made on the meeting to make sure everything is covered. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"create_calendar_event\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-02T12:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

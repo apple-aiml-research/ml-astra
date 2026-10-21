@@ -1,0 +1,92 @@
+{
+  "task_id": "a5b05ed7-c951-4a3c-8834-4a7d29776591",
+  "plot_id": 14,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 1:30pm, Ursula Quinn were involved. John has a discussion with his mom about his dad's birthday and ends up ordering his dad some high end whiskey  1. John messages his mom to ask her what to buy his dad for his upcoming birthday. 2. His mom is not very helpful, saying they have everything they need. 3. John ends up ordering some high-end whiskey online, and receives an email with the purchase confirmation. 4. He sends the purchase confirmation to his mom. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_14",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to see the order confirmation email from Premium Whiskey.",
+  "reference_time": "2024-07-24T15:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is shown the email sent from orders@whiskeyworld.com at 13:45 on July 23rd with the message 'Dear John Quinn, Thank you for your purchase from Whiskey World. Your order of Glenlivet Archive 21 Year Old Whiskey has been confirmed. Your order number is #998877. Cheers, Whiskey World Team'.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_14_a5b05ed7-c951-4a3c-8834-4a7d29776591_single_turn_1",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Order Confirmation - Premium Whiskey",
+      "sender_address": "orders@whiskeyworld.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T13:45:00-07:00",
+      "body": "Dear John Quinn, Thank you for your purchase from Whiskey World. Your order of Glenlivet Archive 21 Year Old Whiskey has been confirmed. Your order number is #998877. Cheers, Whiskey World Team",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to see the email about the Premium Whiskey order confirmation.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to see the email about the Premium Whiskey order confirmation. I will look for order confirmation email from Premium Whiskey. Okay I have found it. I will show it to the user.",
+  "milestones": "[\n                # Milestone 0 – Agent invokes an email-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Returned tool output contains the expected Premium Whiskey confirmation email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Order Confirmation - Premium Whiskey\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"orders@whiskeyworld.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"body\": {\n                                                \"value\": \"Glenlivet Archive 21 Year Old Whiskey\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent surfaces the email content to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"#998877\",\n                                            \"Glenlivet Archive 21\",\n                                            \"Order Confirmation - Premium Whiskey\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to see the order confirmation email from Premium Whiskey. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "is_read_time": "2024-07-24T15:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

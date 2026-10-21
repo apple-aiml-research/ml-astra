@@ -1,0 +1,36 @@
+{
+    "6": [
+        {
+            "call_type": "outgoing",
+            "caller": "1234-5678-9101",
+            "receiver": "1234-5678-9102",
+            "creation_time": "2024-07-23T18:00:00",
+            "duration": "30 minutes"
+        }
+    ],
+    "17": [
+        {
+            "call_type": "outgoing",
+            "caller": "1234-5678-9101",
+            "receiver": "1234-5678-9111",
+            "creation_time": "2024-07-27T15:00:00",
+            "duration": "30 minutes"
+        }
+    ],
+    "21": [
+        {
+            "call_type": "outgoing",
+            "caller": "theo.appleseed@example.com",
+            "receiver": "john.appleseed@example.com",
+            "creation_time": "2024-07-28T17:00:00",
+            "duration": "30 minutes"
+        },
+        {
+            "call_type": "outgoing",
+            "caller": "theo.appleseed@example.com",
+            "receiver": "sarah.appleseed@example.com",
+            "creation_time": "2024-07-28T17:00:00",
+            "duration": "30 minutes"
+        }
+    ]
+}

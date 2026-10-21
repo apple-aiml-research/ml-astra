@@ -1,0 +1,84 @@
+{
+  "task_id": "b47b3a35-233d-401d-b539-6618bd9f8d5e",
+  "plot_id": 17,
+  "plot_summary": "Theo Appleseed is the protagonist. On Saturday Afternoon, July 27, 2024 at 3 pm, Sarah Appleseed were involved. Phone call with his mother to check in and chat about the week ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_17",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send an event invitation to your mother.",
+  "reference_time": "2024-07-28T15:30:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. An event \"Dinner with Mom\" is created for Monday, July 29th, at 19:00. "
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_17_b47b3a35-233d-401d-b539-6618bd9f8d5e_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Appleseed",
+      "full_name": "Sarah Appleseed",
+      "phone_number": "1234-5678-9111",
+      "alias": "Mom",
+      "email": "sarah.appleseed@example.com",
+      "relationship": "Mother",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Regional Hospital",
+      "job_title": "Nurse",
+      "is_self": false,
+      "birthday": "1967-05-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "low",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "query": "Invite mom to dinner in my house tomorrow 7pm",
+  "reasoning": "The user wants to invite their mother to dinner at their house tomorrow at 7pm. First, I will need to figure out who the user is referring to by 'mother'. I go through the user's contacts and I see Sarah Appleseed listed as the user's mother there. The user is making this request on July 28th at 15:30. Therefore, I will create the event for Monday, July 29th, at 19:00 as requested by the user. There is no matching event at that specific time, so I will create a new one and invite Sarah Appleseed to participate.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the mother’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify that Sarah Appleseed (Mom) was actually returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Sarah Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            # Email or phone are optional here – full_name is sufficient to confirm the match\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new calendar event for dinner is created and Sarah is an attendee\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"dinner\",  # will match substrings like \"Family Dinner\"\n                                    \"start_datetime_iso\": \"2024-07-29T19:00\",  # ensure the time is 7 PM\n                                    \"attendees_names\": [[\"Sarah Appleseed\"]],\n                                    \"creation_datetime_iso\": \"2024-07-28T15:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send an event invitation to your mother. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-28T15:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

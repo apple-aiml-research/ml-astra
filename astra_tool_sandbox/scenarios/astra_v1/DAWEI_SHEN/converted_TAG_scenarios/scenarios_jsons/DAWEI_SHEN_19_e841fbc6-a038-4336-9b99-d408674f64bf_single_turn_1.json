@@ -1,0 +1,157 @@
+{
+  "task_id": "e841fbc6-a038-4336-9b99-d408674f64bf",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "astra_core",
+    "DAWEI_SHEN",
+    "plot_19",
+    "messaging",
+    "email",
+    "contact",
+    "whatsapp_messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You ran into Charles at a bar and he wanted you to text him in your usual way the name of the person you sent the receipt for the stage props order to, but you can't remember.",
+  "reference_time": "2024-12-12T21:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The contact for Francis Wagner (francis.wagner@orchardtheater.com) is found",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. A Whatsapp message is sent to Charles Wilde contains \"francis.wagner@orchardtheater.com\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_e841fbc6-a038-4336-9b99-d408674f64bf_single_turn_1",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "search_contacts",
+    "get_all_contacts",
+    "send_whatsapp_message",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_message",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-08T17:50:00-08:00",
+      "content": "Hey Dawei, heads up, we need to adjust tonight's rehearsal schedule. Can we start at 7 PM instead?",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-234-5678-9012",
+        "dawei.shen@orchardtech.com"
+      ],
+      "sender_name": "Dawei Shen",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "creation_datetime_iso": "2024-12-08T17:51:00-08:00",
+      "content": "Got it, Charles. Updating our calendar now.",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Vickie Lee"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-345-6789-0123"
+      ],
+      "sender_name": "Vickie Lee",
+      "sender_address": "+1 555-345-6789-0123",
+      "creation_datetime_iso": "2024-12-08T17:52:00-08:00",
+      "content": "I'm in for 7 PM. See you both then!",
+      "status": "read"
+    }
+  ],
+  "emails": [
+    {
+      "subject": "Receipt for Stage Props Order",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "francis.wagner@orchardtheater.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T19:30:00-08:00",
+      "body": "Hi Francis, I've placed the order for the stage props as discussed. Attached is the receipt for our records. Best, Dawei",
+      "attachments": [
+        "Order_Receipt_12122024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Charles",
+      "last_name": "Wilde",
+      "full_name": "Charles Wilde",
+      "phone_number": "+1 555-234-5678-9012",
+      "alias": "Charles",
+      "email": "charles.wilde@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Actor",
+      "is_self": false,
+      "birthday": "1988-08-08T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text Francis Wagner's email address to Charles in our usual way.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to text Charles in their usual way. They only have one Charles in their contact list, Charles Wilde, so that's who I'll compose a message for. The user also mentioned 'the usual way', based on the past message history, I assume it should be whatsapp message. They want to send him Francis Wagner's email address, probably because Francis is who they sent the stage props order receipt to. I'll send Charles a text saying \"I sent the receipt for the stage props order to Francis Wagner. His email address is francis.wagner@orchardtheater.com\"",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent searches contacts to find Francis Wagner's email address\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm Francis Wagner's contact (with email) was found in the contact search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Francis Wagner\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"francis.wagner@orchardtheater.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – A WhatsApp message is sent to Charles containing Francis's email address\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 555-234-5678-9012\",\n                                                \"charles.wilde@orchardtheater.com\",\n                                            ),\n                                            (\n                                                \"+1 555-123-4567-8901\",\n                                                \"dawei.shen@orchardtech.com\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"francis.wagner@orchardtheater.com\",\n                                    \"sender_address\": \"PLACEHOLDER\",  # we don't strictly check this,\n                                    \"creation_datetime_iso\": \"2024-12-12T21:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search → confirm correct email thread\n                (\n                    1,\n                    2,\n                ),  # Having found Francis's email → send WhatsApp to Charles with that email\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"send_whatsapp_message\",\n    \"get_all_whatsapp_messages\",\n    \"search_whatsapp_messages\",\n]",
+  "is_read_time": "2024-12-12T21:15:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You ran into Charles at a bar and he wanted you to text him in your usual way the name of the person you sent the receipt for the stage props order to, but you can't remember. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"search_contacts\", \"get_all_contacts\", \"send_whatsapp_message\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_message\", \"get_all_messages\", \"search_messages\"]"
+}

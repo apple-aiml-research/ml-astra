@@ -1,0 +1,94 @@
+{
+  "task_id": "9cd07ab2-03ef-4276-9aa7-9ed3ba19747a",
+  "plot_id": 11,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 9 am, Olivia Clark were involved. Lucas provides a motivational talk at the local gym attended by Olivia. Messages exchanged with Olivia post-event for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_11",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to arrange brunch with your parents but first need to know what time you are finished with the motivational talk.",
+  "reference_time": "2024-12-07T06:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed the Motivational Talk at Local Gym from 9:00-10:00 on the 7 December 2024 finishes at 10:00. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_11_9cd07ab2-03ef-4276-9aa7-9ed3ba19747a_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Motivational Talk at Local Gym",
+      "start_datetime_iso": "2024-12-07T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T10:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Olivia Clark"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T09:00:00-08:00",
+      "notes": "Lucas Garcia provides a motivational talk aimed at inspiring gym members, focusing on overcoming challenges and achieving fitness goals."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Olivia",
+      "last_name": "Clark",
+      "full_name": "Olivia Clark",
+      "phone_number": "+1 12345-6789-1000-7531",
+      "alias": "Gym Member",
+      "email": "olivia.clark@example.com",
+      "relationship": "Local gym member",
+      "address": "89 Gym St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1992-09-30T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "What time is the motivation event later today?",
+  "reasoning": "The user wants to know what time the event later today will be over at. I should check their Calendar for any events later today, as the request is being made on Saturday, December 7, 2024, at  06:20. \n\nHmm, looks like the user has two events tomorrow. The Motivational Talk at Local Gym from 9:00-10:00 on the 7 December 2024 and the Triathlon Strategy Meeting with Brian and Team from 15:00-16:00 on the 7 December 2024. In the query, the user says 'motivation event', which can clearly refer to the event titled: \"Motivational Talk at Local Gym\". \n\nOkay the user wants to know the end time of the motivational talk. I will check the event details for the end time. Looks like it finishes at 10:00. I will let the user know. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up today’s calendar events (expects a calendar-search related tool call)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the motivational talk ending at 10:00 was contained in the tool output of Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Motivational Talk at Local Gym\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-07T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent’s reply to the user includes the correct end time (10 am / 10:00)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"10:00\",\n                                            \"10 am\",\n                                            \"10am\",\n                                            \"10 a.m.\",\n                                            \"10 o'clock\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to arrange brunch with your parents but first need to know what time you are finished with the motivational talk. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-07T06:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

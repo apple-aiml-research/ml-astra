@@ -1,0 +1,463 @@
+{
+    "1": [
+        {
+            "calendar_name": "work",
+            "title": "Urgent Security Meeting - Peru Situation",
+            "description": "Discuss and strategize on the new security situation emerging in Peru.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-07-22T10:00:00",
+            "end_time": "2024-07-22T11:00:00",
+            "invitees": [
+                "Bronson Chunk",
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Bronson Chunk",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:00:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-07-23T09:00:00",
+            "end_time": "2024-07-23T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-07-24T09:00:00",
+            "end_time": "2024-07-24T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-07-25T09:00:00",
+            "end_time": "2024-07-25T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-07-26T09:00:00",
+            "end_time": "2024-07-26T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-07-29T09:00:00",
+            "end_time": "2024-07-29T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-07-30T09:00:00",
+            "end_time": "2024-07-30T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-07-31T09:00:00",
+            "end_time": "2024-07-31T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-08-01T09:00:00",
+            "end_time": "2024-08-01T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Daily Stand-up: Security Updates",
+            "description": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation.",
+            "location": "Conference Room B, Palantir HQ",
+            "start_time": "2024-08-02T09:00:00",
+            "end_time": "2024-08-02T09:30:00",
+            "invitees": [
+                "John Quinn",
+                "Robin Selmoure",
+                "Julie Patterson"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T08:15:00"
+        }
+    ],
+    "2": [
+        {
+            "calendar_name": "personal",
+            "title": "Dinner with Apricot",
+            "description": "Dinner at Greek Delights, seems reasonably priced and decent reviews!",
+            "location": "Greek Delights, 101 Foodie Lane, San José, CA",
+            "start_time": "2024-07-25T20:30:00",
+            "end_time": "2024-07-25T22:30:00",
+            "invitees": [
+                "Apricot Sweeney"
+            ],
+            "reminder": "2 hours",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-22T11:30:00"
+        }
+    ],
+    "8": [
+        {
+            "calendar_name": "personal",
+            "title": "Doctor's Appointment with Dr. Emilia Jackson",
+            "description": "Annual check-up and consultation.",
+            "location": "Endomore Clinic, 450 Medical Plaza, San José, CA",
+            "start_time": "2024-07-30T15:00:00",
+            "end_time": "2024-07-30T16:00:00",
+            "invitees": [
+                "John Quinn"
+            ],
+            "reminder": "48 hours",
+            "organizer": "Endomore Clinic",
+            "meeting_url": "",
+            "creation_time": "2024-04-23T10:05:00"
+        }
+    ],
+    "9": [
+        {
+            "calendar_name": "work",
+            "title": "Visit from Palantir Japan - Day 1",
+            "description": "Day 1 of meetings with Palantir Japan to discuss the Peru situation. Please be prepared with all relevant data and reports.",
+            "location": "Palantir HQ, San José, CA",
+            "start_time": "2024-07-29T09:00:00",
+            "end_time": "2024-07-29T17:00:00",
+            "invitees": [
+                "John Quinn",
+                "Julie Patterson",
+                "Robin Selmoure"
+            ],
+            "reminder": "1 day",
+            "organizer": "Bronson Chunk",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T09:05:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Visit from Palantir Japan - Day 2",
+            "description": "Day 2 of meetings with Palantir Japan to discuss the Peru situation. Focus on data analysis and strategic planning.",
+            "location": "Palantir HQ, San José, CA",
+            "start_time": "2024-07-30T09:00:00",
+            "end_time": "2024-07-30T17:00:00",
+            "invitees": [
+                "John Quinn",
+                "Julie Patterson",
+                "Robin Selmoure"
+            ],
+            "reminder": "1 day",
+            "organizer": "Bronson Chunk",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T09:10:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Visit from Palantir Japan - Day 3",
+            "description": "Day 3 of meetings with Palantir Japan. Review of initial discussions and adjustment of strategies.",
+            "location": "Palantir HQ, San José, CA",
+            "start_time": "2024-07-31T09:00:00",
+            "end_time": "2024-07-31T17:00:00",
+            "invitees": [
+                "John Quinn",
+                "Julie Patterson",
+                "Robin Selmoure"
+            ],
+            "reminder": "1 day",
+            "organizer": "Bronson Chunk",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T09:15:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Visit from Palantir Japan - Day 4",
+            "description": "Day 4 of meetings with Palantir Japan. Deep dive into technical solutions and software tools.",
+            "location": "Palantir HQ, San José, CA",
+            "start_time": "2024-08-01T09:00:00",
+            "end_time": "2024-08-01T17:00:00",
+            "invitees": [
+                "John Quinn",
+                "Julie Patterson",
+                "Robin Selmoure"
+            ],
+            "reminder": "1 day",
+            "organizer": "Bronson Chunk",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T09:20:00"
+        },
+        {
+            "calendar_name": "work",
+            "title": "Visit from Palantir Japan - Day 5",
+            "description": "Final day of meetings with Palantir Japan. Wrap-up and next steps.",
+            "location": "Palantir HQ, San José, CA",
+            "start_time": "2024-08-02T09:00:00",
+            "end_time": "2024-08-02T17:00:00",
+            "invitees": [
+                "John Quinn",
+                "Julie Patterson",
+                "Robin Selmoure"
+            ],
+            "reminder": "1 day",
+            "organizer": "Bronson Chunk",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T09:25:00"
+        }
+    ],
+    "10": [
+        {
+            "calendar_name": "personal",
+            "title": "Pick Up Bow Stand",
+            "description": "Pick up the 'Classic Wood Stand' from Archery World store.",
+            "location": "Archery World, 123 Archer Rd, San José, CA",
+            "start_time": "2024-07-31T17:00:00",
+            "end_time": "2024-07-31T18:00:00",
+            "invitees": [],
+            "reminder": "2 hours",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T16:10:00"
+        }
+    ],
+    "11": [
+        {
+            "calendar_name": "family",
+            "title": "Headphone Delivery for Mom",
+            "description": "Delivery of new headphones for Mom between 1pm and 6pm.",
+            "location": "125 Maple St, San José, CA 95126",
+            "start_time": "2024-07-26T13:00:00",
+            "end_time": "2024-07-26T18:00:00",
+            "invitees": [
+                "Ursula Quinn"
+            ],
+            "reminder": "2 hours",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-23T18:15:00"
+        }
+    ],
+    "13": [
+        {
+            "calendar_name": "personal",
+            "title": "Group Hike at Batteries to Bluffs Trail",
+            "description": "Hiking with Theo, Cookie, and Akira. Robin can't make it.",
+            "location": "Batteries to Bluffs Trail, San Francisco, CA",
+            "start_time": "2024-08-03T08:00:00",
+            "end_time": "2024-08-03T14:00:00",
+            "invitees": [
+                "Theo Appleseed",
+                "Cookie Watson",
+                "Akira Muramoto"
+            ],
+            "reminder": "1 day",
+            "organizer": "John Quinn",
+            "meeting_url": null,
+            "creation_time": "2024-07-24T11:15:00"
+        }
+    ],
+    "15": [
+        {
+            "calendar_name": "personal",
+            "title": "Movie Night with Apricot",
+            "description": "Going to watch 'Two Hearts with one Stone' with Apricot.",
+            "location": "Downtown Cinema, San Francisco",
+            "start_time": "2024-07-29T19:00:00",
+            "end_time": "2024-07-29T21:00:00",
+            "invitees": [
+                "Apricot Sweeney"
+            ],
+            "reminder": "2 hours",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-24T14:17:00"
+        }
+    ],
+    "16": [
+        {
+            "calendar_name": "personal",
+            "title": "Water Julie's Plants",
+            "description": "Water the fern and spider plant.",
+            "location": "Palantir Office",
+            "start_time": "2024-07-30T09:00:00",
+            "end_time": "2024-07-30T09:15:00",
+            "invitees": [
+                "John Quinn"
+            ],
+            "reminder": "1 day",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-24T18:20:00"
+        },
+        {
+            "calendar_name": "personal",
+            "title": "Water Julie's Plants",
+            "description": "Water the fern, spider plant, and succulent.",
+            "location": "Palantir Office",
+            "start_time": "2024-08-02T09:00:00",
+            "end_time": "2024-08-02T09:15:00",
+            "invitees": [
+                "John Quinn"
+            ],
+            "reminder": "1 day",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-24T18:20:00"
+        }
+    ],
+    "17": [
+        {
+            "calendar_name": "personal",
+            "title": "Cousin Bertie's Birthday",
+            "description": "Reminder to wish Bertie a happy birthday.",
+            "location": "",
+            "start_time": "2024-08-08T00:00:00",
+            "end_time": "2024-08-08T23:59:59",
+            "invitees": [],
+            "reminder": "2 days",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-24T19:20:00"
+        }
+    ],
+    "19": [
+        {
+            "calendar_name": "personal",
+            "title": "Hiking with Apricot",
+            "description": "Hiking around the lake, as chosen by Apricot. A relaxing walk to enjoy nature and each other's company.",
+            "location": "Lake Serenity Trail",
+            "start_time": "2024-08-04T09:00:00",
+            "end_time": "2024-08-04T12:00:00",
+            "invitees": [
+                "Apricot Sweeney"
+            ],
+            "reminder": "1 day",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-25T17:50:00"
+        }
+    ],
+    "20": [
+        {
+            "calendar_name": "personal",
+            "title": "History Brunch",
+            "description": "Meeting up with Ali and Alisa to discuss post-Napoleonic history over brunch at Egg & Bagel cafe.",
+            "location": "Egg & Bagel cafe, San José, CA",
+            "start_time": "2024-07-28T11:00:00",
+            "end_time": "2024-07-28T13:00:00",
+            "invitees": [
+                "Ali Amin",
+                "Alisa Bohrman"
+            ],
+            "reminder": "1 hour",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-26T12:05:00"
+        }
+    ],
+    "21": [
+        {
+            "calendar_name": "personal",
+            "title": "Concert at San Francisco Nightclub",
+            "description": "Attending a concert where Deborah is DJing. Apricot is coming along.",
+            "location": "Famous Nightclub, San Francisco, CA",
+            "start_time": "2024-07-27T22:00:00",
+            "end_time": "2024-07-28T01:00:00",
+            "invitees": [
+                "Apricot Sweeney"
+            ],
+            "reminder": "2 hours",
+            "organizer": "John Quinn",
+            "meeting_url": "",
+            "creation_time": "2024-07-26T16:12:00"
+        }
+    ]
+}

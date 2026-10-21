@@ -1,0 +1,98 @@
+{
+  "task_id": "e8396943-edb1-4f68-b904-970b658e460a",
+  "plot_id": 8,
+  "plot_summary": "Theo Appleseed is the protagonist. On Wednesday Afternoon, July 24, 2024 at 3pm, Dawei Shen were involved. Data review meeting to discuss recent findings Dawei shares action items for data refinement",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_8",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to find out how long do you have to engage in meetings this afternoon, in order to plan your days ahead.",
+  "reference_time": "2024-07-24T09:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The length of the event named \"Data Review Meeting\" on 24 July 2024 from 15:00-16:00 is presented to the user: 1 hour. ",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The total is not given as 3 hours; only the afternoon meeting counts.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_8_e8396943-edb1-4f68-b904-970b658e460a_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Data Review Meeting",
+      "start_datetime_iso": "2024-07-24T15:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T16:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T12:00:00-07:00",
+      "notes": "Meeting to discuss recent findings and outline action items for data refinement."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "How long are my meetings altogether in the afternoon?",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "referential_complexity": "low",
+  "reasoning": "The user wants to know \"how long are my meetings altogether in the afternoon\".\n\nOkay, so I need to check the user’s calendar for all meetings scheduled this afternoon. I’ll look at today’s date, July 24th, 2024, and filter for events that occur after 12:00.\n\nI can see two meetings today, but only one of them takes place in the afternoon — a meeting titled \"Data Review Meeting\" from 15:00 to 16:00. That means the total meeting time in the afternoon is 1 hour.\n\nI’ll report back to the user that they have 1 hour of meetings scheduled this afternoon.",
+  "milestones": "[\n                # Milestone 0 – A calendar-lookup tool is invoked\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned calendar data contains the “Data Review Meeting” event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Data Review Meeting\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the meeting lasted 1 hour\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"1 hour\", \"one hour\", \"60 minutes\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar tool usage → confirm event retrieved\n                (1, 2),  # event retrieved → inform user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to find out how long do you have to engage in meetings this afternoon, in order to plan your days ahead. ",
+  "minefields": "[\n                # Should not reply with 3 hours as counting dinner event\n                Minefield(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"3 hour\", \"three hour\", \"180 minutes\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-24T09:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

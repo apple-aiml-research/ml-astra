@@ -1,0 +1,170 @@
+{
+  "task_id": "e2ad5719-a843-4421-bf95-799780c06705",
+  "plot_id": 18,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 8:30pm, Deborah Shooter were involved. Deborah sends John some music tracks she likes.  1. Deborah sends John 4 messages with links to electronic music tracks she likes on Apple Music, mentioning the band and song name. 2. Deborah asks John if he likes them, and he answers they seem nice, but he's not an expert in electronic music. 3. She says such music can be great and sends 5 more tracks. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_18",
+    "contact",
+    "messaging",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "It seems like Deborah is really enthusiastic about sharing music with you, so you want to set up time with her to chat about it in person.",
+  "reference_time": "2024-07-24T20:45:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A new event named \"Music Catch-Up\" is added to the calendar for 25 July 2024 from 12:00-16:00 with Deborah Shooter as an invitee.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_18_e2ad5719-a843-4421-bf95-799780c06705_single_turn_2",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "No worries, John! Enjoy your hike, and let's definitely plan something soon.",
+      "creation_datetime_iso": "2024-07-22T20:17:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Hey John, check out this track by Neon Lights - 'Glowing in the Dark'. Here's the link: [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:30:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "This one is also cool, 'Bass Drop' by Electro Pulse. [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:31:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Don't miss 'Synth Riders' by The Waveform. [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:32:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "And 'Night City' by Urban Shadows is a must-hear. [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:33:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Do you like them? Not really your usual stuff, I guess!",
+      "creation_datetime_iso": "2024-07-24T20:34:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-25T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-25T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "schedule a new event on my calendar for tomorrow from 12:00-16:00 named Music Catch-up and invite Deborah.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to add a new event named \"Music Catch-Up\" to their calendar for tomorrow, July 25, from 12:00-16:00. They want to invite Deborah. There's only one Deborah in their contacts, Deborah Shooter. I'll create the event and add her as an invitee.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Deborah in the contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Deborah Shooter is returned from the contact-lookup in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Deborah Shooter\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"deborah.shooter@nightclub.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new calendar event was created for the requested time with Deborah invited\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Music Catch-up\",\n                                    \"start_datetime_iso\": \"2024-07-25T12:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-25T16:00:00-07:00\",\n                                    \"attendees_names\": [[\"Deborah Shooter\"]],\n                                    \"creation_datetime_iso\": \"2024-07-24T20:45:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_rouge_l_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search → confirmation of Deborah\n                (1, 2),  # Deborah confirmed → event creation\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. It seems like Deborah is really enthusiastic about sharing music with you, so you want to set up time with her to chat about it in person. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-24T20:45:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

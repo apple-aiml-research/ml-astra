@@ -1,0 +1,76 @@
+{
+  "task_id": "4ee48699-11d7-4173-b141-79812b90dbad",
+  "plot_id": 27,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo got messages to confirmation from optician mentioning the appointment on Friday Aug. 2nd at 14:30\n generate message thread that Theo received and confirmation the appointment\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_27",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to see the last message from optician@example.   com.",
+  "reference_time": "2024-07-29T11:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is shown the last message sent from optician@example.com on July 29th at 10:10 : 'Thank you, Theo. We have confirmed your appointment for August 2nd at 14:30. We look forward to seeing you then.'",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_27_4ee48699-11d7-4173-b141-79812b90dbad_single_turn_0",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "optician@example.com",
+      "participants_addresses": [
+        "optician@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "optician@example.com",
+      "content": "Thank you, Theo. We have confirmed your appointment for August 2nd at 14:30. We look forward to seeing you then.",
+      "creation_datetime_iso": "2024-07-29T10:10:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Show the last message from optician@example.com .",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to see optician@example.com's last message. Let me look for them in contacts. I will look for the last message they sent. I will show it to the user.",
+  "milestones": "[\n                # Milestone 0 – Agent uses a message-retrieval tool to find messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Tool output includes the expected last message from optician@example.com\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"optician@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"We have confirmed your appointment for August 2nd at 14:30\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent tells the user the correct message content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"confirmed\", \"August 2\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_all_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieval tool call → verify correct message found\n                (1, 2),  # Correct message found → agent delivers it to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to see the last message from optician@example.  com. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]",
+  "is_read_time": "2024-07-29T11:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,240 @@
+{
+    "1": [
+        {
+            "calendar_name": "personal",
+            "title": "Cycling Trip with Vick",
+            "description": "Starting the day with a cycling trip at a local café in Napa Valley.",
+            "location": "Local Café, Napa Valley, CA",
+            "start_time": "2024-12-01T07:00:00",
+            "end_time": "2024-12-01T10:00:00",
+            "invitees": [
+                "Dawei Shen",
+                "Vick Li"
+            ],
+            "reminder": "60 minutes",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-11-30T12:00:00"
+        }
+    ],
+    "3": [
+        {
+            "calendar_name": "work",
+            "title": "Discussion on Virtual Assistant Algorithm Updates",
+            "description": "Meeting to discuss further updates on the virtual assistant algorithm based on the recent feedback.",
+            "location": "Conference Room B, Orchard Tech, Orchard County, CA",
+            "start_time": "2024-12-04T10:00:00",
+            "end_time": "2024-12-04T11:00:00",
+            "invitees": [
+                "Dawei Shen",
+                "Michelle Barnes",
+                "Theo Appleseed"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-02T09:35:00"
+        }
+    ],
+    "4": [
+        {
+            "calendar_name": "personal",
+            "title": "Pay Property Tax",
+            "description": "Reminder to pay the property tax to avoid late fees.",
+            "location": "Orchard County, CA",
+            "start_time": "2024-12-06T08:00:00",
+            "end_time": "2024-12-06T08:30:00",
+            "invitees": [
+                "Dawei Shen"
+            ],
+            "reminder": "1 day",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-02T20:10:00"
+        }
+    ],
+    "5": [
+        {
+            "calendar_name": "personal",
+            "title": "Cat Sitting for Paul",
+            "description": "Watch Paul's cat over the weekend while he is out of town.",
+            "location": "Paul Harper's House, 125 Neighbor St, Orchard County, CA 94022, USA",
+            "start_time": "2024-12-06T00:00:00",
+            "end_time": "2024-12-08T23:59:59",
+            "invitees": [
+                "Dawei Shen"
+            ],
+            "reminder": "1 day",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-03T07:05:00"
+        }
+    ],
+    "7": [
+        {
+            "calendar_name": "work",
+            "title": "Strategy Meeting Preparation",
+            "description": "Virtual meeting to discuss updates and prepare for Friday's strategy meeting.",
+            "location": "Virtual - Orchard Tech",
+            "start_time": "2024-12-04T15:00:00",
+            "end_time": "2024-12-04T16:00:00",
+            "invitees": [
+                "Dawei Shen",
+                "Kevin Chen",
+                "Stefan Mustermann"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "Dawei Shen",
+            "meeting_url": "https://orchardtech.zoom.us/j/1234567890",
+            "creation_time": "2024-12-03T12:00:00"
+        }
+    ],
+    "9": [
+        {
+            "calendar_name": "work",
+            "title": "Tech Panel Hosted by Jeff Bing",
+            "description": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics.",
+            "location": "Tech Hub Conference Center, Orchard County, CA",
+            "start_time": "2024-12-10T09:00:00",
+            "end_time": "2024-12-10T11:00:00",
+            "invitees": [
+                "Dawei Shen"
+            ],
+            "reminder": "1 day",
+            "organizer": "Jeff Bing",
+            "meeting_url": "",
+            "creation_time": "2024-12-06T10:05:00"
+        }
+    ],
+    "10": [
+        {
+            "calendar_name": "personal",
+            "title": "Brunch with Jess",
+            "description": "Brunch at Bluebird Café with Jess. Address: 202 Main St, Orchard County.",
+            "location": "Bluebird Café, 202 Main St, Orchard County, CA",
+            "start_time": "2024-12-07T11:00:00",
+            "end_time": "2024-12-07T13:00:00",
+            "invitees": [
+                "Dawei Shen",
+                "Jess Zimmer"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-07T10:10:00"
+        }
+    ],
+    "11": [
+        {
+            "calendar_name": "personal",
+            "title": "Dinner with Lukas and Vick",
+            "description": "Dinner plans with Lukas and Vick at a local restaurant.",
+            "location": "Local Restaurant, Orchard County, CA",
+            "start_time": "2024-12-14T19:00:00",
+            "end_time": "2024-12-14T21:00:00",
+            "invitees": [
+                "Dawei Shen",
+                "Lukas Hürholz",
+                "Vick Li"
+            ],
+            "reminder": "1 day",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-08T09:25:00"
+        }
+    ],
+    "12": [
+        {
+            "calendar_name": "personal",
+            "title": "Theater Rehearsal",
+            "description": "Revised time for tonight's rehearsal with Charles and Vickie due to last-minute changes.",
+            "location": "Orchard Theater, 789 Culture St, Orchard County, CA 94022, USA",
+            "start_time": "2024-12-08T19:00:00",
+            "end_time": "2024-12-08T22:00:00",
+            "invitees": [
+                "Dawei Shen",
+                "Charles Wilde",
+                "Vickie Lee"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-08T17:55:00"
+        }
+    ],
+    "13": [
+        {
+            "calendar_name": "work",
+            "title": "Dataset Review with Michelle",
+            "description": "Review the updated dataset and discuss key questions as outlined in Michelle's email.",
+            "location": "Conference Room A, Orchard Tech, Orchard County, CA",
+            "start_time": "2024-12-10T14:00:00",
+            "end_time": "2024-12-10T15:30:00",
+            "invitees": [
+                "Dawei Shen",
+                "Michelle Barnes"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-09T08:15:00"
+        }
+    ],
+    "18": [
+        {
+            "calendar_name": "work",
+            "title": "Team Review Meeting",
+            "description": "Review meeting to consolidate comments on the recent research updates.",
+            "location": "Conference Room C, Orchard Tech, Orchard County, CA",
+            "start_time": "2024-12-13T09:00:00",
+            "end_time": "2024-12-13T10:30:00",
+            "invitees": [
+                "Dawei Shen",
+                "Kevin Chen",
+                "Stefan Mustermann"
+            ],
+            "reminder": "15 minutes",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-12T09:30:00"
+        }
+    ],
+    "20": [
+        {
+            "calendar_name": "work",
+            "title": "Team Review Meeting",
+            "description": "Monthly team review to discuss project progress and assign new action items.",
+            "location": "Conference Room B, Orchard Tech HQ",
+            "start_time": "2024-12-13T10:00:00",
+            "end_time": "2024-12-13T11:00:00",
+            "invitees": [
+                "Dawei Shen",
+                "Michelle Barnes",
+                "Kevin Chen"
+            ],
+            "reminder": "30 minutes",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-01T12:00:00"
+        }
+    ],
+    "21": [
+        {
+            "calendar_name": "personal",
+            "title": "Dinner with Lukas and Vick",
+            "description": "Dinner plans with Lukas and Vick at a local restaurant.",
+            "location": "Local Restaurant, Orchard County, CA",
+            "start_time": "2024-12-14T19:00:00",
+            "end_time": "2024-12-14T21:00:00",
+            "invitees": [
+                "Dawei Shen",
+                "Lukas Hürholz",
+                "Vick Li"
+            ],
+            "reminder": "1 day",
+            "organizer": "Dawei Shen",
+            "meeting_url": "",
+            "creation_time": "2024-12-08T09:25:00"
+        }
+    ]
+}

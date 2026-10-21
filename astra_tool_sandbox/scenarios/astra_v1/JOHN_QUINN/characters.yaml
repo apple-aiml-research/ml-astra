@@ -1,0 +1,63 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+# 0
+- name: "John Quinn"
+  relationship: "Self"
+# 1
+- name: "Ursula Quinn"
+  relationship: "Mother"
+  bio: "Ursula is John's closest family member. John often confides in her to an extent that is not possible with his other family members. She is highly empathic and regularly engages with John, usually in the evenings after work. She works as the manager of the local modern art museum."
+# 2
+- name: "Alfred Quinn"
+  relationship: "Father"
+  bio: "Alfred became estranged from John since they had a disagreement about politics, but he still forwards John messages from his favourite political party, The Pirate Party, as an awkward way of staying in touch. He's very engaged in local workers unions in the industry sector, in addition to regular job in a local industrial complex."
+# 3
+- name: "Grace Quinn"
+  relationship: "Sister"
+  bio: "Grace is reasonably close with John, although they are quite different. Unlike John, she does not really like physical activity, but she is also a book worm, but with a penchant for latin American magical realism."
+# 4
+- name: "Theo Appleseed"
+  relationship: "College Friend"
+  bio: "Theo works at a technology company in Orchard county. He is a close friend from college, who shares John's love for the outdoors. They often meet up to go on hikes together, although Theo prefers to avoid any trail running."
+# 5
+- name: "Apricot Sweeney"
+  relationship: "Girlfriend"
+  bio: "Apricot has been dating John for the last 6 months. They have a loving relationship, but are somewhat constrained by the fact that she lives in San Francisco, making it challenging for them to meet as often as she'd like. She often joins John on his trail running runs but is not as keen on hiking, since she finds it a bit dull."
+# 6
+- name: "Cookie Watson"
+  relationship: "College friend"
+  bio: "A good friend from college, Cookie often goes hiking with John. She acts a bit like a sister and is somewhat overprotective of John, sometimes giving unrequested advice on his work-life balance and love life."
+# 7
+- name: "Bronson Chunk"
+  relationship: "Coworker"
+  bio: "Bronson is John's boss at work and can be a bit intense, sending him work requests at odd times of the evening and on weekends. However, he has great respect for John and wants him to climb the corporate ladder as quickly as possible."
+# 8
+- name: "Julie Patterson"
+  relationship: "Coworker"
+  bio: "Julie works in the same team as John, and shares his strong work ethic. They often have lunch together to discuss project strategy."
+# 9
+- name: "Robin Selmoure"
+  relationship: "Coworker"
+  bio: "Robin works in a different team at Palantir, but enjoys discussing current events with John over a coffee at work. John has been so far unable to convince Robin to join him for a hike, as Robin keeps coming up with varied excuses not to come."
+# 10
+- name: "Deborah Shooter"
+  relationship: "Neighbor"
+  bio: "Deborah has a crush on John, about which John is a bit clueless. She regularly invites him to various social activities to try and spend some time together. She works as a DJ at a local club."
+# 11
+- name: "Ali Amin"
+  relationship: "Friend"
+  bio: "John met Ali at the local library. Ali is also a military history buff, and enjoys discussing various campaigns especially from medieval and pre-industrial era conflicts. He and John occasionally meet up for lunch or dinner in the weekends."
+# 12
+- name: "Akira Muramoto"
+  relationship: "School Friend"
+  bio: "Akira is an old friend from high school. He often joins John on his trail running, but is utterly uninterested in discussing history with John, preferring to discuss sports or nutrition topics."
+# 13
+- name: "Alisa Borhman"
+  relationship: "School Friend"
+  bio: "John knows Alisa since his first grade of school. They used to date in high school, but broke up on good terms when Alisa realised they were not well suited to each other. Alisa likes discussing history with John, but they don't meet as often as they used to."
+# 14
+- name: "Astrid von Neumann"
+  relationship: "Friend of a friend"
+  bio: "Astrid is a friend of Theo, who met her in South America. Theo has been wanting for John to meet Astrid."
+...

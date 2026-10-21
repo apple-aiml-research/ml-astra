@@ -1,0 +1,38 @@
+{
+    "7": [
+        {
+            "call_type": "Voice",
+            "caller": "415-555-0128",
+            "receiver": "1234-5678-9108",
+            "creation_time": "2024-07-22T21:00:00",
+            "duration": "45 minutes"
+        }
+    ],
+    "10": [
+        {
+            "call_type": "Outgoing",
+            "caller": "John Quinn",
+            "receiver": "Archery World Sales",
+            "creation_time": "2024-07-23T15:50:00",
+            "duration": "5 minutes"
+        }
+    ],
+    "11": [
+        {
+            "call_type": "incoming",
+            "caller": "Ursula Quinn",
+            "receiver": "John Quinn",
+            "creation_time": "2024-07-23T18:00:00",
+            "duration": "5 minutes"
+        }
+    ],
+    "17": [
+        {
+            "call_type": "Incoming",
+            "caller": "Ursula Quinn",
+            "receiver": "John Quinn",
+            "creation_time": "2024-07-24T19:15:00",
+            "duration": "5 minutes"
+        }
+    ]
+}

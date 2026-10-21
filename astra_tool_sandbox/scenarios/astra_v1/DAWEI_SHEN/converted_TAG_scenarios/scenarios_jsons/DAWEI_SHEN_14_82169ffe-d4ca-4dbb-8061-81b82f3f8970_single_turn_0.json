@@ -1,0 +1,120 @@
+{
+  "task_id": "82169ffe-d4ca-4dbb-8061-81b82f3f8970",
+  "plot_id": 14,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 9, 2024 at 7 pm, self, Paul Harper were involved. Paul texts Dawei, thanking him for watching his cat over the weekend. Dawei replies, sharing a funny photo of the cat napping by the window. Paul reacts to the photo with a laughing emoji.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_14",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to message Paul saying you would happily mind his cat again if needed so you send him a message.",
+  "reference_time": "2024-12-09T19:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Paul Harper saying; \"Happy to do it again any time!\" at 19:05 on 9 December 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_14_82169ffe-d4ca-4dbb-8061-81b82f3f8970_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "search_messages",
+    "get_all_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "+1 555-678-9012-3456",
+      "content": "Hey Dawei, thanks a ton for watching the cat over the weekend. Really appreciate it!",
+      "creation_datetime_iso": "2024-12-09T19:00:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "+1 555-123-4567-8901",
+      "content": "No worries, Paul! It was my pleasure. Check out this funny photo of your cat napping by the window.",
+      "creation_datetime_iso": "2024-12-09T19:02:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "+1 555-678-9012-3456",
+      "content": "😂 That's hilarious! Looks like he found his new favorite spot. Thanks for the photo!",
+      "creation_datetime_iso": "2024-12-09T19:05:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to him saying; \"Happy to do it again any time!\"",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "Ok so the user wants to reply to someone saying \"Happy to do it again any time!\" I wonder who this is directed at? judging by the most recent correspondence the user sent and received I believe this is directed at Paul Harper. I will send the message to Paul saying \"Happy to do it again any time!\". And I will inform user that the message has been sent to Paul Harper.",
+  "milestones": "[\n                # Milestone 0 - The agent tries to locate the message thread between user and Paul Harper\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 - The message between user and Paul Harper is found.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Paul Harper\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – A new outgoing message to Paul containing the desired text is recorded\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require exactly the two participants, each identified by at least\n                                    # one acceptable identifier (phone or email)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 555-678-9012-3456\",\n                                                \"paul.harper@neighborhood.com\",\n                                            ),\n                                            (\n                                                \"+1 555-123-4567-8901\",\n                                                \"dawei.shen@orchardtech.com\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"Happy to do it again any time!\",\n                                    \"creation_datetime_iso\": \"2024-12-09T19:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",  # fallback listing\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to message Paul saying you would happily mind his cat again if needed so you send him a message. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"search_messages\", \"get_all_messages\", \"send_message\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-09T19:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,63 @@
+{
+  "task_id": "b6399746-e549-4c13-afcc-08bb9b6b3f06",
+  "plot_id": 17,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 13, 2024 at 3:00 PM, Oscar Martinez were involved. Weekend walk with Oscar and pets; brainstorming pet-friendly community activities. Oscar sends pet event ideas via message.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_17",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to schedule time to compile the ideas from the brainstorming.",
+  "reference_time": "2024-12-13T17:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event called Compile Ideas from 08:00-09:00 on 14 December 2024 is created. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_17_b6399746-e549-4c13-afcc-08bb9b6b3f06_single_turn_0",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make a new event from 08:00-09:00 on Saturday called Compile Ideas. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to create an event. I will use the details the user has provided to create this event. \nThe user wants to call it Compile Ideas so I shall make that the name of the event. The user has specified the duration will be one hour from 08:00-09:00 so I shall set the event for that time. The user said they wanted the event on Saturday, which is the 14 December 2024, so I will schedule the event for that day. \nI will let the user know the event has been created. ",
+  "milestones": "[\n                # Milestone 0 – verify that the “Compile Ideas” event was added for the correct\n                # date and time (08:00-09:00 on 14 Dec 2024).\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Compile Ideas\",\n                                    \"start_datetime_iso\": \"2024-12-14T08:00\",\n                                    \"end_datetime_iso\": \"2024-12-14T09:00\",\n                                    \"creation_datetime_iso\": \"2024-12-13T17:25:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow any timezone offset so only check that the expected\n                                # date-time substring is present.\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",   # required to add the new event\n    \"search_calendar_events\",  # optional, agent may check for conflicts\n    \"get_all_calendars\",       # optional fallback listing\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You need to schedule time to compile the ideas from the brainstorming. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-12-13T17:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

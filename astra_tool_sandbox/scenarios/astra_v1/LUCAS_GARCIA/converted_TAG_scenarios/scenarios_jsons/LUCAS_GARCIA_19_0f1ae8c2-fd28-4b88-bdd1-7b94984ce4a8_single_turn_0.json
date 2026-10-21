@@ -1,0 +1,112 @@
+{
+  "task_id": "0f1ae8c2-fd28-4b88-bdd1-7b94984ce4a8",
+  "plot_id": 19,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 11, 2024 at 7 am, David Turner were involved. Lucas has an early morning surf session with his surfing buddy, David. The wave was perfect. They both were very excited and enjoyed it. Lucas captures moments of the surfing activities, sharing them on iMessage. Lucas messages David to coordinate next surfing sesssion.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_19",
+    "whatsapp_messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to check if David got back to you about the next surfing session.",
+  "reference_time": "2024-12-11T15:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user has been replied with 'No', as David Turner has not yet confirmed the next surf session in the WhatsApp chat.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_19_0f1ae8c2-fd28-4b88-bdd1-7b94984ce4a8_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "David Turner",
+      "sender_address": "+1 12345-6789-1000-9876",
+      "creation_datetime_iso": "2024-12-11T07:45:00-08:00",
+      "content": "Absolutely, I’m in! Early morning like today should be perfect. I'll confirm back soon.",
+      "status": "read"
+    },
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "Coach Lucas",
+      "sender_address": "+1 12345-6789-1000-1234",
+      "creation_datetime_iso": "2024-12-11T07:50:00-08:00",
+      "content": "Looking forward to it! Just let me know when it's confirmed.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Has my surfing buddy confirmed the next session yet? yes or no.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "I need to see whether the user's surfing buddy has confirmed the next session, so I'll find their contact. I found one contact with the alias of surfing buddy, David Turner. I'll check their WhatsApp chat. David's last message only said he would confirm back soon and he has not sent a confirmation yet, so he has not confirmed. I let the user know there is no confirmation yet by replying 'No'.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up WhatsApp messages with David Turner\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved WhatsApp result set includes the last message sent by Lucas (no new David message)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_name\": {\n                                                \"value\": \"Coach Lucas\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-11T07:50:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent informs the user that David has not replied yet\n                Milestone(\n                    snapshot_constraints=[\n                        # Contains a negative/reply-not-yet phrase\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"hasn't\",\n                                            \"not\",\n                                            \"no\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",           # identify the surfing buddy if needed\n    \"get_all_contacts\",          # fallback for contact look-up\n    \"search_whatsapp_messages\",  # primary way to check recent messages\n    \"get_all_whatsapp_messages\", # fallback to list all whatsapp messages\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to check if David got back to you about the next surfing session. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\"]",
+  "is_read_time": "2024-12-11T15:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,109 @@
+{
+  "task_id": "ba740738-ea84-49a2-83e5-97559f1d50c0",
+  "plot_id": 13,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 9, 2024 at 4:00 PM, Jenna Miles, Matt Duncan were involved. Team meeting with Jenna and Matt for planning student engagement activities. Notes from meeting saved and shared with school contacts.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_13",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know who's attending today's student activity planning meeting.",
+  "reference_time": "2024-12-09T12:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The attendees of 'Student Engagement Activity Planning', Jenna Miles and Matt Duncan, which is scheduled for 9 December 2024 from 16:00 to 17:30 are confirmed to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_13_ba740738-ea84-49a2-83e5-97559f1d50c0_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Student Engagement Activity Planning",
+      "start_datetime_iso": "2024-12-09T16:00:00-08:00",
+      "end_datetime_iso": "2024-12-09T17:30:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Jenna Miles",
+        "Matt Duncan"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:30:00-07:00",
+      "notes": "Team meeting with Jenna and Matt to plan student engagement activities."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jenna",
+      "last_name": "Miles",
+      "full_name": "Jenna Miles",
+      "phone_number": "+1 530-555-0131",
+      "alias": "Decor Diva",
+      "email": "jenna.miles@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Planner",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    },
+    {
+      "first_name": "Matt",
+      "last_name": "Duncan",
+      "full_name": "Matt Duncan",
+      "phone_number": "+1 530-555-0132",
+      "alias": "Young Volunteer",
+      "email": "matt.duncan@students.orchardschools.org",
+      "relationship": "Event Volunteer",
+      "address": "400 School Rd, Orchard County, CA 95662, USA",
+      "company": "Orchard High School",
+      "job_title": "Student",
+      "is_self": false,
+      "birthday": "2005-10-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "low",
+  "reasoning": "Okay so, the user is looking for the attendees for their next event. From checking their calendar, I can see that their next upcoming event is 'Student Engagement Activity Planning' which is scheduled for today, 9 December 2024 from 16:00 to 17:30 with Jenna Miles and Matt Duncan listed as attendees. Now that I have the attendee information the user has requested, I can relay this to them.",
+  "query": "Who's attending my next event?",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent looks up upcoming calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The meeting \"Student Engagement Activity Planning\" is returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Student Engagement Activity Planning\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user that Jenna Miles and Matt Duncan are attending\n                Milestone(\n                    snapshot_constraints=[\n                        # Presence of Jenna Miles\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Jenna Miles\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Presence of Matt Duncan\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Matt Duncan\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar lookup -> verify meeting found\n                (1, 2),  # meeting info -> user notified\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to know who's attending today's student activity planning meeting. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-09T12:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,83 @@
+{
+  "task_id": "f400c351-5da6-40b5-91b9-f9990b07c175",
+  "plot_id": 2,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 1, 2024 at 8 pm, self, Charles Wilde, Vickie Lee, Francis Wagner were involved. Dawei messages Charles and Vickie on WhatsApp to confirm theater rehearsal, and Francis shares a Google Doc with schedule updates. Vickie says she will be 20 minutes late and apologizes. Francis emails the doc to the group.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_2",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You get into an argument with Francis and want to check what time the Updated Rehearsal Schedule email was sent to you",
+  "reference_time": "2024-12-02T12:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The received time of the email from francis.wagner@orchardtheater.com about the Updated Rehearsal Schedule is read to the user",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_2_f400c351-5da6-40b5-91b9-f9990b07c175_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Updated Rehearsal Schedule",
+      "sender_address": "francis.wagner@orchardtheater.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com",
+        "charles.wilde@orchardtheater.com",
+        "vickie.lee@orchardtheater.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-01T19:58:00-08:00",
+      "body": "Hello everyone,\n\nPlease find attached the updated schedule for tonight's rehearsal. Let me know if there are any issues.\n\nBest,\nFrancis",
+      "attachments": [
+        "Rehearsal_Schedule_Updated_2024-12-01.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Francis",
+      "last_name": "Wagner",
+      "full_name": "Francis Wagner",
+      "phone_number": "+1 555-456-7890-1234",
+      "alias": "Francis",
+      "email": "francis.wagner@orchardtheater.com",
+      "relationship": "Theater Manager",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Theater Manager",
+      "is_self": false,
+      "birthday": "1975-01-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time did I receive that email from Francis on Sunday",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to check the time of an email from Francis. So I'll look through the user's emails and see if any have been received from Francis. Ok, there is one from Francis Wagner with the subject line \"Updated Rehearsal Schedule\". That must be the email the user is talking about. I see that the email was received at 19:58 (7:58 PM) on Sunday, and I read that time to the user.",
+  "reference_time_str": "Today is Monday, December 2, 2024 or 2024-12-02T12:30:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Agent uses get_all_emails or search_emails tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_emails\",\n                                        \"search_emails\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1: Verify the email \"Updated Rehearsal Schedule\" from Francis Wagner is found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Updated Rehearsal Schedule\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"francis.wagner@orchardtheater.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 2: Agent informs user of the time the email was sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"19:58\", \"7:58\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You get into an argument with Francis and want to check what time the Updated Rehearsal Schedule email was sent to you ",
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-02T12:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,105 @@
+{
+  "task_id": "cce62e75-0897-4ca6-9893-b30518675db0",
+  "plot_id": 16,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 7 pm, self, Dalin Shen were involved. Dalin messages Dawei to share his thoughts about a book they’re both reading. Dawei responds with his own insights, leading to a lively exchange. Dalin suggests they co-write a review for a blog, and Dawei agrees to draft the first version over the weekend.",
+  "tags": [
+    "astra_core",
+    "DAWEI_SHEN",
+    "plot_16",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to block off some time to write a review this weekend so you ask the assistant to put this into your calendar",
+  "reference_time": "2024-12-10T20:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "A 2 hour event titled \"Review Writing\" is created on 14/Dec/2024 at 10:00.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. No calendar event is deleted.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_16_cce62e75-0897-4ca6-9893-b30518675db0_single_turn_0",
+  "messages": [
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "That’s a great idea! I think we could offer a unique perspective on the collaborative nature of innovation. I’ll start drafting something this weekend.",
+      "creation_datetime_iso": "2024-12-10T19:15:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dalin",
+      "last_name": "Shen",
+      "full_name": "Dalin Shen",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Dalin",
+      "email": "dalin.shen@student.philacollege.edu",
+      "relationship": "Brother",
+      "address": "101 College Way, Philadelphia, PA 19104, USA",
+      "company": "Philadelphia College",
+      "job_title": "Student",
+      "is_self": false,
+      "birthday": "1998-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need to do some writing this Saturday morning. Create a 2 hour event at 10am on Saturday and call it Review Writing and clear any conflict",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants me to create a 2-hour event starting at 10am on Saturday and call it Review Writing and clear any conflict. I'll check their calendar and see if there're conflicting events during that window. I checked and see that the calendar from 10am to 12pm is free, I will create the event. Ok, I've scheduled the event \"Review Writing\" for Saturday 14 December 2024 from 10:00 to 12:00. I'll inform user of this.",
+  "reference_time_str": "Today is Tuesday, December 10, 2024 or 2024-12-10T20:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 - check if the protagonist is available on Saturday 10 - 12\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The “Review Writing” event is actually added to the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Review Writing\",\n                                    \"start_datetime_iso\": \"2024-12-14T10:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-14T12:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-10T20:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n                # Milestone 2 – The user is informed that the event was scheduled\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Review Writing\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "create_calendar_event",
+    "search_calendar_events",
+    "get_all_calendars",
+    "remove_calendar_event"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to block off some time to write a review this weekend so you ask the assistant to put this into your calendar ",
+  "tool_allow_list_str": "[\"create_calendar_event\", \"search_calendar_events\", \"get_all_calendars\", \"remove_calendar_event\"]",
+  "minefields": "[\n                Minefield(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"remove_calendar_event\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "is_read_time": "2024-12-10T20:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

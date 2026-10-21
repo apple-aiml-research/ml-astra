@@ -1,0 +1,77 @@
+{
+  "task_id": "aef2483e-1ae2-4068-bf1a-c99d9a826e46",
+  "plot_id": 17,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 11, 2024 at 8 pm, self, Jess Zimmer were involved. Dawei receives a WhatsApp message from Jess, sharing a link to a new play they might enjoy. She asks if they can plan to see it. Dawei books tickets online and sends Jess the confirmation.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_17",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "email",
+    "messaging",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know where your team meeting about action items location is.",
+  "reference_time": "2024-12-12T09:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The location of the event \"Team Review Meeting\" is presented to the user: Conference Room B, Orchard Tech HQ. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_17_aef2483e-1ae2-4068-bf1a-c99d9a826e46_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Team Review Meeting",
+      "start_datetime_iso": "2024-12-13T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-13T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room B, Orchard Tech HQ",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-01T12:00:00-08:00",
+      "notes": "Monthly team review to discuss project progress and assign new action items."
+    }
+  ],
+  "contacts": [],
+  "phonecalls": [],
+  "query": "What's the location of the project gathering tomorrow? Not the one about recent research updates.",
+  "functional_complexity": "low",
+  "informational_complexity": "moderate",
+  "referential_complexity": "high",
+  "reasoning": "The user wants to know the location of the \"project gathering\".\n\nFirstly, I'll go to their Calendar to see if they have any upcoming events that correspond to this description.\n\nOkay, so they have one event named \"Team Review Meeting\" that's scheduled from 10:00 - 11:00 on Friday, December 13th 2024. I surmise that this is what the user is referring to, especially given the event description which mentions \"project progress\". \n\nI will now inform the user that the location of this event is Conference Room B, Orchard Tech HQ.",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T09:35:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar information (uses an appropriate calendar-query tool)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned the calendar event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Team Review Meeting\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-13T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 1 – The user is told the meeting location “Conference Room B, Orchard Tech HQ”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Conference Room B\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_emails",
+    "search_emails",
+    "get_all_messages",
+    "search_messages",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know where your team meeting about action items location is. ",
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_emails\", \"search_emails\", \"get_all_messages\", \"search_messages\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T09:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

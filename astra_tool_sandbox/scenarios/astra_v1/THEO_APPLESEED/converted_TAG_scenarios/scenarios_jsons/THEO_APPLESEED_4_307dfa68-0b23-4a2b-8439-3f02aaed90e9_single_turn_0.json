@@ -1,0 +1,174 @@
+{
+  "task_id": "307dfa68-0b23-4a2b-8439-3f02aaed90e9",
+  "plot_id": 4,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Morning, July 23, 2024 at 9 am, Kevin Chen were involved. One-on-one meeting with Kevin to discuss project progress ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_4",
+    "calendar",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You know you're getting dinner with a friend this week but you can't remember where.",
+  "reference_time": "2024-07-23T09:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that the event named Dinner with Cookie, scheduled for 19:00-21:00 on Wednesday 24 July 2024, is taking place at Pony & Jigger in Orchard County, CA",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_4_307dfa68-0b23-4a2b-8439-3f02aaed90e9_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "search_messages",
+    "get_all_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Hey Theo! Are you free for dinner this Wednesday? There’s a new pub, Pony & Jigger, that just opened. Thought we could check it out!",
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Hi Cookie! Wednesday works for me. What time were you thinking?",
+      "creation_datetime_iso": "2024-07-22T14:02:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "How about 7 PM? Gives us plenty of time to enjoy the evening.",
+      "creation_datetime_iso": "2024-07-22T14:05:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Perfect! See you at Pony & Jigger at 7 then. Looking forward to it!",
+      "creation_datetime_iso": "2024-07-22T14:07:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Great! It’s a date. See you Wednesday!",
+      "creation_datetime_iso": "2024-07-22T14:10:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Cookie",
+      "start_datetime_iso": "2024-07-24T19:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T21:00:00-07:00",
+      "attendees_names": [
+        "Cookie Watson",
+        "Theo Appleseed"
+      ],
+      "location": "Pony & Jigger, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 120 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "notes": "Dinner at the newly opened local pub, Pony & Jigger."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Where is Dinner with Cookie happening tomorrow?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know where an event is taking place. The event is Dinner with Cookie, and the user said it was tomorrow. Let me check their calendar. I do see the event named Dinner with Cookie scheduled for 19:00-21:00 tomorrow 24 July 2024. The location listed on the event is Pony & Jigger in Orchard County, CA, so I'll tell that to the user.",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Agent uses calendar tools to look up \"Dinner with Cookie\" (tomorrow)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirms the correct \"Dinner with Cookie\" calendar event was retrieved\n                # and has the right name, datetime, and location.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Cookie\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-24T19:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-07-24T21:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"location\": {\n                                                \"value\": \"Pony & Jigger, Orchard County, CA\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – User-facing answer mentions the correct location\n                # (Pony & Jigger in Orchard County, CA) in response.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # We only require that the answer contains the essential location phrase.\n                                    \"content\": \"Pony & Jigger, Orchard County, CA\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar search → confirm correct event and location\n                (1, 2),  # Confirmed event/location → inform user with that location\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-07-23T09:15:00-07:00",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You know you're getting dinner with a friend this week but you can't remember where. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"search_messages\", \"get_all_messages\", \"search_contacts\", \"get_all_contacts\"]"
+}

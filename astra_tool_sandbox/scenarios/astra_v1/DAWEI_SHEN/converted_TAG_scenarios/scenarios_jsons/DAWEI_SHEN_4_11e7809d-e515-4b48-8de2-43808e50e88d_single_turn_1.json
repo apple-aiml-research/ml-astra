@@ -1,0 +1,114 @@
+{
+  "task_id": "11e7809d-e515-4b48-8de2-43808e50e88d",
+  "plot_id": 4,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 2, 2024 at 8 pm, self, Mia Tang were involved. Mia texts Dawei to remind him that the property tax is due in a week. Dawei adds a reminder on his calendar to pay property tax on Friday morning.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_4",
+    "calendar",
+    "messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Mia has told you that not to forget to pay your property tax.  Money has been really tight for a while.  You need to know how many days you have to collect the money for the tax.",
+  "reference_time": "2024-12-02T22:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed that there are four days remaining until the Pay Property Tax event on their calendar.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_4_11e7809d-e515-4b48-8de2-43808e50e88d_single_turn_1",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_messages",
+    "get_all_messages",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Mia Tang",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "mia.tang@accountingpros.com"
+      ],
+      "sender_address": "mia.tang@accountingpros.com",
+      "content": "Hi Dawei, just a friendly reminder that your property tax is due next week. Please make sure to process the payment to avoid any late fees.",
+      "creation_datetime_iso": "2024-12-02T20:00:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Pay Property Tax",
+      "start_datetime_iso": "2024-12-06T08:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T08:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T20:10:00-08:00",
+      "notes": "Reminder to pay the property tax to avoid late fees."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Mia",
+      "last_name": "Tang",
+      "full_name": "Mia Tang",
+      "phone_number": "+1 555-567-8901-2345",
+      "alias": "Mia",
+      "email": "mia.tang@accountingpros.com",
+      "relationship": "Accountant",
+      "address": "321 Finance Ave, Orchard County, CA 94022, USA",
+      "company": "Accounting Pros",
+      "job_title": "Accountant",
+      "is_self": false,
+      "birthday": "1986-10-10T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "How many days until what Mia reminded me about?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know how many days until a specific event. \nI should determine which event they mean first.\nThe user said that Mia mentioned the event.I can see one Mia in their contacts, Mia Tang, so I'll look at their texts with Mia.\nLooking at their messages I can see that in a message received December 2nd 2024 at 20:00 Mia reminded the user about property tax. \nI should return to the user's calendar and see if they have events mentioning property tax.\nI see one event with the title Pay Property Tax on December 6th 2024 from 08:00 until 08:30. Now I need to calculate how many days there are until that date. Today is December 2nd 2024. Six minus two is four, so there are 4 days remaining until this event.",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – The agent searches the calendar to locate the property tax event Mia reminded about\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow either targeted search or listing all calendar events\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm that a \"Pay Property Tax\" event on 2024-12-06 was actually retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Pay Property Tax\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-06T08:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            # Content is a dummy placeholder that will be filled with \"{matched}\" if such an event exists\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            # Use the result of the calendar lookup from Milestone 0\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The agent tells the user there are 4 days remaining until the event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Any phrasing that clearly communicates \"4 days\" is acceptable\n                                    \"content\": [(\"4 days\", \"four days\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (\n                    0,\n                    1,\n                ),  # After checking messages/emails, the agent looks at the calendar\n            ]",
+  "tool_allow_list_runtime": "[\n    # For understanding what Mia reminded the user about\n    \"get_all_messages\",\n    \"search_messages\",\n    \"get_all_emails\",\n    \"search_emails\",\n    # For locating the property tax calendar entry\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-12-02T22:00:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. Mia has told you that not to forget to pay your property tax. Money has been really tight for a while. You need to know how many days you have to collect the money for the tax. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_messages\", \"get_all_messages\", \"search_calendar_events\", \"get_all_calendars\"]"
+}

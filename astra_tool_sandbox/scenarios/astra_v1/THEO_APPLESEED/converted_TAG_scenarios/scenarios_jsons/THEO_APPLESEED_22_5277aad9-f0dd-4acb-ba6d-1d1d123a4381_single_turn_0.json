@@ -1,0 +1,174 @@
+{
+  "task_id": "5277aad9-f0dd-4acb-ba6d-1d1d123a4381",
+  "plot_id": 22,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo checked his calendar and found out his calendar is fully packed from 8 am to 5pm today. His only available between 3pm to 4pm. He also has a dentist appointment at 1pm for an hour. The rest of his schedule is filled with work meetings for today.\n Generate calendar_events for Theo for July 29, 2024",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_22",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to set a reminder to take time to reset in your free time as your schedule is quite busy today.   You see you have a free spot in your calendar for 15:00-16:00 and so you decide that that would be the best time to chill out.",
+  "reference_time": "2024-07-29T07:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event is created at 15:00-16:00 on 29 July 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_22_5277aad9-f0dd-4acb-ba6d-1d1d123a4381_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Project Sync Meeting",
+      "start_datetime_iso": "2024-07-29T08:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly synchronization meeting with the team to discuss project updates and next steps."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Data Analysis Review",
+      "start_datetime_iso": "2024-07-29T09:30:00-07:00",
+      "end_datetime_iso": "2024-07-29T10:30:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Theo Appleseed"
+      ],
+      "location": "127 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Review of recent data analysis results with Dawei and discuss implications for the project."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Brainstorming Session",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "126 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Brainstorming session with Michelle to explore new approaches to the current research problem."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dentist Appointment",
+      "start_datetime_iso": "2024-07-29T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "attendees_names": [
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dental Clinic",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Routine dental check-up and cleaning."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Client Presentation Preparation",
+      "start_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T15:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "124 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Preparation session for upcoming client presentation with the team."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Weekly Team Meeting",
+      "start_datetime_iso": "2024-07-29T16:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T17:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room A, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Regular weekly meeting to discuss team issues and updates."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Put it in my calendar to reset from 15:00-16:00 this afternoon. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Okay, so the user wants to create an event for today at 15:00-16:00. They didn't give me a specific name for the event, so by default I'll call it \"Reset\". \n\nNext, I need to check the user's calendar to confirm availability for the requested time. I found that the time slot 15:00-16:00 is free, so I will create the event for this time as requested. With the user's confirmation, I will create the event \"Reset\" at 15:00-16:00 on 29 July 2024. ",
+  "milestones": "[\n                # Milestone 0 – A new calendar event from 15:00-16:00 on July 29 2024 is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"start_datetime_iso\": \"2024-07-29T15:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T16:00:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-29T07:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow case-insensitive or phrasing variation on the event name\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",  # or get_all_calendars – to inspect availability\n    \"get_all_calendars\",\n    \"create_calendar_event\",   # to add the “Reset” block\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to set a reminder to take time to reset in your free time as your schedule is quite busy today.  You see you have a free spot in your calendar for 15:00-16:00 and so you decide that that would be the best time to chill out. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-29T07:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

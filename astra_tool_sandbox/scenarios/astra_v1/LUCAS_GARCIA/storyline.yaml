@@ -1,0 +1,171 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+- id: 1
+  date: "Monday, December 2, 2024"
+  time: "8 am"
+  people: "self"
+  event: "Lucas starts his day by checking his calendar for upcoming fitness classes and appointments."
+  outcome: "A list of calendar events outlining his day, including training sessions and meetings with clients, is viewed."
+  output_entities: ['calendar_events']
+
+- id: 2
+  date: "Monday, December 2, 2024"
+  time: "10 am"
+  people: "Jessica Lin"
+  event: "Lucas and Jessica discuss upcoming joint fitness workshop at the gym."
+  outcome: "Lucas notes down the workshop details and follows up with an email to finalize the schedule. Send out corresponding calendar events."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 3
+  date: "Monday, December 2, 2024"
+  time: "6 pm"
+  people: "Theo Appleseed"
+  event: "Lucas and Theo meet for their usual evening workout session at the local gym."
+  outcome: "Lucas receives a message from Theo discussing fitness goals and the next 3 months. Book schedules for future session the next 3 months."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 4
+  date: "Tuesday, December 3, 2024"
+  time: "7 am"
+  people: "Nathan Lewis, Jason Baker"
+  event: "Lucas leads a triathlon training session for his group."
+  outcome: "Lucas takes notes on Jason’s performance, saving them digitally for future reference and email the summary of the note to each of them."
+  output_entities: ['calendar_events', 'emails']
+
+- id: 5
+  date: "Tuesday, December 3, 2024"
+  time: "12 pm"
+  people: "Emmanuel Gonzales"
+  event: "Lucas has lunch with Emmanuel to catch up and reminisce about their high school days."
+  outcome: "Lucas receives a call from Emmanuel during lunch to confirm the meeting location. Lucas follow up by a calendar invite."
+  output_entities: ['call_logs', 'calendar_events']
+
+- id: 6
+  date: "Wednesday, December 4, 2024"
+  time: "5 pm"
+  people: "Carol Reyes"
+  event: "Lucas attends a beer tasting event with Carol at a new local brewery."
+  outcome: "Lucas texts Carol to thank her for organizing the event."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 7
+  date: "Thursday, December 5, 2024"
+  time: "9 am"
+  people: "Sophie Bennett"
+  event: "Lucas conducts a personalized fitness session for Sophie and her friends at the gym."
+  outcome: "Calendar invite and session notes are shared with Sophie for future reference."
+  output_entities: ['calendar_events', 'message_conversations']
+
+- id: 8
+  date: "Thursday, December 5, 2024"
+  time: "2 pm"
+  people: "Maria Garcia"
+  event: "Lucas has a video call with his mother to catch up and discuss family updates."
+  outcome: "Video call logs are saved, and Maria sends an email with family pictures."
+  output_entities: ['call_logs', 'emails']
+
+- id: 9
+  date: "Friday, December 6, 2024"
+  time: "11 am"
+  people: "Sarah Lopez"
+  event: "Lucas consults with Sarah regarding dietary plans for his gym clients."
+  outcome: "Emails are exchanged with dietary plans and recommendations."
+  output_entities: ['emails', 'calendar_events']
+
+- id: 10
+  date: "Friday, December 6, 2024"
+  time: "6 pm"
+  people: "David Turner"
+  event: "Lucas goes surfing with David at the local beach."
+  outcome: "Message between Lucas and David and meet up the beach for their surfing session via WhatsApp."
+  output_entities: ['whatsapp_messages', 'calendar_events']
+
+- id: 11
+  date: "Saturday, December 7, 2024"
+  time: "9 am"
+  people: "Olivia Clark"
+  event: "Lucas provides a motivational talk at the local gym attended by Olivia."
+  outcome: "Messages exchanged with Olivia post-event for feedback."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 12
+  date: "Saturday, December 7, 2024"
+  time: "3 pm"
+  people: "Brian Carter"
+  event: "Lucas attends a triathlon strategy meeting with Brian and team."
+  outcome: "Meeting notes are recorded and shared among team members for future reference. Messages exchanged with Brian post-meeting."
+  output_entities: ['emails', 'message_conversations', 'calendar_events']
+
+- id: 13
+  date: "Sunday, December 8, 2024"
+  time: "10 am"
+  people: "Megan Johnson"
+  event: "Lucas hosts an online fitness class for Megan and other participants."
+  outcome: "YouTube video of the session is uploaded and shared with participants for feedback."
+  output_entities: ['emails', 'message_conversations', 'calendar_events']
+
+- id: 14
+  date: "Sunday, December 8, 2024"
+  time: "4 pm"
+  people: "Alex Martin"
+  event: "Lucas reviews comments on his YouTube channel, responding to Alex and other followers."
+  outcome: "Comments and interactions increase on the YouTube channel, boosting engagement."
+  output_entities: ['message_conversations']
+
+- id: 15
+  date: "Monday, December 9, 2024"
+  time: "8 am"
+  people: "self"
+  event: "Lucas updates his calendar for the week’s upcoming events and sessions."
+  outcome: "New events and reminders are added to the calendar."
+  output_entities: ['calendar_events']
+
+- id: 16
+  date: "Monday, December 9, 2024"
+  time: "3 pm"
+  people: "Juan Garcia"
+  event: "Lucas visits his father's coffee shop to discuss expanding healthy snack options."
+  outcome: "Emails exchanged with Juan offering suggestions and recipes."
+  output_entities: ['emails']
+
+- id: 17
+  date: "Tuesday, December 10, 2024"
+  time: "9 am"
+  people: "Jessica Lin"
+  event: "Lucas and Jessica conduct a joint workout session at the gym for new members."
+  outcome: "Session details and follow-up messages sent to participants."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 18
+  date: "Tuesday, December 10, 2024"
+  time: "2 pm"
+  people: "Carol Reyes"
+  event: "Lucas and Carol explore another brewery for a new beer tasting adventure."
+  outcome: "Photos and ratings of beers are shared with Lucas via an iMessage thread"
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 19
+  date: "Wednesday, December 11, 2024"
+  time: "7 am"
+  people: "David Turner"
+  event: "Lucas has an early morning surf session with his surfing buddy, David. The wave was perfect. They both were very excited and enjoyed it."
+  outcome: "Lucas captures moments of the surfing activities, sharing them on iMessage. Lucas messages David to coordinate next surfing sesssion."
+  output_entities: ['whatsapp_messages', 'calendar_events']
+
+- id: 20
+  date: "Wednesday, December 11, 2024"
+  time: "5 pm"
+  people: "Jessica Lin, Olivia Clark"
+  event: "Lucas hosts a small gathering at the gym for a pre-holiday fitness celebration."
+  outcome: "Pictures and highlights from the event are shared on social media platforms."
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 21
+  date: "Thursday, December 12, 2024"
+  time: "10 am"
+  people: "high school football team friends"
+  event: "Lucas organizes a reunion brunch with his high school football team friends."
+  outcome: "Emails exchanged with updates and photos, rekindling old connections."
+  output_entities: ['emails', 'message_conversations', 'calendar_events']
+...

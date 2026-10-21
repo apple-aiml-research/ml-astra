@@ -1,0 +1,126 @@
+{
+  "task_id": "da26659c-ee82-4a16-8351-318577958e11",
+  "plot_id": 1,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 1, 2024 at 6 am, self, Vick Li were involved. Dawei checks his calendar for the cycling trip with Vick, starting at a local café in Napa Valley at 7 am. He texts Vick that he's on his way. Vick texts back and confirms he will be there on time.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_1",
+    "calendar",
+    "email",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to email to thank them for hanging out with you and invite them to another cycling trip for the same day and time the next week and add it to your calendar.",
+  "reference_time": "2024-12-03T11:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The system will send an email to Vick Li and write \"Hi Vick, thanks so much for the cycling trip last weekend, it was really what I needed. If you want let's do it the same time next weekend? LOL from Dawei\".",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The system will create the event \"Cycling Trip with Vick\" on Sunday 8th December 2024 at 07:00-10:00 and invite Vick as an attendee.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_1_da26659c-ee82-4a16-8351-318577958e11_single_turn_0",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_calendar_events",
+    "get_all_calendars",
+    "create_calendar_event",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "attendees_names": [
+        "Dawei Shen",
+        "Vick Li"
+      ],
+      "reminder_time_ahead": "60 minutes",
+      "creation_datetime_iso": "2024-11-30T12:00:00-08:00",
+      "meeting_url": null,
+      "end_datetime_iso": "2024-12-01T10:00:00-08:00",
+      "organizer_name": "Dawei Shen",
+      "start_datetime_iso": "2024-12-01T07:00:00-08:00",
+      "location": "Local Café, Napa Valley, CA",
+      "notes": "Starting the day with a cycling trip at a local café in Napa Valley.",
+      "calendar_event_name": "Cycling Trip with Vick",
+      "calendar_name": "personal"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vickie",
+      "last_name": "Lee",
+      "full_name": "Vickie Lee",
+      "phone_number": "+1 555-345-6789-0123",
+      "alias": "Vickie",
+      "email": "vickie.lee@orchardtheater.com",
+      "relationship": "Theater Friend",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Director",
+      "is_self": false,
+      "birthday": "1989-03-15T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Vick",
+      "last_name": "Li",
+      "full_name": "Vick Li",
+      "phone_number": "+1 555-890-1234-5678",
+      "alias": "Vick",
+      "email": "vick.li@techpals.com",
+      "relationship": "College Friend",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Tech Pals",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1994-07-22T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Will you please start a new email to Vick and write \"Hi Vick, thanks so much for the cycling trip last weekend, it was really what I needed. If you want let's do it the same time next weekend? LOL from Dawei\". And create me a new event called \"Cycling Trip with Vick\" same time next week and invite Vick to it",
+  "referential_complexity": "moderate",
+  "functional_complexity": "high",
+  "informational_complexity": "moderate",
+  "reasoning": "Okay, so the user wants me to create a new email to Vick. This must be \"Vick Lee\" in the user's contacts. They want to write an email saying \"Hi Vick, thanks so much for the cycling trip last weekend, it was really what I needed. If you want let's do it the same time next weekend? LOL from Dawei\". I've created that email, but I'm not done yet. The user want to create another cycling trip with same day and time. When exactly was that? \n\n I'm going to check the user's data for anything that could help, and I found an event from Sunday 1st December 2024 called \"Cycling Trip with Vick\" at 07:00-10:00. This must be what the user is talking about, since it mentions the same person (Vick) and a cycling trip. \n\n\nMy final task from the user is to make a new event called \"Cycling Trip with Vick\" for Sunday 8th for 07:00-10:00 and invite Vick to it. Then I will inform the user that both tasks completed.",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – Contact lookup for \"Vick\"\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    # Either search directly or list all contacts, then filter\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms that contact \"Vick Li\" was retrieved (email used later)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Vick Li\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"vick.li@techpals.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Email to Vick created/sent with the exact requested body text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Only Vick should be in recipients (To / main recipients)\n                                    \"recipients_addresses\": [[\"vick.li@techpals.com\"]],\n                                    \"body\": [\n                                        (\n                                            \"Hi Vick, thanks so much for the cycling trip last weekend\",\n                                            \"If you want let's do it the same time next weekend\",\n                                            \"LOL from Dawei\",\n                                        )\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-03T11:20:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                # Body is a fixed quote from user; exact match is appropriate here\n                                \"body\": column_str_contains_all_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 3 – Calendar event created for next Sunday 2024-12-08 07:00–10:00 with Vick invited\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Cycling Trip with Vick\",\n                                    \"start_datetime_iso\": \"2024-12-08T07:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-08T10:00:00-08:00\",\n                                    # Attendees should include Dawei (self) and Vick at minimum;\n                                    # allow extras but require these two.\n                                    \"attendees_names\": [[\"Dawei Shen\", \"Vick Li\"]],\n                                    \"creation_datetime_iso\": \"2024-12-03T11:20:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirm Vick Li\n                (1, 2),  # Having Vick's email → send email\n                (1, 3),  # Having Vick's contact → create event with correct attendee\n            ]",
+  "tool_allow_list_runtime": "[\n    # Contact resolution\n    \"search_contacts\",\n    \"get_all_contacts\",\n    # Email sending\n    \"send_email\",\n    # Calendar event creation\n    \"create_calendar_event\",\n]",
+  "is_read_time": "2024-12-03T11:20:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to email to thank them for hanging out with you and invite them to another cycling trip for the same day and time the next week and add it to your calendar. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_calendar_events\", \"get_all_calendars\", \"create_calendar_event\", \"send_email\"]"
+}

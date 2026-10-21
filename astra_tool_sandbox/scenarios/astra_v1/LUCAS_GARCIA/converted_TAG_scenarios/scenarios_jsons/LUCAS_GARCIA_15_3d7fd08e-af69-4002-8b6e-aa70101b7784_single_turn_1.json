@@ -1,0 +1,86 @@
+{
+  "task_id": "3d7fd08e-af69-4002-8b6e-aa70101b7784",
+  "plot_id": 15,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 8 am, self were involved. Lucas updates his calendar for the week’s upcoming events and sessions. New events and reminders are added to the calendar.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_15",
+    "calendar",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You realised you forgot to schedule in time with your mom for lunch at Pony and Jigger this coming Wednesday, so you're going to add in the event to your calendar with her as an invitee.",
+  "reference_time": "2024-12-09T10:10:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event  \"Lunch with Mommy\" at Pony and Jigger on Wednesday 11th December at 13:00 is added to the user's calendar.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_15_3d7fd08e-af69-4002-8b6e-aa70101b7784_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Garcia",
+      "full_name": "Maria Garcia",
+      "phone_number": "+1 12345-6789-1000-8765",
+      "alias": "Mom",
+      "email": "maria.garcia@example.com",
+      "relationship": "Mother",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County School District",
+      "job_title": "School Teacher",
+      "is_self": false,
+      "birthday": "1965-03-10T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Add the event \"Lunch with Mommy\" at Pony and Jigger for this Wednesday at 13:00 and invite her",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user asked me to add a new event to his calendar,  \"Lunch with Mommy\" and has given me most of the details necessary: it will take place at Pony and Jigger this Wednesday at 13:00. I need to figure out when this Wednesday is... if it's Monday December 9th right now, then Wednesday will be December 11th. I'll first check the user's calendar for that specific time to see if there are any scheduling conflicts... and it seems all clear. I'll go ahead and create the event as requested.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Mom’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms Maria Garcia (“Mom”) was returned in the contact-search result\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Maria Garcia\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verifies the new calendar event was created for Wednesday, Dec 11 2024 13:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Lunch with Mommy\",\n                                    # Use substring matching so any timezone/seconds suffix is acceptable\n                                    \"start_datetime_iso\": \"2024-12-11T13:00\",\n                                    \"attendees_names\": [[\"Maria Garcia\"]],\n                                    \"creation_datetime_iso\": \"2024-12-09T10:10:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_rouge_l_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",  # to add the lunch event\n    \"search_contacts\",        # to look up Mom / Maria Garcia\n    \"get_all_contacts\",       # fallback contact listing\n    \"search_calendar_events\", # optional conflict check\n    \"get_all_calendars\",      # optional calendar listing\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You realised you forgot to schedule in time with your mom for lunch at Pony and Jigger this coming Wednesday, so you're going to add in the event to your calendar with her as an invitee. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-12-09T10:10:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

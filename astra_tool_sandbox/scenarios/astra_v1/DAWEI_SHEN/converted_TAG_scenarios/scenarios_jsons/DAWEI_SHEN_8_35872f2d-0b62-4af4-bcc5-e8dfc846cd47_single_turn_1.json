@@ -1,0 +1,79 @@
+{
+  "task_id": "35872f2d-0b62-4af4-bcc5-e8dfc846cd47",
+  "plot_id": 8,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 5, 2024 at 5 pm, self, Jess Zimmer were involved. Jess messages Dawei to ask about their upcoming holiday plans. Dawei replies, confirming their itinerary for the upcoming theater night. Jess shares a photo of the tickets on WhatsApp.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_8",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You feel sick and need to cancel your theater rehearsal and let Jess know.",
+  "reference_time": "2024-12-08T18:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A text message is sent to Jess Zimmer that says \"I am not feeling well so I am going to give rehearsal a skip\". ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_8_35872f2d-0b62-4af4-bcc5-e8dfc846cd47_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text Jess to say \"I am not feeling well so I am going to give rehearsal a skip\".",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking me to send a message.\nFirst, I will find Jess in the user's contacts. I can see only one Jess, Jess Zimmer.\nI will now compose the message as requested. \nA message with the content \"I am not feeling well so I am going to give rehearsal a skip\" will be sent to Jess Zimmer",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Jess in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that Jess Zimmer was returned from contact search in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jess Zimmer\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 555-123-4567-8902\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # use results from milestone 0\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new text message to Jess with correct content is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 555-123-4567-8902\",\n                                                \"jess.zimmer@fintechstartup.com\",\n                                            ),\n                                            (\n                                                \"+1 555-123-4567-8901\",\n                                                \"dawei.shen@orchardtech.com\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"not feeling well\",\n                                    \"creation_datetime_iso\": \"2024-12-08T18:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirm Jess found\n                (1, 2),  # Jess confirmed → message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",     # to send the text to Jess\n    \"search_contacts\",  # likely used to locate Jess\n    \"get_all_contacts\", # fallback contact retrieval\n]",
+  "user_goal_prompt": "You are User A, Dawei Shen. You feel sick and need to cancel your theater rehearsal and let Jess know. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-08T18:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,96 @@
+{
+  "task_id": "ef211aff-a53f-4556-92aa-400d5d180c19",
+  "plot_id": 5,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 7:00 PM, Jessica Lane were involved. Planning session with Jessica over dinner regarding the holiday volunteering schedule. Email sent to volunteers with the finalized schedule of activities.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_5",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if anyone has replied to your email about the holiday volunteering schedule",
+  "reference_time": "2024-12-04T22:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that there are no emails in their inbox",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_5_ef211aff-a53f-4556-92aa-400d5d180c19_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Finalized Holiday Volunteering Schedule",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "volunteers@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "jessica.lane@orchardmail.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-04T20:30:00-08:00",
+      "body": "Hello Team,\n\nI hope this message finds you well. Following our productive planning session this evening with Jessica, we have finalized the volunteering schedule for the upcoming holiday events. Please find attached the detailed schedule of activities.\n\nWe appreciate your commitment and look forward to another successful season of community engagement. Should you have any questions or require further clarification, do not hesitate to reach out.\n\nThank you all for your dedication and hard work!\n\nBest regards,\nEmily Rose\nEvent Coordinator\nOrchard County Community Center",
+      "attachments": [
+        "Holiday_Volunteering_Schedule.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lane",
+      "full_name": "Jessica Lane",
+      "phone_number": "+1 530-555-0127",
+      "alias": "Bestie",
+      "email": "jessica.lane@orchardmail.com",
+      "relationship": "Best Friend",
+      "address": "200 Friendship Blvd, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Volunteer Coordinator",
+      "is_self": false,
+      "birthday": "1994-04-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you tell me if I have any replies to my last email? Yes or no.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know if they have got any replies to their most recent email. I can see from looking at their emails their last sent email was at 20:30. I will now check the user's inbox. There are currently have 0 emails in their inbox so I will inform the user with No.",
+  "milestones": "[\n                # Milestone 0 — the agent uses an email-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – Verify that the gardening project meeting was found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Finalized Holiday Volunteering Schedule\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"emily.rose@orchardcommunity.org\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 — the user is informed there are no replies / emails\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # Any phrasing that clearly tells the user there are no replies / emails\n                                    \"content\": \"no\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Agent retrieves emails → then informs user of no replies\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to know if anyone has replied to your email about the holiday volunteering schedule ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-04T22:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

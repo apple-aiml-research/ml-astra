@@ -1,0 +1,108 @@
+{
+  "task_id": "e5c0c1f4-d538-48e4-8394-23e42aaf5006",
+  "plot_id": 20,
+  "plot_summary": "John Quinn is the protagonist. On Friday, July 26, 2024 at 11:30am, Ali Amin, Alisa Borhman, Akira Muramoto were involved. John invites his friends to a 'history brunch' on Sunday late morning.  1. John messages his friends in a group chat, suggesting that they could meet up for a 'history brunch' at the local Egg & Bagel cafe to discuss post-Napoleonic history. 2. Ali enthusiastically replies in the group chat with everyone. 3. Alisa also replies agreeing in the group chat with everyone. 4. Alisa sends a separate message only to John asking him to make sure it does not devolve into John and Ali monopolizing the conversation with a focus on military history. 5. Akira does not respond to the group chat but writes to John separately saying he's not really interested, sounding slightly exasperated. 6. John answers separately to each of the 3 message threads (group chat with everyone, Alice, Akira). 7. John makes an invite for the brunch adding the people who accepted ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_20",
+    "contact",
+    "messaging",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to message Alisa but you are driving so need the assistant to send it.",
+  "reference_time": "2024-07-26T11:48:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A message is sent to Alisa Bohrman that reads \"No promises! You know how we get.\"."
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_20_e5c0c1f4-d538-48e4-8394-23e42aaf5006_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ali",
+      "last_name": "Amin",
+      "full_name": "Ali Amin",
+      "phone_number": "408-555-0134",
+      "alias": "Ali",
+      "email": "ali.amin@historybuffs.org",
+      "relationship": "Friend",
+      "address": "160 History Ln, San José, CA 95110",
+      "company": "History Buffs Inc.",
+      "job_title": "Historical Consultant",
+      "is_self": false,
+      "birthday": "1988-10-10T00:00:00-07:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Alisa",
+      "last_name": "Borhman",
+      "full_name": "Alisa Borhman",
+      "phone_number": "408-555-0136",
+      "alias": "Alisa",
+      "email": "alisa.borhman@historicalmuseums.org",
+      "relationship": "School Friend",
+      "address": "170 Past Ave, San José, CA 95132",
+      "company": "San José Historical Museum",
+      "job_title": "Curator",
+      "is_self": false,
+      "birthday": "1998-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text my curator friend to say \"No promises! You know how we get.\"",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to message their curator friend. First I need to figure out who curator friend is. I should check the user's Contacts for a contact with that name. \n\nHmm, I don't see a Contact with that name, but Alisa Borhman has curator as their job and school friend as their relationship to the user. I should check with the user that this is who they meant.\n\nIt was who the user meant so I will draft a message to Alisa with the content the user has provided. \n\nLastly I will present the draft to the user for their approval before sending the message. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the “curator friend” in Contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",  # will be checked for tool name(s)\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the contact returned from Milestone 0 is Alisa Borhman (the curator)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Alisa Borhman\",\n                                                \"partial\": False,\n                                            },\n                                            \"job_title\": {\n                                                \"value\": \"Curator\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",  # populated by extractor\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – A new outgoing message to Alisa with the correct content was sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require the conversation to contain Alisa (by phone or email) and no extra participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"408-555-0136\",\n                                                \"alisa.borhman@historicalmuseums.org\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"No promises! You know how we get.\",\n                                    \"creation_datetime_iso\": \"2024-07-26T11:48:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You need to message Alisa but you are driving so need the assistant to send it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-07-26T11:48:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

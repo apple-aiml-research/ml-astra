@@ -1,0 +1,143 @@
+{
+  "task_id": "5207803e-a13a-49e8-8a62-776c8531ff08",
+  "plot_id": 11,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 9 am, self, Vick Li, Lukas Hürholz were involved. Lukas texts Dawei to inform him he’ll be in California next weekend for work and wants to catch up. Dawei discusses plans with Vick during their Sunday cycling trip. Dawei texts Lukas confirming dinner plans for next Saturday and blocks it on his calendar.",
+  "tags": [
+    "astra_core",
+    "DAWEI_SHEN",
+    "plot_11",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You don't feel like having dinner with Lukas and Vick any more.   You want to delete the event on Saturday December 14th 2024 from 19:00 - 21:00 and replace it with an event named 'Solo Cinema'.",
+  "reference_time": "2024-12-11T15:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "Delete the event \"Dinner with Lukas and Vick\" on Saturday December 14th 2024 from 19:00 - 21:00.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "Create a new event on Saturday December 14th 2024 from 19:00 - 21:00 titled \"Solo Cinema\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_11_5207803e-a13a-49e8-8a62-776c8531ff08_single_turn_1",
+  "messages": [
+    {
+      "conversation_name": "Vick Li",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com"
+      ],
+      "sender_address": "+1 555-123-4567-8901",
+      "content": "Hi Vick, just confirming our dinner plans with Lukas on the 14th of December at 7 pm. I'll share the restaurant details shortly.",
+      "creation_datetime_iso": "2024-12-08T09:26:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Lukas Hürholz",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+44 123-456-7890-1234"
+      ],
+      "sender_address": "+1 555-123-4567-8901",
+      "content": "Awesome, Lukas! How about dinner next Saturday? Vick will join us too.",
+      "creation_datetime_iso": "2024-12-08T09:15:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lukas",
+      "last_name": "Hürholz",
+      "full_name": "Lukas Hürholz",
+      "phone_number": "+44 123-456-7890-1234",
+      "alias": "Lukas",
+      "email": "lukas.hurholz@londonbanking.co.uk",
+      "relationship": "High School Friend",
+      "address": "456 Finance St, London, UK",
+      "company": "London Banking",
+      "job_title": "Banker",
+      "is_self": false,
+      "birthday": "1994-12-31T00:00:00-08:00"
+    },
+    {
+      "first_name": "Vick",
+      "last_name": "Li",
+      "full_name": "Vick Li",
+      "phone_number": "+1 555-890-1234-5678",
+      "alias": "Vick",
+      "email": "vick.li@techpals.com",
+      "relationship": "College Friend",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Tech Pals",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1994-07-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to go to the cinema on Saturday night, clear my schedule and stick it in the calendar with title including solo.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "Okay so the user wants to go to the cinema now instead of anything they have scheduled in the calendar. Let me check the calendar now.\n\nThe user has a dinner scheduled for Saturday December 14th 2024 from 19:00 - 21:00. I'll erase that now. Now I must create a new event as the user has indicated they want this cinema time noted in the calendar. I will create a new event in the place of the deleted event. So the new event will be called 'Solo Cinema' and it will take place Saturday December 14th 2024 from 19:00 - 21:00",
+  "reference_time_str": "Today is Wednesday, December 11, 2024 or 2024-12-11T15:30:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Calendar lookup tool used\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The specific Dec-14 event was surfaced\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_count_extractor,\n                                        count_expected=2,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – the calendar event is actually removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dinner with Lukas and Vick\",\n                                    \"start_datetime_iso\": \"2024-12-14T19:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare against the initial snapshot\n                        )\n                    ],\n                ),\n                # milestone 3 - 4: Solo cinema added\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"solo\",\n                                    \"start_datetime_iso\": \"2024-12-14T19:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-14T21:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-11T15:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against the initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # find the event\n                (1, 2),  # remomve one\n                (2, 3),  # remove the duplicated one\n            ]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "remove_calendar_event",
+    "create_calendar_event"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You don't feel like having dinner with Lukas and Vick any more.  You want to delete the event on Saturday December 14th 2024 from 19:00 - 21:00 and replace it with an event named 'Solo Cinema'. ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"remove_calendar_event\", \"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-11T15:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

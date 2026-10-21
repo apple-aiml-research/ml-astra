@@ -1,0 +1,79 @@
+{
+  "task_id": "c59bcfa0-20a5-4a89-8b88-b9455e1666ca",
+  "plot_id": 16,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 3 pm, Juan Garcia were involved. Lucas visits his father's coffee shop to discuss expanding healthy snack options. Emails exchanged with Juan offering suggestions and recipes.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_16",
+    "messaging",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to see if your father has had a chance to look at the recipes yet",
+  "reference_time": "2024-12-11T11:25:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message saying \"Hey just checking have you looked at the recipes yet?\" is sent to Juan Garcia. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_16_c59bcfa0-20a5-4a89-8b88-b9455e1666ca_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Garcia",
+      "full_name": "Juan Garcia",
+      "phone_number": "+1 12345-6789-1000-4321",
+      "alias": "Dad",
+      "email": "juan.garcia@example.com",
+      "relationship": "Father",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Garcia's Coffee Shop",
+      "job_title": "Coffee Shop Owner",
+      "is_self": false,
+      "birthday": "1963-11-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Message Juan and say \"Hey just checking have you looked at the recipes yet?\".",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to message Juan and say \"Hey just checking have you looked at the recipes yet?\". I should first find out who Juan is. I will check the user's Contacts. \nHmm, looks like the user only has 1 Juan in their Contacts, Juan Garcia, so this must be who the user means. \nNext I will draft a message to Juan, using the content the user has already provided. \nLastly, I will present the draft to the user for approval before I send it. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Juan in the contacts list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new message to Juan Garcia has been sent with the expected content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"juan.garcia@example.com\",\n                                                \"+1 12345-6789-1000-4321\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Hey just checking have you looked at the recipes yet?\",\n                                    \"creation_datetime_iso\": \"2024-12-11T11:25:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Require that at least one identifier for Juan is present;\n                                # allow extra participants such as the user’s own address.\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with pre-task database state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup precedes sending the message\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to see if your father has had a chance to look at the recipes yet ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-12-11T11:25:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

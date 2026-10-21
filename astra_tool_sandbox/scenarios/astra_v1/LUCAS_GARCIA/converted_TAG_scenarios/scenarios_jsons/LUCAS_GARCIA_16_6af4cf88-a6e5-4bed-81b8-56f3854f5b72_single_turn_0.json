@@ -1,0 +1,133 @@
+{
+  "task_id": "6af4cf88-a6e5-4bed-81b8-56f3854f5b72",
+  "plot_id": 16,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 3 pm, Juan Garcia were involved. Lucas visits his father's coffee shop to discuss expanding healthy snack options. Emails exchanged with Juan offering suggestions and recipes.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_16",
+    "email",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You just got home after visiting your Dad's coffee shop to discuss expanding healthy snack options.   He said he'd send you an email afterwards about it, so you're wondering if he did that yet.   Once you check, you also want to forward the e-mail to Sarah Lopez to consider these healthy snack options for your clients' dietary plans and recommendations.",
+  "reference_time": "2024-12-09T17:15:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The email from Juan Garcia, received on December 9th, 2024, at 17:00, is shown to the user. "
+    },
+    {
+      "input_text": "2. The email from Juan Garcia on healthy snack options is forwarded to dietitian consultant Sarah Lopez. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_16_6af4cf88-a6e5-4bed-81b8-56f3854f5b72_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Healthy Snack Options for the Coffee Shop",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "juan.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T16:00:00-08:00",
+      "body": "Hi Dad,\n\nIt was great chatting today at the coffee shop! As promised, I've attached some healthy snack options that I think could be a big hit with your customers. These recipes focus on nutrition without sacrificing flavor.\n\nCheck them out when you have a moment and let me know what you think. I'm excited to help bring a healthier twist to the shop's offerings!\n\nBest,\nLucas",
+      "attachments": [
+        "Healthy_Snack_Recipes_Dec2024.pdf"
+      ],
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Healthy Snack Options for the Coffee Shop",
+      "sender_address": "juan.garcia@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T17:00:00-08:00",
+      "body": "Hi Lucas,\n\nThanks for dropping by today and for the email. The recipes look fantastic, and I think our customers are going to love the change. I'll go through them in more detail and we can plan a taste test soon.\n\nAppreciate your initiative in bringing these healthy ideas to the shop!\n\nLove,\nDad",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Garcia",
+      "full_name": "Juan Garcia",
+      "phone_number": "+1 12345-6789-1000-4321",
+      "alias": "Dad",
+      "email": "juan.garcia@example.com",
+      "relationship": "Father",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Garcia's Coffee Shop",
+      "job_title": "Coffee Shop Owner",
+      "is_self": false,
+      "birthday": "1963-11-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Lopez",
+      "full_name": "Sarah Lopez",
+      "phone_number": "+1 12345-6789-1000-9630",
+      "alias": "Dietitian Consultant",
+      "email": "sarah.lopez@example.com",
+      "relationship": "Dietitian consultant",
+      "address": "12 Nutrition Blvd, Orchard County, CA, USA",
+      "company": "Healthy Choices Nutrition",
+      "job_title": "Dietitian",
+      "is_self": false,
+      "birthday": "1985-11-02T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you please double check if Dad has already sent an e-mail on healthy snack options? If so, then forward it to my dietary advisor?",
+  "informational_complexity": "moderate",
+  "referential_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "Okey, first of all the user wants to double check if their Dad has already sent an email. I need to figure out who the user is referring to by 'Dad'. I will scrutinize the user contacts. There, I see there is a contact card for 'Juan Garcia' with alias 'Dad'. The user is referring to this contact. Based on this information, I will now explore the user context communications. The user mentions 'e-mail' on their query, so I will start with this app. There, I see an e-mail sent by Juan Garcia on December 09 2024 at 17:00:00. The user request has been made on December 09 2024 at 17:15:00, so I can now assume that \"the e-mail from Dad\" has been sent. I can notify the user. \n\nAfter this, the user wants to forward this e-mail to his 'dietary advisor'. I will need to figure out how the user is referring to. I will go through the user contacts again. There, I see there is a contact card with the alias and tag 'Dietitian consultant'. The user said 'dietary advisor', which is another way to refer to 'Dietitian consultant'. This contact card is for Sarah Lopez, so I can use the e-mail address stored in their contact card to forward Juan Garcia's email to them. ",
+  "milestones": "[\n                # Milestone 0 –  Agent looks for the dad’s email in the mailbox\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 –  Verify that the dad’s 17:00 healthy-snack email was in the search results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"juan.garcia@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Healthy Snack Options\",\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-09T17:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent looks up contacts (either search or list all)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 3 – The returned contact information contains Sarah Lopez with correct phone number\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Sarah Lopez\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ]\n                ),\n                # Milestone 4 –  A new forwarded email is sent to Sarah Lopez\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"sarah.lopez@example.com\"]\n                                    ],\n                                    \"subject\": \"Healthy Snack Options\",\n                                    \"creation_datetime_iso\": \"2024-12-09T17:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"subject\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (2, 3)]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You just got home after visiting your Dad's coffee shop to discuss expanding healthy snack options.  He said he'd send you an email afterwards about it, so you're wondering if he did that yet.  Once you check, you also want to forward the e-mail to Sarah Lopez to consider these healthy snack options for your clients' dietary plans and recommendations. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-09T17:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

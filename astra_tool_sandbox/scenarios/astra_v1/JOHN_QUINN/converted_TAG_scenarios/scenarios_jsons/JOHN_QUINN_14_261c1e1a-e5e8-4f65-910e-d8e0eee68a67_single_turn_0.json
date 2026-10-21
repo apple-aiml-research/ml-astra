@@ -1,0 +1,93 @@
+{
+  "task_id": "261c1e1a-e5e8-4f65-910e-d8e0eee68a67",
+  "plot_id": 14,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 1:30pm, Ursula Quinn were involved. John has a discussion with his mom about his dad's birthday and ends up ordering his dad some high end whiskey  1. John messages his mom to ask her what to buy his dad for his upcoming birthday. 2. His mom is not very helpful, saying they have everything they need. 3. John ends up ordering some high-end whiskey online, and receives an email with the purchase confirmation. 4. He sends the purchase confirmation to his mom. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_14",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to reply to Ursula Quinn to let her know about your purchase",
+  "reference_time": "2024-07-24T14:00:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A reply saying \"I got it, what do you think\" is sent to contact Ursula Quinn"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_14_261c1e1a-e5e8-4f65-910e-d8e0eee68a67_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Ursula Quinn",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "ursula.quinn@modernart.org"
+      ],
+      "sender_address": "ursula.quinn@modernart.org",
+      "content": "That sounds like a great idea, John! He loves a good whiskey.",
+      "creation_datetime_iso": "2024-07-23T13:36:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to mom saying I got it, what do you think",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to reply to a message from their mom. Mom is listed as contact Ursula Quinn so I'll draft a message using the text provided \"I got it, what do you think\", and then send it.",
+  "milestones": "[\n                # Milestone 0  – Agent looks up either the contact or existing conversation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new message is sent to Mom that contains “I got it …”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [(\"ursula.quinn@modernart.org\", \"408-555-0124\")]\n                                    ],\n                                    \"content\": \"I got it\",\n                                    \"creation_datetime_iso\": \"2024-07-24T14:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,  # must include Mom\n                                \"content\": column_contains_similarity,  # look for the key phrase,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",     # to send the reply\n    \"search_contacts\",  # to find Mom’s contact\n    \"get_all_contacts\", # fallback contact lookup\n    \"search_messages\",  # optionally locate the existing thread\n    \"get_all_messages\", # fallback thread lookup\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to reply to Ursula Quinn to let her know about your purchase ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-24T14:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

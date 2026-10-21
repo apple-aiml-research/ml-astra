@@ -1,0 +1,97 @@
+{
+  "task_id": "d4cb9030-4549-4fba-9b93-f6ed8c3c5d00",
+  "plot_id": 6,
+  "plot_summary": "Emily Rose is the protagonist. On Thursday, December 5, 2024 at 9:00 AM, Sarah Rose were involved. Video call with Sarah to discuss family plans for the holiday season and potential engagement in charity events. Call log entry of a 30-minute call with Sarah. Follow-up with an email summarizing their plans and details for charity events. Send out calendar_events for events mentioned.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_6",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply email to Sarah saying that you will be a little late to the family gathering.",
+  "reference_time": "2024-12-05T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A follow-up email is sent to Sarah saying Hi Sarah just to say I'll be a little late to the family gathering so can you get there a little earlier to help set up?",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_6_d4cb9030-4549-4fba-9b93-f6ed8c3c5d00_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "modify_draft_email",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Summary of Holiday Season Plans and Charity Events",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "sarah.rose@orchardmail.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-05T09:30:00-08:00",
+      "body": "Hi Sarah,\n\nIt was great catching up this morning! Here's a quick summary of what we discussed regarding our family plans for the holiday season and the upcoming charity events:\n\n1. Family gathering on December 24th at our house.\n2. Participation in the 'Winter Wonderland' charity event on December 15th.\n3. Volunteering at the food drive on December 20th.\n\nLet me know if there's anything else we should add or adjust. Looking forward to a festive and meaningful holiday season!\n\nBest,\nEmily",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Rose",
+      "full_name": "Sarah Rose",
+      "phone_number": "+1 530-555-0124",
+      "alias": "Supportive Sister",
+      "email": "sarah.rose@orchardmail.com",
+      "relationship": "Sister",
+      "address": "125 Community Lane, Orchard County, CA 95662, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1996-08-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a follow-up email to my sister and say Hi Sarah just to say I'll be a little late to the family gathering so can you get there a little earlier to help set up?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a follow-up email to their sister to say \"Hi Sarah just to say I'll be a little late to the family gathering so can you get there a little earlier to help set up?\". First I need to find out who the user's sister is, so I check their Contacts. \nHmm, I don't see a contact whose name is sister. I should check the aliases. Looks like Sarah Rose has the alias sister so this must be who the user meant. \nI locate the existing email thread with Sarah and draft a follow-up using the content the user has already provided. Finally, I will present the draft to the user for approval before I send it. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Sarah’s info (contacts search / list)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Email sent to Sarah with the requested content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"sarah.rose@orchardmail.com\"]\n                                    ],\n                                    \"body\": \"little late\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-05T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"body\": column_contains_similarity,  # check phrase appears in body\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to dictate a reply email to Sarah saying that you will be a little late to the family gathering. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"modify_draft_email\", \"send_email\"]",
+  "is_read_time": "2024-12-05T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

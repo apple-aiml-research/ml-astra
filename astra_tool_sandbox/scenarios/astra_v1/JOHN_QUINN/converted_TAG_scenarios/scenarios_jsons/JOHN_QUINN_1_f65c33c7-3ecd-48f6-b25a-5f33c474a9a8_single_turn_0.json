@@ -1,0 +1,275 @@
+{
+  "task_id": "f65c33c7-3ecd-48f6-b25a-5f33c474a9a8",
+  "plot_id": 1,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 8 am, Bronson Chunk, Robin Selmoure, Julie Patterson were involved. Bronson sets up urgent meetings and stand-ups due to a security situation in Peru for the next two weeks  1. Bronson sets up an urgent morning meeting at 10am to deal with a new security situation in Peru. 2. John creates daily stand-up calendar events for every single following workday in the next 2 weeks. i.e. this should result in 9 additional calendar events. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_1",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to double-check the start time for the daily stand-ups.",
+  "reference_time": "2024-07-23T08:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "The user is informed that the event; \"Daily Stand-up: Security Updates\" is scheduled for 09:00-09:30 on 23 July 2024. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_1_f65c33c7-3ecd-48f6-b25a-5f33c474a9a8_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Urgent Security Meeting - Peru Situation",
+      "sender_address": "bronson.chunk@palantir.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com",
+        "robin.selmoure@palantir.com",
+        "julie.patterson@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T08:05:00-07:00",
+      "body": "Please join us at 10 AM today in Conference Room B to discuss the new security situation in Peru. It's crucial we strategize our approach.",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-23T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-23T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-24T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-25T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-25T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-26T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-26T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-30T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-31T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-31T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-08-01T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-01T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-08-02T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-02T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Bronson",
+      "last_name": "Chunk",
+      "full_name": "Bronson Chunk",
+      "phone_number": "408-555-0130",
+      "alias": "Boss",
+      "email": "bronson.chunk@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Project Manager",
+      "is_self": false,
+      "birthday": "1980-09-09T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When's the stand-up this morning?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to know when the stand-up is this morning. First, I will establish what they could mean by stand-up. I will start by looking for events that contain the keyword 'stand-up' or words relating to 'stand-up.' I have found an event called \"Daily Stand-up: Security Updates,\" this must be what they are referring to. I will now inform the user that \"Daily Stand-up: Security Updates\" takes place at 09:00-09:30 on 23 July 2024. ",
+  "milestones": "[\n                # Milestone 0 –  Agent looks up the calendar to find today’s stand-up\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 –  The returned tool result includes the correct stand-up event scheduled at 09:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Daily Stand-up: Security Updates\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-23T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 –  The agent tells the user the stand-up is at 09:00–09:30 this morning\n                Milestone(\n                    snapshot_constraints=[\n                        # Contains one of the acceptable 9 am time phrasings\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"09:00\",\n                                            \"9:00\",\n                                            \"9 am\",\n                                            \"9am\",\n                                            \"9 a.m.\",\n                                            \"09:00 AM\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to double-check the start time for the daily stand-ups. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-07-23T08:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

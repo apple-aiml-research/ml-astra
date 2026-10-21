@@ -1,0 +1,160 @@
+{
+  "task_id": "c6296fec-b8df-4a8a-a546-8fc280f37d47",
+  "plot_id": 3,
+  "plot_summary": "Emily Rose is the protagonist. On Tuesday, December 3, 2024 at 1:00 PM, Theo Appleseed were involved. Discussion with Theo about logistics for community clean-up planned for the weekend and schedule the event. WhatsApp chat history with Theo detailing responsibilities for the clean-up event. Create a calendar event for weekend community clean-up event.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_3",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply to Theo via whatsapp saying that you don't think you have enough volunteers for the cleanup event.",
+  "reference_time": "2024-12-03T13:20:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A reply whatsapp message is sent to Theo Appleseed saying \"I've been thinking about it and I don't reckon we have enough volunteers for the cleanup event, should we throw up an advertisement in the village hall?\""
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_3_c6296fec-b8df-4a8a-a546-8fc280f37d47_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message",
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ],
+      "sender_name": "Theo Appleseed",
+      "sender_address": "+1 530-555-0133",
+      "creation_datetime_iso": "2024-12-03T13:10:00-08:00",
+      "content": "Fantastic! Thanks, Emily. I'll see you Thursday to finalize everything.",
+      "status": "read"
+    },
+    {
+      "sender_name": "Emily Rose",
+      "creation_datetime_iso": "2024-12-03T13:00:00-08:00",
+      "sender_address": "+1 530-555-0123",
+      "status": "sent",
+      "content": "Hi Theo, just checking in about the community clean-up this weekend. Do you have the list of supplies we need?",
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ]
+    },
+    {
+      "sender_name": "Theo Appleseed",
+      "creation_datetime_iso": "2024-12-03T13:02:00-08:00",
+      "sender_address": "+1 530-555-0133",
+      "status": "read",
+      "content": "Hey Emily! Yes, I've got the list ready. We'll need gloves, trash bags, and a few rakes.",
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ]
+    },
+    {
+      "sender_name": "Emily Rose",
+      "creation_datetime_iso": "2024-12-03T13:04:00-08:00",
+      "sender_address": "+1 530-555-0123",
+      "status": "sent",
+      "content": "Perfect! Should we ask volunteers to bring any of these items if they have them?",
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ]
+    },
+    {
+      "sender_name": "Theo Appleseed",
+      "creation_datetime_iso": "2024-12-03T13:06:00-08:00",
+      "sender_address": "+1 530-555-0133",
+      "status": "read",
+      "content": "Good idea, Emily. I'll update the event flyer to include that info. Also, can you handle the refreshments?",
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ]
+    },
+    {
+      "sender_name": "Emily Rose",
+      "creation_datetime_iso": "2024-12-03T13:08:00-08:00",
+      "sender_address": "+1 530-555-0123",
+      "status": "sent",
+      "content": "Absolutely, I'll coordinate with Oliver at the Daily Brew Cafe. He's always happy to help out.",
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ]
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply the thread regarding the community clean-up saying \"I've been thinking about it and I don't reckon we have enough volunteers for the cleanup event, should we throw up an advertisement in the village hall?\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to dictate a reply to a thread.\n\nI should locate the message history by searching the community clean-up in the user's Messages and WhatsApp messages, and then start a draft reply to the thread.\n\n I found a Whatsapp thread with Theo is related to the community clean-up. As the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\n\nI will then send the message if the user confirms that the message was transcribed correctly.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the existing WhatsApp conversation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new WhatsApp reply is sent to Theo with the requested content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\"+1 530-555-0123\", \"+1 530-555-0133\"]\n                                    ],\n                                    \"content\": \"enough volunteers\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-03T13:20:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_subset_match_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieval of WhatsApp thread precedes sending the reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_whatsapp_message\",\n    \"search_whatsapp_messages\",\n    \"get_all_whatsapp_messages\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to dictate a reply to Theo via whatsapp saying that you don't think you have enough volunteers for the cleanup event. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\", \"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\"]",
+  "is_read_time": "2024-12-03T13:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

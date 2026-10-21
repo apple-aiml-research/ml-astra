@@ -1,0 +1,142 @@
+{
+  "task_id": "cf498290-268a-4a9d-9274-cdfe5f8a3a81",
+  "plot_id": 11,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 9 am, self, Vick Li, Lukas Hürholz were involved. Lukas texts Dawei to inform him he’ll be in California next weekend for work and wants to catch up. Dawei discusses plans with Vick during their Sunday cycling trip. Dawei texts Lukas confirming dinner plans for next Saturday and blocks it on his calendar.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_11",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "There is an emergency in work which has called you in on the weekend.   You want to push you dinner plans back half an hour to guarantee you will be there on time.",
+  "reference_time": "2024-12-14T17:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. the event 'Dinner with Lukas and Vick' is rescheduled to 19:30-21:30 on 14 December 2024",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_11_cf498290-268a-4a9d-9274-cdfe5f8a3a81_single_turn_1",
+  "messages": [
+    {
+      "conversation_name": "Vick Li",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com"
+      ],
+      "sender_address": "+1 555-123-4567-8901",
+      "content": "Hi Vick, just confirming our dinner plans with Lukas on the 14th of December at 7 pm. I'll share the restaurant details shortly.",
+      "creation_datetime_iso": "2024-12-08T09:26:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Lukas Hürholz",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+44 123-456-7890-1234"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "Hey Lukas, looking forward to catching up over dinner when you're in town. Let's meet at the local restaurant on December 14th at 7 pm. I'll send you the address soon!",
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Dinner at a local restaurant",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com",
+        "lukas.hurholz@londonbanking.co.uk"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "Here's the address for our dinner on December 14th: Local Restaurant, Orchard County, CA. See you both at 7 pm!",
+      "creation_datetime_iso": "2024-12-08T09:30:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Lukas and Vick",
+      "start_datetime_iso": "2024-12-14T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T21:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Lukas Hürholz",
+        "Vick Li"
+      ],
+      "location": "Local Restaurant, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-08T09:25:00-08:00",
+      "notes": "Dinner plans with Lukas and Vick at a local restaurant."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lukas",
+      "last_name": "Hürholz",
+      "full_name": "Lukas Hürholz",
+      "phone_number": "+44 123-456-7890-1234",
+      "alias": "Lukas",
+      "email": "lukas.hurholz@londonbanking.co.uk",
+      "relationship": "High School Friend",
+      "address": "456 Finance St, London, UK",
+      "company": "London Banking",
+      "job_title": "Banker",
+      "is_self": false,
+      "birthday": "1994-12-31T00:00:00-08:00"
+    },
+    {
+      "first_name": "Vick",
+      "last_name": "Li",
+      "full_name": "Vick Li",
+      "phone_number": "+1 555-890-1234-5678",
+      "alias": "Vick",
+      "email": "vick.li@techpals.com",
+      "relationship": "College Friend",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Tech Pals",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1994-07-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Move Dinner with Lukas and Vick to start at 19:30. ",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok, so the user wants to Move Dinner with Lukas and Vick to start at 19:30. I looked up at their calendar and found the event 'Dinner with Lukas and Vick' which is scheduled at 19:00. The user wants to change the start time, so I'll update the start time to 19:30 assume the duration will remain the same and move the event to 19:30-21:30. Ok, I'll inform user of this change has been made.",
+  "reference_time_str": "Today is Saturday, December 14, 2024 or 2024-12-14T17:30:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Agent looked up calendar data to locate the dinner event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The dinner discovered\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Lukas and Vick\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T19:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The existing calendar event has been updated to 19:30-21:30\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dinner with Lukas and Vick\",\n                                    \"start_datetime_iso\": \"2024-12-14T19:30:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-14T17:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            # default similarity is exact for strings, good enough here\n                            reference_milestone_node_index=-1,  # compare against original snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "modify_calendar_event",
+    "remove_calendar_event",
+    "create_calendar_event",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. There is an emergency in work which has called you in on the weekend.  You want to push you dinner plans back half an hour to guarantee you will be there on time. ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"modify_calendar_event\", \"remove_calendar_event\", \"create_calendar_event\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-14T17:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

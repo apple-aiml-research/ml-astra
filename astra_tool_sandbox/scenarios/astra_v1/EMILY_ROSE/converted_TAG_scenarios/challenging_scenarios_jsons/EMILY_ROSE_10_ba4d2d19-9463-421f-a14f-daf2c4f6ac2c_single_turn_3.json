@@ -1,0 +1,96 @@
+{
+  "task_id": "ba4d2d19-9463-421f-a14f-daf2c4f6ac2c",
+  "plot_id": 10,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 7, 2024 at 6:00 PM, Linda Rose were involved. Attending the community holiday party where Linda provides homemade treats. Community event pictures uploaded and shared on social media.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_10",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_yes",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply to Linda saying that you will be a little late to the holiday party because you have to feed your goldfish.",
+  "reference_time": "2024-12-07T16:25:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A reply message is sent to Linda saying\"I will be a little late to the holiday party because I have to feed my goldfish."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_10_ba4d2d19-9463-421f-a14f-daf2c4f6ac2c_single_turn_3",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_messages",
+    "get_all_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Holiday Party Prep",
+      "participants_addresses": [
+        "emily.rose@orchardcommunity.org",
+        "linda.rose@homemadetreats.com"
+      ],
+      "sender_address": "linda.rose@homemadetreats.com",
+      "content": "That should be all. See you soon at the party!",
+      "creation_datetime_iso": "2024-12-07T16:15:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Linda",
+      "last_name": "Rose",
+      "full_name": "Linda Rose",
+      "phone_number": "+1 530-555-0126",
+      "alias": "Culinary Mom",
+      "email": "linda.rose@homemadetreats.com",
+      "relationship": "Mother",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Homemade Treats",
+      "job_title": "Culinary Artist",
+      "is_self": false,
+      "birthday": "1967-07-25T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to Linda's text around 16:18 where she said see you soon and say something similar to \"I will be a little late to the holiday party because I have to feed my goldfish.\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "insufficient_context": "no",
+  "misinformation": "yes",
+  "reasoning": "The user wants to reply to a text from Linda. They must mean Linda Rose, because that's the only Linda in their contacts. They said that Linda texted them at 16:18 telling them saying see you soon, but I only see a text from Linda from 16:15, not 16:18, where she says \"That should be all. See you soon at the party!\". The user must have misremembered the time the text came in. Regardless, they want to reply to the message where Linda said see you soon, so I'll reply to that one from 16:15 because that's the only one that matches the content the user described, and there's no text from 16:18 from Linda. I'll write the reply to Linda that they asked me to: \"I will be a little late to the holiday party because I have to feed my goldfish.\"",
+  "milestones": "[\n                # Milestone 0 – Agent retrieves Linda's prior message to reply to\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow either direct search or listing all messages\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved message is Linda's \"see you soon\" party message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        # We only check that Linda's party \"see you soon\" message was among results\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"linda.rose@homemadetreats.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"See you soon\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2 – A reply message is sent to Linda with the correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Participants should include both Emily and Linda (email or phone acceptable)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"emily.rose@orchardcommunity.org\",\n                                                \"+1 530-555-0123\",\n                                            ),\n                                            (\n                                                \"linda.rose@homemadetreats.com\",\n                                                \"+1 530-555-0126\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"a little late\",\n                                    \"creation_datetime_iso\": \"2024-12-07T16:25:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                # Allow minor variations but ensure the key information is present\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieved messages → confirmed Linda's \"see you soon\" message\n                (1, 2),  # Identified correct message → sent appropriate reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n    \"send_message\",\n]",
+  "is_read_time": "2024-12-07T16:25:00-08:00",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to dictate a reply to Linda saying that you will be a little late to the holiday party because you have to feed your goldfish. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_messages\", \"get_all_messages\", \"send_message\"]"
+}

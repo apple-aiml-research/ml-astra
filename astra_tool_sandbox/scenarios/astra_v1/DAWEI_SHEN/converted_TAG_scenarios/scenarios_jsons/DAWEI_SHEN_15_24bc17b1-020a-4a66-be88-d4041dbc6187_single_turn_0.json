@@ -1,0 +1,80 @@
+{
+  "task_id": "24bc17b1-020a-4a66-be88-d4041dbc6187",
+  "plot_id": 15,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 10 am, self, Jeff Bing were involved. Dawei attends the tech panel hosted by Jeff. Afterward, Jeff emails Dawei a thank-you note and a link to the recorded session. Dawei responds with appreciation and forwards the session link to his team.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_15",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to remember when you sent the picture of Paul's cat to him when you are eating lunch with colleagues to show them the picture.",
+  "reference_time": "2024-12-10T13:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The date and time that the image of Paul's cat napping is given to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_15_24bc17b1-020a-4a66-be88-d4041dbc6187_single_turn_0",
+  "messages": [
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "+1 555-123-4567-8901",
+      "content": "No worries, Paul! It was my pleasure. Check out this funny photo of your cat napping by the window.",
+      "creation_datetime_iso": "2024-12-09T19:02:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Paul",
+      "last_name": "Harper",
+      "full_name": "Paul Harper",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Paul",
+      "email": "paul.harper@neighborhood.com",
+      "relationship": "Neighbor",
+      "address": "125 Neighbor St, Orchard County, CA 94022, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1970-05-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When did I send the picture of my neighbor's pet sleeping by the window to him? Pull that message up.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "Okay so the user wants me to find out when they sent a message to their neighbor. So firstly I'll try to figure out who the users neighbor is. Looking through their contacts I only found one person,  Paul Harper, with the label of neighbor.\nI'll continue under the assumption that the users is talking about Paul Harper.\nThe message is about Paul's pet so I'll look for mentions of that in the messages. I see messages mentioning a cat so I think that this is Paul's pet. The message I'm looking for has an image attached of the cat sleeping by the window. I found one message mentioning this. It was sent at 19:02 on December 9th 2024. I'll relay that information to the user.",
+  "reference_time_str": "Today is Tuesday, December 10, 2024 or 2024-12-10T13:00:00-08:00.",
+  "milestones": "[\n                # 0. Search Contact to find Paul Harper is the neighbour\n                Milestone(\n                    snapshot_constraints=[\n                        # Verify that who is my neighbour\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # 1. search results contain Harper\n                Milestone(\n                    snapshot_constraints=[\n                        # Verify Paul's contact has been found\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Paul Harper\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 555-678-9012-3456\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # 2. search messages\n                Milestone(\n                    snapshot_constraints=[\n                        # Tool usage to access messages\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_messages\",\n                                        \"search_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # 3. correct message included in the searching function\n                Milestone(\n                    snapshot_constraints=[\n                        # Message data extracted correctly (about Paul's cat photo on Dec 9, 2024, 19:02 PST)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-09T19:02:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"conversation_name\": {\n                                                \"value\": \"Paul Harper\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"No worries, Paul! It was my pleasure. Check out this funny photo of your cat napping by the window.\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ]\n                ),\n                # 4. User facing responses contains the message with time\n                Milestone(\n                    snapshot_constraints=[\n                        # Agent response to user with date/time that photo was sent\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"7:02\", \"19:02\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (2, 3)]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to remember when you sent the picture of Paul's cat to him when you are eating lunch with colleagues to show them the picture. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-10T13:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

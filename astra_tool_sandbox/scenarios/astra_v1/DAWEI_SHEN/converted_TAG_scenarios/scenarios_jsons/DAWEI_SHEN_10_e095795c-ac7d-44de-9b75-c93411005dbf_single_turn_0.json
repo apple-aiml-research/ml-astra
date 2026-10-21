@@ -1,0 +1,119 @@
+{
+  "task_id": "e095795c-ac7d-44de-9b75-c93411005dbf",
+  "plot_id": 10,
+  "plot_summary": "Dawei Shen is the protagonist. On Saturday, December 7, 2024 at 10 am, self, Jess Zimmer were involved. Dawei messages Jess to confirm their weekend brunch plans at her favorite café. Jess replies with the café address. Dawei updates the calendar with brunch details and saves Jess's message with the café address for navigation later.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_10",
+    "calendar",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Your sister asked you to help her clean up her flooded basement at the last minute, so you need to cancel brunch with Jess.",
+  "reference_time": "2024-12-07T11:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A text message is sent to Jess Zimmer saying \"So sorry I have to cancel last minute - my sister's basement flooded and I need to help her\"",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The event called Brunch with Jess on 7 December 2024 from 11:00-13:00 is removed from calendar. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_10_e095795c-ac7d-44de-9b75-c93411005dbf_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event",
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "sender_address": "jess.zimmer@fintechstartup.com",
+      "content": "Yes, definitely! Let's meet at the Bluebird Café. It's at 202 Main St, Orchard County. See you at 11?",
+      "creation_datetime_iso": "2024-12-07T10:05:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Brunch with Jess",
+      "start_datetime_iso": "2024-12-07T11:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T13:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "location": "Bluebird Café, 202 Main St, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-07T10:10:00-08:00",
+      "notes": "Brunch at Bluebird Café with Jess. Address: 202 Main St, Orchard County."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text Jess \"So sorry I have to cancel last minute - my sister's basement flooded and I need to help her\" and get rid of the brunch event going on now. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to text Jess. There's only one Jess in their contacts, Jess Zimmer, so that's who I'll send the message to. I need to make sure it says \"So sorry I have to cancel last minute - my sister's basement flooded and I need to help her.\"\n\nThe user wants a brunch event happening now cancelled. I see from user's calendar that an event called Brunch with Jess is scheduled for today at 11:00-13:00, and right now it is 11:05, so that must be the event they are talking about. I will remove it from the calendar. ",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – The agent searches contacts to identify Jess for messaging\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms Jess Zimmer was found in contacts (drives correct recipient resolution)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jess Zimmer\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"jess.zimmer@fintechstartup.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A message is sent to Jess with the specified cancellation text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Participants must include both Dawei and Jess, via any of their known identifiers\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"jess.zimmer@fintechstartup.com\",\n                                                \"+1 555-123-4567-8902\",\n                                            ),\n                                            (\n                                                \"dawei.shen@orchardtech.com\",\n                                                \"+1 555-123-4567-8901\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"So sorry I have to cancel last minute - my sister's basement flooded and I need to help her\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-07T11:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 3 – The agent searches calendar events (to locate the brunch event to cancel)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 – Confirms the brunch event on Dec 7, 2024 11:00–13:00 was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Brunch with Jess\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-07T11:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-07T13:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=3,\n                        )\n                    ],\n                ),\n                # Milestone 5 – The brunch event is removed from the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Brunch with Jess\",\n                                    \"start_datetime_iso\": \"2024-12-07T11:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-07T13:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search → confirm Jess contact\n                (1, 2),  # Jess identified → send correct message\n                (3, 4),  # Calendar search → confirm brunch event\n                (4, 5),  # Event identified → event removed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",\n]",
+  "is_read_time": "2024-12-07T11:05:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. Your sister asked you to help her clean up her flooded basement at the last minute, so you need to cancel brunch with Jess. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\", \"get_all_contacts\", \"search_contacts\", \"send_message\"]"
+}

@@ -1,0 +1,77 @@
+{
+  "task_id": "fa291a37-fbc0-433b-a496-d70fd7f9fad2",
+  "plot_id": 26,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 10 am, Theo Appleseed were involved. Theo checked his messages and found out that he recently got a lot of spam messages about “exciting opportunities to invest in new cryptocurrencies” from three different unknown senders.\n generate messages Theo recieved between July 21, 2024 to July 28, 2024. The message should also contain fake url and a message\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_26",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to delete the crypto message you received yesterday",
+  "reference_time": "2024-07-29T10:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message from team@cryptonow.com is deleted",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_26_fa291a37-fbc0-433b-a496-d70fd7f9fad2_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "remove_message_or_conversation"
+  ],
+  "messages": [
+    {
+      "conversation_name": "team@cryptonow.com",
+      "participants_addresses": [
+        "team@cryptonow.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "team@cryptonow.com",
+      "content": "Don't miss your chance to be part of the crypto revolution. Join us at www.cryptonow.com",
+      "creation_datetime_iso": "2024-07-28T13:25:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Delete the message I received from the crypto website",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to delete the message they received from the crypto website. Looking through the user's messages I can see they received messages from multiple crypto websites so I will ask the user to clarify which message they are referring to. The user wants to deleted the message from team@cryptonow.com so I will do this now",
+  "milestones": "[\n                # Milestone 0 – Agent looks up messages to locate the crypto spam\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The specific message from team@cryptonow.com has been removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"conversation_name\": \"team@cryptonow.com\",\n                                    \"sender_address\": \"team@cryptonow.com\",\n                                    \"creation_datetime_iso\": \"2024-07-28T13:25:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Retrieval precedes deletion\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",          # fallback list-all retrieval\n    \"remove_message_or_conversation\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to delete the crypto message you received yesterday ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"remove_message_or_conversation\"]",
+  "is_read_time": "2024-07-29T10:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

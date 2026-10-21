@@ -1,0 +1,113 @@
+{
+  "task_id": "f475db24-9fad-40f7-affe-b2fc1dcd453c",
+  "plot_id": 4,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 3, 2024 at 7 am, Nathan Lewis, Jason Baker were involved. Lucas leads a triathlon training session for his group. Lucas takes notes on Jason’s performance, saving them digitally for future reference and email the summary of the note to each of them.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_4",
+    "contact",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if Jason replied to your feedback yet.",
+  "reference_time": "2024-12-03T09:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. the user is informed that there is no response from Jason Baker to their email at 08:30 on 3 December 2024. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_4_f475db24-9fad-40f7-affe-b2fc1dcd453c_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Triathlon Training Session Summary - December 3, 2024",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "jason.baker@example.com"
+      ],
+      "cc_addresses": [
+        "nathan.lewis@example.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-03T08:30:00-08:00",
+      "body": "Hi Jason,\n\nI hope you're doing well after our triathlon training session this morning. I wanted to share the notes I took based on your performance:\n\n- Your swimming technique has shown improvement, especially in maintaining a consistent breathing rhythm, which will enhance your endurance.\n- The cycling session went well, but focusing on your speed during hill climbs could be beneficial.\n- Your running pace remains solid, and incorporating more interval training can further boost your stamina.\n\nIf you have any questions or require more details on the feedback, feel free to reach out.\n\nBest,\nLucas",
+      "attachments": [
+        "Triathlon_Session_Notes_12032024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Nathan",
+      "last_name": "Lewis",
+      "full_name": "Nathan Lewis",
+      "phone_number": "+1 12345-6789-1000-2468",
+      "alias": "Triathlon Buddy",
+      "email": "nathan.lewis@example.com",
+      "relationship": "Triathlon training group member",
+      "address": "90 Training Ave, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1989-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jason",
+      "last_name": "Baker",
+      "full_name": "Jason Baker",
+      "phone_number": "+1 12345-6789-1000-8520",
+      "alias": "Triathlon Competitor",
+      "email": "jason.baker@example.com",
+      "relationship": "Triathlon competitor",
+      "address": "67 Race Rd, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1988-03-15T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Has Jason Baker replied to my email titled 'Triathlon Training Session Summary?'",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to know if Jason Baker replied to my email titled 'Triathlon Training Session Summary.' First, I will look at the email sent by the user as given. It appears there is no reply yet. I will now inform the user that there is no reply to their email from Jason Baker yet. ",
+  "milestones": "[\n                # Milestone 0 – The agent attempts to inspect the mailbox\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The agent tells the user Jason has not replied\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"no reply\",\n                                            \"no response\",\n                                            \"not yet\",\n                                            \"hasn't replied\",\n                                            \"has not replied\",\n                                            \"has not responded\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search precedes user-facing answer\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know if Jason replied to your feedback yet. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "is_read_time": "2024-12-03T09:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

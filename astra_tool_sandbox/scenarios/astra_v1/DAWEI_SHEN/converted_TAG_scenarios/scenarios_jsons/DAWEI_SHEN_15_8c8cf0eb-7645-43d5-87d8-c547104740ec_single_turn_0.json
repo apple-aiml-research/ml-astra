@@ -1,0 +1,114 @@
+{
+  "task_id": "8c8cf0eb-7645-43d5-87d8-c547104740ec",
+  "plot_id": 15,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 10 am, self, Jeff Bing were involved. Dawei attends the tech panel hosted by Jeff. Afterward, Jeff emails Dawei a thank-you note and a link to the recorded session. Dawei responds with appreciation and forwards the session link to his team.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_15",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to ask Theo if he has any feedback on the recorded Tech Panel session.",
+  "reference_time": "2024-12-12T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "An e-mail is sent to theo.appleseed@orchardtech.com with the subject like \"Feedback on the Recorded Tech Panel Session\", asking if he has any feedback on the recorded Tech Panel session.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_15_8c8cf0eb-7645-43d5-87d8-c547104740ec_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Thank You for Attending the Tech Panel",
+      "sender_address": "jeff.bing@bingelectronics.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-10T12:00:00-08:00",
+      "body": "Hi Dawei,\n\nThank you for attending today's tech panel discussion. Your insights and questions greatly contributed to the depth of our discussion. Please find attached the recording of the session.\n\nBest regards,\nJeff Bing",
+      "attachments": [
+        "Tech_Panel_Recording_2024-12-10.mp4"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Thank You for Attending the Tech Panel",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "jeff.bing@bingelectronics.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-10T12:30:00-08:00",
+      "body": "Hello Jeff,\n\nThank you for hosting such an engaging panel. The discussion was incredibly enlightening. I've shared the session recording with my team, and we are all excited to explore some of the ideas presented.\n\nBest,\nDawei",
+      "attachments": null,
+      "status": "sent"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Tech Panel Hosted by Jeff Bing",
+      "start_datetime_iso": "2024-12-10T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jeff Bing"
+      ],
+      "location": "Tech Hub Conference Center, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Jeff Bing",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:05:00-08:00",
+      "notes": "Attending a tech panel discussion hosted by Jeff Bing on upcoming trends in consumer electronics."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Theo",
+      "email": "theo.appleseed@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Scientist",
+      "is_self": false,
+      "birthday": "1985-12-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send an e-mail to Theo Appleseed asking if he has any feedback on the recorded Tech Panel session",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to send an email to Theo Appleseed asking if he has any feedback on the recorded Tech Panel session, so I will look through the user's contacts to find Theo Appleseed. After retrieving his address, I will compose and send the message with the subject like \"Feedback on the Recorded Tech Panel Session\", asking for any feedback on the recorded Tech Panel session.",
+  "reference_time_str": "Today is Thursday, December 12, 2024 or 2024-12-12T10:00:00-08:00.",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        # Agent uses a contact search tool to retrieve Theo's contact\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                Milestone(\n                    snapshot_constraints=[\n                        # Verify that Theo Appleseed's contact is among the results\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Theo Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"theo.appleseed@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Agent send email to Theo - only with structured critical fields\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"tool_trace\": json.dumps(\n                                        {\n                                            \"tool_name\": \"send_email\",\n                                            \"arguments\": {\n                                                \"recipients_addresses\": [\n                                                    \"theo.appleseed@orchardtech.com\"\n                                                ],\n                                                \"email_action\": \"send\",\n                                            },\n                                        },\n                                        ensure_ascii=False,\n                                    )\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": column_tool_trace_partial_arguments_similarity\n                            },\n                        ),\n                    ],\n                ),\n                # Agent send email to Theo - only with structured critical fields\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"theo.appleseed@orchardtech.com\"]\n                                    ],  # List of recipients_addresses\n                                    \"subject\": \"Feedback on the Recorded Tech Panel Session\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-12T10:00:00-08:00\",\n                                },\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list": [
+    "add_contact",
+    "get_all_contacts",
+    "search_contacts",
+    "send_email"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to ask Theo if he has any feedback on the recorded Tech Panel session. ",
+  "tool_allow_list_str": "[\"add_contact\", \"get_all_contacts\", \"search_contacts\", \"send_email\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-12T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

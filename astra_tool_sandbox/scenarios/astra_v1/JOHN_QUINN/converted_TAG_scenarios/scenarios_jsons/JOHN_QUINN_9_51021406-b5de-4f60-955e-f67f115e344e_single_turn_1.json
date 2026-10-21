@@ -1,0 +1,83 @@
+{
+  "task_id": "51021406-b5de-4f60-955e-f67f115e344e",
+  "plot_id": 9,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 10am, Bronson Chuck were involved. Bronson informs John of an unexpected work visit by their Japanese colleagues next week.  1. Bronson messages John mentioning about a urgent visit by Palantir's section in Japan to address the situation in Peru, and asking John to keep his whole week clear. 2. Bronson adds the visit as 5 separate events from Monday to Friday next week, each lasting a workday and inviting John and several colleagues. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_9",
+    "calendar",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want check the time of your upcoming event 'Visit from Palantir Japan - Day 1' as you want to be prepared for it.",
+  "reference_time": "2024-07-27T18:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The time of the event 'Visit from Palantir Japan - Day 1' on Monday, July 29th 2024 from 09:00 to 17:00 is shared with the user. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_9_51021406-b5de-4f60-955e-f67f115e344e_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Visit from Palantir Japan - Day 1",
+      "start_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T17:00:00-07:00",
+      "attendees_names": [
+        "Bronson Chunk",
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Palantir HQ, San José, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Bronson Chunk",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T09:05:00-07:00",
+      "notes": "Day 1 of meetings with Palantir Japan to discuss the Peru situation. Please be prepared with all relevant data and reports."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time is the meeting with the Japanese branch?",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know the time of the meeting with the Japanese branch. I should check their Calendar for an upcoming event with that name. I can't see an event with that name in the user's calendar. However, I see an event called 'Visit from Palantir Japan - Day 1' on Monday the 29th of July at 9:00 to 17:00. This sounds like it could be that event. There are other events with a similar title but I assume the user is referring to the earliest event.  I'll share the event with the user to confirm that this is the correct event information they want and then share the time of that event with the user. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks at the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The expected event is found in the calendar tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Visit from Palantir Japan - Day 1\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-29T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-07-29T17:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the start and end time of the meeting\n                Milestone(\n                    snapshot_constraints=[\n                        # Start time present\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"9:00\",\n                                            \"09:00\",\n                                            \"9 am\",\n                                            \"9am\",\n                                            \"9 a.m.\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar lookup -> confirmation event exists\n                (1, 2),  # event found -> inform user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want check the time of your upcoming event 'Visit from Palantir Japan - Day 1' as you want to be prepared for it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-27T18:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

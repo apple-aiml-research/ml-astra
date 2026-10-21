@@ -1,0 +1,100 @@
+{
+  "task_id": "89674089-f422-4b83-86dc-8aa0c5d179a8",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to ask Francis Wagner where the props for the theater show should be delivered to.",
+  "reference_time": "2024-12-13T13:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Text message sent to Francis Wagner containing the phrase \"where should the props be delivered to\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_89674089-f422-4b83-86dc-8aa0c5d179a8_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Updated Rehearsal Schedule",
+      "sender_address": "francis.wagner@orchardtheater.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com",
+        "charles.wilde@orchardtheater.com",
+        "vickie.lee@orchardtheater.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-01T19:58:00-08:00",
+      "body": "Hello everyone,\n\nPlease find attached the updated schedule for tonight's rehearsal. Let me know if there are any issues.\n\nBest,\nFrancis",
+      "attachments": [
+        "Rehearsal_Schedule_Updated_2024-12-01.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Receipt for Stage Props Order",
+      "sender_address": "dawei.shen@orchardtech.com",
+      "recipients_addresses": [
+        "francis.wagner@orchardtheater.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T19:30:00-08:00",
+      "body": "Hi Francis, I've placed the order for the stage props as discussed. Attached is the receipt for our records. Best, Dawei",
+      "attachments": [
+        "Order_Receipt_12122024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Francis",
+      "last_name": "Wagner",
+      "full_name": "Francis Wagner",
+      "phone_number": "+1 555-456-7890-1234",
+      "alias": "Francis",
+      "email": "francis.wagner@orchardtheater.com",
+      "relationship": "Theater Manager",
+      "address": "789 Culture St, Orchard County, CA 94022, USA",
+      "company": "Orchard Theater",
+      "job_title": "Theater Manager",
+      "is_self": false,
+      "birthday": "1975-01-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text my theater manager asking where the props should be delivered to. ",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a text to their theater manager asking where the props should be delivered to, first I need to find out which contact they are referring to as theatre manager.\nI will search through the user's calendar events, messages, and emails to look for a contact matching this query. The user received an email from a Francis Wagner, regarding a rehearsal schedule, I will assume that this schedule is for theater, and that this contact is the manager in question.\nI will find Francis Wagner's corresponding phone number and draft a message to him containing the user's query.\nWith the user's confirmation I will send the text.",
+  "reference_time_str": "Today is Friday, December 13, 2024 or 2024-12-13T13:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – the agent looked up Francis Wagner’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1: Francis contact found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Francis Wagner\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – a text message to Francis Wagner was sent\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Confirm Francis’ phone appears among the participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"francis.wagner@orchardtheater.com\",\n                                                \"+1 555-456-7890-1234\",\n                                            )\n                                        ]\n                                    ],\n                                    # Confirm the core question about delivery location is in the body\n                                    \"content\": \"where should the props be delivered to\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-13T13:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to ask Francis Wagner where the props for the theater show should be delivered to. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-13T13:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,93 @@
+{
+  "task_id": "8d10d30a-a41a-412d-8668-1fc0949f5b65",
+  "plot_id": 7,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 9pm, Apricot Sweeney were involved. Apricot and John call and message each other.  1. Apricot calls John and they have a long call. 2. Before going to bed, John and Apricot exchange a few loving messages. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_7",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You fell asleep before you could see Apricot's reply, you want to know what time she texted you back.",
+  "reference_time": "2024-07-23T06:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Time last message received from Apricot Sweeney on July 22, 2024 is confirmed as 21:59.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_7_8d10d30a-a41a-412d-8668-1fc0949f5b65_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Apricot Sweeney",
+      "participants_addresses": [
+        "1234-5678-9108",
+        "415-555-0128"
+      ],
+      "sender_address": "415-555-0128",
+      "content": "Goodnight, John. 😴",
+      "creation_datetime_iso": "2024-07-22T21:59:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time did my girlfriend last text me?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking about the time they received a message.\nFirst I should find the conversation they are referring to. I can see only one person tagged as girlfriend in the user's contacts, Apricot Sweeney.\nNext, I can look at the user's conversation with this contact. I can see that the last message received from Apricot Sweeney was on July 22, 2024 at 21:59. I should inform the user.",
+  "milestones": "[\n                # Milestone 0 – Agent uses a messaging-related read tool to locate Apricot's last text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the retrieved message is the one from Apricot at 2024-07-22T21:59:00-07:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"415-555-0128\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-22T21:59:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            # content field is optional here, time + sender suffices\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # depends on the tool call in Milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the correct time (allowing multiple phrasings)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"21:59\",\n                                            \"9:59\",\n                                            \"9:59 pm\",\n                                            \"9:59pm\",\n                                            \"9:59 p.m.\",\n                                            \"21:59 pm\",\n                                            \"21:59hrs\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool invocation → validate retrieved message\n                (1, 2),  # Validated retrieval → user response\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You fell asleep before you could see Apricot's reply, you want to know what time she texted you back. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-23T06:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,115 @@
+{
+  "task_id": "b8767c71-be4a-423f-a498-649690b5fce8",
+  "plot_id": 12,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 3 pm, Brian Carter were involved. Lucas attends a triathlon strategy meeting with Brian and team. Meeting notes are recorded and shared among team members for future reference. Messages exchanged with Brian post-meeting.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_12",
+    "email",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to ask your friend if he wants to get coffee to discuss the Triathlon Notes you sent him.",
+  "reference_time": "2024-12-08T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email with the subject \"Notes over Coffee\" is sent to Brian Carter saying \"I want to propose a coffee meeting to discuss our Triathlon Strategy Notes. What do you think?\" is sent to the user.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_12_b8767c71-be4a-423f-a498-649690b5fce8_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Triathlon Training Session Summary - December 3, 2024",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "jason.baker@example.com"
+      ],
+      "cc_addresses": [
+        "nathan.lewis@example.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-03T08:30:00-08:00",
+      "body": "Hi Jason,\n\nI hope you're doing well after our triathlon training session this morning. I wanted to share the notes I took based on your performance:\n\n- Your swimming technique has shown improvement, especially in maintaining a consistent breathing rhythm, which will enhance your endurance.\n- The cycling session went well, but focusing on your speed during hill climbs could be beneficial.\n- Your running pace remains solid, and incorporating more interval training can further boost your stamina.\n\nIf you have any questions or require more details on the feedback, feel free to reach out.\n\nBest,\nLucas",
+      "attachments": [
+        "Triathlon_Session_Notes_12032024.pdf"
+      ],
+      "status": "sent"
+    },
+    {
+      "subject": "Triathlon Strategy Meeting Notes - December 7, 2024",
+      "sender_address": "lucas.garcia@example.com",
+      "recipients_addresses": [
+        "brian.carter@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-07T16:15:00-08:00",
+      "body": "Hi Brian,\n\nThank you for a productive meeting earlier today. I've attached the meeting notes as discussed. These notes include our strategy outlines and key objectives for the upcoming triathlon season. Please review and let me know if there's anything that needs further clarification.\n\nLooking forward to our continued progress!\n\nBest,\nLucas",
+      "attachments": [
+        "Triathlon_Strategy_Notes_12072024.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Brian",
+      "last_name": "Carter",
+      "full_name": "Brian Carter",
+      "phone_number": "+1 12345-6789-1000-7410",
+      "alias": "Triathlon Coach",
+      "email": "brian.carter@example.com",
+      "relationship": "Triathlon coach",
+      "address": "45 Coach St, Orchard County, CA, USA",
+      "company": "Orchard County Triathlon Club",
+      "job_title": "Head Coach",
+      "is_self": false,
+      "birthday": "1980-04-28T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want send an email to Brian with the subject \"Notes over Coffee\" saying, \"I want to propose a coffee meeting to discuss our Triathlon Strategy Notes. What do you think?\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user would like to send a new email. they listed the recipient as Brian. There's only one Brian in their contacts, Brian Carter, so that's who I'll send it to. They want the subject to be \"Notes over Coffee\" and for the email to say \"I want to propose a coffee meeting to discuss our Triathlon Strategy Notes. What do you think?\" so that's what I'll send.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Brian Carter’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms Brian Carter was found in the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Brian Carter\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"brian.carter@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new email is sent to Brian with correct subject and body\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"brian.carter@example.com\"]\n                                    ],\n                                    \"subject\": \"Notes over Coffee\",\n                                    \"status\": \"sent\",\n                                    \"body\": \"coffee meeting\",\n                                    \"creation_datetime_iso\": \"2024-12-08T10:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"subject\": column_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup leads to confirming Brian’s contact\n                (1, 2),  # After contact confirmed, the email is sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to ask your friend if he wants to get coffee to discuss the Triathlon Notes you sent him. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-08T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

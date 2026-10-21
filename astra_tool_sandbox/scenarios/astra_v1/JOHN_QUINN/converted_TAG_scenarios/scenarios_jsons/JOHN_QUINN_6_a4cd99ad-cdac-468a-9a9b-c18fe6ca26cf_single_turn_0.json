@@ -1,0 +1,149 @@
+{
+  "task_id": "a4cd99ad-cdac-468a-9a9b-c18fe6ca26cf",
+  "plot_id": 6,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 8pm, Deborah Shooter were involved. Deborah messages John trying to make conversation in a flirty manner.  1. John and Deborah have a very long conversation about how their respective days went. 2. John and Deborah exchanging numerous messages. 3. Deborah finally invites him to go for a coffee on Saturday afternoon. 4. John gently refuses.",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_6",
+    "contact",
+    "calendar",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are worried about Deborah's advances and want to schedule time to meet up with your girlfriend tomorrow to discuss the situation with Deborah and reassure her.",
+  "reference_time": "2024-07-22T20:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to Apricot Sweeney saying 'Hey honey, can we meet up tomorrow for lunch at 1? I need to discuss Deborah with you.'.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. An event named 'Lunch with Apricot' is created for 23 July 2024 at 13:00, with Apricot Sweeney added as an attendee.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_6_a4cd99ad-cdac-468a-9a9b-c18fe6ca26cf_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Absolutely! By the way, would you like to grab a coffee this Saturday afternoon? Might be a nice break for both of us.",
+      "creation_datetime_iso": "2024-07-22T20:12:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "I appreciate the invite, Deborah, but I have plans for a long hike that day. Maybe another time!",
+      "creation_datetime_iso": "2024-07-22T20:15:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "No worries, John! Enjoy your hike, and let's definitely plan something soon.",
+      "creation_datetime_iso": "2024-07-22T20:17:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Will do, thanks! Have a great evening, Deborah.",
+      "creation_datetime_iso": "2024-07-22T20:20:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "high",
+  "query": "Send my girlfriend a message saying 'Hey honey, can we meet up tomorrow for lunch at 1? I need to discuss Deborah with you.' and then create 'Lunch with Apricot' with her for then.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "reasoning": "Okay, so the user firstly wants to send their girlfriend a message. Looking in their contacts, I can see one contact saved under 'girlfriend' named 'Apricot Sweeney'. The user has given me the content of the message which is 'Hey honey, can we meet up tomorrow for lunch at 1? I need to discuss Deborah with you.'. I can then draft up the message and confirm with the user before sending the message to Apricot.\n\nSecondly, the user then wants to create a new event named 'Lunch with Apricot' with Apricot added as an attendee and using the information from the message content to set up the event. From looking at the message content, the user wants the event to begin at 13:00 tomorrow, which is 23 July 2024. Now that I have all the information I can create this event and Apricot Sweeney will be sent an email as she is added as an attendee.",
+  "milestones": "[\n                # Milestone 0 – agent looks up girlfriend’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – confirm Apricot Sweeney’s contact was actually found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Apricot Sweeney\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"apricot.sweeney@sfhealth.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – message has been sent to Apricot with correct content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"apricot.sweeney@sfhealth.com\",\n                                                \"415-555-0128\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"can we meet up tomorrow for lunch at 1\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-22T20:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 3 – calendar event ‘Lunch with Apricot’ created for 23 Jul 2024 13:00 with Apricot as attendee\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Lunch with Apricot\",\n                                    \"start_datetime_iso\": \"2024-07-23T13:00:00-07:00\",\n                                    \"attendees_names\": [[\"Apricot Sweeney\"]],\n                                    \"creation_datetime_iso\": \"2024-07-22T20:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You are worried about Deborah's advances and want to schedule time to meet up with your girlfriend tomorrow to discuss the situation with Deborah and reassure her. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-22T20:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

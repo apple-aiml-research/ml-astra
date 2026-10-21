@@ -1,0 +1,286 @@
+{
+  "messages": [
+    {
+      "conversation_name": "Vick Li",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hey Vick, just checking in for our cycling trip at Napa Valley. I'm on my way to the café now. See you there!",
+          "creation_time": "2024-12-01T06:00:00",
+          "status": ""
+        },
+        {
+          "sender": "vick.li@techpals.com",
+          "sender_name": "Vick Li",
+          "content": "Morning Dawei! Thanks for the heads up. I'll be there on time. Looking forward to it!",
+          "creation_time": "2024-12-01T06:05:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Mia Tang",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "mia.tang@accountingpros.com"
+      ],
+      "messages": [
+        {
+          "sender": "mia.tang@accountingpros.com",
+          "sender_name": "Mia Tang",
+          "content": "Hi Dawei, just a friendly reminder that your property tax is due next week. Please make sure to process the payment to avoid any late fees.",
+          "creation_time": "2024-12-02T20:00:00",
+          "status": ""
+        },
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Thanks for the reminder, Mia! I'll set a reminder to take care of it first thing Friday morning.",
+          "creation_time": "2024-12-02T20:05:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "messages": [
+        {
+          "sender": "jess.zimmer@fintechstartup.com",
+          "sender_name": "Jess Zimmer",
+          "content": "Hey Dawei, just checking in about our plans for the theater night. Have you confirmed the itinerary?",
+          "creation_time": "2024-12-05T17:00:00",
+          "status": ""
+        },
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hi Jess! Yes, all set for the theater night. We should be good to go!",
+          "creation_time": "2024-12-05T17:02:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hey Jess, are we still on for brunch today? What's the plan?",
+          "creation_time": "2024-12-07T10:00:00",
+          "status": ""
+        },
+        {
+          "sender": "jess.zimmer@fintechstartup.com",
+          "sender_name": "Jess Zimmer",
+          "content": "Yes, definitely! Let's meet at the Bluebird Café. It's at 202 Main St, Orchard County. See you at 11?",
+          "creation_time": "2024-12-07T10:05:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Lukas Hürholz",
+      "participants": [
+        "+1 555-123-4567-8901",
+        "+44 123-456-7890-1234"
+      ],
+      "messages": [
+        {
+          "sender": "+44 123-456-7890-1234",
+          "sender_name": "Lukas Hürholz",
+          "content": "Hey Dawei, I'll be in California next weekend for work. Would love to catch up over dinner if you're free!",
+          "creation_time": "2024-12-08T09:00:00",
+          "status": ""
+        },
+        {
+          "sender": "+1 555-123-4567-8901",
+          "sender_name": "Dawei Shen",
+          "content": "Awesome, Lukas! How about dinner next Saturday? Vick will join us too.",
+          "creation_time": "2024-12-08T09:15:00",
+          "status": ""
+        },
+        {
+          "sender": "+44 123-456-7890-1234",
+          "sender_name": "Lukas Hürholz",
+          "content": "Perfect! See you both next Saturday.",
+          "creation_time": "2024-12-08T09:20:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Vick Li",
+      "participants": [
+        "+1 555-123-4567-8901",
+        "+1 555-890-1234-5678"
+      ],
+      "messages": [
+        {
+          "sender": "+1 555-123-4567-8901",
+          "sender_name": "Dawei Shen",
+          "content": "Lukas will be in town next weekend. Thinking of setting up dinner plans. Are you in?",
+          "creation_time": "2024-12-08T09:05:00",
+          "status": ""
+        },
+        {
+          "sender": "+1 555-890-1234-5678",
+          "sender_name": "Vick Li",
+          "content": "Sounds great! Count me in. Let me know the details.",
+          "creation_time": "2024-12-08T09:10:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Paul Harper",
+      "participants": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "messages": [
+        {
+          "sender": "+1 555-678-9012-3456",
+          "sender_name": "Paul Harper",
+          "content": "Hey Dawei, thanks a ton for watching the cat over the weekend. Really appreciate it!",
+          "creation_time": "2024-12-09T19:00:00",
+          "status": ""
+        },
+        {
+          "sender": "+1 555-123-4567-8901",
+          "sender_name": "Dawei Shen",
+          "content": "No worries, Paul! It was my pleasure. Check out this funny photo of your cat napping by the window.",
+          "creation_time": "2024-12-09T19:02:00",
+          "status": ""
+        },
+        {
+          "sender": "+1 555-678-9012-3456",
+          "sender_name": "Paul Harper",
+          "content": "😂 That's hilarious! Looks like he found his new favorite spot. Thanks for the photo!",
+          "creation_time": "2024-12-09T19:05:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Dalin Shen",
+      "participants": [
+        "dalin.shen@student.philacollege.edu",
+        "dawei.shen@orchardtech.com"
+      ],
+      "messages": [
+        {
+          "sender": "dalin.shen@student.philacollege.edu",
+          "sender_name": "Dalin Shen",
+          "content": "Hey Dawei, just finished the latest chapter of 'The Innovators'. Really intrigued by how collaboration shaped technology. What's your take on it?",
+          "creation_time": "2024-12-10T19:00:00",
+          "status": ""
+        },
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Absolutely, Dalin! The synergy between great minds truly drives innovation. I loved the anecdotes about Jobs and Wozniak. It shows how crucial diverse perspectives are.",
+          "creation_time": "2024-12-10T19:05:00",
+          "status": ""
+        },
+        {
+          "sender": "dalin.shen@student.philacollege.edu",
+          "sender_name": "Dalin Shen",
+          "content": "Exactly! It makes me think about our own discussions and how we bounce ideas back and forth. We should consider writing a review or a blog post about this.",
+          "creation_time": "2024-12-10T19:10:00",
+          "status": ""
+        },
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "That’s a great idea! I think we could offer a unique perspective on the collaborative nature of innovation. I’ll start drafting something this weekend.",
+          "creation_time": "2024-12-10T19:15:00",
+          "status": ""
+        },
+        {
+          "sender": "dalin.shen@student.philacollege.edu",
+          "sender_name": "Dalin Shen",
+          "content": "Awesome! Send it over once you have a draft, and I'll add my thoughts. Looking forward to this!",
+          "creation_time": "2024-12-10T19:20:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Lukas Hürholz",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "lukas.hurholz@londonbanking.co.uk"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hey Lukas, looking forward to catching up over dinner when you're in town. Let's meet at the local restaurant on December 14th at 7 pm. I'll send you the address soon!",
+          "creation_time": "2024-12-08T09:25:00",
+          "status": ""
+        },
+        {
+          "sender": "lukas.hurholz@londonbanking.co.uk",
+          "sender_name": "Lukas Hürholz",
+          "content": "Thanks Dawei! Really excited to see you and Vick. It's been too long!",
+          "creation_time": "2024-12-08T09:35:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Vick Li",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Hi Vick, just confirming our dinner plans with Lukas on the 14th of December at 7 pm. I'll share the restaurant details shortly.",
+          "creation_time": "2024-12-08T09:26:00",
+          "status": ""
+        }
+      ]
+    },
+    {
+      "conversation_name": "Dinner at a local restaurant",
+      "participants": [
+        "dawei.shen@orchardtech.com",
+        "vick.li@techpals.com",
+        "lukas.hurholz@londonbanking.co.uk"
+      ],
+      "messages": [
+        {
+          "sender": "dawei.shen@orchardtech.com",
+          "sender_name": "Dawei Shen",
+          "content": "Here's the address for our dinner on December 14th: Local Restaurant, Orchard County, CA. See you both at 7 pm!",
+          "creation_time": "2024-12-08T09:30:00",
+          "status": ""
+        },
+        {
+          "sender": "lukas.hurholz@londonbanking.co.uk",
+          "sender_name": "Lukas Hürholz",
+          "content": "Had a fantastic evening, guys! Here's a selfie to remember our night. Cheers!",
+          "creation_time": "2024-12-14T21:30:00",
+          "status": ""
+        }
+      ]
+    }
+  ]
+}

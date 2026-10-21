@@ -1,0 +1,98 @@
+{
+  "task_id": "9d60066f-564a-4d62-81b7-2f1c64865da1",
+  "plot_id": 7,
+  "plot_summary": "Emily Rose is the protagonist. On Thursday, December 5, 2024 at 4:00 PM, Oliver Green were involved. Meeting Oliver at his cafe to discuss providing refreshments for the upcoming community gathering. Send out calendar invite for the upcoming gathering event. Confirmed order via message; digital receipt saved. Send out calendar invite for the upcoming gathering event.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_7",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're going to be late to your meet-up with Oliver, so you want to check if you have his number you can call and let him know.",
+  "reference_time": "2024-12-05T15:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The contact card for Oliver Green is pulled up for User."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_7_9d60066f-564a-4d62-81b7-2f1c64865da1_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Meeting with Oliver Green for Community Gathering Refreshments",
+      "start_datetime_iso": "2024-12-05T16:00:00-08:00",
+      "end_datetime_iso": "2024-12-05T17:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Oliver Green"
+      ],
+      "location": "Daily Brew Cafe, Orchard County",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-05T15:00:00-08:00",
+      "notes": "Discuss and finalize the refreshment order for the upcoming community gathering at Oliver's cafe."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Oliver",
+      "last_name": "Green",
+      "full_name": "Oliver Green",
+      "phone_number": "+1 530-555-0128",
+      "alias": "Cafe King",
+      "email": "oliver.green@dailybrewcafe.com",
+      "relationship": "Friend",
+      "address": "101 Main St, Orchard County, CA 95662, USA",
+      "company": "Daily Brew Cafe",
+      "job_title": "Owner",
+      "is_self": false,
+      "birthday": "1990-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Have I got Oliver Green's details?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "User is looking for a persons details in their device so I first need to ask who it is they're trying to look for. They tell me Oliver so I check the contacts for this person and find one, Oliver Green. I offer this contact card to user.",
+  "milestones": "[\n                # Milestone 0 – Agent attempts to look up Oliver’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – The returned contact list includes Oliver Green with the correct phone number\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Oliver Green\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 530-555-0128\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent informs the user and shows the phone number (or otherwise confirms details)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Oliver Green\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You're going to be late to your meet-up with Oliver, so you want to check if you have his number you can call and let him know. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-05T15:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

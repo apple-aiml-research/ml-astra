@@ -1,0 +1,80 @@
+{
+  "task_id": "e3100fc8-908e-4a46-a708-3cdc0d39f7fc",
+  "plot_id": 8,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 9am, Dr. Emilia Jackson were involved. John is reminded of his planned doctor visit next week.  1. John receives an email from his endocrinologist at 'Endomore Clinic' with a reminder of their planned appointment next week Tuesday afternoon. 2. This email is part of a short email thread with another email confirming his appointment 3 months ago. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_8",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "After receiving the email reminding you of your doctors appointment you check if you have put the event into your calendar",
+  "reference_time": "2024-07-23T10:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Doctor's Appointment with Dr. Emilia Jackson\" at 15:00-16:00 on 30 July 2024 is confirmed to exist in the user's calendar and the user is informed",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_8_e3100fc8-908e-4a46-a708-3cdc0d39f7fc_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Doctor's Appointment with Dr. Emilia Jackson",
+      "start_datetime_iso": "2024-07-30T15:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T16:00:00-07:00",
+      "attendees_names": [
+        "Endomore Clinic",
+        "John Quinn"
+      ],
+      "location": "Endomore Clinic, 450 Medical Plaza, San José, CA",
+      "reminder_time_ahead": "48 hours",
+      "organizer_name": "Endomore Clinic",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-04-23T10:05:00-07:00",
+      "notes": "Annual check-up and consultation."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Is there an event named \"Doctor's Appointment with Dr. Emilia Jackson\" at 15:00 on 30 July",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know if there is a specific event in their calendar on the 30 July. The event is named \"Doctor's Appointment with Dr. Emilia Jackson\". First I will check the user's calendar on the given day. There is three events on that day but one of them is named \"Doctor's Appointment with Dr. Emilia Jackson\". This is clearly the event they were looking for so I will inform the user that the event exists",
+  "milestones": "[\n                # Milestone 0 – Agent queries the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The specific doctor appointment is found in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Doctor's Appointment with Dr. Emilia Jackson\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-30T15:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs the user that the event exists\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Doctor's Appointment\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar query → verify event retrieved\n                (1, 2),  # Event found → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. After receiving the email reminding you of your doctors appointment you check if you have put the event into your calendar ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-07-23T10:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

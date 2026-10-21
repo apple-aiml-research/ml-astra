@@ -1,0 +1,115 @@
+{
+  "task_id": "ea0942df-bfd7-4213-8f32-4ff4afeea246",
+  "plot_id": 7,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 4, 2024 at 3 pm, self, Kevin Chen, Stefan Mustermann were involved. Dawei hosts a virtual meeting to discuss updates for Friday's strategy meeting with Kevin and Stefan. Kevin sends a follow-up email summarizing the meeting action items.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_7",
+    "calendar",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You now, after correspondence with your team, want to set up the Strategy meeting you have discussed with them",
+  "reference_time": "2024-12-04T15:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event named 'Strategy Meeting' is created for 12:00-13:00 6th December 2024 with Kevin Chen and Stefan Mustermann added as invitees.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_7_ea0942df-bfd7-4213-8f32-4ff4afeea246_single_turn_1",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_calendar_events",
+    "get_all_calendars",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Cat Sitting for Paul",
+      "start_datetime_iso": "2024-12-06T00:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T23:59:59-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Paul Harper's House, 125 Neighbor St, Orchard County, CA 94022, USA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T07:05:00-08:00",
+      "notes": "Watch Paul's cat over the weekend while he is out of town."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Stefan",
+      "last_name": "Mustermann",
+      "full_name": "Stefan Mustermann",
+      "phone_number": "+1 555-901-2345-6789",
+      "alias": "Stefan",
+      "email": "stefan.mustermann@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "birthday": "1987-11-30T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Set an hour long strategy meeting with Kevin and Stefan at 12:00 on Friday. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "high",
+  "reasoning": "the user wants an hour long meeting with Kevin and Stefan at 12:00 on Friday.  Kevin and Stefan must be Kevin Chen and Stefan Mustermann as they are the only people with their respective first names in the users contacts. I will make them both invitees. The user said it was a strategy meeting so I will name the event 'Strategy Meeting.' they want it to be an hour long and start at 12:00 so I will set the run time to be 12:00-13:00. they also want it to be on Friday 6th of December. The user has an all-day event called \"Cat-Sitting for Paul\" that day, but they can attend a virtual meeting while cat-sitting, so that's not an issue. I will now finalise and create the event 'Strategy Meeting' at 12:00-13:00 on Friday 6th of December 2024 with Kevin and Stefan as invitees.",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – (Optional but recommended) Agent looks up contacts to resolve Kevin and Stefan\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Strategy meeting calendar event created correctly\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Strategy Meeting\",\n                                    \"start_datetime_iso\": \"2024-12-06T12:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-06T13:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Dawei Shen\",\n                                            \"Kevin Chen\",\n                                            \"Stefan Mustermann\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-04T15:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow extra attendees (e.g., a room resource) but require these three\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CONTACT,\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-12-04T15:30:00-08:00",
+  "user_goal_prompt": "You are User A, Dawei Shen. You now, after correspondence with your team, want to set up the Strategy meeting you have discussed with them ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_calendar_events\", \"get_all_calendars\", \"create_calendar_event\"]"
+}

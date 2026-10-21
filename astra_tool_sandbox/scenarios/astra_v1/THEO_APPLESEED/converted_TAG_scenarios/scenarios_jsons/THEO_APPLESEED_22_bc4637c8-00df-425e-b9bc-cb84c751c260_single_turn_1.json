@@ -1,0 +1,174 @@
+{
+  "task_id": "bc4637c8-00df-425e-b9bc-cb84c751c260",
+  "plot_id": 22,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo checked his calendar and found out his calendar is fully packed from 8 am to 5pm today. His only available between 3pm to 4pm. He also has a dentist appointment at 1pm for an hour. The rest of his schedule is filled with work meetings for today.\n Generate calendar_events for Theo for July 29, 2024",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_22",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to schedule in a massage in the evening today after a long day at work.",
+  "reference_time": "2024-07-29T18:40:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A new event 'Massage Appointment' is scheduled for 29th July 2024 at 18:40."
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_22_bc4637c8-00df-425e-b9bc-cb84c751c260_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Project Sync Meeting",
+      "start_datetime_iso": "2024-07-29T08:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Weekly synchronization meeting with the team to discuss project updates and next steps."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Data Analysis Review",
+      "start_datetime_iso": "2024-07-29T09:30:00-07:00",
+      "end_datetime_iso": "2024-07-29T10:30:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Theo Appleseed"
+      ],
+      "location": "127 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Review of recent data analysis results with Dawei and discuss implications for the project."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Brainstorming Session",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "126 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Brainstorming session with Michelle to explore new approaches to the current research problem."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dentist Appointment",
+      "start_datetime_iso": "2024-07-29T13:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "attendees_names": [
+        "Theo Appleseed"
+      ],
+      "location": "Downtown Dental Clinic",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Routine dental check-up and cleaning."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Client Presentation Preparation",
+      "start_datetime_iso": "2024-07-29T14:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T15:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "124 Tech Park Blvd, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Preparation session for upcoming client presentation with the team."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Weekly Team Meeting",
+      "start_datetime_iso": "2024-07-29T16:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T17:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Michelle Barnes",
+        "Stefan Mustermann",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room A, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-29T07:30:00-07:00",
+      "notes": "Regular weekly meeting to discuss team issues and updates."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "low",
+  "query": "Create a new event called massage appointment at 18:40.",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "reasoning": "Right so, the user wants me to create a new event named 'Massage Appointment'. To that end, I should explore the user's calendar for Monday 29th July 2024 to make sure there are no conflictive events. After checking the user is available the time they want to schedule the massage, I can create an event called \"Massage Appointment\" for 18:40 based on their request. ",
+  "milestones": "[\n                # Milestone 0 – A new calendar event “Massage Appointment” at 18:40 on 2024-07-29 was created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Massage Appointment\",\n                                    \"start_datetime_iso\": \"2024-07-29T18:40:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-29T18:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            # Only need to match the critical identifying fields; defaults are fine for others\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",   # fallback listing tool\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to schedule in a massage in the evening today after a long day at work. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-29T18:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

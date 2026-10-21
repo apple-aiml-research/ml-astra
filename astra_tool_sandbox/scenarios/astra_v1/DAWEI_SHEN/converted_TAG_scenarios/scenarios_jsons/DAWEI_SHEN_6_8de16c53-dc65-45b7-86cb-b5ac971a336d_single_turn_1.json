@@ -1,0 +1,106 @@
+{
+  "task_id": "8de16c53-dc65-45b7-86cb-b5ac971a336d",
+  "plot_id": 6,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 3, 2024 at 8 pm, self, Hua Shen, Yuting Tao were involved. Dawei receives a video call from his parents in Shanghai to catch up on the week. They talk about their holiday plans. Dawei promises to email them flight details for his trip to Shanghai later in the month.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_6",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know the strategy meeting time so you can schedule in an 1-hour long dentist appointment for that day.",
+  "reference_time": "2024-12-03T21:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The user is informed that the 'Strategy Meeting Preparation' is scheduled for the 4th December at 15:00.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. A dentist appointment is added for the 4th December at the time the user requests.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_6_8de16c53-dc65-45b7-86cb-b5ac971a336d_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Strategy Meeting Preparation",
+      "start_datetime_iso": "2024-12-04T15:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T16:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Stefan Mustermann"
+      ],
+      "location": "Virtual - Orchard Tech",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": "https://orchardtech.zoom.us/j/1234567890",
+      "creation_datetime_iso": "2024-12-03T12:00:00-08:00",
+      "notes": "Virtual meeting to discuss updates and prepare for Friday's strategy meeting."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Stefan",
+      "last_name": "Mustermann",
+      "full_name": "Stefan Mustermann",
+      "phone_number": "+1 555-901-2345-6789",
+      "alias": "Stefan",
+      "email": "stefan.mustermann@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "birthday": "1987-11-30T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "At what time does my strategy meeting preparation begin, as I need to add a dentist appointment on the same day at 13:30.",
+  "reasoning": "Okay so, the user would like to know when 'Strategy Meeting Preparation' is scheduled for. I inform the user that it is scheduled for the 4th December at 15:00. Then I will add 'Dentist Appointment' for the 4th December at 13:30 to their calendar.",
+  "functional_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "reference_time_str": "Today is Tuesday, December 3, 2024 or 2024-12-03T21:35:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the meeting in the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Returned result contains meeting\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # look for correct participant\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Strategy Meeting Preparation\",\n                                                \"partial\": False,\n                                            },\n                                            # correct date & time\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-04T15:00:00-08:00\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,  # parse tool outcome from milestone 0\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 2 – User is told when the meeting is\n                Milestone(\n                    snapshot_constraints=[\n                        # time/date mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"15:00\", \"3:00\", \"3 pm\", \"3pm\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 3 – Dentist appointment added to the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dentist\",\n                                    \"start_datetime_iso\": \"2024-12-04T13:30:00\",\n                                    \"creation_datetime_iso\": \"2024-12-03T21:35:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "create_calendar_event"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know the strategy meeting time so you can schedule in an 1-hour long dentist appointment for that day. ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-03T21:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,92 @@
+{
+  "task_id": "a64042fa-3287-4f6f-a563-0baf0f1b97fb",
+  "plot_id": 12,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 19pm, Akira Muramoto were involved. Akira tries to convince John to try some food supplements and asks to borrow his tent today  1. Akira starts a conversation with John where he tells him how thrilled he is about a new food supplement called 'Green' by the Soylent company, and suggests that John try it. 2. John expresses his hesitancy about trying the product since he heard some strange rumours about unusual ingredients. 3. After exchanging over 15 messages, John's hesitancy is progressively broken, and at the end Akira manages to convince John. 4. Akira proposes that he can bring him a pack tonight, as John had promised to lend him a tent last week. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_12",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know what Akira's message says but you cannot look at your phone right now.",
+  "reference_time": "2024-07-23T19:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message received from Akira Muramato on July 23rd, 2024, at 19:00 is read to the user. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_12_a64042fa-3287-4f6f-a563-0baf0f1b97fb_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Akira Muramoto",
+      "participants_addresses": [
+        "akira.muramoto@sportsfan.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "akira.muramoto@sportsfan.com",
+      "content": "Hey John! Have you heard about this new supplement called 'Green' by Soylent? I think it's something you might find interesting.",
+      "creation_datetime_iso": "2024-07-23T19:00:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "What did Akira say?",
+  "reasoning": "The user wants to know what Akira said. I wonder who Akira is. I should check their contacts to find out. I see the user has one contact called Akira, Akira Muramoto. It must be him. I will now check for messages from Akira Muramoto. Okay, the user received a message from Akira Muramoto just now at 19:00, July 23rd 2024. I'll tell them the content of the message now. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to retrieve the user’s recent messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The retrieved result includes Akira’s 19:00 message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            # parse the tool outcome captured in Milestone 0\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"akira.muramoto@sportsfan.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-23T19:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            # confirm we found the actual message text\n                                            \"content\": {\n                                                \"value\": \"Green\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user what Akira said (mentions the supplement “Green” / Soylent)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"Green\", \"Soylent\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know what Akira's message says but you cannot look at your phone right now. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-23T19:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

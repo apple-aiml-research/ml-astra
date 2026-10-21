@@ -1,0 +1,112 @@
+{
+  "task_id": "5502a133-4bbe-4774-a6f4-a69da5a5636f",
+  "plot_id": 13,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 9, 2024 at 8 am, self, Michelle Barnes were involved. Michelle emails Dawei with a key dataset update for their machine-learning model. She includes a few key questions for discussion during their team sync. Dawei drafts a response and schedules time on Tuesday afternoon to review the dataset with her.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_13",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "calendar",
+    "messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have fallen ill and wish to reschedule the Dataset Review with Michelle you had planned.   You also shall text Michelle to let them know you are sick.",
+  "reference_time": "2024-12-10T08:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Dataset Review with Michelle is moved from 14:00-15:30 10th December 2024 to 14:00-15:30 11th December 2024",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The message 'Sorry Michelle I'm under the weather today, can we push to Wednesday?' is sent to Michelle Barnes.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_13_5502a133-4bbe-4774-a6f4-a69da5a5636f_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Dataset Update for Machine Learning Model",
+      "sender_address": "michelle.barnes@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T08:00:00-08:00",
+      "body": "Hi Dawei,\n\nI hope this email finds you well. I am writing to share the latest updates on the dataset we've been working on for our machine-learning model. Attached you'll find the updated files along with a few key questions that we need to address:\n\n1. How do we intend to handle the increasing volume of unstructured data?\n2. Are there specific algorithms you suggest we explore for better accuracy?\n3. What are your thoughts on the timeline for the next phase of testing?\n\nLooking forward to discussing these during our team sync.\n\nBest regards,\nMichelle",
+      "attachments": [
+        "Updated_Dataset_Questions.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Dataset Review with Michelle",
+      "start_datetime_iso": "2024-12-10T14:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T15:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room A, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-09T08:15:00-08:00",
+      "notes": "Review the updated dataset and discuss key questions as outlined in Michelle's email."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Push today's review to tomorrow and message Michelle saying this; \"Sorry Michelle I'm under the weather today, can we push to Wednesday?\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "Ok, the user wants me to push today's review to tomorrow and message Michelle with a given message. What do they mean by today's review?\nOn their calendar they have an event named 'Dataset Review with Michelle' this must be the review they're referring to. I will assess the calendar to see if there are any conflicts at the same time slot for tomorrow. Looks to be free, I will reschedule the 'Dataset Review with Michelle' to Wednesday at 14:00-15:30. They also want to message Michelle. This should refer to Michelle Barnes as it is the only Michelle in their contacts. I will send the message \"Sorry Michelle I'm under the weather today, can we push to Wednesday?\" to Michelle. I'll inform user that the event is rescheduled and the message is sent.",
+  "reference_time_str": "Today is Tuesday, December 10, 2024 or 2024-12-10T08:30:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – verify that agent searches calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 - verify that Calendar Event 'Dataset Review with Michelle' is found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dataset Review with Michelle\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-10T14:00:00-08:00\",  # found in zip\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,  # depend on milestone 0\n                        )\n                    ]\n                ),\n                # Milestone 2 – verify that the “Dataset Review with Michelle” event is rescheduled to 11 Dec 2024 14:00-15:30\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Dataset Review with Michelle\",\n                                    \"start_datetime_iso\": \"2024-12-11T14:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\"Dawei Shen\", \"Michelle Barnes\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-10T08:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.MESSAGING],\n                ),\n                # Milestone 3 – The agent looks through the user’s contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # 4. Verify that Michelle's contact found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Michelle Barnes\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"michelle.barnes@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=3,\n                        ),\n                    ]\n                ),\n                # Milestone 5 – verify that a text/IM to Michelle has been sent with the correct apology / reschedule content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"michelle.barnes@orchardtech.com\",\n                                                \"+1 555-012-3456-7890\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"Sorry Michelle I'm under the weather today, can we push to Wednesday?\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-10T08:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # searched and found the relevant event\n                (3, 4),  # search for michelle's contact\n            ]",
+  "tool_allow_list": [
+    "modify_calendar_event",
+    "send_message",
+    "search_contacts",
+    "get_all_contacts",
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You have fallen ill and wish to reschedule the Dataset Review with Michelle you had planned.  You also shall text Michelle to let them know you are sick. ",
+  "tool_allow_list_str": "[\"modify_calendar_event\", \"send_message\", \"search_contacts\", \"get_all_contacts\", \"search_calendar_events\", \"get_all_calendars\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-10T08:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

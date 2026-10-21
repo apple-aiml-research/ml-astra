@@ -1,0 +1,117 @@
+{
+  "task_id": "908a1159-c1d0-4894-bd2f-4c2f51aa2d64",
+  "plot_id": 21,
+  "plot_summary": "Dawei Shen is the protagonist. On Saturday, December 14, 2024 at 7 pm, self, Lukas Hürholz, Vick Li were involved. Dawei, Lukas, and Vick meet for dinner at a local restaurant in Orchard County. Dawei shares the address in their group text. Lukas sends a group selfie afterward, thanking Dawei for the evening.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_21",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know when your co-worker last sent you that email about the current status of the research project.",
+  "reference_time": "2024-12-15T10:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The user is informed that the email from Stefan Mustermann with subject line \"Re: Research Progress Update\" was received at 9:15 AM on Thursday, December 12th 2024.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_21_908a1159-c1d0-4894-bd2f-4c2f51aa2d64_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Research Progress Update",
+      "sender_address": "kevin.chen@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com"
+      ],
+      "cc_addresses": [
+        "stefan.mustermann@orchardtech.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T09:00:00-08:00",
+      "body": "Hi Dawei,\n\nI wanted to update you on the current status of our research project. We've made significant progress on the algorithms, and I've attached the latest results for your review. Please have a look and let me know your thoughts.\n\nBest regards,\nKevin",
+      "attachments": [
+        "Research_Results_Dec2024.pdf"
+      ],
+      "status": "read"
+    },
+    {
+      "subject": "Re: Research Progress Update",
+      "sender_address": "stefan.mustermann@orchardtech.com",
+      "recipients_addresses": [
+        "dawei.shen@orchardtech.com",
+        "kevin.chen@orchardtech.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-12T09:15:00-08:00",
+      "body": "Hello Dawei and Kevin,\n\nThank you for the update, Kevin. I've added an updated graph to the results which should help in visualizing the data trends more clearly. Please see the attached file and let me know if you need further modifications.\n\nBest,\nStefan",
+      "attachments": [
+        "Updated_Graphs_Dec2024.pdf"
+      ],
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "+1 555-890-1234-5679",
+      "alias": "Kevin",
+      "email": "kevin.chen@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Team Lead",
+      "is_self": false,
+      "birthday": "1980-04-05T00:00:00-08:00"
+    },
+    {
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00",
+      "full_name": "Stefan Mustermann",
+      "job_title": "Data Scientist",
+      "is_self": false,
+      "relationship": "Coworker",
+      "first_name": "Stefan",
+      "alias": "Stefan",
+      "email": "stefan.mustermann@orchardtech.com",
+      "company": "Orchard Tech",
+      "birthday": "1987-11-30T00:00:00-08:00",
+      "phone_number": "+1 555-901-2345-6789",
+      "last_name": "Mustermann",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When did my co-worker last send me that email about the current status of the research project",
+  "functional_complexity": "low",
+  "informational_complexity": "high",
+  "referential_complexity": "high",
+  "reasoning": "The user wants to know when their co-worker last sent the email about the \"current status of the research project\".\n\nI open the user’s mailbox with a tool call (get_all_emails or search_emails) to locate relevant messages. There is also an \"Action Items from Team Review\" thread — including a Dec 13 reply from coworker Michelle Barnes — but that is about team-review action items, not the research project’s status, so it is not what the user means.\n\nThe emails on the research project’s status are the \"Research Progress Update\" thread: Kevin Chen’s original at 9:00 AM and Stefan Mustermann’s reply \"Re: Research Progress Update\" at 9:15 AM, both on Thursday, December 12 2024. Since the user asks when their co-worker last sent it, the answer is the most recent one — Stefan Mustermann’s reply at 9:15 AM on Thursday, December 12 2024. I will relay this exact date and time to the user.",
+  "reference_time_str": "Today is Sunday, December 15, 2024 or 2024-12-15T10:35:00-08:00.",
+  "milestones": "[\n                # Milestone 0: Agent uses a tool to retrieve emails (get_all or search)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"get_all_emails\", \"search_emails\"],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1: Tool result includes Stefan’s most recent email as of Dec 13\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"stefan.mustermann@orchardtech.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Re: Research Progress Update\",\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-12T09:15:00-08:00\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,  # Dependent on the tool use\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 2: Inform the user about when the email was received\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"9:15\",)],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (1, 2)]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know when your co-worker last sent you that email about the current status of the research project. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-15T10:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

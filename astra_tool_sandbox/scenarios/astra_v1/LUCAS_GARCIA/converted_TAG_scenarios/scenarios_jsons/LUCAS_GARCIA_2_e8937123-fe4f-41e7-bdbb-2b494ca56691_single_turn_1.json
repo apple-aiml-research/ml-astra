@@ -1,0 +1,95 @@
+{
+  "task_id": "e8937123-fe4f-41e7-bdbb-2b494ca56691",
+  "plot_id": 2,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 10 am, Jessica Lin were involved. Lucas and Jessica discuss upcoming joint fitness workshop at the gym. Lucas notes down the workshop details and follows up with an email to finalize the schedule. Send out corresponding calendar events.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_2",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "Megan's internet is down so she text you that she won't be able to make today's session.",
+  "reference_time": "2024-12-02T10:20:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Online Fitness Class with Megan from 11:00-12:00 on the 2 December 2024 is deleted from Calendar. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_2_e8937123-fe4f-41e7-bdbb-2b494ca56691_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Online Fitness Class with Megan",
+      "start_datetime_iso": "2024-12-02T11:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T12:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Megan Johnson"
+      ],
+      "location": "Online",
+      "reminder_time_ahead": "reminder_time_ahead: 15 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": "https://fitness.zoom.us/j/123456789",
+      "creation_datetime_iso": "2024-11-28T08:30:00-08:00",
+      "notes": "Conduct an online fitness class focusing on full-body workout for student Megan."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Delete the event in 40 minutes. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to delete the event in 40 minutes. I should first figure out what time it will be 40 minutes. \nThe time now is 10:20. In 40 minutes it will be 11:00, so I am looking for an event at 11:00 on the 2 December 2024. I should check the user's Calendar for an event at that time.\nLooks like there is only one event that matches this description, the Online Fitness Class with Megan, so I will delete this event and let the user know. ",
+  "milestones": "[\n                # Milestone 0 – Agent searches calendar to identify the event occurring in 40 minutes\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the “Online Fitness Class with Megan” event at 11:00 am was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Online Fitness Class with Megan\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-02T11:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # parse output from Milestone 0\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Verify the event was removed from the Calendar database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Online Fitness Class with Megan\",\n                                    \"start_datetime_iso\": \"2024-12-02T11:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-02T12:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with pre-task snapshot\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",      # fallback enumeration\n    \"remove_calendar_event\",  # to delete the event\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. Megan's internet is down so she text you that she won't be able to make today's session. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-12-02T10:20:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,104 @@
+{
+  "task_id": "c0c6a6d7-ae16-430d-a06c-0fae43ec0396",
+  "plot_id": 3,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 6 pm, Theo Appleseed were involved. Lucas and Theo meet for their usual evening workout session at the local gym. Lucas receives a message from Theo discussing fitness goals and the next 3 months. Book schedules for future session the next 3 months.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_3",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to clone to event Evening Workout Session with Theo to also take place on Wednesday and Friday.",
+  "reference_time": "2024-12-02T21:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Find the event Evening Workout Session with Theo scheduled December 2 from 18:00 to 19:00.",
+      "statefullness": "Stateless"
+    },
+    {
+      "statefullness": "Stateful",
+      "input_text": "2. Create a new event called Evening Workout Session with Theo scheduled December 4 from 18:00 to 19:00."
+    },
+    {
+      "input_text": "3. Create a new event called Evening Workout Session with Theo scheduled December 6 from 18:00 to 19:00.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_3_c0c6a6d7-ae16-430d-a06c-0fae43ec0396_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Evening Workout Session with Theo",
+      "start_datetime_iso": "2024-12-02T18:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T19:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Theo Appleseed"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 30 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T10:30:00-08:00",
+      "notes": "Regular evening workout session focusing on strength and conditioning."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 12345-6789-1000-5678",
+      "alias": "Gym Buddy",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Gym buddy and workout partner",
+      "address": "45 Fit St, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Trainer",
+      "is_self": false,
+      "birthday": "1990-05-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Clone to event from 6pm this evening and copy it in to Wednesday and Friday's schedule.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to clone an event from 18:00. Looking at the calendar, I can see that an event named Evening Workout Session with Theo took place this evening at 18:00. I'll copy that event over to Wednesday and Friday.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the original workout session on the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms the December 2 18:00 workout session was returned from the search in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Evening Workout Session with Theo\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-02T18:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new Wednesday (Dec 4) and Friday workout session has been created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": [\n                                        \"Evening Workout Session with Theo\",\n                                        \"Evening Workout Session with Theo\",\n                                    ],\n                                    \"start_datetime_iso\": [\n                                        \"2024-12-04T18:00:00-08:00\",\n                                        \"2024-12-06T18:00:00-08:00\",\n                                    ],\n                                    \"end_datetime_iso\": [\n                                        \"2024-12-04T19:00:00-08:00\",\n                                        \"2024-12-06T19:00:00-08:00\",\n                                    ],\n                                    \"attendees_names\": [\n                                        [\"Lucas Garcia\", \"Theo Appleseed\"],\n                                        [\"Lucas Garcia\", \"Theo Appleseed\"],\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-02T21:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to clone to event Evening Workout Session with Theo to also take place on Wednesday and Friday. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-12-02T21:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

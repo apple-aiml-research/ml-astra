@@ -1,0 +1,110 @@
+{
+  "task_id": "5fadf20b-32ab-4889-9658-00bd249de35e",
+  "plot_id": 8,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 6, 2024 at 2:00 PM, Chloe Waters, Sophia Taylor were involved. Community meeting discussing feedback on past events and brainstorming future initiatives. Survey results and feedback received via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_8",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to schedule time to compile the feedback from the community meeting.",
+  "reference_time": "2024-12-06T16:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event called Compile feedback from 17:00-18:00 on 6 December 2024 is created. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_8_5fadf20b-32ab-4889-9658-00bd249de35e_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "create_calendar_event",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Thank You for Your Feedback!",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "chloe.waters@orchardmail.com",
+        "sophia.taylor@orchardbusiness.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "body": "Dear Chloe and Sophia,\n\nI hope this message finds you well. I wanted to extend my heartfelt thanks for your invaluable feedback during today's community meeting. Your insights are crucial as we plan our future events and initiatives.\n\nWe are currently compiling all the feedback and will share a detailed plan by next week. Your continued support and active participation are what make our community events successful and meaningful.\n\nThank you once again for your dedication to our community.\n\nWarm regards,\nEmily Rose\nEvent Coordinator, Orchard County Community Center",
+      "attachments": null,
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Thank You for Your Feedback!",
+      "sender_address": "chloe.waters@orchardmail.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "sophia.taylor@orchardbusiness.org"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:30:00-08:00",
+      "body": "Hello Emily,\n\nThank you for your kind words! It was a pleasure to share our thoughts and see how passionate you are about making our community a better place. We look forward to seeing the plans and are excited to be a part of the upcoming events.\n\nBest regards,\nChloe Waters",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Re: Thank You for Your Feedback!",
+      "sender_address": "sophia.taylor@orchardbusiness.org",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "chloe.waters@orchardmail.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:45:00-08:00",
+      "body": "Hi Emily,\n\nIt was indeed a great meeting today. Thank you for organizing it and for acknowledging our contributions. We are eager to see how our feedback will be implemented and are ready to assist wherever needed.\n\nWarmest regards,\nSophia Taylor",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make a new event from 17:00-18:00 today called Compile feedback. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to create an event. I will use the details the user has provided to create this event. \n\nThe user wants to call it Compile feedback so I shall make that the name of the event. The user has specified the duration will be one hour from 17:00-18:00 so I shall set the event for that time.      \n\nI will let the user know the event has been created. ",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Compile feedback\",\n                                    \"start_datetime_iso\": \"2024-12-06T17:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-06T18:00:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-06T16:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_exact_match_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You need to schedule time to compile the feedback from the community meeting. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"create_calendar_event\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-06T16:15:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

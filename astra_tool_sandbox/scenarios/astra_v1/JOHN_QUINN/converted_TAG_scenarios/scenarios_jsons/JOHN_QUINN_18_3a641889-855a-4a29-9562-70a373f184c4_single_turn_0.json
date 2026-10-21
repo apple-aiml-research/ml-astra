@@ -1,0 +1,93 @@
+{
+  "task_id": "3a641889-855a-4a29-9562-70a373f184c4",
+  "plot_id": 18,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 8:30pm, Deborah Shooter were involved. Deborah sends John some music tracks she likes.  1. Deborah sends John 4 messages with links to electronic music tracks she likes on Apple Music, mentioning the band and song name. 2. Deborah asks John if he likes them, and he answers they seem nice, but he's not an expert in electronic music. 3. She says such music can be great and sends 5 more tracks. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_18",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to show one of the songs Deborah sent you ealier to Apricot.",
+  "reference_time": "2024-07-25T23:25:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The message received on 24 July 2024 at 20:33 which says 'And 'Night City' by Urban Shadows is a must-hear. [Apple Music Link]' is displayed to the user.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_18_3a641889-855a-4a29-9562-70a373f184c4_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "And 'Night City' by Urban Shadows is a must-hear. [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:33:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Show me the message from Deborah I received last night containing the Urban Shadows song.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to see a message received containing a song. First, I will try to figure out which contact \"Deborah\" refers to. I have searched through the user's contacts, and have found a \"Deborah Shooter\". Now, let's see if the user's chat thread with this contact matches up. I can see the two had a conversation last night, 24 July 2024 regarding songs. A message matching 'Urban Shadows' has been found. It was received at 20:33 and says 'And 'Night City' by Urban Shadows is a must-hear. [Apple Music Link]'. I will display this message to the user. ",
+  "milestones": "[\n                # Milestone 0 – the agent tries to retrieve messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – confirm the expected Urban Shadows message was included in the retrieved results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"content\": {\n                                                \"value\": \"Night City\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # depend on the retrieval in Milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – the agent shows the message (or its key content) to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"Night City\", \"Urban Shadows\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to show one of the songs Deborah sent you ealier to Apricot. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-25T23:25:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

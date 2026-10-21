@@ -1,0 +1,80 @@
+{
+  "task_id": "b61c6968-5305-4993-8280-a7ceb77ebf70",
+  "plot_id": 19,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 15, 2024 at 11:00 AM, Tim Brooks were involved. Technical set-up for community event sound system with Tim. Follow-up video call scheduled for system test.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_19",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "phone_call",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You need to call your friend who helps you with events because you need advice.",
+  "reference_time": "2024-12-15T13:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A call is placed to Nathan Blake",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_19_b61c6968-5305-4993-8280-a7ceb77ebf70_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_outgoing_call"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Nathan",
+      "last_name": "Blake",
+      "full_name": "Nathan Blake",
+      "phone_number": "+1 530-555-0129",
+      "alias": "Event Helper",
+      "email": "nathan.blake@eventpros.com",
+      "relationship": "Friend",
+      "address": "300 College Ave, San Jose, CA 95112, USA",
+      "company": "Event Pros",
+      "job_title": "Event Specialist",
+      "is_self": false,
+      "birthday": "1993-12-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Call my event helper",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to place a phone call to someone. They said this person is their event helper. Looking at their contacts, I see Nathan Blake has the alias \"Event Helper\" so I will call Nathan Blake.",
+  "milestones": "[\n                # Milestone 0 – The agent attempts to locate the “event helper” contact\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the contact found in Milestone 0 is Nathan Blake\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Nathan Blake\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 530-555-0129\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify that an outgoing call to Nathan Blake was created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.PHONE,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"receiver_address\": \"+1 530-555-0129\",\n                                    \"call_type\": \"outgoing\",\n                                    \"creation_datetime_iso\": \"2024-12-15T13:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_outgoing_call\",  # to place the phone call\n    \"search_contacts\",       # to locate “Event Helper” / Nathan Blake\n    \"get_all_contacts\",      # fallback contact retrieval\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You need to call your friend who helps you with events because you need advice. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_outgoing_call\"]",
+  "is_read_time": "2024-12-15T13:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

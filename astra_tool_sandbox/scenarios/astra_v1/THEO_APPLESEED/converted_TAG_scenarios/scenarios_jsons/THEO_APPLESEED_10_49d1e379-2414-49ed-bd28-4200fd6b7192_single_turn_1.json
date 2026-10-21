@@ -1,0 +1,162 @@
+{
+  "task_id": "49d1e379-2414-49ed-bd28-4200fd6b7192",
+  "plot_id": 10,
+  "plot_summary": "Theo Appleseed is the protagonist. On Thursday Morning, July 25, 2024 at 8am, Lucas Garcia were involved. Early morning gym session. After the gym session, Lucas texted Theo to talk about Theo's training progress and planning their session next week. They plan their workout session for the next week via messages and sent out and calendar invite for it.",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_10",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "calendar",
+    "messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if you've added your next gym session with Lucas like you said you would.   If not, you'd like to create one at the same time and day next week.",
+  "reference_time": "2024-07-25T09:25:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. It is announced to the user that no event for next week with Lucas Garcia has been created.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. A new event titled, contains key word 'Gym Session' scheduled for 1st August 2024 from 08:00 - 09:00 with Lucas Garcia is created.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_10_49d1e379-2414-49ed-bd28-4200fd6b7192_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event",
+    "get_all_messages",
+    "search_messages",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Lucas Garcia",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Great session today, Theo! Ready to plan next week?",
+      "creation_datetime_iso": "2024-07-25T09:05:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Lucas Garcia",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Absolutely, Lucas! Thinking same time, same place?",
+      "creation_datetime_iso": "2024-07-25T09:06:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Lucas Garcia",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Works for me! Let's keep pushing the weights up.",
+      "creation_datetime_iso": "2024-07-25T09:07:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Lucas Garcia",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Definitely, aiming for those gains! I'll set up the invite.",
+      "creation_datetime_iso": "2024-07-25T09:08:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Lucas Garcia",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Perfect, see you next week!",
+      "creation_datetime_iso": "2024-07-25T09:10:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Gym Session with Lucas",
+      "start_datetime_iso": "2024-07-25T08:00:00-07:00",
+      "end_datetime_iso": "2024-07-25T09:00:00-07:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Theo Appleseed"
+      ],
+      "location": "Local Gym, 129 Fitness Blvd, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T12:00:00-07:00",
+      "notes": "Weekly gym session focusing on strength training."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "1234-5678-9110",
+      "alias": "Luke",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Gym Buddy",
+      "address": "129 Fitness Blvd, Orchard County, CA",
+      "company": "Local Gym",
+      "job_title": "Personal Trainer",
+      "is_self": false,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "moderate",
+  "reasoning": "Okay so, the user wants to know if they added their gym session with Lucas. I can see one contact in their list named Lucas Garcia. They just had an event with him on 07-25 from 8 to 9 am, but I can see no new events in the calendar with Lucas. \n\nI will then add this gym session with Lucas to the calendar for next week, on Thursday Aug 1st, from 8-9 in the morning.",
+  "query": "Did I add my gym session for next week with Lucas? If not, create one next week at the same time",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – The agent looks through the calendar to find out if a session for next week already exists\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the existing calendar event on July 25th was actually found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Gym Session with Lucas\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-25T08:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new calendar event for next week’s gym session is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Gym Session\",\n                                    \"start_datetime_iso\": \"2024-08-01T08:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-08-01T09:00:00-07:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Lucas Garcia\",\n                                            \"Theo Appleseed\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-07-25T09:25:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,  # just needs to mention Gym Session\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # After searching the calendar, agent informs the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"create_calendar_event\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know if you've added your next gym session with Lucas like you said you would.  If not, you'd like to create one at the same time and day next week. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\", \"get_all_messages\", \"search_messages\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-25T09:25:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,102 @@
+{
+  "task_id": "e67f959d-e540-4218-a42e-4fdd8ebf0bd2",
+  "plot_id": 2,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 11:30 am, Apricot Sweeney were involved. John plans an expensive surprise dinner date for his girlfriend on Thursday  1. John wants to surprise Apricot with a romantic dinner at a Michelin star restaurant called Chef's Bite. 2. John has an iMessage correspondence with the restaurant to book a table for two. 3. This results in an extended back and forth of suggesting possible times since the restaurant is heavily booked, but finally agreeing on a suitable day and time on Thursday late evening. 4. John also creates an event, at the time agreed with the restaurant, mentioning a low key greek restaurant that is next door to the Michelin one and invites Apricot to it, without any mention of the real restaurant since any mention of Chef's Bite will ruin the surprise. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_2",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send another text to reservations@chefsbite.  com because they suddenly ghosted you and did not give you the confirmation for 20:30.",
+  "reference_time": "2024-07-22T12:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "A text is sent to 'reservations@chefsbite.com' saying 'Please confirm my reservation for 20:30 on the 25th of July.'.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_2_e67f959d-e540-4218-a42e-4fdd8ebf0bd2_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "reservations@chefsbite.com",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "reservations@chefsbite.com"
+      ],
+      "sender_address": "reservations@chefsbite.com",
+      "content": "I'm sorry, John, but our next available slot close to your requested time is at 8:30 PM. Would that work for you?",
+      "creation_datetime_iso": "2024-07-22T12:00:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "reservations@chefsbite.com",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "reservations@chefsbite.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "8:30 PM sounds great. Please confirm the reservation for two at that time.",
+      "creation_datetime_iso": "2024-07-22T12:05:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Continue my chat with the restaurant saying 'Please confirm my reservation for 20:30 on the 25th of July.'.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to continue a conversation with the restaurant. I see there is a recent text chat with the 'Chef's Bite Reservations'. They have given me the content of the message to be sent which is 'Please confirm my reservation for 20:30 on the 25th of July.'. I shall draft the text to Chef's Bite and show it to user for approval before sending it. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up (or verifies) the existing conversation\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new outgoing message is sent to reservations@chefsbite.com\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require that the Chef’s Bite address appears among the participants.\n                                    \"participants_addresses\": [\n                                        [\"reservations@chefsbite.com\"]\n                                    ],\n                                    \"content\": \"Please confirm my reservation for 20:30 on the 25th of July.\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-22T12:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # participants list must at least include the targeted address (allowing extras)\n                                \"participants_addresses\": column_list_subset_match_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against the initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",  # fallback listing\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to send another text to reservations@chefsbite. com because they suddenly ghosted you and did not give you the confirmation for 20:30. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-22T12:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

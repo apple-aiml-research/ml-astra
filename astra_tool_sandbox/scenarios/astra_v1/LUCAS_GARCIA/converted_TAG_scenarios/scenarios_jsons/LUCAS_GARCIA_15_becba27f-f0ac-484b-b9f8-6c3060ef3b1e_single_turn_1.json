@@ -1,0 +1,81 @@
+{
+  "task_id": "becba27f-f0ac-484b-b9f8-6c3060ef3b1e",
+  "plot_id": 15,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 8 am, self were involved. Lucas updates his calendar for the week’s upcoming events and sessions. New events and reminders are added to the calendar.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_15",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You can't remember if you added your family dinner this week to your calendar.   You want to make sure, as you may forget to join otherwise.",
+  "reference_time": "2024-12-09T11:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The event called 'Dinner with Family' occurring on December 14th, 2024, at 18:00-20:00, is shown to the user. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_15_becba27f-f0ac-484b-b9f8-6c3060ef3b1e_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Dinner with Family",
+      "start_datetime_iso": "2024-12-14T18:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T20:00:00-08:00",
+      "attendees_names": [
+        "Juan Garcia",
+        "Lucas Garcia",
+        "Maria Garcia"
+      ],
+      "location": "Family Home, Orchard County, CA",
+      "reminder_time_ahead": "reminder_time_ahead: 2 hours",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-09T08:10:00-08:00",
+      "notes": "Lucas will join his family for a relaxing dinner and some quality time."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "query": "Did I add an event called dinner with family?",
+  "reasoning": "The user wants to know if they added an event called dinner with family. I'll check the user's calendar for a matching event. I found one event with that name; Dinner with Family, on December 14th, 2024, at 18:00-20:00. I'll show that to the user now. ",
+  "milestones": "[\n                # Milestone 0 – Agent queries the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Tool output includes the expected “Dinner with Family” event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Family\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T18:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user that the event exists (user-facing response)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Dinner with Family\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool call → verify event in tool output\n                (1, 2),  # Event found → communicate to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You can't remember if you added your family dinner this week to your calendar.  You want to make sure, as you may forget to join otherwise. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-09T11:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

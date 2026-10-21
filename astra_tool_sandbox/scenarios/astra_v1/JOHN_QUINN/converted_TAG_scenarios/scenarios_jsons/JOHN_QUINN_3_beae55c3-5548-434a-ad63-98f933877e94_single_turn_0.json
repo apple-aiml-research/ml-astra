@@ -1,0 +1,92 @@
+{
+  "task_id": "beae55c3-5548-434a-ad63-98f933877e94",
+  "plot_id": 3,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 2 pm, Alfred Quinn, Grace Quinn were involved. John's dad forwards political emails to John, who complains to his sister  1. Jonh's dad forwards John several (3 to 5) detailed emails mentioning various events organized by the Pirate Party in different cities in the state. 2. The forwarded emails don't directly address John, but are instead generic emails that were forwarded to him. 3. Feeling irritated, rather than respond to his dad, he exchanges some messages with his sister to complain about his dad's behavior. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_3",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are sick of the spam emails coming from Alfred Quinn and want to block his email address.   You need to find his email address first.",
+  "reference_time": "2024-07-22T17:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Contacts is searched for the email address of Alfred Quinn and given to the user as alfred.quinn@svmetal.com.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_3_beae55c3-5548-434a-ad63-98f933877e94_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Alfred",
+      "last_name": "Quinn",
+      "full_name": "Alfred Quinn",
+      "phone_number": "408-555-0125",
+      "alias": "Dad",
+      "email": "alfred.quinn@svmetal.com",
+      "relationship": "Father",
+      "address": "127 Maple St, San José, CA 95126",
+      "company": "Suarez & Villa Metallurgy",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1963-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Grace",
+      "last_name": "Quinn",
+      "full_name": "Grace Quinn",
+      "phone_number": "408-555-0126",
+      "alias": "Sis",
+      "email": "grace.quinn@example.com",
+      "relationship": "Sister",
+      "address": "129 Maple St, San José, CA 95126",
+      "company": null,
+      "job_title": "Writer",
+      "is_self": false,
+      "birthday": "1993-05-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What is my Dad's email address?",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know their Dad's email address. I first need to figure out who they mean. I should check their Contacts for one named Dad.\n\nHmm, I can't see a Contact named Dad, but there is one with Father in their Contact Card, Alfred Quinn, and I know Father is a synonym for Dad so this must be who the user means. \n\nNext I will check Alfred's contact card for their email address. Looks like it's alfred.quinn@svmetal.com. \n\nI will now pass this information on to the user. ",
+  "milestones": "[\n                # Milestone 0 – Agent queries Contacts to locate “Dad / Alfred Quinn”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Tool result includes Alfred Quinn with his email address\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Alfred Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"alfred.quinn@svmetal.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ]\n                ),\n                # Milestone 2 – Agent tells the user the correct email address\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"alfred.quinn@svmetal.com\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search → verify result contains Alfred’s info\n                (1, 2),  # Retrieved info → agent answers user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You are sick of the spam emails coming from Alfred Quinn and want to block his email address.  You need to find his email address first. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-22T17:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

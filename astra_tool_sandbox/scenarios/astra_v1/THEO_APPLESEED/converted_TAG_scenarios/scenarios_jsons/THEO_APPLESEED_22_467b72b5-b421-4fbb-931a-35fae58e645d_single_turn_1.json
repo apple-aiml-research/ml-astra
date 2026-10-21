@@ -1,0 +1,87 @@
+{
+  "task_id": "467b72b5-b421-4fbb-931a-35fae58e645d",
+  "plot_id": 22,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo checked his calendar and found out his calendar is fully packed from 8 am to 5pm today. His only available between 3pm to 4pm. He also has a dentist appointment at 1pm for an hour. The rest of his schedule is filled with work meetings for today.\n Generate calendar_events for Theo for July 29, 2024",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_22",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You notice that you have double booked yourself today.   You decide to move one of the clashing events.",
+  "reference_time": "2024-07-29T10:45:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The event named 'Follow-up Sync with Michelle and Dawei', originally scheduled for 29 July 2024 from 11:00-12:00, is moved to 29 July 2024 from 12:00-13:00."
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_22_467b72b5-b421-4fbb-931a-35fae58e645d_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "modify_calendar_event",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Follow-up Sync with Michelle and Dawei",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T11:00:00-07:00",
+      "notes": "Break-out session to delve deeper into specific project details."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need you to move the event in Conference room B to start at 12:00.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user has asked me to move an event.\nI should look through the user's calendar to find the queried event.\nThe user has provided me with the location set for this event of 'Conference room B'. This will narrow my search.\nI can see only one upcoming event with a relevant location: Follow-up Sync with Michelle and Dawei scheduled for July 29, 2024 11:00-12:00, the location of this event is set as Conference Room B, Innovative Tech Solutions.\nI cannot see any potential clashes that may come about as a result of me adjusting the start time of this event.\nFollow-up Sync with Michelle and Dawei is now scheduled for July 29, 2024 12:00-13:00.\nI should inform the user.\n",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events so it can identify the meeting to reschedule\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 - Find the calendar event that takes place in Conference Room B\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Follow-up Sync with Michelle and Dawei\",\n                                                \"partial\": False,\n                                            },\n                                            \"location\": {\n                                                \"value\": \"Conference Room B\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The calendar event has been updated to 12:00-13:00 on July 29, 2024\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Follow-up Sync with Michelle and Dawei\",\n                                    \"start_datetime_iso\": \"2024-07-29T12:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T13:00:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-29T10:45:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial calendar state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"modify_calendar_event\",   # primary path (update)\n    \"remove_calendar_event\",   # fallback if agent deletes then recreates\n    \"create_calendar_event\",   # fallback if agent recreates the event\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You notice that you have double booked yourself today.  You decide to move one of the clashing events. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"modify_calendar_event\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-29T10:45:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

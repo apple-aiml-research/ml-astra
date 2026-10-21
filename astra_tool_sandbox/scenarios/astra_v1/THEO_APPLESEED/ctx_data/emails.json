@@ -1,0 +1,106 @@
+{
+    "1": [
+        {
+            "subject": "Follow-up Sync Scheduled for July 29",
+            "sender": "theo.appleseed@example.com",
+            "recipients": "michelle.barnes@example.com, dawei.shen@example.com",
+            "cc": "kevin.chen@example.com",
+            "bcc": "",
+            "creation_time": "2024-07-22T11:05:00",
+            "body": "Hello Michelle and Dawei,\n\nFollowing our stand-up meeting today, I've scheduled a follow-up sync for us on July 29 at 11 am to discuss our project in more detail. Please find the calendar invite attached.\n\nBest,\nTheo",
+            "attachment": "Follow-up Sync Calendar Invite.ics"
+        }
+    ],
+    "4": [
+        {
+            "subject": "Agenda for Upcoming One-on-One Meeting",
+            "sender": "theo.appleseed@example.com",
+            "recipients": "kevin.chen@example.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-16T09:05:00",
+            "body": "Hi Kevin,\n\nI've scheduled our one-on-one meeting for July 23, 2024, at 9:00 AM to discuss the progress and next steps for our project. Please let me know if you have any specific points you'd like to cover.\n\nBest,\nTheo",
+            "attachment": ""
+        }
+    ],
+    "7": [
+        {
+            "subject": "Invitation: Project Brainstorming Session",
+            "sender": "theo.appleseed@example.com",
+            "recipients": "michelle.barnes@example.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T15:00:00",
+            "body": "Hi Michelle,\n\nI would like to invite you to a brainstorming session for our new project. Let's meet tomorrow at 10 AM in Conference Room B. Please prepare any initial ideas you might have.\n\nBest,\nTheo",
+            "attachment": ""
+        }
+    ],
+    "8": [
+        {
+            "subject": "Invitation: Data Review Meeting on July 24",
+            "sender": "theo.appleseed@example.com",
+            "recipients": "dawei.shen@example.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T12:00:00",
+            "body": "Hi Dawei,\n\nI would like to invite you to a Data Review Meeting scheduled for July 24, 2024, at 3:00 PM in Conference Room B. We will discuss our recent findings and determine the necessary action items for data refinement.\n\nPlease let me know if you can attend.\n\nBest,\nTheo",
+            "attachment": ""
+        }
+    ],
+    "11": [
+        {
+            "subject": "Reminder: Team Update Meeting Tomorrow at 2 PM",
+            "sender": "theo.appleseed@example.com",
+            "recipients": "kevin.chen@example.com, stefan.mustermann@example.com, michelle.barnes@example.com, dawei.shen@example.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-24T12:00:00",
+            "body": "Dear Team,\n\nThis is a reminder for our Team Update Meeting scheduled for tomorrow, July 25th, at 2 PM in Conference Room B. We will be discussing important updates on our company's goals and strategies. Please be prepared to discuss your current projects and any insights you might have that align with our new objectives.\n\nBest,\nTheo Appleseed",
+            "attachment": ""
+        }
+    ],
+    "13": [
+        {
+            "subject": "Reminder: Project Review Meeting Tomorrow at 9 AM",
+            "sender": "theo.appleseed@example.com",
+            "recipients": "kevin.chen@example.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-25T12:00:00",
+            "body": "Hi Kevin,\n\nThis is a reminder that we have our project review meeting scheduled for tomorrow at 9 AM in Conference Room B. We will assess the progress of our current projects and outline the next steps. Please let me know if you have any specific points you would like to discuss.\n\nBest,\nTheo",
+            "attachment": ""
+        }
+    ],
+    "23": [
+        {
+            "subject": "Urgent: Request for 1:1 Meeting Today",
+            "sender": "theo.appleseed@example.com",
+            "recipients": "kevin.chen@example.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-29T07:50:00",
+            "body": "Hi Kevin,\n\nI hope this message finds you well. I need to discuss an urgent matter with you today and would appreciate if we could have a 1:1 meeting. Could you please let me know your availability?\n\nBest regards,\nTheo Appleseed",
+            "attachment": ""
+        },
+        {
+            "subject": "Re: Urgent: Request for 1:1 Meeting Today",
+            "sender": "kevin.chen@example.com",
+            "recipients": "theo.appleseed@example.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-29T08:05:00",
+            "body": "Hello Theo,\n\nThank you for reaching out. Today is quite packed, but I can make time between 1:00 PM to 2:00 PM. Let me know if this works for you.\n\nBest,\nKevin",
+            "attachment": ""
+        },
+        {
+            "subject": "Re: Urgent: Request for 1:1 Meeting Today",
+            "sender": "theo.appleseed@example.com",
+            "recipients": "kevin.chen@example.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-29T08:10:00",
+            "body": "Hi Kevin,\n\nThank you for your quick response. 1:00 PM to 2:00 PM works for me. I'll see you then.\n\nBest regards,\nTheo",
+            "attachment": ""
+        }
+    ]
+}

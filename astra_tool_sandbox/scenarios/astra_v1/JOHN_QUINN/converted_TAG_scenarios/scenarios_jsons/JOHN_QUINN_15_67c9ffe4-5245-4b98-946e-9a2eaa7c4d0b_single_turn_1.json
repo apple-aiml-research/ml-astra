@@ -1,0 +1,126 @@
+{
+  "task_id": "67c9ffe4-5245-4b98-946e-9a2eaa7c4d0b",
+  "plot_id": 15,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 2:15pm, Apricot Sweeney were involved. John and Apricot discuss seeing a film next Monday night  1. Apricot sends a link to a romantic comedy film ('Two Hearts with one Stone') she wants to see on Monday. 2. John agrees and says he'll buy the tickets. 3. John creates a calendar reminder and adds Apricot to it. ",
+  "tags": [
+    "astra_core",
+    "JOHN_QUINN",
+    "plot_15",
+    "contact",
+    "calendar",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You forgot that you were meant to visit your mom on Monday night, because you didn't put it in your calendar, and now you're double booked! You want to create the \"Visiting Mom\" event in your calendar for Monday night and then move the movie night with her to next Wednesday night instead.",
+  "reference_time": "2024-07-25T14:25:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The system will check the user's calendar for the requested event \"Movie Night with Apricot\" + the user's contacts.",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The system will move the event \"Movie Night with Apricot\" to July 31, 2024 at 19:00.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The system will create the event \"Visiting Mom\" on July 29th 2024 at 19:00.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "4. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_15_67c9ffe4-5245-4b98-946e-9a2eaa7c4d0b_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event",
+    "create_calendar_event",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Movie Night with Apricot",
+      "start_datetime_iso": "2024-07-29T19:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T21:00:00-07:00",
+      "attendees_names": [
+        "Apricot Sweeney",
+        "John Quinn"
+      ],
+      "location": "Downtown Cinema, San Francisco",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-24T14:17:00-07:00",
+      "notes": "Going to watch 'Two Hearts with one Stone' with Apricot."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ursula",
+      "last_name": "Quinn",
+      "full_name": "Ursula Quinn",
+      "phone_number": "408-555-0124",
+      "alias": "Mom",
+      "email": "ursula.quinn@modernart.org",
+      "relationship": "Mother",
+      "address": "125 Maple St, San José, CA 95126",
+      "company": "San José Modern Art Museum",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you move the event I have on Monday with my girlfriend to be on Wednesday at 7 pm and then put Visiting Mom for that time instead",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants me to accomplish two tasks, to move the \"event on Monday with Apricot\" to be on Wednesday 31st July 2024 at 19:00, and then to put \"Visiting Mom\" for July 29th 2024 at 19:00.\n\nI'm going to check the user's data to find the information I need. Checking the user's contacts, it seems like Apricot Sweeney is the user's girlfriend. The user didn't mention what time or the exact date of their event with Apricot, just the updated time, so I'm going to search for events that feature Apricot Sweeney for Monday 29th July 2025 in the user's upcoming events calendar.... And I found it - \"Movie Night with Apricot\" at 19:00. Now I can go ahead and move it to the requested time, Wednesday 31st July 2024 at 19:00. \n\nNow the user wants me to put \"Visiting Mom\" for 'that time' - could they be referring to the time slot that I just moved \"Movie Night with Apricot\" from? This is my best guess. It seems like they want me to create an event, so I'm going to create \"Visiting Mom\" for Monday 29th July 2024 at 19:00. I'll go ahead and create the event, adding the user's mom (Ursula Quinn, which I can see from the user's contacts) as an attendee to the event, and inform the user of its creation.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events to locate the Monday movie night\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the Monday 29th July event “Movie Night with Apricot” was actually found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Movie Night with Apricot\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-29T19:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The existing movie night event is updated / moved to Wednesday 31st July 2024, 19:00-21:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Movie Night with Apricot\",\n                                    \"start_datetime_iso\": \"2024-07-31T19:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-31T21:00:00-07:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Apricot Sweeney\",\n                                            \"John Quinn\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-07-25T14:25:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 3 – The existing movie night event is removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=not_contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Movie Night with Apricot\",\n                                    \"start_datetime_iso\": \"2024-07-29T19:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-29T21:00:00-07:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Apricot Sweeney\",\n                                            \"John Quinn\",\n                                        ]\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 4 – A new event “Visiting Mom” is created for Monday 29th July 2024, 19:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=contains_presence_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Visiting Mom\",\n                                    \"start_datetime_iso\": \"2024-07-29T19:00:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-25T14:25:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"modify_calendar_event\",\n    \"create_calendar_event\",\n    \"get_all_contacts\",\n    \"search_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You forgot that you were meant to visit your mom on Monday night, because you didn't put it in your calendar, and now you're double booked! You want to create the \"Visiting Mom\" event in your calendar for Monday night and then move the movie night with her to next Wednesday night instead. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\", \"create_calendar_event\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-25T14:25:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

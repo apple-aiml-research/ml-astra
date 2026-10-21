@@ -1,0 +1,241 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+- id: 1
+  date: "Monday Morning, July 22, 2024"
+  time: "10 am"
+  people: "Kevin Chen, Michelle Barnes, Dawei Shen"
+  event: "Theo attends a regular Monday work stand-up meeting"
+  outcome: "A follow-up sync for break-out session with Michelle and Dawei is sent out thourgh email and calendar for July 29, 11 am"
+  output_entities: ['calendar_events', 'emails']
+
+- id: 2
+  date: "Monday Afternoon, July 22, 2024"
+  time: "2 pm"
+  people: "Cookie Watson"
+  event: "Cookie reaches out for dinner later this week via SMS"
+  outcome: "They set on Wednesday night for dinner at a newly open local pub named Pony & Jigger"
+  output_entities: ['calendar_events', 'message_conversations']
+
+
+- id: 4
+  date: "Tuesday Morning, July 23, 2024"
+  time: "9 am"
+  people: "Kevin Chen"
+  event: "One-on-one meeting with Kevin to discuss project progress"
+  outcome: ""
+  output_entities: ['calendar_events', 'emails']
+
+- id: 5
+  date: "Tuesday Afternoon, July 23, 2024"
+  time: "1 pm"
+  people: "Stefan Mustermann, Michelle Barnes"
+  event: "Theo gets a text message to meet for lunch break at the company cafeteria"
+  outcome: ""
+  output_entities: ['message_conversations']
+
+- id: 6
+  date: "Tuesday Evening, July 23, 2024"
+  time: "6 pm"
+  people: "John Appleseed"
+  event: "Phone call with his father to catch up and discuss a book they are both reading"
+  outcome: ""
+  output_entities: ['call_logs']
+
+- id: 7
+  date: "Wednesday Morning, July 24, 2024"
+  time: "10 am"
+  people: "Michelle Barnes"
+  event: "Brainstorming session for a new project"
+  outcome: "Theo shares some ideas and strategies via email for further research"
+  output_entities: ['calendar_events', 'emails']
+
+- id: 8
+  date: "Wednesday Afternoon, July 24, 2024"
+  time: "3pm"
+  people: "Dawei Shen"
+  event: "Data review meeting to discuss recent findings"
+  outcome: "Dawei shares action items for data refinement"
+  output_entities: ['calendar_events', 'emails']
+
+- id: 9
+  date: "Wednesday Evening, July 24, 2024"
+  time: "7pm"
+  people: "Cookie Watson"
+  event: "Theo meets Cookie for Dinner at Pony & Jigger"
+  outcome: "Theo and Cookie exchanged share messages after the event talking about how great the gathering was."
+  output_entities: ['message_conversations']
+
+- id: 10
+  date: "Thursday Morning, July 25, 2024"
+  time: "8am"
+  people: "Lucas Garcia"
+  event: "Early morning gym session. After the gym session, Lucas texted Theo to talk about Theo's training progress and planning their session next week."
+  outcome: "They plan their workout session for the next week via messages and sent out and calendar invite for it."
+  output_entities: ['calendar_events', 'message_conversations']
+
+- id: 11
+  date: "Thursday Afternoon, July 25, 2024"
+  time: "2pm"
+  people: "Kevin Chen, Stefan Mustermann, Michelle Barnes, Dawei Shen"
+  event: "Team update meeting"
+  outcome: ""
+  output_entities: ['calendar_events', 'emails']
+
+- id: 12
+  date: "Thursday Evening, July 25, 2024"
+  time: "8pm"
+  people: "John Quinn"
+  event: "John messages Theo to chat and plan an upcoming hiking trip for July 27, 2024"
+  outcome: "Itinerary, Locations and schedules are decided. A calander invite was sent out for the hiking trip with all the finalized information."
+  output_entities: ['calendar_events', 'message_conversations']
+
+- id: 13
+  date: "Friday Morning, July 26, 2024"
+  time: "9 am"
+  people: "Kevin Chen"
+  event: "Project review meeting"
+  outcome: ""
+  output_entities: ['calendar_events', 'emails']
+
+- id: 14
+  date: "Friday Afternoon, July 26, 2024"
+  time: "12 pm"
+  people: "Michelle Barnes, Dawei Shen"
+  event: "Lunch at a nearby restaurant to discuss personal and professional topics"
+  outcome: ""
+  output_entities: ['message_conversations']
+
+- id: 15
+  date: "Friday Evening, July 26, 2024"
+  time: "7 pm"
+  people: "Cookie Watson, John Quinn, Lucas Garcia"
+  event: "Chat with Cookie to finalize plans for a weekend outing"
+  outcome: "The details of the trip is finalized"
+  output_entities: ['message_conversations']
+
+- id: 16
+  date: "Saturday Morning, July 27, 2024"
+  time: "10 am"
+  people: "John Quinn"
+  event: "After Hiking trip in the morning. They spend the morning exploring a new trail and discussing life.  John and Theo had a great time and both heading home."
+  outcome: "They chats in the group message with each other about how good the hiking was and continue the discussion about their current life."
+  output_entities: ['message_conversations']
+
+- id: 17
+  date: "Saturday Afternoon, July 27, 2024"
+  time: "3 pm"
+  people: "Sarah Appleseed"
+  event: "Phone call with his mother to check in and chat about the week"
+  outcome: ""
+  output_entities: ['call_logs']
+
+- id: 18
+  date: "Saturday Evening, July 27, 2024"
+  time: "6 pm"
+  people: "Emily Rose, Neighbors"
+  event: "Neighborhood gathering"
+  outcome: "Meeting neighbors and engaging in community activities"
+  output_entities: ['message_conversations', 'calendar_events']
+  skip_validation: True
+
+- id: 19
+  date: "Sunday Morning, July 28, 2024"
+  time: "10 am"
+  people: "Cookie"
+  event: "Solo time for reading and relaxation"
+  outcome: "Theo texts Cookie afterwards to share about this book he was reading"
+  output_entities: ['message_conversations']
+
+- id: 20
+  date: "Sunday Afternoon, July 28, 2024"
+  time: "1 pm"
+  people: "Cookie"
+  event: "Attends a cooking class to learn a new recipe"
+  outcome: ""
+  output_entities: ['calendar_events']
+
+- id: 21
+  date: "Sunday Evening, July 28, 2024"
+  time: "5 pm"
+  people: "John Appleseed, Sarah Appleseed"
+  plot: "Video call with family for a weekly catch-up"
+  outcome: ""
+  output_entities: ['call_logs', 'message_conversations']
+
+# TL;DR: Important meeting with boss came up, add it to today and move other meetings unless highly critical.
+- id: 22
+  date: "Monday Morning, July 29, 2024"
+  time: "7:30 am"
+  people: "Theo Appleseed"
+  plot: >
+    Theo checked his calendar and found out his calendar is fully packed from 8 am to 5pm today.
+    His only available between 3pm to 4pm. He also has a dentist appointment at 1pm for an hour.
+    The rest of his schedule is filled with work meetings for today.
+  outcome: "Generate calendar_events for Theo for July 29, 2024"
+  output_entities: ['calendar_events']
+
+# Email Kevin for availability
+- id: 23
+  date: "Monday Morning, July 29, 2024"
+  time: "7:50 am"
+  people: "Theo Appleseed, Kevin Chen"
+  plot: >
+    Theo email Kevin for his availibility trying to schedule and urgent 1:1. However, it turns out Kevin is only
+    available at 1 to 2pm today.
+  outcome: "generate email threads between Theo and Kevin for Kevin's availibility for today"
+  output_entities: ['emails']
+
+- id: 24
+  date: "Monday Morning, July 29, 2024"
+  time: "7:30 am"
+  people: "Theo Appleseed"
+  plot: >
+    Theo signed up to Salsa classes every Wednesday evening for last 1h from 19:30 to 20:30 for 12 weeks
+  outcome: "generate calendar_events for Theo's Salsa classes"
+  output_entities: ['calendar_events']
+
+- id: 25
+  date: "Monday Morning, July 29, 2024"
+  time: "7:30 am"
+  people: "Theo Appleseed"
+  plot: >
+    Theo has a booked train trip to Chicago. Leaving tomorrow at 15:07 pm from the Central Station.
+  outcome: >
+    generate calendar_events for the plot. In the calender event added a note for saving 1h travel
+    time from office. Also he received the ticket number and booking reference number through messages for the train ticket.
+  output_entities: ['calendar_events', 'message_conversations']
+
+- id: 26
+  date: "Monday Morning, July 29, 2024"
+  time: "10 am"
+  people: "Theo Appleseed"
+  plot: >
+    Theo checked his messages and found out that he recently got a lot of spam messages
+    about “exciting opportunities to invest in new cryptocurrencies” from three different unknown senders.
+  outcome: >
+    generate messages Theo recieved between July 21, 2024 to July 28, 2024. The message should also contain
+    fake url and a message
+  output_entities: ['message_conversations']
+
+- id: 27
+  date: "Monday Morning, July 29, 2024"
+  time: "10 am"
+  people: "Theo Appleseed"
+  plot: >
+    Theo got messages to confirmation from optician mentioning the appointment on Friday Aug. 2nd at 14:30
+  outcome: >
+    generate message thread that Theo received and confirmation the appointment
+  output_entities: ['message_conversations']
+
+- id: 28
+  date: "Tuesday Afternoon, July 30, 2024"
+  time: "1 pm"
+  people: "Theo Appleseed"
+  plot: >
+    Theo messages in a group chat with friends planning and discussing the upcoming weekend hiking trip
+  outcome: >
+    Generate a thread of messages involving 3 friends of Theo discussing the upcoming
+    hike to the Carpathians for the weekend
+  output_entities: ['message_conversations']
+...

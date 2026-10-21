@@ -1,0 +1,173 @@
+{
+  "task_id": "7200c330-9951-414e-8576-1a98f3548322",
+  "plot_id": 13,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 11am, Theo Appleseed, Cookie Watson, Akira Muramoto, Robin Selmoure were involved. John invites his friends to go to a whole-day hike the weekend after  1. John sends individual messages to his friends inviting them for a hike the Saturday after next. 2. Each friend replies, with all accepting except for Robin, who refuses with a slightly bizarre excuse. 3. John sends a group message to the 3 friends who accepted, confirming the meeting place for the hike - the 'Batteries to Bluffs Trail'. The three freinds confirming in the message thread. 4. John creates an event for the hike with the relevant friends invited. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_13",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if your hiking buddies have replied to your message.",
+  "reference_time": "2024-07-24T14:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Hiking Group is checked for recent replies to the user's message from all members.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_13_7200c330-9951-414e-8576-1a98f3548322_single_turn_1",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Hiking Group",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com",
+        "cookie.watson@mckinley.com",
+        "akira.muramoto@sportsfan.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Great news everyone, Theo, Cookie, and Akira are in for the hike. Let's meet at the trail entrance at 8 AM. Looking forward to it!",
+      "creation_datetime_iso": "2024-07-24T11:10:00-07:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Hiking Group",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com",
+        "cookie.watson@mckinley.com",
+        "akira.muramoto@sportsfan.com"
+      ],
+      "sender_address": "theo.appleseed@example.com",
+      "content": "Sounds good, see you there!",
+      "creation_datetime_iso": "2024-07-24T11:12:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Hiking Group",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com",
+        "cookie.watson@mckinley.com",
+        "akira.muramoto@sportsfan.com"
+      ],
+      "sender_address": "cookie.watson@mckinley.com",
+      "content": "Perfect, can't wait!",
+      "creation_datetime_iso": "2024-07-24T11:13:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Hiking Group",
+      "participants_addresses": [
+        "john.quinn@palantir.com",
+        "theo.appleseed@example.com",
+        "cookie.watson@mckinley.com",
+        "akira.muramoto@sportsfan.com"
+      ],
+      "sender_address": "akira.muramoto@sportsfan.com",
+      "content": "8 AM works for me. See you all there!",
+      "creation_datetime_iso": "2024-07-24T11:14:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "College Friend",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": false,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@mckinley.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": "Management Consultant",
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    },
+    {
+      "first_name": "Robin",
+      "last_name": "Selmoure",
+      "full_name": "Robin Selmoure",
+      "phone_number": "408-555-0132",
+      "alias": "Robin",
+      "email": "robin.selmoure@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Software Engineer",
+      "is_self": false,
+      "birthday": "1985-03-15T00:00:00-08:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Have I gotten any replies to my message about trails in the group?",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user is asking about replies to a message.\nFirst, I should try and find the mentioned group chat. \nThe user has indicated the content of the message being referred to, I should search their messages for the keyword 'trail'\nI see only one potential match, a message sent by the user in the group chat Hiking Group on July 24, 2024 at 11:10.\nI have found the group being referred to. I see three new messages in reply to the user's one. \nA message from Theo Appleseed on July 24, 2024 at 11:12.\nA message from Cookie Watson on July 24, 2024 at 11:13.\nA message from Akira Muramoto on July 24, 2024 at 11:14.\nI should inform the user.",
+  "milestones": "[\n                # Milestone 0 – the agent looks through the user’s messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – the agent answers the user and mentions every friend who replied\n                Milestone(\n                    snapshot_constraints=[\n                        # Must mention Theo\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Theo\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Must mention Cookie\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Cookie\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Must mention Akira\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Akira\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Tool-use precedes informing the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know if your hiking buddies have replied to your message. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]",
+  "is_read_time": "2024-07-24T14:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

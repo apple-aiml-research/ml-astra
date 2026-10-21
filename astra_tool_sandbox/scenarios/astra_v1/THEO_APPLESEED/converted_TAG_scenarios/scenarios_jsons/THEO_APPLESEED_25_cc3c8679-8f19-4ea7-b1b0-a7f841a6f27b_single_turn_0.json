@@ -1,0 +1,67 @@
+{
+  "task_id": "cc3c8679-8f19-4ea7-b1b0-a7f841a6f27b",
+  "plot_id": 25,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Morning, July 29, 2024 at 7:30 am, Theo Appleseed were involved. Theo has a booked train trip to Chicago. Leaving tomorrow at 15:07 pm from the Central Station.\n generate calendar_events for the plot. In the calender event added a note for saving 1h travel time from office. Also he received the ticket number and booking reference number through messages for the train ticket.\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_25",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send an email to the contact booking@trainservice.   com asking \"Hello, I wish to reschedule my ticket for tomorrow at 15:07pm.    Whom may I speak to about rebooking?\".",
+  "reference_time": "2024-07-29T12:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to booking@trainservice.com stating \"Hello, I wish to reschedule my ticket for tomorrow at 15:07pm. Whom may I speak to about rebooking?\".",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_25_cc3c8679-8f19-4ea7-b1b0-a7f841a6f27b_single_turn_0",
+  "tool_allow_list": [
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send an email that says \"Hello, I wish to reschedule my ticket for tomorrow at 15:07pm. Whom may I speak to about rebooking?\" to booking@trainservice.com.",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send an email. I ask first for the body of the email. The user states this as \"Hello, I wish to reschedule my ticket for tomorrow at 15:07pm. Whom may I speak to about rebooking?\". After creating this, I will ask for the contact to send the email to. The user states this as booking@trainservice.com. Then I will send the message.",
+  "milestones": "[\n                # Milestone 0 – Confirm an email was sent to the rail service with the requested body text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"booking@trainservice.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"Hello, I wish to reschedule my ticket for tomorrow at 15:07pm. Whom may I speak to about rebooking?\",\n                                    \"creation_datetime_iso\": \"2024-07-29T12:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Must at least include the requested recipient (allowing CC/BCC extras)\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                # Make sure the essential sentence is present in the body\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with the pre-task snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to send an email to the contact booking@trainservice.  com asking \"Hello, I wish to reschedule my ticket for tomorrow at 15:07pm.   Whom may I speak to about rebooking?\". ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"send_email\"]",
+  "is_read_time": "2024-07-29T12:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

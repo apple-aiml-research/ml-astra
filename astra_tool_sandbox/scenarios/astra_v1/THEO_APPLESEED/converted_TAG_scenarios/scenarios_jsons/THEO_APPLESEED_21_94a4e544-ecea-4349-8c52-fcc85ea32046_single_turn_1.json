@@ -1,0 +1,141 @@
+{
+  "task_id": "94a4e544-ecea-4349-8c52-fcc85ea32046",
+  "plot_id": 21,
+  "plot_summary": "Theo Appleseed is the protagonist. On Sunday Evening, July 28, 2024 at 5 pm, John Appleseed, Sarah Appleseed were involved. Video call with family for a weekly catch-up ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_21",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You just got off the phone with your parents, you have some work you need to look over for your meeting tomorrow.    You want to check what time the meeting is.",
+  "reference_time": "2024-07-28T17:55:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1) Start time of Follow-up Sync with Michelle and Dawei scheduled for July 29, 2024 11:00-12:00 is confirmed as 11:00.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_21_94a4e544-ecea-4349-8c52-fcc85ea32046_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Follow-up Sync with Michelle and Dawei",
+      "start_datetime_iso": "2024-07-29T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T12:00:00-07:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T11:00:00-07:00",
+      "notes": "Break-out session to delve deeper into specific project details."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Appleseed",
+      "full_name": "John Appleseed",
+      "phone_number": "1234-5678-9102",
+      "alias": "Dad",
+      "email": "john.appleseed@example.com",
+      "relationship": "Father",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Nearby University",
+      "job_title": "Professor of Theoretical Physics",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "1234-5678-9106",
+      "alias": "Dave",
+      "email": "dawei.shen@example.com",
+      "relationship": "Coworker",
+      "address": "127 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1988-04-17T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Appleseed",
+      "full_name": "Sarah Appleseed",
+      "phone_number": "1234-5678-9111",
+      "alias": "Mom",
+      "email": "sarah.appleseed@example.com",
+      "relationship": "Mother",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Regional Hospital",
+      "job_title": "Nurse",
+      "is_self": false,
+      "birthday": "1967-05-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What time am I meeting my coworkers tomorrow?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking about the start time of an event. The user is asking on Sunday July 28 2024, so 'tomorrow' must be referring to Monday July 29 2024.\nI should look through their calendar for Monday July 29.\nI can see only one event scheduled for Monday July 29, named 'Follow-up Sync with Michelle and Dawei' scheduled for July 29, 2024 11:00-12:00. \nBefore going ahead I should confirm this is the correct event. The user has referred to coworkers, I should confirm that the participants of this event, Michelle Barnes and Dawei Shen, are the user's coworkers.\nI can see that both of them are tagged thusly in the user's contact list, I am now confident that this is the queried event. I will return to the user and confirm the start time of event Follow-up Sync with Michelle and Dawei scheduled for July 29, 2024 11:00-12:00 as 11:00.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up tomorrow’s meeting in the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned calendar data includes the correct event and start time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Follow-up Sync with Michelle and Dawei\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-29T11:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the meeting starts at 11:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"11:00\",\n                                            \"11 am\",\n                                            \"11am\",\n                                            \"11 a.m.\",\n                                            \"11 AM\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You just got off the phone with your parents, you have some work you need to look over for your meeting tomorrow.   You want to check what time the meeting is. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-28T17:55:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

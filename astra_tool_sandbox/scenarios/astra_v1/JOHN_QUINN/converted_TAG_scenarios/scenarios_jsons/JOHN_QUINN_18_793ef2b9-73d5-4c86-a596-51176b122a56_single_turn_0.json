@@ -1,0 +1,154 @@
+{
+  "task_id": "793ef2b9-73d5-4c86-a596-51176b122a56",
+  "plot_id": 18,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 8:30pm, Deborah Shooter were involved. Deborah sends John some music tracks she likes.  1. Deborah sends John 4 messages with links to electronic music tracks she likes on Apple Music, mentioning the band and song name. 2. Deborah asks John if he likes them, and he answers they seem nice, but he's not an expert in electronic music. 3. She says such music can be great and sends 5 more tracks. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_18",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to schedule some time to chat with Deborah about concerns you have regarding her feelings for you.",
+  "reference_time": "2024-07-24T20:35:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The system will check the calendar for any possible scheduling conflicts on Saturday 27th July 2024 at 15:00. ",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. The system will create the event Chat with Deborah for Saturday 27th July 2024 at 15:00 and include Deborah as an invitee. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_18_793ef2b9-73d5-4c86-a596-51176b122a56_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Hey John, check out this track by Neon Lights - 'Glowing in the Dark'. Here's the link: [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:30:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "This one is also cool, 'Bass Drop' by Electro Pulse. [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:31:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Don't miss 'Synth Riders' by The Waveform. [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:32:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "And 'Night City' by Urban Shadows is a must-hear. [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:33:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "Do you like them? Not really your usual stuff, I guess!",
+      "creation_datetime_iso": "2024-07-24T20:34:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "They seem nice, Deb! I'm not an expert, but I enjoyed them.",
+      "creation_datetime_iso": "2024-07-24T20:35:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Deborah is starting to get to be too much can you schedule in for me to chat with her on Saturday at 15:00",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "Okay, looks like the user wants to create a new event with Deborah. They asked me to schedule it for Saturday at 15:00 - I'm guessing they must mean Saturday 27th July 2024. I'll check to see if there's any schedule conflicts for that day... looks all fine to me, so with the user's confirmation, I'll create the event Chat with Deborah and invite the Deborah on Saturday 27th July 2024 at 15:00. ",
+  "milestones": "[\n                # Milestone 0 – The calendar event Chat with Deborah on Sat 27 Jul 2024 15:00 is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"start_datetime_iso\": \"2024-07-27T15:00:00-07:00\",\n                                    \"attendees_names\": [[\"Deborah Shooter\"]],\n                                    \"creation_datetime_iso\": \"2024-07-24T20:35:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,  # just needs to contain \"Deborah\"\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",   # fallback for conflict checking\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to schedule some time to chat with Deborah about concerns you have regarding her feelings for you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-24T20:35:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

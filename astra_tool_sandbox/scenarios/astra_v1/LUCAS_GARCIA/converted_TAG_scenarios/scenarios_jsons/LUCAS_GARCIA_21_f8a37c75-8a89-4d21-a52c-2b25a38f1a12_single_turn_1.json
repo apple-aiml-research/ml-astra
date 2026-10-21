@@ -1,0 +1,88 @@
+{
+  "task_id": "f8a37c75-8a89-4d21-a52c-2b25a38f1a12",
+  "plot_id": 21,
+  "plot_summary": "Lucas Garcia is the protagonist. On Thursday, December 12, 2024 at 10 am, high school football team friends were involved. Lucas organizes a reunion brunch with his high school football team friends. Emails exchanged with updates and photos, rekindling old connections.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_21",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to remove Steve Rivers from the \"Reunion Brunch with High School Football Team Friends\" event as he cannot make it.",
+  "reference_time": "2024-12-12T09:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Steve Rivers is removed from the  \"Reunion Brunch with High School Football Team Friends\" event on 12 December 2024 at 10:00 am.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_21_f8a37c75-8a89-4d21-a52c-2b25a38f1a12_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "modify_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Reunion Brunch with High School Football Team Friends",
+      "start_datetime_iso": "2024-12-12T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-12T12:00:00-08:00",
+      "attendees_names": [
+        "Emmanuel Gonzales",
+        "Lucas Garcia",
+        "Mike Jordan",
+        "Steve Rivers"
+      ],
+      "location": "The Orchard Cafe, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-04T10:00:00-08:00",
+      "notes": "Lucas organizes a reunion brunch with his high school football team friends to catch up and rekindle old connections over brunch, with plans to exchange photos and share updates post-event."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Remove Steve from the next event I have today",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user has asked me to remove Steve from the 'next event  they have today' - I'm not quite sure what this is, so I'll need to check. I'll look in the user's calendar to locate any upcoming events, and I found that the \"Reunion Brunch with High School Football Team Friends\" event is the next in the user's calendar. it starts today at 10:00 on December 12th 2024. I can see that it has three participants - Emmaneul Gonzales, Mike Jordan and Steve Rivers. Steve Rivers must be the 'Steve' that the user is referring to. I will remove them from the event as requested.",
+  "milestones": "[\n                # Milestone 0 – Agent queries the calendar to figure out what the “next event” is\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm that the queried calendar data contained the correct event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Reunion Brunch with High School Football Team Friends\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-12T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify that Steve Rivers was removed from the attendee list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Reunion Brunch with High School Football Team Friends\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"Emmanuel Gonzales\",\n                                            \"Lucas Garcia\",\n                                            \"Mike Jordan\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-12T09:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with original snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox chatter when checking CALENDAR change\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar search → event confirmation\n                (1, 2),  # event confirmation → modification verification\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"modify_calendar_event\",      # preferred way to drop Steve\n    \"remove_calendar_event\",      # alternate approach (delete & recreate)\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to remove Steve Rivers from the \"Reunion Brunch with High School Football Team Friends\" event as he cannot make it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"modify_calendar_event\"]",
+  "is_read_time": "2024-12-12T09:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,80 @@
+{
+  "task_id": "5f06fad0-492a-44f7-8e82-4b7c634a61ae",
+  "plot_id": 5,
+  "plot_summary": "Emily Rose is the protagonist. On Wednesday, December 4, 2024 at 7:00 PM, Jessica Lane were involved. Planning session with Jessica over dinner regarding the holiday volunteering schedule. Email sent to volunteers with the finalized schedule of activities.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_5",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Jessica was a lot of help in your planning session so you want to send your gratitude to her.",
+  "reference_time": "2024-12-04T22:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Send a message to Jessica Lane saying \"Thanks for helping out buddy.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_5_5f06fad0-492a-44f7-8e82-4b7c634a61ae_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lane",
+      "full_name": "Jessica Lane",
+      "phone_number": "+1 530-555-0127",
+      "alias": "Bestie",
+      "email": "jessica.lane@orchardmail.com",
+      "relationship": "Best Friend",
+      "address": "200 Friendship Blvd, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Volunteer Coordinator",
+      "is_self": false,
+      "birthday": "1994-04-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "query": "Text my best friend saying 'thanks for helping out buddy.'",
+  "reasoning": "The user is asking to send a message.\nFirst, I need to identify the intended recipient. The user has referred to them as their best friend, looking in the user's contacts I can see that Jessica Lane is tagged as this. This must be who the user is referring to.\nNext, I will draft the message as requested.\nA message saying \"thanks for helping out buddy.\" will be sent to Jessica Lane.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up contacts to resolve “best friend”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the contact lookup returned Jessica Lane\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Jessica Lane\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 530-555-0127\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new text message to Jessica is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Require Jessica to be included; allow any additional participants (e.g., self)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 530-555-0127\",\n                                                \"jessica.lane@orchardmail.com\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"thanks for helping out buddy\",\n                                    \"creation_datetime_iso\": \"2024-12-04T22:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.SANDBOX\n                    ],  # ignore sandbox chatter\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search -> confirm Jessica\n                (1, 2),  # Confirm Jessica -> message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",     # to create the outgoing text\n    \"search_contacts\",  # to resolve “best friend” to Jessica\n    \"get_all_contacts\", # fallback listing of contacts\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. Jessica was a lot of help in your planning session so you want to send your gratitude to her. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-12-04T22:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

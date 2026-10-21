@@ -1,0 +1,102 @@
+{
+  "task_id": "d34487e9-3b48-41b9-8dbb-e5065cc42b48",
+  "plot_id": 16,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 3 pm, Juan Garcia were involved. Lucas visits his father's coffee shop to discuss expanding healthy snack options. Emails exchanged with Juan offering suggestions and recipes.",
+  "tags": [
+    "astra_core",
+    "LUCAS_GARCIA",
+    "plot_16",
+    "contact",
+    "email",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "messaging"
+  ],
+  "user_goal": "You want to reply to the message you just received about the coffee shop.",
+  "reference_time": "2024-12-09T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply is sent to Juan Garcia's email saying \"Sounds fantastic. Let me know when it's a good time for the taste test. Speak Soon.\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_16_d34487e9-3b48-41b9-8dbb-e5065cc42b48_single_turn_2",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "search_messages",
+    "get_all_messages",
+    "send_email",
+    "send_message",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Healthy Snack Options for the Coffee Shop",
+      "sender_address": "juan.garcia@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T17:00:00-08:00",
+      "body": "Hi Lucas,\n\nThanks for dropping by today and for the email. The recipes look fantastic, and I think our customers are going to love the change. I'll go through them in more detail and we can plan a taste test soon.\n\nAppreciate your initiative in bringing these healthy ideas to the shop!\n\nLove,\nDad",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Garcia",
+      "full_name": "Juan Garcia",
+      "phone_number": "+1 12345-6789-1000-4321",
+      "alias": "Dad",
+      "email": "juan.garcia@example.com",
+      "relationship": "Father",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Garcia's Coffee Shop",
+      "job_title": "Coffee Shop Owner",
+      "is_self": false,
+      "birthday": "1963-11-25T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to my beloved coffee shop owner's message saying sounds fantastic. Let me know when it's a good time for the taste test. Speak Soon.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "reasoning": "User wants to reply to a contact's message. They address the contact as \"beloved coffee shop owner\". By checking user's contacts I see user's father Juan Garcia owns a coffee shop. So I believe user is referring to their father Juan Garcia. I'll check if there's message from Juan. I didn't find any message exchanged between the user and their father. I'll check if there's any email, as email can count as a type of message. Ok, I found emails exchanged just now between user and their father. So I understand user actually wants to reply to Juan Garcia's email saying sounds fantastic. Let me know when it's a good time for the taste test. Speak Soon. I'll draft the email and send the reply. I'll inform user that the email is sent.",
+  "milestones": "[\n                # Milestone 0 – Agent retrieves existing emails (to find Dad's email to reply to)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm Juan Garcia's email thread was retrieved from previous email search\n                # We just need to know that an email from juan.garcia@example.com exists in the tool result.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"juan.garcia@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Healthy Snack Options for the Coffee Shop\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A reply email is sent to Juan with the correct body content\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # email must be sent to Dad\n                                    \"recipients_addresses\": [\n                                        [\"juan.garcia@example.com\"]\n                                    ],\n                                    # body should contain the key phrases of the requested reply\n                                    \"body\": \"Let me know\",\n                                    \"creation_datetime_iso\": \"2024-12-09T18:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                # allow minor formatting / spacing variations while requiring same content\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search → confirm Juan's email is found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"send_email\",\n]",
+  "is_read_time": "2024-12-09T18:00:00-08:00",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to reply to the message you just received about the coffee shop. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"search_messages\", \"get_all_messages\", \"send_email\", \"send_message\", \"search_contacts\", \"get_all_contacts\"]"
+}

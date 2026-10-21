@@ -1,0 +1,98 @@
+{
+  "task_id": "d34487e9-3b48-41b9-8dbb-e5065cc42b48",
+  "plot_id": 16,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 9, 2024 at 3 pm, Juan Garcia were involved. Lucas visits his father's coffee shop to discuss expanding healthy snack options. Emails exchanged with Juan offering suggestions and recipes.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_16",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to your father's email",
+  "reference_time": "2024-12-09T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply is sent to Juan Garcia's email saying \"Hey Dad, Sounds fantastic. Let me know what you think. Speak Soon. Best, Lucas\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_16_d34487e9-3b48-41b9-8dbb-e5065cc42b48_single_turn_0",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails",
+    "send_email",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Healthy Snack Options for the Coffee Shop",
+      "sender_address": "juan.garcia@example.com",
+      "recipients_addresses": [
+        "lucas.garcia@example.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T17:00:00-08:00",
+      "body": "Hi Lucas,\n\nThanks for dropping by today and for the email. The recipes look fantastic, and I think our customers are going to love the change. I'll go through them in more detail and we can plan a taste test soon.\n\nAppreciate your initiative in bringing these healthy ideas to the shop!\n\nLove,\nDad",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Garcia",
+      "full_name": "Juan Garcia",
+      "phone_number": "+1 12345-6789-1000-4321",
+      "alias": "Dad",
+      "email": "juan.garcia@example.com",
+      "relationship": "Father",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Garcia's Coffee Shop",
+      "job_title": "Coffee Shop Owner",
+      "is_self": false,
+      "birthday": "1963-11-25T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Reply to the last email I received with something like sounds fantastic, let me know what you think, speak soon.",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to reply to the last email they received with something like sounds fantastic, let me know what you think, speak soon. I'll look at their inbox. The last email they received was from their father Lucas Garcia. I'll write \"Hey Dad, Sounds fantastic. Let me know what you think. Speak Soon. Best, Lucas\" and send the email. I'll inform the suer when this is done.",
+  "milestones": "[\n                # Milestone 0 – The agent retrieves/reviews emails to find the latest one from Dad to reply to\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – A reply email is sent to Juan with the requested content, using reply semantics\n                Milestone(\n                    snapshot_constraints=[\n                        # Optionally verify that the send_email tool was used in reply mode (not mandatory for content, but ensures it's a reply)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"tool_trace\": json.dumps(\n                                        {\n                                            \"tool_name\": \"send_email\",\n                                            \"arguments\": {\n                                                \"recipients_addresses\": [\n                                                    \"juan.garcia@example.com\"\n                                                ],\n                                                \"email_action\": \"send\",\n                                                \"email_id_referred_action\": \"reply\",\n                                                \"email_id_referred\": \"place_holder\",\n                                            },\n                                        },\n                                        ensure_ascii=False,\n                                    )\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": column_tool_trace_partial_arguments_similarity\n                            },\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n                # Milestone 2 – A reply email is sent to Juan with the requested content, using reply semantics\n                Milestone(\n                    snapshot_constraints=[\n                        # Verify an email was sent with correct recipient and body content\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Must go to Dad (Juan Garcia)\n                                    \"recipients_addresses\": [\n                                        [\"juan.garcia@example.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    # Body should contain key phrases requested by user\n                                    \"body\": \"Sounds fantastic\",\n                                    \"creation_datetime_iso\": \"2024-12-09T18:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                # Allow small variations but require presence of critical phrases\n                                \"body\": column_rouge_l_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"send_email\",\n]",
+  "is_read_time": "2024-12-09T18:00:00-08:00",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to reply to your father's email ",
+  "minefields": null,
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\", \"send_email\", \"search_contacts\", \"get_all_contacts\"]"
+}

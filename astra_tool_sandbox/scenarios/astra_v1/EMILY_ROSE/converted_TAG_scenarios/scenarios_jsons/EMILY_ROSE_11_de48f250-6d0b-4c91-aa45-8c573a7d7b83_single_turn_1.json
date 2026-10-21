@@ -1,0 +1,79 @@
+{
+  "task_id": "de48f250-6d0b-4c91-aa45-8c573a7d7b83",
+  "plot_id": 11,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 8, 2024 at 8:00 AM, Henry Chester were involved. Morning walk with Buster and offering gardening advice to Henry. Gardening tips documented and shared on community forum.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_11",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to Henry Chester's email to let him know it was a pleasure and you don't mind helping out",
+  "reference_time": "2024-12-08T10:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An email reply to the email with subject \"Gardening Tips from Today's Walk\" is sent to henry.chester@gardensupplies.com with the body \"Hi Henry,\nIt was a pleasure! I don't mind helping out.\nBest regards, Emily Rose\"",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_11_de48f250-6d0b-4c91-aa45-8c573a7d7b83_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Gardening Tips from Today's Walk",
+      "sender_address": "henry.chester@gardensupplies.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-08T10:00:00-08:00",
+      "body": "Hello Emily,\n\nThank you for the wonderful morning and for the gardening tips document. I've already skimmed through it and found some great points that we can implement right away. I'll make sure to pass this along to our customers and fellow gardening enthusiasts.\n\nLooking forward to our next walk and chat. Have a great day ahead!\n\nBest,\nHenry",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants me to reply to an email they received at 10am from henry.chester@gardensupplies.com with the text \"Hi Henry,\nIt was a pleasure! I don't mind helping out.\nBest regards, Emily Rose\". First thing I need to do is find this email they are referencing. I will look in their inbox and see if I can find any from this email address. Ok I have found one email from that address with the subject line \"Gardening Tips from Today's Walk\" received at 10am. This must be the email. I will draft an email reply with the text the user has given me and then I will ask the user if it is ready to be sent. ",
+  "query": "Reply to the email from henry.chester@gardensupplies.com I received at 10am today and say \"Hi Henry,\nIt was a pleasure! I don't mind helping out.\nBest regards, Emily Rose\"",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – The agent looks for the relevant email\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms the correct email (from Henry, right subject) was found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"henry.chester@gardensupplies.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Gardening Tips\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A reply email is sent to Henry with the required body text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"henry.chester@gardensupplies.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"It was a pleasure! I don't mind helping out.\",\n                                    \"creation_datetime_iso\": \"2024-12-08T10:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Must find email before confirming content\n                (1, 2),  # After confirming, send reply\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_emails\",\n    \"get_all_emails\",  # fallback listing\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to reply to Henry Chester's email to let him know it was a pleasure and you don't mind helping out ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"send_email\"]",
+  "is_read_time": "2024-12-08T10:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,91 @@
+{
+  "task_id": "7bd32f29-9388-4452-b498-9a98e059ffe9",
+  "plot_id": 18,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 8:30pm, Deborah Shooter were involved. Deborah sends John some music tracks she likes.  1. Deborah sends John 4 messages with links to electronic music tracks she likes on Apple Music, mentioning the band and song name. 2. Deborah asks John if he likes them, and he answers they seem nice, but he's not an expert in electronic music. 3. She says such music can be great and sends 5 more tracks. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_18",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to reply to Deborah asking her to share her song recommendations to a playlist",
+  "reference_time": "2024-07-24T20:45:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A reply is sent to Deborah Shooter's last message saying \"could you make a playlist with these recommendations?”"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_18_7bd32f29-9388-4452-b498-9a98e059ffe9_single_turn_0",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "And lastly, 'Neon Thrill' by Night Riders. Hope you find some you really like! [Apple Music Link]",
+      "creation_datetime_iso": "2024-07-24T20:40:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Get back to Deborah's last message saying could you make a playlist with these recommendations?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user intends to respond to Deborah Shooter's last message with the text “could you make a playlist with these recommendations?”. First, I'll locate the conversation in messages by searching for Deborah. Once I’ve found the conversation, I’ll compose the reply and check if the user is satisfied with it before sending it.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up existing conversation/messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the Deborah Shooter thread was found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            # Confirm some characteristic text from Deborah’s last message\n                                            \"content\": {\n                                                \"value\": \"Neon Thrill\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A reply message is sent asking for a playlist\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"deborah.shooter@nightclub.com\",\n                                                \"408-555-0133\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"playlist\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-07-24T20:45:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_messages\",\n    \"search_messages\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to reply to Deborah asking her to share her song recommendations to a playlist ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-07-24T20:45:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

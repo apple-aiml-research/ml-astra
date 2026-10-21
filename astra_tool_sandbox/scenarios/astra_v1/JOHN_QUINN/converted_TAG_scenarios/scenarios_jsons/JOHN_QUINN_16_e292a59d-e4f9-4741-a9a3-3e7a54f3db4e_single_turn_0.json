@@ -1,0 +1,92 @@
+{
+  "task_id": "e292a59d-e4f9-4741-a9a3-3e7a54f3db4e",
+  "plot_id": 16,
+  "plot_summary": "John Quinn is the protagonist. On Wednesday, July 24, 2024 at 5:45pm, Julie Patterson were involved. Julie asks John asking him to water her plant while she's on leave  1. Julie emails John to let him know that she needs to take urgent leave of absence next week and asks if he could water her plants while she's way. 2. John agrees, but asks more information about which plants she means and what is the proper care they need. 3. Julie mentions the 3 different plant she has at work and asks him to water them on Tuesday and Friday. 4. John agrees and adds the relevant calendar reminders on his phone. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_16",
+    "email",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to pull up the email you got from Julie regarding which plants you need to water while she is away.",
+  "reference_time": "2024-07-24T18:15:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email with the subject line \"Re: Request for Plant Care During My Leave\" that was received on. July 24, 2024 at 18:15 is displayed on the user's screen. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_16_e292a59d-e4f9-4741-a9a3-3e7a54f3db4e_single_turn_0",
+  "tool_allow_list": [
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Re: Request for Plant Care During My Leave",
+      "sender_address": "julie.patterson@palantir.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-24T18:15:00-07:00",
+      "body": "Hi John, Thanks so much! There are three plants: a fern, a spider plant, and a succulent. The fern and spider plant need watering on Tuesday and Friday, but the succulent only needs water on Friday. Let me know if you need anything else. Best, Julie",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Julie",
+      "last_name": "Patterson",
+      "full_name": "Julie Patterson",
+      "phone_number": "408-555-0131",
+      "alias": "Julie",
+      "email": "julie.patterson@palantir.com",
+      "relationship": "Coworker",
+      "address": "140 Enterprise Blvd, San José, CA 95134",
+      "company": "Palantir",
+      "job_title": "Data Analyst",
+      "is_self": false,
+      "birthday": "1990-12-05T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Pull up that email Julie Patterson sent me about which plants she wants me to water in her office. ",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants me to pull up an email from a person named \"Julie\". First, I must figure out who this contact is, and then I can find the correct email. I have found a \"Julie Patterson\" in the user's contacts who the user has had email correspondence with regarding the watering of plants. I can assume this is the intended contact. Now, I need to find the email. I can see that the most recent email contains instructions on specific types of plants that need to be watered. I will assume this is the correct email. ",
+  "milestones": "[\n                # Milestone 0 – The agent tries to look for the email (information-retrieval tool call)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct email (subject + sender) was returned in the previous tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Re: Request for Plant Care During My Leave\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"julie.patterson@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent shows the email (or its essential contents) to the user\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"Re: Request for Plant Care During My Leave\",\n                                            \"fern\",\n                                            \"spider plant\",\n                                            \"succulent\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_contacts\",\n    \"search_contacts\",\n    \"get_all_emails\",\n    \"search_emails\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to pull up the email you got from Julie regarding which plants you need to water while she is away. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_emails\", \"get_all_emails\"]",
+  "is_read_time": "2024-07-24T18:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

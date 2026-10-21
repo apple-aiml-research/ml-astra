@@ -1,0 +1,92 @@
+{
+  "task_id": "4738d818-b182-4448-9e20-258e51233d16",
+  "plot_id": 3,
+  "plot_summary": "Emily Rose is the protagonist. On Tuesday, December 3, 2024 at 1:00 PM, Theo Appleseed were involved. Discussion with Theo about logistics for community clean-up planned for the weekend and schedule the event. WhatsApp chat history with Theo detailing responsibilities for the clean-up event. Create a calendar event for weekend community clean-up event.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_3",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know if Theo has responded to your WhatsApp message.",
+  "reference_time": "2024-12-03T13:05:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that no new WhatsApp messages have been received from Theo Appleseed."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_3_4738d818-b182-4448-9e20-258e51233d16_single_turn_0",
+  "tool_allow_list": [
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Theo Appleseed",
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ],
+      "sender_address": "+1 530-555-0123",
+      "content": "Perfect! Should we ask volunteers to bring any of these items if they have them?",
+      "creation_datetime_iso": "2024-12-03T13:04:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ],
+      "sender_name": "Emily Rose",
+      "sender_address": "+1 530-555-0123",
+      "creation_datetime_iso": "2024-12-03T13:04:00-08:00",
+      "content": "Perfect! Should we ask volunteers to bring any of these items if they have them?",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "moderate",
+  "query": "Has Theo responded on WhatsApp to my most recent message?",
+  "informational_complexity": "moderate",
+  "referential_complexity": "low",
+  "reasoning": "Okay so, the user is is looking for if there has been a reply from 'Theo' on WhatsApp. I can check the user's WhatsApp messages and can see there is a message thread with 'Theo Appleseed'. I can see the last message in the thread was sent by the user at 13:04 saying 'Perfect! Should we ask volunteers to bring any of these items if they have them?'. There has been no reply from Theo so I can tell the user this.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up WhatsApp messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the thread with Theo was actually retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_name\": {\n                                                \"value\": \"Emily Rose\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Perfect! Should we ask volunteers\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The user is informed that Theo has not replied\n                Milestone(\n                    snapshot_constraints=[\n                        # Check mention of Theo\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Theo\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # Check indication that no reply has been received\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"no response\",\n                                            \"no reply\",\n                                            \"not yet\",\n                                            \"hasn't\",\n                                            \"has not\",\n                                            \"haven't\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # WhatsApp retrieval → confirm expected thread found\n                (1, 2),  # confirmation → inform the user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_whatsapp_messages\",\n    \"search_whatsapp_messages\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to know if Theo has responded to your WhatsApp message. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_whatsapp_messages\", \"search_whatsapp_messages\"]",
+  "is_read_time": "2024-12-03T13:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

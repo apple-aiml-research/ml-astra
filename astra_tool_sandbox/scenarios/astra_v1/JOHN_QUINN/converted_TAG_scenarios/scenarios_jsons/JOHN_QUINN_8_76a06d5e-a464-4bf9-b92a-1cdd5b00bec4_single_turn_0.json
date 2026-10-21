@@ -1,0 +1,120 @@
+{
+  "task_id": "76a06d5e-a464-4bf9-b92a-1cdd5b00bec4",
+  "plot_id": 8,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 9am, Dr. Emilia Jackson were involved. John is reminded of his planned doctor visit next week.  1. John receives an email from his endocrinologist at 'Endomore Clinic' with a reminder of their planned appointment next week Tuesday afternoon. 2. This email is part of a short email thread with another email confirming his appointment 3 months ago. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_8",
+    "calendar",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You remembered that you won't be able to make that doctor's appointment and as such have to cancel.",
+  "reference_time": "2024-07-23T14:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A message is sent to appointments@endomoreclinic.com to cancel the appointment.",
+      "statefullness": "Stateful"
+    },
+    {
+      "statefullness": "Stateful",
+      "input_text": "2. The appointment Doctor's Appointment with Dr. Emilia Jackson that occurs on 30th July 2024 from 15:00 to 16:00 gets removed from the calendar."
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_8_76a06d5e-a464-4bf9-b92a-1cdd5b00bec4_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_emails",
+    "search_emails",
+    "send_email",
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Confirmation of Your Appointment with Dr. Emilia Jackson",
+      "sender_address": "appointments@endomoreclinic.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-23T10:00:00-07:00",
+      "body": "Hello John, We are confirming your appointment with Dr. Emilia Jackson for Tuesday, July 30, 2024, at 3:00 PM. Please save this date and time. If you have any questions or need to reschedule, do not hesitate to contact us. Thank you, The Endomore Clinic Team",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Reminder: Upcoming Appointment with Dr. Emilia Jackson",
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "attachments": null,
+      "status": "read",
+      "sender_address": "appointments@endomoreclinic.com",
+      "body": "Dear John, This is a reminder that you have an appointment scheduled with Dr. Emilia Jackson on Tuesday, July 30, 2024, at 3:00 PM. Please let us know if you need to reschedule or if you have any questions prior to your appointment. Best regards, The Endomore Clinic Team",
+      "creation_datetime_iso": "2024-07-23T09:00:00-07:00",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ]
+    }
+  ],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Doctor's Appointment with Dr. Emilia Jackson",
+      "start_datetime_iso": "2024-07-30T15:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T16:00:00-07:00",
+      "attendees_names": [
+        "Endomore Clinic",
+        "John Quinn"
+      ],
+      "location": "Endomore Clinic, 450 Medical Plaza, San José, CA",
+      "reminder_time_ahead": "48 hours",
+      "organizer_name": "Endomore Clinic",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-04-23T10:05:00-07:00",
+      "notes": "Annual check-up and consultation."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you email the doctor's clinic saying \"I would like to cancel my appointment at 3pm on 30th July\" and remove the event at that time from the calendar.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to send an email to the doctor's clinic. I will check their emails to find this contact. I found an email from a clinic who has an email of appointments@endomoreclinic.com . I will set this address as the recipient of the email.\nI draft the email saying \"I would like to cancel my appointment at 3pm on 30th July\".  I wait for confirmation and then send the email.\nThe user also wants to remove an event at the date they specified in the email. In the email they specified July 30th at 3pm. I found the event set at that time. I remove the event.",
+  "milestones": "[\n                # Milestone 0 – Agent looks through the email inbox to locate the clinic’s email address\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify that an email from the clinic (appointments@endomoreclinic.com) was indeed returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Reminder: Upcoming Appointment with Dr. Emilia Jackson\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent searches the calendar for the doctor’s appointment\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 3 – Verify that the specific appointment on 30 Jul 2024 15:00 was retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Doctor's Appointment with Dr. Emilia Jackson\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-30T15:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        ),\n                    ],\n                ),\n                # Milestone 4 – A cancellation email was sent to the clinic\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"appointments@endomoreclinic.com\"]\n                                    ],\n                                    \"status\": \"sent\",\n                                    \"body\": \"cancel\",  # we only require that the body mentions cancellation,\n                                    \"creation_datetime_iso\": \"2024-07-23T14:20:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"body\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 5 – The calendar event was removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Doctor's Appointment with Dr. Emilia Jackson\",\n                                    \"start_datetime_iso\": \"2024-07-30T15:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-30T16:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Email search → validate clinic email\n                (2, 3),  # Calendar search → validate appointment\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"send_email\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You remembered that you won't be able to make that doctor's appointment and as such have to cancel. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_emails\", \"search_emails\", \"send_email\", \"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-07-23T14:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

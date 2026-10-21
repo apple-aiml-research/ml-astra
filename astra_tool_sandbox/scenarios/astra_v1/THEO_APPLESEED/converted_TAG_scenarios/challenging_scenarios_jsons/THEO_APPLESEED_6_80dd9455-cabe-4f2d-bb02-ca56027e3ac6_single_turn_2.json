@@ -1,0 +1,107 @@
+{
+  "task_id": "80dd9455-cabe-4f2d-bb02-ca56027e3ac6",
+  "plot_id": 6,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Evening, July 23, 2024 at 6 pm, John Appleseed were involved. Phone call with his father to catch up and discuss a book they are both reading ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_6",
+    "contact",
+    "phone_call",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_yes",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know how long the call with your father was.",
+  "reference_time": "2024-07-23T19:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Duration of voice call with John Appleseed conducted on July 23, 2024 at 18:00 is presented to the user as 30 minutes.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_6_80dd9455-cabe-4f2d-bb02-ca56027e3ac6_single_turn_2",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_phonecall_logs",
+    "get_all_phone_calls"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Appleseed",
+      "full_name": "John Appleseed",
+      "phone_number": "1234-5678-9102",
+      "alias": "Dad",
+      "email": "john.appleseed@example.com",
+      "relationship": "Father",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Nearby University",
+      "job_title": "Professor of Theoretical Physics",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Appleseed",
+      "full_name": "Sarah Appleseed",
+      "phone_number": "1234-5678-9111",
+      "alias": "Mom",
+      "email": "sarah.appleseed@example.com",
+      "relationship": "Mother",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Regional Hospital",
+      "job_title": "Nurse",
+      "is_self": false,
+      "birthday": "1967-05-10T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "outgoing",
+      "caller_address": "1234-5678-9101",
+      "receiver_address": "1234-5678-9102",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-07-23T18:00:00-07:00",
+      "duration_in_hms": "00:30:00"
+    }
+  ],
+  "query": "How long was my call with her an hour ago?",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "insufficient_context": "no",
+  "misinformation": "yes",
+  "reasoning": "The user wants to know how long their call was. I need to figure out which call they're talking about in order to tell them its duration. They said it was an hour ago. In the user's contacts, John Appleseed has the relationship \"Father,\", but the user mentioned 'her'. As of today 23 July 2024 at 19:00, the only call in the user's call history is a call with John Appleseed at 18:00. John Appleseed is the user's dad, so maybe they mixed up which parent they meant. They said the call was an hour ago, and 18:00 was an hour ago, so I'll assume this call with John Appleseed is the one they are talking about and that they meant the call was with 'him'. The call was 30 minutes, so I'll tell the user that.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up phone call logs (must use phone log tools)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_phonecall_logs\",\n                                        \"get_all_phone_calls\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the call with John Appleseed at 2024-07-23T18:00:00-07:00, duration 00:30:00, exists in tool output\n                # This validates the agent actually retrieved the correct call record before answering.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"caller_address\": {\n                                                \"value\": \"1234-5678-9101\",\n                                                \"partial\": False,\n                                            },\n                                            \"receiver_address\": {\n                                                \"value\": \"1234-5678-9102\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-23T18:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"duration_in_hms\": {\n                                                \"value\": \"00:30:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – User-facing answer mentions that the call duration was 30 minutes\n                # We only care that \"30 minutes\" (or similar phrase) is conveyed.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [(\"30 minutes\", \"30 min\", \"half\")],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (\n                    0,\n                    1,\n                ),  # Tool call to retrieve phone logs → confirm correct call record found\n                (1, 2),  # Correct call record found → correct duration conveyed to user\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_phone_calls\",\n    \"search_phonecall_logs\",\n]",
+  "is_read_time": "2024-07-23T19:00:00-07:00",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know how long the call with your father was. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_phonecall_logs\", \"get_all_phone_calls\"]"
+}

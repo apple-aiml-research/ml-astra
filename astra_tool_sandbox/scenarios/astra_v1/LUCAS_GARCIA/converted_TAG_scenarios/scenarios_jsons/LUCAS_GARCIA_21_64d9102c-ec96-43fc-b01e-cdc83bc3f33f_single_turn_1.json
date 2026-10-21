@@ -1,0 +1,83 @@
+{
+  "task_id": "64d9102c-ec96-43fc-b01e-cdc83bc3f33f",
+  "plot_id": 21,
+  "plot_summary": "Lucas Garcia is the protagonist. On Thursday, December 12, 2024 at 10 am, high school football team friends were involved. Lucas organizes a reunion brunch with his high school football team friends. Emails exchanged with updates and photos, rekindling old connections.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_21",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You feel like the time flew by at the reunion brunch and its slipped your mind what time it started.",
+  "reference_time": "2024-12-12T12:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that the event \"Reunion Brunch with High School Football Team Friends\" was scheduled to start at 10:00 on 12 December 2024. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_21_64d9102c-ec96-43fc-b01e-cdc83bc3f33f_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Personal",
+      "calendar_event_name": "Reunion Brunch with High School Football Team Friends",
+      "start_datetime_iso": "2024-12-12T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-12T12:00:00-08:00",
+      "attendees_names": [
+        "Emmanuel Gonzales",
+        "Lucas Garcia",
+        "Mike Jordan",
+        "Steve Rivers"
+      ],
+      "location": "The Orchard Cafe, Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-04T10:00:00-08:00",
+      "notes": "Lucas organizes a reunion brunch with his high school football team friends to catch up and rekindle old connections over brunch, with plans to exchange photos and share updates post-event."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When did \"Reunion Brunch with High School Football Team Friends\" start?",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to know when the \"Reunion Brunch with High School Football Team Friends\" started. First I will find the mentioned event. Now that I have found it on the calendar I will check its runtime. The runtime was scheduled for 10:00-12:00 on 12 December. I will now inform the user that the event \"Reunion Brunch with High School Football Team Friends\" was scheduled to start at 10:00 on 12 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the calendar to find the event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct calendar event was returned in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Reunion Brunch with High School Football Team Friends\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-12T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent informs the user of the correct start time & date\n                Milestone(\n                    snapshot_constraints=[\n                        # Check the time is mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"10:00\",\n                                            \"10 am\",\n                                            \"10am\",\n                                            \"10 a.m.\",\n                                            \"10 a.m\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                        # Check the date is mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"December 12\",\n                                            \"12 December\",\n                                            \"Dec 12\",\n                                            \"12/12\",\n                                            \"12-12\",\n                                            \"today\",\n                                            \"this morning\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You feel like the time flew by at the reunion brunch and its slipped your mind what time it started. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-12-12T12:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

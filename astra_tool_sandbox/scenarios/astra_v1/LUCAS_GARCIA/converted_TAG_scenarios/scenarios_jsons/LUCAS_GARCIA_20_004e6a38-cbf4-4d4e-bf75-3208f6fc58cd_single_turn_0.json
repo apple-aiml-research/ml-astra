@@ -1,0 +1,101 @@
+{
+  "task_id": "004e6a38-cbf4-4d4e-bf75-3208f6fc58cd",
+  "plot_id": 20,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 11, 2024 at 5 pm, Jessica Lin, Olivia Clark were involved. Lucas hosts a small gathering at the gym for a pre-holiday fitness celebration. Pictures and highlights from the event are shared on social media platforms.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_20",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're delighted with Olivia's progress in the gym and want ti update her alias to reflect that",
+  "reference_time": "2024-12-12T18:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Olivia Clark's contact details are found",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. Olivia Clark's alias is renamed to \"Most Improved Gym Member\"",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_20_004e6a38-cbf4-4d4e-bf75-3208f6fc58cd_single_turn_0",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "modify_contact"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jessica",
+      "last_name": "Lin",
+      "full_name": "Jessica Lin",
+      "phone_number": "+1 12345-6789-1000-3690",
+      "alias": "Coworker",
+      "email": "jessica.lin@example.com",
+      "relationship": "Coworker at 129 Orchard Fitness Gym",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Instructor",
+      "is_self": false,
+      "birthday": "1992-12-05T00:00:00-08:00"
+    },
+    {
+      "first_name": "Olivia",
+      "last_name": "Clark",
+      "full_name": "Olivia Clark",
+      "phone_number": "+1 12345-6789-1000-7531",
+      "alias": "Gym Member",
+      "email": "olivia.clark@example.com",
+      "relationship": "Local gym member",
+      "address": "89 Gym St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1992-09-30T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Update Olivia's alias in my contacts to \"Most Improved Gym Member\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to update Olivia's alias in their contacts to \"Most Improved Gym Member\". Let me first find Olivia's contact details. There is only one Olivia in the user's contacts, Olivia Clarke. I will update her alias to \"Most Improved Gym Member\" and inform the user",
+  "milestones": "[\n                # Milestone 0 – A contact-retrieval tool is invoked (search_contacts or get_all_contacts)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The returned contact list includes Olivia Clark\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Olivia Clark\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 12345-6789-1000-7531\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Olivia’s alias has been updated in the CONTACT database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CONTACT,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"full_name\": \"Olivia Clark\",\n                                    \"alias\": \"Most Improved Gym Member\",\n                                    \"creation_datetime_iso\": \"2024-12-12T18:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact retrieval → confirmation of Olivia’s presence\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"modify_contact\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You're delighted with Olivia's progress in the gym and want ti update her alias to reflect that ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"modify_contact\"]",
+  "is_read_time": "2024-12-12T18:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

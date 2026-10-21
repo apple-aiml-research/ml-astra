@@ -1,0 +1,109 @@
+{
+  "task_id": "3edb58a8-0e06-4f0f-9395-91fb21cb07b3",
+  "plot_id": 3,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 2 pm, Alfred Quinn, Grace Quinn were involved. John's dad forwards political emails to John, who complains to his sister  1. Jonh's dad forwards John several (3 to 5) detailed emails mentioning various events organized by the Pirate Party in different cities in the state. 2. The forwarded emails don't directly address John, but are instead generic emails that were forwarded to him. 3. Feeling irritated, rather than respond to his dad, he exchanges some messages with his sister to complain about his dad's behavior. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_3",
+    "contact",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know who just emailed you.",
+  "reference_time": "2024-07-22T14:01:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed that the sender of their most recently received email (subject line Upcoming Pirate Party Events, received at 14:00 on 2024-07-22) is Alfred Quinn.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_3_3edb58a8-0e06-4f0f-9395-91fb21cb07b3_single_turn_1",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Upcoming Pirate Party Events",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "body": "Check out these exciting Pirate Party events happening in our state! Engage and make a difference!",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Alfred",
+      "last_name": "Quinn",
+      "full_name": "Alfred Quinn",
+      "phone_number": "408-555-0125",
+      "alias": "Dad",
+      "email": "alfred.quinn@svmetal.com",
+      "relationship": "Father",
+      "address": "127 Maple St, San José, CA 95126",
+      "company": "Suarez & Villa Metallurgy",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1963-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Grace",
+      "last_name": "Quinn",
+      "full_name": "Grace Quinn",
+      "phone_number": "408-555-0126",
+      "alias": "Sis",
+      "email": "grace.quinn@example.com",
+      "relationship": "Sister",
+      "address": "129 Maple St, San José, CA 95126",
+      "company": null,
+      "job_title": "Writer",
+      "is_self": false,
+      "birthday": "1993-05-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Tell me the name of the sender of that communication just now.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know the name of the sender of that communication just now. First I'll need to identify which communication they're talking about. I'll check their messages and emails to find any recent communications.\n\nI found an email with the subject line Upcoming Pirate Party Events received just one minute ago at 14:00 on 2024-07-22. Since this is the most recent communication the user has received, it must be the one that the user wants to know about. I can see that the sender of this email is Alfred Quinn.\n\nGreat, I'll go ahead and let the user know that Alfred Quinn emailed them just now.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up recent emails\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the expected email was found in Milestone 0’s output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Upcoming Pirate Party Events\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"alfred.quinn@svmetal.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the sender is Alfred Quinn\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Alfred Quinn\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"get_all_contacts\",\n    \"search_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know who just emailed you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-22T14:01:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

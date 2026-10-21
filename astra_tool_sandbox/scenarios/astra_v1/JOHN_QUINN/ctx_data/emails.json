@@ -1,0 +1,240 @@
+{
+    "1": [
+        {
+            "subject": "Urgent Security Meeting - Peru Situation",
+            "sender": "bronson.chunk@palantir.com",
+            "recipients": "john.quinn@palantir.com, robin.selmoure@palantir.com, julie.patterson@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-22T08:05:00",
+            "body": "Please join us at 10 AM today in Conference Room B to discuss the new security situation in Peru. It's crucial we strategize our approach.",
+            "attachment": ""
+        }
+    ],
+    "3": [
+        {
+            "subject": "Upcoming Pirate Party Events",
+            "sender": "alfred.quinn@svmetal.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-22T14:00:00",
+            "body": "Check out these exciting Pirate Party events happening in our state! Engage and make a difference!",
+            "attachment": ""
+        },
+        {
+            "subject": "Join Us at the Pirate Party Rally",
+            "sender": "alfred.quinn@svmetal.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-22T14:02:00",
+            "body": "Don't miss out on the Pirate Party rally this weekend. Let's bring change together!",
+            "attachment": ""
+        },
+        {
+            "subject": "Pirate Party Volunteer Opportunities",
+            "sender": "alfred.quinn@svmetal.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-22T14:04:00",
+            "body": "Get involved with the Pirate Party. Volunteer and be part of the movement!",
+            "attachment": ""
+        },
+        {
+            "subject": "Pirate Party Fundraiser Event",
+            "sender": "alfred.quinn@svmetal.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-22T14:06:00",
+            "body": "Help support our cause at the upcoming Pirate Party fundraiser. Every little bit helps!",
+            "attachment": ""
+        },
+        {
+            "subject": "Pirate Party Discussion Forum Invitation",
+            "sender": "alfred.quinn@svmetal.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-22T14:08:00",
+            "body": "Join the discussion on key issues at our next Pirate Party forum. Your voice matters!",
+            "attachment": ""
+        }
+    ],
+    "5": [
+        {
+            "subject": "Family Counsellor Newsletter",
+            "sender": "ursula.quinn@modernart.org",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-22T18:40:00",
+            "body": "Hi John, Here's the newsletter from the family counsellor I mentioned. I hope you find it helpful. Love, Mom",
+            "attachment": "Family_Counselling_Newsletter_July_2024.pdf"
+        }
+    ],
+    "8": [
+        {
+            "subject": "Reminder: Upcoming Appointment with Dr. Emilia Jackson",
+            "sender": "appointments@endomoreclinic.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T09:00:00",
+            "body": "Dear John, This is a reminder that you have an appointment scheduled with Dr. Emilia Jackson on Tuesday, July 30, 2024, at 3:00 PM. Please let us know if you need to reschedule or if you have any questions prior to your appointment. Best regards, The Endomore Clinic Team",
+            "attachment": ""
+        },
+        {
+            "subject": "Confirmation of Your Appointment with Dr. Emilia Jackson",
+            "sender": "appointments@endomoreclinic.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T10:00:00",
+            "body": "Hello John, We are confirming your appointment with Dr. Emilia Jackson for Tuesday, July 30, 2024, at 3:00 PM. Please save this date and time. If you have any questions or need to reschedule, do not hesitate to contact us. Thank you, The Endomore Clinic Team",
+            "attachment": ""
+        }
+    ],
+    "10": [
+        {
+            "subject": "Inquiry about Bow Stands for a Mongolian Bow",
+            "sender": "john.quinn@palantir.com",
+            "recipients": "sales@archeryworld.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T15:00:00",
+            "body": "Hello, I am interested in purchasing a stand for my Mongolian bow. Could you provide information on the models that would be suitable for this type of bow? Thank you, John Quinn",
+            "attachment": ""
+        },
+        {
+            "subject": "Re: Inquiry about Bow Stands for a Mongolian Bow",
+            "sender": "sales@archeryworld.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T15:15:00",
+            "body": "Hi John, Thank you for reaching out. We have several models that would be perfect for a Mongolian bow. I have attached the details and specifications of each model. Please let us know if you need more information. Best, Archery World Sales Team",
+            "attachment": "Bow_Stands_Catalog.pdf"
+        },
+        {
+            "subject": "Re: Inquiry about Bow Stands for a Mongolian Bow",
+            "sender": "john.quinn@palantir.com",
+            "recipients": "sales@archeryworld.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T15:30:00",
+            "body": "Thank you for the prompt response and the detailed information. I am interested in the 'Classic Wood Stand' model. Could you confirm if it's available and the price? Regards, John",
+            "attachment": ""
+        },
+        {
+            "subject": "Re: Inquiry about Bow Stands for a Mongolian Bow",
+            "sender": "sales@archeryworld.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T15:45:00",
+            "body": "Hello John, The 'Classic Wood Stand' is available and it is priced at $120. If you would like to proceed with the purchase, please let us know and we can prepare your order. Thanks, Archery World Sales Team",
+            "attachment": ""
+        },
+        {
+            "subject": "Re: Inquiry about Bow Stands for a Mongolian Bow",
+            "sender": "john.quinn@palantir.com",
+            "recipients": "sales@archeryworld.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T16:00:00",
+            "body": "That sounds great. I would like to confirm the purchase of the 'Classic Wood Stand'. Could you please prepare the order? I will pick it up next Wednesday. Best, John",
+            "attachment": ""
+        }
+    ],
+    "11": [
+        {
+            "subject": "Your Target Order Confirmation",
+            "sender": "orders@target.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T18:05:00",
+            "body": "Dear John Quinn, Thank you for your purchase at Target! Your order number is 987654321. You can track your shipment with DHL using the tracking number 123456789. The headphones are expected to be delivered on Friday, July 26, between 1pm and 6pm. Best regards, Target Customer Service",
+            "attachment": ""
+        },
+        {
+            "subject": "Headphone Purchase Confirmation",
+            "sender": "john.quinn@palantir.com",
+            "recipients": "ursula.quinn@modernart.org",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T18:10:00",
+            "body": "Hi Mom, I've ordered a new pair of headphones for you as yours broke down. They will be delivered to your address this Friday between 1pm and 6pm. The order number is 987654321 and the DHL tracking number is 123456789. Love, John",
+            "attachment": ""
+        }
+    ],
+    "14": [
+        {
+            "subject": "Order Confirmation - Premium Whiskey",
+            "sender": "orders@whiskeyworld.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T13:45:00",
+            "body": "Dear John Quinn, Thank you for your purchase from Whiskey World. Your order of Glenlivet Archive 21 Year Old Whiskey has been confirmed. Your order number is #998877. Cheers, Whiskey World Team",
+            "attachment": ""
+        },
+        {
+            "subject": "FW: Order Confirmation - Premium Whiskey",
+            "sender": "john.quinn@palantir.com",
+            "recipients": "ursula.quinn@modernart.org",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-23T13:50:00",
+            "body": "Hi Mom, I went ahead and ordered some Glenlivet 21 for Dad. Here's the confirmation. - John",
+            "attachment": ""
+        }
+    ],
+    "16": [
+        {
+            "subject": "Request for Plant Care During My Leave",
+            "sender": "julie.patterson@palantir.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-24T17:45:00",
+            "body": "Hi John, I need to take an urgent leave of absence next week and I was wondering if you could help me by watering my plants at the office while I'm away. Please let me know if you can assist. Thanks, Julie",
+            "attachment": ""
+        },
+        {
+            "subject": "Re: Request for Plant Care During My Leave",
+            "sender": "john.quinn@palantir.com",
+            "recipients": "julie.patterson@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-24T18:00:00",
+            "body": "Hi Julie, I'd be happy to help with the plants. Could you let me know which ones need watering and any specific care instructions? Thanks, John",
+            "attachment": ""
+        },
+        {
+            "subject": "Re: Request for Plant Care During My Leave",
+            "sender": "julie.patterson@palantir.com",
+            "recipients": "john.quinn@palantir.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-24T18:15:00",
+            "body": "Hi John, Thanks so much! There are three plants: a fern, a spider plant, and a succulent. The fern and spider plant need watering on Tuesday and Friday, but the succulent only needs water on Friday. Let me know if you need anything else. Best, Julie",
+            "attachment": ""
+        }
+    ],
+    "19": [
+        {
+            "subject": "Looking forward to our hike!",
+            "sender": "john.quinn@palantir.com",
+            "recipients": "apricot.sweeney@sfhealth.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-07-25T17:45:00",
+            "body": "Hey Apricot, Just sending you the video from our last hike. Can't wait to make more memories like these. See you soon!",
+            "attachment": "LastHike.mp4"
+        }
+    ]
+}

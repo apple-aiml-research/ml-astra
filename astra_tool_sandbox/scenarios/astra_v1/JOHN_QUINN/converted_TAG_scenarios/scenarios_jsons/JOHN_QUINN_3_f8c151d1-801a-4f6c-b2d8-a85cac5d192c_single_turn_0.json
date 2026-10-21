@@ -1,0 +1,178 @@
+{
+  "task_id": "f8c151d1-801a-4f6c-b2d8-a85cac5d192c",
+  "plot_id": 3,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 2 pm, Alfred Quinn, Grace Quinn were involved. John's dad forwards political emails to John, who complains to his sister  1. Jonh's dad forwards John several (3 to 5) detailed emails mentioning various events organized by the Pirate Party in different cities in the state. 2. The forwarded emails don't directly address John, but are instead generic emails that were forwarded to him. 3. Feeling irritated, rather than respond to his dad, he exchanges some messages with his sister to complain about his dad's behavior. ",
+  "tags": [
+    "astra_core",
+    "JOHN_QUINN",
+    "plot_3",
+    "email",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "contact"
+  ],
+  "user_goal": "You want to delete the all the emails from your dad about the Pirate Party.",
+  "reference_time": "2024-07-22T14:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The email received from Alfred Quinn on 22 July 2024 at 14:00 with the subject 'Upcoming Pirate Party Events' is deleted.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The email received from Alfred Quinn on 22 July 2024 at 14:02 with the subject 'Join Us at the Pirate Party Rally' is deleted.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The email received from Alfred Quinn on 22 July 2024 at 14:04 with the subject 'Pirate Party Volunteer' is deleted.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "4. The email received from Alfred Quinn on 22 July 2024 at 14:06 with the subject 'Pirate Party Fundraiser Event' is deleted.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "5. The email received from Alfred Quinn on 22 July 2024 at 14:08 with the subject 'Pirate Party Discussion Forum Invitation' is deleted.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_3_f8c151d1-801a-4f6c-b2d8-a85cac5d192c_single_turn_0",
+  "tool_allow_list": [
+    "get_all_emails",
+    "search_emails",
+    "remove_email_or_thread",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Upcoming Pirate Party Events",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "body": "Check out these exciting Pirate Party events happening in our state! Engage and make a difference!",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Join Us at the Pirate Party Rally",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:02:00-07:00",
+      "body": "Don't miss out on the Pirate Party rally this weekend. Let's bring change together!",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Pirate Party Volunteer Opportunities",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:04:00-07:00",
+      "body": "Get involved with the Pirate Party. Volunteer and be part of the movement!",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Pirate Party Fundraiser Event",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:06:00-07:00",
+      "body": "Help support our cause at the upcoming Pirate Party fundraiser. Every little bit helps!",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Pirate Party Discussion Forum Invitation",
+      "sender_address": "alfred.quinn@svmetal.com",
+      "recipients_addresses": [
+        "john.quinn@palantir.com"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-07-22T14:08:00-07:00",
+      "body": "Join the discussion on key issues at our next Pirate Party forum. Your voice matters!",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Alfred",
+      "last_name": "Quinn",
+      "full_name": "Alfred Quinn",
+      "phone_number": "408-555-0125",
+      "alias": "Dad",
+      "email": "alfred.quinn@svmetal.com",
+      "relationship": "Father",
+      "address": "127 Maple St, San José, CA 95126",
+      "company": "Suarez & Villa Metallurgy",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1963-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Grace",
+      "last_name": "Quinn",
+      "full_name": "Grace Quinn",
+      "phone_number": "408-555-0126",
+      "alias": "Sis",
+      "email": "grace.quinn@example.com",
+      "relationship": "Sister",
+      "address": "129 Maple St, San José, CA 95126",
+      "company": null,
+      "job_title": "Writer",
+      "is_self": false,
+      "birthday": "1993-05-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "Okay so, the user wants all the emails received today from their father deleted. From their contacts, I can see Alfred Quinn is listed as their father. I am looking for any emails from Alfred received today, 22 July 2024 and I can see 5 emails corresponding. \nNow that I know that these are the emails that the user is referring to, I can then delete them. I will then inform the user that the following emails received from Alfred Quinn on 22 July 2024 between 14:00 and 14:08, with the subject lines 'Upcoming Pirate Party Events',  'Join Us at the Pirate Party Rally', 'Pirate Party Volunteer', 'Pirate Party Fundraiser Event' and 'Pirate Party Discussion Forum Invitation' have been deleted.",
+  "query": "Delete all the emails I got from my dad today.",
+  "functional_complexity": "high",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent looked up the relevant emails (optional info-retrieval check)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\"search_emails\", \"get_all_emails\"],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – All five Pirate Party emails from Alfred Quinn were removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender_address\": [\n                                        \"alfred.quinn@svmetal.com\",\n                                        \"alfred.quinn@svmetal.com\",\n                                        \"alfred.quinn@svmetal.com\",\n                                        \"alfred.quinn@svmetal.com\",\n                                        \"alfred.quinn@svmetal.com\",\n                                    ],\n                                    \"subject\": [\n                                        \"Upcoming Pirate Party Events\",\n                                        \"Join Us at the Pirate Party Rally\",\n                                        \"Pirate Party Volunteer Opportunities\",\n                                        \"Pirate Party Fundraiser Event\",\n                                        \"Pirate Party Discussion Forum Invitation\",\n                                    ],\n                                    \"status\": [\n                                        \"read\",\n                                        \"read\",\n                                        \"read\",\n                                        \"read\",\n                                        \"read\",\n                                    ],\n                                }\n                            ),\n                            # default similarity is fine for these exact-match fields\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"get_all_emails\",\n    \"search_emails\",\n    \"remove_email_or_thread\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to delete the all the emails from your dad about the Pirate Party. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_emails\", \"search_emails\", \"remove_email_or_thread\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-07-22T14:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

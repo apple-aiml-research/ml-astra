@@ -1,0 +1,104 @@
+{
+  "task_id": "1511cfda-f749-4466-9588-4fc8c98affe0",
+  "plot_id": 3,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 2 pm, Alfred Quinn, Grace Quinn were involved. John's dad forwards political emails to John, who complains to his sister  1. Jonh's dad forwards John several (3 to 5) detailed emails mentioning various events organized by the Pirate Party in different cities in the state. 2. The forwarded emails don't directly address John, but are instead generic emails that were forwarded to him. 3. Feeling irritated, rather than respond to his dad, he exchanges some messages with his sister to complain about his dad's behavior. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_3",
+    "contact",
+    "calendar",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Your dad sent a bunch of emails that are quite annoying.  You want to text your sister that you'll call her later and schedule the call in your calendar",
+  "reference_time": "2024-07-22T14:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A text is sent to Grace Quinn saying \"I'll call you later\".",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. An event \"Call Grace\" is scheduled in the calendar for 6:00 pm on July 22nd.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_3_1511cfda-f749-4466-9588-4fc8c98affe0_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Alfred",
+      "last_name": "Quinn",
+      "full_name": "Alfred Quinn",
+      "phone_number": "408-555-0125",
+      "alias": "Dad",
+      "email": "alfred.quinn@svmetal.com",
+      "relationship": "Father",
+      "address": "127 Maple St, San José, CA 95126",
+      "company": "Suarez & Villa Metallurgy",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1963-07-30T00:00:00-07:00"
+    },
+    {
+      "first_name": "Grace",
+      "last_name": "Quinn",
+      "full_name": "Grace Quinn",
+      "phone_number": "408-555-0126",
+      "alias": "Sis",
+      "email": "grace.quinn@example.com",
+      "relationship": "Sister",
+      "address": "129 Maple St, San José, CA 95126",
+      "company": null,
+      "job_title": "Writer",
+      "is_self": false,
+      "birthday": "1993-05-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Dad’s email spam is driving me crazy. Text my sis saying I'll call her later and then schedule the call in my calendar for 6:00 pm",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to text their sister saying they'll call her later and then schedule the call for 6:00 pm in their calendar. The user only has one sister listed in their contacts named Grace Quinn so I will text Grace \"I'll call you later\" and inform the user. \n\nI must now schedule the call in the calendar. I'll title the event \"Call Grace\" and schedule it for 6:00 pm in the user's calendar.",
+  "milestones": "[\n                # Milestone 0 – The agent tries to find the sister in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – Confirm that Grace Quinn (the sister) appeared in the contact search result\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Grace Quinn\",\n                                                \"partial\": False,\n                                            },\n                                            \"relationship\": {\n                                                \"value\": \"Sister\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"408-555-0126\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A text message was sent to Grace saying \"I'll call you later\"\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"1234-5678-9108\",\n                                                \"john.quinn@palantir.com\",\n                                            ),  # self\n                                            (\n                                                \"408-555-0126\",\n                                                \"grace.quinn@example.com\",\n                                            ),  # sister\n                                        ]\n                                    ],\n                                    \"content\": [(\"call\", \"later\")],\n                                    \"creation_datetime_iso\": \"2024-07-22T14:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_str_contains_any_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 3 – A calendar event for the call at 6:00 pm on July 22 2024 is created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Call Grace\",\n                                    \"start_datetime_iso\": \"2024-07-22T18:00:00\",\n                                    \"creation_datetime_iso\": \"2024-07-22T14:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n                (1, 3),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. Your dad sent a bunch of emails that are quite annoying. You want to text your sister that you'll call her later and schedule the call in your calendar ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-22T14:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

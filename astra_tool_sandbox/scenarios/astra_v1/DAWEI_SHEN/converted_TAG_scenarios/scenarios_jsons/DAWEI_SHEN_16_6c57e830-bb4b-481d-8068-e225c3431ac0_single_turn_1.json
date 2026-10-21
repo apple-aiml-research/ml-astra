@@ -1,0 +1,99 @@
+{
+  "task_id": "6c57e830-bb4b-481d-8068-e225c3431ac0",
+  "plot_id": 16,
+  "plot_summary": "Dawei Shen is the protagonist. On Tuesday, December 10, 2024 at 7 pm, self, Dalin Shen were involved. Dalin messages Dawei to share his thoughts about a book they’re both reading. Dawei responds with his own insights, leading to a lively exchange. Dalin suggests they co-write a review for a blog, and Dawei agrees to draft the first version over the weekend.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_16",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know when your most recent text was received.",
+  "reference_time": "2024-12-10T19:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The assistant tells the user that the most recent text message was received at 19:20 (7:20 PM).",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_16_6c57e830-bb4b-481d-8068-e225c3431ac0_single_turn_1",
+  "messages": [
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "dalin.shen@student.philacollege.edu",
+      "content": "Awesome! Send it over once you have a draft, and I'll add my thoughts. Looking forward to this!",
+      "creation_datetime_iso": "2024-12-10T19:20:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "dawei.shen@orchardtech.com",
+      "content": "That’s a great idea! I think we could offer a unique perspective on the collaborative nature of innovation. I’ll start drafting something this weekend.",
+      "creation_datetime_iso": "2024-12-10T19:15:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Paul Harper",
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-678-9012-3456"
+      ],
+      "sender_address": "dalin.shen@student.philacollege.edu",
+      "content": "Exactly! It makes me think about our own discussions and how we bounce ideas back and forth. We should consider writing a review or a blog post about this.",
+      "creation_datetime_iso": "2024-12-10T19:10:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Dalin",
+      "last_name": "Shen",
+      "full_name": "Dalin Shen",
+      "phone_number": "+1 555-678-9012-3456",
+      "alias": "Dalin",
+      "email": "dalin.shen@student.philacollege.edu",
+      "relationship": "Brother",
+      "address": "101 College Way, Philadelphia, PA 19104, USA",
+      "company": "Philadelphia College",
+      "job_title": "Student",
+      "is_self": false,
+      "birthday": "1998-09-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Check my messages let me know when the last one came in.",
+  "functional_complexity": "low",
+  "informational_complexity": "low",
+  "referential_complexity": "low",
+  "reasoning": "The user wants to know when they received their most recent text message.\n\nFirst I will check Messages. Looks like the most recent text is from Dalin Shen and was received at 19:20.\n\nI will inform the user of this.",
+  "reference_time_str": "Today is Tuesday, December 10, 2024 or 2024-12-10T19:35:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up messages\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Tool result contains the most-recent message (Dec 10 2024 19:20)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-10T19:20:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"dalin.shen@student.philacollege.edu\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs the user of the correct receive time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"19:20\",\n                                            \"7:20\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "search_messages",
+    "get_all_messages"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to know when your most recent text was received. ",
+  "tool_allow_list_str": "[\"search_messages\", \"get_all_messages\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-10T19:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

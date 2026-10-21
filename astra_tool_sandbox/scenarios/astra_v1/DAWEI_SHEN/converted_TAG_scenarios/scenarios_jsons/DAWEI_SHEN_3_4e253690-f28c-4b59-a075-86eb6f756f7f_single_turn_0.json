@@ -1,0 +1,121 @@
+{
+  "task_id": "4e253690-f28c-4b59-a075-86eb6f756f7f",
+  "plot_id": 3,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 2, 2024 at 9 am, self, Michelle Barnes, Theo Appleseed were involved. Michelle emails Dawei a revised draft for the virtual assistant algorithm. Theo comments on the email thread to suggest an additional improvement. Dawei replies with his approval and schedules a meeting for Wednesday to discuss further updates.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_3",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are quite busy so you want to delay the \"Discussion on Virtual Assistant Algorithm Updates\" event by 30 minutes",
+  "reference_time": "2024-12-04T09:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The start time of the \"Discussion on Virtual Assistant Algorithm Updates\" event is updated to 10:30",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_3_4e253690-f28c-4b59-a075-86eb6f756f7f_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Discussion on Virtual Assistant Algorithm Updates",
+      "start_datetime_iso": "2024-12-04T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T11:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T09:35:00-08:00",
+      "notes": "Meeting to discuss further updates on the virtual assistant algorithm based on the recent feedback."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Strategy Meeting Preparation",
+      "start_datetime_iso": "2024-12-04T15:00:00-08:00",
+      "end_datetime_iso": "2024-12-04T16:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Kevin Chen",
+        "Stefan Mustermann"
+      ],
+      "location": "Virtual - Orchard Tech",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": "https://orchardtech.zoom.us/j/1234567890",
+      "creation_datetime_iso": "2024-12-03T12:00:00-08:00",
+      "notes": "Virtual meeting to discuss updates and prepare for Friday's strategy meeting."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "+1 555-012-3456-7890",
+      "alias": "Michelle",
+      "email": "michelle.barnes@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Analyst",
+      "is_self": false,
+      "birthday": "1990-06-25T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 555-789-0123-4567",
+      "alias": "Theo",
+      "email": "theo.appleseed@orchardtech.com",
+      "relationship": "Coworker",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Research Scientist",
+      "is_self": false,
+      "birthday": "1985-12-20T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you push back the start time of that discussion at 10am for 30 minutes later? I'm too busy.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "So the user wants me to reschedule his discussion at 10. I will start by looking through the calendar and see if any events are on today. There is an event titled \"Discussion on Virtual Assistant Algorithm Updates\" starting at 10:00 so that must be what the user is referring to. I will update the start time and end time of this event to be 10:30 and 11:30 respectively. I will then present this information to the user",
+  "reference_time_str": "Today is Wednesday, December 4, 2024 or 2024-12-04T09:35:00-08:00.",
+  "milestones": "[\n                # Milestone 0: The calendar event start time has been updated to 10:30\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Discussion on Virtual Assistant Algorithm Updates\",\n                                    \"start_datetime_iso\": \"2024-12-04T10:30:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-04T11:30:00-08:00\",\n                                    \"creation_datetime_iso\": \"2024-12-04T09:35:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list": [
+    "create_calendar_event",
+    "get_all_calendars",
+    "modify_calendar_event",
+    "remove_calendar_event",
+    "search_calendar_events"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You are quite busy so you want to delay the \"Discussion on Virtual Assistant Algorithm Updates\" event by 30 minutes ",
+  "tool_allow_list_str": "[\"create_calendar_event\", \"get_all_calendars\", \"modify_calendar_event\", \"remove_calendar_event\", \"search_calendar_events\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-04T09:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

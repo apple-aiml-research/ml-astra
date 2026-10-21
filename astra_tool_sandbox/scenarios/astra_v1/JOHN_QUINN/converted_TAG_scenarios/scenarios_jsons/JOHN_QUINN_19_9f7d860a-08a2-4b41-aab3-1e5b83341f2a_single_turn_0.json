@@ -1,0 +1,105 @@
+{
+  "task_id": "9f7d860a-08a2-4b41-aab3-1e5b83341f2a",
+  "plot_id": 19,
+  "plot_summary": "John Quinn is the protagonist. On Thursday, July 25, 2024 at 5:30pm, Apricot Sweeney were involved. John and Apricot agree on a hike for the Sunday after next  1. John messages Apricot with a 4 different hiking possibilities for the Sunday after next, mentioning also the locations and some descriptions of the most memorable things about each trail. 2. Apricot chooses the shortest one. 3. John sends her an email with the video of their last hike. 4. They exchange loving messages and end the conversation. 5. John makes a calendar event inviting Apricot to their relatively short hike. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_19",
+    "contact",
+    "calendar",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a message to Apricot Sweeney and you also want to cancel the event Hiking with Apricot scheduled August 4 2024 from 09:00 to 12:00.",
+  "reference_time": "2024-08-03T12:20:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Send a message to Apricot Sweeney saying 'In light of recent events, I think it's best to cancel the hike.'",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. Delete the calendar event Hiking with Apricot scheduled August 4 2024 from 09:00 to 12:00 is deleted.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_19_9f7d860a-08a2-4b41-aab3-1e5b83341f2a_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message",
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Hiking with Apricot",
+      "start_datetime_iso": "2024-08-04T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-04T12:00:00-07:00",
+      "attendees_names": [
+        "Apricot Sweeney",
+        "John Quinn"
+      ],
+      "location": "Lake Serenity Trail",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-25T17:50:00-07:00",
+      "notes": "Hiking around the lake, as chosen by Apricot. A relaxing walk to enjoy nature and each other's company."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to Apricot saying 'In light of recent events, I think it's best to cancel the hike.' Also delete the hike tomorrow.",
+  "functional_complexity": "high",
+  "informational_complexity": "moderate",
+  "referential_complexity": "moderate",
+  "reasoning": "The user wants to send a message to Apricot. There's only one Apricot in contacts, Apricot Sweeney, so I'll send the message to them. The user now wants delete the hike tomorrow. I'll assume this is referring to a calendar event. Looking at tomorrow's schedule, I can see an event named Hiking with Apricot scheduled for 09:00. I'll delete that event.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up Apricot’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms that Apricot Sweeney was returned from the contact-lookup in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Apricot Sweeney\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"apricot.sweeney@sfhealth.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new message was sent to Apricot containing the cancellation text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Participants must include Apricot (by either phone or email)\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"apricot.sweeney@sfhealth.com\",\n                                                \"415-555-0128\",\n                                            )\n                                        ]\n                                    ],\n                                    \"content\": \"cancel the hike\",\n                                    \"creation_datetime_iso\": \"2024-08-03T12:20:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n                # Milestone 3: search for calendars\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 4 – Verify that the event “Hiking with Apricot” on 2024-08-04 09:00 was found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Hiking with Apricot\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-08-04T09:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=3,\n                        ),\n                    ],\n                ),\n                # Milestone 5 – The “Hiking with Apricot” calendar event on Aug 4 2024 was removed (canceled)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Hiking with Apricot\",\n                                    \"start_datetime_iso\": \"2024-08-04T09:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-08-04T12:00:00-07:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (3, 4)]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to send a message to Apricot Sweeney and you also want to cancel the event Hiking with Apricot scheduled August 4 2024 from 09:00 to 12:00. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\", \"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-08-03T12:20:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,85 @@
+{
+  "task_id": "9c3dc8ec-a404-4f63-aa16-f5316a962cbd",
+  "plot_id": 12,
+  "plot_summary": "Dawei Shen is the protagonist. On Sunday, December 8, 2024 at 6 pm, self, Charles Wilde, Vickie Lee were involved. Dawei receives a WhatsApp message from Charles about last-minute changes to their rehearsal lineup. Vickie confirms her availability. Dawei updates his calendar to reflect the new rehearsal timing and replies with a thumbs-up emoji in the group chat.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_12",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are a bit tired from last night's late theatre rehearsals so you schedule a self reflection walk to decompress from work.",
+  "reference_time": "2024-12-09T11:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event titled 'Self Reflection Walk' scheduled for 9th December at 18:15 is added to the calendar.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_12_9c3dc8ec-a404-4f63-aa16-f5316a962cbd_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Dataset Review with Michelle",
+      "start_datetime_iso": "2024-12-10T14:00:00-08:00",
+      "end_datetime_iso": "2024-12-10T15:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Michelle Barnes"
+      ],
+      "location": "Conference Room A, Orchard Tech, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-09T08:15:00-08:00",
+      "notes": "Review the updated dataset and discuss key questions as outlined in Michelle's email."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Dawei",
+      "last_name": "Shen",
+      "full_name": "Dawei Shen",
+      "phone_number": "+1 555-123-4567-8901",
+      "alias": "Dawei",
+      "email": "dawei.shen@orchardtech.com",
+      "relationship": "Self",
+      "address": "123 Tech Lane, Orchard County, CA 94022, USA",
+      "company": "Orchard Tech",
+      "job_title": "Data Science Manager",
+      "is_self": true,
+      "birthday": "1994-05-14T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Add a self reflection walk for today at a quarter past 6.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user has asked to add a new calendar event titled “Self Reflection Walk” for today (Monday, 9 Dec 2024) at a quarter past six in the evening (18:15). I already have the title, date, and time, so I can go ahead and create the event in their calendar. I might optionally ask if they want to specify a location or invitees, but the core information needed to add the event is complete.",
+  "reference_time_str": "Today is Monday, December 9, 2024 or 2024-12-09T11:40:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – A new calendar event “Self Reflection Walk” on 9 Dec 2024 18:15 was created\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Self Reflection Walk\",\n                                    \"start_datetime_iso\": \"2024-12-09T18:15\",\n                                    \"creation_datetime_iso\": \"2024-12-09T11:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_exact_match_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,  # allow any valid timezone suffix,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You are a bit tired from last night's late theatre rehearsals so you schedule a self reflection walk to decompress from work. ",
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-09T11:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,91 @@
+{
+  "task_id": "fb766e9f-68f6-4151-bc34-984f27c6e6c7",
+  "plot_id": 10,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 7, 2024 at 6:00 PM, Linda Rose were involved. Attending the community holiday party where Linda provides homemade treats. Community event pictures uploaded and shared on social media.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_10",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to send a message to your mom Linda Rose saying that you'll bring some anchovies and bread sticks.",
+  "reference_time": "2024-12-07T18:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Send a message to Linda Rose  saying that you'll bring some anchovies and bread sticks.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_10_fb766e9f-68f6-4151-bc34-984f27c6e6c7_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Holiday Party Prep",
+      "participants_addresses": [
+        "emily.rose@orchardcommunity.org",
+        "linda.rose@homemadetreats.com"
+      ],
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "content": "Great! Can't wait to see everyone and enjoy the evening. See you there!",
+      "creation_datetime_iso": "2024-12-07T16:20:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Linda",
+      "last_name": "Rose",
+      "full_name": "Linda Rose",
+      "phone_number": "+1 530-555-0126",
+      "alias": "Culinary Mom",
+      "email": "linda.rose@homemadetreats.com",
+      "relationship": "Mother",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Homemade Treats",
+      "job_title": "Culinary Artist",
+      "is_self": false,
+      "birthday": "1967-07-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Message Linda and say that I'll bring some anchovies and bread sticks.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message. There's only one Linda in contacts, the user's mom Linda Rose, so I'll send the message to her.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Linda Rose in the contacts list\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Linda Rose is confirmed in the tool output from Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Linda Rose\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"linda.rose@homemadetreats.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new message is sent to Linda confirming anchovies & bread sticks\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"linda.rose@homemadetreats.com\",\n                                                \"+1 530-555-0126\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"anchovies\",  # verify anchovies mention; bread sticks likely also present\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-07T18:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to send a message to your mom Linda Rose saying that you'll bring some anchovies and bread sticks. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-12-07T18:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

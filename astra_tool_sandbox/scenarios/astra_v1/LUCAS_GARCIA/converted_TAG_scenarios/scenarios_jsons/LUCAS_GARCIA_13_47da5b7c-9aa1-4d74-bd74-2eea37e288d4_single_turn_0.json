@@ -1,0 +1,97 @@
+{
+  "task_id": "47da5b7c-9aa1-4d74-bd74-2eea37e288d4",
+  "plot_id": 13,
+  "plot_summary": "Lucas Garcia is the protagonist. On Sunday, December 8, 2024 at 10 am, Megan Johnson were involved. Lucas hosts an online fitness class for Megan and other participants. YouTube video of the session is uploaded and shared with participants for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_13",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You just hosted a great fitness class for some of your students.   You want to check when you started the class.",
+  "reference_time": "2024-12-08T11:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that the event \"Online Fitness Class with Megan and Participants\" started at 10:00 on December 8th 2024. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_13_47da5b7c-9aa1-4d74-bd74-2eea37e288d4_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Online Fitness Class with Megan and Participants",
+      "start_datetime_iso": "2024-12-08T10:00:00-08:00",
+      "end_datetime_iso": "2024-12-08T11:00:00-08:00",
+      "attendees_names": [
+        "Alex Martin",
+        "Jessica Lin",
+        "Lucas Garcia",
+        "Megan Johnson",
+        "Olivia Clark"
+      ],
+      "location": "Online",
+      "reminder_time_ahead": "reminder_time_ahead: 15 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": "https://fitness.zoom.us/j/987654321",
+      "creation_datetime_iso": "2024-12-06T12:00:00-08:00",
+      "notes": "Lucas hosts an online fitness class for Megan Johnson and other participants. The session will be recorded and uploaded to YouTube for feedback."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Megan",
+      "last_name": "Johnson",
+      "full_name": "Megan Johnson",
+      "phone_number": "+1 12345-6789-1000-3210",
+      "alias": "Online Class Student",
+      "email": "megan.johnson@example.com",
+      "relationship": "Online fitness class student",
+      "address": "56 Fitness Way, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1995-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "When did the online class start? Felt like it flew by!",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to know when the online class started. First I will establish what event they are referring to. I will look for past events that have the keywords online class or similar terms. I have found the event \"Online Fitness Class with Megan and Participants\" this must be what the user is referring to. I will now check the start time of this event. I will now inform the user that the event \"Online Fitness Class with Megan and Participants\" started at 10:00 on 8 December 2024. \n",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the calendar to find the online class\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The expected event is found in the tool output of Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Online Fitness Class with Megan and Participants\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-08T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – The agent’s reply to the user contains BOTH the correct date and time\n                Milestone(\n                    snapshot_constraints=[\n                        # Check that the time is mentioned\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"10:00\", \"10 am\", \"10am\", \"10 a.m.\", \"10 am\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You just hosted a great fitness class for some of your students.  You want to check when you started the class. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-08T11:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

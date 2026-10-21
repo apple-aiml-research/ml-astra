@@ -1,0 +1,71 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+# 0
+- name: "Dawei Shen"
+  relationship: "Self"
+# 1
+- name: "Hua Shen"
+  relationship: "Father"
+  bio: "Hua is Dawei's father. He runs an electronics manufaturing company with branches in multiple countries."
+# 2
+- name: "Yuting Tao"
+  relationship: "Mother"
+  bio: "Yuting is Dawei's mother. She was a school teacher and has now retired."
+# 3
+- name: "Dalin Shen"
+  relationship: "Brother"
+  bio: "Dalin is Dawei's younger brother who is in college. He lives in Philadelphia and visit Dawei often in California during school breaks. They share a passion for reading and often exchange good reads."
+# 4
+- name: "Theo Appleseed"
+  relationship: "Coworker"
+  bio: "Theo is a cross functional collaborator in the applied research department. They share a professional camaraderie."
+# 5
+- name: "Kevin Chen"
+  relationship: "Coworker"
+  bio: "Kevin is a team lead in the applied research department."
+# 6
+- name: "Stefan Mustermann"
+  relationship: "Coworker"
+  bio: "Stefan is a collaborator in the applied research department. They often collaborate on projects and share a mutual respect for each other's skills. "
+# 7
+- name: "Michelle Barnes"
+  relationship: "Coworker"
+  bio: "Michelle is collaborator in the applied research department. Known for her problem-solving skills, she and Dawei frequently brainstorm together on complex research problems."
+# 8
+- name: "Jess Zimmer"
+  relationship: "Girlfriend"
+  bio: "Dawei and Jessica has known each other since their school days in Ithaca. Jessica currently works at a fintech start-up. They share a love for theater and travel."
+# 9
+- name: "Charles Wilde"
+  relationship: "Theater Friend"
+  bio: "Charles and Dawei knew each other from the same theater group in Orchard County. They are recently rehearsing a show called 'Cambodian Rock Band'."
+# 10
+- name: "Vickie Lee"
+  relationship: "Theater Friend"
+  bio: "Vicke and Dawei knew each other from the same theater group in Orchard County. They are recently rehearsing a show called 'Cambodian Rock Band'."
+# 11
+- name: "Francis Wagner"
+  relationship: "Theater Manager"
+  bio: "Francis is the manager of Dawei's theater group in in Orchard County."
+# 12
+- name: "Mia Tang"
+  relationship: "accountant"
+  bio: "Mia is Dawei's accountant. She often sends out emails and texts to help Dawei's tax planning, and occasionally reminds him of the upcoming filing dates."
+# 13
+- name: "Paul Harper"
+  relationship: "Neighbor"
+  bio: "Paul is Dawei's neighbor. They enjoy a beer together from time to time, and Paul often helps to watch Dawei's cat while he's out of town."
+# 14
+- name: "Jeff Bing"
+  relationship: "Family Friend"
+  bio: "Jeff is Dawei's family friend. He is the CEO of a consumer electronics company based in the Orchard County."
+# 15
+- name: "Vick Li"
+  relationship: "College Friend"
+  bio: "Vick and Dawei went to grad school together. He now lives in the same neighborhood as Dawei and they go on cycling trips together on weekends."
+# 16
+- name: "Lukas Hürholz"
+  relationship: "High School Friend"
+  bio: "Lukas was Dawei's high school friend and roommate. He now works in banking based in London, and travels to California often."
+...

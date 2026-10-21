@@ -1,0 +1,63 @@
+{
+  "task_id": "c7cb12db-7bc9-4441-ae5a-9f993ae400ad",
+  "plot_id": 14,
+  "plot_summary": "Emily Rose is the protagonist. On Tuesday, December 10, 2024 at 10:00 AM, Sarah Green were involved. Coffee with Sarah discussing new ideas for environmental outreach. Sarah sends follow-up email with links to resources.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_14",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to create an event tomorrow called Coffee Meet with Sarah Green.",
+  "reference_time": "2024-12-09T18:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Create a new calendar event called Coffee Meet with Sarah Green on December 10 2024 from 10:00 to 10:30.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_14_c7cb12db-7bc9-4441-ae5a-9f993ae400ad_single_turn_0",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Make a new calendar event called Coffee Meet with Sarah Green. Schedule it for tomorrow morning 10:00 till 10:30.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to create a new calendar event. The new event will be called Coffee Meet with Sarah Green. The user has clearly stated the date and time. They have requested that it takes place tomorrow morning, which is December 10, and the time will be from 10:00 till 10:30. ",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Coffee Meet with Sarah Green\",\n                                    \"start_datetime_iso\": \"2024-12-10T10:00\",  # allow any timezone suffix\n                                    \"end_datetime_iso\": \"2024-12-10T10:30\",\n                                    \"creation_datetime_iso\": \"2024-12-09T18:40:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against the pre-task snapshot\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to create an event tomorrow called Coffee Meet with Sarah Green. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-12-09T18:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

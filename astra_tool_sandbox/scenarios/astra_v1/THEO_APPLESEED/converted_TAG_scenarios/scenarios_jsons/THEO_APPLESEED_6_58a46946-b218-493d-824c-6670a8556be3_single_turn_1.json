@@ -1,0 +1,99 @@
+{
+  "task_id": "58a46946-b218-493d-824c-6670a8556be3",
+  "plot_id": 6,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Evening, July 23, 2024 at 6 pm, John Appleseed were involved. Phone call with his father to catch up and discuss a book they are both reading ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_6",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "contact",
+    "calendar",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to schedule in another call with your dad about the book since you enjoyed it so much.",
+  "reference_time": "2024-07-23T18:40:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. New event is added to the calendar for the 30th July 2024 at 18:00 titled 'Call Dad about Book Club' with John Appleseed as an invitee.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. John Appleseed is emailed with the event name 'Call Dad about Book Club' as subject, and content includes details.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "3. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_6_58a46946-b218-493d-824c-6670a8556be3_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event",
+    "send_email"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Appleseed",
+      "full_name": "John Appleseed",
+      "phone_number": "1234-5678-9102",
+      "alias": "Dad",
+      "email": "john.appleseed@example.com",
+      "relationship": "Father",
+      "address": "321 Rural Route, Neighboring Town, CA",
+      "company": "Nearby University",
+      "job_title": "Professor of Theoretical Physics",
+      "is_self": false,
+      "birthday": "1965-03-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [
+    {
+      "call_type": "outgoing",
+      "caller_address": "1234-5678-9101",
+      "receiver_address": "1234-5678-9102",
+      "voice_mail_transcription": null,
+      "creation_datetime_iso": "2024-07-23T18:00:00-07:00",
+      "duration_in_hms": "00:30:00"
+    }
+  ],
+  "reasoning": "Right, so the user wants to add a new event with John called 'Call Dad about Book Club'. I can add in the event called 'Call Dad about Book Club' for the 30th July 2024 at 18:00. \n\nNext, I see that they have two Johns in their contacts, 'John Quinn' and 'John Appleseed'. I can confirm which John the user wishes to add to the event before sending the email to inform them of the event. Reading from the title of the event, the user wants to speak to their 'dad'. They have no contact named 'dad' but have a contact named John Appleseed with the relationship type as father. I can deduce that this is the John that the user wants to associate this event. Then I will send John Appleseed an email about the upcoming event.",
+  "functional_complexity": "high",
+  "query": "Add a new event with John for the 30th at 6 pm named 'Call Dad about Book Club' and email him about it, with the event name as subject.",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent looks up John Appleseed in contacts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ]\n                ),\n                # Milestone 1 – Verify John Appleseed was returned from the contact lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"John Appleseed\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"john.appleseed@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – New calendar event created for the call\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Call Dad about Book Club\",\n                                    \"start_datetime_iso\": \"2024-07-30T18:00:00\",\n                                    \"attendees_names\": [[\"John Appleseed\"]],\n                                    \"creation_datetime_iso\": \"2024-07-23T18:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"calendar_event_name\": column_contains_similarity,\n                                # default loose similarity for start_datetime_iso is acceptable,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.EMAIL],\n                ),\n                # Milestone 3 – Email invite sent to John with event details\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\"john.appleseed@example.com\"]\n                                    ],\n                                    \"subject\": \"Call Dad about Book Club\",\n                                    \"creation_datetime_iso\": \"2024-07-23T18:40:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_subset_match_similarity,\n                                \"subject\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",   # fallback if search fails\n    \"create_calendar_event\",\n    \"send_email\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to schedule in another call with your dad about the book since you enjoyed it so much. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\", \"send_email\"]",
+  "is_read_time": "2024-07-23T18:40:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

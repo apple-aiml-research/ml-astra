@@ -1,0 +1,108 @@
+{
+  "task_id": "31f133d1-0c4d-41f9-b6e1-ad166e910faa",
+  "plot_id": 19,
+  "plot_summary": "Lucas Garcia is the protagonist. On Wednesday, December 11, 2024 at 7 am, David Turner were involved. Lucas has an early morning surf session with his surfing buddy, David. The wave was perfect. They both were very excited and enjoyed it. Lucas captures moments of the surfing activities, sharing them on iMessage. Lucas messages David to coordinate next surfing sesssion.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_19",
+    "whatsapp_messaging",
+    "calendar",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to set up another surf session with David Turner for on Saturday morning 7am via WhatsApp.",
+  "reference_time": "2024-12-12T11:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Whatsapp Message is sent to David Turner requesting a surf session on Saturday at 7 am and asking about wave conditions. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_19_31f133d1-0c4d-41f9-b6e1-ad166e910faa_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "create_calendar_event",
+    "send_whatsapp_message",
+    "send_message",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages",
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Coach Lucas",
+        "David Turner"
+      ],
+      "participants_addresses": [
+        "+1 12345-6789-1000-1234",
+        "+1 12345-6789-1000-9876"
+      ],
+      "sender_name": "David Turner",
+      "sender_address": "+1 12345-6789-1000-9876",
+      "creation_datetime_iso": "2024-12-11T07:35:00-08:00",
+      "content": "Lucas, those waves were something else! Thanks for the photos, they're brilliant. Can't wait to show them off!",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "David",
+      "last_name": "Turner",
+      "full_name": "David Turner",
+      "phone_number": "+1 12345-6789-1000-9876",
+      "alias": "Surfing Buddy",
+      "email": "david.turner@example.com",
+      "relationship": "Surfing buddy",
+      "address": "12 Ocean View Dr, Orchard County, CA, USA",
+      "company": "Surf's Up Rentals",
+      "job_title": "Surf Instructor",
+      "is_self": false,
+      "birthday": "1990-08-22T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I want to set up another surf session with David on Saturday at 7 am, can you send him a message ask about wave conditions as usual? ",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "User would like to set up an early morning surf session with David for the upcoming Saturday at 07:00. \n\n The user communicates with David via Whatsapp. I will send David Turner a whatsapp message with potential surfing session on December 14 7 am and ask about wave conditions. ",
+  "milestones": "[\n                # Milestone 0 — the agent tries to retrieve David Turner’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_whatsapp_messages\",\n                                        \"search_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 — confirm that David Turner’s contact was actually returned\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"David Turner\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            reference_milestone_node_index=0,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 2 — a new outgoing message via whatsapp is sent to David Turner confirming the 18 th at 7 am session\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Both Lucas (self) and David must be in the thread\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"david.turner@example.com\",\n                                                \"+1 12345-6789-1000-9876\",\n                                            )\n                                        ]\n                                    ],\n                                    # Body should mention wave condition\n                                    \"content\": \"wave\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-12T11:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial snapshot\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",          # If the agent uses the generic messaging channel\n    \"send_whatsapp_message\", # Allow the alternative channel just in case\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to set up another surf session with David Turner for on Saturday morning 7am via WhatsApp. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"create_calendar_event\", \"send_whatsapp_message\", \"send_message\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\", \"search_messages\", \"get_all_messages\"]",
+  "is_read_time": "2024-12-12T11:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,117 @@
+{
+  "task_id": "a0c8b046-e937-42b1-a6a1-e557031ee3b4",
+  "plot_id": 13,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 9, 2024 at 4:00 PM, Jenna Miles, Matt Duncan were involved. Team meeting with Jenna and Matt for planning student engagement activities. Notes from meeting saved and shared with school contacts.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_13",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "contact",
+    "email",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to tell the folks to disregard the pdf and wait for a new what that will be ready soon.",
+  "reference_time": "2024-12-09T18:30:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Email with subject 'Meeting Notes: Student Engagement Activity Planning' is found",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. An email sent to Jenna Miles and Matt Duncan to disregard student engagement activity planning pdf because changes are being made and a new one will be sent soon. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_13_a0c8b046-e937-42b1-a6a1-e557031ee3b4_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_email",
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Meeting Notes: Student Engagement Activity Planning",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "jenna.miles@orchardcommunity.org",
+        "matt.duncan@students.orchardschools.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-09T18:00:00-08:00",
+      "body": "Hello Jenna and Matt,\n\nThank you for the productive meeting today. We have outlined some great ideas for engaging the students in our upcoming events. I have attached the meeting notes for your reference. Please review them and let me know if there are any adjustments we need to consider.\n\nBest regards,\nEmily Rose",
+      "attachments": [
+        "Meeting_Notes_2024-12-09.pdf"
+      ],
+      "status": "sent"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jenna",
+      "last_name": "Miles",
+      "full_name": "Jenna Miles",
+      "phone_number": "+1 530-555-0131",
+      "alias": "Decor Diva",
+      "email": "jenna.miles@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Planner",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    },
+    {
+      "first_name": "Matt",
+      "last_name": "Duncan",
+      "full_name": "Matt Duncan",
+      "phone_number": "+1 530-555-0132",
+      "alias": "Young Volunteer",
+      "email": "matt.duncan@students.orchardschools.org",
+      "relationship": "Event Volunteer",
+      "address": "400 School Rd, Orchard County, CA 95662, USA",
+      "company": "Orchard High School",
+      "job_title": "Student",
+      "is_self": false,
+      "birthday": "2005-10-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you send them another message to disregard the last attachment on Meeting Notes that was just sent over as that one is outdated, I will send a new one shortly. ",
+  "functional_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "referential_complexity": "high",
+  "reasoning": "The user wants to send a follow-up message to 'them' about disregarding an attachment from a recent email about 'Meeting Notes'. First, I need to figure out who 'them' refers to - this requires searching recent emails for one with 'Meeting Notes' in the subject. I found an email titled 'Meeting Notes: Student Engagement Activity Planning' that was sent to Jenna Miles and Matt Duncan. These must be the recipients the user is referring to. Now I can compose and send a follow-up email to those same recipients explaining that the PDF attachment is outdated and a new version will be sent shortly.",
+  "milestones": "[\n                # Milestone 0 –  Agent looks up the emails\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_emails\",\n                                        \"get_all_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 –  Verify that jenna and matt are the recipients\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"subject\": {\n                                                \"value\": \"Meeting Notes: Student Engagement Activity Planning\",\n                                                \"partial\": False,\n                                            },\n                                            \"recipients_addresses\": {\n                                                \"value\": [\n                                                    \"jenna.miles@orchardcommunity.org\",\n                                                    \"matt.duncan@students.orchardschools.org\",\n                                                ],\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new email is sent to Jenna & Matt telling them to delete the PDF\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.EMAIL,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"recipients_addresses\": [\n                                        [\n                                            \"jenna.miles@orchardcommunity.org\",\n                                            \"matt.duncan@students.orchardschools.org\",\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-09T18:30:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"recipients_addresses\": column_list_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.CALENDAR,\n                        DatabaseNamespace.WHATSAPP,\n                        DatabaseNamespace.PHONE,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to tell the folks to disregard the pdf and wait for a new what that will be ready soon. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_email\", \"search_emails\", \"get_all_emails\"]",
+  "is_read_time": "2024-12-09T18:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

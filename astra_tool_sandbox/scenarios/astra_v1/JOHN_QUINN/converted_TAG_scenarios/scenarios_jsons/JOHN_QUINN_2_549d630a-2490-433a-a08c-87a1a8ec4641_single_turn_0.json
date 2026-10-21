@@ -1,0 +1,98 @@
+{
+  "task_id": "549d630a-2490-433a-a08c-87a1a8ec4641",
+  "plot_id": 2,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 11:30 am, Apricot Sweeney were involved. John plans an expensive surprise dinner date for his girlfriend on Thursday  1. John wants to surprise Apricot with a romantic dinner at a Michelin star restaurant called Chef's Bite. 2. John has an iMessage correspondence with the restaurant to book a table for two. 3. This results in an extended back and forth of suggesting possible times since the restaurant is heavily booked, but finally agreeing on a suitable day and time on Thursday late evening. 4. John also creates an event, at the time agreed with the restaurant, mentioning a low key greek restaurant that is next door to the Michelin one and invites Apricot to it, without any mention of the real restaurant since any mention of Chef's Bite will ruin the surprise. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_2",
+    "contact",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're so nervous for your dinner with Apricot tonight that you've forgotten what time your reservation is for.   You want to find out ASAP you will leave the house in time.",
+  "reference_time": "2024-07-25T17:00:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The time of the event 'Dinner with Apricot' on Thursday, July 25th 2024, at 20:30 - 22:30 is shown to the user. "
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_2_549d630a-2490-433a-a08c-87a1a8ec4641_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Apricot",
+      "start_datetime_iso": "2024-07-25T20:30:00-07:00",
+      "end_datetime_iso": "2024-07-25T22:30:00-07:00",
+      "attendees_names": [
+        "Apricot Sweeney",
+        "John Quinn"
+      ],
+      "location": "Greek Delights, 101 Foodie Lane, San José, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T11:30:00-07:00",
+      "notes": "Dinner at Greek Delights, seems reasonably priced and decent reviews!"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "query": "What time is Dinner with Apricot? ",
+  "reasoning": "The user wants to know what time \"Dinner with Apricot\" is. I should check their calendar to see what event they're talking about. I see one event with the exact same name, 'Dinner with Apricot' taking place tonight, Thursday, the 25th of July, at 20:30-22:30. I'll tell them the time of that event now. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks at the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirms that the correct event was found in the tool output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Apricot\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-25T20:30:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent tells the user the time of the dinner\n                Milestone(\n                    snapshot_constraints=[\n                        # Ensure the time is communicated (accept various formats)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"20:30\", \"8:30\", \"8:30 pm\", \"8:30 p.m.\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity,\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Found calendar event after calendar lookup\n                (1, 2),  # Responded to user after verifying the event\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You're so nervous for your dinner with Apricot tonight that you've forgotten what time your reservation is for.  You want to find out ASAP you will leave the house in time. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-07-25T17:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

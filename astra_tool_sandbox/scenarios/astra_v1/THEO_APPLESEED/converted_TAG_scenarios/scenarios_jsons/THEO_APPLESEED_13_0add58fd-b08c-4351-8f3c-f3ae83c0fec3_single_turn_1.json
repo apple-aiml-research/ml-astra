@@ -1,0 +1,100 @@
+{
+  "task_id": "0add58fd-b08c-4351-8f3c-f3ae83c0fec3",
+  "plot_id": 13,
+  "plot_summary": "Theo Appleseed is the protagonist. On Friday Morning, July 26, 2024 at 9 am, Kevin Chen were involved. Project review meeting ",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_13",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're getting ready to set up another project review meeting for next week",
+  "reference_time": "2024-07-26T11:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. New event \"Project Review Meeting\" is scheduled on Tuesday 30th July 2024 at 11:00-12:00.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_13_0add58fd-b08c-4351-8f3c-f3ae83c0fec3_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Project Review Meeting",
+      "start_datetime_iso": "2024-07-26T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-26T10:00:00-07:00",
+      "attendees_names": [
+        "Kevin Chen",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-25T12:00:00-07:00",
+      "notes": "Review the progress of current projects and discuss next steps."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Schedule another of those review meetings this coming Tuesday and make it 11:00-12:00.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user is asking me to schedule an event. They appear to be referring to an already existing event to use as a baseline, citing \"another one of those review meetings\". I will search their calendar for events with the keyword review.\nI see one potential match, \"Project Review Meeting\" scheduled for July 26, 2024 09:00-10:00. I am confident that this is the event being referred to.\nI will now check the user's calendar for Tuesday 30th July and ensure that the new event will not result in any scheduling conflicts. I can see no potential clashes. I will go ahead and schedule the event as requested, taking the name of the previous event I found. A new event \"Project Review Meeting\" is scheduled on Tuesday 30th July 2024 at 11:00-12:00.",
+  "milestones": "[\n                # Milestone 0 – Agent checks the calendar to make sure the requested slot is free\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the “Project Review Meeting” (09:00) was found in Milestone 0 output\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=partial(\n                                    result_list_match_existence_extractor,\n                                    match_conditions={\n                                        \"calendar_event_name\": {\n                                            \"value\": \"Project Review Meeting\",\n                                            \"partial\": False,\n                                        },\n                                        \"start_datetime_iso\": {\n                                            \"value\": \"2024-07-26T09:00:00-07:00\",\n                                            \"partial\": False,\n                                        },\n                                    },\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 1 – A new calendar event has been added for Tue 30 Jul 2024 11:00-12:00\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Project Review Meeting\",\n                                    \"start_datetime_iso\": \"2024-07-30T11:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-30T12:00:00-07:00\",\n                                    # Expect the usual attendees; allow extras, but these two must be included\n                                    \"attendees_names\": [\n                                        [\"Theo Appleseed\", \"Kevin Chen\"]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-07-26T11:05:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"create_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You're getting ready to set up another project review meeting for next week ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-26T11:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,92 @@
+{
+  "task_id": "79a32dad-c722-470e-92dc-b355e6d8a74d",
+  "plot_id": 18,
+  "plot_summary": "Lucas Garcia is the protagonist. On Tuesday, December 10, 2024 at 2 pm, Carol Reyes were involved. Lucas and Carol explore another brewery for a new beer tasting adventure. Photos and ratings of beers are shared with Lucas via an iMessage thread",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_18",
+    "messaging",
+    "contact",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send another text in the chat you are having with Carol Reyes.",
+  "reference_time": "2024-12-10T16:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "Another text message is sent to Carol Reyes with content including \"I took some photos too. I'll send them to you once i work my post-processing magic on them.\" ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_18_79a32dad-c722-470e-92dc-b355e6d8a74d_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Carol Reyes",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "carol.reyes@example.com"
+      ],
+      "sender_address": "carol.reyes@example.com",
+      "content": "Here they are! Attachments are included with our detailed beer ratings too. 📸🍻",
+      "creation_datetime_iso": "2024-12-10T15:40:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Carol",
+      "last_name": "Reyes",
+      "full_name": "Carol Reyes",
+      "phone_number": "+1 12345-6789-1000-6543",
+      "alias": "Beer Tasting Friend",
+      "email": "carol.reyes@example.com",
+      "relationship": "Beer tasting friend",
+      "address": "34 Brew St, Orchard County, CA, USA",
+      "company": "Craft Beer Co.",
+      "job_title": "Sales Representative",
+      "is_self": false,
+      "birthday": "1991-04-18T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Text Carol Reyes this; \"Hey, I took some photos too. I'll send them to you once i work my post-processing magic on them.\"",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to text Carol Reyes a given message. First is the recipient which is given by the user. Next is the mode of communication which is also given by the user. I will now send the user's given message to Carol Reyes via text at 16:00 on 10 December 2024. ",
+  "milestones": "[\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"lucas.garcia@example.com\",\n                                                \"+1 12345-6789-1000-1234\",\n                                            ),\n                                            (\n                                                \"carol.reyes@example.com\",\n                                                \"+1 12345-6789-1000-6543\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"I took some photos too\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-10T16:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ]\n                )\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\"send_message\", \"search_contacts\", \"get_all_contacts\"]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to send another text in the chat you are having with Carol Reyes. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"send_message\"]",
+  "is_read_time": "2024-12-10T16:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

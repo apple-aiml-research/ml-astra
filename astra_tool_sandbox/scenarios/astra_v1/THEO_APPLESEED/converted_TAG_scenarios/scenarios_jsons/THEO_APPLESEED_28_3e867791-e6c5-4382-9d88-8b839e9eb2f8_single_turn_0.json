@@ -1,0 +1,105 @@
+{
+  "task_id": "3e867791-e6c5-4382-9d88-8b839e9eb2f8",
+  "plot_id": 28,
+  "plot_summary": "Theo Appleseed is the protagonist. On Tuesday Afternoon, July 30, 2024 at 1 pm, Theo Appleseed were involved. Theo messages in a group chat with friends planning and discussing the upcoming weekend hiking trip\n Generate a thread of messages involving 3 friends of Theo discussing the upcoming hike to the Carpathians for the weekend\n",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_28",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_high",
+    "calendar",
+    "contact",
+    "phone_call",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are feeling sick and won't be able to come into work today.    You need to ring your manager, Kevin Chen, to let him know to cancel your meeting.",
+  "reference_time": "2024-07-23T08:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An outgoing call to Kevin Chen is made.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. One-on-one Project Discussion is deleted from Calendar.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_28_3e867791-e6c5-4382-9d88-8b839e9eb2f8_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "remove_calendar_event",
+    "search_calendar_events",
+    "get_all_contacts",
+    "search_contacts",
+    "create_outgoing_call"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "One-on-one Project Discussion",
+      "start_datetime_iso": "2024-07-23T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-23T10:00:00-07:00",
+      "attendees_names": [
+        "Kevin Chen",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-16T09:00:00-07:00",
+      "notes": "Meeting with Kevin to discuss the progress and updates on the current project tasks and deadlines."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Kevin",
+      "last_name": "Chen",
+      "full_name": "Kevin Chen",
+      "phone_number": "1234-5678-9103",
+      "alias": "Boss",
+      "email": "kevin.chen@example.com",
+      "relationship": "Manager",
+      "address": "124 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Manager",
+      "is_self": false,
+      "birthday": "1980-07-08T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "functional_complexity": "high",
+  "query": "Call my manager Kevin Chen and delete our One-on-one Project Discussion today.",
+  "informational_complexity": "moderate",
+  "referential_complexity": "low",
+  "reasoning": "The user wants to call their manager Kevin Chen and delete the One-on-one Project Discussion today. \nFirst I will delete the event from the user's Calendar, using the details the user provided to find it. \nNext I will open Kevin Chen's contact card to find his number and dial it. ",
+  "milestones": "[\n                # Milestone 0 – The agent looked up Kevin Chen’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – Kevin Chen is indeed returned from the contact search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Kevin Chen\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"1234-5678-9103\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new outgoing phone call to Kevin Chen was placed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.PHONE,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"receiver_address\": \"1234-5678-9103\",\n                                    \"call_type\": \"outgoing\",\n                                    \"creation_datetime_iso\": \"2024-07-23T08:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"receiver_address\": column_contains_similarity,\n                                \"call_type\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with original snapshot\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.CALENDAR],\n                ),\n                # Milestone 3 – The agent searched calendar events\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 4 – The correct “One-on-one Project Discussion” event was found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"One-on-one Project Discussion\",\n                                                \"partial\": False,\n                                            },\n                                            \"attendees_names\": {\n                                                \"value\": [\n                                                    \"Kevin Chen\",\n                                                    \"Theo Appleseed\",\n                                                ],\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=3,\n                        ),\n                    ],\n                ),\n                # Milestone 5 – The event was deleted from the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"One-on-one Project Discussion\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,\n                        ),\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.PHONE],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # contact search → confirm Kevin Chen\n                (3, 4),  # calendar search → confirm event found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"create_outgoing_call\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",\n    \"modify_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You are feeling sick and won't be able to come into work today.   You need to ring your manager, Kevin Chen, to let him know to cancel your meeting. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"remove_calendar_event\", \"search_calendar_events\", \"get_all_contacts\", \"search_contacts\", \"create_outgoing_call\"]",
+  "is_read_time": "2024-07-23T08:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

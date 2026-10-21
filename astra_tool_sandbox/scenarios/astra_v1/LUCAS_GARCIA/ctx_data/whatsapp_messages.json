@@ -1,0 +1,106 @@
+{
+    "10": [
+        {
+            "sender": "+1 12345-6789-1000-1234",
+            "sender_name": "Coach Lucas",
+            "recipient": "+1 12345-6789-1000-9876",
+            "recipient_name": "David Turner",
+            "group_name": "",
+            "message": "Hey David! Just checking if we're still on for surfing at the beach today?",
+            "creation_time": "2024-12-06T16:30:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 12345-6789-1000-9876",
+            "sender_name": "David Turner",
+            "recipient": "+1 12345-6789-1000-1234",
+            "recipient_name": "Coach Lucas",
+            "group_name": "",
+            "message": "Hey Lucas! Definitely, can't wait to catch some waves. What time are you thinking?",
+            "creation_time": "2024-12-06T16:35:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 12345-6789-1000-1234",
+            "sender_name": "Coach Lucas",
+            "recipient": "+1 12345-6789-1000-9876",
+            "recipient_name": "David Turner",
+            "group_name": "",
+            "message": "How about we meet at 6 pm by the usual spot?",
+            "creation_time": "2024-12-06T16:40:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 12345-6789-1000-9876",
+            "sender_name": "David Turner",
+            "recipient": "+1 12345-6789-1000-1234",
+            "recipient_name": "Coach Lucas",
+            "group_name": "",
+            "message": "Sounds perfect. I'll bring the surfboards. See you there!",
+            "creation_time": "2024-12-06T16:45:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 12345-6789-1000-1234",
+            "sender_name": "Coach Lucas",
+            "recipient": "+1 12345-6789-1000-9876",
+            "recipient_name": "David Turner",
+            "group_name": "",
+            "message": "Awesome, David. Looking forward to it! Let's make the most of the day.",
+            "creation_time": "2024-12-06T16:50:00",
+            "status": ""
+        }
+    ],
+    "19": [
+	    {
+	      "sender": "+1 12345-6789-1000-1234",
+	      "sender_name": "Coach Lucas",
+	      "recipient": "+1 12345-6789-1000-9876",
+	      "recipient_name": "David Turner",
+	      "group_name": "",
+	      "message": "Hey David, those waves were incredible this morning! I've sent you the photos I took - they're amazing!",
+	      "creation_time": "2024-12-11T07:30:00",
+	      "status": ""
+	    },
+	    {
+	      "sender": "+1 12345-6789-1000-9876",
+	      "sender_name": "David Turner",
+	      "recipient": "+1 12345-6789-1000-1234",
+	      "recipient_name": "Coach Lucas",
+	      "group_name": "",
+	      "message": "Lucas, those waves were something else! Thanks for the photos, they're brilliant. Can't wait to show them off!",
+	      "creation_time": "2024-12-11T07:35:00",
+	      "status": ""
+	    },
+	    {
+	      "sender": "+1 12345-6789-1000-1234",
+	      "sender_name": "Coach Lucas",
+	      "recipient": "+1 12345-6789-1000-9876",
+	      "recipient_name": "David Turner",
+	      "group_name": "",
+	      "message": "Let's plan our next session for next weekend. Heard the waves might be just as good.",
+	      "creation_time": "2024-12-11T07:40:00",
+	      "status": ""
+	    },
+	    {
+	      "sender": "+1 12345-6789-1000-9876",
+	      "sender_name": "David Turner",
+	      "recipient": "+1 12345-6789-1000-1234",
+	      "recipient_name": "Coach Lucas",
+	      "group_name": "",
+	      "message": "Absolutely, I’m in! Early morning like today should be perfect. I'll confirm back soon.",
+	      "creation_time": "2024-12-11T07:45:00",
+	      "status": ""
+	    },
+	    {
+	      "sender": "+1 12345-6789-1000-1234",
+	      "sender_name": "Coach Lucas",
+	      "recipient": "+1 12345-6789-1000-9876",
+	      "recipient_name": "David Turner",
+	      "group_name": "",
+	      "message": "Looking forward to it! Just let me know when it's confirmed.",
+	      "creation_time": "2024-12-11T07:50:00",
+	      "status": ""
+	    }
+	  ]
+}

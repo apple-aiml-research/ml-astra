@@ -1,0 +1,159 @@
+{
+  "task_id": "66809e1b-f01c-49db-bb86-9364e3a889c2",
+  "plot_id": 11,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 9 am, Olivia Clark were involved. Lucas provides a motivational talk at the local gym attended by Olivia. Messages exchanged with Olivia post-event for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_11",
+    "calendar",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to set aside time to workshop the ideas that Olivia gave you.",
+  "reference_time": "2024-12-07T12:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event \"Workshop Ideas\" is created for 18:00-19:00 on 7 December at 12:00 on 7 December 2024. ",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the new entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_11_66809e1b-f01c-49db-bb86-9364e3a889c2_single_turn_1",
+  "tool_allow_list": [
+    "create_calendar_event"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "Hi Olivia, thanks for attending the motivational talk this morning. I hope you found it inspiring. I'd love to hear your thoughts or if there're any areas we could improve next time.",
+      "creation_datetime_iso": "2024-12-07T11:00:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "olivia.clark@example.com",
+      "content": "Hi Lucas! It was fantastic, truly motivating. I particularly appreciated the segment on maintaining mental resilience. It was just what I needed to hear.",
+      "creation_datetime_iso": "2024-12-07T11:15:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "I'm glad that part resonated with you. It's all about keeping a positive mindset along with the physical aspect. If you have any other feedback or suggestions for future talks, feel free to share.",
+      "creation_datetime_iso": "2024-12-07T11:20:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "olivia.clark@example.com",
+      "content": "Honestly, I think you've covered everything very well. Maybe a hands-on workshop next time? Something interactive might engage people even more.",
+      "creation_datetime_iso": "2024-12-07T11:30:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "That's a great idea! I’ll definitely consider incorporating interactive elements. Your input is super valuable, Olivia. Thanks again for coming and sharing your thoughts.",
+      "creation_datetime_iso": "2024-12-07T11:35:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "olivia.clark@example.com",
+      "content": "Happy to help, Lucas! Looking forward to more sessions like this. Have a great weekend!",
+      "creation_datetime_iso": "2024-12-07T11:40:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "You too, Olivia! Enjoy your weekend!",
+      "creation_datetime_iso": "2024-12-07T11:45:00-08:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Olivia",
+      "last_name": "Clark",
+      "full_name": "Olivia Clark",
+      "phone_number": "+1 12345-6789-1000-7531",
+      "alias": "Gym Member",
+      "email": "olivia.clark@example.com",
+      "relationship": "Local gym member",
+      "address": "89 Gym St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1992-09-30T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Create an event \"Workshop Ideas\" for 18:00-19:00 this evening. ",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to create an event \"Workshop Ideas\" for 18:00-19:00 this evening. First I'll name the event which is given by the user. Next is the runtime which is given by the user. I will now create the event \"Workshop Ideas\" or 18:00-19:00 on 7 December 2024. ",
+  "milestones": "[\n                # Milestone 0 – verify the new calendar entry was added for the correct day and time\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Workshop Ideas\",\n                                    \"start_datetime_iso\": \"2024-12-07T18:00\",\n                                    \"end_datetime_iso\": \"2024-12-07T19:00\",\n                                    \"creation_datetime_iso\": \"2024-12-07T12:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Title must match exactly\n                                \"calendar_event_name\": column_exact_match_similarity,\n                                # Allow any timezone offset by matching only the date-time portion\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"get_all_calendars\",  # optional fallback the agent might use to inspect existing events\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to set aside time to workshop the ideas that Olivia gave you. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\"]",
+  "is_read_time": "2024-12-07T12:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

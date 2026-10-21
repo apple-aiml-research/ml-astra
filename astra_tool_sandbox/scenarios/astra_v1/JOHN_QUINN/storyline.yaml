@@ -1,0 +1,265 @@
+# For licensing see accompanying LICENSE file.
+# Copyright (C) 2026 Apple Inc. All Rights Reserved.
+---
+- id: 1
+  date: "Monday, July 22, 2024"
+  time: "8 am"
+  people: "Bronson Chunk, Robin Selmoure, Julie Patterson"
+  event: "Bronson sets up urgent meetings and stand-ups due to a security situation in Peru for the next two weeks"
+  outcome: "
+  1. Bronson sets up an urgent morning meeting at 10am to deal with a new security situation in Peru.
+  2. John creates daily stand-up calendar events for every single following workday in the next 2 weeks. i.e. this should result in 9 additional calendar events.
+  "
+  output_entities: ['calendar_events', 'emails']
+
+- id: 2
+  date: "Monday, July 22, 2024"
+  time: "11:30 am"
+  people: "Apricot Sweeney"
+  event: "John plans an expensive surprise dinner date for his girlfriend on Thursday"
+  outcome: "
+  1. John wants to surprise Apricot with a romantic dinner at a Michelin star restaurant called Chef's Bite.
+  2. John has an iMessage correspondence with the restaurant to book a table for two.
+  3. This results in an extended back and forth of suggesting possible times since the restaurant is heavily booked, but finally agreeing on a suitable day and time on Thursday late evening.
+  4. John also creates an event, at the time agreed with the restaurant, mentioning a low key greek restaurant that is next door to the Michelin one and invites Apricot to it, without any mention of the real restaurant since any mention of Chef's Bite will ruin the surprise.
+  "
+  output_entities: ['calendar_events', 'message_conversations']
+
+- id: 3
+  date: "Monday, July 22, 2024"
+  time: "2 pm"
+  people: "Alfred Quinn, Grace Quinn"
+  event: "John's dad forwards political emails to John, who complains to his sister"
+  outcome: "
+  1. Jonh's dad forwards John several (3 to 5) detailed emails mentioning various events organized by the Pirate Party in different cities in the state.
+  2. The forwarded emails don't directly address John, but are instead generic emails that were forwarded to him.
+  3. Feeling irritated, rather than respond to his dad, he exchanges some messages with his sister to complain about his dad's behavior.
+  "
+  output_entities: ['emails', 'message_conversations']
+
+- id: 4
+  date: "Monday, July 22, 2024"
+  time: "4 pm"
+  people: "Robin Selmour"
+  event: "Robin expresses interest in the recent crisis in Peru."
+  outcome: "
+  1. Robin messages John asking if he knows about the recent crisis in Peru.
+  2. John replies to Robin playing coy, since he's cautious of revealing secret information he knows.
+  3. Robin insists nonetheless.
+  4. John does not budge, divulging nothing.
+  "
+  output_entities: ['message_conversations']
+
+- id: 5
+  date: "Monday, July 22, 2024"
+  time: "6:30 pm"
+  people: "Ursula Quinn"
+  event: "John complains to his mom about the political messages his father forwards him"
+  outcome: "
+  1. John messages his mom to complain about his father's forwarded emails from the Pirate Party.
+  2. She reassures him and mentions a family counsellor that she saw for her marriage.
+  3. Finally, she emails him a newsletter from the family counsellor.
+  "
+  output_entities: ['message_conversations', 'emails']
+
+- id: 6
+  date: "Monday, July 22, 2024"
+  time: "8pm"
+  people: "Deborah Shooter"
+  event: "Deborah messages John trying to make conversation in a flirty manner."
+  outcome: "
+  1. John and Deborah have a very long conversation about how their respective days went.
+  2. John and Deborah exchanging numerous messages.
+  3. Deborah finally invites him to go for a coffee on Saturday afternoon.
+  4. John gently refuses."
+  output_entities: ['message_conversations']
+
+- id: 7
+  date: "Monday, July 22, 2024"
+  time: "9pm"
+  people: "Apricot Sweeney"
+  event: "Apricot and John call and message each other."
+  outcome: "
+  1. Apricot calls John and they have a long call.
+  2. Before going to bed, John and Apricot exchange a few loving messages.
+  "
+  output_entities: ['call_logs', 'message_conversations']
+
+- id: 8
+  date: "Tuesday, July 23, 2024"
+  time: "9am"
+  people: "Dr. Emilia Jackson"
+  event: "John is reminded of his planned doctor visit next week."
+  outcome: "
+  1. John receives an email from his endocrinologist at 'Endomore Clinic' with a reminder of their planned appointment next week Tuesday afternoon.
+  2. This email is part of a short email thread with another email confirming his appointment 3 months ago.
+  "
+  output_entities: ['emails', 'calendar_events']
+
+- id: 9
+  date: "Tuesday, July 23, 2024"
+  time: "10am"
+  people: "Bronson Chuck"
+  event: "Bronson informs John of an unexpected work visit by their Japanese colleagues next week."
+  outcome: "
+  1. Bronson messages John mentioning about a urgent visit by Palantir's section in Japan to address the situation in Peru, and asking John to keep his whole week clear.
+  2. Bronson adds the visit as 5 separate events from Monday to Friday next week, each lasting a workday and inviting John and several colleagues.
+  "
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 10
+  date: "Tuesday, July 23, 2024"
+  time: "15pm"
+  people: ""
+  event: "John wants to order an ornamental stand for his bow and engages in a discussion with a specialised store"
+  outcome: "
+  1. John exchanges several emails asking about several different models of stands, trying to understand which would be the best fit for his mongolian bow.
+  2. After agreeing on a specific model by email, John calls the store to order the stand.
+  3. John adds an event on next Wednesday late afternoon to go pick up the stand from the store.
+  "
+  output_entities: ['emails', 'call_logs', 'calendar_events']
+
+- id: 11
+  date: "Tuesday, July 23, 2024"
+  time: "18pm"
+  people: "Ursula Quinn"
+  event: "John's mom's earphones broke, and John orders her a replacement pair"
+  outcome: "
+  1. John receives a call from his mom, who complains about the fact that her headphones broke down.
+  2. John orders a new pair of headphones at Target, receiving an email confirmation of his purchase with an order number, as well as a DHL tracking number (both numbers are realistic and non-consecutive).
+  3. John forwards the purchase confirmation email to his mom.
+  4. John adds a calendar event where he invites his mom, as a reminder of the approximate day and the 5 hour time window when the headphones will be delivered on Friday.
+  "
+  output_entities: ['call_logs', 'calendar_events', 'emails']
+
+- id: 12
+  date: "Tuesday, July 23, 2024"
+  time: "19pm"
+  people: "Akira Muramoto"
+  event: "Akira tries to convince John to try some food supplements and asks to borrow his tent today"
+  outcome: "
+  1. Akira starts a conversation with John where he tells him how thrilled he is about a new food supplement called 'Green' by the Soylent company, and suggests that John try it.
+  2. John expresses his hesitancy about trying the product since he heard some strange rumours about unusual ingredients.
+  3. After exchanging over 15 messages, John's hesitancy is progressively broken, and at the end Akira manages to convince John.
+  4. Akira proposes that he can bring him a pack tonight, as John had promised to lend him a tent last week.
+  "
+  output_entities: ['message_conversations']
+
+- id: 13
+  date: "Wednesday, July 24, 2024"
+  time: "11am"
+  people: "Theo Appleseed, Cookie Watson, Akira Muramoto, Robin Selmoure"
+  event: "John invites his friends to go to a whole-day hike the weekend after"
+  outcome: "
+  1. John sends individual messages to his friends inviting them for a hike the Saturday after next.
+  2. Each friend replies, with all accepting except for Robin, who refuses with a slightly bizarre excuse.
+  3. John sends a group message to the 3 friends who accepted, confirming the meeting place for the hike - the 'Batteries to Bluffs Trail'. The three freinds confirming in the message thread.
+  4. John creates an event for the hike with the relevant friends invited.
+  "
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 14
+  date: "Wednesday, July 24, 2024"
+  time: "1:30pm"
+  people: "Ursula Quinn"
+  event: "John has a discussion with his mom about his dad's birthday and ends up ordering his dad some high end whiskey"
+  outcome: "
+  1. John messages his mom to ask her what to buy his dad for his upcoming birthday.
+  2. His mom is not very helpful, saying they have everything they need.
+  3. John ends up ordering some high-end whiskey online, and receives an email with the purchase confirmation.
+  4. He sends the purchase confirmation to his mom.
+  "
+  output_entities: ['message_conversations', 'emails']
+
+- id: 15
+  date: "Wednesday, July 24, 2024"
+  time: "2:15pm"
+  people: "Apricot Sweeney"
+  event: "John and Apricot discuss seeing a film next Monday night"
+  outcome: "
+  1. Apricot sends a link to a romantic comedy film ('Two Hearts with one Stone') she wants to see on Monday.
+  2. John agrees and says he'll buy the tickets.
+  3. John creates a calendar reminder and adds Apricot to it.
+  "
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 16
+  date: "Wednesday, July 24, 2024"
+  time: "5:45pm"
+  people: "Julie Patterson"
+  event: "Julie asks John asking him to water her plant while she's on leave"
+  outcome: "
+  1. Julie emails John to let him know that she needs to take urgent leave of absence next week and asks if he could water her plants while she's way.
+  2. John agrees, but asks more information about which plants she means and what is the proper care they need.
+  3. Julie mentions the 3 different plant she has at work and asks him to water them on Tuesday and Friday.
+  4. John agrees and adds the relevant calendar reminders on his phone.
+  "
+  output_entities: ['emails', 'calendar_events']
+
+- id: 17
+  date: "Wednesday, July 24, 2024"
+  time: "7:15pm"
+  people: "Ursula Quinn"
+  event: "John gets reminded by his Mom about the birthday of his cousin, Bertie"
+  outcome: "1. Mom calls John to remind him about the birthday of his cousin, Bertie, which is on Thursday two weeks hence; and she asks him not to forget like he did last year. 2. John adds a reminder to his calendar."
+  output_entities: ['call_logs', 'calendar_events']
+
+- id: 18
+  date: "Wednesday, July 24, 2024"
+  time: "8:30pm"
+  people: "Deborah Shooter"
+  event: "Deborah sends John some music tracks she likes."
+  outcome: "
+  1. Deborah sends John 4 messages with links to electronic music tracks she likes on Apple Music, mentioning the band and song name.
+  2. Deborah asks John if he likes them, and he answers they seem nice, but he's not an expert in electronic music.
+  3. She says such music can be great and sends 5 more tracks.
+  "
+  output_entities: ['message_conversations']
+
+- id: 19
+  date: "Thursday, July 25, 2024"
+  time: "5:30pm"
+  people: "Apricot Sweeney"
+  event: "John and Apricot agree on a hike for the Sunday after next"
+  outcome: "
+  1. John messages Apricot with a 4 different hiking possibilities for the Sunday after next, mentioning also the locations and some descriptions of the most memorable things about each trail.
+  2. Apricot chooses the shortest one.
+  3. John sends her an email with the video of their last hike.
+  4. They exchange loving messages and end the conversation.
+  5. John makes a calendar event inviting Apricot to their relatively short hike.
+  "
+  output_entities: ['message_conversations', 'emails', 'calendar_events']
+
+- id: 20
+  date: "Friday, July 26, 2024"
+  time: "11:30am"
+  people: "Ali Amin, Alisa Borhman, Akira Muramoto"
+  event: "John invites his friends to a 'history brunch' on Sunday late morning."
+  outcome: "
+  1. John messages his friends in a group chat, suggesting that they could meet up for a 'history brunch' at the local Egg & Bagel cafe to discuss post-Napoleonic history.
+  2. Ali enthusiastically replies in the group chat with everyone.
+  3. Alisa also replies agreeing in the group chat with everyone.
+  4. Alisa sends a separate message only to John asking him to make sure it does not devolve into John and Ali monopolizing the conversation with a focus on military history.
+  5. Akira does not respond to the group chat but writes to John separately saying he's not really interested, sounding slightly exasperated.
+  6. John answers separately to each of the 3 message threads (group chat with everyone, Alice, Akira).
+  7. John makes an invite for the brunch adding the people who accepted
+  "
+  output_entities: ['message_conversations', 'calendar_events']
+
+- id: 21
+  date: "Friday, July 26, 2024"
+  time: "4:00pm"
+  people: "Deborah Shooter, Apricot Sweeney"
+  event: "Deborah proposes to give John a few free tickets to a concert where she's playing"
+  outcome: "
+  1. Deborah messages telling John about a big gig at a famous night club in San Francisco on Saturday late night.
+  2. John emphatically congratulates Deborah.
+  3. Deborah proposes that she give some of her VIP free tickets to John, and that he could bring a few friends if he wants.
+  4. John says he only needs one ticket to invite his girlfriend.
+  5. John messages Apricot asking her if she's up for going to a concert for free where his neighbor is DJing, to which she agrees.
+  6. John creates an event for the concert inviting Apricot.
+  7. John messages Deborah the next day asking about the tickets, but Deborah only replies a few days later, slightly rudely saying that she does not have any free tickets left.
+  "
+  output_entities: ['message_conversations', 'calendar_events']
+
+...

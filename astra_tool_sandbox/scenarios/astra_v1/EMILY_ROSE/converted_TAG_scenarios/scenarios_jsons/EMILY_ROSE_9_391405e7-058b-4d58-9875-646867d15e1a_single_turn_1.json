@@ -1,0 +1,96 @@
+{
+  "task_id": "391405e7-058b-4d58-9875-646867d15e1a",
+  "plot_id": 9,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 7, 2024 at 11:00 AM, Nathan Blake were involved. Nathan assists Emily with event setup for community holiday party. Communicate through email thread for the holiday part details and ads. Photos shared with Nathan and uploaded to community cloud storage. Send out calendar invite for the upcoming holiday party.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_9",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have fallen ill suddenly and can no longer attend the upcoming holiday party setup.    You wish to remove the event from your calendar.",
+  "reference_time": "2024-12-07T08:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The event, 'Holiday Party Setup with Nathan Blake' on Saturday, December 7th, at 11:00-14:00, is deleted from the user's calendar. ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_9_391405e7-058b-4d58-9875-646867d15e1a_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Holiday Party Setup with Nathan Blake",
+      "start_datetime_iso": "2024-12-07T11:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T14:00:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Nathan Blake"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-06T10:00:00-08:00",
+      "notes": "Assist with event setup for the community holiday party. Capture photos for community sharing."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Nathan",
+      "last_name": "Blake",
+      "full_name": "Nathan Blake",
+      "phone_number": "+1 530-555-0129",
+      "alias": "Event Helper",
+      "email": "nathan.blake@eventpros.com",
+      "relationship": "Friend",
+      "address": "300 College Ave, San Jose, CA 95112, USA",
+      "company": "Event Pros",
+      "job_title": "Event Specialist",
+      "is_self": false,
+      "birthday": "1993-12-22T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Delete the holiday party preparation event. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to delete the holiday party preparation event. I should check their calendar for that event. I see no event with that exact event title. However I see one similar event, 'Holiday Party Setup with Nathan Blake', today, Saturday, December 7th at 11:00-14:00. It must be that one. I'll ask the user to confirm before deleting the event. ",
+  "milestones": "[\n                # Milestone 0 – The agent looks up the calendar to find the event to delete\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct holiday-party setup event was returned in the search\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Holiday Party Setup with Nathan Blake\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-07T11:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,  # use the tool results from milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify the event has been removed from the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Holiday Party Setup with Nathan Blake\",\n                                    \"start_datetime_iso\": \"2024-12-07T11:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-07T14:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",  # fallback listing tool\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You have fallen ill suddenly and can no longer attend the upcoming holiday party setup.   You wish to remove the event from your calendar. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-12-07T08:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,100 @@
+{
+  "task_id": "9a0400bf-df88-452a-a565-1bcd1f73798f",
+  "plot_id": 7,
+  "plot_summary": "Theo Appleseed is the protagonist. On Wednesday Morning, July 24, 2024 at 10 am, Michelle Barnes were involved. Brainstorming session for a new project Theo shares some ideas and strategies via email for further research",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_7",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You're feeling anxious and you can't make to the Brainstorming session so you want to reschedule it.",
+  "reference_time": "2024-07-24T09:30:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The Project Brainstorming Session event scheduled for 24 July 2024 at 10:00-11:30 is moved to a new time at 14:00-15:30 on the same day 24 July 2024.",
+      "statefullness": "Stateful"
+    },
+    {
+      "input_text": "2. The creation time recorded on the updated entry is at or after the reference time, i.e. it is not backdated.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_7_9a0400bf-df88-452a-a565-1bcd1f73798f_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "modify_calendar_event",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Project Brainstorming Session",
+      "start_datetime_iso": "2024-07-24T10:00:00-07:00",
+      "end_datetime_iso": "2024-07-24T11:30:00-07:00",
+      "attendees_names": [
+        "Michelle Barnes",
+        "Theo Appleseed"
+      ],
+      "location": "Conference Room B, Innovative Tech Solutions",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Theo Appleseed",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T15:00:00-07:00",
+      "notes": "Brainstorming session with Michelle Barnes to discuss and generate ideas for the new project."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Move the calendar event supposedly kicking off in half an hour to 14:00 instead. Thanks. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to move their Project Brainstorming Session to 14:00. I should check the user's Calendar for an event that matches this description. There is only one, Project Brainstorming Session 2024.07.24 10:00 am - 11:30 am so I will make the relevant adjustments to it. I will adjust the start time to 14:00 and keep the duration.",
+  "milestones": "[\n                # Milestone 0 – agent looks up the existing calendar entry\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – confirm that the brainstorming session at 10:00 AM was indeed retrieved\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Project Brainstorming Session\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-07-24T10:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – the event has been moved to 14:00 on the same day\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=update_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Project Brainstorming Session\",\n                                    \"start_datetime_iso\": \"2024-07-24T14:00:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-24T09:30:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial calendar snapshot\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                # Milestone 2 is independent (uses reference_milestone_node_index=-1)\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"modify_calendar_event\",   # preferred way to reschedule\n    \"remove_calendar_event\",   # fallback: delete then recreate\n    \"create_calendar_event\",   # fallback: recreate at new time\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You're feeling anxious and you can't make to the Brainstorming session so you want to reschedule it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"modify_calendar_event\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-24T09:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

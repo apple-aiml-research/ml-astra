@@ -1,0 +1,68 @@
+{
+  "task_id": "da1a40a4-f2f9-4e01-87e1-e6ea506e8a99",
+  "plot_id": 19,
+  "plot_summary": "Dawei Shen is the protagonist. On Thursday, December 12, 2024 at 7 pm, self, Charles Wilde were involved. Dawei and Charles exchange WhatsApp messages about stage props for the theater show. Charles sends a link to an online supplier. Dawei orders the necessary props and emails the receipt to Francis.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_19",
+    "referential_complexity_moderate",
+    "informational_complexity_high",
+    "functional_complexity_low",
+    "contact",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You forgot to order a certain prop and want to see the link to the online supplier that Charles Wilde sent to you.",
+  "reference_time": "2024-12-14T12:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. WhatsApp message from Charles Wilde containing the link to PropsSupplier.com is presented.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_19_da1a40a4-f2f9-4e01-87e1-e6ea506e8a99_single_turn_1",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Charles Wilde",
+        "Dawei Shen"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-234-5678-9012"
+      ],
+      "sender_name": "Charles Wilde",
+      "sender_address": "+1 555-234-5678-9012",
+      "creation_datetime_iso": "2024-12-12T19:00:00-08:00",
+      "content": "Hey Dawei, I found a great supplier for the stage props we need. Here's the link: [PropsSupplier.com]",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [],
+  "phonecalls": [],
+  "query": "Can you pull up the WhatsApp message from Charles with the link to the theater item seller.",
+  "informational_complexity": "high",
+  "referential_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to see a WhatsApp message from Charles containing a link to a theater item seller. First, I will use the WhatsApp search tool to look through their messages.\n\nLooking through the user’s contacts I can see that Charles Wilde is the only contact with this first name, so I will focus on that conversation and search the WhatsApp messages to find the one containing the link.\n\nI can’t see any link to a theater item seller, however there is a link to a prop supplier: PropsSupplier.com. Due to the similarity of these phrases I will assume that this is what the user is referring to.\n\nI will now present the WhatsApp message with the link to the prop supplier to the user.",
+  "reference_time_str": "Today is Saturday, December 14, 2024 or 2024-12-14T12:00:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Agent uses a WhatsApp retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Returned WhatsApp message contains link from Charles Wilde\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_name\": {\n                                                \"value\": \"Charles Wilde\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"PropsSupplier.com\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent informs user and shows the link\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"PropsSupplier.com\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list": [
+    "search_contacts",
+    "get_all_contacts",
+    "search_whatsapp_messages",
+    "get_all_whatsapp_messages"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You forgot to order a certain prop and want to see the link to the online supplier that Charles Wilde sent to you. ",
+  "tool_allow_list_str": "[\"search_contacts\", \"get_all_contacts\", \"search_whatsapp_messages\", \"get_all_whatsapp_messages\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-14T12:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

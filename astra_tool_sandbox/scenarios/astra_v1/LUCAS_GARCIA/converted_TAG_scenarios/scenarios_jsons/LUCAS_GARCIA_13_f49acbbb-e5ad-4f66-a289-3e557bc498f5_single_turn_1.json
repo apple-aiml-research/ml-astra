@@ -1,0 +1,94 @@
+{
+  "task_id": "f49acbbb-e5ad-4f66-a289-3e557bc498f5",
+  "plot_id": 13,
+  "plot_summary": "Lucas Garcia is the protagonist. On Sunday, December 8, 2024 at 10 am, Megan Johnson were involved. Lucas hosts an online fitness class for Megan and other participants. YouTube video of the session is uploaded and shared with participants for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_13",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to dictate a reply message to Megan Johnson saying \"Hey Megan just wondering if you managed to fill in the feedback form yet, let me know if you have any problems with it!\".",
+  "reference_time": "2024-12-08T13:45:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. A reply message is sent to Megan Johnson saying \"Hey Megan just wondering if you managed to fill in the feedback form yet, let me know if you have any problems with it!\".",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_13_f49acbbb-e5ad-4f66-a289-3e557bc498f5_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Online Fitness Class Feedback",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "megan.johnson@example.com"
+      ],
+      "sender_address": "megan.johnson@example.com",
+      "content": "Will do, Lucas. Thanks for all the energy and dedication you bring to each class. Talk to you soon!",
+      "creation_datetime_iso": "2024-12-08T12:40:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Megan",
+      "last_name": "Johnson",
+      "full_name": "Megan Johnson",
+      "phone_number": "+1 12345-6789-1000-3210",
+      "alias": "Online Class Student",
+      "email": "megan.johnson@example.com",
+      "relationship": "Online fitness class student",
+      "address": "56 Fitness Way, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1995-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send a message to the online student saying\"Hey Megan just wondering if you managed to fill in the feedback form yet, let me know if you have any problems with it!\".",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send a message to the online student. I check for a contact that that matches. I can't find an exact match but I found something close, a contact called Megan Johnson , whose alias is 'Online Class Student' . Taking context from the users requested message the name Megan appears so I must be correct here .\nAs the user has dictated exactly what they want to say, I will transcribe the text to the draft reply and confirm with the user in case any changes are needed.\nI will then send the message if the user confirms that the message was transcribed correctly.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up the contact information for Megan Johnson\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the contact returned from Milestone 0 includes Megan Johnson\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Megan Johnson\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"megan.johnson@example.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – A new message is sent to Megan containing the feedback-form reminder\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"megan.johnson@example.com\",\n                                                \"+1 12345-6789-1000-3210\",\n                                            ),\n                                            (\n                                                \"lucas.garcia@example.com\",\n                                                \"+1 12345-6789-1000-1234\",\n                                            ),\n                                        ]\n                                    ],\n                                    \"content\": \"feedback form\",\n                                    \"status\": \"sent\",\n                                    \"creation_datetime_iso\": \"2024-12-08T13:45:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"status\": column_exact_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact lookup → confirm Megan found\n                (1, 2),  # Megan confirmed → message sent\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to dictate a reply message to Megan Johnson saying \"Hey Megan just wondering if you managed to fill in the feedback form yet, let me know if you have any problems with it!\". ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-08T13:45:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,135 @@
+{
+  "task_id": "f6896bb2-0910-48f7-855a-c6bb92082438",
+  "plot_id": 11,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 9 am, Olivia Clark were involved. Lucas provides a motivational talk at the local gym attended by Olivia. Messages exchanged with Olivia post-event for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_11",
+    "messaging",
+    "calendar",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You did a good job with the motivational talk at the gym and have been asked to do it again at the same time next week.",
+  "reference_time": "2024-12-07T11:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The calendar event 'Motivational Talk at Local Gym' is copied to Saturday 14th December 2024 9:00-10:00 with all other information remaining unchanged.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_11_f6896bb2-0910-48f7-855a-c6bb92082438_single_turn_2",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "create_calendar_event",
+    "search_messages",
+    "get_all_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "olivia.clark@example.com",
+      "content": "Hi Lucas! It was fantastic, truly motivating. I particularly appreciated the segment on maintaining mental resilience. It was just what I needed to hear.",
+      "creation_datetime_iso": "2024-12-07T11:15:00-08:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "lucas.garcia@example.com",
+      "content": "I'm glad that part resonated with you. It's all about keeping a positive mindset along with the physical aspect. If you have any other feedback or suggestions for future talks, feel free to share.",
+      "creation_datetime_iso": "2024-12-07T11:20:00-08:00",
+      "status": "sent"
+    },
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "olivia.clark@example.com",
+      "content": "Honestly, I think you've covered everything very well. Maybe a hands-on workshop next time? Something interactive might engage people even more.",
+      "creation_datetime_iso": "2024-12-07T11:30:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Motivational Talk at Local Gym",
+      "start_datetime_iso": "2024-12-07T09:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T10:00:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Olivia Clark"
+      ],
+      "location": "Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 1 hour",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-03T09:00:00-08:00",
+      "notes": "Lucas Garcia provides a motivational talk aimed at inspiring gym members, focusing on overcoming challenges and achieving fitness goals."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    },
+    {
+      "first_name": "Olivia",
+      "last_name": "Clark",
+      "full_name": "Olivia Clark",
+      "phone_number": "+1 12345-6789-1000-7531",
+      "alias": "Gym Member",
+      "email": "olivia.clark@example.com",
+      "relationship": "Local gym member",
+      "address": "89 Gym St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1992-09-30T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Copy the hands-on workshop that Olivia attended this morning to the 14th at the same time.",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "reasoning": "The user wants me to copy an event. I need to first figure out which event they're talking about. They said it was a \"hands-on workshop\" from this morning. The only event on the user's calendar this morning was \"Motivational Talk at Local Gym\" that took place at 9:00-10:00. That doesn't sound like a hands-on workshop. The user mentioned Olivia attended it. I see Olivia Clark on the invitation, so maybe the user and Olivia were talking more about the event over text. Let me look at their texts. I see they debriefed about how the motivational talk event went. I do see the term \"hands-on workshop\" in a text from Olivia from 11:30. It says \"Honestly, I think you've covered everything very well. Maybe a hands-on workshop next time? Something interactive might engage people even more.\". So in reflecting on the motivational talk, she's saying a hands-on workshop should happen some time in the future. This must be where the user got the hands-on workshop part from. So it's safe to still assume the event they're asking me to copy is \"Motivational Talk at Local Gym\" especially because it happened this morning and Olivia attended it. They wish for it to be copied to December 14th at 09:00-10:00. I'll copy all other information over to the new event, as well, such as the invitee Olivia Clark, and the location of Orchard County Fitness Center. I'll place the event in that slot on the users calendar and let them know that the event has been created.",
+  "milestones": "[\n                # Milestone 0 – The agent searches calendar to find the referenced event (\"this morning\" with Olivia)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the \"Motivational Talk at Local Gym\" event on Dec 7, 2024, 09:00–10:00 was retrieved\n                # This ties the user's \"hands-on workshop Olivia attended this morning\" request to the concrete calendar entry.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Motivational Talk at Local Gym\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-07T09:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"end_datetime_iso\": {\n                                                \"value\": \"2024-12-07T10:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                            \"attendees_names\": {\n                                                \"value\": [\n                                                    \"Lucas Garcia\",\n                                                    \"Olivia Clark\",\n                                                ],\n                                                \"partial\": True,  # allow extra attendees if any\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – New calendar event created on Dec 14, 2024, 09:00–10:00 copying details from the Dec 7 event\n                # We only check the fields required by success conditions: same name, time range on the 14th, and unchanged other info.\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Motivational Talk at Local Gym\",\n                                    \"start_datetime_iso\": \"2024-12-14T09:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-14T10:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\"Lucas Garcia\", \"Olivia Clark\"]\n                                    ],\n                                    \"location\": \"Orchard County Fitness Center\",\n                                    \"organizer_name\": \"Lucas Garcia\",\n                                    \"creation_datetime_iso\": \"2024-12-07T11:35:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # attendees must at least include Lucas and Olivia; allow extras but ensure those two are present\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial snapshot\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[\n                        DatabaseNamespace.EMAIL,\n                        DatabaseNamespace.MESSAGING,\n                        DatabaseNamespace.SANDBOX,\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar search → confirm correct source event\n                (\n                    1,\n                    2,\n                ),  # confirmed source event → copied event created on Dec 14 at same time\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"create_calendar_event\",\n]",
+  "is_read_time": "2024-12-07T11:35:00-08:00",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You did a good job with the motivational talk at the gym and have been asked to do it again at the same time next week. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"create_calendar_event\", \"search_messages\", \"get_all_messages\"]"
+}

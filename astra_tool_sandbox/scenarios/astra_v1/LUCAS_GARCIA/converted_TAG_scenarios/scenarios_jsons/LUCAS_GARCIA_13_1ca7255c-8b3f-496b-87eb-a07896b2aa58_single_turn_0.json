@@ -1,0 +1,92 @@
+{
+  "task_id": "1ca7255c-8b3f-496b-87eb-a07896b2aa58",
+  "plot_id": 13,
+  "plot_summary": "Lucas Garcia is the protagonist. On Sunday, December 8, 2024 at 10 am, Megan Johnson were involved. Lucas hosts an online fitness class for Megan and other participants. YouTube video of the session is uploaded and shared with participants for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_13",
+    "messaging",
+    "contact",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know what your last message from Megan Johnson says.",
+  "reference_time": "2024-12-08T12:40:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. The last message received from Megan Johnson is read out loud to the user. \n",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_13_1ca7255c-8b3f-496b-87eb-a07896b2aa58_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Online Fitness Class Feedback",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "megan.johnson@example.com"
+      ],
+      "sender_address": "megan.johnson@example.com",
+      "content": "Will do, Lucas. Thanks for all the energy and dedication you bring to each class. Talk to you soon!",
+      "creation_datetime_iso": "2024-12-08T12:40:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Megan",
+      "last_name": "Johnson",
+      "full_name": "Megan Johnson",
+      "phone_number": "+1 12345-6789-1000-3210",
+      "alias": "Online Class Student",
+      "email": "megan.johnson@example.com",
+      "relationship": "Online fitness class student",
+      "address": "56 Fitness Way, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1995-01-25T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "What’s that last message?\n",
+  "reasoning": "The user wants to know what their last message was, so I will find the message, tell the user who it is from and then read it out. I can see the user just received a message from Megan Johnson and because this is the most recent message received on the user’s phone, I can assume this is the message the user referred to. \n",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – Agent uses a messages-retrieval tool\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – Confirm the retrieved message is the one from Megan Johnson\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"megan.johnson@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Will do, Lucas.\",\n                                                \"partial\": True,  # allow substring match\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – Agent tells the user what the last message says\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Will do\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity  # check key phrase from the message\n                            },\n                        )\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # tool invocation → verify correct message retrieved\n                (1, 2),  # message retrieved → user is informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You want to know what your last message from Megan Johnson says. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-12-08T12:40:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

@@ -1,0 +1,96 @@
+{
+  "task_id": "58591c5a-12c1-4aa1-9df6-57abf9a5c00d",
+  "plot_id": 3,
+  "plot_summary": "Lucas Garcia is the protagonist. On Monday, December 2, 2024 at 6 pm, Theo Appleseed were involved. Lucas and Theo meet for their usual evening workout session at the local gym. Lucas receives a message from Theo discussing fitness goals and the next 3 months. Book schedules for future session the next 3 months.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_3",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You injured yourself going too hard in the gym so have to cancel any upcoming events.",
+  "reference_time": "2024-12-02T18:35:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Fitness Planning for Next 3 Months from 19:00-19:30 on the 2 December 2024 is deleted from Calendar. ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_3_58591c5a-12c1-4aa1-9df6-57abf9a5c00d_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "Work",
+      "calendar_event_name": "Fitness Planning for Next 3 Months",
+      "start_datetime_iso": "2024-12-02T19:00:00-08:00",
+      "end_datetime_iso": "2024-12-02T19:30:00-08:00",
+      "attendees_names": [
+        "Lucas Garcia",
+        "Theo Appleseed"
+      ],
+      "location": "Cafe at Orchard County Fitness Center",
+      "reminder_time_ahead": "reminder_time_ahead: 15 minutes",
+      "organizer_name": "Lucas Garcia",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-11-28T10:45:00-08:00",
+      "notes": "Discussion and planning with Theo regarding fitness goals and session scheduling for the upcoming three months."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "+1 12345-6789-1000-5678",
+      "alias": "Gym Buddy",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Gym buddy and workout partner",
+      "address": "45 Fit St, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Fitness Trainer",
+      "is_self": false,
+      "birthday": "1990-05-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Delete the event in 25 minutes. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to delete the event in 25 minutes. I need to figure out which event they mean. To do so I need to figure out what time it will be in 25 minutes. \nHmm, it is 18:35 so that means in 25 minutes it will be 19:00. This means I am looking for an event at 19:00. Next I will check the Calendar for an event at that time. \nLooks like there is only one event that starts at 19:00-19:30, the Fitness Planning for Next 3 Months on the 2 December 2024 so this must be what the user meant. \nLastly, I will delete this event and let the user know. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events (evidence that it tried to find the right one)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        ),\n                    ],\n                ),\n                # Milestone 1 – The specific calendar event has been removed\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Fitness Planning for Next 3 Months\",\n                                    \"start_datetime_iso\": \"2024-12-02T19:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-02T19:30:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Lookup must logically occur before deletion\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You injured yourself going too hard in the gym so have to cancel any upcoming events. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-12-02T18:35:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

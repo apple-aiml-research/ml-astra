@@ -1,0 +1,90 @@
+{
+  "task_id": "6b86982c-5bdb-44d0-8eff-fd002c03085f",
+  "plot_id": 2,
+  "plot_summary": "Theo Appleseed is the protagonist. On Monday Afternoon, July 22, 2024 at 2 pm, Cookie Watson were involved. Cookie reaches out for dinner later this week via SMS They set on Wednesday night for dinner at a newly open local pub named Pony & Jigger",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_2",
+    "referential_complexity_low",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to know what time Cookie messaged you asking you to dinner at Pony & Jigger.",
+  "reference_time": "2024-07-22T17:05:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. User is informed that their message from Cookie Watson which reads \"Hey Theo! Are you free for dinner this Wednesday? There’s a new pub, Pony & Jigger, that just opened. Thought we could check it out!\" was received at 14:00 on 2024-07-22.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_2_6b86982c-5bdb-44d0-8eff-fd002c03085f_single_turn_1",
+  "tool_allow_list": [
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Cookie Watson",
+      "participants_addresses": [
+        "cookie.watson@example.com",
+        "theo.appleseed@example.com"
+      ],
+      "sender_address": "cookie.watson@example.com",
+      "content": "Hey Theo! Are you free for dinner this Wednesday? There’s a new pub, Pony & Jigger, that just opened. Thought we could check it out!",
+      "creation_datetime_iso": "2024-07-22T14:00:00-07:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to know when Cookie asked them to dinner. The only Cookie in the user's contacts is Cookie Watson, so I'll check messages and emails with them.\n\nI didn't find any emails from Cookie, but I did find a message from them that says \"Hey Theo! Are you free for dinner this Wednesday? There’s a new pub, Pony & Jigger, that just opened. Thought we could check it out!\" This must be the message the user is interested in. I'll inform them that this message was received at 14:00 today (2024-07-22).",
+  "query": "When did Cookie ask me to dinner?",
+  "referential_complexity": "low",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "milestones": "[\n                # Milestone 0 – Agent uses a message-retrieval tool to look for Cookie’s dinner invite\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify that the retrieved message is Cookie’s Pony & Jigger dinner request sent at 14:00 on 2024-07-22\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"cookie.watson@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            \"content\": {\n                                                \"value\": \"Pony & Jigger\",\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-07-22T14:00:00-07:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent’s reply to the user contains the correct date and time\n                Milestone(\n                    snapshot_constraints=[\n                        # Check that the agent’s answer includes the time (either 14:00 or 2 pm variations)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"14:00\", \"2 pm\", \"2pm\", \"2 p.m.\", \"2:00\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                        # Check that the agent’s answer also includes the date (either ISO or natural language)\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\"7-22\", \"07-22\", \"July 22\", \"Jul 22\", \"22 July\", \"22 Jul\", \"7/22\", \"07/22\", \"today\", \"the 22nd\", \"22nd of July\", \"2024-07-22T14:00\")\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_word_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Message retrieval → confirmation of correct message\n                (1, 2),  # Confirmation → user-facing answer\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to know what time Cookie messaged you asking you to dinner at Pony & Jigger. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-22T17:05:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

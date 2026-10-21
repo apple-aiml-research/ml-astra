@@ -1,0 +1,110 @@
+{
+  "task_id": "3d50b8aa-9d1d-4c19-9693-8cdd9052c23a",
+  "plot_id": 13,
+  "plot_summary": "Emily Rose is the protagonist. On Monday, December 9, 2024 at 4:00 PM, Jenna Miles, Matt Duncan were involved. Team meeting with Jenna and Matt for planning student engagement activities. Notes from meeting saved and shared with school contacts.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_13",
+    "referential_complexity_low",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "A family emergency has come up and you can no longer attend  the student engagement activity planning event later today.    You want to delete the event accordingly from your calendar.",
+  "reference_time": "2024-12-09T13:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. The event called 'Student Engagement Activity Planning' on Monday, December 9th, 2024, at 16:00-17:30 is removed from the calendar."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_13_3d50b8aa-9d1d-4c19-9693-8cdd9052c23a_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "remove_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Student Engagement Activity Planning",
+      "start_datetime_iso": "2024-12-09T16:00:00-08:00",
+      "end_datetime_iso": "2024-12-09T17:30:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Jenna Miles",
+        "Matt Duncan"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:30:00-07:00",
+      "notes": "Team meeting with Jenna and Matt to plan student engagement activities."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Jenna",
+      "last_name": "Miles",
+      "full_name": "Jenna Miles",
+      "phone_number": "+1 530-555-0131",
+      "alias": "Decor Diva",
+      "email": "jenna.miles@orchardcommunity.org",
+      "relationship": "Colleague",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Planner",
+      "is_self": false,
+      "birthday": "1991-02-14T00:00:00-08:00"
+    },
+    {
+      "first_name": "Matt",
+      "last_name": "Duncan",
+      "full_name": "Matt Duncan",
+      "phone_number": "+1 530-555-0132",
+      "alias": "Young Volunteer",
+      "email": "matt.duncan@students.orchardschools.org",
+      "relationship": "Event Volunteer",
+      "address": "400 School Rd, Orchard County, CA 95662, USA",
+      "company": "Orchard High School",
+      "job_title": "Student",
+      "is_self": false,
+      "birthday": "2005-10-05T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to delete something called Student Engagement Activity Planning. I wonder what they're talking about. I should check their Calendar for an event with that name. I see one event called 'Student Engagement Activity Planning', today, December 9th, 2024, at 16:00-17:30. This must be the event they mean. I'll ask the user to confirm before removing it from the calendar. ",
+  "query": "Delete Student Engagement Activity Planning.",
+  "referential_complexity": "low",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – The agent tries to locate the calendar event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the correct event shows up in the search results from Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Student Engagement Activity Planning\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-09T16:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify the event is removed from the calendar\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=removal_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Student Engagement Activity Planning\",\n                                    \"start_datetime_iso\": \"2024-12-09T16:00:00-08:00\",\n                                }\n                            ),\n                            reference_milestone_node_index=-1,  # compare with the initial snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Search → confirm event retrieved\n                (1, 2),  # Confirm retrieval → event removed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n    \"remove_calendar_event\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. A family emergency has come up and you can no longer attend  the student engagement activity planning event later today.   You want to delete the event accordingly from your calendar. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"remove_calendar_event\"]",
+  "is_read_time": "2024-12-09T13:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

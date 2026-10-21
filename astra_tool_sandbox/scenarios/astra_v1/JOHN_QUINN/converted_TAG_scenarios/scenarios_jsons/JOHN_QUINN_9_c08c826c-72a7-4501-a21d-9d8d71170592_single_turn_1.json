@@ -1,0 +1,272 @@
+{
+  "task_id": "c08c826c-72a7-4501-a21d-9d8d71170592",
+  "plot_id": 9,
+  "plot_summary": "John Quinn is the protagonist. On Tuesday, July 23, 2024 at 10am, Bronson Chuck were involved. Bronson informs John of an unexpected work visit by their Japanese colleagues next week.  1. Bronson messages John mentioning about a urgent visit by Palantir's section in Japan to address the situation in Peru, and asking John to keep his whole week clear. 2. Bronson adds the visit as 5 separate events from Monday to Friday next week, each lasting a workday and inviting John and several colleagues. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_9",
+    "calendar",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to see if you need to reschedule any events due to the visit by your Japanese colleagues.",
+  "reference_time": "2024-07-23T12:30:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The user is informed that one event, \"Daily Stand-up: Security Updates\" from 9:00-9:30 on 29 July 2024, overlaps with the event \"Visit from Palantir Japan - Day 1\""
+    },
+    {
+      "input_text": "2. The user is informed that two events overlap with the event \"Visit from Palantir Japan - Day 2\" event on 30 July 2024: \"Daily Stand-up: Security Updates\" from 9:00-9:30, and \"Doctor's Appointment with Dr. Emilia Jackson\" from 15:00-16:00",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "3. The user is informed that one event, \"Daily Stand-up: Security Updates\" from 9:00-9:30 on 31 July 2024, overlaps with the event \"Visit from Palantir Japan - Day 3\"",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "4. The user is informed that one event, \"Daily Stand-up: Security Updates\" from 9:00-9:30 on 1 August 2024, overlaps with the event \"Visit from Palantir Japan - Day 4\"",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "5. The user is informed that one event, \"Daily Stand-up: Security Updates\" from 9:00-9:30 on 2 August 2024, overlaps with the event \"Visit from Palantir Japan - Day 5",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_9_c08c826c-72a7-4501-a21d-9d8d71170592_single_turn_1",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Visit from Palantir Japan - Day 5",
+      "start_datetime_iso": "2024-08-02T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-02T17:00:00-07:00",
+      "attendees_names": [
+        "Bronson Chunk",
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Palantir HQ, San José, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Bronson Chunk",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T09:25:00-07:00",
+      "notes": "Final day of meetings with Palantir Japan. Wrap-up and next steps."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Visit from Palantir Japan - Day 4",
+      "start_datetime_iso": "2024-08-01T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-01T17:00:00-07:00",
+      "attendees_names": [
+        "Bronson Chunk",
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Palantir HQ, San José, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Bronson Chunk",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T09:20:00-07:00",
+      "notes": "Day 4 of meetings with Palantir Japan. Deep dive into technical solutions and software tools."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Visit from Palantir Japan - Day 1",
+      "start_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T17:00:00-07:00",
+      "attendees_names": [
+        "Bronson Chunk",
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Palantir HQ, San José, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Bronson Chunk",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T09:05:00-07:00",
+      "notes": "Day 1 of meetings with Palantir Japan to discuss the Peru situation. Please be prepared with all relevant data and reports."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Visit from Palantir Japan - Day 2",
+      "start_datetime_iso": "2024-07-30T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T17:00:00-07:00",
+      "attendees_names": [
+        "Bronson Chunk",
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Palantir HQ, San José, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Bronson Chunk",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T09:10:00-07:00",
+      "notes": "Day 2 of meetings with Palantir Japan to discuss the Peru situation. Focus on data analysis and strategic planning."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Visit from Palantir Japan - Day 3",
+      "start_datetime_iso": "2024-07-31T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-31T17:00:00-07:00",
+      "attendees_names": [
+        "Bronson Chunk",
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Palantir HQ, San José, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Bronson Chunk",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-23T09:15:00-07:00",
+      "notes": "Day 3 of meetings with Palantir Japan. Review of initial discussions and adjustment of strategies."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-29T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-29T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-30T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-07-31T09:00:00-07:00",
+      "end_datetime_iso": "2024-07-31T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-08-01T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-01T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Daily Stand-up: Security Updates",
+      "start_datetime_iso": "2024-08-02T09:00:00-07:00",
+      "end_datetime_iso": "2024-08-02T09:30:00-07:00",
+      "attendees_names": [
+        "John Quinn",
+        "Julie Patterson",
+        "Robin Selmoure"
+      ],
+      "location": "Conference Room B, Palantir HQ",
+      "reminder_time_ahead": "15 minutes",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T08:15:00-07:00",
+      "notes": "Daily stand-up meeting to discuss ongoing updates and tasks related to the Peru security situation."
+    },
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Doctor's Appointment with Dr. Emilia Jackson",
+      "start_datetime_iso": "2024-07-30T15:00:00-07:00",
+      "end_datetime_iso": "2024-07-30T16:00:00-07:00",
+      "attendees_names": [
+        "Endomore Clinic",
+        "John Quinn"
+      ],
+      "location": "Endomore Clinic, 450 Medical Plaza, San José, CA",
+      "reminder_time_ahead": "48 hours",
+      "organizer_name": "Endomore Clinic",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-04-23T10:05:00-07:00",
+      "notes": "Annual check-up and consultation."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I might have to reschedule a few things in my calendar due to the meetings with colleagues from overseas. Can you tell me what events I have that clash with that?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants me to check for clashes in their calendar. The events they want to check for clashes with events based around 'colleagues from overseas'. Looking at the user's calendar, I see the event \"Daily Stand-up: Security Updates\" that mentions Peru in the notes, but it just says the meeting is to address the security situation, so it doesn't sound like anyone is visiting. I see multiple events with \"visit from Palantir Japan\" in the title. Palantir is where the user works, so Palantir Japan must be the branch that their overseas colleagues work at. I'll assume this series of meetings is what the user is talking about. To start, I have found 5 events with for that visit from Palantir Japan taking place between 09:00 and 17:00 daily from Monday 29th July to Friday 2nd August 2024. Now I need to tell the user which other events in their calendar overlap with the Visit from Palantir Japan events. \nI will check these time ranges for clashes. I have found a daily clash at 09:00 called Daily Stand-up: Security Updates. This clash lasts 30 minutes every morning. \nThere is one more clash on Tuesday 30th July from 15:00 to 16:00 called Doctor's Appointment with Dr. Emilia Jackson.\nI inform the user of these clashes.",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar data to determine overlaps\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The user is informed of every required overlap\n                Milestone(\n                    snapshot_constraints=[\n                        # Day-1 clash\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Visit from Palantir Japan\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Daily Stand-up: Security Updates\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # # Day-2 clashes (stand-up + doctor)\n                        # SnapshotConstraint(\n                        #     database_namespace=DatabaseNamespace.SANDBOX,\n                        #     snapshot_constraint=snapshot_similarity,\n                        #     target_dataframe=pl.DataFrame(\n                        #         {\n                        #             \"sender\": RoleType.AGENT,\n                        #             \"recipient\": RoleType.USER,\n                        #             \"content\": \"Visit from Palantir Japan - Day 2\",\n                        #         }\n                        #     ),\n                        #     column_similarity_measure={\n                        #         \"content\": column_contains_similarity\n                        #     },\n                        # ),\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Doctor\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity\n                            },\n                        ),\n                        # # Day-3 clash\n                        # SnapshotConstraint(\n                        #     database_namespace=DatabaseNamespace.SANDBOX,\n                        #     snapshot_constraint=snapshot_similarity,\n                        #     target_dataframe=pl.DataFrame(\n                        #         {\n                        #             \"sender\": RoleType.AGENT,\n                        #             \"recipient\": RoleType.USER,\n                        #             \"content\": \"Visit from Palantir Japan - Day 3\",\n                        #         }\n                        #     ),\n                        #     column_similarity_measure={\n                        #         \"content\": column_contains_similarity\n                        #     },\n                        # ),\n                        # # Day-4 clash\n                        # SnapshotConstraint(\n                        #     database_namespace=DatabaseNamespace.SANDBOX,\n                        #     snapshot_constraint=snapshot_similarity,\n                        #     target_dataframe=pl.DataFrame(\n                        #         {\n                        #             \"sender\": RoleType.AGENT,\n                        #             \"recipient\": RoleType.USER,\n                        #             \"content\": \"Visit from Palantir Japan - Day 4\",\n                        #         }\n                        #     ),\n                        #     column_similarity_measure={\n                        #         \"content\": column_contains_similarity\n                        #     },\n                        # ),\n                        # # Day-5 clash\n                        # SnapshotConstraint(\n                        #     database_namespace=DatabaseNamespace.SANDBOX,\n                        #     snapshot_constraint=snapshot_similarity,\n                        #     target_dataframe=pl.DataFrame(\n                        #         {\n                        #             \"sender\": RoleType.AGENT,\n                        #             \"recipient\": RoleType.USER,\n                        #             \"content\": \"Visit from Palantir Japan - Day 5\",\n                        #         }\n                        #     ),\n                        #     column_similarity_measure={\n                        #         \"content\": column_contains_similarity\n                        #     },\n                        # ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to see if you need to reschedule any events due to the visit by your Japanese colleagues. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\"]",
+  "is_read_time": "2024-07-23T12:30:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

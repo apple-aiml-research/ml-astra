@@ -1,0 +1,107 @@
+{
+  "task_id": "af90ab5a-8520-48ca-bdbb-3fcf27ee25de",
+  "plot_id": 6,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 8pm, Deborah Shooter were involved. Deborah messages John trying to make conversation in a flirty manner.  1. John and Deborah have a very long conversation about how their respective days went. 2. John and Deborah exchanging numerous messages. 3. Deborah finally invites him to go for a coffee on Saturday afternoon. 4. John gently refuses.",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_6",
+    "contact",
+    "messaging",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You can't remember if you responded to your neighbor, Deborah's last message after you opened it.   You don't want to be rude so you want to make sure you did.",
+  "reference_time": "2024-07-22T22:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Messages are searched for the latest message from Deborah shooter and reply to Deborah found with content \"Will do, thanks! Have a great evening, Deborah.\" at \"2024-07-22T20:20:00-07:00\".",
+      "statefullness": "Stateless"
+    },
+    {
+      "input_text": "2. User has been told that reply to Deborah has been sent",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_6_af90ab5a-8520-48ca-bdbb-3fcf27ee25de_single_turn_0",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "deborah.shooter@nightclub.com",
+      "content": "No worries, John! Enjoy your hike, and let's definitely plan something soon.",
+      "creation_datetime_iso": "2024-07-22T20:17:00-07:00",
+      "status": "read"
+    },
+    {
+      "conversation_name": "Deborah Shooter",
+      "participants_addresses": [
+        "deborah.shooter@nightclub.com",
+        "john.quinn@palantir.com"
+      ],
+      "sender_address": "john.quinn@palantir.com",
+      "content": "Will do, thanks! Have a great evening, Deborah.",
+      "creation_datetime_iso": "2024-07-22T20:20:00-07:00",
+      "status": "sent"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Deborah",
+      "last_name": "Shooter",
+      "full_name": "Deborah Shooter",
+      "phone_number": "408-555-0133",
+      "alias": "Deb",
+      "email": "deborah.shooter@nightclub.com",
+      "relationship": "Neighbor",
+      "address": "150 Club St, San José, CA 95112",
+      "company": "The Beat Club",
+      "job_title": "DJ",
+      "is_self": false,
+      "birthday": "1995-07-20T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you tell me if I responded to Deborah Shooter's last message?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know if they responded to their Deborah last message. I wonder who that is/ I should check their contacts to find out. I see one contact with that name, Deborah Shooter. It must be her. Okay, I'll check for a message thread between Deborah and the user to see if the user responded to the latest message received. I see that the user was the last person to respond in the message thread. I'll confirm that the user did respond and show the message sent by the user on July 22nd 2024 at 20:20 in that message thread.",
+  "milestones": "[\n                # Milestone 0 – The agent looks through messages to figure out the latest exchange\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the tool output contained the user’s reply\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"content\": {\n                                                \"value\": \"Will do, thanks!\",\n                                                \"partial\": True,  # allow the full sentence to be present\n                                            },\n                                            \"sender_address\": {\n                                                \"value\": \"john.quinn@palantir.com\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user that they already responded\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    # any acceptable phrasing confirming the reply\n                                    \"content\": [\n                                        (\n                                            \"Will do, thanks\",\n                                            \"You replied\",\n                                            \"You responded\",\n                                            \"Yes, you\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_messages\",\n    \"get_all_messages\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You can't remember if you responded to your neighbor, Deborah's last message after you opened it.  You don't want to be rude so you want to make sure you did. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-07-22T22:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

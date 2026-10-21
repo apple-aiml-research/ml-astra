@@ -1,0 +1,99 @@
+{
+  "task_id": "4e730c3c-eb93-4a3f-8a87-43b457dab80e",
+  "plot_id": 4,
+  "plot_summary": "Dawei Shen is the protagonist. On Monday, December 2, 2024 at 8 pm, self, Mia Tang were involved. Mia texts Dawei to remind him that the property tax is due in a week. Dawei adds a reminder on his calendar to pay property tax on Friday morning.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_4",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_high",
+    "calendar",
+    "messaging",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "Mia has told you that not to forget to pay your property tax.   Money has been really tight for a while.   You need to know how many days until the event you scheduled to pay the tax so that you can get the money ready for the payment.",
+  "reference_time": "2024-12-02T22:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The assistant tells the user that there are 4 days left until the \"Pay Property Tax\" event.",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_4_4e730c3c-eb93-4a3f-8a87-43b457dab80e_single_turn_1",
+  "messages": [
+    {
+      "conversation_name": "Mia Tang",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "mia.tang@accountingpros.com"
+      ],
+      "sender_address": "mia.tang@accountingpros.com",
+      "content": "Hi Dawei, just a friendly reminder that your property tax is due next week. Please make sure to process the payment to avoid any late fees.",
+      "creation_datetime_iso": "2024-12-02T20:00:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Pay Property Tax",
+      "start_datetime_iso": "2024-12-06T08:00:00-08:00",
+      "end_datetime_iso": "2024-12-06T08:30:00-08:00",
+      "attendees_names": [
+        "Dawei Shen"
+      ],
+      "location": "Orchard County, CA",
+      "reminder_time_ahead": "1 day",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-02T20:10:00-08:00",
+      "notes": "Reminder to pay the property tax to avoid late fees."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Mia",
+      "last_name": "Tang",
+      "full_name": "Mia Tang",
+      "phone_number": "+1 555-567-8901-2345",
+      "alias": "Mia",
+      "email": "mia.tang@accountingpros.com",
+      "relationship": "Accountant",
+      "address": "321 Finance Ave, Orchard County, CA 94022, USA",
+      "company": "Accounting Pros",
+      "job_title": "Accountant",
+      "is_self": false,
+      "birthday": "1986-10-10T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "How many days until the event that Mia reminded me about?",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "high",
+  "reasoning": "The user wants to know how many days until a specific event.\nI should determine which event they mean first.\nThe user has mentioned Mia, I can see one Mia in their contacts, Mia Tang.\nLooking at their messages I can see that in a message received December 2nd 2024 at 20:00 Mia reminded the user about property tax.\nI should return to the user's calendar and see if they have events with this keyword.\nI see one event with the title Pay Property Tax on December 6th 2024 from 08:00 until 08:30.\nToday is December 2nd 2024, there are 4 days remaining until this event.\nI should inform the user.",
+  "reference_time_str": "Today is Monday, December 2, 2024 or 2024-12-02T22:00:00-08:00.",
+  "milestones": "[\n                # 0: Search messages from Mia\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # 1: confirm message from her found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"conversation_name\": {\n                                                \"value\": \"Mia Tang\",\n                                                \"partial\": False,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-02T20:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 –  The agent looks up the calendar to find the property-tax event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # 3. Calendar Event Found\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Pay Property Tax\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-06T08:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=2,\n                        )\n                    ]\n                ),\n                # Milestone 4 –  The user is told how many days remain (≈4 days)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"4 days\",\n                                            \"four days\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1), (2, 3)]",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars",
+    "search_messages",
+    "get_all_messages",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. Mia has told you that not to forget to pay your property tax.  Money has been really tight for a while.  You need to know how many days until the event you scheduled to pay the tax so that you can get the money ready for the payment. ",
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\", \"search_messages\", \"get_all_messages\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-02T22:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

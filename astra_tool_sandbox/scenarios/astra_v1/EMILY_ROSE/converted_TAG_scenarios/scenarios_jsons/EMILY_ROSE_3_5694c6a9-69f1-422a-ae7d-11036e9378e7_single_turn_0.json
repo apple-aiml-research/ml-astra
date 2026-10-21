@@ -1,0 +1,84 @@
+{
+  "task_id": "5694c6a9-69f1-422a-ae7d-11036e9378e7",
+  "plot_id": 3,
+  "plot_summary": "Emily Rose is the protagonist. On Tuesday, December 3, 2024 at 1:00 PM, Theo Appleseed were involved. Discussion with Theo about logistics for community clean-up planned for the weekend and schedule the event. WhatsApp chat history with Theo detailing responsibilities for the clean-up event. Create a calendar event for weekend community clean-up event.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_3",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "whatsapp_messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "contact",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a text in your WhatsApp chat with Theo Appleseed.",
+  "reference_time": "2024-12-04T12:00:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "A text is sent in the WhatsApp chat with Theo Appleseed to say: Hey Theo, I got some bad news from Oliver. He said he's sick of being used by me and he will only provide refreshments at full retail price from now on. Do you think you could pay for that, pretty please? ",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_3_5694c6a9-69f1-422a-ae7d-11036e9378e7_single_turn_0",
+  "tool_allow_list": [
+    "get_all_whatsapp_messages",
+    "search_whatsapp_messages",
+    "send_whatsapp_message",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Emily Rose",
+        "Theo Appleseed"
+      ],
+      "participants_addresses": [
+        "+1 530-555-0123",
+        "+1 530-555-0133"
+      ],
+      "sender_name": "Theo Appleseed",
+      "sender_address": "+1 530-555-0133",
+      "creation_datetime_iso": "2024-12-03T13:10:00-08:00",
+      "content": "Fantastic! Thanks, Emily. I'll see you Thursday to finalize everything.",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "I need to send Theo a message in WhatsApp saying, Hey Theo, I got some bad news from Oliver. He said he's sick of being used by me and he will only provide refreshments at full retail price from now on. Do you think you could pay for that, pretty please? ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "User Emily Rose has provided the contents of a message to be sent via WhatsApp. The intended recipient is some called Theo. I see from contacts user's friend Theo Appleseed and I also see that user has been engaging in a chat with Theo Appleseed on WhatsApp. I shall prepare the message to Theo Appleseed in the WhatsApp chat and show it to user for approval. ",
+  "milestones": "[\n                # Milestone 0 – the agent tries to find the existing WhatsApp conversation\n                # or the correct contact before sending the message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_whatsapp_messages\",\n                                        \"get_all_whatsapp_messages\",\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – a new WhatsApp message was sent to Theo with the requested text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.WHATSAPP,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender_name\": \"Emily Rose\",\n                                    \"participants_addresses\": [\n                                        [\"+1 530-555-0123\", \"+1 530-555-0133\"]\n                                    ],\n                                    \"content\": \"bad news from Oliver\",\n                                    \"creation_datetime_iso\": \"2024-12-04T12:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"sender_name\": column_exact_match_similarity,\n                                \"participants_addresses\": column_list_subset_match_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare against initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[]",
+  "tool_allow_list_runtime": "[\n    \"send_whatsapp_message\",      # to create the outgoing message\n    \"search_whatsapp_messages\",   # to locate the chat thread\n    \"get_all_whatsapp_messages\",  # fallback listing of chats\n    \"search_contacts\",            # to resolve Theo’s contact if needed\n    \"get_all_contacts\",           # fallback listing of contacts\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to send a text in your WhatsApp chat with Theo Appleseed. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_whatsapp_messages\", \"search_whatsapp_messages\", \"send_whatsapp_message\", \"search_contacts\", \"get_all_contacts\"]",
+  "is_read_time": "2024-12-04T12:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

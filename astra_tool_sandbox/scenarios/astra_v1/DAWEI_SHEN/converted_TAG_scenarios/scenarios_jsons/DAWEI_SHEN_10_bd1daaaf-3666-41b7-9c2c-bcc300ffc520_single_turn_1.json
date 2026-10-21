@@ -1,0 +1,100 @@
+{
+  "task_id": "bd1daaaf-3666-41b7-9c2c-bcc300ffc520",
+  "plot_id": 10,
+  "plot_summary": "Dawei Shen is the protagonist. On Saturday, December 7, 2024 at 10 am, self, Jess Zimmer were involved. Dawei messages Jess to confirm their weekend brunch plans at her favorite café. Jess replies with the café address. Dawei updates the calendar with brunch details and saves Jess's message with the café address for navigation later.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_10",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "calendar",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You are navigating to the Café to meet Jess for brunch and want to bring up the address attached to the event.",
+  "reference_time": "2024-12-07T10:30:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. the user is informed that the location of the event 'Brunch with Jess' is Bluebird Café, 202 Main St, Orchard County, CA. "
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_10_bd1daaaf-3666-41b7-9c2c-bcc300ffc520_single_turn_1",
+  "messages": [
+    {
+      "conversation_name": "Jess Zimmer",
+      "participants_addresses": [
+        "dawei.shen@orchardtech.com",
+        "jess.zimmer@fintechstartup.com"
+      ],
+      "sender_address": "jess.zimmer@fintechstartup.com",
+      "content": "Yes, definitely! Let's meet at the Bluebird Café. It's at 202 Main St, Orchard County. See you at 11?",
+      "creation_datetime_iso": "2024-12-07T10:05:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Brunch with Jess",
+      "start_datetime_iso": "2024-12-07T11:00:00-08:00",
+      "end_datetime_iso": "2024-12-07T13:00:00-08:00",
+      "attendees_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "location": "Bluebird Café, 202 Main St, Orchard County, CA",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Dawei Shen",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-07T10:10:00-08:00",
+      "notes": "Brunch at Bluebird Café with Jess. Address: 202 Main St, Orchard County."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Where am I meeting Jess for brunch?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok, the user wants to know where they're meeting Jess for brunch. First I'll check user's calendar and see if there's any event that matches with this description. OK, I found an event 'Brunch with Jess' on December 07, I understant that's the event user asks about. I'll now check the location of that event. I see it's at Bluebird Café, 202 Main St, Orchard County, CA. I will inform user of the location.",
+  "reference_time_str": "Today is Saturday, December 7, 2024 or 2024-12-07T10:30:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – Calendar lookup tool used\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ]\n                ),\n                # Milestone 1 – find lunch event\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Brunch with Jess\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-07T11:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ]\n                ),\n                # Milestone 2 – The user is told the brunch address\n                Milestone(\n                    snapshot_constraints=[\n                        # The reply must mention “Bluebird”\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Bluebird\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_calendars",
+    "search_calendar_events",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "annotation_need_update": false,
+  "user_goal_prompt": "You are User A, Dawei Shen. You are navigating to the Café to meet Jess for brunch and want to bring up the address attached to the event. ",
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_calendars\", \"search_calendar_events\", \"get_all_messages\", \"search_messages\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-07T10:30:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

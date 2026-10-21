@@ -1,0 +1,94 @@
+{
+  "task_id": "03f9c6bb-90a0-48be-aab4-7c527db2c90c",
+  "plot_id": 19,
+  "plot_summary": "Theo Appleseed is the protagonist. On Sunday Morning, July 28, 2024 at 10 am, Cookie were involved. Solo time for reading and relaxation Theo texts Cookie afterwards to share about this book he was reading",
+  "tags": [
+    "THEO_APPLESEED",
+    "plot_19",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "contact",
+    "astra_core"
+  ],
+  "user_goal": "You want to message Michelle Barnes saying \"Hey Shelly! What was that book you were talking about at lunch the other day? You know the one about the lobster that turned into a centaur or whatever you said it was about?\"",
+  "reference_time": "2024-07-28T11:00:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "A message to Michelle Barnes contains \"Hey Shelly! What was that book you were talking about at lunch the other day? You know the one about the lobster that turned into a centaur or whatever you said it was about?\""
+    }
+  ],
+  "scenario_name": "THEO_APPLESEED_19_03f9c6bb-90a0-48be-aab4-7c527db2c90c_single_turn_1",
+  "tool_allow_list": [
+    "send_message",
+    "get_all_contacts",
+    "search_contacts"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Theo",
+      "last_name": "Appleseed",
+      "full_name": "Theo Appleseed",
+      "phone_number": "1234-5678-9101",
+      "alias": "Theo",
+      "email": "theo.appleseed@example.com",
+      "relationship": "Self",
+      "address": "123 Orchard Lane, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Applied Researcher",
+      "is_self": true,
+      "birthday": "1999-02-22T00:00:00-08:00"
+    },
+    {
+      "first_name": "Michelle",
+      "last_name": "Barnes",
+      "full_name": "Michelle Barnes",
+      "phone_number": "1234-5678-9105",
+      "alias": "Mich",
+      "email": "michelle.barnes@example.com",
+      "relationship": "Coworker",
+      "address": "126 Tech Park Blvd, Orchard County, CA",
+      "company": "Innovative Tech Solutions",
+      "job_title": "Researcher",
+      "is_self": false,
+      "birthday": "1992-02-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Cookie",
+      "last_name": "Watson",
+      "full_name": "Cookie Watson",
+      "phone_number": "1234-5678-9107",
+      "alias": "Cookie",
+      "email": "cookie.watson@example.com",
+      "relationship": "College Friend",
+      "address": "123 Market St, San Francisco, CA 94103",
+      "company": "McKinley Consulting",
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1997-07-12T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Can you contact my coworker Michelle and say \"Hey Shelly! What was that book you were talking about at lunch the other day? You know the one about the lobster that turned into a centaur or whatever you said it was about?\"",
+  "reasoning": "The user wants to message their coworker Michelle. I shall first find Michelle's contact information. I found Michelle Barnes from user's contact, and now I will send the message saying \"Hey Shelly! What was that book you were talking about at lunch the other day? You know the one about the lobster that turned into a centaur or whatever you said it was about?\" to Michelle Barnes.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "milestones": "[\n                # Milestone 0 – Agent looks up Michelle’s contact information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm Michelle Barnes was found in the contact-search results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Michelle Barnes\",\n                                                \"partial\": False,\n                                            },\n                                            \"email\": {\n                                                \"value\": \"michelle.barnes@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            # phone_number could also be checked, but email alone is sufficient\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – New message sent to Michelle containing the required text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Participants must include Michelle by either email or phone.\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"michelle.barnes@example.com\",\n                                                \"1234-5678-9105\",\n                                            ),\n                                        ]\n                                    ],\n                                    # Ensure the key requested phrase appears in the message body\n                                    \"content\": \"Shelly\",\n                                    \"creation_datetime_iso\": \"2024-07-28T11:00:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # Compare against initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search → confirm Michelle found\n                # Milestone 2 is independent (uses reference_milestone_node_index=-1)\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_contacts\",\n    \"get_all_contacts\",\n    \"send_message\",\n]",
+  "user_goal_prompt": "You are User A, Theo Appleseed. You want to message Michelle Barnes saying \"Hey Shelly! What was that book you were talking about at lunch the other day? You know the one about the lobster that turned into a centaur or whatever you said it was about?\" ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"send_message\", \"get_all_contacts\", \"search_contacts\"]",
+  "is_read_time": "2024-07-28T11:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

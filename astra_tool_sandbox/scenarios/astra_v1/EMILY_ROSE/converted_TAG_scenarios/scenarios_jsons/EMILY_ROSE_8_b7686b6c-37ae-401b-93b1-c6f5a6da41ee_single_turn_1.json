@@ -1,0 +1,114 @@
+{
+  "task_id": "b7686b6c-37ae-401b-93b1-c6f5a6da41ee",
+  "plot_id": 8,
+  "plot_summary": "Emily Rose is the protagonist. On Friday, December 6, 2024 at 2:00 PM, Chloe Waters, Sophia Taylor were involved. Community meeting discussing feedback on past events and brainstorming future initiatives. Survey results and feedback received via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_8",
+    "calendar",
+    "referential_complexity_high",
+    "informational_complexity_high",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "email",
+    "astra_core"
+  ],
+  "user_goal": "You need to schedule time to compile the feedback from the community meeting.",
+  "reference_time": "2024-12-06T16:15:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "1. An event called Compile feedback from 13:00-14:00 on 9 December 2024 is created with \"Chloe Waters\" and \"Sophia Taylor\" as invitees.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_8_b7686b6c-37ae-401b-93b1-c6f5a6da41ee_single_turn_1",
+  "tool_allow_list": [
+    "create_calendar_event",
+    "get_all_calendars",
+    "search_calendar_events",
+    "search_emails",
+    "get_all_emails"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [
+    {
+      "subject": "Thank You for Your Feedback!",
+      "sender_address": "emily.rose@orchardcommunity.org",
+      "recipients_addresses": [
+        "chloe.waters@orchardmail.com",
+        "sophia.taylor@orchardbusiness.org"
+      ],
+      "cc_addresses": null,
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:00:00-08:00",
+      "body": "Dear Chloe and Sophia,\n\nI hope this message finds you well. I wanted to extend my heartfelt thanks for your invaluable feedback during today's community meeting. Your insights are crucial as we plan our future events and initiatives.\n\nWe are currently compiling all the feedback and will share a detailed plan by next week. Your continued support and active participation are what make our community events successful and meaningful.\n\nThank you once again for your dedication to our community.\n\nWarm regards,\nEmily Rose\nEvent Coordinator, Orchard County Community Center",
+      "attachments": null,
+      "status": "sent"
+    },
+    {
+      "subject": "Re: Thank You for Your Feedback!",
+      "sender_address": "chloe.waters@orchardmail.com",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "sophia.taylor@orchardbusiness.org"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:30:00-08:00",
+      "body": "Hello Emily,\n\nThank you for your kind words! It was a pleasure to share our thoughts and see how passionate you are about making our community a better place. We look forward to seeing the plans and are excited to be a part of the upcoming events.\n\nBest regards,\nChloe Waters",
+      "attachments": null,
+      "status": "read"
+    },
+    {
+      "subject": "Re: Thank You for Your Feedback!",
+      "sender_address": "sophia.taylor@orchardbusiness.org",
+      "recipients_addresses": [
+        "emily.rose@orchardcommunity.org"
+      ],
+      "cc_addresses": [
+        "chloe.waters@orchardmail.com"
+      ],
+      "bcc_addresses": null,
+      "creation_datetime_iso": "2024-12-06T15:45:00-08:00",
+      "body": "Hi Emily,\n\nIt was indeed a great meeting today. Thank you for organizing it and for acknowledging our contributions. We are eager to see how our feedback will be implemented and are ready to assist wherever needed.\n\nWarmest regards,\nSophia Taylor",
+      "attachments": null,
+      "status": "read"
+    }
+  ],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00",
+      "creation_datetime_iso": "2024-06-01T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Set aside time next Monday to compile feedback from the community meeting with the folks for an hour at 1",
+  "referential_complexity": "high",
+  "informational_complexity": "high",
+  "functional_complexity": "moderate",
+  "reasoning": "Ok so the user wants to set aside time to compile feedback for an hour at 1 next Monday with the folks attending the community meeting. First I need to find out who are the folks mentioned in the query. There're no such community meeting in the user's calendar, however, I found an email thread with \"chloe.waters@orchardmail.com\" and \"sophia.taylor@orchardbusiness.org\" were discussing the community meeting. Second I'll establish the name of the event which I will keep simple and the intention of the event clear. I will title the event Compile Feedback. Next is the time which the user gives. I will now create the event \"Compile Feedback\" at 13:00-14:00 on 9 December 2024. ",
+  "insufficient_context": "no",
+  "misinformation": "no",
+  "milestones": "[\n                # Milestone 0 – search for community meeting\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"get_all_emails\",\n                                        \"search_emails\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved email is for community meeting\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"emily.rose@orchardcommunity.org\",\n                                                \"partial\": False,\n                                            },\n                                            \"subject\": {\n                                                \"value\": \"Thank You for Your Feedback!\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Verify a new calendar event for compiling feedback from 17:00–18:00 on Dec 6, 2024 exists\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"feedback\",\n                                    \"start_datetime_iso\": \"2024-12-09T13:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-09T14:00:00-08:00\",\n                                    \"attendees_names\": [\n                                        [\n                                            \"chloe.waters@orchardmail.com\",  # Chloe not in contacts using email\n                                            \"sophia.taylor@orchardbusiness.org\",  # Sophia not in contacts using email\n                                        ]\n                                    ],\n                                    \"creation_datetime_iso\": \"2024-12-06T16:15:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow slight variations like \"Compile feedback from community meeting\"\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial state\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "is_read_time": "2024-12-06T16:15:00-08:00",
+  "user_goal_prompt": "You are User A, Emily Rose. You need to schedule time to compile the feedback from the community meeting.  ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"create_calendar_event\", \"get_all_calendars\", \"search_calendar_events\", \"search_emails\", \"get_all_emails\"]"
+}

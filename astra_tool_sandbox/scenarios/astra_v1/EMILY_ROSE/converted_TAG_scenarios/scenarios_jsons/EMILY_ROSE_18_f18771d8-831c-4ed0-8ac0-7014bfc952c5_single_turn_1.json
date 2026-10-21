@@ -1,0 +1,81 @@
+{
+  "task_id": "f18771d8-831c-4ed0-8ac0-7014bfc952c5",
+  "plot_id": 18,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 14, 2024 at 12:00 PM, Daniel Kim were involved. Meeting with Daniel at his cafe discussing upcoming events. Menu and resource support confirmed via email.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_18",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to be reminded of the time you're meeting Daniel Kim at the Cafe tomorrow, as you're wondering how much time you have tomorrow morning to brainstorm ideas beforehand, to bring up when you meet.",
+  "reference_time": "2024-12-13T20:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The time of the event 'Meeting with Daniel Kim at Local Cafe', on Saturday, December 14th 2024, at 12:00-13:00 is shown to the user."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_18_f18771d8-831c-4ed0-8ac0-7014bfc952c5_single_turn_1",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Meeting with Daniel Kim at Local Cafe",
+      "start_datetime_iso": "2024-12-14T12:00:00-08:00",
+      "end_datetime_iso": "2024-12-14T13:00:00-08:00",
+      "attendees_names": [
+        "Daniel Kim",
+        "Emily Rose"
+      ],
+      "location": "Local Cafe, Orchard County",
+      "reminder_time_ahead": "1 hour ahead",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-12-10T14:00:00-08:00",
+      "notes": "Discuss and confirm menu and resource support for the upcoming community events."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "reasoning": "The user wants to know what time their coffee thing is at. I wonder what they're referring to. I should check their calendar to figure it out. I see an event called 'Meeting with Daniel Kim at Local Cafe' happening tomorrow, Saturday, December 14th 2024, at 12:00-13:00. Meeting at a cafe is associated with having coffee so I think this is the event they're referring to. I'll tell them the details, including the time of this event now.",
+  "query": "What time is my coffee thing at? ",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "referential_complexity": "high",
+  "milestones": "[\n                # Milestone 0 – The agent looks up calendar events (information-retrieval step)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirms the café meeting with Daniel Kim is returned from the tool call in Milestone 0\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Meeting with Daniel Kim at Local Cafe\",\n                                                \"partial\": False,\n                                            },\n                                            \"start_datetime_iso\": {\n                                                \"value\": \"2024-12-14T12:00:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the correct meeting time (user-facing response)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"12:00\",\n                                            \"12 pm\",\n                                            \"12 p.m.\",\n                                            \"noon\",\n                                            \"12-1\",\n                                            \"12-1\",\n                                            \"12–1\",\n                                            \"12pm\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup → verify event found\n                (1, 2),  # Event found → user informed of time\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to be reminded of the time you're meeting Daniel Kim at the Cafe tomorrow, as you're wondering how much time you have tomorrow morning to brainstorm ideas beforehand, to bring up when you meet. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-13T20:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

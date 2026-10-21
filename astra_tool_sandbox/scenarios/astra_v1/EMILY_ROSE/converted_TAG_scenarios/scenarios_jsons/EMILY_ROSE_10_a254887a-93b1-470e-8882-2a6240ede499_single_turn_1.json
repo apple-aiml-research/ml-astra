@@ -1,0 +1,82 @@
+{
+  "task_id": "a254887a-93b1-470e-8882-2a6240ede499",
+  "plot_id": 10,
+  "plot_summary": "Emily Rose is the protagonist. On Saturday, December 7, 2024 at 6:00 PM, Linda Rose were involved. Attending the community holiday party where Linda provides homemade treats. Community event pictures uploaded and shared on social media.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_10",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "contact",
+    "messaging",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to send a thank you message to your Mom, Linda for providing the community holiday party last night with her delicious homemade treats.",
+  "reference_time": "2024-12-08T08:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. A message is sent to Linda Rose with the text \"Thank you again for last night. Everyone thought your treats were delicious at the party!\""
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_10_a254887a-93b1-470e-8882-2a6240ede499_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages",
+    "send_message"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    },
+    {
+      "first_name": "Linda",
+      "last_name": "Rose",
+      "full_name": "Linda Rose",
+      "phone_number": "+1 530-555-0126",
+      "alias": "Culinary Mom",
+      "email": "linda.rose@homemadetreats.com",
+      "relationship": "Mother",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Homemade Treats",
+      "job_title": "Culinary Artist",
+      "is_self": false,
+      "birthday": "1967-07-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Send the text \"Thank you again for last night. Everyone thought your treats were delicious at the party!\" to my favorite baker. ",
+  "informational_complexity": "moderate",
+  "referential_complexity": "high",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to send the text \"Thank you again for last night. Everyone thought your treats were delicious!\" to their favorite baker. I wonder who that could be. I'll check their contacts first to see what I can find out. I see one contact, Linda Rose, is listed as the user's mother and a culinary artist. Given this familial relationship and baking related career I think this could be who the user is referring to. I also see from the user's messages that Linda prepared some treats for an event recently for the user. I'll draft the message \"Thank you again for last night. Everyone thought your treats were delicious!\" to Linda Rose and ask the user to confirm before sending.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up contacts to identify “favorite baker”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_contacts\",\n                                        \"get_all_contacts\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Agent’s contact-search result contains Linda Rose\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"full_name\": {\n                                                \"value\": \"Linda Rose\",\n                                                \"partial\": False,\n                                            },\n                                            \"phone_number\": {\n                                                \"value\": \"+1 530-555-0126\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – A new outgoing message is sent to Linda with the thank-you text\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.MESSAGING,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    # Must include Linda’s number in the participants\n                                    \"participants_addresses\": [\n                                        [\n                                            (\n                                                \"+1 530-555-0126\",\n                                                \"linda.rose@homemadetreats.com\",\n                                            )\n                                        ]\n                                    ],\n                                    # Body must contain the required thank-you phrase\n                                    \"content\": \"Thank you\",\n                                    \"creation_datetime_iso\": \"2024-12-08T08:00:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"participants_addresses\": column_list_tuple_subset_contains_similarity,\n                                \"content\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to initial DB state\n                        )\n                    ],\n                    guardrail_database_exclusion_list=[DatabaseNamespace.SANDBOX],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Contact search → verify Linda Rose found\n            ]",
+  "tool_allow_list_runtime": "[\n    \"send_message\",\n    \"search_contacts\",\n    \"get_all_contacts\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You want to send a thank you message to your Mom, Linda for providing the community holiday party last night with her delicious homemade treats. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\", \"send_message\"]",
+  "is_read_time": "2024-12-08T08:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

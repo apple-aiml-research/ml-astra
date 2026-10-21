@@ -1,0 +1,64 @@
+{
+    "3": [
+        {
+            "sender": "+1 530-555-0123",
+            "sender_name": "Emily Rose",
+            "recipient": "+1 530-555-0133",
+            "recipient_name": "Theo Appleseed",
+            "group_name": "",
+            "message": "Hi Theo, just checking in about the community clean-up this weekend. Do you have the list of supplies we need?",
+            "creation_time": "2024-12-03T13:00:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 530-555-0133",
+            "sender_name": "Theo Appleseed",
+            "recipient": "+1 530-555-0123",
+            "recipient_name": "Emily Rose",
+            "group_name": "",
+            "message": "Hey Emily! Yes, I've got the list ready. We'll need gloves, trash bags, and a few rakes.",
+            "creation_time": "2024-12-03T13:02:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 530-555-0123",
+            "sender_name": "Emily Rose",
+            "recipient": "+1 530-555-0133",
+            "recipient_name": "Theo Appleseed",
+            "group_name": "",
+            "message": "Perfect! Should we ask volunteers to bring any of these items if they have them?",
+            "creation_time": "2024-12-03T13:04:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 530-555-0133",
+            "sender_name": "Theo Appleseed",
+            "recipient": "+1 530-555-0123",
+            "recipient_name": "Emily Rose",
+            "group_name": "",
+            "message": "Good idea, Emily. I'll update the event flyer to include that info. Also, can you handle the refreshments?",
+            "creation_time": "2024-12-03T13:06:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 530-555-0123",
+            "sender_name": "Emily Rose",
+            "recipient": "+1 530-555-0133",
+            "recipient_name": "Theo Appleseed",
+            "group_name": "",
+            "message": "Absolutely, I'll coordinate with Oliver at the Daily Brew Cafe. He's always happy to help out.",
+            "creation_time": "2024-12-03T13:08:00",
+            "status": ""
+        },
+        {
+            "sender": "+1 530-555-0133",
+            "sender_name": "Theo Appleseed",
+            "recipient": "+1 530-555-0123",
+            "recipient_name": "Emily Rose",
+            "group_name": "",
+            "message": "Fantastic! Thanks, Emily. I'll see you Thursday to finalize everything.",
+            "creation_time": "2024-12-03T13:10:00",
+            "status": ""
+        }
+    ]
+}

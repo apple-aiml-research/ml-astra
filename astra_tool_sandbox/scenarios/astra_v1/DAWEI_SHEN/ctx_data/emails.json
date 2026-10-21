@@ -1,0 +1,194 @@
+{
+    "2": [
+        {
+            "subject": "Updated Rehearsal Schedule",
+            "sender": "francis.wagner@orchardtheater.com",
+            "recipients": "dawei.shen@orchardtech.com, charles.wilde@orchardtheater.com, vickie.lee@orchardtheater.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-01T19:58:00",
+            "body": "Hello everyone,\n\nPlease find attached the updated schedule for tonight's rehearsal. Let me know if there are any issues.\n\nBest,\nFrancis",
+            "attachment": "Rehearsal_Schedule_Updated_2024-12-01.pdf"
+        }
+    ],
+    "3": [
+        {
+            "subject": "Revised Draft for Virtual Assistant Algorithm",
+            "sender": "michelle.barnes@orchardtech.com",
+            "recipients": "dawei.shen@orchardtech.com",
+            "cc": "theo.appleseed@orchardtech.com",
+            "bcc": "",
+            "creation_time": "2024-12-02T09:00:00",
+            "body": "Hi Dawei, I've attached the revised draft for the virtual assistant algorithm. Please review and let us know your thoughts. Best, Michelle",
+            "attachment": "Revised_Algorithm_Draft.pdf"
+        },
+        {
+            "subject": "Re: Revised Draft for Virtual Assistant Algorithm",
+            "sender": "theo.appleseed@orchardtech.com",
+            "recipients": "dawei.shen@orchardtech.com, michelle.barnes@orchardtech.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-02T09:15:00",
+            "body": "Hi all, I suggest adding an additional improvement to the section on user interaction. I've noted this in the draft attached. Cheers, Theo",
+            "attachment": "Revised_Algorithm_Draft_with_Comments.pdf"
+        },
+        {
+            "subject": "Re: Revised Draft for Virtual Assistant Algorithm",
+            "sender": "dawei.shen@orchardtech.com",
+            "recipients": "michelle.barnes@orchardtech.com, theo.appleseed@orchardtech.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-02T09:30:00",
+            "body": "Thanks, Michelle and Theo. I've reviewed the draft and your comments. I approve the changes. Let's schedule a meeting for Wednesday to discuss further. Best, Dawei",
+            "attachment": ""
+        }
+    ],
+    "6": [
+        {
+            "subject": "Visit Details for Shanghai Trip",
+            "sender": "dawei.shen@orchardtech.com",
+            "recipients": "hua.shen@shenelectronics.cn, yuting.tao@retired.cn",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-03T21:00:00",
+            "body": "Dear Mom and Dad,\n\nIt was great catching up today! As promised, I'm sending you the details of my upcoming trip to Shanghai. I'll be arriving on December 20th and staying until January 5th. I'm looking forward to spending the holidays with you both and catching up in person.\n\nLet me know if there's anything special you'd like to do during my visit.\n\nWarm regards,\nDawei",
+            "attachment": ""
+        }
+    ],
+    "7": [
+        {
+            "subject": "Follow-up: Strategy Meeting Preparation",
+            "sender": "kevin.chen@orchardtech.com",
+            "recipients": "dawei.shen@orchardtech.com, stefan.mustermann@orchardtech.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-04T17:00:00",
+            "body": "Hi Dawei and Stefan,\n\nThank you for the productive discussion today. As agreed, I will take the lead on the data integration part and ensure everything is aligned for our Friday's strategy meeting. Please find attached the action items list and let me know if there are any further updates.\n\nBest regards,\nKevin",
+            "attachment": "Strategy_Meeting_Action_Items.pdf"
+        }
+    ],
+    "9": [
+        {
+            "subject": "Invitation: Tech Panel Discussion on December 10",
+            "sender": "jeff.bing@bingelectronics.com",
+            "recipients": "dawei.shen@orchardtech.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-06T10:10:00",
+            "body": "Hello Dawei,\n\nI hope this message finds you well. I'm excited to invite you to a tech panel discussion I'm hosting next Tuesday, December 10, at the Tech Hub Conference Center here in Orchard County. We'll be discussing the latest trends and innovations in consumer electronics. Your insights would be incredibly valuable, and I would be thrilled if you could join us.\n\nPlease find the event details attached. Let me know if you can make it!\n\nBest regards,\nJeff Bing",
+            "attachment": "Tech_Panel_Details.pdf"
+        }
+    ],
+    "13": [
+        {
+            "subject": "Dataset Update for Machine Learning Model",
+            "sender": "michelle.barnes@orchardtech.com",
+            "recipients": "dawei.shen@orchardtech.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-09T08:00:00",
+            "body": "Hi Dawei,\n\nI hope this email finds you well. I am writing to share the latest updates on the dataset we've been working on for our machine-learning model. Attached you'll find the updated files along with a few key questions that we need to address:\n\n1. How do we intend to handle the increasing volume of unstructured data?\n2. Are there specific algorithms you suggest we explore for better accuracy?\n3. What are your thoughts on the timeline for the next phase of testing?\n\nLooking forward to discussing these during our team sync.\n\nBest regards,\nMichelle",
+            "attachment": "Updated_Dataset_Questions.pdf"
+        }
+    ],
+    "15": [
+        {
+            "subject": "Thank You for Attending the Tech Panel",
+            "sender": "jeff.bing@bingelectronics.com",
+            "recipients": "dawei.shen@orchardtech.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-10T12:00:00",
+            "body": "Hi Dawei,\n\nThank you for attending today's tech panel discussion. Your insights and questions greatly contributed to the depth of our discussion. Please find attached the recording of the session.\n\nBest regards,\nJeff Bing",
+            "attachment": "Tech_Panel_Recording_2024-12-10.mp4"
+        },
+        {
+            "subject": "Re: Thank You for Attending the Tech Panel",
+            "sender": "dawei.shen@orchardtech.com",
+            "recipients": "jeff.bing@bingelectronics.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-10T12:30:00",
+            "body": "Hello Jeff,\n\nThank you for hosting such an engaging panel. The discussion was incredibly enlightening. I've shared the session recording with my team, and we are all excited to explore some of the ideas presented.\n\nBest,\nDawei",
+            "attachment": ""
+        }
+    ],
+    "17": [
+        {
+            "subject": "Ticket Confirmation for Our Play Date",
+            "sender": "dawei.shen@orchardtech.com",
+            "recipients": "jess.zimmer@fintechstartup.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-11T20:15:00",
+            "body": "Hi Jess, I've booked the tickets for us. Here's the confirmation [Ticket Confirmation PDF]. Looking forward to it!",
+            "attachment": "TicketConfirmation.pdf"
+        }
+    ],
+    "18": [
+        {
+            "subject": "Research Progress Update",
+            "sender": "kevin.chen@orchardtech.com",
+            "recipients": "dawei.shen@orchardtech.com",
+            "cc": "stefan.mustermann@orchardtech.com",
+            "bcc": "",
+            "creation_time": "2024-12-12T09:00:00",
+            "body": "Hi Dawei,\n\nI wanted to update you on the current status of our research project. We've made significant progress on the algorithms, and I've attached the latest results for your review. Please have a look and let me know your thoughts.\n\nBest regards,\nKevin",
+            "attachment": "Research_Results_Dec2024.pdf"
+        },
+        {
+            "subject": "Re: Research Progress Update",
+            "sender": "stefan.mustermann@orchardtech.com",
+            "recipients": "dawei.shen@orchardtech.com, kevin.chen@orchardtech.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-12T09:15:00",
+            "body": "Hello Dawei and Kevin,\n\nThank you for the update, Kevin. I've added an updated graph to the results which should help in visualizing the data trends more clearly. Please see the attached file and let me know if you need further modifications.\n\nBest,\nStefan",
+            "attachment": "Updated_Graphs_Dec2024.pdf"
+        }
+    ],
+    "19": [
+        {
+            "subject": "Receipt for Stage Props Order",
+            "sender": "dawei.shen@orchardtech.com",
+            "recipients": "francis.wagner@orchardtheater.com",
+            "cc": "",
+            "bcc": "",
+            "creation_time": "2024-12-12T19:30:00",
+            "body": "Hi Francis, I've placed the order for the stage props as discussed. Attached is the receipt for our records. Best, Dawei",
+            "attachment": "Order_Receipt_12122024.pdf"
+        }
+    ],
+    "20": [
+        {
+            "subject": "Action Items from Team Review",
+            "sender": "dawei.shen@orchardtech.com",
+            "recipients": "michelle.barnes@orchardtech.com",
+            "cc": "kevin.chen@orchardtech.com",
+            "bcc": "",
+            "creation_time": "2024-12-13T10:05:00",
+            "body": "Hi Michelle, Following our team review today, I'm assigning you the task of analyzing the latest data trends for our upcoming project. Please prepare a detailed report by next Friday. Let me know if you need any specific data sets or further clarifications. Best, Dawei",
+            "attachment": ""
+        },
+        {
+            "subject": "Action Items from Team Review",
+            "sender": "dawei.shen@orchardtech.com",
+            "recipients": "kevin.chen@orchardtech.com",
+            "cc": "michelle.barnes@orchardtech.com",
+            "bcc": "",
+            "creation_time": "2024-12-13T10:10:00",
+            "body": "Hi Kevin, As discussed in today's review, please schedule a time next week to go over the development needs for the new features we're planning to implement. I would like to ensure we're on track with the project timeline. Regards, Dawei",
+            "attachment": ""
+        },
+        {
+            "subject": "Re: Action Items from Team Review",
+            "sender": "michelle.barnes@orchardtech.com",
+            "recipients": "dawei.shen@orchardtech.com",
+            "cc": "kevin.chen@orchardtech.com",
+            "bcc": "",
+            "creation_time": "2024-12-13T10:15:00",
+            "body": "Hello Dawei, I've received the action items and will start working on the data analysis report. I'll reach out if I need any additional data. Thanks, Michelle",
+            "attachment": ""
+        }
+    ]
+}

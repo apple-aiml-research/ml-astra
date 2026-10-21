@@ -1,0 +1,83 @@
+{
+  "task_id": "c8002e1c-8f22-4387-9ac1-c886b067fd69",
+  "plot_id": 17,
+  "plot_summary": "Dawei Shen is the protagonist. On Wednesday, December 11, 2024 at 8 pm, self, Jess Zimmer were involved. Dawei receives a WhatsApp message from Jess, sharing a link to a new play they might enjoy. She asks if they can plan to see it. Dawei books tickets online and sends Jess the confirmation.",
+  "tags": [
+    "DAWEI_SHEN",
+    "plot_17",
+    "referential_complexity_moderate",
+    "informational_complexity_low",
+    "functional_complexity_low",
+    "calendar",
+    "contact",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You want to add the play to your calendar.",
+  "reference_time": "2024-12-11T20:05:00-08:00",
+  "success_conditions": [
+    {
+      "input_text": "The event 'Play Date with Jess' is added to the calendar on December 21st 2024 from 20:00 to 23:00 and Jess Zimmer is included as an attendee.",
+      "statefullness": "Stateful"
+    }
+  ],
+  "scenario_name": "DAWEI_SHEN_17_c8002e1c-8f22-4387-9ac1-c886b067fd69_single_turn_0",
+  "messages": [],
+  "whatsapp_messages": [
+    {
+      "participants_names": [
+        "Dawei Shen",
+        "Jess Zimmer"
+      ],
+      "participants_addresses": [
+        "+1 555-123-4567-8901",
+        "+1 555-123-4567-8902"
+      ],
+      "sender_name": "Jess Zimmer",
+      "sender_address": "+1 555-123-4567-8902",
+      "creation_datetime_iso": "2024-12-11T20:00:00-08:00",
+      "content": "Hey Dawei, check out this play I found! Looks fascinating and right up our alley. How about we plan to see it next weekend? Here’s the link: [Play Link]",
+      "status": "read"
+    }
+  ],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Jess",
+      "last_name": "Zimmer",
+      "full_name": "Jess Zimmer",
+      "phone_number": "+1 555-123-4567-8902",
+      "alias": "Jess",
+      "email": "jess.zimmer@fintechstartup.com",
+      "relationship": "Girlfriend",
+      "address": "456 Fintech Drive, Orchard County, CA 94022, USA",
+      "company": "Fintech Startup",
+      "job_title": "Product Manager",
+      "is_self": false,
+      "birthday": "1994-02-14T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Add an event called 'Play Date with Jess' to my calendar on 21 December 2024 between 8pm and 11pm with Jess as an invitee.",
+  "referential_complexity": "moderate",
+  "informational_complexity": "low",
+  "functional_complexity": "low",
+  "reasoning": "The user wants me to add an event to the calendar. The event is to take place on December 21st 2024. It takes place between 8pm and 11pm. I'll change that to the 24-hour time. It will take place between 20:00 and 23:00. I'll add that to the calendar and name the event 'Play Date with Jess' as requested.\nThe user wants someone called Jess to be added to the event. In their contacts there is only one Jess, Jess Zimmer, so I'll add them to the event.\nThe event is added.",
+  "reference_time_str": "Today is Wednesday, December 11, 2024 or 2024-12-11T20:05:00-08:00.",
+  "milestones": "[\n                # Milestone 0 – a new calendar event matching the play is added\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"Play Date with Jess\",\n                                    \"start_datetime_iso\": \"2024-12-21T20:00:00-08:00\",\n                                    \"end_datetime_iso\": \"2024-12-21T23:00:00-08:00\",\n                                    \"attendees_names\": [[\"Jess Zimmer\"]],\n                                    \"creation_datetime_iso\": \"2024-12-11T20:05:00-08:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"attendees_names\": column_list_subset_match_similarity,\n                                \"start_datetime_iso\": column_contains_similarity,\n                                \"end_datetime_iso\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare with initial state\n                        ),\n                    ]\n                ),\n            ]",
+  "milestone_edge_list": null,
+  "tool_allow_list": [
+    "create_calendar_event",
+    "search_contacts",
+    "get_all_contacts"
+  ],
+  "annotation_need_update": true,
+  "user_goal_prompt": "You are User A, Dawei Shen. You want to add the play to your calendar. ",
+  "tool_allow_list_str": "[\"create_calendar_event\", \"search_contacts\", \"get_all_contacts\"]",
+  "minefields": null,
+  "is_read_time": "2024-12-11T20:05:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

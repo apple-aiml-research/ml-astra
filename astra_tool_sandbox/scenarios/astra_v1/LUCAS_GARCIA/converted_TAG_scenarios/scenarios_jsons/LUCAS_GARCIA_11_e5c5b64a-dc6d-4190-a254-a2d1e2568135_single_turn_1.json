@@ -1,0 +1,93 @@
+{
+  "task_id": "e5c5b64a-dc6d-4190-a254-a2d1e2568135",
+  "plot_id": 11,
+  "plot_summary": "Lucas Garcia is the protagonist. On Saturday, December 7, 2024 at 9 am, Olivia Clark were involved. Lucas provides a motivational talk at the local gym attended by Olivia. Messages exchanged with Olivia post-event for feedback.",
+  "tags": [
+    "LUCAS_GARCIA",
+    "plot_11",
+    "messaging",
+    "contact",
+    "referential_complexity_high",
+    "informational_complexity_moderate",
+    "functional_complexity_moderate",
+    "misinformation_no",
+    "insufficient_context_no",
+    "astra_core"
+  ],
+  "user_goal": "You have a little bit of a crush on Olivia, who attends the same gym as you and also goes to your motivational talks.   You texted her earlier asking for her thoughts on your talk today.   You're eager to hear her response and get back to her as soon as she responds.",
+  "reference_time": "2024-12-07T11:17:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. The message from Olivia Clark, received on December 7th, 2024, at 11:15 is shown to the user. "
+    }
+  ],
+  "scenario_name": "LUCAS_GARCIA_11_e5c5b64a-dc6d-4190-a254-a2d1e2568135_single_turn_1",
+  "tool_allow_list": [
+    "get_all_contacts",
+    "search_contacts",
+    "get_all_messages",
+    "search_messages"
+  ],
+  "messages": [
+    {
+      "conversation_name": "Olivia Clark",
+      "participants_addresses": [
+        "lucas.garcia@example.com",
+        "olivia.clark@example.com"
+      ],
+      "sender_address": "olivia.clark@example.com",
+      "content": "Hi Lucas! It was fantastic, truly motivating. I particularly appreciated the segment on maintaining mental resilience. It was just what I needed to hear.",
+      "creation_datetime_iso": "2024-12-07T11:15:00-08:00",
+      "status": "read"
+    }
+  ],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [],
+  "contacts": [
+    {
+      "first_name": "Lucas",
+      "last_name": "Garcia",
+      "full_name": "Lucas Garcia",
+      "phone_number": "+1 12345-6789-1000-1234",
+      "alias": "Coach Lucas",
+      "email": "lucas.garcia@example.com",
+      "relationship": "Self",
+      "address": "129 Fitness Blvd, Orchard County, CA, USA",
+      "company": "Orchard County Fitness Center",
+      "job_title": "Gym Coach and Personal Trainer",
+      "is_self": true,
+      "birthday": "1991-09-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Olivia",
+      "last_name": "Clark",
+      "full_name": "Olivia Clark",
+      "phone_number": "+1 12345-6789-1000-7531",
+      "alias": "Gym Member",
+      "email": "olivia.clark@example.com",
+      "relationship": "Local gym member",
+      "address": "89 Gym St, Orchard County, CA, USA",
+      "company": null,
+      "job_title": null,
+      "is_self": false,
+      "birthday": "1992-09-30T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Did Liv reply?",
+  "referential_complexity": "high",
+  "informational_complexity": "moderate",
+  "functional_complexity": "moderate",
+  "reasoning": "The user wants to know if Liv replied. I wonder who that is. I'll check their contacts to try and figure it out. I don't see a contact with that name. However, I see one contact with the name, Olivia Clark. I know that Liv can be used to refer to someone called Olivia. It must be her. I'll check the user's messages for new messages from Olivia. I see one new message from Olivia Clark, received on December 7th, 2024, at 11:15. I'll show that message to the user now. ",
+  "milestones": "[\n                # Milestone 0 – Agent tries to find if “Liv/Olivia” replied by looking at the messages database\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_messages\",\n                                        \"get_all_messages\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Confirm the retrieved messages include the reply from Olivia Clark\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"sender_address\": {\n                                                \"value\": \"olivia.clark@example.com\",\n                                                \"partial\": False,\n                                            },\n                                            # Only need a snippet of the content to confirm it is the correct reply\n                                            \"content\": {\n                                                \"value\": \"It was fantastic\",\n                                                \"partial\": True,\n                                            },\n                                            \"creation_datetime_iso\": {\n                                                \"value\": \"2024-12-07T11:15:00-08:00\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity,\n                            },\n                            reference_milestone_node_index=0,  # Parse output of Milestone 0\n                        )\n                    ],\n                ),\n                # Milestone 2 – The agent tells the user that Olivia (Liv) replied and relays her message\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"It was fantastic, truly motivating\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Check that the user-facing answer quotes or paraphrases Olivia’s reply\n                                \"content\": column_contains_similarity,\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),\n                (1, 2),\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_contacts\",\n    \"search_contacts\",\n    \"get_all_messages\",\n    \"search_messages\",\n]",
+  "user_goal_prompt": "You are User A, Lucas Garcia. You have a little bit of a crush on Olivia, who attends the same gym as you and also goes to your motivational talks.  You texted her earlier asking for her thoughts on your talk today.  You're eager to hear her response and get back to her as soon as she responds. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_contacts\", \"search_contacts\", \"get_all_messages\", \"search_messages\"]",
+  "is_read_time": "2024-12-07T11:17:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

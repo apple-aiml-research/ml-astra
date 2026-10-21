@@ -1,0 +1,94 @@
+{
+  "task_id": "cea62a45-1010-4742-8f4f-ae8cd0c48887",
+  "plot_id": 2,
+  "plot_summary": "John Quinn is the protagonist. On Monday, July 22, 2024 at 11:30 am, Apricot Sweeney were involved. John plans an expensive surprise dinner date for his girlfriend on Thursday  1. John wants to surprise Apricot with a romantic dinner at a Michelin star restaurant called Chef's Bite. 2. John has an iMessage correspondence with the restaurant to book a table for two. 3. This results in an extended back and forth of suggesting possible times since the restaurant is heavily booked, but finally agreeing on a suitable day and time on Thursday late evening. 4. John also creates an event, at the time agreed with the restaurant, mentioning a low key greek restaurant that is next door to the Michelin one and invites Apricot to it, without any mention of the real restaurant since any mention of Chef's Bite will ruin the surprise. ",
+  "tags": [
+    "JOHN_QUINN",
+    "plot_2",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You want to know the address of the restaurant you are going to with Apricot tonight",
+  "reference_time": "2024-07-25T08:00:00-07:00",
+  "success_conditions": [
+    {
+      "input_text": "1. Location details of the calendar event \"Dinner with Apricot\" are summarised ",
+      "statefullness": "Stateless"
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_2_cea62a45-1010-4742-8f4f-ae8cd0c48887_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "Dinner with Apricot",
+      "start_datetime_iso": "2024-07-25T20:30:00-07:00",
+      "end_datetime_iso": "2024-07-25T22:30:00-07:00",
+      "attendees_names": [
+        "Apricot Sweeney",
+        "John Quinn"
+      ],
+      "location": "Greek Delights, 101 Foodie Lane, San José, CA",
+      "reminder_time_ahead": "2 hours",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-22T11:30:00-07:00",
+      "notes": "Dinner at Greek Delights, seems reasonably priced and decent reviews!"
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Apricot",
+      "last_name": "Sweeney",
+      "full_name": "Apricot Sweeney",
+      "phone_number": "415-555-0128",
+      "alias": "Apricot",
+      "email": "apricot.sweeney@sfhealth.com",
+      "relationship": "Girlfriend",
+      "address": "200 Market St, San Francisco, CA 94105",
+      "company": "Department of Public Health",
+      "job_title": "Analyst",
+      "is_self": false,
+      "birthday": "1997-08-25T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Where is the restaurant we are going to tonight?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user wants to know where the restaurant is they are going to tonight. In the user's calendar they have an event titled \"Dinner with Apricot\" scheduled for tonight. I can assume the person they are going with is Apricot Sweeney. According to the event details they are going to Greek Delights on 101 Foodie Lane, San Jose, CA. I'll inform the user of the address.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar information\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – Verify the dinner event was returned from the calendar lookup\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Dinner with Apricot\",\n                                                \"partial\": False,\n                                            },\n                                            \"location\": {\n                                                \"value\": \"Greek Delights\",\n                                                \"partial\": True,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        )\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user where the restaurant is\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": [\n                                        (\n                                            \"Greek Delights\",\n                                            \"101 Foodie Lane\",\n                                            \"Greek Delights, 101 Foodie Lane\",\n                                        )\n                                    ],\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_str_contains_any_similarity\n                            },\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # calendar lookup → verify event returned\n                (1, 2),  # event verified → user informed\n            ]",
+  "tool_allow_list_runtime": "[\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. You want to know the address of the restaurant you are going to with Apricot tonight ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-07-25T08:00:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

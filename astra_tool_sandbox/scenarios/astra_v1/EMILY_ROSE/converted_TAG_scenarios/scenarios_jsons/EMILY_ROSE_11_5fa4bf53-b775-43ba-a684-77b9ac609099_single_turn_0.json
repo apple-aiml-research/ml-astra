@@ -1,0 +1,81 @@
+{
+  "task_id": "5fa4bf53-b775-43ba-a684-77b9ac609099",
+  "plot_id": 11,
+  "plot_summary": "Emily Rose is the protagonist. On Sunday, December 8, 2024 at 8:00 AM, Henry Chester were involved. Morning walk with Buster and offering gardening advice to Henry. Gardening tips documented and shared on community forum.",
+  "tags": [
+    "EMILY_ROSE",
+    "plot_11",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "calendar",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "You spent your walk thinking about the meetings you have coming up.    You realize you are not sure if you have added the right people to tomorrow's activity planning.",
+  "reference_time": "2024-12-08T10:00:00-08:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateless",
+      "input_text": "1. Invitees of Student Engagement Activity Planning scheduled for December 09 2024, 16:00-17:30 are confirmed as Jenna Miles and Matt Duncan."
+    }
+  ],
+  "scenario_name": "EMILY_ROSE_11_5fa4bf53-b775-43ba-a684-77b9ac609099_single_turn_0",
+  "tool_allow_list": [
+    "search_calendar_events",
+    "get_all_calendars"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "work",
+      "calendar_event_name": "Student Engagement Activity Planning",
+      "start_datetime_iso": "2024-12-09T16:00:00-08:00",
+      "end_datetime_iso": "2024-12-09T17:30:00-08:00",
+      "attendees_names": [
+        "Emily Rose",
+        "Jenna Miles",
+        "Matt Duncan"
+      ],
+      "location": "Orchard County Community Center",
+      "reminder_time_ahead": "30 minutes",
+      "organizer_name": "Emily Rose",
+      "meeting_url": null,
+      "creation_datetime_iso": "2023-11-01T08:30:00-07:00",
+      "notes": "Team meeting with Jenna and Matt to plan student engagement activities."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "Emily",
+      "last_name": "Rose",
+      "full_name": "Emily Rose",
+      "phone_number": "+1 530-555-0123",
+      "alias": "Event Guru",
+      "email": "emily.rose@orchardcommunity.org",
+      "relationship": "Self",
+      "address": "123 Community Lane, Orchard County, CA 95662, USA",
+      "company": "Orchard County Community Center",
+      "job_title": "Event Coordinator",
+      "is_self": true,
+      "birthday": "1994-05-16T00:00:00-07:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Who are the invitees for tomorrow's Student Engagement Activity Planning?",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "The user is asking about the invitees of an event.\nFirst, I should try and find the event in the user's calendar.\nI can see an exact match for the user's query,\nStudent Engagement Activity Planning scheduled for December 09 2024, 16:00-17:30.\nThe invitees for this event are currently Jenna Miles and Matt Duncan.\nI should inform the user.",
+  "milestones": "[\n                # Milestone 0 – Agent looks up calendar events (either by searching or listing all)\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The expected event is present in the tool’s returned results\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=partial(\n                                tool_trace_dependant_similarity,\n                                fill_to=\"content\",\n                                extractor=cast(\n                                    ToolTraceExtractorType,\n                                    partial(\n                                        result_list_match_existence_extractor,\n                                        match_conditions={\n                                            \"calendar_event_name\": {\n                                                \"value\": \"Student Engagement Activity Planning\",\n                                                \"partial\": False,\n                                            },\n                                        },\n                                    ),\n                                ),\n                            ),\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"content\": \"{matched}\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_one_similarity\n                            },\n                            reference_milestone_node_index=0,\n                        ),\n                    ],\n                ),\n                # Milestone 2 – Agent tells the user the invitees include “Jenna Miles”\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Jenna Miles\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        ),\n                        # Also confirm the second invitee “Matt Duncan” appears in the same or subsequent reply\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.AGENT,\n                                    \"recipient\": RoleType.USER,\n                                    \"content\": \"Matt Duncan\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"content\": column_contains_similarity,\n                            },\n                        ),\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[\n                (0, 1),  # Calendar lookup → event confirmation\n                (1, 2),  # Event confirmation → user-facing answer\n            ]",
+  "tool_allow_list_runtime": "[\n    \"get_all_calendars\",\n    \"search_calendar_events\",\n]",
+  "user_goal_prompt": "You are User A, Emily Rose. You spent your walk thinking about the meetings you have coming up.   You realize you are not sure if you have added the right people to tomorrow's activity planning. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"search_calendar_events\", \"get_all_calendars\"]",
+  "is_read_time": "2024-12-08T10:00:00-08:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}

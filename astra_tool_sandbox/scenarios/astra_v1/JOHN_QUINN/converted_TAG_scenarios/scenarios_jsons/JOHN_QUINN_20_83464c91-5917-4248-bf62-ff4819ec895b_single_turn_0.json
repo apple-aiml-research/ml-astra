@@ -1,0 +1,125 @@
+{
+  "task_id": "83464c91-5917-4248-bf62-ff4819ec895b",
+  "plot_id": 20,
+  "plot_summary": "John Quinn is the protagonist. On Friday, July 26, 2024 at 11:30am, Ali Amin, Alisa Borhman, Akira Muramoto were involved. John invites his friends to a 'history brunch' on Sunday late morning.  1. John messages his friends in a group chat, suggesting that they could meet up for a 'history brunch' at the local Egg & Bagel cafe to discuss post-Napoleonic history. 2. Ali enthusiastically replies in the group chat with everyone. 3. Alisa also replies agreeing in the group chat with everyone. 4. Alisa sends a separate message only to John asking him to make sure it does not devolve into John and Ali monopolizing the conversation with a focus on military history. 5. Akira does not respond to the group chat but writes to John separately saying he's not really interested, sounding slightly exasperated. 6. John answers separately to each of the 3 message threads (group chat with everyone, Alice, Akira). 7. John makes an invite for the brunch adding the people who accepted ",
+  "tags": [
+    "astra_core",
+    "JOHN_QUINN",
+    "plot_20",
+    "calendar",
+    "referential_complexity_moderate",
+    "informational_complexity_moderate",
+    "functional_complexity_low",
+    "misinformation_no",
+    "insufficient_context_no"
+  ],
+  "user_goal": "Alisa gave you a good documentary recommendation at your history brunch and you want to set aside time this evening to watch it.",
+  "reference_time": "2024-07-28T13:15:00-07:00",
+  "success_conditions": [
+    {
+      "statefullness": "Stateful",
+      "input_text": "1. An event for the documentary Alisa recommended is created from 19:00 to 21:00 on 28 July 2024 (the user did not specify a name). "
+    }
+  ],
+  "scenario_name": "JOHN_QUINN_20_83464c91-5917-4248-bf62-ff4819ec895b_single_turn_0",
+  "tool_allow_list": [
+    "get_all_calendars",
+    "search_calendar_events",
+    "create_calendar_event"
+  ],
+  "messages": [],
+  "whatsapp_messages": [],
+  "emails": [],
+  "calendars": [
+    {
+      "calendar_name": "personal",
+      "calendar_event_name": "History Brunch",
+      "start_datetime_iso": "2024-07-28T11:00:00-07:00",
+      "end_datetime_iso": "2024-07-28T13:00:00-07:00",
+      "attendees_names": [
+        "Ali Amin",
+        "Alisa Bohrman",
+        "John Quinn"
+      ],
+      "location": "Egg & Bagel cafe, San José, CA",
+      "reminder_time_ahead": "1 hour",
+      "organizer_name": "John Quinn",
+      "meeting_url": null,
+      "creation_datetime_iso": "2024-07-26T12:05:00-07:00",
+      "notes": "Meeting up with Ali and Alisa to discuss post-Napoleonic history over brunch at Egg & Bagel cafe."
+    }
+  ],
+  "contacts": [
+    {
+      "first_name": "John",
+      "last_name": "Quinn",
+      "full_name": "John Quinn",
+      "phone_number": "1234-5678-9108",
+      "alias": "JQ",
+      "email": "john.quinn@palantir.com",
+      "relationship": "Self",
+      "address": "123 Maple St, San José, CA 95126",
+      "company": "Palantir",
+      "job_title": "Junior Engineer",
+      "is_self": true,
+      "birthday": "1998-06-15T00:00:00-07:00"
+    },
+    {
+      "first_name": "Ali",
+      "last_name": "Amin",
+      "full_name": "Ali Amin",
+      "phone_number": "408-555-0134",
+      "alias": "Ali",
+      "email": "ali.amin@historybuffs.org",
+      "relationship": "Friend",
+      "address": "160 History Ln, San José, CA 95110",
+      "company": "History Buffs Inc.",
+      "job_title": "Historical Consultant",
+      "is_self": false,
+      "birthday": "1988-10-10T00:00:00-07:00"
+    },
+    {
+      "first_name": "Akira",
+      "last_name": "Muramoto",
+      "full_name": "Akira Muramoto",
+      "phone_number": "408-555-0135",
+      "alias": "Akira",
+      "email": "akira.muramoto@sportsfan.com",
+      "relationship": "School Friend",
+      "address": "165 Runner's Rd, San José, CA 95129",
+      "company": "Sports Enthusiasts Ltd.",
+      "job_title": "Sports Nutritionist",
+      "is_self": false,
+      "birthday": "1998-01-25T00:00:00-08:00"
+    },
+    {
+      "first_name": "Alisa",
+      "last_name": "Borhman",
+      "full_name": "Alisa Borhman",
+      "phone_number": "408-555-0136",
+      "alias": "Alisa",
+      "email": "alisa.borhman@historicalmuseums.org",
+      "relationship": "School Friend",
+      "address": "170 Past Ave, San José, CA 95132",
+      "company": "San José Historical Museum",
+      "job_title": "Curator",
+      "is_self": false,
+      "birthday": "1998-11-11T00:00:00-08:00"
+    }
+  ],
+  "phonecalls": [],
+  "query": "Set aside two hours around 19:00 this evening to watch the documentary Alisa told me about at brunch earlier. ",
+  "referential_complexity": "moderate",
+  "informational_complexity": "moderate",
+  "functional_complexity": "low",
+  "reasoning": "Ok so the user wants to set aside two hours around 19:00 this evening to watch a documentary. Firstly I will check the user's calendar and can see no conflicting events scheduled from 19:00 to 21:00 for today, 28 July 2024. \nNext is the name, which the user hasn't provided one yet. I will confirm with the user what they would like to name the event and then can create it for them. ",
+  "milestones": "[\n                # Milestone 0 – Agent looks at the calendar to check for possible conflicts\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.SANDBOX,\n                            snapshot_constraint=snapshot_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"sender\": RoleType.EXECUTION_ENVIRONMENT,\n                                    \"recipient\": RoleType.AGENT,\n                                    \"tool_trace\": \"\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                \"tool_trace\": partial(\n                                    column_tool_trace_matches_tool_names,\n                                    target_tools=[\n                                        \"search_calendar_events\",\n                                        \"get_all_calendars\",\n                                    ],\n                                )\n                            },\n                        )\n                    ],\n                ),\n                # Milestone 1 – The two-hour evening documentary event has been added\n                Milestone(\n                    snapshot_constraints=[\n                        SnapshotConstraint(\n                            database_namespace=DatabaseNamespace.CALENDAR,\n                            snapshot_constraint=addition_similarity,\n                            target_dataframe=pl.DataFrame(\n                                {\n                                    \"calendar_event_name\": \"documentary\",  # user gave no name; only the generic \"documentary\" from the query is grounded\n                                    \"start_datetime_iso\": \"2024-07-28T19:00:00-07:00\",\n                                    \"end_datetime_iso\": \"2024-07-28T21:00:00-07:00\",\n                                    \"creation_datetime_iso\": \"2024-07-28T13:15:00-07:00\",\n                                }\n                            ),\n                            column_similarity_measure={\n                                # Allow slight naming variations so long as “Documentary” appears\n                                \"calendar_event_name\": column_contains_similarity,\n                                \"creation_datetime_iso\": partial(\n                                    column_datetime_window_similarity, max_minutes=30\n                                ),\n                            },\n                            reference_milestone_node_index=-1,  # compare to pre-task snapshot\n                        )\n                    ],\n                ),\n            ]",
+  "milestone_edge_list": "[(0, 1)]",
+  "tool_allow_list_runtime": "[\n    \"create_calendar_event\",\n    \"search_calendar_events\",\n    \"get_all_calendars\",\n]",
+  "user_goal_prompt": "You are User A, John Quinn. Alisa gave you a good documentary recommendation at your history brunch and you want to set aside time this evening to watch it. ",
+  "minefields": null,
+  "tool_allow_list_str": "[\"get_all_calendars\", \"search_calendar_events\", \"create_calendar_event\"]",
+  "is_read_time": "2024-07-28T13:15:00-07:00",
+  "insufficient_context": "no",
+  "misinformation": "no"
+}
